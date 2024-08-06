@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>GeostatsPy Well-documented Demonstration Workflows &#8212; My sample book</title>
+    <title>Variogram Models, Simulation Examples &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
   
   
   
@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_variogram_models_simulation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_variogram_calculation_and_modeling.html" />
-    <link rel="prev" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_variogram_models.html" />
+    <link rel="next" title="Variogram Calculation and Modeling" href="GeostatsPy_variogram_calculation_and_modeling.html" />
+    <link rel="prev" title="Variogram Positive Definite Models" href="GeostatsPy_variogram_models.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,8 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
   
   
 </a></div>
@@ -166,12 +166,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    GeostatsPy Well-documented Demonstration Workflows
+                    e-Book Introduction
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
@@ -180,9 +180,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Variogram Models, Simulation Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 </ul>
 
     </div>
@@ -237,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -254,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_variogram_models_simulation.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_variogram_models_simulation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>GeostatsPy Well-documented Demonstration Workflows</h1>
+    <h1>Variogram Models, Simulation Examples</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,26 +388,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-variogram-models-in-1d-simulation">Visualizing Variogram Models in 1D Simulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-modeling">Variogram Modeling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-simple-dataset">Make a Simple Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-colorbars-and-map-specification">Set Limits for Plotting, Colorbars and Map Specification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-variogram">Spherical Variogram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-variogram">Exponential Variogram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variogram">Gaussian Variogram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vary-the-variogram-type">Vary the Variogram Type</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vary-the-nugget-effect">Vary the Nugget Effect</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-modeling">Variogram Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-simple-dataset">Make a Simple Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-colorbars-and-map-specification">Set Limits for Plotting, Colorbars and Map Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-variogram">Spherical Variogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-variogram">Exponential Variogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variogram">Gaussian Variogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vary-the-variogram-type">Vary the Variogram Type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vary-the-nugget-effect">Vary the Nugget Effect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -418,14 +425,12 @@ document.write(`
   <p align="center">
     <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
 </p>
-<section id="geostatspy-well-documented-demonstration-workflows">
-<h1>GeostatsPy Well-documented Demonstration Workflows<a class="headerlink" href="#geostatspy-well-documented-demonstration-workflows" title="Permalink to this heading">#</a></h1>
-<section id="visualizing-variogram-models-in-1d-simulation">
-<h2>Visualizing Variogram Models in 1D Simulation<a class="headerlink" href="#visualizing-variogram-models-in-1d-simulation" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="variogram-models-simulation-examples">
+<h1>Variogram Models, Simulation Examples<a class="headerlink" href="#variogram-models-simulation-examples" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
-<h3>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h3>
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
 <section id="twitter-github-website-googlescholar-book-youtube-linkedin">
-<h4><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h4>
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
 <p>This is a tutorial for / demonstration of <strong>Visualizing Variogram Models in 1D Simulation</strong> with GeostatsPy.</p>
 <p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
 <ul class="simple">
@@ -435,7 +440,7 @@ document.write(`
 </section>
 </section>
 <section id="variogram-modeling">
-<h3>Variogram Modeling<a class="headerlink" href="#variogram-modeling" title="Permalink to this heading">#</a></h3>
+<h2>Variogram Modeling<a class="headerlink" href="#variogram-modeling" title="Permalink to this heading">#</a></h2>
 <p>Spatial continuity can be modeled with nested, positive definate variogram structures:</p>
 <p>\begin{equation}
 \Gamma_x(\bf{h}) = \sum_{i=1}^{nst} \gamma_i(\bf{h})
@@ -470,7 +475,7 @@ document.write(`
 </ul>
 </section>
 <section id="sequential-gaussian-simulation">
-<h3>Sequential Gaussian Simulation<a class="headerlink" href="#sequential-gaussian-simulation" title="Permalink to this heading">#</a></h3>
+<h2>Sequential Gaussian Simulation<a class="headerlink" href="#sequential-gaussian-simulation" title="Permalink to this heading">#</a></h2>
 <p>With sequential Gaussian simulation we build on kriging by:</p>
 <ul class="simple">
 <li><p>adding a random residual with the missing variance</p></li>
@@ -485,7 +490,7 @@ document.write(`
 <p>Below I provide examples of 1D simulation with variogram variogram models.</p>
 </section>
 <section id="load-the-required-libraries">
-<h3>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h3>
+<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -505,10 +510,15 @@ document.write(`
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
-<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>                               <span class="c1"># customized subplots</span>
@@ -529,7 +539,7 @@ document.write(`
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h3>Declare functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h3>
+<h2>Declare functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>This is a convenience function to add major and minor gridlines to our plots.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -543,7 +553,7 @@ document.write(`
 </div>
 </section>
 <section id="make-a-simple-dataset">
-<h3>Make a Simple Dataset<a class="headerlink" href="#make-a-simple-dataset" title="Permalink to this heading">#</a></h3>
+<h2>Make a Simple Dataset<a class="headerlink" href="#make-a-simple-dataset" title="Permalink to this heading">#</a></h2>
 <p>We build a reference distribution, data outside the model to control the distribution only.</p>
 <ul class="simple">
 <li><p>Then we add 3 points along a 1D section.</p></li>
@@ -605,14 +615,14 @@ document.write(`
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>0.795398</td>
-      <td>918.227872</td>
+      <td>0.012292</td>
+      <td>850.254855</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>0.053257</td>
-      <td>1176.689292</td>
+      <td>0.598059</td>
+      <td>1322.517319</td>
     </tr>
   </tbody>
 </table>
@@ -620,7 +630,7 @@ document.write(`
 </div>
 </section>
 <section id="set-limits-for-plotting-colorbars-and-map-specification">
-<h3>Set Limits for Plotting, Colorbars and Map Specification<a class="headerlink" href="#set-limits-for-plotting-colorbars-and-map-specification" title="Permalink to this heading">#</a></h3>
+<h2>Set Limits for Plotting, Colorbars and Map Specification<a class="headerlink" href="#set-limits-for-plotting-colorbars-and-map-specification" title="Permalink to this heading">#</a></h2>
 <p>Limits are applied for data and model visualization. Grid specification is for the 1D simulations (note, ny = 1 for 1D).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -645,7 +655,7 @@ document.write(`
 </div>
 </section>
 <section id="spherical-variogram">
-<h3>Spherical Variogram<a class="headerlink" href="#spherical-variogram" title="Permalink to this heading">#</a></h3>
+<h2>Spherical Variogram<a class="headerlink" href="#spherical-variogram" title="Permalink to this heading">#</a></h2>
 <p>A very commonly observed variogram / spatial continuity form in many settings</p>
 <ul class="simple">
 <li><p>Peicewise, beyond the range is equal to the sill</p></li>
@@ -691,12 +701,12 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f947bb15ee81aa7b81deb89033bd87872cc9f48040b650f4c63449be883da4cb.png" src="_images/f947bb15ee81aa7b81deb89033bd87872cc9f48040b650f4c63449be883da4cb.png" />
+<img alt="_images/b873f8a4bdffa180e7c57c3af8684e1bcf26dbe22afa1fa3d6cf8f51e54cdbb4.png" src="_images/b873f8a4bdffa180e7c57c3af8684e1bcf26dbe22afa1fa3d6cf8f51e54cdbb4.png" />
 </div>
 </div>
 </section>
 <section id="exponential-variogram">
-<h3>Exponential Variogram<a class="headerlink" href="#exponential-variogram" title="Permalink to this heading">#</a></h3>
+<h2>Exponential Variogram<a class="headerlink" href="#exponential-variogram" title="Permalink to this heading">#</a></h2>
 <p>Also very commonly observed variogram / spatial continuity form</p>
 <ul class="simple">
 <li><p>Less short-scale continuity than spherical, and reaches sill asymptotically, range is at 95% of the sill</p></li>
@@ -736,12 +746,12 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9f3502aed6d691bc26f95da8e255ef112b6dfb4af89cef2ea71c9df6190c1b1e.png" src="_images/9f3502aed6d691bc26f95da8e255ef112b6dfb4af89cef2ea71c9df6190c1b1e.png" />
+<img alt="_images/4bd5a046a40f64c550217973f8f7666d33e26af9fb12d301b9857cc953c18ecb.png" src="_images/4bd5a046a40f64c550217973f8f7666d33e26af9fb12d301b9857cc953c18ecb.png" />
 </div>
 </div>
 </section>
 <section id="gaussian-variogram">
-<h3>Gaussian Variogram<a class="headerlink" href="#gaussian-variogram" title="Permalink to this heading">#</a></h3>
+<h2>Gaussian Variogram<a class="headerlink" href="#gaussian-variogram" title="Permalink to this heading">#</a></h2>
 <p>Less commonly observed variogram / spatial continuity form, e.g., for thickness and elevation</p>
 <ul class="simple">
 <li><p>Much more short-scale continuity than spherical, and reaches sill asymptotically, range is at 95% of the sill</p></li>
@@ -781,12 +791,12 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fef49a919ace0517d84a362d834f5987a64b2ca9b5658f89aa7a911aa3afa108.png" src="_images/fef49a919ace0517d84a362d834f5987a64b2ca9b5658f89aa7a911aa3afa108.png" />
+<img alt="_images/d5df953377e4f65be72206dd49bf7d92f09d7f51d540fc5ff8f44f7910d36537.png" src="_images/d5df953377e4f65be72206dd49bf7d92f09d7f51d540fc5ff8f44f7910d36537.png" />
 </div>
 </div>
 </section>
 <section id="vary-the-variogram-type">
-<h3>Vary the Variogram Type<a class="headerlink" href="#vary-the-variogram-type" title="Permalink to this heading">#</a></h3>
+<h2>Vary the Variogram Type<a class="headerlink" href="#vary-the-variogram-type" title="Permalink to this heading">#</a></h2>
 <p>All variogram models plotted together with their models.</p>
 <ul class="simple">
 <li><p>spherical</p></li>
@@ -904,13 +914,13 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/572a79553ab422e1b4d78c48b39b6757cf6cd7623940a33b06edbfb37c734677.png" src="_images/572a79553ab422e1b4d78c48b39b6757cf6cd7623940a33b06edbfb37c734677.png" />
+<img alt="_images/6d9ff561d30ea713f7bd416f5cfe5329e2b6e11b8271a263757fcb740b897637.png" src="_images/6d9ff561d30ea713f7bd416f5cfe5329e2b6e11b8271a263757fcb740b897637.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with increasing short scale spatial continuity from exponential to spherical to Gaussian. But the long range spatial continuity does not significantly change.</p>
 </section>
 <section id="vary-the-nugget-effect">
-<h3>Vary the Nugget Effect<a class="headerlink" href="#vary-the-nugget-effect" title="Permalink to this heading">#</a></h3>
+<h2>Vary the Nugget Effect<a class="headerlink" href="#vary-the-nugget-effect" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>0% relative nugget effect</p></li>
 <li><p>50% relative nugget effect</p></li>
@@ -965,20 +975,19 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e0658ffd56a5cc0ada528f130e35161e963953b840208adcadb866e6cd9d232c.png" src="_images/e0658ffd56a5cc0ada528f130e35161e963953b840208adcadb866e6cd9d232c.png" />
+<img alt="_images/b5f891c296cb73ad67caf9f993b97269b1e4e0035f10ab379055ce81dde558e4.png" src="_images/b5f891c296cb73ad67caf9f993b97269b1e4e0035f10ab379055ce81dde558e4.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with decreasing short scale spatial continuity with increase in relative nugget effect.</p>
 </section>
 <section id="comments">
-<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h3>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic demonstration of variogram calculation with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="the-author">
-<h3>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h3>
-</section>
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="id1">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
@@ -1042,7 +1051,7 @@ c_1 &amp; h \ge a
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+        <p class="prev-next-title">Variogram Positive Definite Models</p>
       </div>
     </a>
     <a class="right-next"
@@ -1050,7 +1059,7 @@ c_1 &amp; h \ge a
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+        <p class="prev-next-title">Variogram Calculation and Modeling</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1069,26 +1078,23 @@ c_1 &amp; h \ge a
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-variogram-models-in-1d-simulation">Visualizing Variogram Models in 1D Simulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-modeling">Variogram Modeling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-simple-dataset">Make a Simple Dataset</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-colorbars-and-map-specification">Set Limits for Plotting, Colorbars and Map Specification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-variogram">Spherical Variogram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-variogram">Exponential Variogram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variogram">Gaussian Variogram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vary-the-variogram-type">Vary the Variogram Type</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vary-the-nugget-effect">Vary the Nugget Effect</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-modeling">Variogram Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-simple-dataset">Make a Simple Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-colorbars-and-map-specification">Set Limits for Plotting, Colorbars and Map Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-variogram">Spherical Variogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-variogram">Exponential Variogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variogram">Gaussian Variogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vary-the-variogram-type">Vary the Variogram Type</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vary-the-nugget-effect">Vary the Nugget Effect</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -1109,7 +1115,7 @@ c_1 &amp; h \ge a
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By Michael J. Pyrcz
 </p>
 
   </div>
@@ -1119,7 +1125,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2024.
       <br/>
     
   </p>

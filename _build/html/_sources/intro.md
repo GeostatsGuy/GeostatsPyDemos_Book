@@ -4,7 +4,9 @@
 
 </p>
 
-## GeostatsPy Well-documented Demonstration Workflows 
+# e-Book Introduction
+
+## GeostatsPy Well-documented Demonstration Workflows, The Online Book 
 
 #### Michael Pyrcz, Professor, The University of Texas at Austin 
 
@@ -27,6 +29,10 @@
 
 ***
 
+### Cite This Online Book As:
+
+Pyrcz, M.J., 2024, GeostatsPy Well-documented Demonstration Geostatistical Workflows, https://geostatsguy.github.io/GeostatsPyDemos_Book.
+
 ### Cite GeostatsPyDemos GitHub Repository As:
 
 Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. https://zenodo.org/doi/10.5281/zenodo.12667035
@@ -40,38 +46,19 @@ Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data A
 ```{tableofcontents}
 ```
 
-
 #### Recent Updates
 
 Here's some highlights from recent updates:
 
 ##### What's New with Version 0.0.1
 
-I spent quite a bit of time checking, updating and improving all of the workflows. 
+This is my first attempt to convert my repository of well-documented Python workflows into an online e-book. 
 
-* up to date with GeostatsPy v0.0.68
-* improved documentation with concepts and theory from my courses to motivate the workflows
-* improved code comments
-* improved data and model visualization
+* there are many minor formatting issues that I will resolve over the next couple of months.
 
-I'm quite happy with the current state. I feel that this set of well-documented workflow for spatial data analytics and geostatistics in Python with GeostatsPy now lives up to its goal - to launch anyone into building spatial data analytics and geostatistics workflow with GeostatsPy! I'm stoked to help out, Michael
+Yet, I'm excited to compile all this content into an accessible format, linked to lectures and with repeatable code. My goal is to help folks get started and improve their application of geostatistics.
 
-***
-
-#### Setup
-
-A minimum environment includes:
-
-* Python 3.7.10 - due to the depdendency of GeostatsPy on the Numba package for code acceleration
-* GeostatsPy - I am continuously testing these workflow with the most current version, [GeostatsPy](https://pypi.org/project/geostatspy/)(Pyrcz et al., 2021)
-* MatPlotLib - plotting
-* NumPy - gridded data and array math
-* Pandas - tabulated data
-* SciPy - statistics module
-
-The required datasets are available in the [GeoDataSets](https://github.com/GeostatsGuy/GeoDataSets) repository and linked in the workflows.
-
-#### Repository Summary
+#### Building on the GeostatsPyDemos repository with:
 
 More than 40 well-documented demonstration workflow for common geostatistical workflows with GeostatsPy. 
 

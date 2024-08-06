@@ -4,8 +4,8 @@
 format: jb-book
 root: intro
 chapters:
-- file: GeostatsPy_2D1D_trend
-  title: Spatial Trend Modeling
+- file: GeostatsPy_univariate_distributions
+  title: Univariate Distributions
 - file: GeostatsPy_bootstrap
   title: Bootstrap for Uncertainty Modeling
 - file: GeostatsPy_declustering
@@ -22,11 +22,29 @@ chapters:
   title: Variogram Calculation and Modeling
 - file: GeostatsPy_variogram_from_image
   title: Variogram Calculation from an Image
+- file: GeostatsPy_trends
+  title: Trend Modeling
+- file: GeostatsPy_2D1D_trend
+  title: Spatial Trend Modeling, 1D + 2D
+- file: GeostatsPy_inv_distance
+  title: Inverse Distance
 - file: GeostatsPy_kriging
   title: Simple Kriging
-- file: GeostatsPy_GeostatsPy_kriging_vs_simulation_1D
+- file: GeostatsPy_kriging_vs_simulation_1D
   title: Kriging vs. Simulation, 1D 
 - file: GeostatsPy_kriging_vs_simulation_maps
   title: Kriging vs. Simulation, 2D Maps
+- file: GeostatsPy_simulation
+  title: Stochastic Simulation
+- file: GeostatsPy_cosimulation
+  title: Cosimulation
+- file: GeostatsPy_ergodic_fluctuations
+  title: Ergodic Fluctuations
+- file: GeostatsPy_simulation_postsim
+  title: Simulation Post-processing
 - file: GeostatsPy_model_checking
   title: Model Checking
+- file: GeostatsPy_volume_variance
+  title: Volume Variance
+- file: conclusions
+  title: Conclusions

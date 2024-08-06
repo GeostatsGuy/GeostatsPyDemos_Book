@@ -11,6 +11,9 @@ dependencies:
     - quantecon
     - jupyter-book
     - pyvista
+    - seaborn
+    - imageio
+    - astropy
     - tqdm
     - statsmodels
     - geostatspy
