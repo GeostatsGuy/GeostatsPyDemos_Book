@@ -1,0 +1,17 @@
+name: GeostatsPyDemosBook
+channels:
+  - default
+dependencies:
+  - python=3.8
+  - sphinx
+  - pip
+  - pandas
+  - matplotlib
+  - pip:
+    - quantecon
+    - jupyter-book
+    - pyvista
+    - tqdm
+    - statsmodels
+    - geostatspy
+

@@ -1,0 +1,807 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>GeostatsPy Well-documented Demonstration Workflows &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_2D1D_trend.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    GeostatsPy Well-documented Demonstration Workflows
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>GeostatsPy Well-documented Demonstration Workflows</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin-data-analytics-geostatistics-and-machine-learning">Michael Pyrcz, Professor, The University of Texas at Austin, Data Analytics, Geostatistics and Machine Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cite-geostatspydemos-github-repository-as">Cite GeostatsPyDemos GitHub Repository As:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-updates">Recent Updates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-new-with-version-0-0-1">What’s New with Version 0.0.1</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-summary">Repository Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-geostatspy">Installing GeostatsPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-package-dependencies">GeostatsPy Package Dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspydemos-repository-author">GeostatsPyDemos Repository Author:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-geostatspy-python-package-for-spatial-data-analytics-and-geostatistics">Information about the GeostatsPy Python Package for Spatial Data Analytics and Geostatistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geostatspy-authors">The GeostatsPy Authors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-inventory">Package Inventory</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-gslib-functions">geostatspy.GSLIB Functions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-geostats-functions">geostatspy.geostats Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p align="center">
+    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
+</p>
+<section id="geostatspy-well-documented-demonstration-workflows">
+<h1>GeostatsPy Well-documented Demonstration Workflows<a class="headerlink" href="#geostatspy-well-documented-demonstration-workflows" title="Permalink to this heading">#</a></h1>
+<section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
+<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
+<h1 align="center"<p>
+    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/geostatspy_logo.png?raw=true" width="200" height="200" />
+</p></h1>
+<p><a class="reference external" href="https://geostatspy.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/geostatspy/badge/?version=latest" /></a></p>
+<h1 align="center">GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1)</h1>
+<h3 align="center">Approximately 40 Well-Documented Spatial Data Analytics and Geostatistics Workflows with the GeostatsPy Package!</h3>
+<p><em>It is challenging to learn a new Python package. For me, great examples for common workflows are crtical. So I built out over 40 well-documented demonstration workflows that apply GeostatsPy to accomplish common spatial modeling tasks to support my students in my <strong>Data Analytics and Geostatistics</strong>, <strong>Spatial Data Analytics</strong> and <strong>Machine Learning</strong> courses and anyone else learning data analytics and machine learning.</em></p>
+</section>
+</section>
+<section id="michael-pyrcz-professor-the-university-of-texas-at-austin-data-analytics-geostatistics-and-machine-learning">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin, Data Analytics, Geostatistics and Machine Learning<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin-data-analytics-geostatistics-and-machine-learning" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<hr class="docutils" />
+<section id="cite-geostatspydemos-github-repository-as">
+<h2>Cite GeostatsPyDemos GitHub Repository As:<a class="headerlink" href="#cite-geostatspydemos-github-repository-as" title="Permalink to this heading">#</a></h2>
+<p>Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035">https://zenodo.org/doi/10.5281/zenodo.12667035</a></p>
+<p><a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035"><img alt="DOI" src="https://zenodo.org/badge/777871341.svg" /></a></p>
+<hr class="docutils" />
+<section id="table-of-contents">
+<h3>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
+</ul>
+</div>
+</section>
+<section id="recent-updates">
+<h3>Recent Updates<a class="headerlink" href="#recent-updates" title="Permalink to this heading">#</a></h3>
+<p>Here’s some highlights from recent updates:</p>
+<section id="what-s-new-with-version-0-0-1">
+<h4>What’s New with Version 0.0.1<a class="headerlink" href="#what-s-new-with-version-0-0-1" title="Permalink to this heading">#</a></h4>
+<p>I spent quite a bit of time checking, updating and improving all of the workflows.</p>
+<ul class="simple">
+<li><p>up to date with GeostatsPy v0.0.68</p></li>
+<li><p>improved documentation with concepts and theory from my courses to motivate the workflows</p></li>
+<li><p>improved code comments</p></li>
+<li><p>improved data and model visualization</p></li>
+</ul>
+<p>I’m quite happy with the current state. I feel that this set of well-documented workflow for spatial data analytics and geostatistics in Python with GeostatsPy now lives up to its goal - to launch anyone into building spatial data analytics and geostatistics workflow with GeostatsPy! I’m stoked to help out, Michael</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h3>
+<p>A minimum environment includes:</p>
+<ul class="simple">
+<li><p>Python 3.7.10 - due to the depdendency of GeostatsPy on the Numba package for code acceleration</p></li>
+<li><p>GeostatsPy - I am continuously testing these workflow with the most current version, <a class="reference external" href="https://pypi.org/project/geostatspy/">GeostatsPy</a>(Pyrcz et al., 2021)</p></li>
+<li><p>MatPlotLib - plotting</p></li>
+<li><p>NumPy - gridded data and array math</p></li>
+<li><p>Pandas - tabulated data</p></li>
+<li><p>SciPy - statistics module</p></li>
+</ul>
+<p>The required datasets are available in the <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets">GeoDataSets</a> repository and linked in the workflows.</p>
+</section>
+<section id="repository-summary">
+<h3>Repository Summary<a class="headerlink" href="#repository-summary" title="Permalink to this heading">#</a></h3>
+<p>More than 40 well-documented demonstration workflow for common geostatistical workflows with GeostatsPy.</p>
+<ul class="simple">
+<li><p>utilizing synthetic data from my <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets">GeoDataSets</a> repository</p></li>
+<li><p>small and often 2D examples for fast run times and ease of interpretation</p></li>
+<li><p>often used and cited in my courses for repeatable educational content</p></li>
+</ul>
+<p>Common geostatistical workflows that are included:</p>
+<ul class="simple">
+<li><p>data visualization</p></li>
+<li><p>distribution transformation</p></li>
+<li><p>spatial data debiasing with descustering</p></li>
+<li><p>spatial continuity calculation and modeling with variograms</p></li>
+<li><p>spatial estimation</p></li>
+<li><p>spatial trend modeling</p></li>
+<li><p>spatial simulation</p></li>
+<li><p>indicator based estimation and simulation</p></li>
+<li><p>cosimulation with secondary data</p></li>
+<li><p>summarization over multiple simulated realizations</p></li>
+<li><p>spatial model checking</p></li>
+<li><p>volume variance relations</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="installing-geostatspy">
+<h3>Installing GeostatsPy<a class="headerlink" href="#installing-geostatspy" title="Permalink to this heading">#</a></h3>
+<p>Firstly, if you haven’t installed GeostatsPy, here’s the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy/tree/master">GeostatsPy GitHub</a>. GeostatsPy is available on the Python Package Index (PyPI) <a class="reference external" href="https://pypi.org/project/geostatspy/">GeostatsPy PyPI</a>.</p>
+<p>To install GeostatsPy, use pip</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install geostatspy</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="geostatspy-package-dependencies">
+<h3>GeostatsPy Package Dependencies<a class="headerlink" href="#geostatspy-package-dependencies" title="Permalink to this heading">#</a></h3>
+<p>The functions rely on the following packages:</p>
+<ol class="arabic simple">
+<li><p><strong>numpy</strong> - for ndarrays</p></li>
+<li><p><strong>pandas</strong> - for DataFrames</p></li>
+<li><p><strong>numpy.linalg</strong> - for linear algebra</p></li>
+<li><p><strong>numba</strong> - for numerical speed up</p></li>
+<li><p><strong>scipy</strong> - for fast nearest neighbor search</p></li>
+<li><p><strong>matplotlib.pyplot</strong> - for plotting</p></li>
+<li><p><strong>tqdm</strong> - for progress bar</p></li>
+<li><p><strong>statsmodels</strong> - for weighted (debiased) statistics</p></li>
+</ol>
+<p>These packages should be available with any modern Python distribution (e.g. <a class="reference external" href="https://www.anaconda.com/download/">https://www.anaconda.com/download/</a>).</p>
+<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
+</section>
+<section id="geostatspydemos-repository-author">
+<h3>GeostatsPyDemos Repository Author:<a class="headerlink" href="#geostatspydemos-repository-author" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="id2">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<section id="id3">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="want-to-work-together">
+<h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
+<h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
+</section>
+<hr class="docutils" />
+<section id="information-about-the-geostatspy-python-package-for-spatial-data-analytics-and-geostatistics">
+<h3>Information about the <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy">GeostatsPy Python Package</a> for Spatial Data Analytics and Geostatistics<a class="headerlink" href="#information-about-the-geostatspy-python-package-for-spatial-data-analytics-and-geostatistics" title="Permalink to this heading">#</a></h3>
+<p>The GeostatsPy Package brings GSLIB: Geostatistical Library (Deutsch and Journel, 1998) functions to Python. GSLIB is a practical and extremely robust set of code for building spatial modeling workflows.</p>
+<p>I created the GeostatsPy Package to support my students in my <strong>Data Analytics</strong>, <strong>Geostatistics</strong> and <strong>Machine Learning</strong> courses. I find my students benefit from hands-on opportunities, in fact it is hard to imagine teaching these topics without providing the opportunity to handle the numerical methods and build workflows. Last year, I tried to have them use the original FORTRAN executables and even with support and worked out examples, it was an uphill battle. In addition, all my students and I are now working in Python for our research. Thus, having access to geostatistical methods in Python directly impacts and facilitates the research of my group. This package retains the spirit of GSLIB:</p>
+<ul class="simple">
+<li><p><strong>modularity</strong> - a collection of standalone functions that may be applied in sequence for maximum flexibility for building workflows</p></li>
+<li><p><strong>minimalistic</strong> - the simplest possible code to support the “look at the code” approach to learning</p></li>
+<li><p><strong>fundamental</strong> - based on the well-established geostatistical theory by avoiding ad hoc methods and assumptions</p></li>
+</ul>
+<p>This package contains 2 parts:</p>
+<ol class="arabic simple">
+<li><p><strong>geostatspy.geostats</strong> includes GSLIB functions rewritten in Python. This currently includes all the variogram, distribution transformations, and spatial estimation and simulation methods. I will continue adding functions to support modeling operations for practical subsurface model cosntruction.</p></li>
+<li><p><strong>geostatspy.GSLIB</strong> includes reimplimentation of the GSLIB visualizations and low tech wrappers of the numerical methods (note: the low-tech wrapper require access to GSLIB executables).</p></li>
+</ol>
+</section>
+<section id="the-geostatspy-authors">
+<h3>The GeostatsPy Authors<a class="headerlink" href="#the-geostatspy-authors" title="Permalink to this heading">#</a></h3>
+<p>The GeostatsPy package is being developed at The University of Texas in the Texas Center for Geostatistics.</p>
+<ul class="simple">
+<li><p><strong>Professor Michael J. Pyrcz, Ph.D., P.Eng.</strong> - professor with The University of Texas at Austin. Primary author of the package.</p></li>
+<li><p><strong>Professor Honggeun Jo</strong> - assistant professor with Inha University, South Korea. Author of 3D subroutines, 3D variogram calculation and modeling and wrapper for sgsim for 3D modeling and more! Thank you, Professor Jo!</p></li>
+<li><p><strong>Anton Kupenko</strong> - bug fixes, added docstrings, code refractory for PEP8, removed duplicated functions and variables. Thank you, Anton!</p></li>
+<li><p><strong>Wendi Liu, Ph.D.</strong> - while a Ph.D. student working with Michael Pyrcz at The University of Texas at Austin. Author of 3D subroutines and gammabar method. Also, GSLIB compiles in Mac OSX, and 3D variogram calculation wrapper. Thank you, Dr. Wendi Liu!</p></li>
+<li><p><strong>Alex E. Gigliotti</strong> - undergraduate student working with Michael Pyrcz at The University of Texas at Austin. Established unit testing.  Thank you Alex!</p></li>
+<li><p><strong>Travis Salomaki</strong> - as an undergraduate student research project with Michael Pyrcz at The University of Texas at Austin. Improving package docs. Thank you, Travis!</p></li>
+<li><p><strong>Javier Santos, Ph.D.</strong> - while a Ph.D. student working with Michael Pyrcz at The University of Texas at Austin. Author of the post processing algorithm for summarizing over multiple realizations. Thank you, Javier!</p></li>
+</ul>
+</section>
+<section id="package-inventory">
+<h3>Package Inventory<a class="headerlink" href="#package-inventory" title="Permalink to this heading">#</a></h3>
+<p>Here’s a list and some details on each of the functions available.</p>
+<section id="geostatspy-gslib-functions">
+<h4>geostatspy.GSLIB Functions<a class="headerlink" href="#geostatspy-gslib-functions" title="Permalink to this heading">#</a></h4>
+<p>Utilities to support moving between Python DataFrames and ndarrays, Data Tables, Gridded Data and Models in Geo-EAS file format (standard to GSLIB):</p>
+<ol class="arabic simple">
+<li><p><strong>ndarray2GSLIB</strong> - utility to convert 1D or 2D numpy ndarray to a GSLIB Geo-EAS file for use with GSLIB methods</p></li>
+<li><p><strong>GSLIB2ndarray</strong> - utility to convert GSLIB Geo-EAS files to a 1D or 2D numpy ndarray for use with Python methods</p></li>
+<li><p><strong>Dataframe2GSLIB(data_file,df)</strong> - utility to convert pandas DataFrame to a GSLIB Geo-EAS file for use with GSLIB methods</p></li>
+<li><p><strong>GSLIB2Dataframe</strong> - utility to convert GSLIB Geo-EAS files to a pandas DataFrame for use with Python methods</p></li>
+<li><p><strong>DataFrame2ndarray</strong> - take spatial data from a DataFrame and make a sparse 2D ndarray (NaN where no data in cell)</p></li>
+</ol>
+<p>Visualization functions with the same parameterization as GSLIB using matplotlib:</p>
+<ol class="arabic simple" start="6">
+<li><p><strong>pixelplt</strong> - reimplemention in Python of GSLIB pixelplt with matplotlib methods</p></li>
+<li><p><strong>pixelplt_st</strong> - reimplemention in Python of GSLIB pixelplt with matplotlib methods with support for sub plots</p></li>
+<li><p><strong>pixelplt_log_st</strong> - reimplemention in Python of GSLIB pixelplt with matplotlib methods with support for sub plots and log color bar</p></li>
+<li><p><strong>locpix</strong> - pixel plot and location map, reimplementation in Python of a GSLIB MOD with MatPlotLib methods</p></li>
+<li><p><strong>locpix_st</strong> - pixel plot and location map, reimplementation in Python of a GSLIB MOD with MatPlotLib methods with support for sub plots</p></li>
+<li><p><strong>locpix_log_st</strong> - pixel plot and location map, reimplementation in Python of a GSLIB MOD with MatPlotLib methods with support for sub plots and log color bar</p></li>
+<li><p><strong>hist</strong> - histograms reimplemented in Python of GSLIB hist with MatPlotLib methods</p></li>
+<li><p><strong>hist_st</strong> - histograms reimplemented in Python of GSLIB hist with MatPlotLib methods with support for sub plots</p></li>
+</ol>
+<p>Data transformations</p>
+<ol class="arabic simple" start="14">
+<li><p><strong>affine</strong> - affine distribution transformation to correct feature mean and standard deviation</p></li>
+<li><p><strong>nscore</strong> - normal score transform, wrapper for nscore from GSLIB (GSLIB’s nscore.exe must be in working directory)</p></li>
+<li><p><strong>declus</strong> - cell-based declustering, 2D wrapper for declus from GSLIB (GSLIB’s declus.exe must be in working directory)</p></li>
+</ol>
+<p>Spatial Continuity</p>
+<ol class="arabic simple" start="17">
+<li><p><strong>make_variogram</strong> - make a dictionary of variogram parameters to for application with spatial estimation and simulation</p></li>
+<li><p><strong>gamv</strong> - irregularly sampled variogram, 2D wrapper for gam from GSLIB (.exe must be in working directory)</p></li>
+<li><p><strong>varmap</strong> - regular spaced data, 2D wrapper for varmap from GSLIB (.exe must be in working directory)</p></li>
+<li><p><strong>varmapv</strong> - irregular spaced data, 2D wrapper for varmap from GSLIB (.exe must be in working directory)</p></li>
+<li><p><strong>vmodel</strong> - variogram model, 2D wrapper for vmodel from GSLIB (.exe must be in working directory)</p></li>
+</ol>
+<p>Spatial Modeling</p>
+<ol class="arabic simple" start="22">
+<li><p><strong>kb2d</strong> - kriging estimation, 2D wrapper for kb2d from GSLIB (GSLIB’s kb2d.exe must be in working directory)</p></li>
+<li><p><strong>sgsim_uncond</strong> - sequential Gaussian simulation, 2D unconditional wrapper for sgsim from GSLIB (GSLIB’s sgsim.exe must be in working directory)</p></li>
+<li><p><strong>sgsim</strong> - sequential Gaussian simulation, 2D and 3D wrapper for sgsim from GSLIB (GSLIB’s sgsim.exe must be in working directory)</p></li>
+<li><p><strong>cosgsim_uncond</strong> - sequential Gaussian simulation, 2D unconditional wrapper for sgsim from GSLIB (GSLIB’s sgsim.exe must be in working directory)</p></li>
+</ol>
+<p>Spatial Model Resampling</p>
+<ol class="arabic simple" start="26">
+<li><p><strong>sample</strong> - sample 2D model with provided X and Y and append to DataFrame</p></li>
+<li><p><strong>gkern</strong> - make a Gaussian kernel for convolution, moving window averaging (from Teddy Hartano, Stack Overflow)</p></li>
+<li><p><strong>regular_sample</strong> - extract regular spaced samples from a 2D spatial model</p></li>
+<li><p><strong>random_sample</strong> - extract random samples from a 2D spatial model</p></li>
+<li><p><strong>DataFrame2ndarray</strong> - convent spatial point data in a DataFrame to a sparse ndarray grid</p></li>
+</ol>
+</section>
+<section id="geostatspy-geostats-functions">
+<h4>geostatspy.geostats Functions<a class="headerlink" href="#geostatspy-geostats-functions" title="Permalink to this heading">#</a></h4>
+<p>Numerical methods in GSLIB (Deutsch and Journel, 1998) translated to Python:</p>
+<ol class="arabic simple" start="31">
+<li><p><strong>correct_trend</strong> - correct the order relations of an indicator-based trend model</p></li>
+<li><p><strong>backtr</strong> - GSLIB’s backtr function  to transform a distribution</p></li>
+<li><p><strong>declus</strong> - GSLIB’s DECLUS program reimplimented for cell-based declustering in 2D</p></li>
+<li><p><strong>gam</strong> - GSLIB’s GAM program reimplimented for variogram calculation with regular data in 2D</p></li>
+<li><p><strong>gamv</strong> - GSLIB’s GAMV program reimplimented for variogram calculation with iregular data in 2D</p></li>
+<li><p><strong>varmapv</strong> - GSLIB’s VARMAP program reimplimented for irregularly spaced spatial data in 2D</p></li>
+<li><p><strong>vmodel</strong> - GSLIB’s VMODEL program reimplimented for visualization of nested variogram models in 2D</p></li>
+<li><p><strong>nscore</strong> - GSLIB’s NSCORE program reimplimented for normal score distribution transformation</p></li>
+<li><p><strong>kb2d</strong> - GSLIB’s KB2D program reimplimented for 2D kriging-based spatial estimation</p></li>
+<li><p><strong>ik2d</strong> - GSLIB’s IK3D program reimplimented for 2D indicator-based kriging estimation</p></li>
+<li><p><strong>kb3d</strong> - GSLIB’s kt3d program reimplimented for 3D kriging-based spatial kriging estimation</p></li>
+<li><p><strong>sgsim</strong> - GSLIB’s sgsim program reimplimented for 2D spatial simulation</p></li>
+<li><p><strong>postsim</strong> - GSLIB’s postsim program reimplimented for summarizing over multiple realizations</p></li>
+</ol>
+<p>More functionality will be added soon.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="GeostatsPy_2D1D_trend.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin-data-analytics-geostatistics-and-machine-learning">Michael Pyrcz, Professor, The University of Texas at Austin, Data Analytics, Geostatistics and Machine Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cite-geostatspydemos-github-repository-as">Cite GeostatsPyDemos GitHub Repository As:</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recent-updates">Recent Updates</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#what-s-new-with-version-0-0-1">What’s New with Version 0.0.1</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repository-summary">Repository Summary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-geostatspy">Installing GeostatsPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-package-dependencies">GeostatsPy Package Dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspydemos-repository-author">GeostatsPyDemos Repository Author:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-geostatspy-python-package-for-spatial-data-analytics-and-geostatistics">Information about the GeostatsPy Python Package for Spatial Data Analytics and Geostatistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geostatspy-authors">The GeostatsPy Authors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#package-inventory">Package Inventory</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-gslib-functions">geostatspy.GSLIB Functions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-geostats-functions">geostatspy.geostats Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

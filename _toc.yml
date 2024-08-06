@@ -1,0 +1,10 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: GeostatsPy_2D1D_trend
+  title: Spatial Trend Modeling
+- file: GeostatsPy_bootstrap
+  title: Bootstrap for Uncertainty Modeling

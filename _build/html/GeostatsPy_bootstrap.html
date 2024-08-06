@@ -1,0 +1,1223 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>GeostatsPy Well-documented Demonstration Workflows &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_bootstrap';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_2D1D_trend.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    GeostatsPy Well-documented Demonstration Workflows
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bootstrap for Uncertainty Modeling</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_bootstrap.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/GeostatsPy_bootstrap.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>GeostatsPy Well-documented Demonstration Workflows</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-for-uncertainty-quantification">Bootstrap for Uncertainty Quantification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">Bootstrap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-another-package">Check Another Package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-tabular-data-with-location-maps">Visualizing Tabular Data with Location Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-very-simple-bootstrap-method-in-python">A Very Simple Bootstrap Method in Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declustering">Declustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-couple-of-bootstrap-realizations">A Couple of Bootstrap Realizations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizations-over-bootstrap-realizations">Summarizations Over Bootstrap Realizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-in-geostatspy">Bootstrap in GeostatsPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p align="center">
+    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
+</p>
+<section id="geostatspy-well-documented-demonstration-workflows">
+<h1>GeostatsPy Well-documented Demonstration Workflows<a class="headerlink" href="#geostatspy-well-documented-demonstration-workflows" title="Permalink to this heading">#</a></h1>
+<section id="bootstrap-for-uncertainty-quantification">
+<h2>Bootstrap for Uncertainty Quantification<a class="headerlink" href="#bootstrap-for-uncertainty-quantification" title="Permalink to this heading">#</a></h2>
+<section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
+<h3>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h3>
+<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
+<h4><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h4>
+<p>This is a tutorial for / demonstration of <strong>Bootstrap</strong>.</p>
+<p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/wCgdoImlLY0?si=lpTWz2H7QTdxHBy9">Bootstrap</a>. For your convenience here’s a summary of salient points.</p>
+</section>
+</section>
+<section id="bootstrap">
+<h3>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this heading">#</a></h3>
+<p>Uncertainty in the sample statistics</p>
+<ul class="simple">
+<li><p>one source of uncertainty is the paucity of data.</p></li>
+<li><p>do 200 or even less wells provide a precise (and accurate estimate) of the mean? standard deviation? skew? P13?</p></li>
+</ul>
+<p>Would it be useful to know the uncertainty in these statistics due to limited sampling?</p>
+<ul class="simple">
+<li><p>what is the impact of uncertainty in the mean porosity e.g. 20%+/-2%?</p></li>
+</ul>
+<p><strong>Bootstrap</strong> is a method to assess the uncertainty in a sample statistic by repeated random sampling with replacement.</p>
+<p>Assumptions</p>
+<ul class="simple">
+<li><p>sufficient, representative sampling, identical, idependent samples</p></li>
+</ul>
+<p>Limitations</p>
+<ol class="arabic simple">
+<li><p>assumes the samples are representative</p></li>
+<li><p>assumes stationarity</p></li>
+<li><p>only accounts for uncertainty due to too few samples, e.g. no uncertainty due to changes away from data</p></li>
+<li><p>does not account for boundary of area of interest</p></li>
+<li><p>assumes the samples are independent</p></li>
+<li><p>does not account for other local information sources</p></li>
+</ol>
+<p>The Bootstrap Approach (Efron, 1982)</p>
+<p>Statistical resampling procedure to calculate uncertainty in a calculated statistic from the data itself.</p>
+<ul class="simple">
+<li><p>Does this work?  Prove it to yourself, for uncertainty in the mean solution is standard error:</p></li>
+</ul>
+<p>\begin{equation}
+\sigma^2_\overline{x} = \frac{\sigma^2_s}{n}
+\end{equation}</p>
+<p>Extremely powerful - could calculate uncertainty in any statistic!  e.g. P13, skew etc.</p>
+<ul class="simple">
+<li><p>Would not be possible access general uncertainty in any statistic without bootstrap.</p></li>
+<li><p>Advanced forms account for spatial information and sampling strategy (game theory and Journel’s spatial bootstrap (1993).</p></li>
+</ul>
+<p>Steps:</p>
+<ol class="arabic simple">
+<li><p>assemble a sample set, must be representative, reasonable to assume independence between samples</p></li>
+<li><p>optional: build a cumulative distribution function (CDF)</p>
+<ul class="simple">
+<li><p>may account for declustering weights, tail extrapolation</p></li>
+<li><p>could use analogous data to support</p></li>
+</ul>
+</li>
+<li><p>For <span class="math notranslate nohighlight">\(\ell = 1, \ldots, L\)</span> realizations, do the following:</p>
+<ul class="simple">
+<li><p>For <span class="math notranslate nohighlight">\(i = \alpha, \ldots, n\)</span> data, do the following:</p>
+<ul>
+<li><p>Draw a random sample with replacement from the sample set or Monte Carlo simulate from the CDF (if available).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Calculate a realization of the sammary statistic of interest from the <span class="math notranslate nohighlight">\(n\)</span> samples, e.g. <span class="math notranslate nohighlight">\(m^\ell\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\ell}\)</span>. Return to 3 for another realization.</p></li>
+<li><p>Compile and summarize the <span class="math notranslate nohighlight">\(L\)</span> realizations of the statistic of interest.</p></li>
+</ol>
+<p>This is a very powerful method. Let’s try it out.</p>
+</section>
+<section id="load-the-required-libraries">
+<h3>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h3>
+<p>The following code loads the required libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python      </span>
+<span class="kn">import</span> <span class="nn">geostatspy</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="check-another-package">
+<h3>Check Another Package<a class="headerlink" href="#check-another-package" title="Permalink to this heading">#</a></h3>
+<p>At some point you are going to run into an issue with package versions. This is how you can check packages.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="n">numpy</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;1.23.3&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
+<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>                                       <span class="c1"># summary statistics</span>
+<span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># trig etc.</span>
+<span class="kn">import</span> <span class="nn">scipy.signal</span> <span class="k">as</span> <span class="nn">signal</span>                                 <span class="c1"># kernel for moving window calculation</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
+<span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># color map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
+</section>
+<section id="declare-functions">
+<h3>Declare functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h3>
+<p>These are some of the functions from GeostatsPy required by the new program.  We will declare them here and then in the future integrate the new indicator kriging program into the package properly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks   </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-working-directory">
+<h3>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h3>
+<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;c:/PGE383&quot;)                                        # set the working directory</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-tabular-data">
+<h3>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h3>
+<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data_biased.csv&#39;</span><span class="p">)</span> <span class="c1"># load our data form my GitHub account</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s drop some samples so that we increase the variations in bootstrap samples for our demonstration below.</p>
+<ul class="simple">
+<li><p>Warning, this is not a standard part of the bootstrap workflow, I’m doing this so my students can change the number of data and observe the impact on uncertainty.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>                                    <span class="c1"># extract 50 random samples to reduce the size of the dataset  </span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Using &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; number of samples&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using 58 number of samples
+</pre></div>
+</div>
+</div>
+</div>
+<p>Visualizing the DataFrame would be useful and we already learned about these methods in this demo (<a class="reference external" href="https://git.io/fNgRW">https://git.io/fNgRW</a>).</p>
+<p>We can preview the DataFrame by printing a slice or by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below). With the slice we could look at any subset of the data table and with the head command, add parameter ‘n=13’ to see the first 13 rows of the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>                                                  <span class="c1"># DataFrame preview to check</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
+      <th>Porosity</th>
+      <th>Perm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>156</th>
+      <td>600</td>
+      <td>889</td>
+      <td>1</td>
+      <td>0.150572</td>
+      <td>81.876329</td>
+    </tr>
+    <tr>
+      <th>206</th>
+      <td>400</td>
+      <td>99</td>
+      <td>1</td>
+      <td>0.123665</td>
+      <td>4.412897</td>
+    </tr>
+    <tr>
+      <th>248</th>
+      <td>370</td>
+      <td>949</td>
+      <td>1</td>
+      <td>0.193939</td>
+      <td>330.219806</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="summary-statistics-for-tabular-data">
+<h3>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h3>
+<p>The table includes X and Y coordinates (meters), Facies 1 and 0 (1 is sandstone and 0 interbedded sand and mudstone), Porosity (fraction), and permeability as Perm (mDarcy).</p>
+<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                     <span class="c1"># summary statistics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>X</th>
+      <td>58.0</td>
+      <td>526.379310</td>
+      <td>243.834127</td>
+      <td>0.000000</td>
+      <td>390.000000</td>
+      <td>475.000000</td>
+      <td>722.500000</td>
+      <td>980.000000</td>
+    </tr>
+    <tr>
+      <th>Y</th>
+      <td>58.0</td>
+      <td>508.620690</td>
+      <td>308.634220</td>
+      <td>39.000000</td>
+      <td>231.500000</td>
+      <td>529.000000</td>
+      <td>846.500000</td>
+      <td>979.000000</td>
+    </tr>
+    <tr>
+      <th>Facies</th>
+      <td>58.0</td>
+      <td>0.913793</td>
+      <td>0.283121</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>Porosity</th>
+      <td>58.0</td>
+      <td>0.136737</td>
+      <td>0.033618</td>
+      <td>0.074349</td>
+      <td>0.112480</td>
+      <td>0.129410</td>
+      <td>0.153308</td>
+      <td>0.215776</td>
+    </tr>
+    <tr>
+      <th>Perm</th>
+      <td>58.0</td>
+      <td>152.237276</td>
+      <td>400.127401</td>
+      <td>0.093252</td>
+      <td>4.100965</td>
+      <td>15.670991</td>
+      <td>59.738688</td>
+      <td>2043.778350</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="visualizing-tabular-data-with-location-maps">
+<h3>Visualizing Tabular Data with Location Maps<a class="headerlink" href="#visualizing-tabular-data-with-location-maps" title="Permalink to this heading">#</a></h3>
+<p>It is natural to set the x and y coordinate and feature ranges manually. e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display. I heard that plasma is known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I recall correctly). We will assume a study area of 0 to 1,000m in x and y and omit any data outside this area.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">1000.0</span>                                     <span class="c1"># range of x values</span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mf">1000.0</span>                                     <span class="c1"># range of y values</span>
+<span class="n">pormin</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">;</span>                                 <span class="c1"># range of porosity values</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">csize</span> <span class="o">=</span> <span class="mf">10.0</span>                       
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try out locmap. This is a reimplementation of GSLIB’s locmap program that uses matplotlib. I hope you find it simpler than matplotlib, if you want to get more advanced and build custom plots lock at the source. If you improve it, send me the new code. Any help is appreciated. To see the parameters, just type the command name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap</span>                                                  <span class="c1"># GeostatsPy&#39;s 2D point plot function</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function geostatspy.GSLIB.locmap(df, xcol, ycol, vcol, xmin, xmax, ymin, ymax, vmin, vmax, title, xlabel, ylabel, vlabel, cmap, fig_name)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can populate the plotting parameters and visualize the porosity data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap_st</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="s1">&#39;Well Data - Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6e93b0a24576cb92cf3ba62f79aaca38ccfa7d5f5d371adbe94f9d2b968ddf09.png" src="_images/6e93b0a24576cb92cf3ba62f79aaca38ccfa7d5f5d371adbe94f9d2b968ddf09.png" />
+</div>
+</div>
+</section>
+<section id="a-very-simple-bootstrap-method-in-python">
+<h3>A Very Simple Bootstrap Method in Python<a class="headerlink" href="#a-very-simple-bootstrap-method-in-python" title="Permalink to this heading">#</a></h3>
+<p>If you are new to bootstrap and Python, here’s the most simple code possible for bootstrap.</p>
+<ul class="simple">
+<li><p>specify the number of bootstrap realizations, <span class="math notranslate nohighlight">\(L\)</span></p></li>
+<li><p>declare a list to store the bootstrap realizations of the statistic of interest</p></li>
+<li><p>loop over L bootstrap realizations</p>
+<ul>
+<li><p>n MCS, random samples with replacement for a new realization of the data</p></li>
+<li><p>calculate the realization of the statistic from the realization of the data</p></li>
+</ul>
+</li>
+<li><p>summarize the resulting uncertainty model, histogram, summary statistics etc.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>                          <span class="c1"># import random package</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span>                               <span class="c1"># set the number of bootstrap realizations   </span>
+<span class="n">por_avg_real</span> <span class="o">=</span> <span class="p">[]</span>                      <span class="c1"># declare an empty list to store the bootstrap realizations of the statistic </span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">L</span><span class="p">):</span>                   <span class="c1"># loop over the L bootstrap realizations</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="c1"># n Monte Carlo simulations</span>
+    <span class="n">por_avg_real</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">samples</span><span class="p">))</span> <span class="c1"># calculate the statistic of interest from the new bootstrap dataset</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">por_avg_real</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot the distribution, could also calculate any summary statistics</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Boostrap Realizations of Average Porosity&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Uncertainty Distribution for Average Porosity&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a64e8843940481facc06e0bc5789782a4f0a6b780a913d2b9f6880dcac137942.png" src="_images/a64e8843940481facc06e0bc5789782a4f0a6b780a913d2b9f6880dcac137942.png" />
+</div>
+</div>
+<p>Now we proceed with a more complicated, robust work by first quantifying the spatial bias in the samples and assigned data weights to mitigate this bias.</p>
+</section>
+<section id="declustering">
+<h3>Declustering<a class="headerlink" href="#declustering" title="Permalink to this heading">#</a></h3>
+<p>Let’s calculate some declustering weights. There is a demonstration on declustering here <a class="reference external" href="https://git.io/fhgJl">https://git.io/fhgJl</a> if you need more information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wts</span><span class="p">,</span> <span class="n">cell_sizes</span><span class="p">,</span> <span class="n">dmeans</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">declus</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">iminmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">noff</span><span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">ncell</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">cmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">cmax</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wts</span>                            <span class="c1"># add weights to the sample data DataFrame</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>                                  <span class="c1"># preview to check the sample data DataFrame</span>
+
+<span class="k">def</span> <span class="nf">weighted_avg_and_std</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">):</span> <span class="c1"># function to calculate weighted mean and st. dev., from Eric O Lebigot, stack overflow,</span>
+    <span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="n">variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">((</span><span class="n">values</span><span class="o">-</span><span class="n">average</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">average</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">))</span>
+
+<span class="n">sample_avg</span><span class="p">,</span> <span class="n">sample_stdev</span> <span class="o">=</span> <span class="n">weighted_avg_and_std</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Declustered mean = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sample_avg</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; and declustered standard deviation = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">sample_stdev</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 58 data with:
+   mean of      0.13673722567241378 
+   min and max  0.074348923 and 0.215775813
+   standard dev 0.033326994936260526 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                                                                                    | 0/101 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉                                                         | 70/101 [00:00&lt;00:00, 686.92it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 101/101 [00:00&lt;00:00, 707.72it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Declustered mean = 0.127 and declustered standard deviation = 0.03
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="a-couple-of-bootstrap-realizations">
+<h4>A Couple of Bootstrap Realizations<a class="headerlink" href="#a-couple-of-bootstrap-realizations" title="Permalink to this heading">#</a></h4>
+<p>We will attempt boostrap by-hand and manually loop over <span class="math notranslate nohighlight">\(L\)</span> realizations and draw <span class="math notranslate nohighlight">\(n\)</span> samples to calculate the summary statistics of interest, mean and variance. The choice function from the random package simplifies sampling with replacement from a set of samples with weights.</p>
+<p>This command returns a ndarray with k samples with replacment from the ‘Porosity’ column of our DataFrame (df) accounting for the data weights in column ‘Wts’.</p>
+<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>samples1 = random.choices(df[&#39;Porosity&#39;].values, weights=df[&#39;Wts&#39;].values, cum_weights=None, k=len(df))
+</pre></div>
+</div>
+<p>It is instructive to look at a couple of these realizations from the original declustered data set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">samples1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cum_weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+<span class="n">samples2</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cum_weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bootstrap means, realization 1 = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">samples1</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; and realization 2 = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">samples2</span><span class="p">)))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">],</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">],</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;Histogram Declustered Porosity&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">samples1</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Bootstrap Sample - Realizaton 1&#39;</span><span class="p">,</span><span class="s1">&#39;Histogram Bootstrap Porosity 1&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">samples2</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Bootstrap Sample - Realizaton 2&#39;</span><span class="p">,</span><span class="s1">&#39;Histogram Bootstrap Porosity 2&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.1271578396896552 and realization 2 = 0.1254259399137931
+</pre></div>
+</div>
+<img alt="_images/e9fd808691fb38789cbec80dbc188ea7db34ecf730dba4934ca7597616797f37.png" src="_images/e9fd808691fb38789cbec80dbc188ea7db34ecf730dba4934ca7597616797f37.png" />
+</div>
+</div>
+<p>Note that the bootstrap distributions vary quite a bit from the original.</p>
+</section>
+</section>
+<section id="summarizations-over-bootstrap-realizations">
+<h3>Summarizations Over Bootstrap Realizations<a class="headerlink" href="#summarizations-over-bootstrap-realizations" title="Permalink to this heading">#</a></h3>
+<p>Let’s make a loop to conduct <span class="math notranslate nohighlight">\(L\)</span> resamples and calculate the average and standard deviation for each  (<span class="math notranslate nohighlight">\(m^\ell\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\ell}\)</span>,  for <span class="math notranslate nohighlight">\(\ell = 0,\dots,L-1\)</span>). We then summarization over these <span class="math notranslate nohighlight">\(L\)</span> realizations.</p>
+<p>I did not find any built-in, concise functions to accomplish this, i.e. with a single line of code, so we are going to do it by hand.</p>
+<p>To understand this code there are just a couple of Python concepts that you need to add to your Python arsenal.</p>
+<ol class="arabic simple">
+<li><p>declaring arrays - NumPy has a lot of great array (ndarray) functionality. There are build in functions to make a ndarray of any length (and dimension). This includes ‘zeros’, ‘ones’ and ‘rand’, so when we use this code:</p></li>
+</ol>
+<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>mean = np.zeros(L); stdev = np.zeros(L)
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>we&#39;re making arrays of length $L$ pre-populated with zeros.
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>For Loops - when we are using the command below, we are instructing the computer to loop over all the indented code below the command for <span class="math notranslate nohighlight">\(l = 0,1,2,\ldots,L-1\)</span> times. For each loop the <span class="math notranslate nohighlight">\(l\)</span> variable increments, so we can use this to save each result to a different index in the arrays mean and stdev. Note, Python arrays index starting at 0 and stop at the length - 1.</p></li>
+</ol>
+<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>for l in range(0, L): 
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>we are running each bootstrap resampled realization, calculating the average and standard deviation and storing them in the arrays that we already declared.
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span>                                   <span class="c1"># set the number of realizations</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">);</span> <span class="n">stdev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>    <span class="c1"># declare arrays to hold the realizations of the statistics</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span>                      <span class="c1"># loop over realizations</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cum_weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
+    <span class="n">mean</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    <span class="n">stdev</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Average Porosity (fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;Bootstrap Uncertainty in Porosity Average&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">stdev</span><span class="p">,</span><span class="mf">0.015</span><span class="p">,</span><span class="mf">0.045</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Standard Deviation Porosity (fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;Bootstrap Uncertainty in Porosity Standard Deviation&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Summary Statistics for Bootstrap Porosity Mean Realizations:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">mean</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;P10: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, P50: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, P90: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span><span class="mi">3</span><span class="p">)))</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">stdev</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;P10: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">stdev</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, P50: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">stdev</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, P90: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">stdev</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span><span class="mi">3</span><span class="p">)))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4d1d7921fc2366c654c367eb3175e7ed78761de9f0cb7b35e5c64b5613f78e0.png" src="_images/d4d1d7921fc2366c654c367eb3175e7ed78761de9f0cb7b35e5c64b5613f78e0.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
+DescribeResult(nobs=1000, minmax=(0.11551291294827587, 0.1410022254137931), mean=0.12656969573977586, variance=1.5449044127276774e-05, skewness=0.0341224035636633, kurtosis=0.14174841655111914)
+P10: 0.121, P50: 0.127, P90: 0.131
+
+Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
+DescribeResult(nobs=1000, minmax=(0.018807082538560185, 0.0389850672101096), mean=0.029290753024971635, variance=1.1165058297250986e-05, skewness=-0.0025398612981201644, kurtosis=-0.23703086208369495)
+P10: 0.025, P50: 0.029, P90: 0.034
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bootstrap-in-geostatspy">
+<h3>Bootstrap in GeostatsPy<a class="headerlink" href="#bootstrap-in-geostatspy" title="Permalink to this heading">#</a></h3>
+<p>We have a simple bootstrap function in GeostatsPy</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">realizations_array</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">stat</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">nreal</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p>array - an numpy ndarray of samples</p></li>
+<li><p>stat - statistic function that can be applied to an ndarray, e.g., numpy.average</p></li>
+<li><p>weights - an array of weights, if omitted or set to None, then equal weighting is applied</p></li>
+<li><p>nreal - the number of realizations</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">nreal</span> <span class="o">=</span> <span class="n">L</span><span class="p">)</span>
+<span class="n">stdev</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">nreal</span> <span class="o">=</span> <span class="n">L</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mf">0.11</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Average Porosity (fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;Bootstrap Uncertainty in Porosity Average&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">stdev</span><span class="p">,</span><span class="mf">0.015</span><span class="p">,</span><span class="mf">0.045</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="kc">None</span><span class="p">,</span><span class="s1">&#39;Standard Deviation Porosity (fraction)&#39;</span><span class="p">,</span><span class="s1">&#39;Bootstrap Uncertainty in Porosity Standard Deviation&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   
+    
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Summary Statistics for Bootstrap Porosity Mean Realizations:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">mean</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;P10: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, P50: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, P90: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span><span class="mi">3</span><span class="p">)))</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">stdev</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;P10: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">stdev</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, P50: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">stdev</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, P90: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">stdev</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span><span class="mi">3</span><span class="p">)))</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9f33082e10f00623628a1e387449f601a4bd2052c2021f459a6c8c1069d271af.png" src="_images/9f33082e10f00623628a1e387449f601a4bd2052c2021f459a6c8c1069d271af.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
+DescribeResult(nobs=10000, minmax=(0.11312021622413793, 0.14294156187931034), mean=0.12671963773763104, variance=1.4950427489101453e-05, skewness=0.10529711631072301, kurtosis=0.015334225677198887)
+P10: 0.122, P50: 0.127, P90: 0.132
+
+Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
+DescribeResult(nobs=10000, minmax=(0.01727748067090595, 0.04166130656432994), mean=0.0293005860900536, variance=1.1187636191878134e-05, skewness=-0.04095600363070942, kurtosis=-0.12895190128560552)
+P10: 0.025, P50: 0.029, P90: 0.034
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bootstrap</span><span class="p">(</span><span class="n">zdata</span><span class="p">,</span><span class="n">weights</span><span class="p">,</span><span class="n">nreal</span><span class="p">,</span><span class="n">stat</span><span class="p">):</span>
+    <span class="n">zreal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nreal</span><span class="p">)</span>               <span class="c1"># declare an empty list to store the bootstrap realizations</span>
+    <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">zdata</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nreal</span><span class="p">):</span>              <span class="c1"># loop over the L bootstrap realizations</span>
+        <span class="n">samples</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">zdata</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">zdata</span><span class="p">),</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span> <span class="c1"># n Monte Carlo simulations, sample with replacement</span>
+        <span class="n">zreal</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">stat</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>       <span class="c1"># calculate the realization of the statistic and append to list</span>
+    <span class="k">return</span> <span class="n">zreal</span>                          <span class="c1"># return the list of realizations of the statistic</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h3>
+<p>This was a basic demonstration of trend modeling to support 3D model construction. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>I hope this is helpful,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="the-author">
+<h3>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="id1">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<section id="id2">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="want-to-work-together">
+<h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
+<h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GeostatsPy_2D1D_trend.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-for-uncertainty-quantification">Bootstrap for Uncertainty Quantification</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">Bootstrap</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#check-another-package">Check Another Package</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-tabular-data-with-location-maps">Visualizing Tabular Data with Location Maps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-very-simple-bootstrap-method-in-python">A Very Simple Bootstrap Method in Python</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declustering">Declustering</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#a-couple-of-bootstrap-realizations">A Couple of Bootstrap Realizations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizations-over-bootstrap-realizations">Summarizations Over Bootstrap Realizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-in-geostatspy">Bootstrap in GeostatsPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
