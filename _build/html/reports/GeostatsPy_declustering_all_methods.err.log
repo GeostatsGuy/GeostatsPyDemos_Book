@@ -1,0 +1,37 @@
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 778, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_core\utils\__init__.py", line 198, in ensure_async
+    result = await obj
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_client\channels.py", line 313, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 1001, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 802, in _async_poll_for_reply
+    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 852, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['run = True', 'factor = 10                                                   # scaler for refining the grid to improved accuracy with longer run time, 1 minute on a modern desktop', 'pnx = nx * factor; pny = ny * factor; pxsiz = xsiz / factor; pysiz = ysiz / factor', 'pxmn = pxsiz / 2; pymn = pysiz / 2', '']
+...
+['cs = plt.imshow(polygons,interpolation = None,extent = [xmin,xmax,ymin,ymax], vmin = 0, vmax = len(df),cmap = plt.cm.inferno)', "plt.scatter(df['X'].values,df['Y'].values,s=8,color='black',edgecolor='white')", "plt.xlabel('X (m)'); plt.ylabel('Y (m)'); plt.title('Data and Declustering Voronoi Polygons')", '', 'plt.subplots_adjust(left=0.0, bottom=0.0, right=1.0, top=1.1, wspace=0.2, hspace=0.2); plt.show()']
+-------------------
+

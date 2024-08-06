@@ -1,0 +1,48 @@
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+ignore_warnings = True                                        # ignore warnings?
+import numpy as np                                            # ndarrys for gridded data
+from numba import jit  # for numerical speed up
+import pandas as pd                                           # DataFrames for tabular data
+import os                                                     # set working directory, run executables
+import matplotlib.pyplot as plt                               # for plotting
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator) # control of axes ticks
+import imageio
+from scipy import stats                                       # summary statistics
+import math                                                   # trig etc.
+import scipy.signal as signal                                 # kernel for moving window calculation
+import random
+plt.rc('axes', axisbelow=True)                                # plot all grids below the plot elements
+if ignore_warnings == True:                                   
+    import warnings
+    warnings.filterwarnings('ignore')
+cmap = plt.cm.inferno                                         # color map
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[2], line 8[0m
+[0;32m      6[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m                               [38;5;66;03m# for plotting[39;00m
+[0;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mticker[39;00m [38;5;28;01mimport[39;00m (MultipleLocator, AutoMinorLocator) [38;5;66;03m# control of axes ticks[39;00m
+[1;32m----> 8[0m [38;5;28;01mimport[39;00m [38;5;21;01mimageio[39;00m
+[0;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01mscipy[39;00m [38;5;28;01mimport[39;00m stats                                       [38;5;66;03m# summary statistics[39;00m
+[0;32m     10[0m [38;5;28;01mimport[39;00m [38;5;21;01mmath[39;00m                                                   [38;5;66;03m# trig etc.[39;00m
+
+[1;31mModuleNotFoundError[0m: No module named 'imageio'
+

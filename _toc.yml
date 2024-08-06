@@ -8,3 +8,25 @@ chapters:
   title: Spatial Trend Modeling
 - file: GeostatsPy_bootstrap
   title: Bootstrap for Uncertainty Modeling
+- file: GeostatsPy_declustering
+  title: Declustering to Correct Sampling Bias, Cell-based
+- file: GeostatsPy_declustering_all_methods
+  title: Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based
+- file: GeostatsPy_variogram_calculation
+  title: Variogram Calculation
+- file: GeostatsPy_variogram_models
+  title: Variogram Positive Definite Models
+- file: GeostatsPy_variogram_models_simulation
+  title: Variogram Models, Simulation Examples
+- file: GeostatsPy_variogram_calculation_and_modeling
+  title: Variogram Calculation and Modeling
+- file: GeostatsPy_variogram_from_image
+  title: Variogram Calculation from an Image
+- file: GeostatsPy_kriging
+  title: Simple Kriging
+- file: GeostatsPy_GeostatsPy_kriging_vs_simulation_1D
+  title: Kriging vs. Simulation, 1D 
+- file: GeostatsPy_kriging_vs_simulation_maps
+  title: Kriging vs. Simulation, 2D Maps
+- file: GeostatsPy_model_checking
+  title: Model Checking

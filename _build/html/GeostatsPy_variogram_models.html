@@ -1,0 +1,959 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>GeostatsPy Well-documented Demonstration Workflows &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_variogram_models';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_variogram_models_simulation.html" />
+    <link rel="prev" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_variogram_calculation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    GeostatsPy Well-documented Demonstration Workflows
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Variogram Positive Definite Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_variogram_models.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/GeostatsPy_variogram_models.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>GeostatsPy Well-documented Demonstration Workflows</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permissible-variogram-models">Permissible Variogram Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-models">Variogram Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variogram">The Variogram</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">Observation #3 - Need to plot the sill to know the degree of correlation.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-directions-of-continuity">Detecting Directions of Continuity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-lag-distances">List of Lag Distances</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nugget-effect-variogram-model">Nugget Effect Variogram Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-variogram-model">Spherical Variogram Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-variogram-model">Exponential Variogram Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variogram-model">Gaussian Variogram Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p align="center">
+    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
+</p>
+<section id="geostatspy-well-documented-demonstration-workflows">
+<h1>GeostatsPy Well-documented Demonstration Workflows<a class="headerlink" href="#geostatspy-well-documented-demonstration-workflows" title="Permalink to this heading">#</a></h1>
+<section id="permissible-variogram-models">
+<h2>Permissible Variogram Models<a class="headerlink" href="#permissible-variogram-models" title="Permalink to this heading">#</a></h2>
+<section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
+<h3>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h3>
+<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
+<h4><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h4>
+<p>This is a tutorial for / demonstration of <strong>Permissible Variogram Models</strong>.</p>
+<p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/-Bi63Y3u6TU?si=-kwvFLicNTbg85xL">Variogram Modeling</a>.</p>
+</section>
+</section>
+<section id="variogram-models">
+<h3>Variogram Models<a class="headerlink" href="#variogram-models" title="Permalink to this heading">#</a></h3>
+<p>Here I provide visualizations with the functions for the common positive definite variogram models. I variogram model inferred to represent spatial continuity from the variogram.</p>
+<section id="spatial-continuity">
+<h4>Spatial Continuity<a class="headerlink" href="#spatial-continuity" title="Permalink to this heading">#</a></h4>
+<p><strong>Spatial Continuity</strong> is the correlation between values over distance.</p>
+<ul class="simple">
+<li><p>No spatial continuity – no correlation between values over distance, random values at each location in space regardless of separation distance.</p></li>
+<li><p>Homogenous phenomenon have perfect spatial continuity, since all values as the same (or very similar) they are correlated.</p></li>
+</ul>
+<p>We need a statistic to quantify spatial continuity! A convenient method is the Semivariogram.</p>
+</section>
+<section id="the-variogram">
+<h4>The Variogram<a class="headerlink" href="#the-variogram" title="Permalink to this heading">#</a></h4>
+<p>Function of difference over distance.</p>
+<ul class="simple">
+<li><p>The expected (average) squared difference between values separated by a lag distance vector (distance and direction), <span class="math notranslate nohighlight">\(h\)</span>:</p></li>
+</ul>
+<p>\begin{equation}
+\gamma(\bf{h}) = \frac{1}{2 N(\bf{h})} \sum^{N(\bf{h})}<em>{\alpha=1} (z(\bf{u}</em>\alpha) - z(\bf{u}_\alpha + \bf{h}))^2<br />
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha)\)</span> and <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha + \bf{h})\)</span> are the spatial sample values at tail and head locations of the lag vector respectively.</p>
+<ul class="simple">
+<li><p>Calculated over a suite of lag distances to obtain a continuous function.</p></li>
+<li><p>the <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> term converts a variogram into a semivariogram, but in practice the term variogram is used instead of semivariogram.</p></li>
+<li><p>We prefer the semivariogram because it relates directly to the covariance function, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span> and univariate variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>:</p></li>
+</ul>
+<p>\begin{equation}
+C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
+\end{equation}</p>
+<p>Note the correlogram is related to the covariance function as:</p>
+<p>\begin{equation}
+\rho_x(\bf{h}) = \frac{C_x(\bf{h})}{\sigma^2_x}
+\end{equation}</p>
+<p>The correlogram provides of function of the <span class="math notranslate nohighlight">\(\bf{h}-\bf{h}\)</span> scatter plot correlation vs. lag offset <span class="math notranslate nohighlight">\(\bf{h}\)</span>.</p>
+<p>\begin{equation}
+-1.0 \le \rho_x(\bf{h}) \le 1.0
+\end{equation}</p>
+</section>
+<section id="variogram-observations">
+<h4>Variogram Observations<a class="headerlink" href="#variogram-observations" title="Permalink to this heading">#</a></h4>
+<p>The following are common observations for variograms that should assist with their practical use.</p>
+<section id="observation-1-as-distance-increases-variability-increase-in-general">
+<h5>Observation #1 - As distance increases, variability increase (in general).<a class="headerlink" href="#observation-1-as-distance-increases-variability-increase-in-general" title="Permalink to this heading">#</a></h5>
+<p>This is common since in general, over greater distance offsets, there is often more difference between the head and tail samples.</p>
+<p>In some cases, such as with spatial cyclicity of the hole effect variogram model the variogram may have negative slope over somelag distance intervals</p>
+<p>Negative slopes at lag distances greater than half the data extent are often caused by too few pairs for a reliable variogram calculation</p>
+</section>
+<section id="observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">
+<h5>Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.<a class="headerlink" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h" title="Permalink to this heading">#</a></h5>
+<p>We scan through the entire data set, searching for all possible pair combinations with all other data.  We then calculate the variogram as one half the expectation of squared difference between all pairs.</p>
+<p>More pairs results in a more reliable measure.</p>
+</section>
+<section id="observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">
+<h5>Observation #3 - Need to plot the sill to know the degree of correlation.<a class="headerlink" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation" title="Permalink to this heading">#</a></h5>
+<p><strong>Sill</strong> is the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span></p>
+<p>Given stationarity of the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>, and variogram <span class="math notranslate nohighlight">\(\gamma(\bf{h})\)</span>:</p>
+<p>we can define the covariance function:</p>
+<p>\begin{equation}
+C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
+\end{equation}</p>
+<p>The covariance measure is a measure of similarity over distance (the mirror image of the variogram as shown by the equation above).</p>
+<p>Given a standardized distribution <span class="math notranslate nohighlight">\(\sigma^2_x = 1.0\)</span>, the covariance, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span>, is equal to the correlogram, <span class="math notranslate nohighlight">\(\rho_x(\bf{h})\)</span>:</p>
+<p>\begin{equation}
+\rho_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
+\end{equation}</p>
+</section>
+<section id="observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">
+<h5>Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.<a class="headerlink" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range" title="Permalink to this heading">#</a></h5>
+<p>At the range, knowing the data value at the tail location provides no information about a value at the head location of the lag distance vector.</p>
+</section>
+<section id="observation-5-the-nugget-effect-a-discontinuity-at-the-origin">
+<h5>Observation #5 - The nugget effect, a discontinuity at the origin<a class="headerlink" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin" title="Permalink to this heading">#</a></h5>
+<p>Sometimes there is a discontinuity in the variogram at distances less than the minimum data spacing.  This is known as <strong>nugget effect</strong>.</p>
+<p>The ratio of nugget / sill, is known as relative nugget effect (%). Modeled as a discontinuity with no correlation structure that at lags, <span class="math notranslate nohighlight">\(h \gt \epsilon\)</span>, an infinitesimal lag distance, and perfect correlation at <span class="math notranslate nohighlight">\(\bf{h} = 0\)</span>.
+Caution when including nuggect effect in the variogram model as measurement error, mixing populations cause apparent nugget effect</p>
+<p>This exercise demonstrates the semivariogram calculation with GeostatsPy. The steps include:</p>
+<ol class="arabic simple">
+<li><p>generate a 2D model with sequential Gaussian simulation</p></li>
+<li><p>sample from the simulation</p></li>
+<li><p>calculate and visualize experimental semivariograms</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="detecting-directions-of-continuity">
+<h3>Detecting Directions of Continuity<a class="headerlink" href="#detecting-directions-of-continuity" title="Permalink to this heading">#</a></h3>
+<p>Spatial continuity can be described with nested spatial continuity models:</p>
+<p>\begin{equation}
+\Gamma_x(\bf{h}) = \sum_{i=1}^{nst} \gamma_i(\bf{h})
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span> is the nested variogram model resulting from the summation of <span class="math notranslate nohighlight">\(nst\)</span> nested variograms  <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>.</p>
+<p>Each one of these variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>, is based on a geometric anisotropy model parameterized by the orientation and range in the major and minor directions.  In 2D this is simply an azimuth and ranges, <span class="math notranslate nohighlight">\(azi\)</span>, <span class="math notranslate nohighlight">\(a_{maj}\)</span> and <span class="math notranslate nohighlight">\(a_{min}\)</span>. Note, the range in the minor direction (orthogonal to the major direction.</p>
+<p>The geometric anisotropy model assumes that the range in all off-diagonal directions is based on an ellipse with the major and minor axes alligned with and set to the major and minor for the variogram.</p>
+<p>\begin{equation}
+\bf{h}<em>i = \sqrt{\left(\frac{r</em>{maj}}{a_{maj_i}}\right)^2 + \left(\frac{r_{maj}}{a_{maj_i}}\right)^2}<br />
+\end{equation}</p>
+<p>Therefore, if we know the major direction, range in major and minor directions, we may completely describe each nested componnent of the complete spatial continuity of the variable of interest, <span class="math notranslate nohighlight">\(i = 1,\dots,nst\)</span>.</p>
+<p>In this workflow we will observe the common permissible variogram models in GeostatsPy.</p>
+<ul class="simple">
+<li><p>for all we assume a contribution of the sill (single structure) and the sill is 1.0 (standardized feature).</p></li>
+</ul>
+</section>
+<section id="load-the-required-libraries">
+<h3>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h3>
+<p>The following code loads the required libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python      </span>
+<span class="kn">import</span> <span class="nn">geostatspy</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
+<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
+<span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># color map</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-functions">
+<h3>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h3>
+<p>This is a convenience function to add major and minor gridlines to improve plot interpretability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks   </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="list-of-lag-distances">
+<h3>List of Lag Distances<a class="headerlink" href="#list-of-lag-distances" title="Permalink to this heading">#</a></h3>
+<p>We define a list of lag distances for our variogram models.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>                                    <span class="c1"># lag distance vector</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nugget-effect-variogram-model">
+<h3>Nugget Effect Variogram Model<a class="headerlink" href="#nugget-effect-variogram-model" title="Permalink to this heading">#</a></h3>
+<p>No spatial correlation</p>
+<ul class="simple">
+<li><p>Does not have a range, nor directionality, i.e., acts over all distances and directions.</p></li>
+</ul>
+<p>Should be a small component of the overall variance</p>
+<ul class="simple">
+<li><p>Very uncommon in siliclastic sedimentary systems</p></li>
+<li><p>More common for mineral grades in mining</p></li>
+<li><p>May be measurement error</p></li>
+</ul>
+<p>The equation:</p>
+<p>\begin{equation}
+\gamma(\bf{h} ) = c_1 \cdot \text{Nugget} =
+\left{
+\begin{array}{ c l }
+0 &amp; h = 0 \
+c_1 &amp; h &gt; 0
+\end{array}
+\right.
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, and <span class="math notranslate nohighlight">\(h\)</span> is the lag distance</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gamma_nugget</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>                                   <span class="c1"># nugget effect</span>
+<span class="n">gamma_nugget</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">gamma_nugget</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Sill&#39;</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mf">1.02</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">gca</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Lag Distance, $\bf</span><span class="si">{h}</span><span class="s1">$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Variogram, $\gamma$ ($\bf</span><span class="si">{h}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Nugget Effect Variogram Model&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ada78782ba668f2f20c51fb4e477105b09f59934bcc26f2874d7526721d85771.png" src="_images/ada78782ba668f2f20c51fb4e477105b09f59934bcc26f2874d7526721d85771.png" />
+</div>
+</div>
+</section>
+<section id="spherical-variogram-model">
+<h3>Spherical Variogram Model<a class="headerlink" href="#spherical-variogram-model" title="Permalink to this heading">#</a></h3>
+<p>A very commonly observed variogram / spatial continuity form in many settings</p>
+<ul class="simple">
+<li><p>Peicewise, beyond the range is equal to the sill</p></li>
+</ul>
+<p>The equation:</p>
+<p>\begin{equation}
+\gamma(\bf{h} ) = c_1 \cdot \text{Sph} \left( \frac{\bf{h} }{a} \right) =
+\left{
+\begin{array}{ c l }
+c_1 \cdot \left[ 1.5 \left( \frac{\bf{h} }{a} \right) -  0.5 \left( \frac{\bf{h} }{a} \right)^3 \right] &amp; h &lt; a \
+c_1 &amp; h \ge a
+\end{array}
+\right.
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span> is the lag distance</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrange</span> <span class="o">=</span> <span class="mi">80</span>                                                   <span class="c1"># range parameter</span>
+
+<span class="n">gamma_sph</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="mf">1.5</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="n">vrange</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">vrange</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>     <span class="c1"># spherical model</span>
+<span class="n">gamma_sph</span><span class="p">[</span><span class="n">h</span> <span class="o">&gt;</span> <span class="n">vrange</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">gamma_sph</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Sill&#39;</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mf">1.02</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">vrange</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{2}{3}</span><span class="s1">$ Range&#39;</span><span class="p">,[</span><span class="n">vrange</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.02</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">vrange</span><span class="p">,</span><span class="n">vrange</span><span class="p">],[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Range&#39;</span><span class="p">,[</span><span class="n">vrange</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
+<span class="n">gca</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Lag Distance, $\bf</span><span class="si">{h}</span><span class="s1">$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Variogram, $\gamma$ ($\bf</span><span class="si">{h}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Spherical Variogram Model&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4903c882728e1133c6d703cfc46c70d2c686938dba5c8b03e81e0860a2e7916f.png" src="_images/4903c882728e1133c6d703cfc46c70d2c686938dba5c8b03e81e0860a2e7916f.png" />
+</div>
+</div>
+</section>
+<section id="exponential-variogram-model">
+<h3>Exponential Variogram Model<a class="headerlink" href="#exponential-variogram-model" title="Permalink to this heading">#</a></h3>
+<p>Also very commonly observed variogram / spatial continuity form</p>
+<ul class="simple">
+<li><p>Less short-scale continuity than spherical, and reaches sill asymptotically, range is at 95% of the sill</p></li>
+</ul>
+<p>The equation:</p>
+<p>\begin{equation}
+\gamma( \bf{h} ) = c_1 \cdot \text{ Exp } \left( \frac{ \bf{h} }{𝑎} \right) = c_1 \cdot \left[ 1.0 − \text{exp} \left(−3 \cdot \left( \frac{ \bf{h} }{𝑎} \right) \right) \right]
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{h}\)</span> is the lag distance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrange</span> <span class="o">=</span> <span class="mi">80</span>                                                   <span class="c1"># range parameter</span>
+
+<span class="n">gamma_exp</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">vrange</span><span class="p">)))</span>                   <span class="c1"># exponential model</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">gamma_exp</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Sill&#39;</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mf">1.02</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">vrange</span><span class="p">],[</span><span class="mf">0.95</span><span class="p">,</span><span class="mf">0.95</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;95% Sill&#39;</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.91</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">vrange</span><span class="p">,</span><span class="n">vrange</span><span class="p">],[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Range&#39;</span><span class="p">,[</span><span class="n">vrange</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">vrange</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\frac</span><span class="si">{1}{3}</span><span class="s1">$ Range&#39;</span><span class="p">,[</span><span class="n">vrange</span><span class="o">*</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span><span class="mf">1.02</span><span class="p">])</span>
+<span class="n">gca</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Lag Distance, $\bf</span><span class="si">{h}</span><span class="s1">$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Variogram, $\gamma$ ($\bf</span><span class="si">{h}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Exponential Variogram Model&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cf9bcd6859c2fa7b08903a5d9df4b46378fd3f858c388dedb93f599e65d8feb3.png" src="_images/cf9bcd6859c2fa7b08903a5d9df4b46378fd3f858c388dedb93f599e65d8feb3.png" />
+</div>
+</div>
+</section>
+<section id="gaussian-variogram-model">
+<h3>Gaussian Variogram Model<a class="headerlink" href="#gaussian-variogram-model" title="Permalink to this heading">#</a></h3>
+<p>Less commonly observed variogram / spatial continuity form, e.g., for thickness and elevation</p>
+<ul class="simple">
+<li><p>Much more short-scale continuity than spherical, and reaches sill asymptotically, range is at 95% of the sill</p></li>
+</ul>
+<p>The equation:</p>
+<p>\begin{equation}
+\gamma( \bf{h} ) = c_1 \cdot \text{ Gaus } \left( \frac{ \bf{h} }{𝑎} \right) = c_1 \cdot \left[ 1.0 − \text{exp} \left(−3 \cdot \left( \frac{ \bf{h} }{𝑎} \right)^2 \right) \right]
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{h}\)</span> is the lag distance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrange</span> <span class="o">=</span> <span class="mi">80</span>                                                   <span class="c1"># range parameter</span>
+
+<span class="n">gamma_gaus</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">*</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">vrange</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>        <span class="c1"># Gaussian model</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">plot</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">gamma_gaus</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Sill&#39;</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mf">1.02</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">vrange</span><span class="p">],[</span><span class="mf">0.95</span><span class="p">,</span><span class="mf">0.95</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;95% Sill&#39;</span><span class="p">,[</span><span class="mi">5</span><span class="p">,</span><span class="mf">0.91</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">vrange</span><span class="p">,</span><span class="n">vrange</span><span class="p">],[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Range&#39;</span><span class="p">,[</span><span class="n">vrange</span><span class="o">-</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
+<span class="n">gca</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Lag Distance, $\bf</span><span class="si">{h}</span><span class="s1">$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Variogram, $\gamma$ ($\bf</span><span class="si">{h}</span><span class="s1">$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Gaussian Variogram Model&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7747610c0a2c0c2fd6ce98bb80592e1b2aa371ff5efdeda408110427f0f67a28.png" src="_images/7747610c0a2c0c2fd6ce98bb80592e1b2aa371ff5efdeda408110427f0f67a28.png" />
+</div>
+</div>
+</section>
+<section id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h3>
+<p>This was a basic demonstration of permissible variogram models to support 3D model construction. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>I hope this is helpful,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="the-author">
+<h3>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="id1">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<section id="id2">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="want-to-work-together">
+<h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
+<h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GeostatsPy_variogram_calculation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="GeostatsPy_variogram_models_simulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permissible-variogram-models">Permissible Variogram Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-models">Variogram Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variogram">The Variogram</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">Observation #3 - Need to plot the sill to know the degree of correlation.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-directions-of-continuity">Detecting Directions of Continuity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-lag-distances">List of Lag Distances</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nugget-effect-variogram-model">Nugget Effect Variogram Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spherical-variogram-model">Spherical Variogram Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-variogram-model">Exponential Variogram Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variogram-model">Gaussian Variogram Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
