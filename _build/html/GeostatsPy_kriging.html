@@ -429,10 +429,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="simple-kriging">
+  <section class="tex2jax_ignore mathjax_ignore" id="simple-kriging">
 <h1>Simple Kriging<a class="headerlink" href="#simple-kriging" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -457,21 +454,25 @@ document.write(`
 <p>Consider the case of making an estimate at some unsampled location, <span class="math notranslate nohighlight">\(𝑧(\bf{u}_0)\)</span>, where <span class="math notranslate nohighlight">\(z\)</span> is the property of interest (e.g. porosity etc.) and <span class="math notranslate nohighlight">\(𝐮_0\)</span> is a location vector describing the unsampled location.</p>
 <p>How would you do this given data, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_1)\)</span>, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_2)\)</span>, and <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_3)\)</span>?</p>
 <p>It would be natural to use a set of linear weights to formulate the estimator given the available data.</p>
-<p>\begin{equation}
-z^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} z(\bf{u}_{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha})
+\]</div>
 <p>We could add an unbiasedness constraint to impose the sum of the weights equal to one.  What we will do is assign the remainder of the weight (one minus the sum of weights) to the global average; therefore, if we have no informative data we will estimate with the global average of the property of interest.</p>
-<p>\begin{equation}
-z^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} z(\bf{u}<em>{\alpha}) + \left(1-\sum^{n}</em>{\alpha = 1} \lambda_{\alpha} \right) \overline{z}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha}) + \left(1-\sum^{n}_{\alpha = 1} \lambda_{\alpha} \right) \overline{z}
+\]</div>
 <p>We will make a stationarity assumption, so let’s assume that we are working with residuals, <span class="math notranslate nohighlight">\(y\)</span>.</p>
-<p>\begin{equation}
-y^{<em>}(\bf{u}) = z^{</em>}(\bf{u}) - \overline{z}(\bf{u})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = z^{*}(\bf{u}) - \overline{z}(\bf{u})
+\]</div>
 <p>If we substitute this form into our estimator the estimator simplifies, since the mean of the residual is zero.</p>
-<p>\begin{equation}
-y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
+\]</div>
 <p>while satisfying the unbaisedness constraint.</p>
 </section>
 <section id="kriging">
@@ -485,9 +486,10 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <li><p><strong>closeness</strong> the degree of spatial continuity between the avaiable data and the estimation location</p></li>
 </ul>
 <p>The kriging approach accomplishes this, calculating the best linear unbiased weights for the local data to estimate at the unknown location.  The derivation of the kriging system and the resulting linear set of equations is available in the lecture notes.  Furthermore kriging provides a measure of the accuracy of the estimate!  This is the kriging estimation variance (sometimes just called the kriging variance).</p>
-<p>\begin{equation}
-\sigma^{2}<em>{E}(\bf{u}) = C(0) - \sum^{n}</em>{\alpha = 1} \lambda_{\alpha} C(\bf{u}<em>0 - \bf{u}</em>{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^{2}_{E}(\bf{u}) = C(0) - \sum^{n}_{\alpha = 1} \lambda_{\alpha} C(\bf{u}_0 - \bf{u}_{\alpha})
+\]</div>
 <p>What is ‘best’ about this estimate? Kriging estimates are best in that they minimize the above estimation variance.</p>
 </section>
 <section id="properties-of-kriging">
@@ -876,7 +878,9 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <p>Let’s specify the variogram model, global stationary mean and variance, and kriging parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por_vrange_maj</span> <span class="o">=</span> <span class="mi">250</span><span class="p">;</span> <span class="n">por_vrange_min</span> <span class="o">=</span> <span class="mi">100</span>                    <span class="c1"># variogram ranges</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display                                                                
+
+<span class="n">por_vrange_maj</span> <span class="o">=</span> <span class="mi">250</span><span class="p">;</span> <span class="n">por_vrange_min</span> <span class="o">=</span> <span class="mi">100</span>                    <span class="c1"># variogram ranges</span>
 <span class="n">por_vazi</span> <span class="o">=</span> <span class="mf">150.0</span>                                              <span class="c1"># variogram major direction</span>
 <span class="n">por_vrel_nugget</span> <span class="o">=</span> <span class="mf">0.0</span>                                         <span class="c1"># variogram nugget effect</span>
 
@@ -890,11 +894,6 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">600</span>                                                  <span class="c1"># search radius for neighbouring data</span>
 <span class="n">nxdis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">nydis</span> <span class="o">=</span> <span class="mi">1</span>                                          <span class="c1"># number of grid discretizations for block kriging</span>
 <span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">10</span>                                         <span class="c1"># minimum and maximum data for an estimate</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Black -Color-Black-BGRed"> make_variogram Warning: sill does not sum to 1.0, do not use in simulation </span>
 </pre></div>
 </div>
 </div>
@@ -948,7 +947,9 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <p>Let’s specify the variogram model, global stationary mean and variance, and kriging parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">perm_vrange_maj</span> <span class="o">=</span> <span class="mi">250</span><span class="p">;</span> <span class="n">perm_vrange_min</span> <span class="o">=</span> <span class="mi">100</span>                  <span class="c1"># variogram ranges</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display     
+
+<span class="n">perm_vrange_maj</span> <span class="o">=</span> <span class="mi">250</span><span class="p">;</span> <span class="n">perm_vrange_min</span> <span class="o">=</span> <span class="mi">100</span>                  <span class="c1"># variogram ranges</span>
 <span class="n">perm_vazi</span> <span class="o">=</span> <span class="mf">150.0</span>                                             <span class="c1"># variogram major direction</span>
 <span class="n">perm_vrel_nugget</span> <span class="o">=</span> <span class="mf">0.0</span>                                        <span class="c1"># variogram nugget effect</span>
 
@@ -962,11 +963,6 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">600</span>                                                  <span class="c1"># search radius for neighbouring data</span>
 <span class="n">nxdis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">nydis</span> <span class="o">=</span> <span class="mi">1</span>                                          <span class="c1"># number of grid discretizations for block kriging</span>
 <span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">10</span>                                         <span class="c1"># minimum and maximum data for an estimate</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Black -Color-Black-BGRed"> make_variogram Warning: sill does not sum to 1.0, do not use in simulation </span>
 </pre></div>
 </div>
 </div>
@@ -1011,7 +1007,9 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por_vrange_maj2</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span> <span class="n">por_vrange_min2</span> <span class="o">=</span> <span class="mi">50</span>                   <span class="c1"># variogram ranges</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display     
+
+<span class="n">por_vrange_maj2</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span> <span class="n">por_vrange_min2</span> <span class="o">=</span> <span class="mi">50</span>                   <span class="c1"># variogram ranges</span>
 <span class="n">por_vazi2</span> <span class="o">=</span> <span class="mf">150.0</span>                                             <span class="c1"># variogram major direction</span>
 <span class="n">por_vrel_nugget2</span> <span class="o">=</span> <span class="mf">0.0</span>                                        <span class="c1"># variogram nugget effect</span>
 
@@ -1035,17 +1033,6 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Black -Color-Black-BGRed"> make_variogram Warning: sill does not sum to 1.0, do not use in simulation </span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
-      average   0.12565358395409387  variance  0.00015524452095955904
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
-      average   0.12330700332712509  variance  0.0005829853686399895
-</pre></div>
-</div>
 <img alt="_images/60af52edaf24d8cbdd25f1a5aa423b43f79afb7259e1a31dbd4aacf3208e58c4.png" src="_images/60af52edaf24d8cbdd25f1a5aa423b43f79afb7259e1a31dbd4aacf3208e58c4.png" />
 </div>
 </div>

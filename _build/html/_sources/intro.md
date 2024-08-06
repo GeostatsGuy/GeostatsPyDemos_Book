@@ -1,9 +1,3 @@
-
-<p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-
-</p>
-
 # e-Book Introduction
 
 ## GeostatsPy Well-documented Demonstration Workflows, The Online Book 
@@ -12,11 +6,19 @@
 
 ##### [Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)
 
+This e-book provides an accessible, online version of my GeostatsPyDemos GitHub respository. This respository includes well-documented demonstration Python Jupyter workflows for many common geostatistical modeling workflows with the GeostatsPy geostatistics Python package, built with the [jupyter-book package](https://jupyterbook.org/en/stable/intro.html).
+
+```{admonition} Welcome!
+:class: remove-from-content-only
+
+The goal of this e-book is to teach the application of geostatistics in Python, for those new to geostatstics I provide theory and links to my course content and for those experienced practitioners I provide example workflows and plots.
+```
+
+All the original geostatistics Python Jupyter notebook workflows are available in my [GeostatsPyDemos](https://github.com/GeostatsGuy/GeostatsPyDemos) GitHub respository. At times, I made modifications to improve the formatting in the book, including the simplification of the workflow headers and suppression of diagnostic output and status bars during model run. Before we get started, here's more information about the GeostatsPy python package.
+
 <h1 align="center"<p>
     <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/geostatspy_logo.png?raw=true" width="200" height="200" />
 </p></h1>
-
-[![Documentation Status](https://readthedocs.org/projects/geostatspy/badge/?version=latest)](https://geostatspy.readthedocs.io/en/latest/?badge=latest)
 
 <h1 align="center">GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1)</h1>
 

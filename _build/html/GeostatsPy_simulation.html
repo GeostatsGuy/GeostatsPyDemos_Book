@@ -417,10 +417,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="simulation">
+  <section class="tex2jax_ignore mathjax_ignore" id="simulation">
 <h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -618,48 +615,48 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>730.0</td>
-      <td>179.0</td>
-      <td>1.0</td>
-      <td>0.120533</td>
-      <td>5.301364</td>
-      <td>1.667964</td>
+      <td>300.0</td>
+      <td>200.0</td>
+      <td>0.0</td>
+      <td>0.073276</td>
+      <td>0.523248</td>
+      <td>-0.647699</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>200.0</td>
-      <td>700.0</td>
-      <td>1.0</td>
-      <td>0.185299</td>
-      <td>595.674540</td>
-      <td>6.389694</td>
+      <td>330.0</td>
+      <td>319.0</td>
+      <td>0.0</td>
+      <td>0.100149</td>
+      <td>4.667175</td>
+      <td>1.540554</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>130.0</td>
-      <td>539.0</td>
-      <td>1.0</td>
-      <td>0.137929</td>
-      <td>16.462451</td>
-      <td>2.801082</td>
+      <td>940.0</td>
+      <td>799.0</td>
+      <td>0.0</td>
+      <td>0.091960</td>
+      <td>0.192133</td>
+      <td>-1.649566</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>140.0</td>
-      <td>79.0</td>
+      <td>890.0</td>
+      <td>919.0</td>
       <td>0.0</td>
-      <td>0.083513</td>
-      <td>2.020531</td>
-      <td>0.703360</td>
+      <td>0.109401</td>
+      <td>1.335762</td>
+      <td>0.289502</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>500.0</td>
-      <td>649.0</td>
-      <td>0.0</td>
-      <td>0.115275</td>
-      <td>15.586491</td>
-      <td>2.746405</td>
+      <td>600.0</td>
+      <td>700.0</td>
+      <td>1.0</td>
+      <td>0.116428</td>
+      <td>4.525924</td>
+      <td>1.509822</td>
     </tr>
   </tbody>
 </table>
@@ -674,7 +671,9 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zmin</span> <span class="o">=</span> <span class="mf">0.00</span><span class="p">;</span> <span class="n">zmax</span> <span class="o">=</span> <span class="mf">0.20</span>                                  <span class="c1"># feature min and max values </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display                                                                
+
+<span class="n">zmin</span> <span class="o">=</span> <span class="mf">0.00</span><span class="p">;</span> <span class="n">zmax</span> <span class="o">=</span> <span class="mf">0.20</span>                                  <span class="c1"># feature min and max values </span>
 <span class="n">nx</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span> <span class="n">xsiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">ysiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">xmn</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">ymn</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">nxdis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">nydis</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># grid specification</span>
 <span class="n">nreal</span> <span class="o">=</span> <span class="mi">3</span>                                                 <span class="c1"># number of realizations</span>
 <span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">20</span>                                     <span class="c1"># number of data for each kriging system</span>
@@ -685,7 +684,7 @@ document.write(`
 <span class="n">sim_sk</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">sgsim</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">wcol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">tmin</span><span class="o">=</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="o">=</span><span class="n">tmax</span><span class="p">,</span><span class="n">itrans</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ismooth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">dftrans</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">tcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">twtcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zmin</span><span class="o">=</span><span class="n">zmin</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="n">zmax</span><span class="p">,</span><span class="n">ltail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ltpar</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">utail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">utpar</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">nsim</span><span class="o">=</span><span class="n">nreal</span><span class="p">,</span>
             <span class="n">nx</span><span class="o">=</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="o">=</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="o">=</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="o">=</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="o">=</span><span class="n">ysiz</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">73073</span><span class="p">,</span>
-            <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="o">=</span><span class="n">ndmax</span><span class="p">,</span><span class="n">nodmax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">mults</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nmult</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">noct</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">ktype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">colocorr</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">sec_map</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vario</span><span class="o">=</span><span class="n">vario</span><span class="p">)</span>
+            <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="o">=</span><span class="n">ndmax</span><span class="p">,</span><span class="n">nodmax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">mults</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nmult</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">noct</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">ktype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">colocorr</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">sec_map</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vario</span><span class="o">=</span><span class="n">vario</span><span class="p">);</span>
 
 <span class="n">xmin</span> <span class="o">=</span> <span class="n">xmn</span><span class="o">-</span><span class="n">xsiz</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">xsiz</span> <span class="o">+</span> <span class="n">xmin</span><span class="p">;</span> <span class="n">ymin</span> <span class="o">=</span> <span class="n">ymn</span><span class="o">-</span><span class="n">ysiz</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ny</span><span class="o">*</span><span class="n">ysiz</span> <span class="o">+</span> <span class="n">ymin</span><span class="p">;</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span> <span class="c1"># plotting parameters</span>
 
@@ -713,138 +712,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Data for SGSIM: Number of acceptable data     = 50
-                 Number trimmed                = 0
-                 Weighted Average              = 0.1254
-                 Weighted Variance             = 0.0009
-                 Weighted Transformed Average  = 0.0
-                 Weighted Transformed Variance = 0.9749
-Setting up rotation matrices for variogram and search
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Working on realization number 0
-   currently on node 0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 640
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1280
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1920
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2560
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3200
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3840
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4480
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5120
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5760
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
-
- Realization 0: number   = 6400
-                                   mean     = 0.1337 (close to 0.0?)
-                                   variance = 1.1198 (close to gammabar(V,V)? approx. 1.0)
-Working on realization number 1
-   currently on node 0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 640
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1280
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1920
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2560
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3200
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3840
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4480
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5120
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5760
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
-
- Realization 1: number   = 6400
-                                   mean     = 0.0113 (close to 0.0?)
-                                   variance = 1.0345 (close to gammabar(V,V)? approx. 1.0)
-Working on realization number 2
-   currently on node 0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 640
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1280
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1920
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2560
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3200
-   currently on node 3840
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4480
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5120
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5760
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
-
- Realization 2: number   = 6400
-                                   mean     = -0.1368 (close to 0.0?)
-                                   variance = 1.1044 (close to gammabar(V,V)? approx. 1.0)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x,y,z offsets = 10.0,1.794896514920806e-08
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x,y,z offsets = 3.589793029841612e-08,-10.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x,y,z offsets = 10.0,1.794896514920806e-08
- x,y,z offsets = 3.589793029841612e-08,-10.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x,y,z offsets = 10.0,1.794896514920806e-08
- x,y,z offsets = 3.589793029841612e-08,-10.0
-</pre></div>
-</div>
-<img alt="_images/519357ef6ec4c916173f1631050cd258724a0d180b3405d3874a8e10d25aa332.png" src="_images/519357ef6ec4c916173f1631050cd258724a0d180b3405d3874a8e10d25aa332.png" />
+<img alt="_images/a2646ad4102628716d8c520eaa986dd702549a6c471ccd32380c2c2d5c30b585.png" src="_images/a2646ad4102628716d8c520eaa986dd702549a6c471ccd32380c2c2d5c30b585.png" />
 </div>
 </div>
 </section>
@@ -879,8 +747,6 @@ Working on realization number 2
 </section>
 <section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
 <h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
-<p><a class="reference external" href="http://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig</a>)  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a>
-sGuy) | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 </section>

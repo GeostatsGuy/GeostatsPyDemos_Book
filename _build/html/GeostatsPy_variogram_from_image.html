@@ -428,10 +428,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="variogram-calculation-from-an-image">
+  <section class="tex2jax_ignore mathjax_ignore" id="variogram-calculation-from-an-image">
 <h1>Variogram Calculation from an Image<a class="headerlink" href="#variogram-calculation-from-an-image" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -467,26 +464,30 @@ document.write(`
 <ul class="simple">
 <li><p>The expected (average) squared difference between values separated by a lag distance vector (distance and direction), <span class="math notranslate nohighlight">\(h\)</span>:</p></li>
 </ul>
-<p>\begin{equation}
-\gamma(\bf{h}) = \frac{1}{2 N(\bf{h})} \sum^{N(\bf{h})}<em>{\alpha=1} (z(\bf{u}</em>\alpha) - z(\bf{u}_\alpha + \bf{h}))^2<br />
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma(\bf{h}) = \frac{1}{2 N(\bf{h})} \sum^{N(\bf{h})}_{\alpha=1} (z(\bf{u}_\alpha) - z(\bf{u}_\alpha + \bf{h}))^2  
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha)\)</span> and <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha + \bf{h})\)</span> are the spatial sample values at tail and head locations of the lag vector respectively.</p>
 <ul class="simple">
 <li><p>Calculated over a suite of lag distances to obtain a continuous function.</p></li>
 <li><p>the <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> term converts a variogram into a semivariogram, but in practice the term variogram is used instead of semivariogram.</p></li>
 <li><p>We prefer the semivariogram because it relates directly to the covariance function, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span> and univariate variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>:</p></li>
 </ul>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
-\end{equation}</p>
+\]</div>
 <p>Note the correlogram is related to the covariance function as:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \rho_x(\bf{h}) = \frac{C_x(\bf{h})}{\sigma^2_x}
-\end{equation}</p>
+\]</div>
 <p>The correlogram provides of function of the <span class="math notranslate nohighlight">\(\bf{h}-\bf{h}\)</span> scatter plot correlation vs. lag offset <span class="math notranslate nohighlight">\(\bf{h}\)</span>.</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 -1.0 \le \rho_x(\bf{h}) \le 1.0
-\end{equation}</p>
+\]</div>
 </section>
 <section id="variogram-observations">
 <h2>Variogram Observations<a class="headerlink" href="#variogram-observations" title="Permalink to this heading">#</a></h2>
@@ -507,14 +508,16 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 <p><strong>Sill</strong> is the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span></p>
 <p>Given stationarity of the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>, and variogram <span class="math notranslate nohighlight">\(\gamma(\bf{h})\)</span>:</p>
 <p>we can define the covariance function:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
-\end{equation}</p>
+\]</div>
 <p>The covariance measure is a measure of similarity over distance (the mirror image of the variogram as shown by the equation above).</p>
 <p>Given a standardized distribution <span class="math notranslate nohighlight">\(\sigma^2_x = 1.0\)</span>, the covariance, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span>, is equal to the correlogram, <span class="math notranslate nohighlight">\(\rho_x(\bf{h})\)</span>:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \rho_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
-\end{equation}</p>
+\]</div>
 </section>
 <section id="observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">
 <h3>Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.<a class="headerlink" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range" title="Permalink to this heading">#</a></h3>
@@ -536,15 +539,17 @@ Caution when including nuggect effect in the variogram model as measurement erro
 <section id="detecting-directions-of-spatial-continuity">
 <h2>Detecting Directions of Spatial Continuity<a class="headerlink" href="#detecting-directions-of-spatial-continuity" title="Permalink to this heading">#</a></h2>
 <p>Spatial continuity can be described with nested spatial continuity models:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \Gamma_x(\bf{ h }) = \sum_{i=1}^{nst} \gamma_i(\bf{ h })
-\end{equation}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span> is the nested variogram model resulting from the summation of <span class="math notranslate nohighlight">\(nst\)</span> nested variograms  <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>.</p>
 <p>Each one of these variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>, is based on a geometric anisotropy model parameterized by the orientation and range in the major and minor directions.  In 2D this is simply an azimuth and ranges, <span class="math notranslate nohighlight">\(azi\)</span>, <span class="math notranslate nohighlight">\(a_{maj}\)</span> and <span class="math notranslate nohighlight">\(a_{min}\)</span>. Note, the range in the minor direction (orthogonal to the major direction.</p>
 <p>The geometric anisotropy model assumes that the range in all off-diagonal directions is based on an ellipse with the major and minor axes alligned with and set to the major and minor for the variogram.</p>
-<p>\begin{equation}
-\bf{ h } <em>i = \sqrt{\left(\frac{r</em>{maj}}{a_{maj_i}}\right)^2 + \left(\frac{r_{maj}}{a_{maj_i}}\right)^2}<br />
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\bf{ h } _i = \sqrt{\left(\frac{r_{maj}}{a_{maj_i}}\right)^2 + \left(\frac{r_{maj}}{a_{maj_i}}\right)^2}  
+\]</div>
 <p>Therefore, if we know the major direction, range in major and minor directions, we may completely describe each nested componnent of the complete spatial continuity of the variable of interest, <span class="math notranslate nohighlight">\(i = 1,\dots,nst\)</span>.</p>
 <p>This is a fun demonstration of loading an image to a NumPy array and then calculating the variogram and variogram map of the image.</p>
 </section>
