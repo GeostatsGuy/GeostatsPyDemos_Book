@@ -423,10 +423,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="model-checking">
+  <section class="tex2jax_ignore mathjax_ignore" id="model-checking">
 <h1>Model Checking<a class="headerlink" href="#model-checking" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -671,7 +668,9 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display  
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
 <span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap_st</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="s1">&#39;Porosity Location Map&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
@@ -703,12 +702,6 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x,y,z offsets = 7.071067805519558,7.071067818211393
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x,y,z offsets = 7.071067830903227,-7.071067792827723
-</pre></div>
-</div>
 <img alt="_images/e6a731d5b338ef4073a1669c8a147c430900f021178032c5ff113184931af8bf.png" src="_images/e6a731d5b338ef4073a1669c8a147c430900f021178032c5ff113184931af8bf.png" />
 </div>
 </div>
@@ -722,7 +715,9 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="o">=</span> <span class="kc">False</span><span class="p">;</span> <span class="n">nreal</span> <span class="o">=</span> <span class="mi">12</span>                                        <span class="c1"># number of realizations</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display  
+
+<span class="n">run</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span> <span class="n">nreal</span> <span class="o">=</span> <span class="mi">12</span>                                        <span class="c1"># number of realizations</span>
 
 <span class="k">if</span> <span class="n">run</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
     <span class="n">por_sim</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">sgsim</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">wcol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">tmin</span><span class="o">=</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="o">=</span><span class="n">tmax</span><span class="p">,</span><span class="n">itrans</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ismooth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
@@ -761,7 +756,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9d86da6e1143fbbe960afb25e23527f695b8009c20b88de1c42027f1d531625b.png" src="_images/9d86da6e1143fbbe960afb25e23527f695b8009c20b88de1c42027f1d531625b.png" />
+<img alt="_images/7e0bae077b589ece2c4477524b22029e6e675344c040d4897efa9848f0917266.png" src="_images/7e0bae077b589ece2c4477524b22029e6e675344c040d4897efa9848f0917266.png" />
 </div>
 </div>
 <p>For the provided data and simulated realizations ‘look good’:</p>
@@ -787,40 +782,6 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from tqdm import tqdm # progress bar</span>
-
-<span class="c1"># def conditioning_check(model,nx,xmn,xsiz,ny,ymn,ysiz,df,xcol,ycol,vcol,vname,vmin,vmax):</span>
-<span class="c1">#     iix = np.zeros(len(df),dtype = int); iiy = np.zeros(len(df),dtype = int)</span>
-<span class="c1">#     for idata in range(0,len(df)):                                # find the model ix, iy cells at data x, y</span>
-<span class="c1">#         iix[idata] = max(0,min(int((df.loc[idata,xcol] - xmin)/xsiz),nx-1))</span>
-<span class="c1">#         iiy[idata] = ny - max(0,min(int((df.loc[idata,ycol] - ymin)/ysiz),ny-1))-1</span>
-        
-<span class="c1">#     real_por = np.zeros(len(df))</span>
-<span class="c1">#     all_data = np.zeros(len(df)*nreal)</span>
-<span class="c1">#     all_real = np.zeros(len(df)*nreal)</span>
-    
-<span class="c1">#     i = 0</span>
-<span class="c1">#     for ireal in tqdm(range(0,nreal)):                            # make an array of all realizations paired to data values</span>
-<span class="c1">#         for idata in range(0,len(df)): </span>
-<span class="c1">#             real_por[idata] = model[ireal,iiy[idata],iix[idata]]  </span>
-<span class="c1">#             all_data[i] = df.loc[idata,vcol]</span>
-<span class="c1">#             all_real[i] = real_por[idata]</span>
-<span class="c1">#             i = i + 1</span>
-<span class="c1">#         df[&#39;Real&#39; + str(ireal+1)] = real_por </span>
-    
-<span class="c1">#     df_vstack = pd.DataFrame(np.vstack((all_data, all_real)).T,columns = [&#39;Data&#39;,&#39;Real&#39;]) # convert to a DataFrame</span>
-        
-<span class="c1">#     plt.scatter(all_data,all_real,alpha=0.2,color=&#39;black&#39;,s=5)</span>
-<span class="c1">#     plt.plot([vmin,vmax],[vmin,vmax],color=&#39;black&#39;,linestyle=&#39;--&#39;)</span>
-<span class="c1">#     plt.ylabel(&#39;Simulated Realizations - &#39; + vname); plt.xlabel(&#39;Data Values - &#39; + vname); plt.title(&#39;Data Reproduction Check - &#39; + vname)</span>
-<span class="c1">#     plt.grid(True); plt.xlim([vmin,vmax]); plt.ylim([vmin,vmax])</span>
-<span class="c1">#     return df_vstack</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="n">df_vstack</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">conditioning_check</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">por_sim</span><span class="p">,</span><span class="n">nx</span><span class="o">=</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="o">=</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="o">=</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="o">=</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="o">=</span><span class="n">ysiz</span><span class="p">,</span><span class="n">nreal</span><span class="o">=</span><span class="n">nreal</span><span class="p">,</span>
         <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span><span class="n">xcol</span><span class="o">=</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="n">ycol</span><span class="o">=</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="n">vcol</span><span class="o">=</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">vname</span><span class="o">=</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
@@ -830,7 +791,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/05d49a2e0c3f09ea896eb4c791ecdbe4b4afc1670b588c1515fc215f830e3730.png" src="_images/05d49a2e0c3f09ea896eb4c791ecdbe4b4afc1670b588c1515fc215f830e3730.png" />
+<img alt="_images/610df3b9614a34f7f21631c3a890f63e8d9b267ad4148a79589651af7a72e66e.png" src="_images/610df3b9614a34f7f21631c3a890f63e8d9b267ad4148a79589651af7a72e66e.png" />
 </div>
 </div>
 <p>Due to the use of point data and cells represented by points at the cell centroids, there is some scatter in the result above.</p>
@@ -888,50 +849,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/56b45ec8f537816ac927e29672f26be2e511a98f43a5fe35099b492682860434.png" src="_images/56b45ec8f537816ac927e29672f26be2e511a98f43a5fe35099b492682860434.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># def distribution_check(df,vcol,model,nx,ny,nreal,dreal,vname,vmin,vmax):</span>
-
-<span class="c1">#     boxprops = dict(linewidth=1.0, color=&#39;black&#39;)</span>
-<span class="c1">#     whiskerprops = dict(linestyle=&#39;-&#39;,linewidth=1.0, color=&#39;black&#39;)</span>
-<span class="c1">#     medianprops = dict(linestyle=&#39;--&#39;,linewidth=1.0, color=&#39;black&#39;)</span>
-<span class="c1">#     meanprops={&quot;marker&quot;:&#39;_&#39;, &#39;markersize&#39;: 15,&quot;markerfacecolor&quot;:&quot;red&quot;, &quot;markeredgecolor&quot;:&#39;red&#39;}</span>
-<span class="c1">#     flierprops={&#39;marker&#39;: &#39;o&#39;, &#39;markersize&#39;: 4, &#39;markerfacecolor&#39;: &#39;grey&#39;,&#39;markeredgecolor&#39;:&#39;black&#39;}</span>
-    
-<span class="c1">#     refdist = df[vcol].values</span>
-    
-<span class="c1">#     fig, axs = plt.subplots(1,2,figsize=(16,5), gridspec_kw={&#39;width_ratios&#39;: [1, 10]}, sharey = True)</span>
-    
-<span class="c1">#     axs[0].boxplot(refdist,labels = [&#39;&#39;],whis=True,showmeans=True,widths=0.3,notch=True,boxprops=boxprops, whiskerprops=whiskerprops,meanprops=meanprops,flierprops=flierprops,medianprops=medianprops)</span>
-<span class="c1">#     axs[0].set_ylim([0,28]); axs[0].set_ylabel(&#39;vname&#39;); axs[0].set_xlabel(&#39;Input Data&#39;); axs[0].set_title(&#39;&#39;)</span>
-<span class="c1">#     axs[0].grid(True,alpha=0.3,axis=&#39;y&#39;); axs[0].set_xlim([1-0.4,1+0.4])</span>
-<span class="c1">#     axs[0].plot([1-0.4,1+0.4],[np.percentile(por,75),np.percentile(por,75)],color=&#39;black&#39;,alpha=0.2,linestyle=&#39;--&#39;,linewidth=2)</span>
-<span class="c1">#     axs[0].plot([1-0.4,1+0.4],[np.percentile(por,50),np.percentile(por,50)],color=&#39;black&#39;,alpha=0.2,linestyle=&#39;--&#39;,linewidth=2)</span>
-<span class="c1">#     axs[0].plot([1-0.4,1+0.4],[np.percentile(por,25),np.percentile(por,25)],color=&#39;black&#39;,alpha=0.2,linestyle=&#39;--&#39;,linewidth=2)</span>
-<span class="c1">#     axs[0].yaxis.set_minor_locator(plt.MultipleLocator(20))   </span>
-<span class="c1">#     axs[0].plot([1-0.4,1+0.4],[np.average(por),np.average(por)],color=&#39;red&#39;,alpha=0.2,linestyle=&#39;--&#39;,linewidth=2)</span>
-    
-<span class="c1">#     axs[0].yaxis.grid(True, which=&#39;major&#39;,linewidth = 2.0); axs[0].yaxis.grid(True, which=&#39;minor&#39;,linewidth = 0.1) # add y grids</span>
-<span class="c1">#     axs[0].tick_params(which=&#39;major&#39;,length=7); axs[0].tick_params(which=&#39;minor&#39;, length=4)</span>
-<span class="c1">#     axs[0].yaxis.set_minor_locator(AutoMinorLocator()) # turn on minor ticks</span>
-<span class="c1">#     tarray = por_sim.reshape(nreal,ny*nx).T</span>
-<span class="c1">#     axs[1].boxplot(tarray[:,:dreal],whis=True,showmeans=True,widths=0.2,notch=True,boxprops=boxprops, whiskerprops=whiskerprops,meanprops=meanprops,flierprops=flierprops,medianprops=medianprops)</span>
-<span class="c1">#     axs[1].set_ylim([vmin,vmax]); axs[1].set_ylabel(&#39;&#39;); axs[1].set_xlabel(&#39;Realizations&#39;); axs[1].set_title(&#39;Check Global &#39; + vname + &#39; Distribution - Summary Statistics&#39;)</span>
-<span class="c1">#     axs[1].grid(True,alpha=0.3,axis=&#39;y&#39;); axs[1].set_xlim([1-0.2,dreal+0.2])</span>
-<span class="c1">#     axs[1].plot([1-0.2,dreal+0.2],[np.percentile(por,75),np.percentile(por,75)],color=&#39;black&#39;,alpha=0.2,linestyle=&#39;--&#39;,linewidth=2)</span>
-<span class="c1">#     axs[1].plot([1-0.2,dreal+0.2],[np.percentile(por,50),np.percentile(por,50)],color=&#39;black&#39;,alpha=0.2,linestyle=&#39;--&#39;,linewidth=2)</span>
-<span class="c1">#     axs[1].plot([1-0.2,dreal+0.2],[np.percentile(por,25),np.percentile(por,25)],color=&#39;black&#39;,alpha=0.2,linestyle=&#39;--&#39;,linewidth=2)</span>
-<span class="c1">#     axs[1].plot([1-0.2,dreal+0.2],[np.average(por),np.average(por)],color=&#39;red&#39;,alpha=0.2,linestyle=&#39;--&#39;,linewidth=2)</span>
-    
-<span class="c1">#     axs[1].yaxis.grid(True, which=&#39;major&#39;,linewidth = 2.0); axs[1].yaxis.grid(True, which=&#39;minor&#39;,linewidth = 0.1) # add y grids</span>
-<span class="c1">#     axs[1].tick_params(which=&#39;major&#39;,length=7); axs[1].tick_params(which=&#39;minor&#39;, length=4)</span>
-<span class="c1">#     axs[1].yaxis.set_minor_locator(AutoMinorLocator()) # turn on minor ticks</span>
-<span class="c1">#     return</span>
-</pre></div>
-</div>
+<img alt="_images/a71152f828090c635da4318664ee1a94a070863ab08feae8dbe10ed2056c07c3.png" src="_images/a71152f828090c635da4318664ee1a94a070863ab08feae8dbe10ed2056c07c3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -942,7 +860,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f05d288c75a9e43a86a550d6924441efa8fc508576ad7c4825946920c79af92c.png" src="_images/f05d288c75a9e43a86a550d6924441efa8fc508576ad7c4825946920c79af92c.png" />
+<img alt="_images/6a191d8feec9732ecf65ee5d78e76e488b1af7c230e3e253ecc0e5434866421a.png" src="_images/6a191d8feec9732ecf65ee5d78e76e488b1af7c230e3e253ecc0e5434866421a.png" />
 </div>
 </div>
 <p>In general, this look pretty good. Some observations:</p>
@@ -983,7 +901,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f9afd0431cb40915d663aad56757b1e2c5d24645ca2bdb31f9cb6750b767d6a1.png" src="_images/f9afd0431cb40915d663aad56757b1e2c5d24645ca2bdb31f9cb6750b767d6a1.png" />
+<img alt="_images/32d1a72ec07751374bd3ca1ffbc2cf80d73d83cd18cc5336a14b2797231ea7c8.png" src="_images/32d1a72ec07751374bd3ca1ffbc2cf80d73d83cd18cc5336a14b2797231ea7c8.png" />
 </div>
 </div>
 <p>The reproduction of the data distribution shape looks very good. I include the regular data normalized histogram to help visualize the impact of the kernel density estimate of the PDF.</p>
@@ -1048,7 +966,7 @@ document.write(`
  x,y,z offsets = 7.071067830903227,-7.071067792827723
 </pre></div>
 </div>
-<img alt="_images/9276242166345b4f70f274aba63ea3314707ef9514ad04565edd5fdc62e414f9.png" src="_images/9276242166345b4f70f274aba63ea3314707ef9514ad04565edd5fdc62e414f9.png" />
+<img alt="_images/97dbcca6a5dab450935ea7e9e7674da314ce50dd3424ebd77efbb5b2b5f30617.png" src="_images/97dbcca6a5dab450935ea7e9e7674da314ce50dd3424ebd77efbb5b2b5f30617.png" />
 </div>
 </div>
 <p>Note the cyclicity was not in the variogram model, but it is impose by the data. There is some inflation of short scale discontinuity that may the result of the limited model resolution.</p>
@@ -1078,7 +996,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6b4c23db89d4eb8922f8f14e60a43a0da9025ee1b2ba41cb2690965b04fa2392.png" src="_images/6b4c23db89d4eb8922f8f14e60a43a0da9025ee1b2ba41cb2690965b04fa2392.png" />
+<img alt="_images/bba5d392f4f394bd51eddefa9ae8294d8f87e4741be9b93bbd157f78487444d0.png" src="_images/bba5d392f4f394bd51eddefa9ae8294d8f87e4741be9b93bbd157f78487444d0.png" />
 </div>
 </div>
 </section>

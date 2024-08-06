@@ -425,10 +425,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="declustering-to-correct-sampling-bias-cell-based-polygonal-and-kriging-based">
+  <section class="tex2jax_ignore mathjax_ignore" id="declustering-to-correct-sampling-bias-cell-based-polygonal-and-kriging-based">
 <h1>Declustering to Correct Sampling Bias, Cell-based, Polygonal, and Kriging-based<a class="headerlink" href="#declustering-to-correct-sampling-bias-cell-based-polygonal-and-kriging-based" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -491,9 +488,10 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 <h3>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h3>
 <p>Place a cell mesh over the data and share the weight over each cell. Data in densely sampled areas or volumes will get less weight while data in sparsely sampled areas or volumes will get more weight.</p>
 <p>Cell-based declustering weights are calculated by first identifying the cell that the data occupies, <span class="math notranslate nohighlight">\(\ell\)</span>, then,</p>
-<p>\begin{equation}
-w(\bf{𝐮}<em>j) = \frac{1}{n</em>{\ell}} \cdot \frac{n}{L_o}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(n_{\ell}\)</span> is the number of data in the <span class="math notranslate nohighlight">\(\ell\)</span> cell standardized by the ratio of <span class="math notranslate nohighlight">\(n\)</span> is the total number of data divided by <span class="math notranslate nohighlight">\(L_o\)</span> number of cells with data. As a result the sum of all weights is <span class="math notranslate nohighlight">\(n\)</span> and nominal weight is 1.0.</p>
 <p>Additional considerations:</p>
 <ul class="simple">
@@ -1088,17 +1086,20 @@ DescribeResult(nobs=270, minmax=(0.21254664273011956, 5.642565586948079), mean=1
 <h2>Calculating Declustered / Weighted Statistics<a class="headerlink" href="#calculating-declustered-weighted-statistics" title="Permalink to this heading">#</a></h2>
 <p>There are methods available to calculate weighted means, histograms and CDFs. We can always calculate weighted statistics manually.</p>
 <p><strong>Weighted Variance</strong></p>
-<p>\begin{equation}
-\mu = \frac{1}{\sum^{n}_{j=1} w(\bf{u}<em>j)} \sum^{n}</em>{j=1} w(\bf{u}_j)x(\bf{u}_j)
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\mu = \frac{1}{\sum^{n}_{j=1} w(\bf{u}_j)} \sum^{n}_{j=1} w(\bf{u}_j)x(\bf{u}_j)
+\]</div>
 <p><strong>Weighted Variance</strong></p>
-<p>\begin{equation}
-\sigma^2 = \frac{1}{\sum^{n}_{j=1} w(\bf{u}<em>j)} \sum^{n}</em>{j=1} w(\bf{u}_j)(x(\bf{u}_j)-\overline{x})^2
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^2 = \frac{1}{\sum^{n}_{j=1} w(\bf{u}_j)} \sum^{n}_{j=1} w(\bf{u}_j)(x(\bf{u}_j)-\overline{x})^2
+\]</div>
 <p><strong>Weighted Standard Deviation</strong></p>
-<p>\begin{equation}
-\sigma = \sqrt{ \frac{1}{\sum^{n}_{j=1} w(\bf{u}<em>j)} \sum^{n}</em>{j=1} w(\bf{u}_j)(x(\bf{u}_j)-\overline{x})^2 }
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma = \sqrt{ \frac{1}{\sum^{n}_{j=1} w(\bf{u}_j)} \sum^{n}_{j=1} w(\bf{u}_j)(x(\bf{u}_j)-\overline{x})^2 }
+\]</div>
 <p>A convenient way to do this is with the StatsModels’ DescrStatsW object that adds the weights to the data (1D or 2D) and then provides member functions for weighted statistics.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

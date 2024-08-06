@@ -422,10 +422,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="volume-variance-relations-for-scaling-statistics">
+  <section class="tex2jax_ignore mathjax_ignore" id="volume-variance-relations-for-scaling-statistics">
 <h1>Volume Variance Relations for Scaling Statistics<a class="headerlink" href="#volume-variance-relations-for-scaling-statistics" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -460,9 +457,10 @@ document.write(`
 </ul>
 <p>Scale Change Models:</p>
 <p><strong>Empirical</strong> - build a small scale, high resolution model and scale it up. This requires a model for spatial feature scale up. For example, averages the small scale cells within the larger scale assues linear averaging. There is a more flexible model known as power law averaging.</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 z_V = \left[ \frac{1}{n} \sum z_v^{\omega} \right] ^{\frac{1}{\omega}}
-\end{equation}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\omega\)</span> is the power of averaging. For example:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\omega = 1\)</span> is a regular linear averaging</p></li>
@@ -470,13 +468,15 @@ z_V = \left[ \frac{1}{n} \sum z_v^{\omega} \right] ^{\frac{1}{\omega}}
 <li><p><span class="math notranslate nohighlight">\(\omega = 0\)</span> is a geometric averaging (this is proved in the limit as <span class="math notranslate nohighlight">\(\omega \rightarrow 0\)</span>)</p></li>
 </ul>
 <p><strong>Model</strong> - directly adjust the statistics for change in scale. For example, under the assumption of linear averaging and a stationary variogram and variance:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 f = 1 - \frac{\overline{\gamma}(v,v)}{\sigma^2}
-\end{equation}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> is variance reduction factor,</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
-\end{equation}</p>
+\]</div>
 <p>in other words, <span class="math notranslate nohighlight">\(f\)</span> is the ratio of the variance at scale <span class="math notranslate nohighlight">\(v\)</span> to the variance at the original data point support scale.</p>
 <p>Here I provide simple empirical, numerical demonstrations of the impact of change on scale on variance and the impact of spatial continuity on this effect.</p>
 </section>
@@ -617,31 +617,31 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.086961</td>
+      <td>0.099797</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.091948</td>
+      <td>0.121104</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.066998</td>
+      <td>0.075472</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.148956</td>
+      <td>0.117972</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.168086</td>
+      <td>0.085723</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
@@ -677,7 +677,9 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <p>Let’s build two models and scale them up.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">range_maj1</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span> <span class="n">range_min1</span> <span class="o">=</span> <span class="mi">600</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display  
+
+<span class="n">range_maj1</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span> <span class="n">range_min1</span> <span class="o">=</span> <span class="mi">600</span>
 <span class="n">range_maj2</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span> <span class="n">range_min2</span> <span class="o">=</span> <span class="mi">60</span>
 
 <span class="n">vario1</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">range_maj1</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">range_min1</span><span class="p">)</span>
@@ -738,98 +740,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Data for SGSIM: Number of acceptable data     = 100
-                 Number trimmed                = 0
-                 Weighted Average              = 0.0987
-                 Weighted Variance             = 0.0012
-                 Weighted Transformed Average  = 0.0
-                 Weighted Transformed Variance = 0.9873
-Setting up rotation matrices for variogram and search
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Working on realization number 0
-   currently on node 0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 6000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 7000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 8000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 9000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
-
- Realization 0: number   = 10000
-                                   mean     = -0.0375 (close to 0.0?)
-                                   variance = 1.0884 (close to gammabar(V,V)? approx. 1.0)
-
- Data for SGSIM: Number of acceptable data     = 100
-                 Number trimmed                = 0
-                 Weighted Average              = 0.0987
-                 Weighted Variance             = 0.0012
-                 Weighted Transformed Average  = 0.0
-                 Weighted Transformed Variance = 0.9873
-Setting up rotation matrices for variogram and search
-Working on realization number 0
-   currently on node 0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 6000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 7000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 8000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 9000
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
-
- Realization 0: number   = 10000
-                                   mean     = 0.0271 (close to 0.0?)
-                                   variance = 1.0007 (close to gammabar(V,V)? approx. 1.0)
-</pre></div>
-</div>
-<img alt="_images/4cbd7f40970988d9ee193cf32d13399e20436c2061966557ea750a4469595145.png" src="_images/4cbd7f40970988d9ee193cf32d13399e20436c2061966557ea750a4469595145.png" />
+<img alt="_images/cfd775deb95f12157f232ac7138f56cfa460df8fa1454585091d30068f9b5694.png" src="_images/cfd775deb95f12157f232ac7138f56cfa460df8fa1454585091d30068f9b5694.png" />
 </div>
 </div>
 </section>
@@ -875,7 +786,7 @@ Working on realization number 0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6ff73d74b36d7557ad3ca47b65f62865fbdfe0bb511c130e42299e22b120d6d2.png" src="_images/6ff73d74b36d7557ad3ca47b65f62865fbdfe0bb511c130e42299e22b120d6d2.png" />
+<img alt="_images/d6569d47084b0ba7aa3df32061ccffcb530a65f2a3a3dc8d12411a982a9a7bac.png" src="_images/d6569d47084b0ba7aa3df32061ccffcb530a65f2a3a3dc8d12411a982a9a7bac.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -890,10 +801,6 @@ Working on realization number 0
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">423</span><span class="p">)</span>
 <span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">mid2</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 200 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
-
-
-<span class="c1"># plt.subplot(423)</span>
-<span class="c1"># cellplt_st(mid2,xmin,xmax,ymin,ymax,vmin,vmax,&quot;Porosity - 500:300 Range - 200 m&quot;,&#39;X(m)&#39;,&#39;Y(m)&#39;,&#39;Porosity (fraction)&#39;,cmap)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">424</span><span class="p">)</span>
 <span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">mid2</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 200 m Cells&#39;</span><span class="p">)</span>
@@ -921,7 +828,7 @@ Working on realization number 0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5afa5e173dc6f19a221c770308553e4243e606c42afd3ae10f4ce1c410067bce.png" src="_images/5afa5e173dc6f19a221c770308553e4243e606c42afd3ae10f4ce1c410067bce.png" />
+<img alt="_images/c444add8252d960de4ac8dee7d48b308fd2b8945a617ef54fa6be655b64f6b71.png" src="_images/c444add8252d960de4ac8dee7d48b308fd2b8945a617ef54fa6be655b64f6b71.png" />
 </div>
 </div>
 </section>
@@ -976,7 +883,7 @@ Working on realization number 0
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bdf7b0f0fcb42ac6e1a15189dc8990a7da70b0c759220794141b5b3ba8dc6467.png" src="_images/bdf7b0f0fcb42ac6e1a15189dc8990a7da70b0c759220794141b5b3ba8dc6467.png" />
+<img alt="_images/046d479d2ec7ca54ebb108cf69d5f23d554e741a7c7204d2be25d8f9dd2efebc.png" src="_images/046d479d2ec7ca54ebb108cf69d5f23d554e741a7c7204d2be25d8f9dd2efebc.png" />
 </div>
 </div>
 </section>

@@ -422,10 +422,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="variogram-models-simulation-examples">
+  <section class="tex2jax_ignore mathjax_ignore" id="variogram-models-simulation-examples">
 <h1>Variogram Models, Simulation Examples<a class="headerlink" href="#variogram-models-simulation-examples" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -442,9 +439,10 @@ document.write(`
 <section id="variogram-modeling">
 <h2>Variogram Modeling<a class="headerlink" href="#variogram-modeling" title="Permalink to this heading">#</a></h2>
 <p>Spatial continuity can be modeled with nested, positive definate variogram structures:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \Gamma_x(\bf{h}) = \sum_{i=1}^{nst} \gamma_i(\bf{h})
-\end{equation}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span> is the nested variogram model resulting from the summation of <span class="math notranslate nohighlight">\(nst\)</span> nested variograms  <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>.</p>
 <p>The types of structure commonly applied include:</p>
 <ul class="simple">
@@ -462,9 +460,10 @@ document.write(`
 <p>these will not be covered here.</p>
 <p>Each one of these variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>, is based on a geometric anisotropy model parameterized by the orientation and range in the major and minor directions.  In 2D this is simply an azimuth and ranges, <span class="math notranslate nohighlight">\(azi\)</span>, <span class="math notranslate nohighlight">\(a_{maj}\)</span> and <span class="math notranslate nohighlight">\(a_{min}\)</span>. Note, the range in the minor direction (orthogonal to the major direction).</p>
 <p>The geometric anisotropy model assumes that the range in all off-diagonal directions is based on an ellipse with the major and minor axes alligned with and set to the major and minor for the variogram.</p>
-<p>\begin{equation}
-\bf{h}<em>i = \sqrt{\left(\frac{r</em>{maj}}{a_{maj_i}}\right)^2 + \left(\frac{r_{maj}}{a_{maj_i}}\right)^2}<br />
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\bf{h}_i = \sqrt{\left(\frac{r_{maj}}{a_{maj_i}}\right)^2 + \left(\frac{r_{maj}}{a_{maj_i}}\right)^2}  
+\]</div>
 <p>Therefore, if we know the major direction, range in major and minor directions, we may completely describe each nested componnent of the complete spatial continuity of the variable of interest, <span class="math notranslate nohighlight">\(i = 1,\dots,nst\)</span>.</p>
 <p>Some comments on modeling nested variograms:</p>
 <ul class="simple">
@@ -615,14 +614,14 @@ document.write(`
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>0.012292</td>
-      <td>850.254855</td>
+      <td>-0.560059</td>
+      <td>923.615489</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>0.598059</td>
-      <td>1322.517319</td>
+      <td>-0.043823</td>
+      <td>929.505420</td>
     </tr>
   </tbody>
 </table>
@@ -661,15 +660,16 @@ document.write(`
 <li><p>Peicewise, beyond the range is equal to the sill</p></li>
 </ul>
 <p>The equation:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \gamma(\bf{h} ) = c_1 \cdot \text{Sph} \left( \frac{\bf{h} }{a} \right) =
-\left{
-\begin{array}{ c l }
-c_1 \cdot \left[ 1.5 \left( \frac{\bf{h} }{a} \right) -  0.5 \left( \frac{\bf{h} }{a} \right)^3 \right] &amp; h &lt; a \
-c_1 &amp; h \ge a
-\end{array}
+\left\{ 
+  \begin{array}{ c l }
+    c_1 \cdot \left[ 1.5 \left( \frac{\bf{h} }{a} \right) -  0.5 \left( \frac{\bf{h} }{a} \right)^3 \right] &amp; h &lt; a \\
+    c_1 &amp; h \ge a
+  \end{array}
 \right.
-\end{equation}</p>
+\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span> is the lag distance</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -701,7 +701,7 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b873f8a4bdffa180e7c57c3af8684e1bcf26dbe22afa1fa3d6cf8f51e54cdbb4.png" src="_images/b873f8a4bdffa180e7c57c3af8684e1bcf26dbe22afa1fa3d6cf8f51e54cdbb4.png" />
+<img alt="_images/250292c8d26113c74a27b4e3672e3f290430ca39475f81e06b0cd70e7afdfebe.png" src="_images/250292c8d26113c74a27b4e3672e3f290430ca39475f81e06b0cd70e7afdfebe.png" />
 </div>
 </div>
 </section>
@@ -712,9 +712,10 @@ c_1 &amp; h \ge a
 <li><p>Less short-scale continuity than spherical, and reaches sill asymptotically, range is at 95% of the sill</p></li>
 </ul>
 <p>The equation:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \gamma( \bf{h} ) = c_1 \cdot \text{ Exp } \left( \frac{ \bf{h} }{𝑎} \right) = c_1 \cdot \left[ 1.0 − \text{exp} \left(−3 \cdot \left( \frac{ \bf{h} }{𝑎} \right) \right) \right]
-\end{equation}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{h}\)</span> is the lag distance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -746,7 +747,7 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4bd5a046a40f64c550217973f8f7666d33e26af9fb12d301b9857cc953c18ecb.png" src="_images/4bd5a046a40f64c550217973f8f7666d33e26af9fb12d301b9857cc953c18ecb.png" />
+<img alt="_images/6f23d6eb6cfa287d04e6f0dd302668973f447c3c1445c695ef6105c4d7dae9dc.png" src="_images/6f23d6eb6cfa287d04e6f0dd302668973f447c3c1445c695ef6105c4d7dae9dc.png" />
 </div>
 </div>
 </section>
@@ -757,9 +758,10 @@ c_1 &amp; h \ge a
 <li><p>Much more short-scale continuity than spherical, and reaches sill asymptotically, range is at 95% of the sill</p></li>
 </ul>
 <p>The equation:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \gamma( \bf{h} ) = c_1 \cdot \text{ Gaus } \left( \frac{ \bf{h} }{𝑎} \right) = c_1 \cdot \left[ 1.0 − \text{exp} \left(−3 \cdot \left( \frac{ \bf{h} }{𝑎} \right)^2 \right) \right]
-\end{equation}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{h}\)</span> is the lag distance.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -791,7 +793,7 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d5df953377e4f65be72206dd49bf7d92f09d7f51d540fc5ff8f44f7910d36537.png" src="_images/d5df953377e4f65be72206dd49bf7d92f09d7f51d540fc5ff8f44f7910d36537.png" />
+<img alt="_images/cfc21b0ce1b1e2a0920ef52f2c10214d0e67d204531cd05d781713fa80640e92.png" src="_images/cfc21b0ce1b1e2a0920ef52f2c10214d0e67d204531cd05d781713fa80640e92.png" />
 </div>
 </div>
 </section>
@@ -914,7 +916,7 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6d9ff561d30ea713f7bd416f5cfe5329e2b6e11b8271a263757fcb740b897637.png" src="_images/6d9ff561d30ea713f7bd416f5cfe5329e2b6e11b8271a263757fcb740b897637.png" />
+<img alt="_images/6d54adc2d57a52dd438efe39bad91fa37d9a265963ec67ba74bc90f9ec7f8519.png" src="_images/6d54adc2d57a52dd438efe39bad91fa37d9a265963ec67ba74bc90f9ec7f8519.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with increasing short scale spatial continuity from exponential to spherical to Gaussian. But the long range spatial continuity does not significantly change.</p>
@@ -975,7 +977,7 @@ c_1 &amp; h \ge a
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b5f891c296cb73ad67caf9f993b97269b1e4e0035f10ab379055ce81dde558e4.png" src="_images/b5f891c296cb73ad67caf9f993b97269b1e4e0035f10ab379055ce81dde558e4.png" />
+<img alt="_images/8b12112d2aa1376d0eb4cd59b0b20636867d9dde942e03549f960510c9650295.png" src="_images/8b12112d2aa1376d0eb4cd59b0b20636867d9dde942e03549f960510c9650295.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with decreasing short scale spatial continuity with increase in relative nugget effect.</p>

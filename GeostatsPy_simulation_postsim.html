@@ -428,10 +428,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="simulation-post-processing">
+  <section class="tex2jax_ignore mathjax_ignore" id="simulation-post-processing">
 <h1>Simulation Post-processing<a class="headerlink" href="#simulation-post-processing" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -490,27 +487,31 @@ F_x(\bf{u}_{\alpha})
 <ul class="simple">
 <li><p><strong>e-type</strong> is the local expectation (since equal weighted the same as the average)</p></li>
 </ul>
-<p>\begin{equation}
-e(\bf{u }<em>{\alpha}) = E \left[x^{\ell}(\bf{ u }</em>{\alpha}) \right], \quad \forall \quad \ell = 1., \ldots, L, \quad \alpha \in V
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+e(\bf{u }_{\alpha}) = E \left[x^{\ell}(\bf{ u }_{\alpha}) \right], \quad \forall \quad \ell = 1., \ldots, L, \quad \alpha \in V
+\]</div>
 <ul class="simple">
 <li><p><strong>conditional standard deviation</strong> is the local standard deviation over the realizations</p></li>
 </ul>
-<p>\begin{equation}
-\sigma(\bf{u }<em>{\alpha}) = \sqrt{E \left[ (x^{\ell}(\bf{u }</em>{\alpha})- e(\bf{u }_{\alpha}))^2 \right] }, \quad \forall \quad \ell = 1., \ldots, L, \quad \alpha \in V
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma(\bf{u }_{\alpha}) = \sqrt{E \left[ (x^{\ell}(\bf{u }_{\alpha})- e(\bf{u }_{\alpha}))^2 \right] }, \quad \forall \quad \ell = 1., \ldots, L, \quad \alpha \in V
+\]</div>
 <ul class="simple">
 <li><p><strong>local percentile</strong> is the local percentile over the realizations</p></li>
 </ul>
-<p>\begin{equation}
-x^p(\bf{ u } <em>{\alpha}) = F^{-1}(p; \bf{u }</em>{\alpha}), \quad \alpha \in V
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+x^p(\bf{ u } _{\alpha}) = F^{-1}(p; \bf{u }_{\alpha}), \quad \alpha \in V
+\]</div>
 <ul class="simple">
 <li><p><strong>local probability of exceedance</strong> is the local percentile over the realizations</p></li>
 </ul>
-<p>\begin{equation}
-P {X(\bf{ u } <em>{\alpha}) \le x_k } = 1 - \frac{1}{L} \cdot \sum^{L}</em>{\ell=1} i^{\ell}(\bf{ u } _{\alpha}; z_k), \quad \alpha \in V
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i^{\ell}(\bf{ u } _{\alpha}; z_k), \quad \alpha \in V
+\]</div>
 <p>In this workflow we will calculate multiple realizations and then use each one of these local calculations over the realizations to demonstrate model post-processing.</p>
 </section>
 <section id="load-the-required-libraries">
@@ -629,33 +630,33 @@ P {X(\bf{ u } <em>{\alpha}) \le x_k } = 1 - \frac{1}{L} \cdot \sum^{L}</em>{\ell
   <tbody>
     <tr>
       <th>0</th>
-      <td>400.0</td>
-      <td>400.0</td>
-      <td>0.133265</td>
+      <td>890.0</td>
+      <td>894.0</td>
+      <td>0.132899</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>600.0</td>
-      <td>849.0</td>
-      <td>0.152583</td>
+      <td>930.0</td>
+      <td>609.0</td>
+      <td>0.100177</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>870.0</td>
-      <td>69.0</td>
-      <td>0.144508</td>
+      <td>700.0</td>
+      <td>400.0</td>
+      <td>0.137537</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>370.0</td>
-      <td>449.0</td>
-      <td>0.139848</td>
+      <td>870.0</td>
+      <td>429.0</td>
+      <td>0.079388</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>240.0</td>
+      <td>650.0</td>
       <td>759.0</td>
-      <td>0.202755</td>
+      <td>0.139449</td>
     </tr>
   </tbody>
 </table>
@@ -713,7 +714,7 @@ P {X(\bf{ u } <em>{\alpha}) \le x_k } = 1 - \frac{1}{L} \cdot \sum^{L}</em>{\ell
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/75025a50bf556d9ebf8b23e9016ef5e670d36cfa9749e84aac2498eafc6e86f0.png" src="_images/75025a50bf556d9ebf8b23e9016ef5e670d36cfa9749e84aac2498eafc6e86f0.png" />
+<img alt="_images/13a73beee83117c25970fe3b33778302e8f1e2f05c02c703d2bebc3c530a5502.png" src="_images/13a73beee83117c25970fe3b33778302e8f1e2f05c02c703d2bebc3c530a5502.png" />
 </div>
 </div>
 </section>
@@ -745,7 +746,7 @@ P {X(\bf{ u } <em>{\alpha}) \le x_k } = 1 - \frac{1}{L} \cdot \sum^{L}</em>{\ell
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ef68594a25516c572072bd45c120d6cb176c03d8a1eee4870c4ac97e3e3803b4.png" src="_images/ef68594a25516c572072bd45c120d6cb176c03d8a1eee4870c4ac97e3e3803b4.png" />
+<img alt="_images/a7681cb9894bb033e2b19c885c76ddd8ad26f4da32f3eb2170b4f51399831c92.png" src="_images/a7681cb9894bb033e2b19c885c76ddd8ad26f4da32f3eb2170b4f51399831c92.png" />
 </div>
 </div>
 <p>The e-type model is very simlar to a kriging model, except for:</p>
@@ -787,7 +788,7 @@ P {X(\bf{ u } <em>{\alpha}) \le x_k } = 1 - \frac{1}{L} \cdot \sum^{L}</em>{\ell
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e23be333c7f37dcbd9da7b673791c24be9be6db3bed403c7025fcf6ed757067b.png" src="_images/e23be333c7f37dcbd9da7b673791c24be9be6db3bed403c7025fcf6ed757067b.png" />
+<img alt="_images/9538024f94c7d806835f8c004f0823ff74b069ec792f98c69ec3f0aa410f10aa.png" src="_images/9538024f94c7d806835f8c004f0823ff74b069ec792f98c69ec3f0aa410f10aa.png" />
 </div>
 </div>
 </section>
@@ -818,7 +819,7 @@ P {X(\bf{ u } <em>{\alpha}) \le x_k } = 1 - \frac{1}{L} \cdot \sum^{L}</em>{\ell
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1c8f483ed0473bc61c7ab020654059398604e79cfd07f89fc79fff7d864a4cd6.png" src="_images/1c8f483ed0473bc61c7ab020654059398604e79cfd07f89fc79fff7d864a4cd6.png" />
+<img alt="_images/8a7f623054db2eef360ec0c0f378e0f545624e1d38ab6a25836b0861267447ce.png" src="_images/8a7f623054db2eef360ec0c0f378e0f545624e1d38ab6a25836b0861267447ce.png" />
 </div>
 </div>
 </section>

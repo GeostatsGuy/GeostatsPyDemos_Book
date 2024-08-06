@@ -422,10 +422,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="spatial-trend-modeling-2d-1d-3d">
+  <section class="tex2jax_ignore mathjax_ignore" id="spatial-trend-modeling-2d-1d-3d">
 <h1>Spatial Trend Modeling, 2D + 1D = 3D<a class="headerlink" href="#spatial-trend-modeling-2d-1d-3d" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -454,9 +451,10 @@ document.write(`
 <li><p>stochastic residual model</p></li>
 </ul>
 <p>Any variance in the [assumed] known trend is removed from the unknown residual:</p>
-<p>\begin{equation}
-\sigma_X^2 = \sigma_{X_t}^2 + \sigma_{X_r}^2 + 2 \cdot C_{X_t,X_r}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma_X^2 = \sigma_{X_t}^2 + \sigma_{X_r}^2 + 2 \cdot C_{X_t,X_r} 
+\]</div>
 <p>If <span class="math notranslate nohighlight">\(\sigma_X^2\)</span> is the total variance (variability), and <span class="math notranslate nohighlight">\(\sigma_{X_t}^2\)</span> is the variability that is a deterministic trend model, treated as known, and <span class="math notranslate nohighlight">\(\sigma_{X_r}^2\)</span>  is the component of the variability that is treated as an unknown, stochastic residual.</p>
 <p>Result: the more variability explained by the trend the less variability that remains as uncertain.</p>
 </section>
@@ -497,9 +495,10 @@ document.write(`
 <li><p>Calculate the 1D vertical trend by averaging layers</p></li>
 <li><p>Combine the 1D vertical and the 2D areal trends:</p></li>
 </ul>
-<p>\begin{equation}
-\overline{Z}(\bf{𝐮}<em>{x},\bf{𝐮}</em>{y},\bf{𝐮}<em>{z}) = \overline{Z}(\bf{𝐮}</em>{z}) \cdot \frac{\overline{Z}(\bf{𝐮}<em>{x},\bf{𝐮}</em>{y})}{\overline{Z}}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y},\bf{𝐮}_{z}) = \overline{Z}(\bf{𝐮}_{z}) \cdot \frac{\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y})}{\overline{Z}}
+\]</div>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -558,7 +557,7 @@ document.write(`
     <span class="n">plotter</span><span class="o">.</span><span class="n">set_scale</span><span class="p">(</span><span class="n">zscale</span><span class="o">=</span><span class="n">zscalefactor</span><span class="p">)</span>
     <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">screenshot</span><span class="o">=</span><span class="s1">&#39;airplane.png&#39;</span><span class="p">)</span>
     
-    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">plotter</span><span class="o">.</span><span class="n">image</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">plotter</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -628,9 +627,10 @@ document.write(`
 <section id="calculate-the-3d-trend-overline-z-bf-u-x-bf-u-y-bf-u-z">
 <h2>Calculate the 3D Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y},\bf{𝐮}_{z})\)</span><a class="headerlink" href="#calculate-the-3d-trend-overline-z-bf-u-x-bf-u-y-bf-u-z" title="Permalink to this heading">#</a></h2>
 <p>Combine the 2D areal trend, 1D vertical trend and global mean to calculate the 3D trend model.</p>
-<p>\begin{equation}
-\overline{Z}(\bf{𝐮}<em>{x},\bf{𝐮}</em>{y},\bf{𝐮}<em>{z}) = \overline{Z}(\bf{𝐮}</em>{z}) \cdot \frac{\overline{Z}(\bf{𝐮}<em>{x},\bf{𝐮}</em>{y})}{\overline{Z}}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y},\bf{𝐮}_{z}) = \overline{Z}(\bf{𝐮}_{z}) \cdot \frac{\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y})}{\overline{Z}}
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lithium_3D_trend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">nz</span><span class="p">])</span>
@@ -652,17 +652,14 @@ document.write(`
 <span class="n">zscalefactor</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">opacity</span> <span class="o">=</span> <span class="mf">1.0</span>    
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
-<span class="n">fence_diagram</span><span class="p">(</span><span class="n">lithium_3D_trend</span><span class="p">,</span><span class="n">xsections</span><span class="p">,</span><span class="n">ysections</span><span class="p">,</span><span class="n">zscalefactor</span><span class="p">)</span>
+<span class="n">fence_diagram</span><span class="p">(</span><span class="n">lithium_3D_trend</span><span class="p">,</span><span class="n">xsections</span><span class="p">,</span><span class="n">ysections</span><span class="p">,</span><span class="n">zscalefactor</span><span class="p">);</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">6.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/34b612d435afa90cea1b46de9f1b08d11c411d05e1c0b19957a304816134bb12.png" src="_images/34b612d435afa90cea1b46de9f1b08d11c411d05e1c0b19957a304816134bb12.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
-</pre></div>
-</div>
+<img alt="_images/6b66f261d45dbcb23282437c46705758ba587b74425eb1a48915a47c942fe9b8.png" src="_images/6b66f261d45dbcb23282437c46705758ba587b74425eb1a48915a47c942fe9b8.png" />
 </div>
 </div>
 </section>

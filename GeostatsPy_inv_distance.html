@@ -440,30 +440,35 @@ document.write(`
 <p>Consider the case of making an estimate at some unsampled location, <span class="math notranslate nohighlight">\(𝑧(\bf{u}_0)\)</span>, where <span class="math notranslate nohighlight">\(z\)</span> is the property of interest (e.g. porosity etc.) and <span class="math notranslate nohighlight">\(𝐮_0\)</span> is a location vector describing the unsampled location.</p>
 <p>How would you do this given data, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_1)\)</span>, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_2)\)</span>, and <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_3)\)</span>?</p>
 <p>It would be natural to use a set of linear weights to formulate the estimator given the available data.</p>
-<p>\begin{equation}
-z^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} z(\bf{u}_{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha})
+\]</div>
 <p>We could add an unbiasedness constraint to impose the sum of the weights equal to one.  What we will do is assign the remainder of the weight (one minus the sum of weights) to the global average; therefore, if we have no informative data we will estimate with the global average of the property of interest.</p>
-<p>\begin{equation}
-z^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} z(\bf{u}<em>{\alpha}) + \left(1-\sum^{n}</em>{\alpha = 1} \lambda_{\alpha} \right) \overline{z}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha}) + \left(1-\sum^{n}_{\alpha = 1} \lambda_{\alpha} \right) \overline{z}
+\]</div>
 <p>We will make a stationarity assumption, so let’s assume that we are working with residuals, <span class="math notranslate nohighlight">\(y\)</span>.</p>
-<p>\begin{equation}
-y^{<em>}(\bf{u}) = z^{</em>}(\bf{u}) - \overline{z}(\bf{u})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = z^{*}(\bf{u}) - \overline{z}(\bf{u})
+\]</div>
 <p>If we substitute this form into our estimator the estimator simplifies, since the mean of the residual is zero.</p>
-<p>\begin{equation}
-y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
+\]</div>
 <p>while satisfying the unbaisedness constraint.</p>
 </section>
 <section id="id1">
 <h3>Inverse Distance<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p>Now the next question is what weights should we use?</p>
 <p>We could use inverse distance weighting,</p>
-<p>\begin{equation}
-\lambda_{\alpha} = \frac{1}{(d_{\bf{u }<em>0,\bf{u }</em>{\alpha}})^p}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\lambda_{\alpha} = \frac{1}{(d_{\bf{u }_0,\bf{u }_{\alpha}})^p} 
+\]</div>
 <p><span class="math notranslate nohighlight">\(\forall \alpha = 1,\ldots,n\)</span>, where <span class="math notranslate nohighlight">\(\bf{u }_{\alpha}\)</span> is the data locations, <span class="math notranslate nohighlight">\(\bf{u }_0\)</span> is the unknown location and there are <span class="math notranslate nohighlight">\(n\)</span> local data available to support the estimate. <span class="math notranslate nohighlight">\(p\)</span> is the power exponent.</p>
 <ul class="simple">
 <li><p>larger <span class="math notranslate nohighlight">\(p\)</span> will increase sensitivity to distance resulting a more specific, rougher model, with higher variance</p></li>
@@ -621,7 +626,9 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">200</span><span class="p">];</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">700</span><span class="p">,</span><span class="mi">800</span><span class="p">];</span> <span class="n">vr</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">]</span>      <span class="c1"># 3 data test dataset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display                                                                
+
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">800</span><span class="p">,</span><span class="mi">200</span><span class="p">];</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">700</span><span class="p">,</span><span class="mi">800</span><span class="p">];</span> <span class="n">vr</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">]</span>      <span class="c1"># 3 data test dataset</span>
 <span class="n">dftest</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;X&#39;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">:</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;Var&#39;</span><span class="p">:</span><span class="n">vr</span><span class="p">})</span>
 <span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9999.9</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mf">9999.9</span><span class="p">;</span>                                <span class="c1"># data trimming limits</span>
 <span class="n">nx</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">xsiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">xmn</span> <span class="o">=</span> <span class="mi">500</span>                                <span class="c1"># test grid specification, single node</span>
@@ -635,13 +642,6 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   1 blocks 
-      average   2.134725728712585  variance  0.0
-The single estimate at x = 500, y = 500 is 2.134725728712585.
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="build-a-estimation-map">
@@ -652,7 +652,9 @@ The single estimate at x = 500, y = 500 is 2.134725728712585.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">xsiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">xmn</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">xmin</span> <span class="o">=</span> <span class="n">xmn</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">xsiz</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">nx</span> <span class="o">*</span> <span class="n">xsiz</span> <span class="c1"># test grid specification</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display                                                                
+
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">xsiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">xmn</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">xmin</span> <span class="o">=</span> <span class="n">xmn</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">xsiz</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">nx</span> <span class="o">*</span> <span class="n">xsiz</span> <span class="c1"># test grid specification</span>
 <span class="n">ny</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ysiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">ymn</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">ymin</span> <span class="o">=</span> <span class="n">ymn</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ysiz</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="n">ny</span> <span class="o">*</span> <span class="n">ysiz</span>
 
 <span class="n">radius</span> <span class="o">=</span> <span class="mf">10000.0</span>                                              <span class="c1"># inverse distance parameter</span>
@@ -677,18 +679,6 @@ The single estimate at x = 500, y = 500 is 2.134725728712585.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
-      average   2.532455393458929  variance  0.18340405133368787
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
-      average   2.540655163474144  variance  0.48174263762656544
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
-      average   2.535517959633495  variance  0.6760091975889555
-</pre></div>
-</div>
 <img alt="_images/6a970f760068fe35c222f9e9d3fabbefdea0c32b8f7753c216d97bed0c744786.png" src="_images/6a970f760068fe35c222f9e9d3fabbefdea0c32b8f7753c216d97bed0c744786.png" />
 </div>
 </div>
@@ -701,7 +691,9 @@ The single estimate at x = 500, y = 500 is 2.134725728712585.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">power</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display                                                                
+
+<span class="n">power</span> <span class="o">=</span> <span class="mi">2</span>
 
 <span class="n">invdist_map_radius1</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">invdist</span><span class="p">(</span><span class="n">dftest</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span><span class="n">power</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">invdist_map_radius2</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">invdist</span><span class="p">(</span><span class="n">dftest</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span><span class="n">power</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
@@ -723,18 +715,6 @@ The single estimate at x = 500, y = 500 is 2.134725728712585.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   1264 blocks 
-      average   2.3595226602040476  variance  1.5111409717868884
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   9760 blocks 
-      average   1.635250518790361  variance  0.42792372814832147
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
-      average   2.540655163474144  variance  0.48174263762656544
-</pre></div>
-</div>
 <img alt="_images/200a2779087637e7cabba5fbd59fee10beea877c7b74eac06d8b259457294a82.png" src="_images/200a2779087637e7cabba5fbd59fee10beea877c7b74eac06d8b259457294a82.png" />
 </div>
 </div>
@@ -769,7 +749,9 @@ The single estimate at x = 500, y = 500 is 2.134725728712585.
 <p>Vary the radius and power below and build the inverse distance porosity map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">radius</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">power</span> <span class="o">=</span> <span class="mi">2</span>                                      <span class="c1"># radius and power for inverse distance</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display                                                                
+
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">power</span> <span class="o">=</span> <span class="mi">2</span>                                      <span class="c1"># radius and power for inverse distance</span>
 
 <span class="n">invdist_map_porosity</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">invdist</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="n">power</span><span class="p">)</span>
 
@@ -782,10 +764,6 @@ The single estimate at x = 500, y = 500 is 2.134725728712585.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
-      average   0.12259183265615498  variance  0.0005453275015534012
-</pre></div>
-</div>
 <img alt="_images/ec8a5e9a09ee0bf382bcfc72cfb8e1b8509815acdbe784ff6bc037a7373270aa.png" src="_images/ec8a5e9a09ee0bf382bcfc72cfb8e1b8509815acdbe784ff6bc037a7373270aa.png" />
 </div>
 </div>

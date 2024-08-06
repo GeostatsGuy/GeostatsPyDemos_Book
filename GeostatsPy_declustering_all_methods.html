@@ -432,10 +432,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="declustering-to-correct-sampling-bias-cell-based-polygonal-and-kriging-based">
+  <section class="tex2jax_ignore mathjax_ignore" id="declustering-to-correct-sampling-bias-cell-based-polygonal-and-kriging-based">
 <h1>Declustering to Correct Sampling Bias, Cell-based, Polygonal, and Kriging-based<a class="headerlink" href="#declustering-to-correct-sampling-bias-cell-based-polygonal-and-kriging-based" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -504,9 +501,10 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 <h3>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h3>
 <p>Place a cell mesh over the data and share the weight over each cell. Data in densely sampled areas or volumes will get less weight while data in sparsely sampled areas or volumes will get more weight.</p>
 <p>Cell-based declustering weights are calculated by first identifying the cell that the data occupies, <span class="math notranslate nohighlight">\(\ell\)</span>, then,</p>
-<p>\begin{equation}
-w(\bf{𝐮}<em>j) = \frac{1}{n</em>{\ell}} \cdot \frac{n}{L_o}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(n_{\ell}\)</span> is the number of data in the <span class="math notranslate nohighlight">\(\ell\)</span> cell standardized by the ratio of <span class="math notranslate nohighlight">\(n\)</span> is the total number of data divided by <span class="math notranslate nohighlight">\(L_o\)</span> number of cells with data. As a result the sum of all weights is <span class="math notranslate nohighlight">\(n\)</span> and nominal weight is 1.0.</p>
 <p>Additional considerations:</p>
 <ul class="simple">
@@ -518,9 +516,10 @@ w(\bf{𝐮}<em>j) = \frac{1}{n</em>{\ell}} \cdot \frac{n}{L_o}
 <section id="polygonal-based-declustering">
 <h3>Polygonal-based Declustering<a class="headerlink" href="#polygonal-based-declustering" title="Permalink to this heading">#</a></h3>
 <p>Assign Voronoi poloygons to the data within the area or volume of interest. Then apply data weights proportional to the area or volume of the associated Voronoi polygon and standardized by the totol area or volume.</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 w(\bf{𝐮}_j) = \frac{a_j}{A} \cdot n
-\end{equation}</p>
+\]</div>
 <p>Additional considerations:</p>
 <ul class="simple">
 <li><p>this method is very sensitive to the area or volume boundary</p></li>
@@ -529,9 +528,10 @@ w(\bf{𝐮}_j) = \frac{a_j}{A} \cdot n
 <section id="kriging-based-declustering">
 <h3>Kriging-based Declustering<a class="headerlink" href="#kriging-based-declustering" title="Permalink to this heading">#</a></h3>
 <p>Assign a grid over the area or volume of interest and perform kriging. While performing kriging, sum the weight assigned to each data over all the grid cells. Assign declustering weights as the sum of kriging weights standardized by the total number of data divided by the total kriging weight over all data and grid cells.</p>
-<p>\begin{equation}
-w(\bf{𝐮}<em>j) = \sum</em>{i_y = 1}^{n_y} \sum_{i_x = 1}^{n_x} \lambda_{j,ix,iy} \cdot \frac{n}{\sum \lambda}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+w(\bf{𝐮}_j) = \sum_{i_y = 1}^{n_y} \sum_{i_x = 1}^{n_x} \lambda_{j,ix,iy} \cdot \frac{n}{\sum \lambda}
+\]</div>
 <p>Additional considerations:</p>
 <ul class="simple">
 <li><p>this method is sensitive to the grid extends and integrates the concept of spatial continuity through the variogram.</p></li>

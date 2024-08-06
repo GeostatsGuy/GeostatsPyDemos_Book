@@ -434,10 +434,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="trend-modeling">
+  <section class="tex2jax_ignore mathjax_ignore" id="trend-modeling">
 <h1>Trend Modeling<a class="headerlink" href="#trend-modeling" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -471,47 +468,55 @@ document.write(`
 <ol class="arabic simple">
 <li><p>model trend consistent with data and intepretation at all locations within the area of itnerest, integrate all available information and expertise.</p></li>
 </ol>
-<p>\begin{equation}
-m(\bf{u}_\beta), , \forall , \beta \in , AOI
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+m(\bf{u}_\beta), \, \forall \, \beta \in \, AOI
+\]</div>
 <ol class="arabic simple" start="2">
 <li><p>substract trend from data at the <span class="math notranslate nohighlight">\(n\)</span> data locations to formulate a residual at the data locations.</p></li>
 </ol>
-<p>\begin{equation}
-y(\bf{u}<em>{\alpha}) = z(\bf{u}</em>{\alpha}) - m(\bf{u}_{\alpha}), , \forall , \alpha = 1, \ldots, n
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+y(\bf{u}_{\alpha}) = z(\bf{u}_{\alpha}) - m(\bf{u}_{\alpha}), \, \forall \, \alpha = 1, \ldots, n
+\]</div>
 <ol class="arabic simple" start="3">
 <li><p>characterize the statistical behavoir of the residual <span class="math notranslate nohighlight">\(y(\bf{u}_{\alpha})\)</span> integrating any information sources and interpretations.  For example the global cumulative distribution function and a measure of spatial continuity shown here.</p></li>
 </ol>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 F_y(y) \quad \gamma_y(\bf{h})
-\end{equation}</p>
+\]</div>
 <ol class="arabic simple" start="4">
 <li><p>model the residual at all locations with <span class="math notranslate nohighlight">\(L\)</span> multiple realizations.</p></li>
 </ol>
-<p>\begin{equation}
-Y^\ell(\bf{u}_\beta),  , \forall , \beta , \in , AOI; , \ell = 1, \ldots, L
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+Y^\ell(\bf{u}_\beta),  \, \forall \, \beta \, \in \, AOI; \, \ell = 1, \ldots, L
+\]</div>
 <ol class="arabic simple" start="5">
 <li><p>add the trend back in to the stochastic residual realizations to calculate the multiple realizations, <span class="math notranslate nohighlight">\(L\)</span>, of the property of interest based on the composite model of known deterministic trend, <span class="math notranslate nohighlight">\(m(\bf{u}_\alpha)\)</span> and unknown stochastic residual, <span class="math notranslate nohighlight">\(y(\bf{u}_\alpha)\)</span></p></li>
 </ol>
-<p>\begin{equation}
-Z^\ell(\bf{u}<em>\beta) = Y^\ell(\bf{u}</em>\beta) + m(\bf{u}_\beta),  , \forall , \beta \in , AOI; , \ell = 1, \ldots, L
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+Z^\ell(\bf{u}_\beta) = Y^\ell(\bf{u}_\beta) + m(\bf{u}_\beta),  \, \forall \, \beta \in \, AOI; \, \ell = 1, \ldots, L
+\]</div>
 <ol class="arabic simple" start="6">
 <li><p>check the model, including quantification of the proportion of variance treated as known (trend) and unknown (residual).</p></li>
 </ol>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \sigma^2_{Z} = \sigma^2_{Y} + \sigma^2_{m} + 2 \cdot C_{Y,m}
-\end{equation}</p>
+\]</div>
 <p>given <span class="math notranslate nohighlight">\(C_{Y,m} \to 0\)</span>:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \sigma^2_{Z} = \sigma^2_{Y} + \sigma^2_{m}
-\end{equation}</p>
+\]</div>
 <p>I can now describe the proportion of variance allocated to known and unknown components as follows:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 Prop_{Known} = \frac{\sigma^2_{m}}{\sigma^2_{Y} + \sigma^2_{m}} \quad Prop_{Unknown} = \frac{\sigma^2_{Y}}{\sigma^2_{Y} + \sigma^2_{m}}
-\end{equation}</p>
+\]</div>
 <p>I provide some practical, data-driven methods for trend model, but I should indicate that:</p>
 <ol class="arabic simple">
 <li><p>trend modeling is very important in reservoir modeling as it has large impact on local model accuracy and on the undertainty model</p></li>
@@ -524,21 +529,25 @@ Prop_{Known} = \frac{\sigma^2_{m}}{\sigma^2_{Y} + \sigma^2_{m}} \quad Prop_{Unkn
 <p>Consider the case of making an estimate at some unsampled location, <span class="math notranslate nohighlight">\(𝑧(\bf{u}_0)\)</span>, where <span class="math notranslate nohighlight">\(z\)</span> is the property of interest (e.g. porosity etc.) and <span class="math notranslate nohighlight">\(𝐮_0\)</span> is a location vector describing the unsampled location.</p>
 <p>How would you do this given data, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_1)\)</span>, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_2)\)</span>, and <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_3)\)</span>?</p>
 <p>It would be natural to use a set of linear weights to formulate the estimator given the available data.</p>
-<p>\begin{equation}
-z^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} z(\bf{u}_{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha})
+\]</div>
 <p>We could add an unbiasedness constraint to impose the sum of the weights equal to one.  What we will do is assign the remainder of the weight (one minus the sum of weights) to the global average; therefore, if we have no informative data we will estimate with the global average of the property of interest.</p>
-<p>\begin{equation}
-z^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} z(\bf{u}<em>{\alpha}) + \left(1-\sum^{n}</em>{\alpha = 1} \lambda_{\alpha} \right) \overline{z}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha}) + \left(1-\sum^{n}_{\alpha = 1} \lambda_{\alpha} \right) \overline{z}
+\]</div>
 <p>We will make a stationarity assumption, so let’s assume that we are working with residuals, <span class="math notranslate nohighlight">\(y\)</span>.</p>
-<p>\begin{equation}
-y^{<em>}(\bf{u}) = z^{</em>}(\bf{u}) - \overline{z}(\bf{u})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = z^{*}(\bf{u}) - \overline{z}(\bf{u})
+\]</div>
 <p>If we substitute this form into our estimator the estimator simplifies, since the mean of the residual is zero.</p>
-<p>\begin{equation}
-y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
+\]</div>
 <p>while satisfying the unbaisedness constraint.</p>
 </section>
 <section id="kriging">
@@ -552,9 +561,10 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <li><p><strong>closeness</strong> the degree of spatial continuity between the avaiable data and the estimation location</p></li>
 </ul>
 <p>The kriging approach accomplishes this, calculating the best linear unbiased weights for the local data to estimate at the unknown location.  The derivation of the kriging system and the resulting linear set of equations is available in the lecture notes.  Furthermore kriging provides a measure of the accuracy of the estimate!  This is the kriging estimation variance (sometimes just called the kriging variance).</p>
-<p>\begin{equation}
-\sigma^{2}<em>{E}(\bf{u}) = C(0) - \sum^{n}</em>{\alpha = 1} \lambda_{\alpha} C(\bf{u}<em>0 - \bf{u}</em>{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^{2}_{E}(\bf{u}) = C(0) - \sum^{n}_{\alpha = 1} \lambda_{\alpha} C(\bf{u}_0 - \bf{u}_{\alpha})
+\]</div>
 <p>What is ‘best’ about this estimate? Kriging estimates are best in that they minimize the above estimation variance.</p>
 </section>
 <section id="properties-of-kriging">
@@ -1312,7 +1322,9 @@ Proportion Residual / Unknown:     0.516
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ktype</span> <span class="o">=</span> <span class="mi">0</span>                                  <span class="c1"># kriging type, 0 - simple, 1 - ordinary</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display     
+
+<span class="n">ktype</span> <span class="o">=</span> <span class="mi">0</span>                                  <span class="c1"># kriging type, 0 - simple, 1 - ordinary</span>
 <span class="n">radius</span> <span class="o">=</span> <span class="mi">300</span>                               <span class="c1"># search radius for neighbouring data</span>
 <span class="n">nxdis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">nydis</span> <span class="o">=</span> <span class="mi">1</span>                       <span class="c1"># number of grid discretizations for block kriging (not tested)</span>
 <span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">40</span>                      <span class="c1"># minimum and maximum data for an estimate</span>
@@ -1323,15 +1335,6 @@ Proportion Residual / Unknown:     0.516
          <span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="n">ktype</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="n">res_vario</span><span class="p">)</span>
 
 <span class="n">por_model</span> <span class="o">=</span> <span class="n">porosity_trend</span> <span class="o">+</span> <span class="n">res_kmap</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Black -Color-Black-BGRed"> make_variogram Warning: sill does not sum to 1.0, do not use in simulation </span>
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
-      average   -0.008288107799671018  variance  0.0003921689112324544
 </pre></div>
 </div>
 </div>
@@ -1366,7 +1369,9 @@ Proportion Residual / Unknown:     0.516
 <p>We add a new kriged map, simple kriging with the declustered porosity average.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display     
+
+<span class="n">run</span> <span class="o">=</span> <span class="kc">True</span>
 
 <span class="n">vrange</span> <span class="o">=</span> <span class="mf">80.0</span>
 <span class="n">por_vario</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="n">var_resid</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">vrange</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">vrange</span><span class="p">)</span> <span class="c1"># variogram</span>
@@ -1396,26 +1401,7 @@ Proportion Residual / Unknown:     0.516
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Black -Color-Black-BGRed"> make_variogram Warning: sill does not sum to 1.0, do not use in simulation </span>
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">por_kmap</span><span class="p">,</span> <span class="n">por_vmap</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">kb2d</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">nxdis</span><span class="p">,</span><span class="n">nydis</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>          <span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="n">ktype</span><span class="p">,</span><span class="n">wavg_por</span><span class="p">,</span><span class="n">por_vario</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_kmap</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span>                 <span class="s1">&#39;Kriged Model - No Trend / Stationary Mean&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>                 <span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_model</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>                 <span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity Trend + Kriged Residual&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">seismic</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;por_kmap&#39; is not defined
-</pre></div>
-</div>
-<img alt="_images/3a7dc027e3b839e7a30b4de37416032a24f36d8404632f4db0fd3c5a74383651.png" src="_images/3a7dc027e3b839e7a30b4de37416032a24f36d8404632f4db0fd3c5a74383651.png" />
+<img alt="_images/0e9fdb501634f5cf7022fe4b48fe0e1f07a0dac77cb90bd7645e936e4e0ab411.png" src="_images/0e9fdb501634f5cf7022fe4b48fe0e1f07a0dac77cb90bd7645e936e4e0ab411.png" />
 </div>
 </div>
 <p>See how the simple kriging with stationary mean model approaches the global mean away from the data, while the trend + residual kriging approaches the trend model away from the data.</p>

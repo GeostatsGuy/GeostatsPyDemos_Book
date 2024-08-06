@@ -424,10 +424,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section class="tex2jax_ignore mathjax_ignore" id="kriging-vs-simulation-1d">
+  <section class="tex2jax_ignore mathjax_ignore" id="kriging-vs-simulation-1d">
 <h1>Kriging vs. Simulation, 1D<a class="headerlink" href="#kriging-vs-simulation-1d" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
@@ -465,21 +462,25 @@ document.write(`
 <p>Consider the case of making an estimate at some unsampled location, <span class="math notranslate nohighlight">\(𝑧(\bf{u}_0)\)</span>, where <span class="math notranslate nohighlight">\(z\)</span> is the property of interest (e.g. porosity etc.) and <span class="math notranslate nohighlight">\(𝐮_0\)</span> is a location vector describing the unsampled location.</p>
 <p>How would you do this given data, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_1)\)</span>, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_2)\)</span>, and <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_3)\)</span>?</p>
 <p>It would be natural to use a set of linear weights to formulate the estimator given the available data.</p>
-<p>\begin{equation}
-z^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} z(\bf{u}_{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha})
+\]</div>
 <p>We could add an unbiasedness constraint to impose the sum of the weights equal to one.  What we will do is assign the remainder of the weight (one minus the sum of weights) to the global average; therefore, if we have no informative data we will estimate with the global average of the property of interest.</p>
-<p>\begin{equation}
-z^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} z(\bf{u}<em>{\alpha}) + \left(1-\sum^{n}</em>{\alpha = 1} \lambda_{\alpha} \right) \overline{z}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha}) + \left(1-\sum^{n}_{\alpha = 1} \lambda_{\alpha} \right) \overline{z}
+\]</div>
 <p>We will make a stationarity assumption, so let’s assume that we are working with residuals, <span class="math notranslate nohighlight">\(y\)</span>.</p>
-<p>\begin{equation}
-y^{<em>}(\bf{u}) = z^{</em>}(\bf{u}) - \overline{z}(\bf{u})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = z^{*}(\bf{u}) - \overline{z}(\bf{u})
+\]</div>
 <p>If we substitute this form into our estimator the estimator simplifies, since the mean of the residual is zero.</p>
-<p>\begin{equation}
-y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
+\]</div>
 <p>while satisfying the unbaisedness constraint.</p>
 </section>
 <section id="kriging">
@@ -493,9 +494,10 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <li><p><strong>closeness</strong> the degree of spatial continuity between the avaiable data and the estimation location</p></li>
 </ul>
 <p>The kriging approach accomplishes this, calculating the best linear unbiased weights for the local data to estimate at the unknown location.  The derivation of the kriging system and the resulting linear set of equations is available in the lecture notes.  Furthermore kriging provides a measure of the accuracy of the estimate!  This is the kriging estimation variance (sometimes just called the kriging variance).</p>
-<p>\begin{equation}
-\sigma^{2}<em>{E}(\bf{u}) = C(0) - \sum^{n}</em>{\alpha = 1} \lambda_{\alpha} C(\bf{u}<em>0 - \bf{u}</em>{\alpha})
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^{2}_{E}(\bf{u}) = C(0) - \sum^{n}_{\alpha = 1} \lambda_{\alpha} C(\bf{u}_0 - \bf{u}_{\alpha})
+\]</div>
 <p>What is ‘best’ about this estimate? Kriging estimates are best in that they minimize the above estimation variance.</p>
 <section id="properties-of-kriging">
 <h3>Properties of Kriging<a class="headerlink" href="#properties-of-kriging" title="Permalink to this heading">#</a></h3>
@@ -637,14 +639,14 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>-0.485131</td>
-      <td>1066.717377</td>
+      <td>0.399541</td>
+      <td>1149.752294</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>0.111426</td>
-      <td>1120.475486</td>
+      <td>0.498007</td>
+      <td>1023.937388</td>
     </tr>
   </tbody>
 </table>
@@ -710,7 +712,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/67553a7f4a767f30370c3bdd8d52462cde279afe4e23c4767cb6bd369326e142.png" src="_images/67553a7f4a767f30370c3bdd8d52462cde279afe4e23c4767cb6bd369326e142.png" />
+<img alt="_images/cd3738a1018e8eb1e30d9ff13feb05640203eb390f3246e788131097564b4edd.png" src="_images/cd3738a1018e8eb1e30d9ff13feb05640203eb390f3246e788131097564b4edd.png" />
 </div>
 </div>
 </section>
@@ -719,7 +721,9 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <p>We only estimate in 1D along the section and only use the 3 indicated data</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display     
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">grid_spec</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">ncols</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 
 <span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">grid_spec</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
@@ -793,11 +797,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   100 blocks 
-      average   912.7189814814811  variance  2862.607841521618
-</pre></div>
-</div>
-<img alt="_images/3da49540133c5c9c2a38ee53b64936cb111376ce79eb6cf14f3a5544fcc6df62.png" src="_images/3da49540133c5c9c2a38ee53b64936cb111376ce79eb6cf14f3a5544fcc6df62.png" />
+<img alt="_images/e9260f568e6ad55a277d30a7b950a5d0c9c6d9990c3190cc891c71a21c613f47.png" src="_images/e9260f568e6ad55a277d30a7b950a5d0c9c6d9990c3190cc891c71a21c613f47.png" />
 </div>
 </div>
 </section>
@@ -809,7 +809,9 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nreal</span> <span class="o">=</span> <span class="mi">3</span>                                                     <span class="c1"># number of realizations and variogram range</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display     
+
+<span class="n">nreal</span> <span class="o">=</span> <span class="mi">3</span>                                                     <span class="c1"># number of realizations and variogram range</span>
 
 <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">]</span>
 
@@ -895,7 +897,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b0c27d63f1d8e00160766f440e8c18ff646916445356fd43d3256dc0c53fb4b3.png" src="_images/b0c27d63f1d8e00160766f440e8c18ff646916445356fd43d3256dc0c53fb4b3.png" />
+<img alt="_images/787250fa0940a9565fe684392697538f9bfa73d32c76e40cf4a814c813b35ea4.png" src="_images/787250fa0940a9565fe684392697538f9bfa73d32c76e40cf4a814c813b35ea4.png" />
 </div>
 </div>
 </section>
@@ -904,7 +906,9 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <p>Now let’s make a lot of simulated realizations and plot them with the one estimation model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nreal</span> <span class="o">=</span> <span class="mi">50</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display     
+
+<span class="n">nreal</span> <span class="o">=</span> <span class="mi">50</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">grid_spec</span> <span class="o">=</span> <span class="n">gridspec</span><span class="o">.</span><span class="n">GridSpec</span><span class="p">(</span><span class="n">ncols</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -965,7 +969,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/22a0ff8a4a8fc8fb58ae88f5551c43d3ac32190bc7e5045a6fbcf13ce6617794.png" src="_images/22a0ff8a4a8fc8fb58ae88f5551c43d3ac32190bc7e5045a6fbcf13ce6617794.png" />
+<img alt="_images/60b9caf6021451e79cbc5ab84bdab9bf37b08e200c2c5bbb7d5020f3105f0312.png" src="_images/60b9caf6021451e79cbc5ab84bdab9bf37b08e200c2c5bbb7d5020f3105f0312.png" />
 </div>
 </div>
 </section>
