@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>GeostatsPy Well-documented Demonstration Workflows &#8212; My sample book</title>
+    <title>Spatial Trend Modeling, 2D + 1D = 3D &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
   
   
   
@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_2D1D_trend';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_bootstrap.html" />
-    <link rel="prev" title="GeostatsPy Well-documented Demonstration Workflows" href="intro.html" />
+    <link rel="next" title="Inverse Distance" href="GeostatsPy_inv_distance.html" />
+    <link rel="prev" title="Trend Modeling" href="GeostatsPy_trends.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,8 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
   
   
 </a></div>
@@ -166,12 +166,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    GeostatsPy Well-documented Demonstration Workflows
+                    e-Book Introduction
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spatial Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
@@ -180,9 +180,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Spatial Trend Modeling, 1D + 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 </ul>
 
     </div>
@@ -237,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -254,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_2D1D_trend.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_2D1D_trend.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>GeostatsPy Well-documented Demonstration Workflows</h1>
+    <h1>Spatial Trend Modeling, 2D + 1D = 3D</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,26 +388,23 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-1d-analysis-for-3d-trend-modeling">2D + 1D Analysis for 3D Trend Modeling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-modeling">Trend Modeling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministic-trend-model">Deterministic Trend Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-residual">Stochastic Residual</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-hybrid-trend-and-stochasatic-residual-modeling-workflow">Common Hybrid Trend and Stochasatic Residual Modeling Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-trend-models">Calculating Trend Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-2d-areal-trend-model-overline-z-bf-u-x-bf-u-y">Load the 2D Areal Trend Model, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y})\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assume-a-1d-vertical-trend-overline-z-bf-u-z">Assume a 1D Vertical Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{z})\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-3d-trend-overline-z-bf-u-x-bf-u-y-bf-u-z">Calculate the 3D Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y},\bf{𝐮}_{z})\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-3d-trend-model">Visualize the 3D Trend Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-modeling">Trend Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministic-trend-model">Deterministic Trend Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-residual">Stochastic Residual</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-hybrid-trend-and-stochasatic-residual-modeling-workflow">Common Hybrid Trend and Stochasatic Residual Modeling Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-trend-models">Calculating Trend Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-2d-areal-trend-model-overline-z-bf-u-x-bf-u-y">Load the 2D Areal Trend Model, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y})\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assume-a-1d-vertical-trend-overline-z-bf-u-z">Assume a 1D Vertical Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{z})\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-3d-trend-overline-z-bf-u-x-bf-u-y-bf-u-z">Calculate the 3D Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y},\bf{𝐮}_{z})\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-3d-trend-model">Visualize the 3D Trend Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -418,20 +425,18 @@ document.write(`
   <p align="center">
     <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
 </p>
-<section id="geostatspy-well-documented-demonstration-workflows">
-<h1>GeostatsPy Well-documented Demonstration Workflows<a class="headerlink" href="#geostatspy-well-documented-demonstration-workflows" title="Permalink to this heading">#</a></h1>
-<section id="d-1d-analysis-for-3d-trend-modeling">
-<h2>2D + 1D Analysis for 3D Trend Modeling<a class="headerlink" href="#d-1d-analysis-for-3d-trend-modeling" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="spatial-trend-modeling-2d-1d-3d">
+<h1>Spatial Trend Modeling, 2D + 1D = 3D<a class="headerlink" href="#spatial-trend-modeling-2d-1d-3d" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
-<h3>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h3>
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
 <section id="twitter-github-website-googlescholar-book-youtube-linkedin">
-<h4><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h4>
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
 <p>This is a tutorial and demonstration of <strong>3D Trend Modeling</strong> with a practical 2D + 1D approach. We assume that the 2D and 1D trends are calculated from data, we load the former and assume a simple function for the latter.</p>
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://www.youtube.com/watch?v=BCnivpSKF18&amp;list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;index=41">Trend Modeling</a>. For convenience here’s a summary of trend modeling.</p>
 </section>
 </section>
 <section id="trend-modeling">
-<h3>Trend Modeling<a class="headerlink" href="#trend-modeling" title="Permalink to this heading">#</a></h3>
+<h2>Trend Modeling<a class="headerlink" href="#trend-modeling" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>We must identify and model trends</p></li>
 <li><p>Trends in model statistics (e.g., mean) are also known as ‘nonstationarities’</p></li>
@@ -456,7 +461,7 @@ document.write(`
 <p>Result: the more variability explained by the trend the less variability that remains as uncertain.</p>
 </section>
 <section id="deterministic-trend-model">
-<h3>Deterministic Trend Model<a class="headerlink" href="#deterministic-trend-model" title="Permalink to this heading">#</a></h3>
+<h2>Deterministic Trend Model<a class="headerlink" href="#deterministic-trend-model" title="Permalink to this heading">#</a></h2>
 <p>Model that assumes perfect knowledge, without uncertainty</p>
 <ul class="simple">
 <li><p>Based on knowledge of the phenomenon or trend fitting to data</p></li>
@@ -464,7 +469,7 @@ document.write(`
 </ul>
 </section>
 <section id="stochastic-residual">
-<h3>Stochastic Residual<a class="headerlink" href="#stochastic-residual" title="Permalink to this heading">#</a></h3>
+<h2>Stochastic Residual<a class="headerlink" href="#stochastic-residual" title="Permalink to this heading">#</a></h2>
 <p>The unknown residual is modeled as a stochastic, statistical model</p>
 <ul class="simple">
 <li><p>Model that integrates uncertainty through the concept of random variables and functions</p></li>
@@ -474,7 +479,7 @@ document.write(`
 <p>Note, more about stochastic, statistical models later this lecture and over the next few lectures.</p>
 </section>
 <section id="common-hybrid-trend-and-stochasatic-residual-modeling-workflow">
-<h3>Common Hybrid Trend and Stochasatic Residual Modeling Workflow<a class="headerlink" href="#common-hybrid-trend-and-stochasatic-residual-modeling-workflow" title="Permalink to this heading">#</a></h3>
+<h2>Common Hybrid Trend and Stochasatic Residual Modeling Workflow<a class="headerlink" href="#common-hybrid-trend-and-stochasatic-residual-modeling-workflow" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Start with spatial data, <span class="math notranslate nohighlight">\(𝑍(\bf{𝐮}_{\alpha}), 𝛼=1,\ldots,𝑛\)</span> data</p></li>
 <li><p>Fit a deterministic trend model to the data to model nonstationarity in the mean, at data <span class="math notranslate nohighlight">\(𝑍_t(\bf{𝐮}_{\alpha})\)</span> and away from data, <span class="math notranslate nohighlight">\(𝑍_t(\bf{𝐮}_{\beta}), \beta=1,\ldots,𝑛_𝑐\)</span> model cells</p></li>
@@ -484,7 +489,7 @@ document.write(`
 </ol>
 </section>
 <section id="calculating-trend-models">
-<h3>Calculating Trend Models<a class="headerlink" href="#calculating-trend-models" title="Permalink to this heading">#</a></h3>
+<h2>Calculating Trend Models<a class="headerlink" href="#calculating-trend-models" title="Permalink to this heading">#</a></h2>
 <p>How to calculate a trend model with sparse data</p>
 <ul class="simple">
 <li><p>Break the problem up into a 1D and 2D trend inference problem and then combine to calculate a reasonable 3D trend</p></li>
@@ -497,11 +502,17 @@ document.write(`
 \end{equation}</p>
 </section>
 <section id="load-the-required-libraries">
-<h3>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h3>
+<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -514,7 +525,7 @@ document.write(`
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h3>Declare functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h3>
+<h2>Declare functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>Here’s a function to help visualize our 3D model with the PyVista python package.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -554,7 +565,7 @@ document.write(`
 </div>
 </section>
 <section id="load-the-2d-areal-trend-model-overline-z-bf-u-x-bf-u-y">
-<h3>Load the 2D Areal Trend Model, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y})\)</span><a class="headerlink" href="#load-the-2d-areal-trend-model-overline-z-bf-u-x-bf-u-y" title="Permalink to this heading">#</a></h3>
+<h2>Load the 2D Areal Trend Model, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y})\)</span><a class="headerlink" href="#load-the-2d-areal-trend-model-overline-z-bf-u-x-bf-u-y" title="Permalink to this heading">#</a></h2>
 <p>We load the 2D trend model from my <a class="reference external" href="https://github.com/GeostatsGuy/GeoDataSets">GeoDataSets</a> repository.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -591,7 +602,7 @@ document.write(`
 </div>
 </section>
 <section id="assume-a-1d-vertical-trend-overline-z-bf-u-z">
-<h3>Assume a 1D Vertical Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{z})\)</span><a class="headerlink" href="#assume-a-1d-vertical-trend-overline-z-bf-u-z" title="Permalink to this heading">#</a></h3>
+<h2>Assume a 1D Vertical Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{z})\)</span><a class="headerlink" href="#assume-a-1d-vertical-trend-overline-z-bf-u-z" title="Permalink to this heading">#</a></h2>
 <p>We assume a simple model with additive linear and periodic components.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -615,7 +626,7 @@ document.write(`
 </div>
 </section>
 <section id="calculate-the-3d-trend-overline-z-bf-u-x-bf-u-y-bf-u-z">
-<h3>Calculate the 3D Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y},\bf{𝐮}_{z})\)</span><a class="headerlink" href="#calculate-the-3d-trend-overline-z-bf-u-x-bf-u-y-bf-u-z" title="Permalink to this heading">#</a></h3>
+<h2>Calculate the 3D Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y},\bf{𝐮}_{z})\)</span><a class="headerlink" href="#calculate-the-3d-trend-overline-z-bf-u-x-bf-u-y-bf-u-z" title="Permalink to this heading">#</a></h2>
 <p>Combine the 2D areal trend, 1D vertical trend and global mean to calculate the 3D trend model.</p>
 <p>\begin{equation}
 \overline{Z}(\bf{𝐮}<em>{x},\bf{𝐮}</em>{y},\bf{𝐮}<em>{z}) = \overline{Z}(\bf{𝐮}</em>{z}) \cdot \frac{\overline{Z}(\bf{𝐮}<em>{x},\bf{𝐮}</em>{y})}{\overline{Z}}
@@ -634,7 +645,7 @@ document.write(`
 </div>
 </section>
 <section id="visualize-the-3d-trend-model">
-<h3>Visualize the 3D Trend Model<a class="headerlink" href="#visualize-the-3d-trend-model" title="Permalink to this heading">#</a></h3>
+<h2>Visualize the 3D Trend Model<a class="headerlink" href="#visualize-the-3d-trend-model" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xsections</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">75</span><span class="p">];</span> <span class="n">ysections</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">75</span><span class="p">]</span>
@@ -656,14 +667,13 @@ document.write(`
 </div>
 </section>
 <section id="comments">
-<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h3>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic demonstration of trend modeling to support 3D model construction. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="the-author">
-<h3>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h3>
-</section>
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="id1">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
@@ -722,20 +732,20 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="GeostatsPy_trends.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+        <p class="prev-next-title">Trend Modeling</p>
       </div>
     </a>
     <a class="right-next"
-       href="GeostatsPy_bootstrap.html"
+       href="GeostatsPy_inv_distance.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+        <p class="prev-next-title">Inverse Distance</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -754,26 +764,23 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-1d-analysis-for-3d-trend-modeling">2D + 1D Analysis for 3D Trend Modeling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-modeling">Trend Modeling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministic-trend-model">Deterministic Trend Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-residual">Stochastic Residual</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#common-hybrid-trend-and-stochasatic-residual-modeling-workflow">Common Hybrid Trend and Stochasatic Residual Modeling Workflow</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-trend-models">Calculating Trend Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-2d-areal-trend-model-overline-z-bf-u-x-bf-u-y">Load the 2D Areal Trend Model, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y})\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assume-a-1d-vertical-trend-overline-z-bf-u-z">Assume a 1D Vertical Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{z})\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-3d-trend-overline-z-bf-u-x-bf-u-y-bf-u-z">Calculate the 3D Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y},\bf{𝐮}_{z})\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-3d-trend-model">Visualize the 3D Trend Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-modeling">Trend Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deterministic-trend-model">Deterministic Trend Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-residual">Stochastic Residual</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-hybrid-trend-and-stochasatic-residual-modeling-workflow">Common Hybrid Trend and Stochasatic Residual Modeling Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-trend-models">Calculating Trend Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-2d-areal-trend-model-overline-z-bf-u-x-bf-u-y">Load the 2D Areal Trend Model, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y})\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assume-a-1d-vertical-trend-overline-z-bf-u-z">Assume a 1D Vertical Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{z})\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-3d-trend-overline-z-bf-u-x-bf-u-y-bf-u-z">Calculate the 3D Trend, <span class="math notranslate nohighlight">\(\overline{Z}(\bf{𝐮}_{x},\bf{𝐮}_{y},\bf{𝐮}_{z})\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-3d-trend-model">Visualize the 3D Trend Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -794,7 +801,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By Michael J. Pyrcz
 </p>
 
   </div>
@@ -804,7 +811,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2024.
       <br/>
     
   </p>

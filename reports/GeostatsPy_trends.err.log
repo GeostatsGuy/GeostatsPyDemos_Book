@@ -1,0 +1,64 @@
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+run = False
+
+vrange = 80.0
+por_vario = GSLIB.make_variogram(nug=0.0,nst=1,it1=1.0,cc1=var_resid,azi1=45,hmaj1=vrange,hmin1=vrange) # variogram
+
+if run == True:
+    por_kmap, por_vmap = geostats.kb2d(df,'X','Y','Porosity',tmin,tmax,nx,xmn,xsiz,ny,ymn,ysiz,nxdis,nydis,
+         ndmin,ndmax,radius,ktype,wavg_por,por_vario)
+
+plt.subplot(131)
+GSLIB.locpix_st(por_kmap,xmin,xmax,ymin,ymax,xsiz,pormin,pormax,df,'X','Y','Porosity',
+                'Kriged Model - No Trend / Stationary Mean','X(m)','Y(m)',
+                'Porosity (fraction)',cmap = plt.cm.seismic)
+
+plt.subplot(132)
+GSLIB.locpix_st(por_model,xmin,xmax,ymin,ymax,xsiz,pormin,pormax,df,'X','Y',
+                'Porosity','Porosity Trend + Kriged Residual','X(m)','Y(m)','Porosity (fraction)',cmap = plt.cm.seismic)
+
+plt.subplot(133)
+plt.scatter(por_kmap.flatten(),por_model.flatten(),s=10,color='black',alpha=0.1,edgecolor='black',zorder=5)
+add_grid(); plt.xlim([pormin,pormax]); plt.ylim([pormin,pormax]); plt.xlabel('Porosity Estimate - No Trend')
+plt.plot([pormin,pormax],[pormin,pormax],color='red',lw=2,zorder=10)
+plt.ylabel('Porosity Estimate - Trend + Residual'); plt.title('Comparison of Trend vs. No Trend Porosity Estimates')
+
+plt.subplots_adjust(left=0.0, bottom=0.0, right=3.0, top=1.1, wspace=0.2, hspace=0.2)
+plt.show()
+------------------
+
+----- stdout -----
+[0;30;41m make_variogram Warning: sill does not sum to 1.0, do not use in simulation [0m
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[26], line 11[0m
+[0;32m      7[0m     por_kmap, por_vmap [38;5;241m=[39m geostats[38;5;241m.[39mkb2d(df,[38;5;124m'[39m[38;5;124mX[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mY[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mPorosity[39m[38;5;124m'[39m,tmin,tmax,nx,xmn,xsiz,ny,ymn,ysiz,nxdis,nydis,
+[0;32m      8[0m          ndmin,ndmax,radius,ktype,wavg_por,por_vario)
+[0;32m     10[0m plt[38;5;241m.[39msubplot([38;5;241m131[39m)
+[1;32m---> 11[0m GSLIB[38;5;241m.[39mlocpix_st([43mpor_kmap[49m,xmin,xmax,ymin,ymax,xsiz,pormin,pormax,df,[38;5;124m'[39m[38;5;124mX[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mY[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mPorosity[39m[38;5;124m'[39m,
+[0;32m     12[0m                 [38;5;124m'[39m[38;5;124mKriged Model - No Trend / Stationary Mean[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mX(m)[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mY(m)[39m[38;5;124m'[39m,
+[0;32m     13[0m                 [38;5;124m'[39m[38;5;124mPorosity (fraction)[39m[38;5;124m'[39m,cmap [38;5;241m=[39m plt[38;5;241m.[39mcm[38;5;241m.[39mseismic)
+[0;32m     15[0m plt[38;5;241m.[39msubplot([38;5;241m132[39m)
+[0;32m     16[0m GSLIB[38;5;241m.[39mlocpix_st(por_model,xmin,xmax,ymin,ymax,xsiz,pormin,pormax,df,[38;5;124m'[39m[38;5;124mX[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mY[39m[38;5;124m'[39m,
+[0;32m     17[0m                 [38;5;124m'[39m[38;5;124mPorosity[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mPorosity Trend + Kriged Residual[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mX(m)[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mY(m)[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mPorosity (fraction)[39m[38;5;124m'[39m,cmap [38;5;241m=[39m plt[38;5;241m.[39mcm[38;5;241m.[39mseismic)
+
+[1;31mNameError[0m: name 'por_kmap' is not defined
+

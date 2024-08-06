@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>GeostatsPy Well-documented Demonstration Workflows &#8212; My sample book</title>
+    <title>Model Checking &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
   
   
   
@@ -65,7 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_model_checking';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_kriging_vs_simulation_maps.html" />
+    <link rel="next" title="Volume Variance Relations for Scaling Statistics" href="GeostatsPy_volume_variance.html" />
+    <link rel="prev" title="Simulation Post-processing" href="GeostatsPy_simulation_postsim.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -152,8 +153,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
   
   
 </a></div>
@@ -163,12 +164,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    GeostatsPy Well-documented Demonstration Workflows
+                    e-Book Introduction
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
@@ -177,9 +178,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 </ul>
 
     </div>
@@ -234,7 +245,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -251,7 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_model_checking.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_model_checking.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -365,7 +376,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>GeostatsPy Well-documented Demonstration Workflows</h1>
+    <h1>Model Checking</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -375,29 +386,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-model-checking">Geostatistical Model Checking</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-spatial-modeling">Spatial Spatial Modeling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-and-colorbars-and-grid-specification">Set Limits for Plotting and Colorbars and Grid Specification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analytics-and-visualization">Data Analytics and Visualization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-example-modeling-sequential-gaussian-simulated-realizations">Build an Example Modeling: Sequential Gaussian Simulated Realizations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-1-visualize-the-spatial-models">Model Check #1: Visualize the Spatial Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-2-data-reproduction">Model Check #2: Data Reproduction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-3-global-distributions-summary-statistics">Model Check #3: Global Distributions - Summary Statistics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-4-global-distributions-pdfs-and-cdfs">Model Check #4: Global Distributions - PDFs and CDFs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-5-spatial-continuity-variograms">Model Check #5: Spatial Continuity - Variograms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-6-local-uncertainty-model-e-type-and-conditional-standard-deviation">Model Check #6: Local Uncertainty Model - e-type and Conditional Standard Deviation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-spatial-modeling">Spatial Spatial Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-and-colorbars-and-grid-specification">Set Limits for Plotting and Colorbars and Grid Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analytics-and-visualization">Data Analytics and Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-example-modeling-sequential-gaussian-simulated-realizations">Build an Example Modeling: Sequential Gaussian Simulated Realizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-1-visualize-the-spatial-models">Model Check #1: Visualize the Spatial Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-2-data-reproduction">Model Check #2: Data Reproduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-3-global-distributions-summary-statistics">Model Check #3: Global Distributions - Summary Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-4-global-distributions-pdfs-and-cdfs">Model Check #4: Global Distributions - PDFs and CDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-5-spatial-continuity-variograms">Model Check #5: Spatial Continuity - Variograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-6-local-uncertainty-model-e-type-and-conditional-standard-deviation">Model Check #6: Local Uncertainty Model - e-type and Conditional Standard Deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -418,14 +426,12 @@ document.write(`
   <p align="center">
     <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
 </p>
-<section id="geostatspy-well-documented-demonstration-workflows">
-<h1>GeostatsPy Well-documented Demonstration Workflows<a class="headerlink" href="#geostatspy-well-documented-demonstration-workflows" title="Permalink to this heading">#</a></h1>
-<section id="geostatistical-model-checking">
-<h2>Geostatistical Model Checking<a class="headerlink" href="#geostatistical-model-checking" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="model-checking">
+<h1>Model Checking<a class="headerlink" href="#model-checking" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
-<h3>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h3>
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
 <section id="twitter-github-website-googlescholar-book-youtube-linkedin">
-<h4><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h4>
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
 <p>This is a tutorial for / demonstration of <strong>Model Checking</strong> with GeostatsPy.</p>
 <p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
 <ul class="simple">
@@ -438,7 +444,7 @@ document.write(`
 </section>
 </section>
 <section id="spatial-spatial-modeling">
-<h3>Spatial Spatial Modeling<a class="headerlink" href="#spatial-spatial-modeling" title="Permalink to this heading">#</a></h3>
+<h2>Spatial Spatial Modeling<a class="headerlink" href="#spatial-spatial-modeling" title="Permalink to this heading">#</a></h2>
 <p>There are a variety of spatial data analytics / geostatistics methods for estimation and simulation of spatial phenomenon. I cover many of these methods in my courses, lectures and demonstration workflows available on YouTube and GitHub.For example:</p>
 <p>Yet, when we calculate these spatial deterministic estimates or stochastic realizations we must check these models. Here I provide a Python demonstration of spatial model checking inspired by the work of Leuangthong et al. (2004) known as <a class="reference external" href="https://link.springer.com/article/10.1023/B:NARR.0000046916.91703.bb">Minimum Acceptance Criteria for Geostatistical Realizations</a>.</p>
 <p>I simulate a set of realizations for a publically available <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data_MV_biased.csv">dataset</a> from my GitHub account and include codes and good displays for each of the following checks:</p>
@@ -458,7 +464,7 @@ document.write(`
 <p>I have attempted to balance the need for a simple introduction for my students and others.</p>
 </section>
 <section id="load-the-required-libraries">
-<h3>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h3>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -478,10 +484,15 @@ document.write(`
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
-<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -497,25 +508,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>                                       <span class="c1"># summary statistics</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># trig etc.</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;seaborn&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h3>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h3>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>Here’s a convenience function for plotting variograms and calculating local summaries over realizations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -541,7 +538,7 @@ document.write(`
 </div>
 </section>
 <section id="set-the-working-directory">
-<h3>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h3>
+<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).  Also, in this case make sure to place the required (see above) GSLIB executables in this directory or a location identified in the environmental variable <em>Path</em>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -552,7 +549,7 @@ document.write(`
 </div>
 </section>
 <section id="loading-tabular-data">
-<h3>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h3>
+<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object. We will also extra a limited sample so that the spatial samples are not too dense.  This way we can observe more of the heterogeneity from the simulation with the spatial continuity model, rather than mostly data driven heterogeneity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -645,7 +642,7 @@ document.write(`
 </div>
 </section>
 <section id="set-limits-for-plotting-and-colorbars-and-grid-specification">
-<h3>Set Limits for Plotting and Colorbars and Grid Specification<a class="headerlink" href="#set-limits-for-plotting-and-colorbars-and-grid-specification" title="Permalink to this heading">#</a></h3>
+<h2>Set Limits for Plotting and Colorbars and Grid Specification<a class="headerlink" href="#set-limits-for-plotting-and-colorbars-and-grid-specification" title="Permalink to this heading">#</a></h2>
 <p>Limits are applied for data and model visualization and the grid parameters sets the coverage and resolution of our map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -665,7 +662,7 @@ document.write(`
 </div>
 </section>
 <section id="data-analytics-and-visualization">
-<h3>Data Analytics and Visualization<a class="headerlink" href="#data-analytics-and-visualization" title="Permalink to this heading">#</a></h3>
+<h2>Data Analytics and Visualization<a class="headerlink" href="#data-analytics-and-visualization" title="Permalink to this heading">#</a></h2>
 <p>Let’s take a look at the available data:</p>
 <ul class="simple">
 <li><p>location map</p></li>
@@ -707,15 +704,17 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x,y,z offsets = 7.071067805519558,7.071067818211393
- x,y,z offsets = 7.071067830903227,-7.071067792827723
 </pre></div>
 </div>
-<img alt="_images/1092b6f0961fcc767b1509fb84d1ffeba015701a9c0011bf358dda2b591dcf57.png" src="_images/1092b6f0961fcc767b1509fb84d1ffeba015701a9c0011bf358dda2b591dcf57.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x,y,z offsets = 7.071067830903227,-7.071067792827723
+</pre></div>
+</div>
+<img alt="_images/e6a731d5b338ef4073a1669c8a147c430900f021178032c5ff113184931af8bf.png" src="_images/e6a731d5b338ef4073a1669c8a147c430900f021178032c5ff113184931af8bf.png" />
 </div>
 </div>
 </section>
 <section id="build-an-example-modeling-sequential-gaussian-simulated-realizations">
-<h3>Build an Example Modeling: Sequential Gaussian Simulated Realizations<a class="headerlink" href="#build-an-example-modeling-sequential-gaussian-simulated-realizations" title="Permalink to this heading">#</a></h3>
+<h2>Build an Example Modeling: Sequential Gaussian Simulated Realizations<a class="headerlink" href="#build-an-example-modeling-sequential-gaussian-simulated-realizations" title="Permalink to this heading">#</a></h2>
 <p>Let’s simulate a set of realizations with sequential Gaussian simulation (<a class="reference external" href="https://pypi.org/project/geostatspy/">GeostatsPy Python Package</a> (Pyrcz et al., 2021) reimplemented from the original geostatistics open source, <a class="reference external" href="http://www.gslib.com/">GSLIB</a> (Deutsch and Journel, 1997).</p>
 <ul class="simple">
 <li><p>we demonstrate 12 realizations by changing the random number seed.</p></li>
@@ -741,7 +740,7 @@ document.write(`
 <p>Now we are ready to step through the spatial model checks.</p>
 </section>
 <section id="model-check-1-visualize-the-spatial-models">
-<h3>Model Check #1: Visualize the Spatial Models<a class="headerlink" href="#model-check-1-visualize-the-spatial-models" title="Permalink to this heading">#</a></h3>
+<h2>Model Check #1: Visualize the Spatial Models<a class="headerlink" href="#model-check-1-visualize-the-spatial-models" title="Permalink to this heading">#</a></h2>
 <p>Look at the spatial estimates and / or stochastic realizations and check for common issues such as:</p>
 <ul class="simple">
 <li><p><strong>missing values</strong> - part of the model not simulated</p></li>
@@ -762,7 +761,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/396fbc04337c933b461b55372e49c638ae72461e97cfbd9a31015fdfc2b9413e.png" src="_images/396fbc04337c933b461b55372e49c638ae72461e97cfbd9a31015fdfc2b9413e.png" />
+<img alt="_images/9d86da6e1143fbbe960afb25e23527f695b8009c20b88de1c42027f1d531625b.png" src="_images/9d86da6e1143fbbe960afb25e23527f695b8009c20b88de1c42027f1d531625b.png" />
 </div>
 </div>
 <p>For the provided data and simulated realizations ‘look good’:</p>
@@ -774,7 +773,7 @@ document.write(`
 </ul>
 </section>
 <section id="model-check-2-data-reproduction">
-<h3>Model Check #2: Data Reproduction<a class="headerlink" href="#model-check-2-data-reproduction" title="Permalink to this heading">#</a></h3>
+<h2>Model Check #2: Data Reproduction<a class="headerlink" href="#model-check-2-data-reproduction" title="Permalink to this heading">#</a></h2>
 <p>We need to check the reproduction of the data values at the data locations. Data is important and expensive, a model that fails to honor the data will not forecast well and will certainly loose credibility.</p>
 <p>Some further comments:</p>
 <ul class="simple">
@@ -831,16 +830,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████████████████████████████████████████████████████████████████████████████| 12/12 [00:00&lt;00:00, 255.32it/s]
-</pre></div>
-</div>
-<img alt="_images/4d457b7d17bfbd9bbc5f06fa2017517b59c5937d2567598a0f8fa72041422edd.png" src="_images/4d457b7d17bfbd9bbc5f06fa2017517b59c5937d2567598a0f8fa72041422edd.png" />
+<img alt="_images/05d49a2e0c3f09ea896eb4c791ecdbe4b4afc1670b588c1515fc215f830e3730.png" src="_images/05d49a2e0c3f09ea896eb4c791ecdbe4b4afc1670b588c1515fc215f830e3730.png" />
 </div>
 </div>
 <p>Due to the use of point data and cells represented by points at the cell centroids, there is some scatter in the result above.</p>
 </section>
 <section id="model-check-3-global-distributions-summary-statistics">
-<h3>Model Check #3: Global Distributions - Summary Statistics<a class="headerlink" href="#model-check-3-global-distributions-summary-statistics" title="Permalink to this heading">#</a></h3>
+<h2>Model Check #3: Global Distributions - Summary Statistics<a class="headerlink" href="#model-check-3-global-distributions-summary-statistics" title="Permalink to this heading">#</a></h2>
 <p>While there will be ergodic fluctuations in reproduction of any statistics, we check the summary statistics of the global distribution for good match over the realizations, in expectation.</p>
 <p>Here’s some issues that we may see:</p>
 <ul class="simple">
@@ -892,7 +888,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d628a9b549c9916019f3140015267e3d5f3d86ae15e648339b2c3422167859f3.png" src="_images/d628a9b549c9916019f3140015267e3d5f3d86ae15e648339b2c3422167859f3.png" />
+<img alt="_images/56b45ec8f537816ac927e29672f26be2e511a98f43a5fe35099b492682860434.png" src="_images/56b45ec8f537816ac927e29672f26be2e511a98f43a5fe35099b492682860434.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -946,7 +942,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c45dd6bf29a87107a6f629ac88de110559d425d51ef868a977a9e275be4c2bfa.png" src="_images/c45dd6bf29a87107a6f629ac88de110559d425d51ef868a977a9e275be4c2bfa.png" />
+<img alt="_images/f05d288c75a9e43a86a550d6924441efa8fc508576ad7c4825946920c79af92c.png" src="_images/f05d288c75a9e43a86a550d6924441efa8fc508576ad7c4825946920c79af92c.png" />
 </div>
 </div>
 <p>In general, this look pretty good. Some observations:</p>
@@ -956,7 +952,7 @@ document.write(`
 </ul>
 </section>
 <section id="model-check-4-global-distributions-pdfs-and-cdfs">
-<h3>Model Check #4: Global Distributions - PDFs and CDFs<a class="headerlink" href="#model-check-4-global-distributions-pdfs-and-cdfs" title="Permalink to this heading">#</a></h3>
+<h2>Model Check #4: Global Distributions - PDFs and CDFs<a class="headerlink" href="#model-check-4-global-distributions-pdfs-and-cdfs" title="Permalink to this heading">#</a></h2>
 <p>We can go beyond summary statistics and check the entire global distribution of the realizations vs. the input data. We check the probability density functions (PDFs) (infered with kernel density estimation) and cumulative distribution functions (CDFs).</p>
 <ul class="simple">
 <li><p>we check the shape, including the modes, symmetry and tails</p></li>
@@ -987,7 +983,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/026c662f5bb7fcc5c7fa86c4bfbde29979c01c6efb49723c1e59ff2d7db0e36d.png" src="_images/026c662f5bb7fcc5c7fa86c4bfbde29979c01c6efb49723c1e59ff2d7db0e36d.png" />
+<img alt="_images/f9afd0431cb40915d663aad56757b1e2c5d24645ca2bdb31f9cb6750b767d6a1.png" src="_images/f9afd0431cb40915d663aad56757b1e2c5d24645ca2bdb31f9cb6750b767d6a1.png" />
 </div>
 </div>
 <p>The reproduction of the data distribution shape looks very good. I include the regular data normalized histogram to help visualize the impact of the kernel density estimate of the PDF.</p>
@@ -996,7 +992,7 @@ document.write(`
 </ul>
 </section>
 <section id="model-check-5-spatial-continuity-variograms">
-<h3>Model Check #5: Spatial Continuity - Variograms<a class="headerlink" href="#model-check-5-spatial-continuity-variograms" title="Permalink to this heading">#</a></h3>
+<h2>Model Check #5: Spatial Continuity - Variograms<a class="headerlink" href="#model-check-5-spatial-continuity-variograms" title="Permalink to this heading">#</a></h2>
 <p>The variogram is an input statistic to constrain spatial continuity for sequential Gaussian simulation. Let’s check the reproduction of the variogram. Some common issues:</p>
 <ul class="simple">
 <li><p><strong>underrepresent the range</strong> - this is typically caused by overly limited search for nearest data and previously simulated nodes</p></li>
@@ -1052,13 +1048,13 @@ document.write(`
  x,y,z offsets = 7.071067830903227,-7.071067792827723
 </pre></div>
 </div>
-<img alt="_images/9ba466f7eec7bc750ab4b6a3ced1443dd4a5ef5398e08c8dd85ff9e5c6005773.png" src="_images/9ba466f7eec7bc750ab4b6a3ced1443dd4a5ef5398e08c8dd85ff9e5c6005773.png" />
+<img alt="_images/9276242166345b4f70f274aba63ea3314707ef9514ad04565edd5fdc62e414f9.png" src="_images/9276242166345b4f70f274aba63ea3314707ef9514ad04565edd5fdc62e414f9.png" />
 </div>
 </div>
 <p>Note the cyclicity was not in the variogram model, but it is impose by the data. There is some inflation of short scale discontinuity that may the result of the limited model resolution.</p>
 </section>
 <section id="model-check-6-local-uncertainty-model-e-type-and-conditional-standard-deviation">
-<h3>Model Check #6: Local Uncertainty Model - e-type and Conditional Standard Deviation<a class="headerlink" href="#model-check-6-local-uncertainty-model-e-type-and-conditional-standard-deviation" title="Permalink to this heading">#</a></h3>
+<h2>Model Check #6: Local Uncertainty Model - e-type and Conditional Standard Deviation<a class="headerlink" href="#model-check-6-local-uncertainty-model-e-type-and-conditional-standard-deviation" title="Permalink to this heading">#</a></h2>
 <p>Finally, we should visualize the local expection and uncertainty model. To do this we calculate and plot the expectation and standard deviation of the realizations over all cell locations. What are we checking?</p>
 <ul class="simple">
 <li><p><strong>expectation matches data and trends</strong> - the expectation should be consistent with data and trend models or the stationary mean in the absence of a trend model</p></li>
@@ -1082,23 +1078,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 1407.63it/s]
-100%|███████████████████████████████████████████████████████████████████████████████| 100/100 [00:00&lt;00:00, 373.09it/s]
-</pre></div>
-</div>
-<img alt="_images/78747dbe4729c3c1e2159345030605b6010e90232127f9e73253d9791800e158.png" src="_images/78747dbe4729c3c1e2159345030605b6010e90232127f9e73253d9791800e158.png" />
+<img alt="_images/6b4c23db89d4eb8922f8f14e60a43a0da9025ee1b2ba41cb2690965b04fa2392.png" src="_images/6b4c23db89d4eb8922f8f14e60a43a0da9025ee1b2ba41cb2690965b04fa2392.png" />
 </div>
 </div>
 </section>
 <section id="comments">
-<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h3>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic demonstration of model checking with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="the-author">
-<h3>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h3>
-</section>
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="id1">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
@@ -1157,13 +1148,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="GeostatsPy_kriging_vs_simulation_maps.html"
+       href="GeostatsPy_simulation_postsim.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+        <p class="prev-next-title">Simulation Post-processing</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="GeostatsPy_volume_variance.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Volume Variance Relations for Scaling Statistics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -1180,29 +1180,26 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-model-checking">Geostatistical Model Checking</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-spatial-modeling">Spatial Spatial Modeling</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-and-colorbars-and-grid-specification">Set Limits for Plotting and Colorbars and Grid Specification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analytics-and-visualization">Data Analytics and Visualization</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-example-modeling-sequential-gaussian-simulated-realizations">Build an Example Modeling: Sequential Gaussian Simulated Realizations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-1-visualize-the-spatial-models">Model Check #1: Visualize the Spatial Models</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-2-data-reproduction">Model Check #2: Data Reproduction</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-3-global-distributions-summary-statistics">Model Check #3: Global Distributions - Summary Statistics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-4-global-distributions-pdfs-and-cdfs">Model Check #4: Global Distributions - PDFs and CDFs</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-5-spatial-continuity-variograms">Model Check #5: Spatial Continuity - Variograms</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-6-local-uncertainty-model-e-type-and-conditional-standard-deviation">Model Check #6: Local Uncertainty Model - e-type and Conditional Standard Deviation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-spatial-modeling">Spatial Spatial Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-and-colorbars-and-grid-specification">Set Limits for Plotting and Colorbars and Grid Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analytics-and-visualization">Data Analytics and Visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#build-an-example-modeling-sequential-gaussian-simulated-realizations">Build an Example Modeling: Sequential Gaussian Simulated Realizations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-1-visualize-the-spatial-models">Model Check #1: Visualize the Spatial Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-2-data-reproduction">Model Check #2: Data Reproduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-3-global-distributions-summary-statistics">Model Check #3: Global Distributions - Summary Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-4-global-distributions-pdfs-and-cdfs">Model Check #4: Global Distributions - PDFs and CDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-5-spatial-continuity-variograms">Model Check #5: Spatial Continuity - Variograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-check-6-local-uncertainty-model-e-type-and-conditional-standard-deviation">Model Check #6: Local Uncertainty Model - e-type and Conditional Standard Deviation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -1223,7 +1220,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By Michael J. Pyrcz
 </p>
 
   </div>
@@ -1233,7 +1230,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2024.
       <br/>
     
   </p>

@@ -1,0 +1,1158 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Volume Variance Relations for Scaling Statistics &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_volume_variance';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Conclusions" href="conclusions.html" />
+    <link rel="prev" title="Model Checking" href="GeostatsPy_model_checking.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    e-Book Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_volume_variance.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/GeostatsPy_volume_variance.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Volume Variance Relations for Scaling Statistics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-variance-and-volume-variance-relations">Dispersion Variance and Volume Variance Relations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-data">Spatial Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-spatial-parameters">Set the Spatial Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-scale-up-with-two-models">Numerical Scale Up with Two Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-impact-of-scaling-on-the-distribution">Checking the Impact of Scaling on the Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-scale-and-dispersion">Relationship Between Scale and Dispersion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p align="center">
+    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
+</p>
+<section class="tex2jax_ignore mathjax_ignore" id="volume-variance-relations-for-scaling-statistics">
+<h1>Volume Variance Relations for Scaling Statistics<a class="headerlink" href="#volume-variance-relations-for-scaling-statistics" title="Permalink to this heading">#</a></h1>
+<section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
+<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
+<p>This is a tutorial for / demonstration of <strong>Volume Variance Relations</strong>.</p>
+<ul class="simple">
+<li><p>all spatial statistics have an implicit scale assumption</p></li>
+<li><p>for example, as the scale, support size, increases the variance reduces</p></li>
+</ul>
+<p><strong>YouTube Lecture</strong>: check out my lecture on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/suWCmal03Rg?si=XEtIlBlgP175qkUb">Scale</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/UI81msM0wXQ?si=Ige9n70STMfC6kwU">Dispersion Variance</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/MM7Tn8TU5Bk?si=0GVOKJ6nYx1cib28">Scaling Statistics</a></p></li>
+</ul>
+<p>For your convenience here’s a summary of salient points.</p>
+</section>
+</section>
+<section id="dispersion-variance-and-volume-variance-relations">
+<h2>Dispersion Variance and Volume Variance Relations<a class="headerlink" href="#dispersion-variance-and-volume-variance-relations" title="Permalink to this heading">#</a></h2>
+<p><strong>Volume-variance Relations</strong> stats that as the volume support increases the variance reduces</p>
+<p>Predicting this behavior is central to handling multiple scales of data and estimation.</p>
+<p>Scale Observations:</p>
+<ul class="simple">
+<li><p>The mean does not change.</p></li>
+<li><p>The variance changes, known as volume-variance relations.</p></li>
+<li><p>There may be shape change (we will not tackle that here). Best practice is to check shape change empirically. It is common to assume no shape change (affine distribution correction) or to use a simple shape change model (indirect lognormal correction)</p></li>
+<li><p>The variance reduction in the distribution is inversely proportional to the range of spatial continuity.</p></li>
+<li><p>Over common changes in scale this impact may be significant.</p></li>
+<li><p>We need a model to predict this change.</p></li>
+</ul>
+<p>Scale Change Models:</p>
+<p><strong>Empirical</strong> - build a small scale, high resolution model and scale it up. This requires a model for spatial feature scale up. For example, averages the small scale cells within the larger scale assues linear averaging. There is a more flexible model known as power law averaging.</p>
+<p>\begin{equation}
+z_V = \left[ \frac{1}{n} \sum z_v^{\omega} \right] ^{\frac{1}{\omega}}
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(\omega\)</span> is the power of averaging. For example:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\omega = 1\)</span> is a regular linear averaging</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega = -1\)</span> is a harmonic averaging</p></li>
+<li><p><span class="math notranslate nohighlight">\(\omega = 0\)</span> is a geometric averaging (this is proved in the limit as <span class="math notranslate nohighlight">\(\omega \rightarrow 0\)</span>)</p></li>
+</ul>
+<p><strong>Model</strong> - directly adjust the statistics for change in scale. For example, under the assumption of linear averaging and a stationary variogram and variance:</p>
+<p>\begin{equation}
+f = 1 - \frac{\overline{\gamma}(v,v)}{\sigma^2}
+\end{equation}</p>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> is variance reduction factor,</p>
+<p>\begin{equation}
+f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
+\end{equation}</p>
+<p>in other words, <span class="math notranslate nohighlight">\(f\)</span> is the ratio of the variance at scale <span class="math notranslate nohighlight">\(v\)</span> to the variance at the original data point support scale.</p>
+<p>Here I provide simple empirical, numerical demonstrations of the impact of change on scale on variance and the impact of spatial continuity on this effect.</p>
+</section>
+<section id="load-the-required-libraries">
+<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<p>The following code loads the required libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python      </span>
+<span class="kn">import</span> <span class="nn">geostatspy</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>                               <span class="c1"># custom subplots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
+<span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.utils</span> <span class="kn">import</span> <span class="n">io</span>                                  <span class="c1"># mute output from simulation</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># color map for plotting </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
+</section>
+<section id="declare-functions">
+<h2>Declare functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<p>We use GeostatsPy, but we need a new upscale (linear averaging) method and a plotting method that does not interpolate. I will add these to GeostatsPy shortly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getindex</span><span class="p">(</span><span class="n">nc</span><span class="p">,</span><span class="n">cmn</span><span class="p">,</span><span class="n">csiz</span><span class="p">,</span><span class="n">loc</span><span class="p">):</span>                                <span class="c1"># take location and grid and find the cell</span>
+    <span class="n">ic</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">int</span><span class="p">((</span><span class="n">loc</span> <span class="o">-</span> <span class="n">cmn</span><span class="p">)</span> <span class="o">/</span> <span class="n">csiz</span><span class="p">),</span> <span class="n">nc</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ic</span>
+
+<span class="k">def</span> <span class="nf">upscale</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">new_nx</span><span class="p">,</span><span class="n">new_ny</span><span class="p">):</span>                             <span class="c1"># scale up model with linear averaging</span>
+    <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">new_xsiz</span> <span class="o">=</span> <span class="n">nx</span><span class="o">/</span><span class="n">new_nx</span><span class="p">;</span> <span class="n">new_xmn</span> <span class="o">=</span> <span class="n">new_xsiz</span> <span class="o">*</span> <span class="mf">0.5</span>
+    <span class="n">new_ysiz</span> <span class="o">=</span> <span class="n">ny</span><span class="o">/</span><span class="n">new_ny</span><span class="p">;</span> <span class="n">new_ymn</span> <span class="o">=</span> <span class="n">new_ysiz</span> <span class="o">*</span> <span class="mf">0.5</span>
+    <span class="n">new_model</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">new_ny</span><span class="p">,</span><span class="n">new_nx</span><span class="p">));</span> <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">new_ny</span><span class="p">,</span><span class="n">new_nx</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ny</span><span class="p">):</span>
+        <span class="n">yloc</span> <span class="o">=</span> <span class="n">iy</span><span class="o">+</span><span class="mf">0.5</span>
+        <span class="n">new_iy</span> <span class="o">=</span> <span class="n">getindex</span><span class="p">(</span><span class="n">new_ny</span><span class="p">,</span><span class="n">new_ymn</span><span class="p">,</span><span class="n">new_ysiz</span><span class="p">,</span><span class="n">yloc</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nx</span><span class="p">):</span>
+            <span class="n">xloc</span> <span class="o">=</span> <span class="n">ix</span><span class="o">+</span><span class="mf">0.5</span>
+            <span class="n">new_ix</span> <span class="o">=</span> <span class="n">getindex</span><span class="p">(</span><span class="n">new_nx</span><span class="p">,</span><span class="n">new_xmn</span><span class="p">,</span><span class="n">new_xsiz</span><span class="p">,</span><span class="n">xloc</span><span class="p">)</span>
+            <span class="n">new_model</span><span class="p">[</span><span class="n">new_iy</span><span class="p">,</span><span class="n">new_ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_model</span><span class="p">[</span><span class="n">new_iy</span><span class="p">,</span><span class="n">new_ix</span><span class="p">]</span> <span class="o">+</span> <span class="n">model</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span> 
+            <span class="n">count</span><span class="p">[</span><span class="n">new_iy</span><span class="p">,</span><span class="n">new_ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span><span class="p">[</span><span class="n">new_iy</span><span class="p">,</span><span class="n">new_ix</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span> 
+    <span class="k">for</span> <span class="n">iny</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">new_ny</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">inx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">new_nx</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">count</span><span class="p">[</span><span class="n">iny</span><span class="p">,</span><span class="n">inx</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">new_model</span><span class="p">[</span><span class="n">iny</span><span class="p">,</span><span class="n">inx</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_model</span><span class="p">[</span><span class="n">iny</span><span class="p">,</span><span class="n">inx</span><span class="p">]</span> <span class="o">/</span> <span class="n">count</span><span class="p">[</span><span class="n">iny</span><span class="p">,</span><span class="n">inx</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">new_model</span>
+
+<span class="k">def</span> <span class="nf">cellplt_st</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="n">xlabel</span><span class="p">,</span><span class="n">ylabel</span><span class="p">,</span><span class="n">vlabel</span><span class="p">,</span><span class="n">cmap</span><span class="p">):</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="c1">#plt.clim(vmin,vmax)</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">orientation</span> <span class="o">=</span> <span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">vlabel</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-working-directory">
+<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;C:/PGE383&quot;)                                        # set the working directory</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You will have to update the part in quotes with your own working directory and the format is different on a Mac (e.g. “~/PGE”).</p>
+</section>
+<section id="spatial-data">
+<h2>Spatial Data<a class="headerlink" href="#spatial-data" title="Permalink to this heading">#</a></h2>
+<p>Make dummy data with a reference distribution, but outside the area of interest for unconditional realizations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nd</span> <span class="o">=</span> <span class="mi">100</span>                                                      <span class="c1"># number of data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">scale</span> <span class="o">=</span> <span class="mf">0.03</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">nd</span><span class="p">),</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span><span class="o">-</span><span class="mi">99999</span><span class="p">);</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">nd</span><span class="p">,</span><span class="o">-</span><span class="mi">99999</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Porosity</th>
+      <th>X</th>
+      <th>Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.086961</td>
+      <td>-99999</td>
+      <td>-99999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.091948</td>
+      <td>-99999</td>
+      <td>-99999</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.066998</td>
+      <td>-99999</td>
+      <td>-99999</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.148956</td>
+      <td>-99999</td>
+      <td>-99999</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.168086</td>
+      <td>-99999</td>
+      <td>-99999</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="set-the-spatial-parameters">
+<h3>Set the Spatial Parameters<a class="headerlink" href="#set-the-spatial-parameters" title="Permalink to this heading">#</a></h3>
+<p>The following are the basic parameters for the experiment.  This includes the number of cells in the 2D regular grid, the cell size (step) and the x and y min and max along with the color scheme.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">xsiz</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ysiz</span> <span class="o">=</span> <span class="mi">100</span>                        <span class="c1"># grid number of cells and cell size</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>                                           <span class="c1"># grid origin</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">nx</span> <span class="o">*</span> <span class="n">ysiz</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="n">ny</span> <span class="o">*</span> <span class="n">xsiz</span>                  <span class="c1"># calculate the extent of model</span>
+<span class="n">xmn</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">xsiz</span><span class="p">;</span> <span class="n">ymn</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ysiz</span>                  <span class="c1"># grid origin, lower left corner</span>
+
+<span class="n">pormin</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mf">0.22</span>                                      <span class="c1"># set feature min and max for colorbars</span>
+<span class="n">permmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">permmax</span> <span class="o">=</span> <span class="mf">700.0</span>
+
+<span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.2</span>                                            <span class="c1"># property min and max</span>
+<span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">999</span>                                           <span class="c1"># trimming limits</span>
+
+<span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">10</span>                                             <span class="c1"># set minimum and maximum number of data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="numerical-scale-up-with-two-models">
+<h2>Numerical Scale Up with Two Models<a class="headerlink" href="#numerical-scale-up-with-two-models" title="Permalink to this heading">#</a></h2>
+<p>Let’s build two models and scale them up.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">range_maj1</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span> <span class="n">range_min1</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">range_maj2</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span> <span class="n">range_min2</span> <span class="o">=</span> <span class="mi">60</span>
+
+<span class="n">vario1</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">range_maj1</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">range_min1</span><span class="p">)</span>
+
+<span class="n">sim1</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">sgsim</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">wcol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">tmin</span><span class="o">=</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="o">=</span><span class="n">tmax</span><span class="p">,</span><span class="n">itrans</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ismooth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">dftrans</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">tcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">twtcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">ltail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ltpar</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">utail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">utpar</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">nsim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">nx</span><span class="o">=</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="o">=</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="o">=</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="o">=</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="o">=</span><span class="n">ysiz</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">73073</span><span class="p">,</span>
+            <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="o">=</span><span class="n">ndmax</span><span class="p">,</span><span class="n">nodmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">mults</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">nmult</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">noct</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">ktype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">colocorr</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">sec_map</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vario</span><span class="o">=</span><span class="n">vario1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">sim1</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">affine</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="mf">.1</span><span class="p">,</span><span class="mf">0.03</span><span class="p">)</span>                                 <span class="c1"># correct the distribution to a target mean and standard deviation.</span>
+
+<span class="n">vario2</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">range_maj2</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">range_min2</span><span class="p">)</span>
+
+<span class="n">sim2</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">sgsim</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">wcol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">tmin</span><span class="o">=</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="o">=</span><span class="n">tmax</span><span class="p">,</span><span class="n">itrans</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ismooth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">dftrans</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">tcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">twtcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">ltail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ltpar</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">utail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">utpar</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">nsim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">nx</span><span class="o">=</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="o">=</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="o">=</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="o">=</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="o">=</span><span class="n">ysiz</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">73073</span><span class="p">,</span>
+            <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="o">=</span><span class="n">ndmax</span><span class="p">,</span><span class="n">nodmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">mults</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">nmult</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">noct</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">ktype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">colocorr</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">sec_map</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vario</span><span class="o">=</span><span class="n">vario2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">sim2</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">affine</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="mf">.1</span><span class="p">,</span><span class="mf">0.03</span><span class="p">)</span>                                 <span class="c1"># correct the distribution to a target mean and standard deviation.</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">421</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 100 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">422</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 100 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">mid</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">mid2</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">423</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 200 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">424</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">mid2</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 200 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">midb</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">midb2</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">425</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">midb</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 500 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">426</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">midb2</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 500 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">course</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">course2</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">427</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">course</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 1000 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">428</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">course2</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 1000 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">4.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&#39;F4_Eg_EUR_Real_Pad.tif&#39;,dpi=300,bbox_inches=&quot;tight&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Data for SGSIM: Number of acceptable data     = 100
+                 Number trimmed                = 0
+                 Weighted Average              = 0.0987
+                 Weighted Variance             = 0.0012
+                 Weighted Transformed Average  = 0.0
+                 Weighted Transformed Variance = 0.9873
+Setting up rotation matrices for variogram and search
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Working on realization number 0
+   currently on node 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 6000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 7000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 8000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 9000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
+
+ Realization 0: number   = 10000
+                                   mean     = -0.0375 (close to 0.0?)
+                                   variance = 1.0884 (close to gammabar(V,V)? approx. 1.0)
+
+ Data for SGSIM: Number of acceptable data     = 100
+                 Number trimmed                = 0
+                 Weighted Average              = 0.0987
+                 Weighted Variance             = 0.0012
+                 Weighted Transformed Average  = 0.0
+                 Weighted Transformed Variance = 0.9873
+Setting up rotation matrices for variogram and search
+Working on realization number 0
+   currently on node 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 6000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 7000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 8000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 9000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
+
+ Realization 0: number   = 10000
+                                   mean     = 0.0271 (close to 0.0?)
+                                   variance = 1.0007 (close to gammabar(V,V)? approx. 1.0)
+</pre></div>
+</div>
+<img alt="_images/4cbd7f40970988d9ee193cf32d13399e20436c2061966557ea750a4469595145.png" src="_images/4cbd7f40970988d9ee193cf32d13399e20436c2061966557ea750a4469595145.png" />
+</div>
+</div>
+</section>
+<section id="checking-the-impact-of-scaling-on-the-distribution">
+<h2>Checking the Impact of Scaling on the Distribution<a class="headerlink" href="#checking-the-impact-of-scaling-on-the-distribution" title="Permalink to this heading">#</a></h2>
+<p>Observe the impact of scaling on the two models. First one with long spatial continuity and then one with short spatial continuity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">421</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 100 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">422</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">sim1</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 100 m Cells&#39;</span><span class="p">)</span>
+
+<span class="n">mid</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">423</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">mid</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 200 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">424</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">mid</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 200 m Cells&#39;</span><span class="p">)</span>
+
+<span class="n">midb</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">425</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">midb</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 500 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">426</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">midb</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity - 5,000:3,000 Range - 500 m Cells&#39;</span><span class="p">)</span>
+
+<span class="n">course</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">427</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">course</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 1,000 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">428</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">course</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 1000 m Cells&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&#39;sim1_scale_change.tif&#39;,dpi=300,bbox_inches=&quot;tight&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6ff73d74b36d7557ad3ca47b65f62865fbdfe0bb511c130e42299e22b120d6d2.png" src="_images/6ff73d74b36d7557ad3ca47b65f62865fbdfe0bb511c130e42299e22b120d6d2.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">421</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 100 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">422</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">sim2</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 100 m Cells&#39;</span><span class="p">)</span>
+
+<span class="n">mid2</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">423</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">mid2</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 200 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+
+<span class="c1"># plt.subplot(423)</span>
+<span class="c1"># cellplt_st(mid2,xmin,xmax,ymin,ymax,vmin,vmax,&quot;Porosity - 500:300 Range - 200 m&quot;,&#39;X(m)&#39;,&#39;Y(m)&#39;,&#39;Porosity (fraction)&#39;,cmap)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">424</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">mid2</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 200 m Cells&#39;</span><span class="p">)</span>
+
+<span class="n">midb2</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">425</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">midb2</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 500 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">426</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">midb2</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 500 m Cells&#39;</span><span class="p">)</span>
+
+<span class="n">course2</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">427</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">course2</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 1,000 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">428</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">course2</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 1,000 m Cells&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&#39;sim2_scale_change.tif&#39;,dpi=300,bbox_inches=&quot;tight&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5afa5e173dc6f19a221c770308553e4243e606c42afd3ae10f4ce1c410067bce.png" src="_images/5afa5e173dc6f19a221c770308553e4243e606c42afd3ae10f4ce1c410067bce.png" />
+</div>
+</div>
+</section>
+<section id="relationship-between-scale-and-dispersion">
+<h2>Relationship Between Scale and Dispersion<a class="headerlink" href="#relationship-between-scale-and-dispersion" title="Permalink to this heading">#</a></h2>
+<p>Let’s loop over multiple upscaled grid cell sizes and calculate the resulting variance and standard deviation and then plot it up.</p>
+<ul class="simple">
+<li><p>observe the change in dispersion with change in scale, volume-variance relations</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">var1</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">var2</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">std1</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">std2</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">scale</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span> <span class="n">var1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">sim1</span><span class="p">));</span> <span class="n">var2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">sim2</span><span class="p">));</span> <span class="n">std1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">sim1</span><span class="p">));</span> <span class="n">std2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">sim2</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">nc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span>
+    <span class="n">scale</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="n">nc</span><span class="p">)</span>
+    <span class="n">scale1</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="n">nc</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="n">nc</span><span class="p">)</span>
+    <span class="n">scale2</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="n">nc</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="n">nc</span><span class="p">)</span>
+    <span class="n">var1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">scale1</span><span class="p">));</span> <span class="n">var2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">scale2</span><span class="p">))</span>
+    <span class="n">std1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scale1</span><span class="p">));</span> <span class="n">std2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scale2</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">var1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">var1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">var2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">var2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.001</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Scale (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Variance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper right&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Variance vs. Scale&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>  <span class="c1"># set the major ticks aligned with the bins</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.0002</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.00005</span><span class="p">))</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">std1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">std1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">std2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">std2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.035</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Scale (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Standard Deviation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper right&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Standard Deviation vs. Scale&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">10</span><span class="p">));</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>  <span class="c1"># set the major ticks aligned with the bins</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.005</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.001</span><span class="p">))</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&#39;plot_scale_change.tif&#39;,dpi=300,bbox_inches=&quot;tight&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bdf7b0f0fcb42ac6e1a15189dc8990a7da70b0c759220794141b5b3ba8dc6467.png" src="_images/bdf7b0f0fcb42ac6e1a15189dc8990a7da70b0c759220794141b5b3ba8dc6467.png" />
+</div>
+</div>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>This was a basic demonstration empirical scaling to demonstrate volume variance relations. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>I hope this is helpful,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="the-author">
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id1">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<section id="id2">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="want-to-work-together">
+<h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
+<h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GeostatsPy_model_checking.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Model Checking</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="conclusions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Conclusions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-variance-and-volume-variance-relations">Dispersion Variance and Volume Variance Relations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-data">Spatial Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-spatial-parameters">Set the Spatial Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-scale-up-with-two-models">Numerical Scale Up with Two Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-impact-of-scaling-on-the-distribution">Checking the Impact of Scaling on the Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-scale-and-dispersion">Relationship Between Scale and Dispersion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

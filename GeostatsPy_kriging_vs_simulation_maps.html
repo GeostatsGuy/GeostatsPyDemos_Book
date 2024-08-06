@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>GeostatsPy Well-documented Demonstration Workflows &#8212; My sample book</title>
+    <title>Kriging vs. Simulation, 2D Maps &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
   
   
   
@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_kriging_vs_simulation_maps';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_model_checking.html" />
-    <link rel="prev" title="GeostatsPy Well-documented Demonstration Workflows" href="GeostatsPy_kriging.html" />
+    <link rel="next" title="Simulation" href="GeostatsPy_simulation.html" />
+    <link rel="prev" title="Kriging vs. Simulation, 1D" href="GeostatsPy_kriging_vs_simulation_1D.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -155,8 +155,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="My sample book - Home"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="My sample book - Home"/>`);</script>
+    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
   
   
 </a></div>
@@ -166,12 +166,12 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    GeostatsPy Well-documented Demonstration Workflows
+                    e-Book Introduction
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
@@ -180,9 +180,19 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 </ul>
 
     </div>
@@ -237,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -254,7 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_kriging_vs_simulation_maps.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_kriging_vs_simulation_maps.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,7 +378,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>GeostatsPy Well-documented Demonstration Workflows</h1>
+    <h1>Kriging vs. Simulation, 2D Maps</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -378,33 +388,30 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-estimation-with-kriging-vs-simulation-with-sequential-gaussian-simulation-sgsim-maps">Spatial Estimation with Kriging vs. Simulation with Sequential Gaussian Simulation (SGSIM) Maps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-vs-simulation">Estimation vs. Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-estimation">Spatial Estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging">Kriging</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-kriging">Properties of Kriging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-vs-simulation">Estimation vs. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-estimation">Spatial Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging">Kriging</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-kriging">Properties of Kriging</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-colorbars-and-grid-specification">Set Limits for Plotting, Colorbars and Grid Specification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analytics-and-visualization">Data Analytics and Visualization</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-kriging-estimation-map-of-porosity">Simple Kriging Estimation Map of Porosity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-colorbars-and-grid-specification">Set Limits for Plotting, Colorbars and Grid Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analytics-and-visualization">Data Analytics and Visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-kriging-estimation-map-of-porosity">Simple Kriging Estimation Map of Porosity</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sequential Gaussian Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-simulated-realizations-and-a-kriged-estimation-model">Visualize Simulated Realizations and a Kriged Estimation Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sequential Gaussian Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-simulated-realizations-and-a-kriged-estimation-model">Visualize Simulated Realizations and a Kriged Estimation Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -425,14 +432,12 @@ document.write(`
   <p align="center">
     <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
 </p>
-<section id="geostatspy-well-documented-demonstration-workflows">
-<h1>GeostatsPy Well-documented Demonstration Workflows<a class="headerlink" href="#geostatspy-well-documented-demonstration-workflows" title="Permalink to this heading">#</a></h1>
-<section id="spatial-estimation-with-kriging-vs-simulation-with-sequential-gaussian-simulation-sgsim-maps">
-<h2>Spatial Estimation with Kriging vs. Simulation with Sequential Gaussian Simulation (SGSIM) Maps<a class="headerlink" href="#spatial-estimation-with-kriging-vs-simulation-with-sequential-gaussian-simulation-sgsim-maps" title="Permalink to this heading">#</a></h2>
+<section class="tex2jax_ignore mathjax_ignore" id="kriging-vs-simulation-2d-maps">
+<h1>Kriging vs. Simulation, 2D Maps<a class="headerlink" href="#kriging-vs-simulation-2d-maps" title="Permalink to this heading">#</a></h1>
 <section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
-<h3>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h3>
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
 <section id="twitter-github-website-googlescholar-book-youtube-linkedin">
-<h4><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h4>
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
 <p>This is a tutorial for / demonstration of <strong>Spatial Estimation with Kriging vs. Simulation with Sequential Gaussian Simulation (SGSIM)</strong> with a 2D map example.</p>
 <ul class="simple">
 <li><p>this is the fluctuations in the reproduction of input statistics over multiple simulation realizations.</p></li>
@@ -441,7 +446,7 @@ document.write(`
 </section>
 </section>
 <section id="estimation-vs-simulation">
-<h3>Estimation vs. Simulation<a class="headerlink" href="#estimation-vs-simulation" title="Permalink to this heading">#</a></h3>
+<h2>Estimation vs. Simulation<a class="headerlink" href="#estimation-vs-simulation" title="Permalink to this heading">#</a></h2>
 <p>Let’s start by comparing spatial estimation and simulation.</p>
 <p>Estimation:</p>
 <ul class="simple">
@@ -461,7 +466,7 @@ document.write(`
 </ul>
 </section>
 <section id="spatial-estimation">
-<h3>Spatial Estimation<a class="headerlink" href="#spatial-estimation" title="Permalink to this heading">#</a></h3>
+<h2>Spatial Estimation<a class="headerlink" href="#spatial-estimation" title="Permalink to this heading">#</a></h2>
 <p>Consider the case of making an estimate at some unsampled location, <span class="math notranslate nohighlight">\(𝑧(\bf{u}_0)\)</span>, where <span class="math notranslate nohighlight">\(z\)</span> is the property of interest (e.g. porosity etc.) and <span class="math notranslate nohighlight">\(𝐮_0\)</span> is a location vector describing the unsampled location.</p>
 <p>How would you do this given data, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_1)\)</span>, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_2)\)</span>, and <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_3)\)</span>?</p>
 <p>It would be natural to use a set of linear weights to formulate the estimator given the available data.</p>
@@ -483,7 +488,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <p>while satisfying the unbaisedness constraint.</p>
 </section>
 <section id="kriging">
-<h3>Kriging<a class="headerlink" href="#kriging" title="Permalink to this heading">#</a></h3>
+<h2>Kriging<a class="headerlink" href="#kriging" title="Permalink to this heading">#</a></h2>
 <p>Now the next question is what weights should we use?</p>
 <p>We could use equal weighting, <span class="math notranslate nohighlight">\(\lambda = \frac{1}{n}\)</span>, and the estimator would be the average of the local data applied for the spatial estimate. This would not be very informative.</p>
 <p>We could assign weights considering the spatial context of the data and the estimate:</p>
@@ -498,7 +503,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 \end{equation}</p>
 <p>What is ‘best’ about this estimate? Kriging estimates are best in that they minimize the above estimation variance.</p>
 <section id="properties-of-kriging">
-<h4>Properties of Kriging<a class="headerlink" href="#properties-of-kriging" title="Permalink to this heading">#</a></h4>
+<h3>Properties of Kriging<a class="headerlink" href="#properties-of-kriging" title="Permalink to this heading">#</a></h3>
 <p>Here are some important properties of kriging:</p>
 <ul class="simple">
 <li><p><strong>Exact interpolator</strong> - kriging estimates with the data values at the data locations</p></li>
@@ -512,7 +517,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </section>
 </section>
 <section id="sequential-gaussian-simulation">
-<h3>Sequential Gaussian Simulation<a class="headerlink" href="#sequential-gaussian-simulation" title="Permalink to this heading">#</a></h3>
+<h2>Sequential Gaussian Simulation<a class="headerlink" href="#sequential-gaussian-simulation" title="Permalink to this heading">#</a></h2>
 <p>With sequential Gaussian simulation we build on kriging by:</p>
 <ul class="simple">
 <li><p>adding a random residual with the missing variance</p></li>
@@ -527,7 +532,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <p>In this workflow we run kriging estimates and multiple simulation realizations, and compare the statistics.</p>
 </section>
 <section id="load-the-required-libraries">
-<h3>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h3>
+<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -547,10 +552,15 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
-<span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">gridspec</span>                               <span class="c1"># custom subplots</span>
@@ -567,7 +577,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h3>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h3>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>Here’s a convenience function for plotting variograms.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -613,7 +623,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </section>
 <section id="set-the-working-directory">
-<h3>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h3>
+<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -624,7 +634,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </section>
 <section id="loading-tabular-data">
-<h3>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h3>
+<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
 <ul class="simple">
 <li><p>note the “fraction_data” variable is an option to random take part of the data (i.e., 1.0 is all data).</p>
@@ -708,7 +718,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </section>
 <section id="set-limits-for-plotting-colorbars-and-grid-specification">
-<h3>Set Limits for Plotting, Colorbars and Grid Specification<a class="headerlink" href="#set-limits-for-plotting-colorbars-and-grid-specification" title="Permalink to this heading">#</a></h3>
+<h2>Set Limits for Plotting, Colorbars and Grid Specification<a class="headerlink" href="#set-limits-for-plotting-colorbars-and-grid-specification" title="Permalink to this heading">#</a></h2>
 <p>Limits are applied for data and model visualization and the grid parameters sets the coverage and resolution of our map.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -728,7 +738,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </section>
 <section id="data-analytics-and-visualization">
-<h3>Data Analytics and Visualization<a class="headerlink" href="#data-analytics-and-visualization" title="Permalink to this heading">#</a></h3>
+<h2>Data Analytics and Visualization<a class="headerlink" href="#data-analytics-and-visualization" title="Permalink to this heading">#</a></h2>
 <p>Let’s take a look at the available data:</p>
 <ul class="simple">
 <li><p>location map</p></li>
@@ -779,7 +789,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <section id="simple-kriging-estimation-map-of-porosity">
-<h4>Simple Kriging Estimation Map of Porosity<a class="headerlink" href="#simple-kriging-estimation-map-of-porosity" title="Permalink to this heading">#</a></h4>
+<h3>Simple Kriging Estimation Map of Porosity<a class="headerlink" href="#simple-kriging-estimation-map-of-porosity" title="Permalink to this heading">#</a></h3>
 <p>Let’s specify the variogram model, global stationary mean and variance, and kriging parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -839,96 +849,6 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                                                                                    | 0/100 [00:00&lt;?, ?it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|█▉                                                                                                                                                                                          | 1/100 [00:02&lt;03:33,  2.15s/it]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|███████▌                                                                                                                                                                                    | 4/100 [00:02&lt;00:41,  2.30it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|█████████████▏                                                                                                                                                                              | 7/100 [00:02&lt;00:20,  4.56it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|██████████████████▋                                                                                                                                                                        | 10/100 [00:02&lt;00:12,  7.15it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|████████████████████████▎                                                                                                                                                                  | 13/100 [00:02&lt;00:09,  9.32it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█████████████████████████████▉                                                                                                                                                             | 16/100 [00:02&lt;00:06, 12.16it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|█████████████████████████████████████▍                                                                                                                                                     | 20/100 [00:02&lt;00:04, 16.25it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|███████████████████████████████████████████                                                                                                                                                | 23/100 [00:02&lt;00:04, 18.11it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|████████████████████████████████████████████████▌                                                                                                                                          | 26/100 [00:03&lt;00:03, 20.51it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|████████████████████████████████████████████████████████                                                                                                                                   | 30/100 [00:03&lt;00:02, 23.36it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|█████████████████████████████████████████████████████████████▋                                                                                                                             | 33/100 [00:03&lt;00:02, 24.73it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|█████████████████████████████████████████████████████████████████████▏                                                                                                                     | 37/100 [00:03&lt;00:02, 27.09it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 41%|████████████████████████████████████████████████████████████████████████████▋                                                                                                              | 41/100 [00:03&lt;00:02, 28.26it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 45%|████████████████████████████████████████████████████████████████████████████████████▏                                                                                                      | 45/100 [00:03&lt;00:01, 29.62it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 49%|███████████████████████████████████████████████████████████████████████████████████████████▋                                                                                               | 49/100 [00:03&lt;00:01, 29.88it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|███████████████████████████████████████████████████████████████████████████████████████████████████                                                                                        | 53/100 [00:04&lt;00:01, 26.79it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|██████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                                | 57/100 [00:04&lt;00:01, 27.94it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                                         | 61/100 [00:04&lt;00:01, 29.17it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                                 | 65/100 [00:04&lt;00:01, 30.23it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████                                                          | 69/100 [00:04&lt;00:01, 30.29it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 73%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▌                                                  | 73/100 [00:04&lt;00:00, 30.33it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉                                           | 77/100 [00:04&lt;00:00, 31.08it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                                   | 81/100 [00:04&lt;00:00, 31.63it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉                            | 85/100 [00:05&lt;00:00, 30.69it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 89%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍                    | 89/100 [00:05&lt;00:00, 30.47it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 93%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▉             | 93/100 [00:05&lt;00:00, 29.94it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████▍     | 97/100 [00:05&lt;00:00, 30.65it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 100/100 [00:05&lt;00:00, 18.13it/s]
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
       average   11.640125112287828  variance  5.16264561085336
 </pre></div>
@@ -943,7 +863,7 @@ y^{*}(\bf{u}) = \sum^{n}<em>{\alpha = 1} \lambda</em>{\alpha} y(\bf{u}_{\alpha})
 </section>
 </section>
 <section id="id1">
-<h3>Sequential Gaussian Simulation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h2>Sequential Gaussian Simulation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Let’s jump right to building a variety of models with simulation and visualizing the results.  We will start with a test, comparision of simulation with simple and ordinary kriging.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1007,52 +927,32 @@ Setting up rotation matrices for variogram and search
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 6000
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">run</span> <span class="o">=</span> <span class="kc">True</span>                                                    <span class="c1"># run the realizations, it will likely take minutes to complete</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">if</span> <span class="n">run</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="n">por_sim_one</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">sgsim</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">wcol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scol</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">tmin</span><span class="o">=</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="o">=</span><span class="n">tmax</span><span class="p">,</span><span class="n">itrans</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ismooth</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">dftrans</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">tcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>             <span class="n">twtcol</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">zmin</span><span class="o">=</span><span class="n">pormin</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="n">pormax</span><span class="p">,</span><span class="n">ltail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ltpar</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">utail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">utpar</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">nsim</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>             <span class="n">nx</span><span class="o">=</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="o">=</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="o">=</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="o">=</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="o">=</span><span class="n">ysiz</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">73073</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>             <span class="n">ndmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ndmax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">nodmax</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">mults</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">nmult</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">noct</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>             <span class="n">ktype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">colocorr</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">sec_map</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vario</span><span class="o">=</span><span class="n">vmodel_sim</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>                                              <span class="c1"># pixelplot and location map</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">locpix_st</span><span class="p">(</span><span class="n">por_sim_one</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Sequential Gaussian Simulation Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
-
-<span class="nn">File ~\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\geostatspy\geostats.py:4019,</span> in <span class="ni">sgsim</span><span class="nt">(df, xcol, ycol, vcol, wcol, scol, tmin, tmax, itrans, ismooth, dftrans, tcol, twtcol, zmin, zmax, ltail, ltpar, utail, utpar, nsim, nx, xmn, xsiz, ny, ymn, ysiz, seed, ndmin, ndmax, nodmax, mults, nmult, noct, ktype, colocorr, sec_map, vario)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4017</span>                     <span class="n">dist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nums</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">current_node</span><span class="p">,</span><span class="n">ndmax</span><span class="p">)</span> <span class="c1"># use kd tree for fast nearest data search</span>
-<span class="g g-Whitespace">   </span><span class="mi">4018</span>                 <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">4019</span>                     <span class="n">dist</span><span class="p">,</span> <span class="n">nums</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">current_node</span><span class="p">,</span><span class="n">ndmax</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4020</span>                 <span class="c1"># remove any data outside search radius</span>
-<span class="g g-Whitespace">   </span><span class="mi">4021</span>                 
-<span class="g g-Whitespace">   </span><span class="mi">4022</span> <span class="c1">#                print(&#39;nums&#39;); print(nums)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4023</span> <span class="c1">#                print(&#39;dist&#39;); print(dist)</span>
-<span class="g g-Whitespace">   </span><span class="mi">4024</span>                 <span class="n">na</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
-
-<span class="nn">File _ckdtree.pyx:827,</span> in <span class="ni">scipy.spatial._ckdtree.cKDTree.query</span><span class="nt">()</span>
-
-<span class="nn">File &lt;__array_function__ internals&gt;:180,</span> in <span class="ni">reshape</span><span class="nt">(*args, **kwargs)</span>
-
-<span class="nn">File ~\AppData\Roaming\Python\Python38\site-packages\numpy\core\fromnumeric.py:298,</span> in <span class="ni">reshape</span><span class="nt">(a, newshape, order)</span>
-<span class="g g-Whitespace">    </span><span class="mi">198</span> <span class="nd">@array_function_dispatch</span><span class="p">(</span><span class="n">_reshape_dispatcher</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="k">def</span> <span class="nf">reshape</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">newshape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">201</span><span class="sd">     Gives a new shape to an array without changing its data.</span>
-<span class="g g-Whitespace">    </span><span class="mi">202</span><span class="sd"> </span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span><span class="sd">            [5, 6]])</span>
-<span class="g g-Whitespace">    </span><span class="mi">297</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">298</span>     <span class="k">return</span> <span class="n">_wrapfunc</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;reshape&#39;</span><span class="p">,</span> <span class="n">newshape</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="n">order</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 7000
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 8000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 9000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
+
+ Realization 0: number   = 10000
+                                   mean     = 0.0028 (close to 0.0?)
+                                   variance = 1.1631 (close to gammabar(V,V)? approx. 1.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> x,y,z offsets = 0.0,10.0
+ x,y,z offsets = 10.0,1.794896514920806e-08
+</pre></div>
+</div>
+<img alt="_images/a19a91cd18097014d69c0c89ad90449873a7b27164026e37c8accfb17710523d.png" src="_images/a19a91cd18097014d69c0c89ad90449873a7b27164026e37c8accfb17710523d.png" />
 </div>
 </div>
 </section>
 <section id="visualize-simulated-realizations-and-a-kriged-estimation-model">
-<h3>Visualize Simulated Realizations and a Kriged Estimation Model<a class="headerlink" href="#visualize-simulated-realizations-and-a-kriged-estimation-model" title="Permalink to this heading">#</a></h3>
+<h2>Visualize Simulated Realizations and a Kriged Estimation Model<a class="headerlink" href="#visualize-simulated-realizations-and-a-kriged-estimation-model" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">run</span> <span class="o">=</span> <span class="kc">True</span>                                                    <span class="c1"># run the realizations, it will likely take minutes to complete</span>
@@ -1088,69 +988,130 @@ Setting up rotation matrices for variogram and search
                  Weighted Transformed Average  = 0.0
                  Weighted Transformed Variance = 0.9861
 Setting up rotation matrices for variogram and search
-Working on realization number 0
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Working on realization number 0
    currently on node 0
-   currently on node 1000
-   currently on node 2000
-   currently on node 3000
-   currently on node 4000
-   currently on node 5000
-   currently on node 6000
-   currently on node 7000
-   currently on node 8000
-   currently on node 9000
-Reassigning data to nodes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 6000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 7000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 8000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 9000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
 
  Realization 0: number   = 10000
                                    mean     = 0.0028 (close to 0.0?)
                                    variance = 1.1631 (close to gammabar(V,V)? approx. 1.0)
 Working on realization number 1
    currently on node 0
-   currently on node 1000
-   currently on node 2000
-   currently on node 3000
-   currently on node 4000
-   currently on node 5000
-   currently on node 6000
-   currently on node 7000
-   currently on node 8000
-   currently on node 9000
-Reassigning data to nodes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 6000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 7000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 8000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 9000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
 
  Realization 1: number   = 10000
                                    mean     = -0.0191 (close to 0.0?)
                                    variance = 0.9724 (close to gammabar(V,V)? approx. 1.0)
 Working on realization number 2
    currently on node 0
-   currently on node 1000
-   currently on node 2000
-   currently on node 3000
-   currently on node 4000
-   currently on node 5000
-   currently on node 6000
-   currently on node 7000
-   currently on node 8000
-   currently on node 9000
-Reassigning data to nodes
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 1000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 2000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 3000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 4000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 5000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 6000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 7000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 8000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   currently on node 9000
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Reassigning data to nodes
 
  Realization 2: number   = 10000
                                    mean     = 0.0618 (close to 0.0?)
                                    variance = 1.0912 (close to gammabar(V,V)? approx. 1.0)
 </pre></div>
 </div>
-<img alt="_images/190adf85a39ef56d071da961816733bcea040412be9a0280c6341920489495c8.png" src="_images/190adf85a39ef56d071da961816733bcea040412be9a0280c6341920489495c8.png" />
+<img alt="_images/00b64edb59872799a47a8b3c76059be4c7ce37e39a51ba39614b90a7f94a1ef7.png" src="_images/00b64edb59872799a47a8b3c76059be4c7ce37e39a51ba39614b90a7f94a1ef7.png" />
 </div>
 </div>
 </section>
 <section id="comments">
-<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h3>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic demonstration and comparison of spatial estimation vs. spatial simulation with kriging and sequential Gaussian simulation from GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="the-author">
-<h3>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h3>
-</section>
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="id2">
 <h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
@@ -1209,20 +1170,20 @@ Reassigning data to nodes
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="GeostatsPy_kriging.html"
+       href="GeostatsPy_kriging_vs_simulation_1D.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+        <p class="prev-next-title">Kriging vs. Simulation, 1D</p>
       </div>
     </a>
     <a class="right-next"
-       href="GeostatsPy_model_checking.html"
+       href="GeostatsPy_simulation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">GeostatsPy Well-documented Demonstration Workflows</p>
+        <p class="prev-next-title">Simulation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1241,33 +1202,30 @@ Reassigning data to nodes
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-estimation-with-kriging-vs-simulation-with-sequential-gaussian-simulation-sgsim-maps">Spatial Estimation with Kriging vs. Simulation with Sequential Gaussian Simulation (SGSIM) Maps</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-vs-simulation">Estimation vs. Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-estimation">Spatial Estimation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging">Kriging</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-kriging">Properties of Kriging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-vs-simulation">Estimation vs. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-estimation">Spatial Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging">Kriging</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-kriging">Properties of Kriging</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-colorbars-and-grid-specification">Set Limits for Plotting, Colorbars and Grid Specification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analytics-and-visualization">Data Analytics and Visualization</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-kriging-estimation-map-of-porosity">Simple Kriging Estimation Map of Porosity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-colorbars-and-grid-specification">Set Limits for Plotting, Colorbars and Grid Specification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analytics-and-visualization">Data Analytics and Visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-kriging-estimation-map-of-porosity">Simple Kriging Estimation Map of Porosity</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sequential Gaussian Simulation</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-simulated-realizations-and-a-kriged-estimation-model">Visualize Simulated Realizations and a Kriged Estimation Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sequential Gaussian Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-simulated-realizations-and-a-kriged-estimation-model">Visualize Simulated Realizations and a Kriged Estimation Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -1288,7 +1246,7 @@ Reassigning data to nodes
   <div class="footer-item">
     
 <p class="component-author">
-By The Jupyter Book Community
+By Michael J. Pyrcz
 </p>
 
   </div>
@@ -1298,7 +1256,7 @@ By The Jupyter Book Community
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2024.
       <br/>
     
   </p>
