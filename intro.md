@@ -1,6 +1,6 @@
 # e-Book Introduction
 
-## GeostatsPy Well-documented Demonstration Workflows, The Online Book 
+## Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy 
 
 #### Michael Pyrcz, Professor, The University of Texas at Austin 
 
@@ -33,7 +33,7 @@ All the original geostatistics Python Jupyter notebook workflows are available i
 
 ### Cite This Online Book As:
 
-Pyrcz, M.J., 2024, GeostatsPy Well-documented Demonstration Geostatistical Workflows, https://geostatsguy.github.io/GeostatsPyDemos_Book.
+Pyrcz, M.J., 2024, Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy, https://geostatsguy.github.io/GeostatsPyDemos_Book.
 
 ### Cite GeostatsPyDemos GitHub Repository As:
 
