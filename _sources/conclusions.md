@@ -40,10 +40,3 @@ Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data A
 
 [![DOI](https://zenodo.org/badge/777871341.svg)](https://zenodo.org/doi/10.5281/zenodo.12667035)
 
-***
-
-## References
-
-```{bibliography}
-```
-

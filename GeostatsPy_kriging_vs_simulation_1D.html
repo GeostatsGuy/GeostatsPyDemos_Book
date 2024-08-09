@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Kriging vs. Simulation, 2D Maps" href="GeostatsPy_kriging_vs_simulation_maps.html" />
-    <link rel="prev" title="Simple Kriging" href="GeostatsPy_kriging.html" />
+    <link rel="prev" title="Simulation" href="GeostatsPy_simulation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,9 +173,11 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
@@ -185,15 +187,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
     </div>
@@ -640,14 +645,14 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>0.480664</td>
-      <td>1366.387183</td>
+      <td>-0.998338</td>
+      <td>862.266331</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>-0.016129</td>
-      <td>1245.418189</td>
+      <td>-1.439308</td>
+      <td>973.004690</td>
     </tr>
   </tbody>
 </table>
@@ -713,7 +718,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e81379043106a26bdc7269afe49b9103c08e859a43e492f504374d622c5777fd.png" src="_images/e81379043106a26bdc7269afe49b9103c08e859a43e492f504374d622c5777fd.png" />
+<img alt="_images/8f58f8e5264b553f93f877d42403ac82eda766dda7aa015f0bec7efcf66fbbfc.png" src="_images/8f58f8e5264b553f93f877d42403ac82eda766dda7aa015f0bec7efcf66fbbfc.png" />
 </div>
 </div>
 </section>
@@ -798,7 +803,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0ce8f2435cf3afafeb18778cc9a6e822bd1461c1064a59b0b31d9379a03122c2.png" src="_images/0ce8f2435cf3afafeb18778cc9a6e822bd1461c1064a59b0b31d9379a03122c2.png" />
+<img alt="_images/143d1357a89ff81ea2849a2ec4263ef4d51eaae07fc4de8c1a7f8c7fec44cce8.png" src="_images/143d1357a89ff81ea2849a2ec4263ef4d51eaae07fc4de8c1a7f8c7fec44cce8.png" />
 </div>
 </div>
 </section>
@@ -898,7 +903,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ebd27747982e91301c54d17ee331b7dc5fbd653004cfff93743d1d8af8176fa5.png" src="_images/ebd27747982e91301c54d17ee331b7dc5fbd653004cfff93743d1d8af8176fa5.png" />
+<img alt="_images/1a6997846f38f56210b515e9f0ec6864132d605807b7bb8a38fb1690314c7dc9.png" src="_images/1a6997846f38f56210b515e9f0ec6864132d605807b7bb8a38fb1690314c7dc9.png" />
 </div>
 </div>
 </section>
@@ -970,7 +975,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/31ef04b21adf3d619f0ecd9d92cc1403e31689d9452ef291e11ce10ce4f762c2.png" src="_images/31ef04b21adf3d619f0ecd9d92cc1403e31689d9452ef291e11ce10ce4f762c2.png" />
+<img alt="_images/fabd8ffaacf42c1297f220fbb25dddcd10ae28f4cba6610c49aea3fdcbe9beb6.png" src="_images/fabd8ffaacf42c1297f220fbb25dddcd10ae28f4cba6610c49aea3fdcbe9beb6.png" />
 </div>
 </div>
 </section>
@@ -1040,12 +1045,12 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="GeostatsPy_kriging.html"
+       href="GeostatsPy_simulation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Simple Kriging</p>
+        <p class="prev-next-title">Simulation</p>
       </div>
     </a>
     <a class="right-next"

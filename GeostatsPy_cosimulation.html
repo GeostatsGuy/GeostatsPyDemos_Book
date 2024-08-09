@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Ergodic Fluctuations" href="GeostatsPy_ergodic_fluctuations.html" />
-    <link rel="prev" title="Simulation" href="GeostatsPy_simulation.html" />
+    <link rel="prev" title="Indicator Simulation" href="GeostatsPy_categorical_indicator_simulation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,9 +173,11 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
@@ -185,15 +187,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
     </div>
@@ -600,53 +605,53 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>230.0</td>
-      <td>859.0</td>
-      <td>0.154095</td>
-      <td>103.851187</td>
-      <td>4.642959</td>
-      <td>0.806421</td>
-      <td>0.954165</td>
+      <td>990.0</td>
+      <td>519.0</td>
+      <td>0.122079</td>
+      <td>8.092313</td>
+      <td>2.090915</td>
+      <td>-0.227545</td>
+      <td>-0.331853</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>800.0</td>
-      <td>249.0</td>
-      <td>0.145888</td>
-      <td>13.954039</td>
-      <td>2.635769</td>
-      <td>0.553385</td>
-      <td>0.385320</td>
+      <td>250.0</td>
+      <td>789.0</td>
+      <td>0.173883</td>
+      <td>559.375900</td>
+      <td>6.326822</td>
+      <td>1.644854</td>
+      <td>1.880794</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>600.0</td>
-      <td>100.0</td>
-      <td>0.152042</td>
-      <td>54.035749</td>
-      <td>3.989646</td>
-      <td>0.738847</td>
-      <td>0.806421</td>
+      <td>900.0</td>
+      <td>300.0</td>
+      <td>0.135045</td>
+      <td>10.039742</td>
+      <td>2.306551</td>
+      <td>-0.075270</td>
+      <td>-0.125661</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>130.0</td>
-      <td>789.0</td>
-      <td>0.155974</td>
-      <td>24.588134</td>
-      <td>3.202264</td>
-      <td>0.954165</td>
+      <td>300.0</td>
+      <td>539.0</td>
+      <td>0.148719</td>
+      <td>86.109630</td>
+      <td>4.455621</td>
       <td>0.612813</td>
+      <td>0.738847</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>790.0</td>
-      <td>19.0</td>
-      <td>0.117937</td>
-      <td>1.529362</td>
-      <td>0.424851</td>
-      <td>-0.227545</td>
-      <td>-0.738847</td>
+      <td>230.0</td>
+      <td>639.0</td>
+      <td>0.171823</td>
+      <td>296.698399</td>
+      <td>5.692716</td>
+      <td>1.475791</td>
+      <td>1.226528</td>
     </tr>
   </tbody>
 </table>
@@ -692,64 +697,64 @@ document.write(`
     <tr>
       <th>X</th>
       <td>50.0</td>
-      <td>521.000000</td>
-      <td>300.749065</td>
-      <td>10.000000</td>
-      <td>232.500000</td>
-      <td>5.850000e+02</td>
-      <td>797.500000</td>
+      <td>450.400000</td>
+      <td>282.445299</td>
+      <td>40.000000</td>
+      <td>202.500000</td>
+      <td>3.850000e+02</td>
+      <td>700.000000</td>
       <td>990.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>50.0</td>
-      <td>516.580000</td>
-      <td>275.998232</td>
-      <td>19.000000</td>
-      <td>261.500000</td>
-      <td>5.895000e+02</td>
-      <td>736.500000</td>
-      <td>979.000000</td>
+      <td>472.680000</td>
+      <td>257.507554</td>
+      <td>9.000000</td>
+      <td>236.500000</td>
+      <td>4.945000e+02</td>
+      <td>656.500000</td>
+      <td>929.000000</td>
     </tr>
     <tr>
       <th>Porosity</th>
       <td>50.0</td>
-      <td>0.123570</td>
-      <td>0.029569</td>
-      <td>0.064295</td>
-      <td>0.101560</td>
-      <td>1.219711e-01</td>
-      <td>0.148515</td>
-      <td>0.174147</td>
+      <td>0.132479</td>
+      <td>0.030776</td>
+      <td>0.062169</td>
+      <td>0.110337</td>
+      <td>1.374421e-01</td>
+      <td>0.151842</td>
+      <td>0.210258</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>50.0</td>
-      <td>74.386136</td>
-      <td>171.165102</td>
-      <td>0.315652</td>
-      <td>1.785563</td>
-      <td>4.939773e+00</td>
-      <td>29.226104</td>
-      <td>860.780327</td>
+      <td>82.769701</td>
+      <td>148.602047</td>
+      <td>0.408779</td>
+      <td>3.546077</td>
+      <td>1.083597e+01</td>
+      <td>75.632267</td>
+      <td>591.342615</td>
     </tr>
     <tr>
       <th>logPerm</th>
       <td>50.0</td>
-      <td>2.127463</td>
-      <td>2.175237</td>
-      <td>-1.153114</td>
-      <td>0.579728</td>
-      <td>1.597280e+00</td>
-      <td>3.370522</td>
-      <td>6.757839</td>
+      <td>2.791537</td>
+      <td>1.950472</td>
+      <td>-0.894580</td>
+      <td>1.265566</td>
+      <td>2.382805e+00</td>
+      <td>4.325618</td>
+      <td>6.382396</td>
     </tr>
     <tr>
       <th>nPorosity</th>
       <td>50.0</td>
-      <td>0.007464</td>
-      <td>0.980896</td>
-      <td>-1.953164</td>
+      <td>-0.002897</td>
+      <td>1.004480</td>
+      <td>-2.471190</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -758,9 +763,9 @@ document.write(`
     <tr>
       <th>nPerm</th>
       <td>50.0</td>
-      <td>0.008477</td>
-      <td>0.978853</td>
-      <td>-1.902497</td>
+      <td>0.005010</td>
+      <td>0.986040</td>
+      <td>-2.075844</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -829,7 +834,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2d95c75c633d6393ce4bc0dd3eb7b144bcc814d62b42607ac349831b5066a1a1.png" src="_images/2d95c75c633d6393ce4bc0dd3eb7b144bcc814d62b42607ac349831b5066a1a1.png" />
+<img alt="_images/9e122c27e29ff20fbaaef407119b181a9db85987ec5e2debb0cbbabe5af21b9b.png" src="_images/9e122c27e29ff20fbaaef407119b181a9db85987ec5e2debb0cbbabe5af21b9b.png" />
 </div>
 </div>
 <p>Note we have already demonstrated univariate simulation checks for:</p>
@@ -903,7 +908,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3903da6e72713faa3aa8ba47e856c6682e7f54d3606dcf735947f57ab8193e9e.png" src="_images/3903da6e72713faa3aa8ba47e856c6682e7f54d3606dcf735947f57ab8193e9e.png" />
+<img alt="_images/ddf59c4808a89bf51b9f15febf17a0c3648116ef886e1828a7d60b74ca744d98.png" src="_images/ddf59c4808a89bf51b9f15febf17a0c3648116ef886e1828a7d60b74ca744d98.png" />
 </div>
 </div>
 </section>
@@ -956,7 +961,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4966990fce56daa248c58334235ad5e63b991dfe609d7880cbb3caec3f338aab.png" src="_images/4966990fce56daa248c58334235ad5e63b991dfe609d7880cbb3caec3f338aab.png" />
+<img alt="_images/286af997ad96f242220353302ab02e1adacf08cde01b140be13fead8eb975e76.png" src="_images/286af997ad96f242220353302ab02e1adacf08cde01b140be13fead8eb975e76.png" />
 </div>
 </div>
 </section>
@@ -998,7 +1003,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/672e3696ed5b4ad6f27dc07c43106768a3669c0d8fd3b38a0fa53fbb96165f70.png" src="_images/672e3696ed5b4ad6f27dc07c43106768a3669c0d8fd3b38a0fa53fbb96165f70.png" />
+<img alt="_images/450078add1e8c892e6129cdd57ad415168e2a7c5f621ecdce27b7a00bd200f44.png" src="_images/450078add1e8c892e6129cdd57ad415168e2a7c5f621ecdce27b7a00bd200f44.png" />
 </div>
 </div>
 </section>
@@ -1068,12 +1073,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="GeostatsPy_simulation.html"
+       href="GeostatsPy_categorical_indicator_simulation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Simulation</p>
+        <p class="prev-next-title">Indicator Simulation</p>
       </div>
     </a>
     <a class="right-next"

@@ -1,0 +1,1274 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Indicator Kriging &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_categorical_indictor_kriging';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Simulation" href="GeostatsPy_simulation.html" />
+    <link rel="prev" title="Simple Kriging" href="GeostatsPy_kriging.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    e-Book Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_categorical_indictor_kriging.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/GeostatsPy_categorical_indictor_kriging.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Indicator Kriging</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-estimation">Spatial Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging">Kriging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-kriging">Properties of Kriging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-formalism">Indicator Formalism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-custom-colorbar">Make Custom Colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics">Summary Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-and-cdfs">PDF and CDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-the-grid">Specify the Grid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-maps">Location Maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-kriging-for-facies">Indicator Kriging for Facies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#by-facies-kriging-for-porosity">By-facies Kriging for Porosity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="indicator-kriging">
+<h1>Indicator Kriging<a class="headerlink" href="#indicator-kriging" title="Permalink to this heading">#</a></h1>
+<section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
+<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
+<p>This is a tutorial for / demonstration of <strong>Categorical Indicator Simulation</strong> with GeostatsPy for estimating spatial cetegorical features, e.g., like facies.</p>
+<ul class="simple">
+<li><p>specifically we use kriging to make estimates on a grid to display as a map.</p></li>
+</ul>
+<p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/CVkmuwF8cJ8?si=TzwmoF7QtppoITOv">Kriging</a>.</p></li>
+<li><p><a class="reference external" href="https://youtu.be/6mCfgbh7f2g?si=Rr6PcAbBgvhltCH-">Indicator Methods and Indicator Kriging</a>.</p></li>
+</ul>
+<p>For your convenience here’s a summary of salient points.</p>
+<p>Kriging is the geostatistical workhorse for:</p>
+<ol class="arabic simple">
+<li><p>Prediction away from wells, e.g. pre-sample assessments, interpolation and extrapolation.</p></li>
+<li><p>Spatial cross validation.</p></li>
+<li><p>Spatial uncertainty modeling.</p></li>
+</ol>
+<p>First let’s explain the concept of spatial estimation.</p>
+</section>
+</section>
+<section id="spatial-estimation">
+<h2>Spatial Estimation<a class="headerlink" href="#spatial-estimation" title="Permalink to this heading">#</a></h2>
+<p>Consider the case of making an estimate at some unsampled location, <span class="math notranslate nohighlight">\(𝑧(\bf{u}_0)\)</span>, where <span class="math notranslate nohighlight">\(z\)</span> is the property of interest (e.g. porosity etc.) and <span class="math notranslate nohighlight">\(𝐮_0\)</span> is a location vector describing the unsampled location.</p>
+<p>How would you do this given data, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_1)\)</span>, <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_2)\)</span>, and <span class="math notranslate nohighlight">\(𝑧(\bf{𝐮}_3)\)</span>?</p>
+<p>It would be natural to use a set of linear weights to formulate the estimator given the available data.</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha})
+\]</div>
+<p>We could add an unbiasedness constraint to impose the sum of the weights equal to one.  What we will do is assign the remainder of the weight (one minus the sum of weights) to the global average; therefore, if we have no informative data we will estimate with the global average of the property of interest.</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} z(\bf{u}_{\alpha}) + \left(1-\sum^{n}_{\alpha = 1} \lambda_{\alpha} \right) \overline{z}
+\]</div>
+<p>We will make a stationarity assumption, so let’s assume that we are working with residuals, <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = z^{*}(\bf{u}) - \overline{z}(\bf{u})
+\]</div>
+<p>If we substitute this form into our estimator the estimator simplifies, since the mean of the residual is zero.</p>
+<div class="math notranslate nohighlight">
+\[
+y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
+\]</div>
+<p>while satisfying the unbaisedness constraint.</p>
+</section>
+<section id="kriging">
+<h2>Kriging<a class="headerlink" href="#kriging" title="Permalink to this heading">#</a></h2>
+<p>Now the next question is what weights should we use?</p>
+<p>We could use equal weighting, <span class="math notranslate nohighlight">\(\lambda = \frac{1}{n}\)</span>, and the estimator would be the average of the local data applied for the spatial estimate. This would not be very informative.</p>
+<p>We could assign weights considering the spatial context of the data and the estimate:</p>
+<ul class="simple">
+<li><p><strong>spatial continuity</strong> as quantified by the variogram (and covariance function)</p></li>
+<li><p><strong>redundancy</strong> the degree of spatial continuity between all of the available data with themselves</p></li>
+<li><p><strong>closeness</strong> the degree of spatial continuity between the avaiable data and the estimation location</p></li>
+</ul>
+<p>The kriging approach accomplishes this, calculating the best linear unbiased weights for the local data to estimate at the unknown location.  The derivation of the kriging system and the resulting linear set of equations is available in the lecture notes.  Furthermore kriging provides a measure of the accuracy of the estimate!  This is the kriging estimation variance (sometimes just called the kriging variance).</p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^{2}_{E}(\bf{u}) = C(0) - \sum^{n}_{\alpha = 1} \lambda_{\alpha} C(\bf{u}_0 - \bf{u}_{\alpha})
+\]</div>
+<p>What is ‘best’ about this estimate? Kriging estimates are best in that they minimize the above estimation variance.</p>
+</section>
+<section id="properties-of-kriging">
+<h2>Properties of Kriging<a class="headerlink" href="#properties-of-kriging" title="Permalink to this heading">#</a></h2>
+<p>Here are some important properties of kriging:</p>
+<ul class="simple">
+<li><p><strong>Exact interpolator</strong> - kriging estimates with the data values at the data locations</p></li>
+<li><p><strong>Kriging variance</strong> can be calculated before getting the sample information, as the kriging estimation variance is not dependent on the values of the data nor the kriging estimate, i.e. the kriging estimator is homoscedastic.</p></li>
+<li><p><strong>Spatial context</strong> - kriging takes into account, furthermore to the statements on spatial continuity, closeness and redundancy we can state that kriging accounts for the configuration of the data and structural continuity of the variable being estimated.</p></li>
+<li><p><strong>Scale</strong> - kriging may be generalized to account for the support volume of the data and estimate. We will cover this later.</p></li>
+<li><p><strong>Multivariate</strong> - kriging may be generalized to account for multiple secondary data in the spatial estimate with the cokriging system. We will cover this later.</p></li>
+<li><p><strong>Smoothing effect</strong> of kriging can be forecast. We will use this to build stochastic simulations later.</p></li>
+</ul>
+</section>
+<section id="indicator-formalism">
+<h2>Indicator Formalism<a class="headerlink" href="#indicator-formalism" title="Permalink to this heading">#</a></h2>
+<p>Here we use indicator methods to estimate a categorical feature in space, but there are many more aspects of indicator methods that we could cover:</p>
+<ul class="simple">
+<li><p>Estimation and Simulation with categorical variables with explicit control of spatial continuity of each category</p></li>
+<li><p>Estimation and simulation with continuous variables with explicit control of the spatial continuity of different magnitudes</p></li>
+<li><p>Requires indicator coding of data, a probability coding based on category or threshold</p></li>
+<li><p>Requires indicator variograms to describe the spatial continuity.</p></li>
+</ul>
+<p>If <span class="math notranslate nohighlight">\(I\{\bf{u} ;z_k \}\)</span> is an indicator for a categorical variable, it is a probability of a realization equal to a category. We define the cateogrical indicator transform as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+I\{\bf{u} ;z_k \} =
+\left\{ 
+  \begin{array}{ c l }
+    1 &amp; \text{if} Z(\bf{u}) = z_k \\
+    0 &amp; \text{otherwise}
+  \end{array}
+\right.
+\end{split}\]</div>
+<p>For example,</p>
+<ul class="simple">
+<li><p>given threshold, <span class="math notranslate nohighlight">\(𝑧_2 = 2\)</span>, and data at <span class="math notranslate nohighlight">\(\bf{ 𝐮 } _1\)</span>, <span class="math notranslate nohighlight">\(z(\bf{u} _1) = 2\)</span>, then <span class="math notranslate nohighlight">\(I\{\bf{u}_1 ;z_2 \} = 1\)</span></p></li>
+<li><p>given threshold, <span class="math notranslate nohighlight">\(𝑧_1 = 1\)</span>, and a RV away from data at <span class="math notranslate nohighlight">\(\bf{ 𝐮 } _{iy = 10, ix = 5}\)</span>, <span class="math notranslate nohighlight">\(z(\bf{ 𝐮 } _{iy = 10, ix = 5}) = 0.25\)</span></p></li>
+</ul>
+<p>Now we perform indicator kriging for each category, <span class="math notranslate nohighlight">\(z_k\)</span> to estimate the probability of each category at each location.</p>
+<div class="math notranslate nohighlight">
+\[
+p^*_{IK}(\bf{ u }; k) = \sum_{\alpha = 1}^n \lambda_{\alpha} (k) \cdot I\{\bf{u} ;z_k \} + \left( 1 - \sum_{\alpha = 1}^n \lambda(k) \right) \cdot p(k)
+\]</div>
+<p>Normalization to force the results to sum to 1.0 is included for probability closure.</p>
+</section>
+<section id="load-the-required-libraries">
+<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<p>The following code loads the required libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python      </span>
+<span class="kn">import</span> <span class="nn">geostatspy</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>                                      <span class="c1"># custom colorbar</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mticker</span>                           <span class="c1"># custom colorpar ticks</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
+<span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># color map</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
+</section>
+<section id="define-functions">
+<h2>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h2>
+<p>This is a convenience function to add major and minor gridlines and a combine location map and pixelplot that has color maps and color bars to improve plot interpretability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks  </span>
+    
+<span class="k">def</span> <span class="nf">locpix_colormaps_st</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">step</span><span class="p">,</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">xcol</span><span class="p">,</span><span class="n">ycol</span><span class="p">,</span><span class="n">vcol</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="n">xlabel</span><span class="p">,</span><span class="n">ylabel</span><span class="p">,</span><span class="n">vlabel_loc</span><span class="p">,</span><span class="n">vlabel</span><span class="p">,</span><span class="n">cmap_loc</span><span class="p">,</span><span class="n">cmap</span><span class="p">):</span>
+    <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">step</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ymax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">step</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">interpolation</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">],</span> <span class="n">vmin</span> <span class="o">=</span> <span class="n">vmin</span><span class="p">,</span> <span class="n">vmax</span> <span class="o">=</span> <span class="n">vmax</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">xcol</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="n">ycol</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">vcol</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_loc</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">vmin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">vmax</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">linewidths</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+    <span class="n">cbar_loc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="nb">format</span><span class="o">=</span><span class="n">mticker</span><span class="o">.</span><span class="n">FixedFormatter</span><span class="p">([</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span><span class="s1">&#39;Sand&#39;</span><span class="p">]));</span> <span class="n">cbar_loc</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">vlabel_loc</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span><span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cs</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">);</span> <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">vlabel</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span><span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cs</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-custom-colorbar">
+<h2>Make Custom Colorbar<a class="headerlink" href="#make-custom-colorbar" title="Permalink to this heading">#</a></h2>
+<p>We make this colorbar to display our categorical, sand and shale facies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap_facies</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;gold&#39;</span><span class="p">])</span>
+<span class="n">cmap_facies</span><span class="o">.</span><span class="n">set_over</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">cmap_facies</span><span class="o">.</span><span class="n">set_under</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="set-the-working-directory">
+<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;d:/PGE383&quot;)                                        # set the working directory</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-tabular-data">
+<h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
+<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<ul class="simple">
+<li><p>note the “fraction_data” variable is an option to randomly take a proportion of the data (i.e., 1.0 is all data).</p>
+<ul>
+<li><p>this is not standard part of spatial estimation, but fewer data is easier to visualize given our grid size (we want multiple cells between the data to see the behavoir away from data)</p></li>
+</ul>
+</li>
+<li><p>note, I often remove unnecessary data table columns. This clarifies workflows and reduces the chance of blunders, e.g., using the wrong column!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fraction_data</span> <span class="o">=</span> <span class="mf">0.2</span>                                           <span class="c1"># extract a fraction of data for demonstration / faster runs, set to 1.0 for homework</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data_MV_biased.csv&quot;</span><span class="p">)</span> <span class="c1"># load the data from Dr. Pyrcz&#39;s GitHub repository</span>
+
+<span class="k">if</span> <span class="n">fraction_data</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span> <span class="o">=</span> <span class="n">fraction_data</span><span class="p">,</span><span class="n">replace</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">73073</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>                                           <span class="c1"># remove unnecessary features</span>
+
+<span class="n">df_sand</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>  <span class="c1"># copy only &#39;Facies&#39; = sand records</span>
+<span class="n">df_shale</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span> <span class="c1"># copy only &#39;Facies&#39; = shale records</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>                                                  <span class="c1"># we could also use this command for a table preview </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>Facies</th>
+      <th>Porosity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>280.0</td>
+      <td>409.0</td>
+      <td>1.0</td>
+      <td>0.136716</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>230.0</td>
+      <td>749.0</td>
+      <td>1.0</td>
+      <td>0.204587</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>300.0</td>
+      <td>500.0</td>
+      <td>1.0</td>
+      <td>0.159891</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="summary-statistics">
+<h2>Summary Statistics<a class="headerlink" href="#summary-statistics" title="Permalink to this heading">#</a></h2>
+<p>Let’s look at summary statistics for all facies combined:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                     <span class="c1"># summary table of all facies combined DataFrame statistics</span>
+<span class="n">df_sand</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                <span class="c1"># summary table of sand only DataFrame statistics</span>
+<span class="n">df_shale</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                               <span class="c1"># summary table of shale only DataFrame statistics</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>index</th>
+      <td>30.0</td>
+      <td>36.833333</td>
+      <td>21.133538</td>
+      <td>3.000000</td>
+      <td>19.750000</td>
+      <td>34.500000</td>
+      <td>53.750000</td>
+      <td>73.000000</td>
+    </tr>
+    <tr>
+      <th>X</th>
+      <td>30.0</td>
+      <td>505.333333</td>
+      <td>274.461647</td>
+      <td>70.000000</td>
+      <td>260.000000</td>
+      <td>500.000000</td>
+      <td>777.500000</td>
+      <td>990.000000</td>
+    </tr>
+    <tr>
+      <th>Y</th>
+      <td>30.0</td>
+      <td>399.433333</td>
+      <td>266.244467</td>
+      <td>19.000000</td>
+      <td>204.750000</td>
+      <td>334.000000</td>
+      <td>639.000000</td>
+      <td>999.000000</td>
+    </tr>
+    <tr>
+      <th>Facies</th>
+      <td>30.0</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>Porosity</th>
+      <td>30.0</td>
+      <td>0.095903</td>
+      <td>0.017411</td>
+      <td>0.062169</td>
+      <td>0.088839</td>
+      <td>0.099708</td>
+      <td>0.106937</td>
+      <td>0.122079</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="pdf-and-cdfs">
+<h2>PDF and CDFs<a class="headerlink" href="#pdf-and-cdfs" title="Permalink to this heading">#</a></h2>
+<p>Let’s also look at the distributions, facies PDF and porosity CDF by facies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies_Names&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span><span class="s1">&#39;Sand&#39;</span><span class="p">)</span>
+<span class="n">facies_counts</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies_Names&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">);</span> <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span><span class="s1">&#39;grey&#39;</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Sand&#39;</span><span class="p">,</span><span class="s1">&#39;Shale&#39;</span><span class="p">],</span><span class="n">height</span><span class="o">=</span><span class="n">facies_counts</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Facies&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Facies Probability Density Function&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>                                              <span class="c1"># plot original sand and shale porosity histograms</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_sand</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">],</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span><span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;stepfilled&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sand&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df_shale</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">],</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span><span class="n">histtype</span><span class="o">=</span><span class="s2">&quot;stepfilled&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">cumulative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Shale&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.25</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porosity&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porosity Cumulative Density Function by Facies&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6097feb12b4e8c39d9fe372c9226175f03302f345226e1cb27fa33faba39d1e5.png" src="_images/6097feb12b4e8c39d9fe372c9226175f03302f345226e1cb27fa33faba39d1e5.png" />
+</div>
+</div>
+<p>For brevity we will omit data declustering from this workflow. We will assume declustered means for the porosity and permeability to apply with simple kriging.</p>
+</section>
+<section id="specify-the-grid">
+<h2>Specify the Grid<a class="headerlink" href="#specify-the-grid" title="Permalink to this heading">#</a></h2>
+<p>Let’s specify a reasonable grid to the estimation map.</p>
+<ul class="simple">
+<li><p>we balance detail and computation time. Note kriging computation complexity scales <span class="math notranslate nohighlight">\(O(n_{cell})\)</span></p></li>
+<li><p>so if we half the cell size we have 4 times more grid cells in 2D, 4 times the runtime</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">1000.0</span>                                     <span class="c1"># range of x values</span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mf">1000.0</span>                                     <span class="c1"># range of y values</span>
+
+<span class="n">xsiz</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">ysiz</span> <span class="o">=</span> <span class="mi">10</span>                                          <span class="c1"># cell size</span>
+<span class="n">nx</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">100</span>                                            <span class="c1"># number of cells</span>
+<span class="n">xmn</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span> <span class="n">ymn</span> <span class="o">=</span> <span class="mi">5</span>                                              <span class="c1"># grid origin, location center of lower left cell</span>
+
+<span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">999</span><span class="p">;</span>                                      <span class="c1"># data trimming limits</span>
+
+<span class="n">pormin</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mf">0.22</span>                                  <span class="c1"># set feature min and max for colorbars</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="location-maps">
+<h2>Location Maps<a class="headerlink" href="#location-maps" title="Permalink to this heading">#</a></h2>
+<p>Let’s plot the location maps of facies and porosity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>                                              <span class="c1"># location map facies </span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap_st</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;Well Data - Facies&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Facies (0 - shale, 1 - sand)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap_st</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="s1">&#39;Porosity - All Facies&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Nscore Porosity&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap_st</span><span class="p">(</span><span class="n">df_sand</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="s1">&#39;Porosity - Sand&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap_st</span><span class="p">(</span><span class="n">df_shale</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="s1">&#39;Porosity - Shale&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/22de02c2fc6f751a8496f0b591889539f325e48449f6c43a61253e55869bbc46.png" src="_images/22de02c2fc6f751a8496f0b591889539f325e48449f6c43a61253e55869bbc46.png" />
+</div>
+</div>
+</section>
+<section id="indicator-kriging-for-facies">
+<h2>Indicator Kriging for Facies<a class="headerlink" href="#indicator-kriging-for-facies" title="Permalink to this heading">#</a></h2>
+<p>To demonstrate kriging we will assume variogram models, rather than calculate experimental variograms and then model them.  This is for brevity and so we can be free to experiment with different vairogram models to observe the impact on kriging.</p>
+<p>Let’s first set up the basic indicator kriging parameters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nxdis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">nydis</span> <span class="o">=</span> <span class="mi">1</span>                                          <span class="c1"># block kriging discretizations, 1 for point kriging</span>
+<span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">10</span>                                         <span class="c1"># minimum and maximum data for kriging </span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">500</span>                                                  <span class="c1"># maximum search distance</span>
+<span class="n">ktype</span> <span class="o">=</span> <span class="mi">0</span>                                                     <span class="c1"># kriging type, 0 - simple, 1 - ordinary</span>
+<span class="n">ivtype</span> <span class="o">=</span> <span class="mi">0</span>                                                    <span class="c1"># variable type, 0 - categorical, 1 - continuous</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s specify the facies categories, global proportions along with the spatial continuity models for both facies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncut</span> <span class="o">=</span> <span class="mi">2</span>                                                      <span class="c1"># number of facies</span>
+<span class="n">thresh</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>                                                <span class="c1"># the facies categories</span>
+<span class="n">gcdf</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.6</span><span class="p">]</span>                                              <span class="c1"># the global proportions of the categories</span>
+<span class="n">vrange</span> <span class="o">=</span> <span class="mf">500.0</span>                                                <span class="c1"># variogram range</span>
+<span class="n">varios</span> <span class="o">=</span> <span class="p">[]</span>                                                   <span class="c1"># the variogram list</span>
+<span class="n">varios</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">vrange</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">vrange</span><span class="p">))</span> <span class="c1"># shale ind. variogram</span>
+<span class="n">varios</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">vrange</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">vrange</span><span class="p">))</span> <span class="c1"># sand ind. variogram</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are ready to run the indicator kriging with the 2 cateogries (sand and shale) and calculate the probability of sand and shale at all locations and plot the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display   
+
+<span class="n">no_trend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>                                    <span class="c1"># null ndarray not of correct size so ik2d will not trend</span>
+<span class="n">ikmap</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">ik2d</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="n">ivtype</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">thresh</span><span class="p">,</span><span class="n">gcdf</span><span class="p">,</span><span class="n">no_trend</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span>
+                <span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="n">ktype</span><span class="p">,</span><span class="n">vario</span><span class="o">=</span><span class="n">varios</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span> 
+<span class="n">locpix_colormaps_st</span><span class="p">(</span><span class="n">ikmap</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Well Data and Indicator Kriged Probability Shale&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="s1">&#39;Probability Shale Facies&#39;</span><span class="p">,</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span> 
+<span class="n">locpix_colormaps_st</span><span class="p">(</span><span class="n">ikmap</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">],</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Well Data and Indicator Kriged Probability Sand&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="s1">&#39;Probability Sand Facies&#39;</span><span class="p">,</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a4eda41702616b2aeefb80ce1ecd72bf22321c5b1c39f2f2f5f59de8a3151b0c.png" src="_images/a4eda41702616b2aeefb80ce1ecd72bf22321c5b1c39f2f2f5f59de8a3151b0c.png" />
+</div>
+</div>
+<p>The results are quite interesting.  With the use of ordinary kriging we are able to handle the nonstationarity in the sand a shale data.  See how the probability remains consistent away from data in locations with consistent facies.</p>
+<ul class="simple">
+<li><p>For a surprising result, switch to simple kriging. We are actually using quite a short variogram range and we see the global proportions away from the data!</p></li>
+</ul>
+</section>
+<section id="by-facies-kriging-for-porosity">
+<h2>By-facies Kriging for Porosity<a class="headerlink" href="#by-facies-kriging-for-porosity" title="Permalink to this heading">#</a></h2>
+<p>Now let’s try some kriging with the continuous properties. For this workflow we will demonstrate a cookie-cutter approach.  The steps are:</p>
+<ol class="arabic simple">
+<li><p>model the facies, sand and shale, probabilities with indicator kriging</p></li>
+<li><p>model the porosity for sand and shale separately and exhaustively, i.e. at all locations in the model</p></li>
+<li><p>model the permeability for sand and shale separately and exhaustively, i.e. at all locations in the model</p></li>
+<li><p>assign sand and shale locations based on the probabilities from step 1</p></li>
+<li><p>combine the porosity and permeability from sand and shale regions together</p></li>
+</ol>
+<p>Limitations of this Workflow:</p>
+<ul class="simple">
+<li><p>kriging is too smooth, the spatial continuity is too high</p></li>
+<li><p>kriging does not reproduce the continuous property distributions</p></li>
+<li><p>we are not accounting for the correlation between porosity and permeability</p></li>
+</ul>
+<p>We will correct these issues when we perform simulation later.</p>
+<p>We need to add a couple of parameters and assume a porosity variogram model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">no_trend</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>                                    <span class="c1"># null ndarray not of correct size so ik2d will not trend</span>
+<span class="n">skmean_por</span> <span class="o">=</span> <span class="mf">0.10</span><span class="p">;</span> <span class="n">skmean_perm</span> <span class="o">=</span> <span class="mf">65.0</span>                         <span class="c1"># simple kriging mean (if simple kriging is selected below)</span>
+<span class="n">ktype</span> <span class="o">=</span> <span class="mi">0</span>                                                     <span class="c1"># kriging type, 0 - simple, 1 - ordinary</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">300</span>                                                  <span class="c1"># search radius for neighbouring data</span>
+<span class="n">nxdis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">nydis</span> <span class="o">=</span> <span class="mi">1</span>                                          <span class="c1"># number of grid discretizations for block kriging</span>
+<span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">20</span>                                         <span class="c1"># minimum and maximum data for an estimate</span>
+<span class="n">tmin</span> <span class="o">=</span> <span class="mf">0.0</span>                                                    <span class="c1"># minimum property value</span>
+<span class="n">por_vrange</span> <span class="o">=</span> <span class="mi">300</span>                                              <span class="c1"># porosity variogram range</span>
+<span class="n">por_vario</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">por_vrange</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">por_vrange</span><span class="p">)</span> <span class="c1"># por. variogram</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s start with spatial estimates of porosity and permeability with all facies combined. We will also look at the kriging estimation variance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display   
+
+<span class="n">por_kmap</span><span class="p">,</span> <span class="n">por_vmap</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">kb2d</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">nxdis</span><span class="p">,</span><span class="n">nydis</span><span class="p">,</span>
+         <span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="n">ktype</span><span class="p">,</span><span class="n">skmean_por</span><span class="p">,</span><span class="n">por_vario</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_kmap</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Kriging Porosity - All Facies&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">por_vmap</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="s1">&#39;Kriging Variance - All Facies&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;Porosity (%^2)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0985c05bed0ed69a2d4caa253c9484046f2f8dbd07c06151c29a3fd340298456.png" src="_images/0985c05bed0ed69a2d4caa253c9484046f2f8dbd07c06151c29a3fd340298456.png" />
+</div>
+</div>
+<p>The results look good.</p>
+<p>Now let’s build spatial estimation models for sand and shale separately. Now we need variograms for sand and shale separately, along with the declustered global means if simple kriging is used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">skmean_por_sand</span> <span class="o">=</span> <span class="mf">0.10</span><span class="p">;</span> <span class="n">skmean_por_shale</span> <span class="o">=</span> <span class="mf">0.08</span>
+<span class="n">skmean_perm_sand</span> <span class="o">=</span> <span class="mf">3.0</span><span class="p">;</span> <span class="n">skmean_perm_shale</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">por_sand_vario</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span> <span class="c1"># porosity sand variogram</span>
+<span class="n">por_shale_vario</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span> <span class="c1"># porosity shale variogram</span>
+
+<span class="n">facies_kmap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span><span class="p">));</span> <span class="n">por_kmap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span><span class="p">));</span> <span class="n">perm_kmap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">ny</span><span class="p">,</span><span class="n">nx</span><span class="p">))</span> <span class="c1"># declare arrays for results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are now ready to run these models, by-facies and visualize the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display   
+
+<span class="n">por_sand_kmap</span><span class="p">,</span> <span class="n">por_sand_vmap</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">kb2d</span><span class="p">(</span><span class="n">df_sand</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">nxdis</span><span class="p">,</span><span class="n">nydis</span><span class="p">,</span>
+         <span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="n">ktype</span><span class="p">,</span><span class="n">skmean_por_sand</span><span class="p">,</span><span class="n">por_sand_vario</span><span class="p">)</span> <span class="c1"># sand porosity kriging</span>
+<span class="n">por_shale_kmap</span><span class="p">,</span> <span class="n">por_shale_vmap</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">kb2d</span><span class="p">(</span><span class="n">df_shale</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">nxdis</span><span class="p">,</span><span class="n">nydis</span><span class="p">,</span>
+         <span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="n">ktype</span><span class="p">,</span><span class="n">skmean_por_shale</span><span class="p">,</span><span class="n">por_shale_vario</span><span class="p">)</span> <span class="c1"># shale porosity kriging</span>
+
+<span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ny</span><span class="p">):</span>                                        <span class="c1"># cookie cutter approach, assume most likely facies</span>
+    <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nx</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">ikmap</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">:</span>   <span class="c1"># current location is assumed to be sand</span>
+            <span class="n">facies_kmap</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="n">por_kmap</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">por_sand_kmap</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">];</span>
+            <span class="n">por_shale_kmap</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>                      <span class="c1"># current location is assumed to be shale</span>
+            <span class="n">facies_kmap</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">por_kmap</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">por_shale_kmap</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">];</span>
+            <span class="n">por_sand_kmap</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># plot porosity estimates in sand          </span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_sand_kmap</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="n">df_sand</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Kriging Porosity Sand&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>                                              <span class="c1"># plot porosity estimates in shale</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_shale_kmap</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="n">df_shale</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;Kriging Porosity Shale&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6f1f9a8b3d03e857f042111ea18266d6371920a7299e1bf3d9d6afbb9ddfc674.png" src="_images/6f1f9a8b3d03e857f042111ea18266d6371920a7299e1bf3d9d6afbb9ddfc674.png" />
+</div>
+</div>
+<p>Now let’s visualize the estimation models for porosity and permeability by-facies put together as a single map for each property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># plot facies estimates</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">facies_kmap</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Well Data and Indicator Kriged Most Likely Facies&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="n">cmap_facies</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>                                              <span class="c1"># plot porosity estimates</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_kmap</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.25</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Kriging Porosity All Facies&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3d2d6a4610cfdc3c15cb85459e37e0703dae36f7149acf06fcbcae01db17130f.png" src="_images/3d2d6a4610cfdc3c15cb85459e37e0703dae36f7149acf06fcbcae01db17130f.png" />
+</div>
+</div>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>This was a basic demonstration of indicator kriging for categorical spatial estimation and continuous estimation by spatial category with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>I hope this is helpful,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="the-author">
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id1">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<section id="id2">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="want-to-work-together">
+<h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
+<h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GeostatsPy_kriging.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Simple Kriging</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="GeostatsPy_simulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Simulation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-estimation">Spatial Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging">Kriging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-kriging">Properties of Kriging</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-formalism">Indicator Formalism</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-custom-colorbar">Make Custom Colorbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics">Summary Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-and-cdfs">PDF and CDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-the-grid">Specify the Grid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#location-maps">Location Maps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#indicator-kriging-for-facies">Indicator Kriging for Facies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#by-facies-kriging-for-porosity">By-facies Kriging for Porosity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

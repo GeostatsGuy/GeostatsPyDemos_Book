@@ -173,9 +173,11 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Variogram Models, Simulation Examples</a></li>
@@ -185,15 +187,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
     </div>
@@ -615,14 +620,14 @@ document.write(`
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>0.192199</td>
-      <td>959.171277</td>
+      <td>-0.404239</td>
+      <td>1174.533928</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>1.756856</td>
-      <td>952.521848</td>
+      <td>0.072395</td>
+      <td>696.261382</td>
     </tr>
   </tbody>
 </table>
@@ -702,7 +707,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/69869f28b85b4ceb7d80fb3635a7e0582b79c95f72212049192d249aea31326d.png" src="_images/69869f28b85b4ceb7d80fb3635a7e0582b79c95f72212049192d249aea31326d.png" />
+<img alt="_images/d2bf2d6c3516d7e645a576c86436e6603d4c7c4e2a607aa4e748f90493261fa4.png" src="_images/d2bf2d6c3516d7e645a576c86436e6603d4c7c4e2a607aa4e748f90493261fa4.png" />
 </div>
 </div>
 </section>
@@ -748,7 +753,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aa5c7b52f082d2e154059e57ef20c6276f01a3b00ec82a1a059ef6a2732a04e9.png" src="_images/aa5c7b52f082d2e154059e57ef20c6276f01a3b00ec82a1a059ef6a2732a04e9.png" />
+<img alt="_images/374c5a328d9e113f84739ad0354c8b2d21beb63e49f6aa867f74dd984699135c.png" src="_images/374c5a328d9e113f84739ad0354c8b2d21beb63e49f6aa867f74dd984699135c.png" />
 </div>
 </div>
 </section>
@@ -794,7 +799,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/39589425b62d72a6ae3fbe0e7e178f0403ffd15d9a0245329ee6b62f0b2900af.png" src="_images/39589425b62d72a6ae3fbe0e7e178f0403ffd15d9a0245329ee6b62f0b2900af.png" />
+<img alt="_images/76b37f08053a9492b126c3f0a0548cebdab09900fc54b31ee2340dbabcaa63d1.png" src="_images/76b37f08053a9492b126c3f0a0548cebdab09900fc54b31ee2340dbabcaa63d1.png" />
 </div>
 </div>
 </section>
@@ -917,7 +922,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3181f1da155df443f06410413d138b0f2f41953b7f78c2881db8077843f64cee.png" src="_images/3181f1da155df443f06410413d138b0f2f41953b7f78c2881db8077843f64cee.png" />
+<img alt="_images/fa23af7c713ec43e1ac9b98d7a9fe626a2d2bfb49cf9f19b5d8178e53a1eab6b.png" src="_images/fa23af7c713ec43e1ac9b98d7a9fe626a2d2bfb49cf9f19b5d8178e53a1eab6b.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with increasing short scale spatial continuity from exponential to spherical to Gaussian. But the long range spatial continuity does not significantly change.</p>
@@ -978,7 +983,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a1401ded31fd12faac89c042d2340402c8b8ed396f79b52de20862f9408e474e.png" src="_images/a1401ded31fd12faac89c042d2340402c8b8ed396f79b52de20862f9408e474e.png" />
+<img alt="_images/95128ebe5033901802dbcf9741bddf8fb5e0ce9032247860dc8059f1565aef6a.png" src="_images/95128ebe5033901802dbcf9741bddf8fb5e0ce9032247860dc8059f1565aef6a.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with decreasing short scale spatial continuity with increase in relative nugget effect.</p>

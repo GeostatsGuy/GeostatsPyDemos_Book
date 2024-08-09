@@ -250,7 +250,7 @@ Numerical methods in GSLIB (Deutsch and Journel, 1997){cite}`deutsch1997` transl
 
 This is a topical approach to the hands-on application of geostatistics. Each chapter stands alone and covers a unique demonstration or workflow using GeostatsPy. Want to visualize univariate distributions, debias your spatial data with declustering, make estimates in space with kriging or simulate a spatial heterogeneity model? Open up the respective chapter and walkthrough the example with all requisite steps, including data loading, data visualization and geostatistics steps, all codes and results shown. Go to the linked lecture to fill any gaps in your knowledge and then download and update the workflow for your application, please remember to cite the e-book in your work, so that others will see and use this resource! Remember, that this content is for educational purposes only and I do not provide any guarantees. There may be errors in the codes, there may be issues with your case that invalidate the assumptions of the e-book's workflows. It is up to you to evaluate your results.
 
-```{warning}:
+```{warning}
 If you adopt any workflows from this e-book or any codes from the GeostatsPy Python package you must check your own work.
 ```
 
