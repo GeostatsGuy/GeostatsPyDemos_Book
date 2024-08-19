@@ -1,0 +1,62 @@
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\asyncio\base_events.py", line 616, in run_until_complete
+    return future.result()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+%%capture --no-display                                    # suppress the simulation text output                                
+
+zmin = 0.00; zmax = 0.20                                  # feature min and max values 
+nx = 80; ny = 80; xsiz = 10.0; ysiz = 10.0; xmn = 5.0; ymn = 5.0; nxdis = 1; nydis = 1 # grid specification
+nreal = 3                                                 # number of realizations
+ndmin = 0; ndmax = 20                                     # number of data for each kriging system
+vario = GSLIB.make_variogram(nug=0.0,nst=1,it1=1,cc1=1.0,azi1=0.0,hmaj1=200,hmin1=50)
+tmin = -999; tmax = 999
+sill = np.std(df['Porosity'].values)*np.std(df['Porosity'].values)
+
+sim_sk = geostats.sgsim(df,'X','Y','Porosity',wcol=-1,scol=-1,tmin=tmin,tmax=tmax,itrans=1,ismooth=0,dftrans=0,tcol=0,
+            twtcol=0,zmin=zmin,zmax=zmax,ltail=1,ltpar=0.0,utail=1,utpar=0.3,nsim=nreal,
+            nx=nx,xmn=xmn,xsiz=xsiz,ny=ny,ymn=ymn,ysiz=ysiz,seed=73073,
+            ndmin=ndmin,ndmax=ndmax,nodmax=20,mults=1,nmult=3,noct=-1,ktype=0,colocorr=0.0,sec_map=0,vario=vario);
+
+xmin = xmn-xsiz/2; xmax = nx*xsiz + xmin; ymin = ymn-ysiz/2; ymax = ny*ysiz + ymin; cmap = plt.cm.inferno # plotting parameters
+
+for isim in range(0,nreal):
+    plt.subplot(nreal,3,1 + isim*3)                                          # plot the results
+    GSLIB.locpix_st(sim_sk[isim],xmin,xmax,ymin,ymax,xsiz,zmin,zmax,df,'X','Y','Porosity','Sequential Gaussian Simulation w. Simple Kriging #' + str(isim+1),'X(m)','Y(m)','Porosity',cmap)
+    
+    lags, gamma_x, npps_x = geostats.gam(sim_sk[isim],-9999.9,9999.9,xsiz,ysiz,ixd=1,iyd=0,nlag=100,isill=0)
+    lags, gamma_y, npps_y = geostats.gam(sim_sk[isim],-9999.9,9999.9,xsiz,ysiz,ixd=0,iyd=1,nlag=100,isill=0)
+
+    plt.subplot(nreal,3,2 + isim*3)
+    plt.hist(sim_sk[isim].flatten(),bins=np.linspace(zmin,zmax,30),density=True,color='darkorange',alpha=0.6,edgecolor='black',zorder=10,label='Realization')
+    plt.hist(df['Porosity'].values,bins=np.linspace(zmin,zmax,30),density=True,color='grey',alpha=0.5,edgecolor='black',zorder=1,label='Input')
+    plt.legend(loc='upper left'); add_grid()
+    plt.xlim([zmin,zmax]); plt.ylim([0,30]); plt.title('Check Histogram'); add_grid()
+    
+    plt.subplot(nreal,3,3 + isim*3)
+    vario_plot = vario
+    vario_plot.update({"cc1":sill})
+    vargplot('Porosity',lags,gamma_x,gamma_y,npps_x,npps_y,vario_plot,azi=90.0,atol=22.5,sill=sill)     # plot the variogram
+    plt.xlim([0,1000]); plt.ylim([0.0,sill*2.0])
+
+plt.subplots_adjust(left=0.0, bottom=0.0, right=3.0, top=3.1, wspace=0.2, hspace=0.2); plt.show()
+------------------
+
+----- stderr -----
+UsageError: unrecognized arguments: suppress the simulation text output
+------------------
+
+
+

@@ -398,12 +398,22 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram">Normalized Histogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bin-size">Histogram Bin Size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-pdf">Calculating a PDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable">Random Variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-univariate-statistics-for-tabular-data">Summary Univariate Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-univariate-statistics">Weighted Univariate Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bins-number-of-bins-and-bin-size">Histogram Bins, Number of Bins and Bin Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-histogram-with-the-matplotlib-package">Plotting a Histogram with the matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histograms">Normalized Histograms</a></li>
@@ -413,8 +423,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-and-plotting-a-cdf-by-hand">Calculating and Plotting a CDF ‘by- Hand’</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
@@ -444,6 +454,215 @@ document.write(`
 </ul>
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/TbqaMXdSV4I?si=tzPNssh5Qcqv6DY_">Univariate Distributions</a>. For your convenience here’s a summary of salient points.</p>
 </section>
+</section>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this heading">#</a></h2>
+<p>Let’s start with some basic definitions with respect to univariate, bivariate and multivariate.</p>
+<ul class="simple">
+<li><p><strong>Univariate</strong> - involving one variable (feature) or event.</p></li>
+<li><p><strong>Univariate Statistics</strong> - summary measures based on one feature measured over the samples</p></li>
+<li><p><strong>Univariate Parameters</strong> - summary measures inferred for one feature measured over the population</p></li>
+</ul>
+<p>We start with univariate, but we will cover bivariate, involving two variables (features) later. Note, joint probabilities and distributions are:</p>
+<ul class="simple">
+<li><p><strong>Bivariate</strong> - regarding 2 variables (features)</p></li>
+<li><p><strong>Multivariate</strong> - the general term for <span class="math notranslate nohighlight">\(&gt; 1\)</span> features, but often refers to <span class="math notranslate nohighlight">\(\ge 3\)</span> or more).</p></li>
+<li><p><strong>Massively Multivariate</strong> - high dimensional, usually indicating 7 or more features</p></li>
+</ul>
+<p>Now, let’s describe the concept of a distribution.</p>
+<ul class="simple">
+<li><p><strong>Statistical Distribution</strong> – for a variable (feature) a description of the probability of occurrence over the range of possible values. What do we get from a statistical distribution?</p>
+<ul>
+<li><p>what is the minimum and maximum?</p></li>
+<li><p>do we have a lot of low values?</p></li>
+<li><p>do we have a lot of high values?</p></li>
+<li><p>do we have outliers (values that don’t make sense and need an explaination)?</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this heading">#</a></h2>
+<p>A histogram is a bar plot of frequency over an exhaustive set of bins or categories. A histogram is calculated with the following steps:</p>
+<ol class="arabic simple">
+<li><p>Divide the continuous feature  range of possible values into 𝐾 equal size bins, ∆𝑥, or categories,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\Delta x = \left( \frac{X_{max}-x_{min}}{K} \right)
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Count the number of samples (frequency) in each bin, <span class="math notranslate nohighlight">\(𝑛_(𝑘),\forall 𝑘=1,\ldots,𝐾\)</span>.</p></li>
+<li><p>Plot bin probability versus mid‐range (<span class="math notranslate nohighlight">\(\left( 𝑥_{𝑘,𝑚𝑖𝑛} + \frac{\Delta x}{2} \right)\)</span> if continuous or the categorical label).</p></li>
+</ol>
+</section>
+<section id="normalized-histogram">
+<h2>Normalized Histogram<a class="headerlink" href="#normalized-histogram" title="Permalink to this heading">#</a></h2>
+<p>For a normalized histogram, the frequencies are normalized to become the probability that the outcome existing within each bin, 𝑘.</p>
+<div class="math notranslate nohighlight">
+\[
+𝑝_𝑘 = \frac{𝑛_𝑘}{𝑛}, \quad \forall \quad 𝑘=1,\ldots,𝐾
+\]</div>
+<p>now for each bin we have probability:</p>
+<div class="math notranslate nohighlight">
+\[
+0.0 \le 𝑝_𝑘 \le 1.0, \quad \forall \quad 𝑘=1,\dots,𝐾
+\]</div>
+<p>closure, sum of all bins is one:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum^{K}_{k=1} p_k = 1
+\]</div>
+<p>Normalized histogram is convenient because we can read probability from the plot. The steps to calculate a normalized histogram are:</p>
+<ol class="arabic simple">
+<li><p>Divide data range (𝑥𝑚𝑎𝑥‐𝑥𝑚𝑖𝑛) into desired number bins / classes / categories, 𝐾, for continuous features:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\Delta x = \left( \frac{X_{max}-x_{min}}{K} \right)
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Count the number of data in bin, 𝑛𝑘 and then compute the probabilityn were 𝑛 is the total number of data.:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+𝑝_𝑘 = \frac{𝑛_𝑘}{𝑛}, \quad \forall \quad 𝑘=1,\ldots,𝐾
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Plot bin probability versus mid‐range (<span class="math notranslate nohighlight">\(\left( 𝑥_{𝑘,𝑚𝑖𝑛} + \frac{\Delta x}{2} \right)\)</span> if continuous or the categorical label).</p></li>
+</ol>
+</section>
+<section id="histogram-bin-size">
+<h2>Histogram Bin Size<a class="headerlink" href="#histogram-bin-size" title="Permalink to this heading">#</a></h2>
+<p>What is the impact of bin size?</p>
+<ul class="simple">
+<li><p><strong>too large bins / too few bins</strong> - often smooth out, mask information lack resolution</p></li>
+<li><p><strong>too small bins / too many bins</strong> - are too noisy lack samples in each bin for stable assessment of frequency or probability (if normalized histogram)</p></li>
+</ul>
+<p>The general guidance is to choose the highest resolution with lowest possible noise.</p>
+<p>Note: very large and very small bins will tend towards equal proportion in each bin (all samples in a single bin or one sample in each bin).
+this will appear as a uniform distribution.</p>
+</section>
+<section id="probability-density-function-pdf">
+<h2>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Permalink to this heading">#</a></h2>
+<p>A function, <span class="math notranslate nohighlight">\(𝑓_x(𝑥)\)</span>, of probability density across the range of all possible feature values, <span class="math notranslate nohighlight">\(𝑥\)</span>, with the following constraints:</p>
+<ul class="simple">
+<li><p>non-negativity, note for continuous variables (features) density may be <span class="math notranslate nohighlight">\(&gt; 1.0\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+0.0 \le f_x(x)
+\]</div>
+<ul class="simple">
+<li><p>integrate to calculate probability</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+0 \le \int^b_a f_x(𝑥)𝑑𝑥 = 𝑃(𝑎 \le 𝑥 \le 𝑏) \le 1.0
+\]</div>
+<ul class="simple">
+<li><p>closure:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\int^{\infty}_{-\infty} f_x(x)dx = 1.0
+\]</div>
+<p>For categorical features, the normalized histogram is the PDF.</p>
+<p>Some comments on working with and interpreting the density measure from a probability density function, <span class="math notranslate nohighlight">\(𝒇_x(𝒙)\)</span>.</p>
+<ol class="arabic simple">
+<li><p><strong>Closure</strong> - the area under the curve of a PDF is <span class="math notranslate nohighlight">\(= 1.0\)</span>.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\int^{\infty}_{-\infty} f_x(x)dx = 1.0
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Density</strong> - is a measure of relative likelihood, may be <span class="math notranslate nohighlight">\(\gt 1.0\)</span>, but cannot be negative!</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+f_x(x) \ge 0.0
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Probability</strong> - is only available from the PDF by integratio nover an interval.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+P(a \le x \le b) = \int^b_a f_x(x) dx
+\]</div>
+<section id="calculating-a-pdf">
+<h3>Calculating a PDF<a class="headerlink" href="#calculating-a-pdf" title="Permalink to this heading">#</a></h3>
+<p>For parametric cases the PDF’s equation is known, but for the nonparametric case, the PDF is calculated from the data.</p>
+<p>While a data-derived, nonparametric PDF could be calculated by differentiating a data-derived CDF (discussed next), generally this would be too noisy!</p>
+<p>The common method to calculate a data-derived PDF is to fit a smooth model to the data. Kernel Density Estimation (KDE) Approach, fit smooth PDF to data:</p>
+<ol class="arabic simple">
+<li><p>Replace all data with a kernel, Gaussian is typical.</p></li>
+<li><p>Standardize result to ensure closure, <span class="math notranslate nohighlight">\(\int^{\infty}_{-\infty} f_x(x)dx = 1.0\)</span></p></li>
+</ol>
+<p>What is the impact of changing the kernel width?</p>
+<ul class="simple">
+<li><p>analogous to changing the histogram bin size, attempt to smooth out noise while not removing information</p></li>
+</ul>
+</section>
+</section>
+<section id="cumulative-distribution-function-cdf">
+<h2>Cumulative Distribution Function (CDF)<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Permalink to this heading">#</a></h2>
+<p>The cumulative distribution function (CDF) is the sum of a discrete PDF or the integral of a continuous PDF.</p>
+<ul class="simple">
+<li><p>the cumulative distribution function <span class="math notranslate nohighlight">\(𝑭_𝒙 (𝒙)\)</span> is the probability that a random sample, <span class="math notranslate nohighlight">\(𝑿\)</span>, is less than or equal to a value <span class="math notranslate nohighlight">\(𝒙\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+F_x (x) = P(X \le x) = \int^x_{-\infty} f(u) du
+\]</div>
+<ul class="simple">
+<li><p>CDF is represented as a plot where the x axis is variable (feature) value and the y axis is cumulative probability.</p></li>
+<li><p>for CDF there is no bin assumption; therefore, graph is at the resolution of the data.</p></li>
+<li><p>monotonically non-decreasing function, because a negative slope would indicate negative probability over an interval.</p></li>
+</ul>
+<p>Some comments on working with and interpreting the density measure from a cumulative distribution function, <span class="math notranslate nohighlight">\(F_x(𝒙)\)</span>.</p>
+<p>To check for a valid CDF given these constraints:</p>
+<ul class="simple">
+<li><p>non-negativity constraint</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+F_x(x) = P(X \le x) \ge 0.0, \quad \forall \quad x
+\]</div>
+<p>valid probability:</p>
+<div class="math notranslate nohighlight">
+\[
+0.0 \le F_x(x) \le 1.0, \quad \forall \quad x
+\]</div>
+<ul class="simple">
+<li><p>cannot have negative slope</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{dF_x(x)}{dx} \ge 0.0, \quad \forall \quad x
+\]</div>
+<ul class="simple">
+<li><p>minimum and maximum (closure) values:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+min(F_x(x)) = 0.0 \quad \quad max(F_x(x)) = 1.0
+\]</div>
+<ul class="simple">
+<li><p>since the CDF does not have a negative slope we can use limits:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\lim\limits_{x \to -\infty} F_x(x) \rightarrow 0.0 \quad \quad \lim\limits_{x \to \infty} F_x(x) \rightarrow 1.0
+\]</div>
+</section>
+<section id="random-variable">
+<h2>Random Variable<a class="headerlink" href="#random-variable" title="Permalink to this heading">#</a></h2>
+<p>Now it is time to introduce the concept of the random variable, since we need this to understand CDF notation above.</p>
+<ul class="simple">
+<li><p><strong>Random Variable</strong> - we do not know the value at a location / time, it can take on a range of possible values, fully described with a statistical distribution PDF / CDF. It is represented as an upper-case variable, e.g., <span class="math notranslate nohighlight">\(𝑿\)</span>, while possible outcomes or data measures are represented with lower case, e.g., <span class="math notranslate nohighlight">\(𝒙\)</span>.
+more latter on this!</p></li>
+</ul>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -976,8 +1195,8 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 </section>
-<section id="histograms">
-<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>Histograms<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Let’s display some histograms. I reimplimented the hist function from GSLIB. See the parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1277,13 +1496,13 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <section id="the-author">
 <h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
 </section>
-<section id="id1">
-<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="id2">
+<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
 <p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
 <p>For more about Michael check out these links:</p>
-<section id="id2">
-<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="want-to-work-together">
 <h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
@@ -1370,12 +1589,22 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram">Normalized Histogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bin-size">Histogram Bin Size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-pdf">Calculating a PDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable">Random Variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-univariate-statistics-for-tabular-data">Summary Univariate Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-univariate-statistics">Weighted Univariate Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bins-number-of-bins-and-bin-size">Histogram Bins, Number of Bins and Bin Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-histogram-with-the-matplotlib-package">Plotting a Histogram with the matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histograms">Normalized Histograms</a></li>
@@ -1385,8 +1614,8 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-and-plotting-a-cdf-by-hand">Calculating and Plotting a CDF ‘by- Hand’</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
