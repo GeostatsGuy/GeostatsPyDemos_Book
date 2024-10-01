@@ -1,10 +1,8 @@
-# e-Book Introduction
+### Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy 
 
-## Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy 
+Michael Pyrcz, Professor, The University of Texas at Austin 
 
-#### Michael Pyrcz, Professor, The University of Texas at Austin 
-
-##### [Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)
+[Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)
 
 This e-book provides an accessible, online version of my GeostatsPyDemos GitHub repository. This repository includes well-documented demonstration Python Jupyter workflows for many common geostatistical modeling workflows with the GeostatsPy geostatistics Python package converted into a book with the [jupyter-book package](https://jupyterbook.org/en/stable/intro.html). The goal of the e-book is to share this content beyond the GitHub users that are often experts and developers.
 
@@ -42,11 +40,11 @@ All the original geostatistics Python Jupyter notebook workflows are available i
 
 ***
 
-### Cite this e-Book as:
+#### Cite this e-Book as:
 
 Pyrcz, M.J., 2024, Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy, https://geostatsguy.github.io/GeostatsPyDemos_Book.
 
-### Cite GeostatsPyDemos GitHub Repository {cite}`pyrczdemos2024` as:
+#### Cite GeostatsPyDemos GitHub Repository {cite}`pyrczdemos2024` as:
 
 Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. https://zenodo.org/doi/10.5281/zenodo.12667035
 

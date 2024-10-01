@@ -156,8 +156,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
-    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
+    <img src="_static/AppliedGeostats.jpg" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/AppliedGeostats.jpg" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
   
   
 </a></div>
@@ -167,13 +167,14 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    e-Book Introduction
+                    Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
@@ -186,7 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
@@ -394,29 +395,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-variance-and-volume-variance-relations">Dispersion Variance and Volume Variance Relations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-data">Spatial Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-spatial-parameters">Set the Spatial Parameters</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-scale-up-with-two-models">Numerical Scale Up with Two Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-impact-of-scaling-on-the-distribution">Checking the Impact of Scaling on the Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-scaling-on-the-distribution">Impact of Scaling on the Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-scale-and-dispersion">Relationship Between Scale and Dispersion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -428,17 +421,19 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="volume-variance-relations-for-scaling-statistics">
+  <section id="volume-variance-relations-for-scaling-statistics">
 <h1>Volume Variance Relations for Scaling Statistics<a class="headerlink" href="#volume-variance-relations-for-scaling-statistics" title="Permalink to this heading">#</a></h1>
-<section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
-<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
-<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
-<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
-<p>This is a tutorial for / demonstration of <strong>Volume Variance Relations</strong>.</p>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
+<p>Cite as: Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Volume Variance Relations</strong>. It is critical to remember:</p>
 <ul class="simple">
 <li><p>all spatial statistics have an implicit scale assumption</p></li>
-<li><p>for example, as the scale, support size, increases the variance reduces</p></li>
 </ul>
+<p>For example, as the scale, support size, increases the variance reduces.</p>
 <p><strong>YouTube Lecture</strong>: check out my lecture on:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://youtu.be/suWCmal03Rg?si=XEtIlBlgP175qkUb">Scale</a></p></li>
@@ -446,8 +441,6 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/MM7Tn8TU5Bk?si=0GVOKJ6nYx1cib28">Scaling Statistics</a></p></li>
 </ul>
 <p>For your convenience here’s a summary of salient points.</p>
-</section>
-</section>
 <section id="dispersion-variance-and-volume-variance-relations">
 <h2>Dispersion Variance and Volume Variance Relations<a class="headerlink" href="#dispersion-variance-and-volume-variance-relations" title="Permalink to this heading">#</a></h2>
 <p><strong>Volume-variance Relations</strong> stats that as the volume support increases the variance reduces</p>
@@ -462,7 +455,7 @@ document.write(`
 <li><p>We need a model to predict this change.</p></li>
 </ul>
 <p>Scale Change Models:</p>
-<p><strong>Empirical</strong> - build a small scale, high resolution model and scale it up. This requires a model for spatial feature scale up. For example, averages the small scale cells within the larger scale assues linear averaging. There is a more flexible model known as power law averaging.</p>
+<p><strong>Empirical</strong> - build a small scale, high resolution model and scale it up. This requires a model for spatial feature scale up. For example, averaging the small scale cells within the larger scale cell assumes linear averaging. There is a more flexible model known as power law averaging.</p>
 <div class="math notranslate nohighlight">
 \[
 z_V = \left[ \frac{1}{n} \sum z_v^{\omega} \right] ^{\frac{1}{\omega}}
@@ -487,11 +480,11 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <p>Here I provide simple empirical, numerical demonstrations of the impact of change on scale on variance and the impact of spatial continuity on this effect.</p>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilities, visualization and wrapper</span>
 <span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python      </span>
 <span class="kn">import</span> <span class="nn">geostatspy</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
@@ -509,12 +502,12 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
 
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># suppress the status bar</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
 <span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
@@ -532,7 +525,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h2>Declare functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <p>We use GeostatsPy, but we need a new upscale (linear averaging) method and a plotting method that does not interpolate. I will add these to GeostatsPy shortly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -573,7 +566,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -623,31 +616,31 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.125670</td>
+      <td>0.156195</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.087242</td>
+      <td>0.091458</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.104597</td>
+      <td>0.071398</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.088667</td>
+      <td>0.127738</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.068503</td>
+      <td>0.130001</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
@@ -660,18 +653,16 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <p>The following are the basic parameters for the experiment.  This includes the number of cells in the 2D regular grid, the cell size (step) and the x and y min and max along with the color scheme.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">xsiz</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ysiz</span> <span class="o">=</span> <span class="mi">100</span>                        <span class="c1"># grid number of cells and cell size</span>
-<span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>                                           <span class="c1"># grid origin</span>
-<span class="n">xmax</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">nx</span> <span class="o">*</span> <span class="n">ysiz</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="n">ny</span> <span class="o">*</span> <span class="n">xsiz</span>                  <span class="c1"># calculate the extent of model</span>
-<span class="n">xmn</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">xsiz</span><span class="p">;</span> <span class="n">ymn</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ysiz</span>                  <span class="c1"># grid origin, lower left corner</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">xsiz</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">ysiz</span> <span class="o">=</span> <span class="mi">100</span>                    <span class="c1"># grid number of cells and cell size</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>                                       <span class="c1"># grid origin</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">nx</span> <span class="o">*</span> <span class="n">ysiz</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="n">ny</span> <span class="o">*</span> <span class="n">xsiz</span>              <span class="c1"># calculate the extent of model</span>
+<span class="n">xmn</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">xsiz</span><span class="p">;</span> <span class="n">ymn</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">ysiz</span>              <span class="c1"># grid origin, lower left corner</span>
 
-<span class="n">pormin</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mf">0.22</span>                                      <span class="c1"># set feature min and max for colorbars</span>
-<span class="n">permmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">permmax</span> <span class="o">=</span> <span class="mf">700.0</span>
-
-<span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.2</span>                                            <span class="c1"># property min and max</span>
-<span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">999</span>                                           <span class="c1"># trimming limits</span>
-
-<span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">10</span>                                             <span class="c1"># set minimum and maximum number of data</span>
+<span class="n">pormin</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mf">0.22</span>                                  <span class="c1"># set feature min and max for colorbars</span>
+<span class="n">permmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">permmax</span> <span class="o">=</span> <span class="mi">70</span>
+<span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.2</span>                                        <span class="c1"># property min and max</span>
+<span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">999</span>                                       <span class="c1"># trimming limi</span>
+<span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">10</span>                                         <span class="c1"># set minimum and maximum number of data</span>
 </pre></div>
 </div>
 </div>
@@ -680,12 +671,16 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </section>
 <section id="numerical-scale-up-with-two-models">
 <h2>Numerical Scale Up with Two Models<a class="headerlink" href="#numerical-scale-up-with-two-models" title="Permalink to this heading">#</a></h2>
-<p>Let’s build two models and scale them up.</p>
+<p>Let’s build two models and scale them up to demonstrate the concept of volume variance.</p>
+<ul class="simple">
+<li><p>one model has show range spatial continuity</p></li>
+<li><p>one model has longer range spatial continuity with significant anisotropy</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%capture</span> --no-display  
 
-<span class="n">range_maj1</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span> <span class="n">range_min1</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">range_maj1</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span> <span class="n">range_min1</span> <span class="o">=</span> <span class="mi">600</span>                           <span class="c1"># set spatial continuity ranges for both models</span>
 <span class="n">range_maj2</span> <span class="o">=</span> <span class="mi">500</span><span class="p">;</span> <span class="n">range_min2</span> <span class="o">=</span> <span class="mi">60</span>
 
 <span class="n">vario1</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">range_maj1</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">range_min1</span><span class="p">)</span>
@@ -695,7 +690,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
             <span class="n">nx</span><span class="o">=</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="o">=</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="o">=</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="o">=</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="o">=</span><span class="n">ysiz</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">73073</span><span class="p">,</span>
             <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="o">=</span><span class="n">ndmax</span><span class="p">,</span><span class="n">nodmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">mults</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">nmult</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">noct</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">ktype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">colocorr</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">sec_map</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vario</span><span class="o">=</span><span class="n">vario1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="n">sim1</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">affine</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="mf">.1</span><span class="p">,</span><span class="mf">0.03</span><span class="p">)</span>                                 <span class="c1"># correct the distribution to a target mean and standard deviation.</span>
+<span class="n">sim1</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">affine</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="mf">.1</span><span class="p">,</span><span class="mf">0.03</span><span class="p">)</span>                             <span class="c1"># correct the distribution to a target mean and standard deviation.</span>
 
 <span class="n">vario2</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mf">60.0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">range_maj2</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">range_min2</span><span class="p">)</span>
 
@@ -704,7 +699,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
             <span class="n">nx</span><span class="o">=</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="o">=</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="o">=</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="o">=</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="o">=</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="o">=</span><span class="n">ysiz</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="mi">73073</span><span class="p">,</span>
             <span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="o">=</span><span class="n">ndmax</span><span class="p">,</span><span class="n">nodmax</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">mults</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">nmult</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">noct</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">ktype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">colocorr</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">sec_map</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vario</span><span class="o">=</span><span class="n">vario2</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="n">sim2</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">affine</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="mf">.1</span><span class="p">,</span><span class="mf">0.03</span><span class="p">)</span>                                 <span class="c1"># correct the distribution to a target mean and standard deviation.</span>
+<span class="n">sim2</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">affine</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="mf">.1</span><span class="p">,</span><span class="mf">0.03</span><span class="p">)</span>                             <span class="c1"># correct the distribution to a target mean and standard deviation.</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">421</span><span class="p">)</span>
 <span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">.2</span><span class="p">,</span><span class="s1">&#39;Porosity - &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range - 100 m Cells&#39;</span><span class="p">,</span><span class="s2">&quot;X(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Y(m)&quot;</span><span class="p">,</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
@@ -746,12 +741,12 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0059aecb6b16947f32930b6c0e42dc7e57399c697006c6b1ddf8d8ec650bc35d.png" src="_images/0059aecb6b16947f32930b6c0e42dc7e57399c697006c6b1ddf8d8ec650bc35d.png" />
+<img alt="_images/d2e1f0b5372d2f748e88130c4510b3dc670f5c0bb4e41e57749856932da964eb.png" src="_images/d2e1f0b5372d2f748e88130c4510b3dc670f5c0bb4e41e57749856932da964eb.png" />
 </div>
 </div>
 </section>
-<section id="checking-the-impact-of-scaling-on-the-distribution">
-<h2>Checking the Impact of Scaling on the Distribution<a class="headerlink" href="#checking-the-impact-of-scaling-on-the-distribution" title="Permalink to this heading">#</a></h2>
+<section id="impact-of-scaling-on-the-distribution">
+<h2>Impact of Scaling on the Distribution<a class="headerlink" href="#impact-of-scaling-on-the-distribution" title="Permalink to this heading">#</a></h2>
 <p>Observe the impact of scaling on the two models. First one with long spatial continuity and then one with short spatial continuity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -792,9 +787,10 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5132440101d51d0e1497fcccd3b3269397677ef03ecb77b871ae9da893e5abeb.png" src="_images/5132440101d51d0e1497fcccd3b3269397677ef03ecb77b871ae9da893e5abeb.png" />
+<img alt="_images/635a3e6c342cfc284b95eab7c888526dbf8d7e991f2407ac6a0aab4ad8654ad5.png" src="_images/635a3e6c342cfc284b95eab7c888526dbf8d7e991f2407ac6a0aab4ad8654ad5.png" />
 </div>
 </div>
+<p>and now the model with shorter range, isotropic spatial continuity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">421</span><span class="p">)</span>
@@ -834,21 +830,18 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c188dd4572fe6ecc44bf32f42e08e3fa3bcb0aeae7e3171d29595554d7786973.png" src="_images/c188dd4572fe6ecc44bf32f42e08e3fa3bcb0aeae7e3171d29595554d7786973.png" />
+<img alt="_images/3abf377f1051a419eec99f75e211be79f3c929f03fd47b983a0a99e38b5da91c.png" src="_images/3abf377f1051a419eec99f75e211be79f3c929f03fd47b983a0a99e38b5da91c.png" />
 </div>
 </div>
 </section>
 <section id="relationship-between-scale-and-dispersion">
 <h2>Relationship Between Scale and Dispersion<a class="headerlink" href="#relationship-between-scale-and-dispersion" title="Permalink to this heading">#</a></h2>
-<p>Let’s loop over multiple upscaled grid cell sizes and calculate the resulting variance and standard deviation and then plot it up.</p>
-<ul class="simple">
-<li><p>observe the change in dispersion with change in scale, volume-variance relations</p></li>
-</ul>
+<p>Let’s loop over multiple upscaled grid cell sizes and calculate the resulting variance and standard deviation and then plot it to observe the relationship between volume support and variance, i.e., the volume-variance relationship.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scale</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">var1</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">var2</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">std1</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">std2</span> <span class="o">=</span> <span class="p">[];</span> <span class="n">ns</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">scale</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span> <span class="n">var1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">sim1</span><span class="p">));</span> <span class="n">var2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">sim2</span><span class="p">));</span> <span class="n">std1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">sim1</span><span class="p">));</span> <span class="n">std2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">sim2</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">nc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">nc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ns</span><span class="p">):</span>                                    <span class="c1"># loop over cases and perform upscaling              </span>
     <span class="n">scale</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">100</span><span class="o">/</span><span class="n">nc</span><span class="p">)</span>
     <span class="n">scale1</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim1</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="n">nc</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="n">nc</span><span class="p">)</span>
     <span class="n">scale2</span> <span class="o">=</span> <span class="n">upscale</span><span class="p">(</span><span class="n">sim2</span><span class="p">,</span><span class="n">new_nx</span> <span class="o">=</span> <span class="n">nc</span><span class="p">,</span><span class="n">new_ny</span> <span class="o">=</span> <span class="n">nc</span><span class="p">)</span>
@@ -856,10 +849,8 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
     <span class="n">std1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scale1</span><span class="p">));</span> <span class="n">std2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">scale2</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
-    
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">var1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">var1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range&#39;</span><span class="p">)</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">var2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">var2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.001</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Scale (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Variance&#39;</span><span class="p">)</span>
@@ -869,10 +860,8 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.0002</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mf">0.00005</span><span class="p">))</span> 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
-    
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">std1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">std1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">range_maj1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range&#39;</span><span class="p">)</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">std2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="n">std2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">range_maj2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;:&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">range_min2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Range&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.035</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Scale (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Standard Deviation&#39;</span><span class="p">)</span>
@@ -889,7 +878,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8f7419ba305982dc34aad4ecf5666bbc28af697d42400c56e093d04a42a7d987.png" src="_images/8f7419ba305982dc34aad4ecf5666bbc28af697d42400c56e093d04a42a7d987.png" />
+<img alt="_images/30f083e21b4789c585b055c09f32c20283f1f079d781b648354fd4ae9befb4d6.png" src="_images/30f083e21b4789c585b055c09f32c20283f1f079d781b648354fd4ae9befb4d6.png" />
 </div>
 </div>
 </section>
@@ -901,17 +890,14 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </section>
 <section id="the-author">
 <h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="id1">
-<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>Michael Pyrcz, Professor, The University of Texas at Austin
+<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
 <p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
 <p>For more about Michael check out these links:</p>
-<section id="id2">
-<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 <section id="want-to-work-together">
-<h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -922,9 +908,8 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
 </section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
-<h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
-</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -991,29 +976,21 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-variance-and-volume-variance-relations">Dispersion Variance and Volume Variance Relations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-data">Spatial Data</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-spatial-parameters">Set the Spatial Parameters</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-scale-up-with-two-models">Numerical Scale Up with Two Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-the-impact-of-scaling-on-the-distribution">Checking the Impact of Scaling on the Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-scaling-on-the-distribution">Impact of Scaling on the Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-scale-and-dispersion">Relationship Between Scale and Dispersion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

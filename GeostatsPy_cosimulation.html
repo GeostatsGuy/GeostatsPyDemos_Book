@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_cosimulation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Ergodic Fluctuations" href="GeostatsPy_ergodic_fluctuations.html" />
+    <link rel="next" title="Ergodic Fluctuations Between Stochastic Simulation Realizations" href="GeostatsPy_ergodic_fluctuations.html" />
     <link rel="prev" title="Indicator Simulation" href="GeostatsPy_categorical_indicator_simulation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -156,8 +156,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
-    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
+    <img src="_static/AppliedGeostats.jpg" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/AppliedGeostats.jpg" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
   
   
 </a></div>
@@ -167,13 +167,14 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    e-Book Introduction
+                    Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
@@ -186,7 +187,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
@@ -394,28 +395,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Cosimulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collocated-cokriging">Collocated Cokriging</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-and-kriging-parameters">Plotting and Kriging Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-sequential-gaussian-simulation-of-two-features">Independent Sequential Gaussian Simulation of Two Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation-with-collocated-cokriging">Sequential Gaussian Simulation with Collocated Cokriging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-the-secondary-to-primary-relationship">Compare the Secondary to Primary Relationship</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -427,13 +421,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="cosimulation">
+  <section id="cosimulation">
 <h1>Cosimulation<a class="headerlink" href="#cosimulation" title="Permalink to this heading">#</a></h1>
-<section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
-<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
-<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
-<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
-<p>This is a tutorial for / demonstration of <strong>Cosimulation by Sequential Gaussian Simulation with Colocated Cokriging</strong> with a 2D map example.</p>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
+<p>Cite as: Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of  <strong>Cosimulation by Sequential Gaussian Simulation with Collocated Cokriging</strong> with a 2D map example.</p>
 <ul class="simple">
 <li><p>this is the fluctuations in the reproduction of input statistics over multiple simulation realizations.</p></li>
 </ul>
@@ -443,8 +439,6 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/mvxE0dAT38c?si=P_iJ3SwJBNihwcAA">Stochastic Cosimulation</a></p></li>
 </ul>
 <p>For your convenience here’s a summary of salient points. First, let’s explain the concept of spatial simulation (1 feature).</p>
-</section>
-</section>
 <section id="sequential-gaussian-simulation">
 <h2>Sequential Gaussian Simulation<a class="headerlink" href="#sequential-gaussian-simulation" title="Permalink to this heading">#</a></h2>
 <p>With sequential Gaussian simulation we build on kriging by:</p>
@@ -484,16 +478,16 @@ document.write(`
 <li><p><strong>Bayesian Updating</strong> - cross covariance <span class="math notranslate nohighlight">\(𝐶_{𝑧,𝑦}( \bf{𝐡} )\)</span> is updated from the prior <span class="math notranslate nohighlight">\(𝐶_𝑧 (𝐡)\)</span> with the likelihood <span class="math notranslate nohighlight">\(𝐶_{𝑧,𝑦}(0) = \rho_{z,y}\)</span></p></li>
 </ul>
 <p>In this workflow we simulate porosity and log transform of permeability with:</p>
-<p><strong>Independent Sequential Gaussian Simulation of Two Features</strong> -  each feature simulated seperately one at a time
+<p><strong>Independent Sequential Gaussian Simulation of Two Features</strong> -  each feature simulated separately one at a time
 <strong>Sequential Gaussian Simulation with Collocated Cokriging</strong> - simulate a porosity realization and then cosimulate the log transform of permeability given the porosity realization.</p>
 <p>Then we check the relationship between the porosity and log transformed permeability simulated realizations for both cases.</p>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilities, visualization and wrapper</span>
 <span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python      </span>
 <span class="kn">import</span> <span class="nn">geostatspy</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
@@ -511,12 +505,12 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
 
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># suppress the status bar</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
 <span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
@@ -548,7 +542,7 @@ document.write(`
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -605,53 +599,53 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>990.0</td>
-      <td>519.0</td>
-      <td>0.122079</td>
-      <td>8.092313</td>
-      <td>2.090915</td>
-      <td>-0.227545</td>
-      <td>-0.331853</td>
+      <td>390.0</td>
+      <td>879.0</td>
+      <td>0.152058</td>
+      <td>156.828556</td>
+      <td>5.055153</td>
+      <td>0.806421</td>
+      <td>1.126391</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>250.0</td>
-      <td>789.0</td>
-      <td>0.173883</td>
-      <td>559.375900</td>
-      <td>6.326822</td>
-      <td>1.644854</td>
-      <td>1.880794</td>
+      <td>300.0</td>
+      <td>399.0</td>
+      <td>0.133161</td>
+      <td>16.863568</td>
+      <td>2.825156</td>
+      <td>0.176374</td>
+      <td>0.075270</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>900.0</td>
       <td>300.0</td>
-      <td>0.135045</td>
-      <td>10.039742</td>
-      <td>2.306551</td>
-      <td>-0.075270</td>
-      <td>-0.125661</td>
+      <td>700.0</td>
+      <td>0.165155</td>
+      <td>486.504799</td>
+      <td>6.187247</td>
+      <td>1.036433</td>
+      <td>1.340755</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>300.0</td>
-      <td>539.0</td>
-      <td>0.148719</td>
-      <td>86.109630</td>
-      <td>4.455621</td>
-      <td>0.612813</td>
-      <td>0.738847</td>
+      <td>570.0</td>
+      <td>799.0</td>
+      <td>0.141313</td>
+      <td>36.565024</td>
+      <td>3.599092</td>
+      <td>0.385320</td>
+      <td>0.385320</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>230.0</td>
-      <td>639.0</td>
-      <td>0.171823</td>
-      <td>296.698399</td>
-      <td>5.692716</td>
-      <td>1.475791</td>
-      <td>1.226528</td>
+      <td>790.0</td>
+      <td>329.0</td>
+      <td>0.099120</td>
+      <td>2.306577</td>
+      <td>0.835765</td>
+      <td>-1.226528</td>
+      <td>-0.954165</td>
     </tr>
   </tbody>
 </table>
@@ -697,64 +691,64 @@ document.write(`
     <tr>
       <th>X</th>
       <td>50.0</td>
-      <td>450.400000</td>
-      <td>282.445299</td>
-      <td>40.000000</td>
-      <td>202.500000</td>
-      <td>3.850000e+02</td>
-      <td>700.000000</td>
+      <td>512.400000</td>
+      <td>277.573745</td>
+      <td>60.000000</td>
+      <td>277.500000</td>
+      <td>5.050000e+02</td>
+      <td>745.000000</td>
       <td>990.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>50.0</td>
-      <td>472.680000</td>
-      <td>257.507554</td>
-      <td>9.000000</td>
-      <td>236.500000</td>
-      <td>4.945000e+02</td>
-      <td>656.500000</td>
-      <td>929.000000</td>
+      <td>590.360000</td>
+      <td>248.826861</td>
+      <td>99.000000</td>
+      <td>446.500000</td>
+      <td>6.140000e+02</td>
+      <td>796.500000</td>
+      <td>969.000000</td>
     </tr>
     <tr>
       <th>Porosity</th>
       <td>50.0</td>
-      <td>0.132479</td>
-      <td>0.030776</td>
-      <td>0.062169</td>
-      <td>0.110337</td>
-      <td>1.374421e-01</td>
-      <td>0.151842</td>
-      <td>0.210258</td>
+      <td>0.131672</td>
+      <td>0.026333</td>
+      <td>0.089293</td>
+      <td>0.111659</td>
+      <td>1.269884e-01</td>
+      <td>0.150110</td>
+      <td>0.185299</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>50.0</td>
-      <td>82.769701</td>
-      <td>148.602047</td>
-      <td>0.408779</td>
-      <td>3.546077</td>
-      <td>1.083597e+01</td>
-      <td>75.632267</td>
-      <td>591.342615</td>
+      <td>85.702952</td>
+      <td>161.585447</td>
+      <td>0.503400</td>
+      <td>2.856755</td>
+      <td>1.397587e+01</td>
+      <td>81.413113</td>
+      <td>595.674540</td>
     </tr>
     <tr>
       <th>logPerm</th>
       <td>50.0</td>
-      <td>2.791537</td>
-      <td>1.950472</td>
-      <td>-0.894580</td>
-      <td>1.265566</td>
-      <td>2.382805e+00</td>
-      <td>4.325618</td>
-      <td>6.382396</td>
+      <td>2.781421</td>
+      <td>1.969375</td>
+      <td>-0.686370</td>
+      <td>1.049673</td>
+      <td>2.630647e+00</td>
+      <td>4.399055</td>
+      <td>6.389694</td>
     </tr>
     <tr>
       <th>nPorosity</th>
       <td>50.0</td>
-      <td>-0.002897</td>
-      <td>1.004480</td>
-      <td>-2.471190</td>
+      <td>0.005976</td>
+      <td>0.983982</td>
+      <td>-2.027541</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -763,9 +757,9 @@ document.write(`
     <tr>
       <th>nPerm</th>
       <td>50.0</td>
-      <td>0.005010</td>
-      <td>0.986040</td>
-      <td>-2.075844</td>
+      <td>0.007082</td>
+      <td>0.981678</td>
+      <td>-1.972253</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -775,7 +769,14 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p>Now we can set these values for plotting:</p>
+</section>
+<section id="plotting-and-kriging-parameters">
+<h2>Plotting and Kriging Parameters<a class="headerlink" href="#plotting-and-kriging-parameters" title="Permalink to this heading">#</a></h2>
+<p>Now we can set these values for kriging and plotting. For brevity we don’t cover details on these here.</p>
+<ul class="simple">
+<li><p>we are assuming a simple regular grid</p></li>
+<li><p>we are assuming variograms models and kriging search parameters</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">1000.0</span>                                     <span class="c1"># spatial limits</span>
@@ -799,7 +800,7 @@ document.write(`
 
 <span class="n">nxdis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">nydis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">seed</span> <span class="o">=</span> <span class="mi">73073</span><span class="p">;</span> <span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">10</span>     <span class="c1"># simulation parameters</span>
 
-<span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9999.9</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mf">9999.9</span>                                 <span class="c1"># triming limits</span>
+<span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9999.9</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mf">9999.9</span>                                 <span class="c1"># trimming limits, set for no data trimming</span>
 </pre></div>
 </div>
 </div>
@@ -834,7 +835,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9e122c27e29ff20fbaaef407119b181a9db85987ec5e2debb0cbbabe5af21b9b.png" src="_images/9e122c27e29ff20fbaaef407119b181a9db85987ec5e2debb0cbbabe5af21b9b.png" />
+<img alt="_images/759fe0c77d672d2b6a9938fdce9c8e2a6399daf1e00ad39160f2318d43b50cbe.png" src="_images/759fe0c77d672d2b6a9938fdce9c8e2a6399daf1e00ad39160f2318d43b50cbe.png" />
 </div>
 </div>
 <p>Note we have already demonstrated univariate simulation checks for:</p>
@@ -857,7 +858,7 @@ document.write(`
 <h2>Independent Sequential Gaussian Simulation of Two Features<a class="headerlink" href="#independent-sequential-gaussian-simulation-of-two-features" title="Permalink to this heading">#</a></h2>
 <p>Let’s jump right to building two independent simulations and visualizing the results.</p>
 <ul class="simple">
-<li><p>independently simulate porosity and permability</p></li>
+<li><p>independently simulate porosity and permeability</p></li>
 <li><p>check the porosity an permeability relationship, the scatter plot.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -908,7 +909,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ddf59c4808a89bf51b9f15febf17a0c3648116ef886e1828a7d60b74ca744d98.png" src="_images/ddf59c4808a89bf51b9f15febf17a0c3648116ef886e1828a7d60b74ca744d98.png" />
+<img alt="_images/de207c8ff824d7f26e85811bdfc2ad133bd2080e9dbbb61ca09376ce15c948c5.png" src="_images/de207c8ff824d7f26e85811bdfc2ad133bd2080e9dbbb61ca09376ce15c948c5.png" />
 </div>
 </div>
 </section>
@@ -961,7 +962,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/286af997ad96f242220353302ab02e1adacf08cde01b140be13fead8eb975e76.png" src="_images/286af997ad96f242220353302ab02e1adacf08cde01b140be13fead8eb975e76.png" />
+<img alt="_images/7760c537a9d393262d262525e3e70683d6a76e52b50f04dff558b46e67e9352d.png" src="_images/7760c537a9d393262d262525e3e70683d6a76e52b50f04dff558b46e67e9352d.png" />
 </div>
 </div>
 </section>
@@ -1003,7 +1004,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/450078add1e8c892e6129cdd57ad415168e2a7c5f621ecdce27b7a00bd200f44.png" src="_images/450078add1e8c892e6129cdd57ad415168e2a7c5f621ecdce27b7a00bd200f44.png" />
+<img alt="_images/e902332a4935efc2d44cce3eff80cb65eef74ab163bf7ec7d70ca79fb217db01.png" src="_images/e902332a4935efc2d44cce3eff80cb65eef74ab163bf7ec7d70ca79fb217db01.png" />
 </div>
 </div>
 </section>
@@ -1015,17 +1016,14 @@ document.write(`
 </section>
 <section id="the-author">
 <h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="id2">
-<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>Michael Pyrcz, Professor, The University of Texas at Austin
+<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
 <p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
 <p>For more about Michael check out these links:</p>
-<section id="id3">
-<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 <section id="want-to-work-together">
-<h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1036,9 +1034,8 @@ document.write(`
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
 </section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
-<h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
-</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1086,7 +1083,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Ergodic Fluctuations</p>
+        <p class="prev-next-title">Ergodic Fluctuations Between Stochastic Simulation Realizations</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1105,28 +1102,21 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Cosimulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collocated-cokriging">Collocated Cokriging</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-and-kriging-parameters">Plotting and Kriging Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-sequential-gaussian-simulation-of-two-features">Independent Sequential Gaussian Simulation of Two Features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation-with-collocated-cokriging">Sequential Gaussian Simulation with Collocated Cokriging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-the-secondary-to-primary-relationship">Compare the Secondary to Primary Relationship</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 
