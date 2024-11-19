@@ -1,0 +1,1157 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Geostatistics Concepts &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_concepts';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coordinate Transformations" href="GeostatsPy_coordinate_transformations.html" />
+    <link rel="prev" title="Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/AppliedGeostats.jpg" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/AppliedGeostats.jpg" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_concepts.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/GeostatsPy_concepts.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Geostatistics Concepts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-geostatistics-concepts">Motivation for Geostatistics Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#big-data">Big Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-geostatistics-and-data-analytics">Statistics, Geostatistics and Data Analytics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science">Data Science</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cheap-and-available-compute">Cheap and Available Compute</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#availability-of-big-data">Availability of Big Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-and-subsurface-resources">Data Science and Subsurface Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-and-samples">Population and Samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-or-feature">Variable or Feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-and-response-features">Predictor and Response Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-and-prediction">Inference and Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinstic-vs-stochastic-modeling">Determinstic vs. Stochastic Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-vs-simulation">Estimation vs. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-uncertainty-modeling">Subsurface Uncertainty Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-common-geostatistical-modeling-workflow">The Common Geostatistical Modeling Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-and-using-statistics-and-data-analytics">Teaching and Using Statistics and Data Analytics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-and-professional-practice-concerns-with-data-science">Ethical and Professional Practice Concerns with Data Science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="geostatistics-concepts">
+<h1>Geostatistics Concepts<a class="headerlink" href="#geostatistics-concepts" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the GeostatsPyDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035">https://zenodo.org/doi/10.5281/zenodo.12667035</a></p>
+<p><a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035"><img alt="DOI" src="https://zenodo.org/badge/777871341.svg" /></a></p>
+</div>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a summary of <strong>Geostatistics Concepts</strong> including essential concepts:</p>
+<ul class="simple">
+<li><p>Statistics, Data Analytics, and Data Science</p></li>
+<li><p>Geostatistics Prerequisite Definitions and Concepts</p></li>
+<li><p>Guidance and Cautionary Statements</p></li>
+</ul>
+<p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/pxckixOlguA?si=MsS5hlg3eNMDV0SI">Data Analytics Concepts</a>. For your convenience here’s a summary of salient points.</p>
+<section id="motivation-for-geostatistics-concepts">
+<h2>Motivation for Geostatistics Concepts<a class="headerlink" href="#motivation-for-geostatistics-concepts" title="Permalink to this heading">#</a></h2>
+<p>You could just open up a Jupyter notebook in Python and start building spatial geostatistical models.</p>
+<ul class="simple">
+<li><p>Alternatively, many “canned software” programs have geostatistics built in and often have <em>reasonable</em> default parameters to build spatial models.</p></li>
+<li><p>There are many sources of code examples, including this e-book and my many well-documented Python workflows in my <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPyDemos">GeostatsPyDemos</a> repository in my GitHub account that you could copy and paste and update for your own data.</p></li>
+<li><p>Also, you could Google a question about using a specific geostatistical algorithm in Python and the top results may include <a class="reference external" href="https://stackoverflow.com/">StackOverflow</a> questions and responses, it is truly amazing how much experienced coders are willing to give back and share their knowledge.</p></li>
+</ul>
+<p>We truly have an amazing scientific community with the spirit of knowledge sharing and open-source development. Respect.</p>
+<ul class="simple">
+<li><p>Of course, you could learn a lot about geostatistics from a machine learning large language model (LLM) like <a class="reference external" href="https://chatgpt.com/">ChatGPT</a>. Not only will ChatGPT answer your questions, but it will also provide codes and help you debug them when you tell ChatGPT what went wrong.</p></li>
+</ul>
+<p>One way or the other you obtained and added this code to you data science workflow (taken from my [GeostatsPy_kriging] workflow  at <a class="github reference external" href="https://github.com/GeostatsGuy/GeostatsPyDemos/blob/main/GeostatsPy_kriging.ipynb">GeostatsGuy/GeostatsPyDemos</a>),</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">por_vrange_maj2</span> <span class="o">=</span> <span class="mi">150</span><span class="p">;</span> <span class="n">por_vrange_min2</span> <span class="o">=</span> <span class="mi">50</span>                   <span class="c1"># variogram ranges</span>
+<span class="n">por_vazi2</span> <span class="o">=</span> <span class="mf">150.0</span>                                             <span class="c1"># variogram major direction</span>
+<span class="n">por_vrel_nugget2</span> <span class="o">=</span> <span class="mf">0.0</span>                                        <span class="c1"># variogram nugget effect</span>
+
+<span class="n">por_vario2</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="n">por_vrel_nugget2</span><span class="o">*</span><span class="n">por_sill</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="o">-</span><span class="n">por_vrel_nugget2</span><span class="p">)</span><span class="o">*</span><span class="n">por_sill</span><span class="p">,</span>
+         <span class="n">azi1</span><span class="o">=</span><span class="n">por_vazi2</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">por_vrange_maj2</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">por_vrange_min2</span><span class="p">)</span> <span class="c1"># porosity variogram</span>
+
+<span class="n">ktype</span> <span class="o">=</span> <span class="mi">0</span>                                                     <span class="c1"># kriging type, 0 - simple, 1 - ordinary</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">600</span>                                                  <span class="c1"># search radius for neighbouring data</span>
+<span class="n">nxdis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">nydis</span> <span class="o">=</span> <span class="mi">1</span>                                          <span class="c1"># number of grid discretizations for block kriging</span>
+<span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">10</span>                                         <span class="c1"># minimum and maximum data for an estimate</span>
+
+<span class="n">por_SK_kmap</span><span class="p">,</span> <span class="n">por_vmap</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">kb2d</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">nxdis</span><span class="p">,</span><span class="n">nydis</span><span class="p">,</span>
+         <span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">por_skmean</span><span class="p">,</span><span class="n">por_vario2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>et voilà, you have a kriged map that could be applied to make predictions for new spatial samples and to assess resources, etc., and support some important development decision.</p>
+<ul class="simple">
+<li><p>But, is this a good model? Did we do something wrong with the input parameters that we didn’t understand?</p></li>
+<li><p>How good is it? Could it be improved?</p></li>
+<li><p>Wait, should we actually use kriging for this problem? Or should we use simulation? Or maybe just a spreadsheet!</p></li>
+</ul>
+<p>Without knowledge about basic geostatistics concepts we can’t answer these questions and build the best possible models. In general, I’m not an advocate for black box modeling, because it is:</p>
+<ol class="arabic simple">
+<li><p>likely to lead to mistakes that may be difficult to detect and correct</p></li>
+<li><p>incompatible with the expectations for compentent practice for professional engineers. I gave a talk on <a class="reference external" href="https://youtu.be/W_ZDg1Wb2vM?si=DF-n1E4-ik2ukLfF">Applying Machine Learning as a Compentent Engineer or Geoscientist</a></p></li>
+<li><p>not fun to do. Do you remember those early days playing the guitar or participating in a martial art? Is it not more fun when we see our our personal growth and gain confidence in the things that we do?</p></li>
+</ol>
+<p>To help you “look under the hood”, this chapter provides you with the basic knowledge to answer these questions and to make better, more reliable geostatistical models. Let’s start building this essential foundation with some general definitions.</p>
+</section>
+<section id="big-data">
+<h2>Big Data<a class="headerlink" href="#big-data" title="Permalink to this heading">#</a></h2>
+<p>Everyone hears that data science needs a lot of data. In fact, so much data that it is called “big data”, but how do you know if you are working with big data? The criteria for big data are these ‘V’s, if upon reflection you answer “yes” for at least some of these, then you are working with big data:</p>
+<ul class="simple">
+<li><p><strong>Volume</strong>: many data samples, difficult to handle and visualize</p></li>
+<li><p><strong>Velocity</strong>: high rate collection, continuous relative to decision making cycles</p></li>
+<li><p><strong>Variety</strong>: data form various sources, with various types and scales</p></li>
+<li><p><strong>Variability</strong>: data acquisition changes during the project</p></li>
+<li><p><strong>Veracity</strong>: data has various levels of accuracy</p></li>
+</ul>
+<p>In my experience, most spatial and subsurface-focussed, engineers and (geo)scientists answer yes to all of these questions.</p>
+<ul class="simple">
+<li><p>So I proudly say that we in space or specifically the subsurface have been big data long before the tech sector learned about big data.</p></li>
+<li><p>In fact, I state that we in the subsurface resource industries are the original data scientists. I’m getting ahead of myself, more on this in a bit.</p></li>
+</ul>
+<p>Don’t worry if I get carried away with hubris, rest assured this e-book is written for anyone interested to learn about geostatistics. You can skip the short sections on subsurface data science or read along if interested. Now that we know big data, let’s talk about the big topics.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Subsurface engineers and geoscientists:</p>
+<p>work with big data and we are the original data scientists!</p>
+</div>
+</section>
+<section id="statistics-geostatistics-and-data-analytics">
+<h2>Statistics, Geostatistics and Data Analytics<a class="headerlink" href="#statistics-geostatistics-and-data-analytics" title="Permalink to this heading">#</a></h2>
+<p>Statistics is collecting, organizing, and interpreting data, as well as drawing conclusions and making decisions. If you look up the definition of data analytics you will find criteria that include statistical analysis, and data visualization to support decision making. I’m going to call it, data analytics and statistics are the same thing.</p>
+<p>Now we can append, geostatistics, as a branch of applied statistics that accounts for:</p>
+<ol class="arabic simple">
+<li><p>the spatial (geological) context</p></li>
+<li><p>the spatial relationships</p></li>
+<li><p>volumetric support</p></li>
+<li><p>uncertainty</p></li>
+</ol>
+<p>Remember all those statistics classes with the assumption of independent, identically distributed (remember the i.i.d.s everywhere?). Spatial phenomenon don’t do that, so we developed a unique branch of statistics to address this.</p>
+<ul class="simple">
+<li><p>By our assumption above, we can state that geostatistics is the same as spatial data analytics.</p></li>
+</ul>
+<p>Now, let’s use a Venn diagram to visualize statistics / data analytics and geostatistics / spatial data analytics:</p>
+<figure style="text-align: center;">
+  <img src="_static/concepts/Venn_stats.png" style="display: block; margin: 0 auto; width: 40%;">
+  <figcaption style="text-align: center;">Venn diagram for statistics and geostatistics.</figcaption>
+</figure>
+<p>Now we can add our previously discussed big data to our Venn diagram resulting in big data analytics and spatial big data analytics.</p>
+<figure style="text-align: center;">
+  <img src="_static/concepts/Venn_big_data.png" style="display: block; margin: 0 auto; width: 40%;">
+  <figcaption style="text-align: center;">Venn diagram for statistics and geostatistics with big data added.</figcaption>
+</figure>
+<p>So, geostatistics is actually spatial data analytics, or more generally, let’s call it spatial data science. Now, let’s talk a bit about data science.</p>
+</section>
+<section id="data-science">
+<h2>Data Science<a class="headerlink" href="#data-science" title="Permalink to this heading">#</a></h2>
+<p>If no one else has said this to you, let me have the honor of welcoming you to the fourth paradigm for scientific discovery, data-driven scientific discovery or shortenned as data science.</p>
+<ul class="simple">
+<li><p>The paradigms for scientific discovery are distinct stages or approaches for humanity to develop science.</p></li>
+</ul>
+<p>To understand the fourth paradigm let’s compare to the previous three paradigms. Here’s all of the four paradigms with dates for important developments during each,</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>1st Paradigm Empirical Science</p></th>
+<th class="head"><p>2nd Paradigm Theoretical Science</p></th>
+<th class="head"><p>3rd Paradigm Computational Science</p></th>
+<th class="head"><p>4th Paradigm Data Science</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Experiments</p></td>
+<td><p>Models and Laws</p></td>
+<td><p>Numerical Simulation</p></td>
+<td><p>Learning from Data</p></td>
+</tr>
+<tr class="row-odd"><td><p>430 BC Empedocles proved air has substance</p></td>
+<td><p>1011 AD al-Haytham Book of Optics</p></td>
+<td><p>1942 Manhattan Project</p></td>
+<td><p>2009 Hey et al. Data-Intensive Book</p></td>
+</tr>
+<tr class="row-even"><td><p>230 BC Eratosthenes measure Earth’s diameter</p></td>
+<td><p>1687 AD Newton Principia</p></td>
+<td><p>1980 – Global Forecast System (GFS)</p></td>
+<td><p>2015 AlphaGo beats a professional Go player</p></td>
+</tr>
+</tbody>
+</table>
+<p>Of course, we can argue about the boundaries between the paradigms for scientific discovery, i.e., when did a specific paradigm begin?</p>
+<ul class="simple">
+<li><p>Certainly the Mesopotamians (4000 BC - 3500 BC) conducted many first paradigm experiments that supported their development of the wheel, plow, chariot, weaving loom, and irrigation and on the other side we can trace the development of artificial neural networks to McColloch and Pitts in 1943.</p></li>
+<li><p>Also, the adoption of a new scientific paradigm is a major societal shift that does not occur uniformly around the globe.</p></li>
+</ul>
+<p>So, what caused the fourth paradigm to start some time between 1943 and 2009? The fundamental mathematics of data driven models have been available for a long time, as demonstrated by the following mathematical and statistical developments in history,</p>
+<ul class="simple">
+<li><p><strong>Calculus</strong> - Isaac Newton and Gottfried Wilhelm Leibniz independently developed the math to find minimums and maximums during the 1600s with “Methods of Fluxions” 1671 (published posthumously in 1736), and with “Nova Methodus pro Maximis et Minimis” published in 1684.</p></li>
+<li><p><strong>Bayesian Probability</strong> - introduced by Reverend Thomas Bayes with Bayes’ Theorem enshrined in “An Essay Towards Solving a Problem in the Doctrine of Chances” published posthumously in 1763</p></li>
+<li><p><strong>Linear Regression</strong> - formalized by Marie Legendre in 1805</p></li>
+<li><p><strong>Discriminant Analysis</strong> - developed by Ronald Fisher in his 1939 paper “The Use of Multiple Measurements in Taxonomic Problems”</p></li>
+<li><p><strong>Monte Carlo Simulation</strong> - pioneered by Stanislaw Ulam and John von Neumann in the early 1940’s as part of the Manhattan Project</p></li>
+</ul>
+<p>Upon reflection, one could ask, why didn’t the fourth paradigm start before the 1940’s and even in the 1800s? What changed? The answer is that other critical developments provided the fertile ground for data science, including cheap and available compute and big data.</p>
+<section id="cheap-and-available-compute">
+<h3>Cheap and Available Compute<a class="headerlink" href="#cheap-and-available-compute" title="Permalink to this heading">#</a></h3>
+<p>Consider the following developments in computers,</p>
+<ul class="simple">
+<li><p><strong>Charles Babbage’s Analytical Engine</strong> (1837) is often credited as the first computer, yet is was a mechanical device the attempted to implement many modern concepts such as arithmetic logic, control flow and memory, but it was never completed given the challenges with the available technology.</p></li>
+<li><p><strong>Konrad Zuse’s Z3</strong> (1941) and <strong>ENIAC</strong> (1945) the first digital, programmable computers, but they were programmed by labor-intensive and time-consuming rewiring of plug boards with machine language as there was no high level programming language, the memory could fit 1,000 words limiting the program complexity and with 1000s of vacuum tubes cooling and maintenance was a big challenge. These unreliable machines were very slow with only about 5,000 additions per second.</p></li>
+<li><p><strong>Transistors</strong> were invented in 1947 the transistor replaced the vacuum tubes greatly improving energy-efficiency, miniaturization, speed and reliability. Resulting in the second generation computers such as <strong>IBM 7090</strong> and <strong>UNIVAC 1108</strong>.</p></li>
+<li><p><strong>Integrated Circuits</strong> were developed in the 1960s allowed for multiple transistors to be placed on a single chip leading to third generation computers.</p></li>
+<li><p><strong>Microprocessors</strong> - developed in 1971 integrated the functions of a computer’s central processing unit (CPU) enabling smaller, cheaper computers, resulting in the personal, home computer revolution including the <strong>Apple II</strong> (1977) and <strong>IBM PC</strong> (1981). Yes, when I was in grade 1 in elementary school we had a Apple II in my classroom, and it amazed all of us with the monochrome (orange and black pixels) monitor, floppy disk loaded programs (there was no hard drive) and beeps and clicks from the speaker!</p></li>
+</ul>
+<p>We live in a society with more compute power in our pockets (cell phones) than used to send the first astronauts to the moon and a SETI screen saver that uses home computers’ idle time to search for extraterrestrial life! Now we are surrounded by cheap and reliable compute that our grandparents (and perhaps parents) could never have imagined.</p>
+<p>As you will learn in this e-book, geostatistical methods requires a lot of compute.</p>
+<ul class="simple">
+<li><p>In fact, calculating spatial models relies on a large number of iterations, matrix or parallel operations, bootstrapping models, stochastic descent over large grids often in the 10s - 100s of millions of cells, with several features at each cell, and uncertainty modeling requires a lot of scenarios and realizations.</p></li>
+</ul>
+<p>Cheap and available compute is an essential prerequisite for the fourth paradigm. Now consider the development of data science has been largely a crowd-source, open-source effort. There cannot be data science without many people having easy access to compute.</p>
+</section>
+<section id="availability-of-big-data">
+<h3>Availability of Big Data<a class="headerlink" href="#availability-of-big-data" title="Permalink to this heading">#</a></h3>
+<p>With small data we tend to rely on other sources of information such as physics, engineering and geoscience principals and then calibrate these models to the few available observations, as is common in applications of the second and third paradigm for scientific discovery.</p>
+<ul class="simple">
+<li><p>With big data we can learn the full range of behaviors of natural systems from the data itself.</p></li>
+<li><p>In fact, with big data we often see the limitations of the second and third paradigm models due to missing complexity in our solutions.</p></li>
+</ul>
+<p>Therefore, big data:</p>
+<ul class="simple">
+<li><p>provides sufficient sampling to support the data-driven fourth paradigm</p></li>
+<li><p>and may actually preclude exclusive use of the second and third paradigm</p></li>
+</ul>
+<p>These days big data is everywhere, with so much data now open-source and available online. Here’s some great examples:</p>
+<ul class="simple">
+<li><p>satellite data with time lapse is widely available on <a class="reference external" href="https://www.google.com/maps">Google Earth</a> and other platforms. Yes, this isn’t the most up to date and highest resolution statelite imagery, but it is certainly sufficient for many land use, geomorphology and surface evolution studies. My team of graduate students use it.</p></li>
+<li><p>river gauges data over your state are generally available to the public. We use it for hydrologic analysis and also to determine great locations and times to paddle! Check out the <a class="reference external" href="https://waterdata.usgs.gov/nwis">USGS’s National Water Information System</a></p></li>
+<li><p>government databases, including the <a class="reference external" href="https://data.census.gov/">United States Census</a> to <a class="reference external" href="https://www.rrc.texas.gov/oil-and-gas/research-and-statistics/production-data/">oil and gas production data</a> are available to all</p></li>
+<li><p><a class="reference external" href="https://trek.nasa.gov/moon/#v=0.1&amp;x=0&amp;y=0&amp;z=1&amp;p=urn%3Aogc%3Adef%3Acrs%3AEPSG%3A%3A104903&amp;d=&amp;locale=&amp;b=moon&amp;e=-337.4999937044213%2C-167.87109061860536%2C337.4999937044213%2C167.87109061860536&amp;sfz=&amp;w=">Moon Trek</a>: online portal to visualize and download digital images from lunar orbiters, Lunar Reconnaissance Orbiter (LRO), SELENE and Clementine.</p></li>
+</ul>
+<p>This is open, public data, but consider the fact that many industries are embracing smart, intelligent systems with enhanced connectivity, monitoring and control.</p>
+<ul class="simple">
+<li><p>The result is an explosion of data supported by faster and cheaper computation, processing and storage.</p></li>
+<li><p>We are all swimming in data that, once again, the generation before us could not have imagined.</p></li>
+</ul>
+<p>Does anyone else go on <a class="reference external" href="https://earth.google.com/web/">Google Earth</a> and explore new parts of our home planet? I have Google Earth for my HTC Vive Pro. I like to wander Skyrim, but often it is just as fun to explore our own Planet Earth in VR! So much data! We are so fortunate!</p>
+<ul class="simple">
+<li><p>We could also talk about improved algorithms and hardware architectures optimized for data science, but I’ll leave that out of scope for this e-book.</p></li>
+</ul>
+<p>All of these developments have provided the fertile ground for the seeds of spatial data science, geostatistics, to grow and become standard practice for management for the spatial and often the subsurface, including,</p>
+<ol class="arabic simple">
+<li><p>Mining developmental and critical minerals - in situ reosurces, development plan and reserves that maximize value and minimize environmental impact</p></li>
+<li><p>Subsurface energy hydrocarbons, goethermal and hydrogen storage - in situ potential, development plan and reserves that maximize value and minimize environmental impact</p></li>
+<li><p>Groundwater resources - model aquifer volume, recharge, discharge and drawdown, to support groundwater management, mitigation and policy.</p></li>
+<li><p>Forestry - model forest inventory, corbon sequestration, to support silviculture.</p></li>
+<li><p>Agriculture - modeling soils with digital elevation models to support precise agriculture to expand crop yeilds while protecting soil fertility and minimizing water and fertilizer use.</p></li>
+</ol>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">The world’s greatest problems</p>
+<p>are spatial! Knowing spatial data science, geostatistics, is critical to take on these challenges.</p>
+</div>
+</section>
+</section>
+<section id="data-science-and-subsurface-resources">
+<h2>Data Science and Subsurface Resources<a class="headerlink" href="#data-science-and-subsurface-resources" title="Permalink to this heading">#</a></h2>
+<p>Spoiler alert, I’m going to boast a bit in the section. I often hear students say, “I can’t believe this data science course is in the <a class="reference external" href="https://pge.utexas.edu/">Hildebrand Department of Petroleum and Geosystems Engineering</a>!” or “Why are you teaching geostatistics in <a class="reference external" href="https://eps.jsg.utexas.edu/">Department of Earth and Planetary Sciences</a>?” My response is,</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">We in the subsurface are the original data scientists!</p>
+<p>We are the original data-driven scientists, we have been big data long before tech learned about big data!</p>
+</div>
+<p>This may sound a bit arrogant, but let me back this up with this timeline:</p>
+<figure style="text-align: center;">
+  <img src="_static/concepts/history.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Timeline of data science development from the perspective of subsurface engineering and geoscience.</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>Shortly after Kolmogorov developed the fundamental probability axioms during the 1930s,</p></li>
+<li><p>Danie Krige developed a set of statistical, spatial, i.e., data-driven tools for making estimates in space while accounting for spatial continuity and scale in the 1950s.</p></li>
+<li><p>These tools were formalized with theory developed by Professor Matheron during the 1960s in a new science called geostatistics.</p></li>
+<li><p>Over the 1970s - 1990s the geostatistical methods and applications expanded from mining to address oil and gas, environmental, agriculture, fisheries, etc. with many important open source developments.</p></li>
+</ol>
+<p>Why was subsurface engineering and geoscience earlier in the development of data science? Because, necessity is the mother of invention!</p>
+<ul class="simple">
+<li><p>Complicated, heterogeneous, sparsely sampled, vast systems with complicated physics and high value decisions drove us to data-driven methods.</p></li>
+</ul>
+<p>Contrast this with the many other engineering fields that:</p>
+<ul class="simple">
+<li><p>work with homogeneous phenomenon that does not have significant spatial heterogeneity, continuity, nor uncertainty</p></li>
+<li><p>have exhaustive sampling of the population relative to the modeling purpose and do not need an estimation model with uncertainty</p></li>
+<li><p>have well understood physics and can model the entire system with second and third paradigm phenomenon</p></li>
+</ul>
+<p>As a result, many of us subsurface engineers and geoscientists are applying and teaching spatial data science, geostatistics, and have been for many decades.</p>
+</section>
+<section id="population-and-samples">
+<h2>Population and Samples<a class="headerlink" href="#population-and-samples" title="Permalink to this heading">#</a></h2>
+<p>To understand geostatistics we need to first differentiate between the population and the sample, so that we can then understand the context for features, inference, prediction, etc.</p>
+<figure style="text-align: center;">
+  <img src="_static/concepts/population.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Population and sample (modified Image from https://energyeducation.ca/encyclopedia/Oil_and_gas_reservoir
+).</figcaption>
+</figure>
+<p><strong>Population</strong> - exhaustive, finite list of property of interest over area of interest. Generally the entire population is not accessible, e.g. exhaustive set of porosity at each location within a gas reservoir. To give you a sense of the vast scale of populations, consider these two examples:</p>
+<ul class="simple">
+<li><p>Bingham Canyon Mine (also known as Kennecott Copper Mine) is a porphyry copper deposit in Utah, USA. The open pit is the largest anthropogenic excavation by volume extracted (6.5 <span class="math notranslate nohighlight">\(m^3\)</span>), and at 1,200 m deep, the deepest open pit mine in the world. The geology includes multiple zones of mineralization (magnitite central core zone, moybdenite zone, bornite-chalcopyrite-gold zone, pyrite-clacopyrite zone, pyrite zone and outermost lead-zinc zone with Late Paleozoic formations thrust faulted over Precambian craton. The features of interest include zonation (see above), grade shells (high, low, waste) with soft and hard boundaries, ore grades (copper, silver, gold, molybdenum, platinum and palladium) and contaminants (arsenic, lead, sulfur, etc.) (<a class="reference external" href="https://en.wikipedia.org/wiki/Bingham_Canyon_Mine">Wikipedia Bingham Canyon Mine</a>).</p></li>
+<li><p>Plutonio Reservoir, from the passive continential margin, Lower Congo Basin, Angola is a deepwater channel complex over a large volume of interest (6 km x 9 km x 120 m) (Oligocene O73 layer only), including distinct channel-related elements (inner channel, outer channel and overbank) with distinct porosity and permeability distributions. The features of interest include elements, porosity and permeability, represented in a model at 50 m x 50 m x 1 m resolution (2,556,120 cells) and conditioned by sparse near vertical wells (600 - 800 m spacing) and secondary feature, seismic RMS amplitude that is correlated with porosity and allows the channel complex and some channel elements to be mapable (<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0920410520307178">Yanshu et al., 2020</a>) {cite}`yanshu2020’</p></li>
+</ul>
+<p><strong>Sample</strong> - the set of measurements for the features of interest at locations that have been measured, e.g. porosity data from well-logs within a reservoir. Yet, there is more, for every sample we are concerned with,</p>
+<ul class="simple">
+<li><p>what is the support volume of the sample’s measurement, i.e., over what volume have we measured?</p></li>
+<li><p>what does the measurement tell us? All measurements must have a line-of-sight to value. E.g., porosity relates to volumetrics, and facies are useful for mapping porosity away from wells, etc.</p></li>
+<li><p>what is the accuracy of the measurement? I’m sorry, but none of our subsurface measurements are certain. They all have measurement and interpretation errors.</p></li>
+<li><p>what is the metadata related to the data? In the subsurface we have a lot of metadata, e.g., what were the assumptions made to calculate the measure? In the subsurface, all of our measure require interpretation (see an example below).</p></li>
+</ul>
+<p>What are we measuring in our samples? Each distinct type of measure is called a variable or feature.</p>
+</section>
+<section id="variable-or-feature">
+<h2>Variable or Feature<a class="headerlink" href="#variable-or-feature" title="Permalink to this heading">#</a></h2>
+<p><strong>Variable or Feature</strong> - any property measured / observed in a study, and in data science only the term feature is used. Note, all of us old school statisticians we are more accustomed with the term “variable”, but it is the same. Here’s some examples of features:</p>
+<ul class="simple">
+<li><p>porosity measured from 1.5 inch diameter, 2 inch long core plugs extracted from the Miocene-aged Tahiti field in the Gulf of Mexico</p></li>
+<li><p>permeability modeled from porosity (neutron density well log) and rock facies (interpreted fraction of shale logs) at 0.5 foot resolution along the well bore in the Late Devonian Leduc formation in the Western Canadian Sedimentary Basin.</p></li>
+<li><p>blast hole cuttings derived nickel grade aggregated over 8 inch diameter 10 meter blast holes at Voisey’s Bay Mine, Proterozoic gneissic complex.</p></li>
+</ul>
+<p>Did you see what I did? To describe features, I specified,</p>
+<ul class="simple">
+<li><p>what was measured, how it was measured, and over what scale was it measured.</p></li>
+</ul>
+<p>This is important because,</p>
+<ul class="simple">
+<li><p>how the measure is made changes the veracity (level of certainty in the measure) and different methods actually may results in different results so we may need to reconcile multiple measurement methods of the same thing, so we often store each vintage as separate features.</p></li>
+<li><p>the scale of the measure is very important due to volume variance effect, with increasing support volume (sample size) the variance reduces due to volumetric averaging resulting in regression to the mean. I have a <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/GeostatsPy_volume_variance.html">chapter on volume-variance</a> in my Applied Geostatistics in Python e-book for those interested in more details.</p></li>
+</ul>
+<p>Additionally, our subsurface measures often requires significant analysis, interpretation, etc.</p>
+<ul class="simple">
+<li><p>We don’t just hold a tool up to the rock and get the number, we have a thick layer of engineering and geoscience interpretation to map from measurement to a useable feature.</p></li>
+</ul>
+<p>Consider this carbonate thin section from Bureau of Economic Geology, The University of Texas at Austin from <a class="reference external" href="http://www.beg.utexas.edu/lmod/_IOL-CM07/old-4.29.03/cm07-step05.htm">geoscience course</a> by F. Jerry Lucia.</p>
+<figure style="text-align: center;">
+  <img src="_static/concepts/thin_section.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Carbonate thin section image (from <a href="http://www.beg.utexas.edu/lmod/_IOL-CM07/old-4.29.03/cm07-step05.htm">this link</a> by F. Jerry Lucia).</figcaption>
+</figure>
+<p>Note, the blue dye indicates the void space in the rock, but is porosity the blue area divided by the total area of the sample?</p>
+<ul class="simple">
+<li><p>That would be the “total porosity” and not all of it may contribute to fluid flow in the rock as it is not sufficiently connected; therefore, we need to go from total porosity to “effective porosity”, requiring interpretation.</p></li>
+</ul>
+<p>Even porosity, one of the most simple (observable in well logs and linearly averaging) features doesn’t escape essential interpretation.</p>
+</section>
+<section id="predictor-and-response-features">
+<h2>Predictor and Response Features<a class="headerlink" href="#predictor-and-response-features" title="Permalink to this heading">#</a></h2>
+<p>To understand the difference between predictor and response features let’s look at the most concise, simple expression of a data science model.</p>
+<figure style="text-align: center;">
+  <img src="_static/concepts/ML_equation.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">The fundamental predictive machine learning model that maps from predictor to response features.</figcaption>
+</figure>
+<p>The predictors (or independent) features (or variables) the model inputs, i.e., the <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>, response (or dependent) feature(s) (or variable(s)) are the model output, <span class="math notranslate nohighlight">\(y\)</span>, and there is an error term, <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
+<p>Data science is all about estimating such models, <span class="math notranslate nohighlight">\(\hat{𝑓}\)</span>, for two purposes, inference or prediction.</p>
+</section>
+<section id="inference-and-prediction">
+<h2>Inference and Prediction<a class="headerlink" href="#inference-and-prediction" title="Permalink to this heading">#</a></h2>
+<p>Inference must precede prediction, because inference is going from the limited sample to a model of the population. Inference is learning about the system, <span class="math notranslate nohighlight">\(\hat{f}\)</span>, for example,</p>
+<ul class="simple">
+<li><p>what is the relationship between the features?</p></li>
+<li><p>what feature are most important?</p></li>
+<li><p>what are the complicated interactions between all the features?</p></li>
+</ul>
+<p>A good example of a inferential problem is imagine if I walk in the room and pull a coin out of my pocket and flip it 10 times and get 3 heads and 7 tails and then ask you, “Is this is a fair coin?”.</p>
+<ul class="simple">
+<li><p>you take the sample, the results from 10 coin tosses, to make an inference about the population, i.e., whether the coin is fair or not? Note, in this example the coin is the population!</p></li>
+</ul>
+<p>Once we have completed our inference to model the population from the sample, we are ready to use the model of the population to predict future samples. This is prediction, going from a model of the population to estimating new samples.</p>
+<ul class="simple">
+<li><p>the goal of prediction is to get the most accurate estimates of future samples.</p></li>
+</ul>
+<p>Carrying on with our coin example, if you declare that my coin was biased towards tails (a weighted coin would be a useful teaching tool!) with a 70% probability of tails, now you are able to predict the outcome for the next 10 coin tosses, even before I toss the coin again. This is prediction.</p>
+<p>How do you know if you are doing inferential or predictive machine learning. In general, inferential machine learning is conducted only with the predictor features, also known as <strong>unsupervised machine learning</strong> (because there are no response labels). Examples includes:</p>
+<ul class="simple">
+<li><p><strong>cluster analysis</strong> - that learns ways to split the data into multiple distinct populations to improve the subsequent models</p></li>
+<li><p><strong>dimensionality reduction</strong> - that projects the predictor features to a reduced number of new features that better describe the system with less noise</p></li>
+</ul>
+<p>When you’re doing predictive machine learning you have both the predictor and the response feature(s), so we call it <strong>supervised learning</strong>. The model is trained and tuned to predict new samples.</p>
+<figure style="text-align: center;">
+  <img src="_static/concepts/inference_prediction.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Inference is going from a sample to a model of the population. Prediction is going from a model of the population to a prediction of the next sample. Inference preceeds prediction.</figcaption>
+</figure>
+</section>
+<section id="determinstic-vs-stochastic-modeling">
+<h2>Determinstic vs. Stochastic Modeling<a class="headerlink" href="#determinstic-vs-stochastic-modeling" title="Permalink to this heading">#</a></h2>
+<p><strong>Determinstic Model</strong> - A model based on a mathematical algorithm that produces the same output each time it is used with the same input. For example, an interpolation method and a numerical physics-based flow simulation are both deterministic models, because if we rerun them for a specific case, the answer does not change.</p>
+<p>Consider these examples:</p>
+<ol class="arabic simple">
+<li><p>a best fit trend line, e.g., linear regression</p></li>
+<li><p>regression tree</p></li>
+<li><p>support vector machines</p></li>
+</ol>
+<p>These are all determinsitic models. But, for geostatistics there is an important difference in how we see deterministic model. Let’s emphasize it here.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Deterministic Models Definition:</p>
+<p>A model that provides a single best estimate and does not attempt to provide a model of uncertainty.</p>
+</div>
+<p>In geostatistics, we define deterministic modeling is any model that ignores uncertainty! Now we can add another type of models that may not be completely repeatable, but does not integrate uncertainty, models based on expert interpretation. Now imagine experts crafting the model and we can conceive of these advantages and disadvantages for the deterministic modeling approach,</p>
+<p>Advantages of deterministic models:</p>
+<ul class="simple">
+<li><p>integration of physics and expert knowledge - physics</p></li>
+<li><p>integration of various information sources</p></li>
+</ul>
+<p>Disadvantages of deterministic models:</p>
+<ul class="simple">
+<li><p>often quite time consuming</p></li>
+<li><p>often no assessment of uncertainty, focus on building one model</p></li>
+</ul>
+<p><strong>Stochastic Model</strong> - A model based on a probablistic model and random process that produces a new model every time it is run, usually by changing the random number seed. These models often focus on the statistical descriptions from the data at the expense of expert interpretation and physics, but are often faster and provide uncertainty models through multiple realizations.</p>
+<p>Advantages of stochastic models:</p>
+<ul class="simple">
+<li><p>speed, much faster than interpretation workflows</p></li>
+<li><p>uncertainty assessment through realizations</p></li>
+<li><p>report significance, confidence / prediction intervals</p></li>
+<li><p>honor many types of data, often by encoding various data sources as probablities and combining them, e.g., Bayesian updating</p></li>
+<li><p>data-driven approach that may be seen as more objective than expert-based</p></li>
+<li><p>paradoxically more repeatable, given the same random number seed vs. deterministic models based on interpretation</p></li>
+</ul>
+<p>Disadvantages of stochastic models:</p>
+<ul class="simple">
+<li><p>no physics or limited physics integrated through trend models</p></li>
+<li><p>statistical model assumptions and simplification that may limit the ability to model complicated natural phenomenon</p></li>
+</ul>
+<p>Spoiler alert, geostatistics includes deterministic and stochastic spatial modeling methods, for example, inverse distance is deterministic and sequential Gaussian simulation is stochastic.</p>
+<ul class="simple">
+<li><p>Kriging is interesting, because it provides a single best estimate that doesn’t change when we rerun it (no random number seed is applied), but it also provides a measure of uncertainty through the kriging estimation variance.</p></li>
+<li><p>Let’s still call kriging a deterministic model</p></li>
+</ul>
+<p><strong>Hybrid Modeling</strong> - most subsurface models include a combination of determinstic and stochastic modeling. For example, a deterministic trend model based on interpretation may be applied to calculate a residual feature that is then modelled stochastically.</p>
+<ul class="simple">
+<li><p>Hybrid modeling is more common than strictly stochastic modeling for spatial, subsurface resources.</p></li>
+</ul>
+<p>Now we can clarify this discussion by including the specific modes of spatial, subsurface modeling.</p>
+</section>
+<section id="estimation-vs-simulation">
+<h2>Estimation vs. Simulation<a class="headerlink" href="#estimation-vs-simulation" title="Permalink to this heading">#</a></h2>
+<p>Now we can differentiate estimation and simulation. The act calculating the single best estimate of a feature over location(s) in space is spatial estimation. Let’s concisely summarize:</p>
+<p><strong>Estimation</strong> has these characteristics,</p>
+<ul class="simple">
+<li><p>is process of obtaining the single best value of a subsurface feature at an unsampled location</p></li>
+<li><p>local accuracy takes precedence over global spatial variability</p></li>
+<li><p>too ‘smooth’, not appropriate for forecasting</p></li>
+</ul>
+<p>In contrast, the act of calculating a set of good realizations of a feature over location(s) in space is spatial simulation.</p>
+<p><strong>Simulation</strong> has these characteristics,</p>
+<ul class="simple">
+<li><p>is process of obtaining one or more good values of a reservoir property at an unsampled location</p></li>
+<li><p>global accuracy, matches the global statistics</p></li>
+<li><p>simulation methods tend to produce more realistic feature spatial, univariate distributions</p></li>
+</ul>
+<p>Now we can connect this with the previous discussion,</p>
+<ul class="simple">
+<li><p>deterministic models estimate, while stochastic models simulate</p></li>
+</ul>
+<p>How do we choose between estimation and simulation? When would we prefer simulation over estimation?</p>
+<ul class="simple">
+<li><p>we need to reproduce the distributions of features of interest, i.e., the extreme values matter</p></li>
+<li><p>we need realistic spatial heterogeneity models for flow simulation</p></li>
+</ul>
+</section>
+<section id="subsurface-uncertainty-modeling">
+<h2>Subsurface Uncertainty Modeling<a class="headerlink" href="#subsurface-uncertainty-modeling" title="Permalink to this heading">#</a></h2>
+<p>What is uncertainty modeling? To answer this question, we need to back up and ask a more fundamental question, what is subsurface uncertainty? Let’s describe the concepts of subsurface uncertainty.</p>
+<p>Uncertainty is not an intrinsic property of the subsurface.</p>
+<ul class="simple">
+<li><p>At every location (<span class="math notranslate nohighlight">\(\bf{u}_{\alpha}\)</span>) within the volume of interest the features’ values (e.g., facies, porosity etc.) could be measured if we had access. Uncertainty is a function of our ignorance, our inability to observed and measure the subsurface with the coverage and scale required to support our scientific questions and decision making.</p></li>
+</ul>
+<p>This sparsity of sample data combined with heterogeneity results in uncertainty.</p>
+<ul class="simple">
+<li><p>If the subsurface was homogeneous then with few measurements uncertainty would be reduced and estimates resolved to a sufficient degree of exactitude.</p></li>
+</ul>
+<p>Subsurface uncertainty is a model. We should use the term “uncertainty model”.</p>
+<ul class="simple">
+<li><p>As with all models, our uncertainty model is imperfect, but useful.</p></li>
+<li><p>Our uncertainty assessment is a function of a set of subjective decisions and parameter choices.</p></li>
+<li><p>The degree of objectivity is improved by ensuring each of the decisions and parameters are defendable given the available data and judicious use of analogs.</p></li>
+</ul>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Subsurface Uncertainty Definition:</p>
+<p>Uncertainty is a function of our ignorance, our inability to observed and measure the subsurface with the coverage and scale required to support our scientific questions and decision making.</p>
+</div>
+<p><strong>How Do We Represent Uncertainty?</strong> With uncertainty models built on the concept of random variables and random functions.</p>
+<ul class="simple">
+<li><p><strong>Random Variables</strong> - a random variable is a property at a location (<span class="math notranslate nohighlight">\(\bf{u}_{\alpha}\)</span>) that can take on multiple possible outcomes. This is represented by a probability density function (PDF).</p></li>
+<li><p><strong>Random Functions</strong> - if we take a set of random variables at all locations of interest and we impart the correct spatial continuity between them then we have a random function.  Each outcome from the random function is a potential model of the subsurface.</p></li>
+<li><p><strong>Using Multiple Models</strong> - we represent uncertainty with multiple models. It is convenient to assume that each model is equiprobable, but one could assign variable probability based on available local information and analogs.</p></li>
+<li><p><strong>Realizations</strong> - multiple models to represent uncertainty where the input decisions and parameters are held constant and only the random number seed is changed to represent spatial away from data uncertainty.</p></li>
+<li><p><strong>Scenarios</strong> - multiple models to represent uncertainty where the input decisions and parameters are changed to represent model decision and input uncertainty.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/concepts/scenarios.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;">Uncertainty modeling with scenarios with different model parameters and choices and realizations with constant model parameters and choices, but with variable random number seed (from Pyrcz and Deutsch, 2014).</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Working With Multiple Models: It is generally not appropriate to analyze a single or few scenarios and realizations. As Deutsch has taught during the <a class="reference external" href="https://iamg.org/awards-and-honours/distinguished-lecturer/past-distinguished-lecturers/">2017 IAMG lecture tour</a>, for decision making, use all the models (realizations) all the time applied to the transfer function (e.g. volumetric calculation, contaminant transport, ore grade scale up, flow simulation etc.).</p></li>
+</ul>
+<p>There is so much more that we could discuss about uncertainty modeling, for brevity I’ll just provide these additional points:</p>
+<ul class="simple">
+<li><p><strong>Calculating Uncertainty in a Modeling Parameter</strong> - use Bayesian methods, spatial bootstrap, etc. You must account for the volume of interest, sample data quantity and locations, and spatial continuity.</p></li>
+<li><p><strong>If You Know It, Put It In</strong> - use expert geologic knowledge and data to model trends. Any variability captured in a trend model is known and is removed from the unknown, uncertain component of the model. Overfit trend will result in unrealistic certainty.</p></li>
+<li><p><strong>Types of Uncertainty</strong> - include, (1) data measurement, calibration uncertainty, (2) modeling scenarios, decisions and parameters uncertainty, and (3) spatial uncertainty in estimating away from data. Your job is to hunt for and include all significant sources of uncertainty. I know there is more formal nomenclature for uncertainty sources, but I prefer these descriptive terms for teaching.</p></li>
+<li><p><strong>What about Uncertainty in the Uncertainty?</strong> Don’t go there. Use defendable choices in your uncertainty model, be conservative about what you known, document and move on. Matheron taught us to strip all away all defenseless assumptions.  Journel warned us to avoid the circular quest of uncertainty in uncertainty in…</p></li>
+<li><p><strong>Uncertainty Depends on Scale</strong> - it is much harder to predict a property of teaspoon vs. a house-sized volume at a location (uα) in the subsurface.  Ensure that scale and heterogeneity are integrated.</p></li>
+<li><p><strong>You Cannot Hide From It</strong> - ignoring uncertainty assumes certainty and is often a very extreme and dangerous assumption.</p></li>
+<li><p><strong>Decision Making with Uncertainty</strong> - apply all the models to the transfer function to calculate uncertainty in subsurface outcome to support decision making in the presence of uncertainty.</p></li>
+<li><p><strong>Uncertainty is a model</strong> - there is no objective uncertainty. Remember to always say, uncertainty model, not just uncertainty, to reflect this.</p></li>
+<li><p>In general, increasing data sampling paucity, measurement error and bias, and level of heterogeneity all increase uncertainty.</p></li>
+</ul>
+<p>Now we are ready to put it all together with the common geostatistical modeling workflow.</p>
+</section>
+<section id="the-common-geostatistical-modeling-workflow">
+<h2>The Common Geostatistical Modeling Workflow<a class="headerlink" href="#the-common-geostatistical-modeling-workflow" title="Permalink to this heading">#</a></h2>
+<p>While geostatistical modeling workflows are diverse and fit-for-purpose, this is the common workflow’s essential steps:</p>
+<ol class="arabic simple">
+<li><p>Integrate all available information to build multiple scenarios and realizations to sample the uncertainty space</p></li>
+<li><p>Apply all the models to the transfer function to map to a decision criteria</p></li>
+<li><p>Assemble the distribution of the decision criteria</p></li>
+<li><p>Make the optimum decision accounting for this uncertainty model</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/concepts/workflow.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">The common geostatistical modeling workflow (modified from Pyrcz and Deutsch, 2014).</figcaption>
+</figure>
+<p>Let’s fill in the one gap here, what is the?</p>
+<p><strong>Transfer Function</strong> - a operation that maps the models to the decision criteria, a measure of value! For example,</p>
+<ul class="simple">
+<li><p>the transfer function could be a volumetric calculation to map models to total gold in place, e.g., 25 million ounces of gold, or</p></li>
+<li><p>the transfer function could be a more complicated numerical simulation (3rd paradigm) to calculate total produced gas in 10 years, e.g., 11,000 Bcf.</p></li>
+</ul>
+<p>As a data science-based approach, geostatistics has various ethical and professional practice concerns.</p>
+</section>
+<section id="teaching-and-using-statistics-and-data-analytics">
+<h2>Teaching and Using Statistics and Data Analytics<a class="headerlink" href="#teaching-and-using-statistics-and-data-analytics" title="Permalink to this heading">#</a></h2>
+<p>I encounter many professional engineers and scientists that are hessitant to use statistics and data analytics. The words of Hadley Wickham, Chief Scientist at Posit (the developers of <a class="reference external" href="https://posit.co/download/rstudio-desktop/">RStudio</a>) help me understand the potential cause of this hessitancy with his excellent short paper on the teaching statistics titled, <a class="reference external" href="https://nhorton.people.amherst.edu/mererenovation/17_Wickham.PDF">Teaching Safe-Stats, Not Statistical Anstinence</a>.</p>
+<p>From my interpretation of Hadley’s paper, I summarize the following issues:</p>
+<ul class="simple">
+<li><p><strong>statistical perfectionism</strong>, we focus too much on doing exactly the write thing, rather than doing something useful.</p></li>
+<li><p><strong>stigmatize amateur statistics</strong>, we teach statistics should only be applied by the elite domain experts and not skilled practitioners.</p></li>
+</ul>
+<p>Hadley’s solutions to these issues, to enable a greater level of statistical adoption in our engineering and scientific communities include,</p>
+<ul class="simple">
+<li><p><strong>develop statistical tools that are safer</strong>. This is one of the reasons that I love working with <a class="reference external" href="https://www.r-project.org/">R</a>, the packages are very well-documented, and with a single function you not only complete the statistical step, but you also get the diagnostic plots and summaries for safer, guided statistical tool use.</p></li>
+<li><p><strong>development of grammars of data analytics</strong>, frameworks for the minimal set of independent components and the methods to combine them to build workflows. This grammar approach is balanced for flexibility to adapt exisiting workflows and append new steps to take on new challenges. Constraints are included to prevent common mistakes or warn of potential mistakes.</p></li>
+</ul>
+</section>
+<section id="ethical-and-professional-practice-concerns-with-data-science">
+<h2>Ethical and Professional Practice Concerns with Data Science<a class="headerlink" href="#ethical-and-professional-practice-concerns-with-data-science" title="Permalink to this heading">#</a></h2>
+<p>Allow me to finish this discussion with a cautionary note. <a class="reference external" href="https://arxiv.org/pdf/1602.04938.pdf">Rideiro et al. (2016)</a> trained a logistic regression classifier with 20 wolf and dog images to detect the difference between wolves and dogs.</p>
+<ul class="simple">
+<li><p>The input is a photo of a dog or wolf and the output is the probability of dog and the compliment, the probability of wolf.</p></li>
+</ul>
+<p>The model worked well until this example here (see the left side below),</p>
+<figure style="text-align: center;">
+  <img src="_static/concepts/dog_and_wolf.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Example dog misclassified as a wolf (left) and pixels that resulted in this misclassification (right), image taken from Rideiro et al. (2016).</figcaption>
+</figure>
+<p>where this results in a high probability of wolf. Fortunately the authors were able to interrogate the model and determine the pixels that had the greatest influence of the model’s determination of wolf (see the right side above). What happened?</p>
+<ul class="simple">
+<li><p>They trained a model to check for snow in the background.</p></li>
+</ul>
+<p>As a Canadian I can assure you that many photos of wolves are in our snow filled northern regions of our country, while many dogs are photographed in grassy yards. The problem with machine learning is:</p>
+<ul class="simple">
+<li><p>interpretability may be low with complicated models</p></li>
+<li><p>application of machine learning may become routine and trusted</p></li>
+</ul>
+<p>This is a dangerous combination, as the machine may become a trusted unquestioned authority. Rideiro and others state that they developed the problem to demonstrate this, but does it actually happen? Yes.</p>
+<ul class="simple">
+<li><p>I advised a team of students that attempted to automatically segment urban vs. rural environments from time lapse satellite photographs to build models of urban development.</p></li>
+<li><p>The model looked great, but I asked for an additional check with a plot of the by-pixel classification vs. pixel color. The results was a 100% correspondence, i.e., the model with all of it’s complicated convolution, activation, pooling was only looking for grey and tan pixels often associated with roads and buildings.</p></li>
+</ul>
+<p>I’m not going to say, ‘Skynet’, oops I just did, but just reflect on my concerns with the broad use of data science:</p>
+<ul class="simple">
+<li><p>Non-scientific results such as <a class="reference external" href="https://en.wikipedia.org/wiki/Clever_Hans">Clever Hans</a> effect with models that learn from tells in the data rather than really learning to perform the task resulting catastrophic failures</p></li>
+<li><p>New power and distribution of wealth and control by concentrating rapid inference with big data as more data is being shared</p></li>
+<li><p>Model trade-offs that matter to society while maximizing a data science objective function may be ignored or poorly understood</p></li>
+<li><p>Complicated data science models may become routine and may have low interpretability, resulting in unquestioned authority for the models</p></li>
+<li><p>Societal changes and disruptive technologies, I am quite concerned about the unanticipated consequences of a post-labor society</p></li>
+</ul>
+<p>I don’t want to be too negative and to take this discussion too far. I am a fan of science fiction and space futurism and I could definitely continue. I’ve thought about writing a fiction one day.</p>
+<ul class="simple">
+<li><p>Full disclosure, I’m the old-fashioned professor that thinks we should put of phones in our pockets, walk around with our heads up so we can greet each other and observe our amazing environments and societies. One thing that is certain, data science is changing society in so many ways and as Neil Postman in <a class="reference external" href="https://www.amazon.com/Technopoly-Surrender-Technology-Neil-Postman-ebook/dp/B004ZZJBW4/ref=sr_1_1?crid=E9SP0DFNP9JO&amp;dib=eyJ2IjoiMSJ9.ELnF0aIjkOw11vdTEQ3Tpg.NSaPUOIOz6m6i7XxpEMUJvZobANzU5baE6DlEa40Uzs&amp;dib_tag=se&amp;keywords=technolopoly&amp;qid=1728667409&amp;sprefix=technolopo%2Caps%2C127&amp;sr=8-1">Technopoly</a>)</p></li>
+</ul>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Neil Postman’s Quote for Technopoly</p>
+<p>“Once a technology is admitted, it plays out its hand.”</p>
+</div>
+<p>Like-wise, geostatistics is a data sicence technology and it can be dangerous. Applied as a black-box it is a method to rapidly calculate realistic-appearing models, but,</p>
+<ol class="arabic simple">
+<li><p>Heterogeneity and stochasticity of geostatistical models may hide issues with the models.</p></li>
+<li><p>The reliance on data-driven approaches motivate individuals to skip critical data and model checking and interpretation steps based on domain expertise.</p></li>
+</ol>
+<p>Remember, 90% of our spatial data science projects is data preparation! We need to adhere to professional practice standards and have domain expertise for competent practice.</p>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>This was a basic introduction to geostatistics. If you would like more on these fundamental concepts I recommend the Introduction, Modeling Principles and Modeling Prerequisites chapters from my text book, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a>{cite}`pyrcz2014’.</p>
+<p>I hope this is helpful,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="the-author">
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
+<p>Michael Pyrcz, Professor, The University of Texas at Austin
+<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+</section>
+<section id="want-to-work-together">
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="GeostatsPy_coordinate_transformations.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Coordinate Transformations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-geostatistics-concepts">Motivation for Geostatistics Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#big-data">Big Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-geostatistics-and-data-analytics">Statistics, Geostatistics and Data Analytics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science">Data Science</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cheap-and-available-compute">Cheap and Available Compute</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#availability-of-big-data">Availability of Big Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-and-subsurface-resources">Data Science and Subsurface Resources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#population-and-samples">Population and Samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-or-feature">Variable or Feature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-and-response-features">Predictor and Response Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inference-and-prediction">Inference and Prediction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinstic-vs-stochastic-modeling">Determinstic vs. Stochastic Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-vs-simulation">Estimation vs. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-uncertainty-modeling">Subsurface Uncertainty Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-common-geostatistical-modeling-workflow">The Common Geostatistical Modeling Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-and-using-statistics-and-data-analytics">Teaching and Using Statistics and Data Analytics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-and-professional-practice-concerns-with-data-science">Ethical and Professional Practice Concerns with Data Science</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
