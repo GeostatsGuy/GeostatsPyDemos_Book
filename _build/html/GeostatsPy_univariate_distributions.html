@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_univariate_distributions';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Bootstrap for Uncertainty Modeling" href="GeostatsPy_bootstrap.html" />
-    <link rel="prev" title="e-Book Introduction" href="intro.html" />
+    <link rel="next" title="Distribution Transformations" href="GeostatsPy_transformations.html" />
+    <link rel="prev" title="Coordinate Transformations" href="GeostatsPy_coordinate_transformations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,8 +156,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
-    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
+    <img src="_static/AppliedGeostats.jpg" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/AppliedGeostats.jpg" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
   
   
 </a></div>
@@ -167,15 +167,20 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    e-Book Introduction
+                    Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
@@ -184,16 +189,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
     </div>
@@ -389,31 +398,35 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram">Normalized Histogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bin-size">Histogram Bin Size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-pdf">Calculating a PDF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable">Random Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-dataframe">Visualizing the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-univariate-statistics-for-tabular-data">Summary Univariate Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-univariate-statistics">Weighted Univariate Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bins-number-of-bins-and-bin-size">Histogram Bins, Number of Bins and Bin Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-histogram-with-the-matplotlib-package">Plotting a Histogram with the matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histograms">Normalized Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-functions">Probability Density Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-functions">Cumulative Distribution Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-cdf-with-the-matplotlib-package">Plotting a CDF with the matplotlib Package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-cdf-with-the-matplotlib-package">Plotting a CDF with the Matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-and-plotting-a-cdf-by-hand">Calculating and Plotting a CDF ‘by- Hand’</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -425,27 +438,236 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="univariate-distributions">
+  <section id="univariate-distributions">
 <h1>Univariate Distributions<a class="headerlink" href="#univariate-distributions" title="Permalink to this heading">#</a></h1>
-<section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
-<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
-<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
-<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
-<p>This is a tutorial for / demonstration of <strong>Univariate Distributions</strong> in Python with GeostatsPy including:</p>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
+<p>Cite as: Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Univariate Distributions</strong> in Python with GeostatsPy including:</p>
 <ul class="simple">
 <li><p>Histograms</p></li>
 <li><p>Probability Density Functions</p></li>
 <li><p>Cumulative Distribution Functions</p></li>
 </ul>
-<p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/TbqaMXdSV4I?si=tzPNssh5Qcqv6DY_">Univariate Distributions</a>. For your convenience here’s a summary of slalient points.</p>
+<p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/TbqaMXdSV4I?si=tzPNssh5Qcqv6DY_">Univariate Distributions</a>. For your convenience here’s a summary of salient points.</p>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this heading">#</a></h2>
+<p>Let’s start with some basic definitions with respect to univariate, bivariate and multivariate.</p>
+<ul class="simple">
+<li><p><strong>Univariate</strong> - involving one variable (feature) or event.</p></li>
+<li><p><strong>Univariate Statistics</strong> - summary measures based on one feature measured over the samples</p></li>
+<li><p><strong>Univariate Parameters</strong> - summary measures inferred for one feature measured over the population</p></li>
+</ul>
+<p>We start with univariate, but we will cover bivariate, involving two variables (features) later. Note, joint probabilities and distributions are:</p>
+<ul class="simple">
+<li><p><strong>Bivariate</strong> - regarding 2 variables (features)</p></li>
+<li><p><strong>Multivariate</strong> - the general term for <span class="math notranslate nohighlight">\(&gt; 1\)</span> features, but often refers to <span class="math notranslate nohighlight">\(\ge 3\)</span> or more).</p></li>
+<li><p><strong>Massively Multivariate</strong> - high dimensional, usually indicating 7 or more features</p></li>
+</ul>
+<p>Now, let’s describe the concept of a distribution.</p>
+<ul class="simple">
+<li><p><strong>Statistical Distribution</strong> – for a variable (feature) a description of the probability of occurrence over the range of possible values. What do we get from a statistical distribution?</p>
+<ul>
+<li><p>what is the minimum and maximum?</p></li>
+<li><p>do we have a lot of low values?</p></li>
+<li><p>do we have a lot of high values?</p></li>
+<li><p>do we have outliers (values that don’t make sense and need an explanation)?</p></li>
+</ul>
+</li>
+</ul>
 </section>
+<section id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this heading">#</a></h2>
+<p>A histogram is a bar plot of frequency over an exhaustive set of bins or categories. A histogram is calculated with the following steps:</p>
+<ol class="arabic simple">
+<li><p>Divide the continuous feature  range of possible values into 𝐾 equal size bins, ∆𝑥, or categories,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\Delta x = \left( \frac{X_{max}-x_{min}}{K} \right)
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Count the number of samples (frequency) in each bin, <span class="math notranslate nohighlight">\(𝑛_(𝑘),\forall 𝑘=1,\ldots,𝐾\)</span>.</p></li>
+<li><p>Plot bin probability versus mid‐range (<span class="math notranslate nohighlight">\(\left( 𝑥_{𝑘,𝑚𝑖𝑛} + \frac{\Delta x}{2} \right)\)</span> if continuous or the categorical label).</p></li>
+</ol>
+</section>
+<section id="normalized-histogram">
+<h2>Normalized Histogram<a class="headerlink" href="#normalized-histogram" title="Permalink to this heading">#</a></h2>
+<p>For a normalized histogram, the frequencies are normalized to become the probability that the outcome existing within each bin, 𝑘.</p>
+<div class="math notranslate nohighlight">
+\[
+𝑝_𝑘 = \frac{𝑛_𝑘}{𝑛}, \quad \forall \quad 𝑘=1,\ldots,𝐾
+\]</div>
+<p>now for each bin we have probability:</p>
+<div class="math notranslate nohighlight">
+\[
+0.0 \le 𝑝_𝑘 \le 1.0, \quad \forall \quad 𝑘=1,\dots,𝐾
+\]</div>
+<p>closure, sum of all bins is one:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum^{K}_{k=1} p_k = 1
+\]</div>
+<p>Normalized histogram is convenient because we can read probability from the plot. The steps to calculate a normalized histogram are:</p>
+<ol class="arabic simple">
+<li><p>Divide data range (<span class="math notranslate nohighlight">\(x_{max} ‐ x_{min}\)</span>) into desired number bins / classes / categories, <span class="math notranslate nohighlight">\(K\)</span>, for continuous features:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\Delta x = \left( \frac{X_{max}-x_{min}}{K} \right)
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Count the number of data in bin, <span class="math notranslate nohighlight">\(n_k\)</span> and then compute the probability where <span class="math notranslate nohighlight">\(n\)</span> is the total number of data.:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+𝑝_𝑘 = \frac{𝑛_𝑘}{𝑛}, \quad \forall \quad 𝑘=1,\ldots,𝐾
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Plot bin probability versus mid‐range (<span class="math notranslate nohighlight">\(\left( 𝑥_{𝑘,𝑚𝑖𝑛} + \frac{\Delta x}{2} \right)\)</span> if continuous or the categorical label).</p></li>
+</ol>
+</section>
+<section id="histogram-bin-size">
+<h2>Histogram Bin Size<a class="headerlink" href="#histogram-bin-size" title="Permalink to this heading">#</a></h2>
+<p>What is the impact of bin size?</p>
+<ul class="simple">
+<li><p><strong>too large bins / too few bins</strong> - often smooth out, mask information lack resolution</p></li>
+<li><p><strong>too small bins / too many bins</strong> - are too noisy lack samples in each bin for stable assessment of frequency or probability (if normalized histogram)</p></li>
+</ul>
+<p>The general guidance is to choose the highest resolution with lowest possible noise.</p>
+<p>Note: very large and very small bins will tend towards equal proportion in each bin (all samples in a single bin or one sample in each bin).
+this will appear as a uniform distribution.</p>
+</section>
+<section id="probability-density-function-pdf">
+<h2>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Permalink to this heading">#</a></h2>
+<p>A function, <span class="math notranslate nohighlight">\(𝑓_x(𝑥)\)</span>, of probability density across the range of all possible feature values, <span class="math notranslate nohighlight">\(𝑥\)</span>, with the following constraints:</p>
+<ul class="simple">
+<li><p>non-negativity, note for continuous variables (features) density may be <span class="math notranslate nohighlight">\(&gt; 1.0\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+0.0 \le f_x(x)
+\]</div>
+<ul class="simple">
+<li><p>integrate to calculate probability</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+0 \le \int^b_a f_x(𝑥)𝑑𝑥 = 𝑃(𝑎 \le 𝑥 \le 𝑏) \le 1.0
+\]</div>
+<ul class="simple">
+<li><p>closure:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\int^{\infty}_{-\infty} f_x(x)dx = 1.0
+\]</div>
+<p>For categorical features, the normalized histogram is the PDF.</p>
+<p>Some comments on working with and interpreting the density measure from a probability density function, <span class="math notranslate nohighlight">\(𝒇_x(𝒙)\)</span>.</p>
+<ol class="arabic simple">
+<li><p><strong>Closure</strong> - the area under the curve of a PDF is <span class="math notranslate nohighlight">\(= 1.0\)</span>.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\int^{\infty}_{-\infty} f_x(x)dx = 1.0
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Density</strong> - is a measure of relative likelihood, may be <span class="math notranslate nohighlight">\(\gt 1.0\)</span>, but cannot be negative!</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+f_x(x) \ge 0.0
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Probability</strong> - is only available from the PDF by integration over an interval.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+P(a \le x \le b) = \int^b_a f_x(x) dx
+\]</div>
+<section id="calculating-a-pdf">
+<h3>Calculating a PDF<a class="headerlink" href="#calculating-a-pdf" title="Permalink to this heading">#</a></h3>
+<p>For parametric cases the PDF’s equation is known, but for the nonparametric case, the PDF is calculated from the data.</p>
+<p>While a data-derived, nonparametric PDF could be calculated by differentiating a data-derived CDF (discussed next), generally this would be too noisy!</p>
+<p>The common method to calculate a data-derived PDF is to fit a smooth model to the data. Kernel Density Estimation (KDE) Approach, fit smooth PDF to data:</p>
+<ol class="arabic simple">
+<li><p>Replace all data with a kernel, Gaussian is typical.</p></li>
+<li><p>Standardize result to ensure closure, <span class="math notranslate nohighlight">\(\int^{\infty}_{-\infty} f_x(x)dx = 1.0\)</span></p></li>
+</ol>
+<p>What is the impact of changing the kernel width?</p>
+<ul class="simple">
+<li><p>analogous to changing the histogram bin size, attempt to smooth out noise while not removing information</p></li>
+</ul>
+</section>
+</section>
+<section id="cumulative-distribution-function-cdf">
+<h2>Cumulative Distribution Function (CDF)<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Permalink to this heading">#</a></h2>
+<p>The cumulative distribution function (CDF) is the sum of a discrete PDF or the integral of a continuous PDF.</p>
+<ul class="simple">
+<li><p>the cumulative distribution function <span class="math notranslate nohighlight">\(𝑭_𝒙 (𝒙)\)</span> is the probability that a random sample, <span class="math notranslate nohighlight">\(𝑿\)</span>, is less than or equal to a value <span class="math notranslate nohighlight">\(𝒙\)</span>.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+F_x (x) = P(X \le x) = \int^x_{-\infty} f(u) du
+\]</div>
+<ul class="simple">
+<li><p>CDF is represented as a plot where the x axis is variable (feature) value and the y axis is cumulative probability.</p></li>
+<li><p>for CDF there is no bin assumption; therefore, graph is at the resolution of the data.</p></li>
+<li><p>monotonically non-decreasing function, because a negative slope would indicate negative probability over an interval.</p></li>
+</ul>
+<p>Some comments on working with and interpreting the density measure from a cumulative distribution function, <span class="math notranslate nohighlight">\(F_x(𝒙)\)</span>.</p>
+<p>To check for a valid CDF given these constraints:</p>
+<ul class="simple">
+<li><p>non-negativity constraint</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+F_x(x) = P(X \le x) \ge 0.0, \quad \forall \quad x
+\]</div>
+<p>valid probability:</p>
+<div class="math notranslate nohighlight">
+\[
+0.0 \le F_x(x) \le 1.0, \quad \forall \quad x
+\]</div>
+<ul class="simple">
+<li><p>cannot have negative slope</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\frac{dF_x(x)}{dx} \ge 0.0, \quad \forall \quad x
+\]</div>
+<ul class="simple">
+<li><p>minimum and maximum (closure) values:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+min(F_x(x)) = 0.0 \quad \quad max(F_x(x)) = 1.0
+\]</div>
+<ul class="simple">
+<li><p>since the CDF does not have a negative slope we can use limits:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\lim\limits_{x \to -\infty} F_x(x) \rightarrow 0.0 \quad \quad \lim\limits_{x \to \infty} F_x(x) \rightarrow 1.0
+\]</div>
+</section>
+<section id="random-variable">
+<h2>Random Variable<a class="headerlink" href="#random-variable" title="Permalink to this heading">#</a></h2>
+<p>Now it is time to introduce the concept of the random variable, since we need this to understand CDF notation above.</p>
+<ul class="simple">
+<li><p><strong>Random Variable</strong> - we do not know the value at a location / time, it can take on a range of possible values, fully described with a statistical distribution PDF / CDF. It is represented as an upper-case variable, e.g., <span class="math notranslate nohighlight">\(𝑿\)</span>, while possible outcomes or data measures are represented with lower case, e.g., <span class="math notranslate nohighlight">\(𝒙\)</span>.
+more latter on this!</p></li>
+</ul>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>          <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>          <span class="c1"># GSLIB utilities, visualization and wrapper</span>
 <span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>    <span class="c1"># GSLIB methods convert to Python        </span>
 </pre></div>
 </div>
@@ -456,26 +678,48 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
 
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># suppress the status bar</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
 <span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                        <span class="c1"># ndarrys for gridded data</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                       <span class="c1"># DataFrames for tabular data</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>           <span class="c1"># for plotting</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>                   <span class="c1"># summary statistics</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                     <span class="c1"># advanced plotting</span>
+<span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>                                       <span class="c1"># summary statistics</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                                         <span class="c1"># advanced plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
+<span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">IPython.utils</span> <span class="kn">import</span> <span class="n">io</span>                                  <span class="c1"># mute output from simulation</span>
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># color map</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-functions">
+<h2>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h2>
+<p>This is a convenience function to add major and minor gridlines to improve plot interpretability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="set-the-working-directory">
-<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
+<h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;c:/PGE383&quot;)                     # set the working directory</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;c:/PGE383&quot;)                                        # set the working directory</span>
 </pre></div>
 </div>
 </div>
@@ -486,17 +730,17 @@ document.write(`
 <p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.  For fun try misspelling the name. You will get an ugly, long error.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_data_cow.csv&#39;</span><span class="p">)</span>     <span class="c1"># load our data table (wrong name!)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_data_cow.csv&#39;</span><span class="p">)</span>                       <span class="c1"># load our data table (wrong name!)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_data_cow.csv&#39;</span><span class="p">)</span>     <span class="c1"># load our data table (wrong name!)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;sample_data_cow.csv&#39;</span><span class="p">)</span>                       <span class="c1"># load our data table (wrong name!)</span>
 
-<span class="nn">File ~\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\pandas\io\parsers\readers.py:912,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\parsers\readers.py:912,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
 <span class="g g-Whitespace">    </span><span class="mi">899</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
 <span class="g g-Whitespace">    </span><span class="mi">900</span>     <span class="n">dialect</span><span class="p">,</span>
 <span class="g g-Whitespace">    </span><span class="mi">901</span>     <span class="n">delimiter</span><span class="p">,</span>
@@ -506,19 +750,19 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">910</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">912</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
 
-<span class="nn">File ~\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\pandas\io\parsers\readers.py:577,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\parsers\readers.py:577,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
 <span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 <span class="g g-Whitespace">    </span><span class="mi">576</span> <span class="c1"># Create the parser.</span>
 <span class="ne">--&gt; </span><span class="mi">577</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">579</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">580</span>     <span class="k">return</span> <span class="n">parser</span>
 
-<span class="nn">File ~\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\pandas\io\parsers\readers.py:1407,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\parsers\readers.py:1407,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1404</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
 <span class="g g-Whitespace">   </span><span class="mi">1406</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="ne">-&gt; </span><span class="mi">1407</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
 
-<span class="nn">File ~\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\pandas\io\parsers\readers.py:1661,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\parsers\readers.py:1661,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1659</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1660</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
 <span class="ne">-&gt; </span><span class="mi">1661</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
@@ -534,7 +778,7 @@ document.write(`
 <span class="g g-Whitespace">   </span><span class="mi">1671</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 <span class="g g-Whitespace">   </span><span class="mi">1672</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
 
-<span class="nn">File ~\AppData\Local\anaconda3\envs\qe-mini-example\lib\site-packages\pandas\io\common.py:859,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="nn">File C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pandas\io\common.py:859,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
 <span class="g g-Whitespace">    </span><span class="mi">854</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">855</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
 <span class="g g-Whitespace">    </span><span class="mi">856</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
@@ -556,22 +800,24 @@ document.write(`
 </div>
 </div>
 </div>
-<p>That’s Python, but there’s method to the madness. In general the error shows a trace from the initial command into all the nested programs involved until the actual error occured. If you are debugging code (I know, I’m getting ahead of myself now), this is valuable for the detective work of figuring out what went wrong. I’ve spent days in C++ debugging one issue, this helps. So since you’re working in Jupyter Notebook, the program just assumes you code. Fine. If you scroll to the bottom of the error you often get a summary statement <em>FileNotFoundError: File b’sample_data_cow.csv’ does not exist</em>. Ok, now you know that you don’t have a file iwth that name in the working directory.</p>
-<p>Painful to leave that error in our workflow, eh? Everytime I passes it while making this documented I wanted to fix it. Its a coder thing… go ahead and erase it if you like. Just select the block and click on the scissors above in the top bar of this window. While we are at it, notice if you click the ‘+’ you can add in a new block anywhere. Ok, let’s spell the file name correctly and get back to work, already.</p>
+<p>That’s Python, but there’s method to the madness. In general the error shows a trace from the initial command into all the nested programs involved until the actual error occurred. If you are debugging code (I know, I’m getting ahead of myself now), this is valuable for the detective work of figuring out what went wrong. I’ve spent days in C++ debugging one issue, this helps. So since you’re working in Jupyter Notebook, the program just assumes you code. Fine. If you scroll to the bottom of the error you often get a summary statement <em>FileNotFoundError: File b’sample_data_cow.csv’ does not exist</em>. Ok, now you know that you don’t have a file with that name in the working directory.</p>
+<p>Painful to leave that error in our workflow, eh? Every time I pass it while making this documented I wanted to fix it. Its a coder thing… While we are at it, notice if you click the ‘+’ you can add in a new block anywhere. Ok, let’s spell the file name correctly and get back to work.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df = pd.read_csv(&#39;sample_data.csv&#39;)     # load our data table</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s github repository</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data.csv&#39;</span><span class="p">)</span> <span class="c1"># load data from Dr. Pyrcz&#39;s github repository</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>No error now! It worked, we loaded our file into our DataFrame called ‘df’. But how do you really know that it worked? Visualizing the DataFrame would be useful and we already leard about these methods in this demo (<a class="reference external" href="https://git.io/fNgRW">https://git.io/fNgRW</a>).</p>
+<p>No error now! It worked, we loaded our file into our DataFrame called ‘df’. But how do you really know that it worked? Visualizing the DataFrame is always a good idea as a first order check.</p>
+</section>
+<section id="visualizing-the-dataframe">
+<h2>Visualizing the DataFrame<a class="headerlink" href="#visualizing-the-dataframe" title="Permalink to this heading">#</a></h2>
 <p>We can preview the DataFrame by printing a slice or by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below). With the slice we could look at any subset of the data table and with the head command, add parameter ‘n=13’ to see the first 13 rows of the dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,:])</span>                   <span class="c1"># display first 4 samples in the table as a preview</span>
-<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>                           <span class="c1"># we could also use this command for a table preview</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,:])</span>                                         <span class="c1"># display first 4 samples in the table as a preview</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>                                                 <span class="c1"># we could also use this command for a table preview</span>
 </pre></div>
 </div>
 </div>
@@ -739,7 +985,7 @@ document.write(`
 <p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>                                                 <span class="c1"># summary statistics</span>
 </pre></div>
 </div>
 </div>
@@ -856,7 +1102,7 @@ df[&#39;Porosity&#39;].values                # returns an ndarray
 <p>For example, now we could use commands. like this one:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The minimum is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The minimum is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span> <span class="c1"># print univariate statistics</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The maximum is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The mean is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The standard deviation is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
@@ -876,7 +1122,7 @@ The standard deviation is 0.05.
 <p>We calculate the inverse of the CDF, <span class="math notranslate nohighlight">\(F^{-1}_x(x)\)</span> with Numpy percentile function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The minimum is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">),</span><span class="mi">2</span><span class="p">)))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The minimum is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amin</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">),</span><span class="mi">2</span><span class="p">)))</span> <span class="c1"># print univariate statistics</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The maximum is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">),</span><span class="mi">2</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The range (maximum - minimum) is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ptp</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">),</span><span class="mi">2</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The P10 is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span><span class="mi">3</span><span class="p">)))</span>
@@ -904,12 +1150,12 @@ The mean is 0.15
 </div>
 <p>We can calculate the CDF value, <span class="math notranslate nohighlight">\(F_x(x)\)</span>, directly from the data.</p>
 <ul class="simple">
-<li><p>we use a condition to creat a boolean array with the same size of the data and then count the cases that meet the condition</p></li>
-<li><p>we are assuming equal weighting.</p></li>
+<li><p>we apply a conditional statement to our ndarray to caculate a boolean ndarray with the same size of the data and then count the cases that meet the condition</p></li>
+<li><p>note, we are assuming equal weighting</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.10</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.10</span>                                                  <span class="c1"># calculate cumulative distribution function for a specified value</span>
 <span class="n">cumul_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">&lt;=</span> <span class="n">value</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The cumulative probability for porosity = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">cumul_prob</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
 </pre></div>
@@ -924,11 +1170,15 @@ The mean is 0.15
 </section>
 <section id="weighted-univariate-statistics">
 <h2>Weighted Univariate Statistics<a class="headerlink" href="#weighted-univariate-statistics" title="Permalink to this heading">#</a></h2>
-<p>Later in the course we will talke about weights statistics. The NumPy command average allows for weighted averages as in the case of statistical expectation and declutered statistics. For demonstration, lets make a weighting array and apply it.</p>
+<p>In the declustering chapters I present methods to calculate weights and the motivation for weighted statistics.</p>
+<ul class="simple">
+<li><p>The NumPy command average allows for weighted averages as in the case of statistical expectation and declustered statistics.</p></li>
+<li><p>For demonstration, lets make a weighting array and apply it.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nd</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>                              <span class="c1"># get the number of data values</span>
-<span class="n">wts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>                         <span class="c1"># make an array of nd length of 1&#39;s</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nd</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>                                                  <span class="c1"># get the number of data values</span>
+<span class="n">wts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nd</span><span class="p">)</span>                                             <span class="c1"># make an array of nd length of 1&#39;s</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The equal weighted average is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="n">wts</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, the same as the mean above.&#39;</span><span class="p">)</span>            
 </pre></div>
 </div>
@@ -942,8 +1192,8 @@ The mean is 0.15
 <p>Let’s get fancy, we will modify the weights to be 0.5 if the porosity is greater than 13% and retain 1.0 if the porosity is less than or equal to 13%. The results should be a lower weighted average.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">porosity</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
-<span class="n">wts</span><span class="p">[</span><span class="n">porosity</span> <span class="o">&gt;</span> <span class="mf">0.13</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">0.1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">porosity</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>     
+<span class="n">wts</span><span class="p">[</span><span class="n">porosity</span> <span class="o">&gt;</span> <span class="mf">0.13</span><span class="p">]</span> <span class="o">*=</span> <span class="mf">0.1</span>                                   <span class="c1"># make arbitrary weights for demonstration</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The equal weighted average is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="n">wts</span><span class="p">),</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, lower than the equal weighted average above.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -954,26 +1204,29 @@ The mean is 0.15
 </div>
 </div>
 </div>
-<p>I should note that SciPy stats functions provide a handy summary statistics function. The output is a ‘list’ of values (actually it is a SciPy.DescribeResult ojbect). One can extract any one of them to use in a workflow as follows.</p>
+<p>I should note that SciPy stats functions provide a handy summary statistics function. The output is a ‘list’ of values (actually it is a SciPy.DescribeResult object). One can extract any one of them to use in a workflow as follows.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>                <span class="c1"># summary statistics   </span>
-<span class="n">por_stats</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>           <span class="c1"># store as an array</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Porosity kurtosis is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">por_stats</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="mi">2</span><span class="p">)))</span> <span class="c1"># extract a statistic </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>                  <span class="c1"># summary statistics</span>
+<span class="n">por_stats</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>             <span class="c1"># store as an array</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Porosity kurtosis is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">por_stats</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="mi">2</span><span class="p">)))</span>   <span class="c1"># extract a statistic </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=261, minmax=(0.0588710426408954, 0.2422978845362023), mean=0.15035706160196555, variance=0.0024783238419715937, skewness=0.08071652694567066, kurtosis=-1.5618166076333853)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=261, minmax=(0.0588710426408954, 0.2422978845362023), mean=0.15035706160196555, variance=0.0024783238419715933, skewness=0.08071652694567066, kurtosis=-1.5618166076333853)
 Porosity kurtosis is -1.56
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="histograms">
-<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this heading">#</a></h2>
-<p>Let’s display some histograms. I reimplimented the hist function from GSLIB. See the parameters.</p>
+<section id="id1">
+<h2>Histograms<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Let’s display some histograms. I reimplemented the hist function from GSLIB. Preview the parameters by typing the command without parameters.</p>
+<ul class="simple">
+<li><p>also to learn about function parameters the alt-tab key combination with cursor in the function parentheses is often available to access the “docstrings” or check the Python package docs.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GSLIB</span><span class="o">.</span><span class="n">hist</span>
@@ -986,16 +1239,19 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 </div>
-<p>Let’s make a histogram for porosity.</p>
+<p>Let’s make a histogram for the porosity feature.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pormin</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mf">0.25</span>
-<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity Well Data&#39;</span><span class="p">,</span><span class="n">fig_name</span><span class="o">=</span><span class="s1">&#39;hist_Porosity&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pormin</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mf">0.25</span>                                  <span class="c1"># minimum and maximum feature values</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+           <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity Well Data&#39;</span><span class="p">)</span>
+<span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b860b37620c122ea1b9ee4862af4fb6bfc31d8035637f9cfc67c3c7a0c74b077.png" src="_images/b860b37620c122ea1b9ee4862af4fb6bfc31d8035637f9cfc67c3c7a0c74b077.png" />
+<img alt="_images/0304aa89909daf44171bf2478f2a6eff12d730a183ab136dd23aa4c7b19a4407.png" src="_images/0304aa89909daf44171bf2478f2a6eff12d730a183ab136dd23aa4c7b19a4407.png" />
 </div>
 </div>
 <p>What’s going on here? Looks quite bimodal.</p>
@@ -1005,24 +1261,19 @@ Porosity kurtosis is -1.56
 <p>Let’s explore with a few bins sizes to check the impact on the histogram.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbin1</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span> <span class="n">nbin2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span> <span class="n">nbin3</span> <span class="o">=</span> <span class="mi">100</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nbin_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>                                             <span class="c1"># number of bins for each histogram</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
-<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">nbin1</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Histogram with &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nbin1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Bins&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">nbin</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nbin_list</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">nbin</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+                  <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Histogram with &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nbin</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Bins&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>
-<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">nbin2</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Histogram with &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nbin2</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Bins&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>
-<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">nbin3</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Histogram with &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nbin3</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Bins&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="c1">#plt.savefig(&#39;hist_Porosity_Multiple_bins.tif&#39;,dpi=600,bbox_inches=&quot;tight&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aa704d50afc8cfbcde344f6b292951733195e11e592566c227fc5e76e32df4ca.png" src="_images/aa704d50afc8cfbcde344f6b292951733195e11e592566c227fc5e76e32df4ca.png" />
+<img alt="_images/2dc49661a8b56262783386d2ba869f1b451207e4f8f6e097234fddff00d57fcd.png" src="_images/2dc49661a8b56262783386d2ba869f1b451207e4f8f6e097234fddff00d57fcd.png" />
 </div>
 </div>
 <p>See what happens when we use:</p>
@@ -1040,13 +1291,13 @@ Porosity kurtosis is -1.56
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d4a04670f79d73b30319ae0a15cf028b8d9e988d6e99f832690f97dc23f7f272.png" src="_images/d4a04670f79d73b30319ae0a15cf028b8d9e988d6e99f832690f97dc23f7f272.png" />
+<img alt="_images/96216c8bd9f48f48989eed49badc33d47aeab7c6ead9e2ebbd3645190d0bd727.png" src="_images/96216c8bd9f48f48989eed49badc33d47aeab7c6ead9e2ebbd3645190d0bd727.png" />
 </div>
 </div>
 <p>Now we can demonstrate normalized histograms with matplotlib.</p>
@@ -1056,21 +1307,21 @@ Porosity kurtosis is -1.56
 </section>
 <section id="normalized-histograms">
 <h2>Normalized Histograms<a class="headerlink" href="#normalized-histograms" title="Permalink to this heading">#</a></h2>
-<p>Normalized histograms are convienient since we can read propability to be in each bin and observe closure by summing the probability for all bins is 1.0.</p>
+<p>Normalized histograms are convenient since we can read probability to be in each bin and observe closure by summing the probability for all bins is 1.0.</p>
 <ul class="simple">
-<li><p>to do this we need to explicity set the weight for each data as <span class="math notranslate nohighlight">\(\frac{1}{n}\)</span></p></li>
+<li><p>to do this we need to explicitly set the weight for each data as <span class="math notranslate nohighlight">\(\frac{1}{n}\)</span> (assuming equal weighting)</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">],</span><span class="n">weights</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Normalized Histogram&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Prob&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Normalized Histogram&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/976eea394dc49ee12d89e4dc612b9c607ebc61d8e005ba01cf0ccf9f614ee99f.png" src="_images/976eea394dc49ee12d89e4dc612b9c607ebc61d8e005ba01cf0ccf9f614ee99f.png" />
+<img alt="_images/f7ee58d3c8c274716b6853d5a0a9f5162818f92065ad4a07e55decee8eaf87fd.png" src="_images/f7ee58d3c8c274716b6853d5a0a9f5162818f92065ad4a07e55decee8eaf87fd.png" />
 </div>
 </div>
 </section>
@@ -1093,29 +1344,32 @@ Porosity kurtosis is -1.56
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nums</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="n">num</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">bw_method</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.25</span><span class="p">])</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="n">num</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">bw_method</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="n">num</span><span class="p">],</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">bw_method</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.30</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;KDE PDF for First &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; Data&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Density&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0f771630ada96f5dae04485bbfca854781fba466b093cc143f043922dd142acf.png" src="_images/0f771630ada96f5dae04485bbfca854781fba466b093cc143f043922dd142acf.png" />
+<img alt="_images/8062528677f863eafec6bd486959e33ad4b0a9e10a157aa5962ab492c0ee06ec.png" src="_images/8062528677f863eafec6bd486959e33ad4b0a9e10a157aa5962ab492c0ee06ec.png" />
 </div>
 </div>
-<p>Now we can use the Seaborn package to calculate and plot the PDF from our data.</p>
+<p>Now we can use the Seaborn Python package to calculate and plot the PDF from our data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">],</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span><span class="n">bw_method</span><span class="o">=</span><span class="mf">0.10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span><span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">],</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+         <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Normalized Histogram&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span><span class="n">bw_method</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram and Kernel Density Estimated PDF&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Density&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/99a51742ead2d8f4ac71e6a416f6f306979153f89fc977add2161f7986ded38c.png" src="_images/99a51742ead2d8f4ac71e6a416f6f306979153f89fc977add2161f7986ded38c.png" />
+<img alt="_images/b3ff5f196410f884108fd2d18d9f73c6df5720ac471f50f5e52585a2eb074f92.png" src="_images/b3ff5f196410f884108fd2d18d9f73c6df5720ac471f50f5e52585a2eb074f92.png" />
 </div>
 </div>
 <p>What is the impact of changing the kernel width on the KDE PDF model?</p>
@@ -1144,7 +1398,7 @@ Band Width = 0.1, bandwidth x standard deviation = 0.0049687305706027085
 Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 </pre></div>
 </div>
-<img alt="_images/a1b0a73e964023d4439d32873fd9a3ddde097008274a41da4cafa2ceaa0fb425.png" src="_images/a1b0a73e964023d4439d32873fd9a3ddde097008274a41da4cafa2ceaa0fb425.png" />
+<img alt="_images/f6a62a1f22dfbdf6789e75f38f49fc6b65b21b1a4bd58fdf3defc901fdee439f.png" src="_images/f6a62a1f22dfbdf6789e75f38f49fc6b65b21b1a4bd58fdf3defc901fdee439f.png" />
 </div>
 </div>
 </section>
@@ -1156,18 +1410,20 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GSLIB</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cumulative Histogram&#39;</span><span class="p">,</span><span class="n">fig_name</span><span class="o">=</span><span class="s1">&#39;hist_Porosity_CDF&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="c1"># CDF with GeostatsPy</span>
+           <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cumulative Distribution Function with Cumulative Histogram&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/46c739fe27709be5d7dca4bf5d5311b4066f27d3504e1eb0369d1cdec6b737bf.png" src="_images/46c739fe27709be5d7dca4bf5d5311b4066f27d3504e1eb0369d1cdec6b737bf.png" />
+<img alt="_images/c72d1594b60324d879e14b412eb498bd081f4d0e9f419bb9ad83c90cbcff316d.png" src="_images/c72d1594b60324d879e14b412eb498bd081f4d0e9f419bb9ad83c90cbcff316d.png" />
 </div>
 </div>
 </section>
 <section id="plotting-a-cdf-with-the-matplotlib-package">
-<h2>Plotting a CDF with the matplotlib Package<a class="headerlink" href="#plotting-a-cdf-with-the-matplotlib-package" title="Permalink to this heading">#</a></h2>
-<p>Here’s how we can make a CDF with matplotlib.</p>
+<h2>Plotting a CDF with the Matplotlib Package<a class="headerlink" href="#plotting-a-cdf-with-the-matplotlib-package" title="Permalink to this heading">#</a></h2>
+<p>Here’s how we calculate and plot a CDF with matplotlib.</p>
 <ul class="simple">
 <li><p>the y axis is cumulative probability with a minimum of 0.0 and maximum of 1.0 as expected for a CDF.</p></li>
 <li><p>note after the initial hist command we can add a variety of elements such as labels to our plot as shown below.</p></li>
@@ -1176,17 +1432,15 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cumulative</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CDF&#39;</span><span class="p">,</span>
            <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;stepfilled&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.25</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porosity CDF&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulation Probability&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Porosity CDF&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulation Probability&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="c1">#plt.savefig(&#39;cdf_Porosity.tif&#39;,dpi=600,bbox_inches=&quot;tight&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/43a4abfb25ff076f3716dfab59be705ee91c3322b618c264b8dd85de1f16dc8a.png" src="_images/43a4abfb25ff076f3716dfab59be705ee91c3322b618c264b8dd85de1f16dc8a.png" />
+<img alt="_images/80703732307b8817bbd969fa345dd8d42ee3b9ea5d10d506d22e72ed2e39c318.png" src="_images/80703732307b8817bbd969fa345dd8d42ee3b9ea5d10d506d22e72ed2e39c318.png" />
 </div>
 </div>
 </section>
@@ -1197,32 +1451,30 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <li><p>make a copy of the feature as a 1D array (ndarray from NumPy)</p></li>
 <li><p>sort the data in ascending order</p></li>
 <li><p>assign cumulative probabilities based on the tail assumptions</p></li>
-<li><p>plot cumuative probability vs. value</p></li>
+<li><p>plot cumulative probability vs. feature value</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> <span class="c1"># make a deepcopy of the feature from the DataFrame</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>                 <span class="c1"># make a deep copy of the feature from the DataFrame</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The ndarray has a shape of &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">por</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
 
-<span class="n">por</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">por</span><span class="p">)</span>                           <span class="c1"># sort the data in ascending order</span>
-<span class="n">n</span> <span class="o">=</span> <span class="n">por</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                             <span class="c1"># get the number of data samples</span>
-
+<span class="n">por</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">por</span><span class="p">)</span>                                            <span class="c1"># sort the data in ascending order</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">por</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                                              <span class="c1"># get the number of data samples</span>
 <span class="n">cprob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
     <span class="n">index</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="n">cprob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span> <span class="o">/</span> <span class="n">n</span>                     <span class="c1"># known upper tail</span>
-    <span class="c1"># cprob[i] = (index - 1)/n               # known lower tail</span>
-    <span class="c1"># cprob[i] = (index - 1)/(n - 1)         # known upper and lower tails</span>
-    <span class="c1"># cprob[i] = index/(n+1)                 # unknown tails  </span>
+    <span class="n">cprob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span> <span class="o">/</span> <span class="n">n</span>                                      <span class="c1"># known upper tail</span>
+    <span class="c1"># cprob[i] = (index - 1)/n                                # known lower tail</span>
+    <span class="c1"># cprob[i] = (index - 1)/(n - 1)                          # known upper and lower tails</span>
+    <span class="c1"># cprob[i] = index/(n+1)                                  # unknown tails  </span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">por</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># plot piecewise linear interpolation</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">por</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># plot the CDF points</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.25</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Probability&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cumulative Distribution Function&quot;</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1230,7 +1482,7 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The ndarray has a shape of (261,).
 </pre></div>
 </div>
-<img alt="_images/92ef30204e7672ca2f05db05be62e80c47c6504abdd7ac2167815be4ee7f07ae.png" src="_images/92ef30204e7672ca2f05db05be62e80c47c6504abdd7ac2167815be4ee7f07ae.png" />
+<img alt="_images/19ede3cedd6015fc106c70089ebb1d61c57e2c1dd2d65885bbcce8f7f1b6619e.png" src="_images/19ede3cedd6015fc106c70089ebb1d61c57e2c1dd2d65885bbcce8f7f1b6619e.png" />
 </div>
 </div>
 <p>In conclusion, let’s finish with the histograms of all of our features!</p>
@@ -1241,16 +1493,20 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <span class="n">Fmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">Fmax</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
-<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">Fmin</span><span class="p">,</span><span class="n">Fmax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Facies (1-sand, 0-shale)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Facies Well Data&#39;</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">Fmin</span><span class="p">,</span><span class="n">Fmax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Facies (1-sand, 0-shale)&#39;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Facies Well Data&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
-<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity Well Data&#39;</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Porosity Well Data&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
-<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">permmin</span><span class="p">,</span><span class="n">permmax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Permeaiblity (mD)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Permeability Well Data&#39;</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">permmin</span><span class="p">,</span><span class="n">permmax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Permeability Well Data&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
-<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">AImin</span><span class="p">,</span><span class="n">AImax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Acoustic Impedance Well Data&#39;</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">hist_st</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;AI&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">AImin</span><span class="p">,</span><span class="n">AImax</span><span class="p">,</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cumul</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">weights</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Acoustic Impedance (kg/m2s*10^6)&#39;</span><span class="p">,</span>
+              <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Acoustic Impedance Well Data&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 <span class="c1">#plt.savefig(&#39;hist_Porosity_Multiple_bins.tif&#39;,dpi=600,bbox_inches=&quot;tight&quot;)</span>
@@ -1259,29 +1515,26 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0cc063a43b84a57f445e7d9c458120db94ce53bc33883c560a3e729b99e3b24b.png" src="_images/0cc063a43b84a57f445e7d9c458120db94ce53bc33883c560a3e729b99e3b24b.png" />
+<img alt="_images/e9c1af8cc1be6f154910243636764bf843fa3b0e76903c39d976539d1cdc3663.png" src="_images/e9c1af8cc1be6f154910243636764bf843fa3b0e76903c39d976539d1cdc3663.png" />
 </div>
 </div>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of calculating univariate statistics and visualizing data distributions. Much more could be done, I have other demosntrations on basics of working with DataFrames, ndarrays and many other workflows availble at <a class="github reference external" href="https://github.com/GeostatsGuy/PythonNumericalDemos">GeostatsGuy/PythonNumericalDemos</a> and <a class="github reference external" href="https://github.com/GeostatsGuy/GeostatsPy">GeostatsGuy/GeostatsPy</a>.</p>
+<p>This was a basic demonstration of calculating univariate statistics and visualizing data distributions. Much more could be done, I have other demonstrations on basics of working with DataFrames, ndarrays and many other workflows available at <a class="github reference external" href="https://github.com/GeostatsGuy/PythonNumericalDemos">GeostatsGuy/PythonNumericalDemos</a> and <a class="github reference external" href="https://github.com/GeostatsGuy/GeostatsPy">GeostatsGuy/GeostatsPy</a>.</p>
 <p>I hope this was helpful,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="the-author">
 <h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="id1">
-<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>Michael Pyrcz, Professor, The University of Texas at Austin
+<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
 <p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
 <p>For more about Michael check out these links:</p>
-<section id="id2">
-<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 <section id="want-to-work-together">
-<h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -1292,9 +1545,8 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
 </section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
-<h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
-</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1329,20 +1581,20 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="GeostatsPy_coordinate_transformations.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">e-Book Introduction</p>
+        <p class="prev-next-title">Coordinate Transformations</p>
       </div>
     </a>
     <a class="right-next"
-       href="GeostatsPy_bootstrap.html"
+       href="GeostatsPy_transformations.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Bootstrap for Uncertainty Modeling</p>
+        <p class="prev-next-title">Distribution Transformations</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1361,31 +1613,35 @@ Band Width = 0.3, bandwidth x standard deviation = 0.014906191711808122
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram">Normalized Histogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bin-size">Histogram Bin Size</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-pdf">Calculating a PDF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable">Random Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-dataframe">Visualizing the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-univariate-statistics-for-tabular-data">Summary Univariate Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-univariate-statistics">Weighted Univariate Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bins-number-of-bins-and-bin-size">Histogram Bins, Number of Bins and Bin Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-histogram-with-the-matplotlib-package">Plotting a Histogram with the matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histograms">Normalized Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-functions">Probability Density Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-functions">Cumulative Distribution Functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-cdf-with-the-matplotlib-package">Plotting a CDF with the matplotlib Package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-cdf-with-the-matplotlib-package">Plotting a CDF with the Matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-and-plotting-a-cdf-by-hand">Calculating and Plotting a CDF ‘by- Hand’</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

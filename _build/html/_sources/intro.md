@@ -1,10 +1,8 @@
-# e-Book Introduction
+### Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy 
 
-## Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy 
+Michael Pyrcz, Professor, The University of Texas at Austin 
 
-#### Michael Pyrcz, Professor, The University of Texas at Austin 
-
-##### [Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)
+[Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)
 
 This e-book provides an accessible, online version of my GeostatsPyDemos GitHub repository. This repository includes well-documented demonstration Python Jupyter workflows for many common geostatistical modeling workflows with the GeostatsPy geostatistics Python package converted into a book with the [jupyter-book package](https://jupyterbook.org/en/stable/intro.html). The goal of the e-book is to share this content beyond the GitHub users that are often experts and developers.
 
@@ -42,11 +40,11 @@ All the original geostatistics Python Jupyter notebook workflows are available i
 
 ***
 
-### Cite this e-Book as:
+#### Cite this e-Book as:
 
 Pyrcz, M.J., 2024, Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy, https://geostatsguy.github.io/GeostatsPyDemos_Book.
 
-### Cite GeostatsPyDemos GitHub Repository {cite}`pyrczdemos2024` as:
+#### Cite GeostatsPyDemos GitHub Repository {cite}`pyrczdemos2024` as:
 
 Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. https://zenodo.org/doi/10.5281/zenodo.12667035
 
@@ -250,7 +248,7 @@ Numerical methods in GSLIB (Deutsch and Journel, 1997){cite}`deutsch1997` transl
 
 This is a topical approach to the hands-on application of geostatistics. Each chapter stands alone and covers a unique demonstration or workflow using GeostatsPy. Want to visualize univariate distributions, debias your spatial data with declustering, make estimates in space with kriging or simulate a spatial heterogeneity model? Open up the respective chapter and walkthrough the example with all requisite steps, including data loading, data visualization and geostatistics steps, all codes and results shown. Go to the linked lecture to fill any gaps in your knowledge and then download and update the workflow for your application, please remember to cite the e-book in your work, so that others will see and use this resource! Remember, that this content is for educational purposes only and I do not provide any guarantees. There may be errors in the codes, there may be issues with your case that invalidate the assumptions of the e-book's workflows. It is up to you to evaluate your results.
 
-```{warning}:
+```{warning}
 If you adopt any workflows from this e-book or any codes from the GeostatsPy Python package you must check your own work.
 ```
 

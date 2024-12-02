@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Variogram Positive Definite Models &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
+    <title>Positive Definite Variogram Models &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
   
   
   
@@ -156,8 +156,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/TCG_color_logo.png" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
-    <script>document.write(`<img src="_static/TCG_color_logo.png" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
+    <img src="_static/AppliedGeostats.jpg" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/AppliedGeostats.jpg" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
   
   
 </a></div>
@@ -167,15 +167,20 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    e-Book Introduction
+                    Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy
                 </a>
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias, Cell-based</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Variogram Positive Definite Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
@@ -184,16 +189,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
     </div>
@@ -379,7 +388,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Variogram Positive Definite Models</h1>
+    <h1>Positive Definite Variogram Models</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -389,25 +398,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-models">Variogram Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variogram">The Variogram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">Observation #3 - Need to plot the sill to know the degree of correlation.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variogram">The Variogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">Observation #3 - Need to plot the sill to know the degree of correlation.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-directions-of-continuity">Detecting Directions of Continuity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-lag-distances">List of Lag Distances</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nugget-effect-variogram-model">Nugget Effect Variogram Model</a></li>
@@ -416,12 +418,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variogram-model">Gaussian Variogram Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -433,21 +431,26 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="variogram-positive-definite-models">
-<h1>Variogram Positive Definite Models<a class="headerlink" href="#variogram-positive-definite-models" title="Permalink to this heading">#</a></h1>
-<section id="michael-pyrcz-professor-the-university-of-texas-at-austin">
-<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h2>
-<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
-<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
-<p>This is a tutorial for / demonstration of <strong>Permissible Variogram Models</strong>.</p>
-<p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/-Bi63Y3u6TU?si=-kwvFLicNTbg85xL">Variogram Modeling</a>.</p>
-</section>
-</section>
-<section id="variogram-models">
-<h2>Variogram Models<a class="headerlink" href="#variogram-models" title="Permalink to this heading">#</a></h2>
-<p>Here I provide visualizations with the functions for the common positive definite variogram models. I variogram model inferred to represent spatial continuity from the variogram.</p>
+  <section id="positive-definite-variogram-models">
+<h1>Positive Definite Variogram Models<a class="headerlink" href="#positive-definite-variogram-models" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
+<p>Cite as: Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Permissible Variogram Models</strong> available in GeostatsPy.</p>
+<p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/jVRLGOsnYuw?si=RD5exyGl_I_LAl4H">Variogram Introduction</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/mzPLicovE7Q?si=-ZPgFK52h2xp1cER">Variogram Calculation</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/NE4xfhIHAm4?si=dF18zj5_M2yVwxoD">Variogram Parameters</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/bryRCrtf3hk?si=058uFy-eTtTqwNPr">Variogram Directions</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/-Bi63Y3u6TU?si=-kwvFLicNTbg85xL">Variogram Modeling</a></p></li>
+</ul>
+<p>For your convenience here’s a summary of salient points.</p>
 <section id="spatial-continuity">
-<h3>Spatial Continuity<a class="headerlink" href="#spatial-continuity" title="Permalink to this heading">#</a></h3>
+<h2>Spatial Continuity<a class="headerlink" href="#spatial-continuity" title="Permalink to this heading">#</a></h2>
 <p><strong>Spatial Continuity</strong> is the correlation between values over distance.</p>
 <ul class="simple">
 <li><p>No spatial continuity – no correlation between values over distance, random values at each location in space regardless of separation distance.</p></li>
@@ -456,7 +459,7 @@ document.write(`
 <p>We need a statistic to quantify spatial continuity! A convenient method is the Semivariogram.</p>
 </section>
 <section id="the-variogram">
-<h3>The Variogram<a class="headerlink" href="#the-variogram" title="Permalink to this heading">#</a></h3>
+<h2>The Variogram<a class="headerlink" href="#the-variogram" title="Permalink to this heading">#</a></h2>
 <p>Function of difference over distance.</p>
 <ul class="simple">
 <li><p>The expected (average) squared difference between values separated by a lag distance vector (distance and direction), <span class="math notranslate nohighlight">\(h\)</span>:</p></li>
@@ -476,9 +479,10 @@ document.write(`
 C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 \]</div>
 <p>Note the correlogram is related to the covariance function as:</p>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \rho_x(\bf{h}) = \frac{C_x(\bf{h})}{\sigma^2_x}
-\end{equation}</p>
+\]</div>
 <p>The correlogram provides of function of the <span class="math notranslate nohighlight">\(\bf{h}-\bf{h}\)</span> scatter plot correlation vs. lag offset <span class="math notranslate nohighlight">\(\bf{h}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -486,21 +490,21 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 \]</div>
 </section>
 <section id="variogram-observations">
-<h3>Variogram Observations<a class="headerlink" href="#variogram-observations" title="Permalink to this heading">#</a></h3>
+<h2>Variogram Observations<a class="headerlink" href="#variogram-observations" title="Permalink to this heading">#</a></h2>
 <p>The following are common observations for variograms that should assist with their practical use.</p>
 <section id="observation-1-as-distance-increases-variability-increase-in-general">
-<h4>Observation #1 - As distance increases, variability increase (in general).<a class="headerlink" href="#observation-1-as-distance-increases-variability-increase-in-general" title="Permalink to this heading">#</a></h4>
+<h3>Observation #1 - As distance increases, variability increase (in general).<a class="headerlink" href="#observation-1-as-distance-increases-variability-increase-in-general" title="Permalink to this heading">#</a></h3>
 <p>This is common since in general, over greater distance offsets, there is often more difference between the head and tail samples.</p>
-<p>In some cases, such as with spatial cyclicity of the hole effect variogram model the variogram may have negative slope over somelag distance intervals</p>
+<p>In some cases, such as with spatial cyclicity of the hole effect variogram model the variogram may have negative slope over some lag distance intervals</p>
 <p>Negative slopes at lag distances greater than half the data extent are often caused by too few pairs for a reliable variogram calculation</p>
 </section>
 <section id="observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">
-<h4>Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.<a class="headerlink" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h" title="Permalink to this heading">#</a></h4>
+<h3>Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.<a class="headerlink" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h" title="Permalink to this heading">#</a></h3>
 <p>We scan through the entire data set, searching for all possible pair combinations with all other data.  We then calculate the variogram as one half the expectation of squared difference between all pairs.</p>
 <p>More pairs results in a more reliable measure.</p>
 </section>
 <section id="observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">
-<h4>Observation #3 - Need to plot the sill to know the degree of correlation.<a class="headerlink" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation" title="Permalink to this heading">#</a></h4>
+<h3>Observation #3 - Need to plot the sill to know the degree of correlation.<a class="headerlink" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation" title="Permalink to this heading">#</a></h3>
 <p><strong>Sill</strong> is the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span></p>
 <p>Given stationarity of the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>, and variogram <span class="math notranslate nohighlight">\(\gamma(\bf{h})\)</span>:</p>
 <p>we can define the covariance function:</p>
@@ -515,21 +519,20 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 \end{equation}</p>
 </section>
 <section id="observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">
-<h4>Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.<a class="headerlink" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range" title="Permalink to this heading">#</a></h4>
+<h3>Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.<a class="headerlink" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range" title="Permalink to this heading">#</a></h3>
 <p>At the range, knowing the data value at the tail location provides no information about a value at the head location of the lag distance vector.</p>
 </section>
 <section id="observation-5-the-nugget-effect-a-discontinuity-at-the-origin">
-<h4>Observation #5 - The nugget effect, a discontinuity at the origin<a class="headerlink" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin" title="Permalink to this heading">#</a></h4>
+<h3>Observation #5 - The nugget effect, a discontinuity at the origin<a class="headerlink" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin" title="Permalink to this heading">#</a></h3>
 <p>Sometimes there is a discontinuity in the variogram at distances less than the minimum data spacing.  This is known as <strong>nugget effect</strong>.</p>
 <p>The ratio of nugget / sill, is known as relative nugget effect (%). Modeled as a discontinuity with no correlation structure that at lags, <span class="math notranslate nohighlight">\(h \gt \epsilon\)</span>, an infinitesimal lag distance, and perfect correlation at <span class="math notranslate nohighlight">\(\bf{h} = 0\)</span>.
-Caution when including nuggect effect in the variogram model as measurement error, mixing populations cause apparent nugget effect</p>
+Caution when including nugget effect in the variogram model as measurement error, mixing populations cause apparent nugget effect</p>
 <p>This exercise demonstrates the semivariogram calculation with GeostatsPy. The steps include:</p>
 <ol class="arabic simple">
 <li><p>generate a 2D model with sequential Gaussian simulation</p></li>
 <li><p>sample from the simulation</p></li>
 <li><p>calculate and visualize experimental semivariograms</p></li>
 </ol>
-</section>
 </section>
 </section>
 <section id="detecting-directions-of-continuity">
@@ -541,22 +544,22 @@ Caution when including nuggect effect in the variogram model as measurement erro
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span> is the nested variogram model resulting from the summation of <span class="math notranslate nohighlight">\(nst\)</span> nested variograms  <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>.</p>
 <p>Each one of these variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>, is based on a geometric anisotropy model parameterized by the orientation and range in the major and minor directions.  In 2D this is simply an azimuth and ranges, <span class="math notranslate nohighlight">\(azi\)</span>, <span class="math notranslate nohighlight">\(a_{maj}\)</span> and <span class="math notranslate nohighlight">\(a_{min}\)</span>. Note, the range in the minor direction (orthogonal to the major direction.</p>
-<p>The geometric anisotropy model assumes that the range in all off-diagonal directions is based on an ellipse with the major and minor axes alligned with and set to the major and minor for the variogram.</p>
+<p>The geometric anisotropy model assumes that the range in all off-diagonal directions is based on an ellipse with the major and minor axes aligned with and set to the major and minor for the variogram.</p>
 <p>\begin{equation}
 \bf{h}<em>i = \sqrt{\left(\frac{r</em>{maj}}{a_{maj_i}}\right)^2 + \left(\frac{r_{maj}}{a_{maj_i}}\right)^2}<br />
 \end{equation}</p>
-<p>Therefore, if we know the major direction, range in major and minor directions, we may completely describe each nested componnent of the complete spatial continuity of the variable of interest, <span class="math notranslate nohighlight">\(i = 1,\dots,nst\)</span>.</p>
+<p>Therefore, if we know the major direction, range in major and minor directions, we may completely describe each nested component of the complete spatial continuity of the variable of interest, <span class="math notranslate nohighlight">\(i = 1,\dots,nst\)</span>.</p>
 <p>In this workflow we will observe the common permissible variogram models in GeostatsPy.</p>
 <ul class="simple">
 <li><p>for all we assume a contribution of the sill (single structure) and the sill is 1.0 (standardized feature).</p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
-<h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilities, visualization and wrapper</span>
 <span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python      </span>
 <span class="kn">import</span> <span class="nn">geostatspy</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>  
@@ -564,7 +567,7 @@ Caution when including nuggect effect in the variogram model as measurement erro
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
 </pre></div>
 </div>
 </div>
@@ -574,12 +577,12 @@ Caution when including nuggect effect in the variogram model as measurement erro
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
 
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># suppress the status bar</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
 <span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
@@ -626,7 +629,7 @@ Caution when including nuggect effect in the variogram model as measurement erro
 </ul>
 <p>Should be a small component of the overall variance</p>
 <ul class="simple">
-<li><p>Very uncommon in siliclastic sedimentary systems</p></li>
+<li><p>Very uncommon in siliciclastic sedimentary systems</p></li>
 <li><p>More common for mineral grades in mining</p></li>
 <li><p>May be measurement error</p></li>
 </ul>
@@ -669,7 +672,7 @@ Caution when including nuggect effect in the variogram model as measurement erro
 <h2>Spherical Variogram Model<a class="headerlink" href="#spherical-variogram-model" title="Permalink to this heading">#</a></h2>
 <p>A very commonly observed variogram / spatial continuity form in many settings</p>
 <ul class="simple">
-<li><p>Peicewise, beyond the range is equal to the sill</p></li>
+<li><p>Piecewise, beyond the range is equal to the sill</p></li>
 </ul>
 <p>The equation:</p>
 <div class="math notranslate nohighlight">
@@ -792,17 +795,14 @@ Caution when including nuggect effect in the variogram model as measurement erro
 </section>
 <section id="the-author">
 <h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="id1">
-<h2>Michael Pyrcz, Professor, The University of Texas at Austin<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p><em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>Michael Pyrcz, Professor, The University of Texas at Austin
+<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
 <p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
 <p>For more about Michael check out these links:</p>
-<section id="id2">
-<h3><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 <section id="want-to-work-together">
-<h3>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h3>
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
 <p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
@@ -813,9 +813,8 @@ Caution when including nuggect effect in the variogram model as measurement erro
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
 </section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
-<h3>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h3>
-</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -882,25 +881,18 @@ Caution when including nuggect effect in the variogram model as measurement erro
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-professor-the-university-of-texas-at-austin">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-models">Variogram Models</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variogram">The Variogram</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">Observation #3 - Need to plot the sill to know the degree of correlation.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-variogram">The Variogram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">Observation #3 - Need to plot the sill to know the degree of correlation.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-directions-of-continuity">Detecting Directions of Continuity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-of-lag-distances">List of Lag Distances</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nugget-effect-variogram-model">Nugget Effect Variogram Model</a></li>
@@ -909,12 +901,8 @@ Caution when including nuggect effect in the variogram model as measurement erro
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-variogram-model">Gaussian Variogram Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Michael Pyrcz, Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

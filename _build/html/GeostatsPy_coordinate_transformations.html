@@ -1,0 +1,1115 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Coordinate Transformations &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_coordinate_transformations';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Univariate Distributions" href="GeostatsPy_univariate_distributions.html" />
+    <link rel="prev" title="Probability Concepts" href="GeostatsPy_probability.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/AppliedGeostats.jpg" class="logo__image only-light" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>
+    <script>document.write(`<img src="_static/AppliedGeostats.jpg" class="logo__image only-dark" alt="GeostatsPy Well-documented Demonstration Geostatistical Workflows - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Coordinate Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_coordinate_transformations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/GeostatsPy_coordinate_transformations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Coordinate Transformations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Coordinate Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-coordinate-transformations">Applying Coordinate Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-coordinate-transformation-workflow">Common Coordinate Transformation Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-synthetic-data">Make Synthetic Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-data-and-bounging-surfaces-to-aligned-with-axes-and-flattened-coordinates">Project Data and Bounging Surfaces to Aligned with Axes and Flattened Coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-project-data-and-bounging-surfaces-from-the-aligned-with-axes-and-flattened-coordinates-to-original-data-space">Back Project Data and Bounging Surfaces from the Aligned with Axes and Flattened Coordinates to Original Data Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="coordinate-transformations">
+<h1>Coordinate Transformations<a class="headerlink" href="#coordinate-transformations" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the GeostatsPyDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035">https://zenodo.org/doi/10.5281/zenodo.12667035</a></p>
+<p><a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035"><img alt="DOI" src="https://zenodo.org/badge/777871341.svg" /></a></p>
+</div>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Coordinate Transformations</strong>.</p>
+<section id="id1">
+<h2>Coordinate Transformations<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Many geostatistical modeling workflows include coordinate transformations. Why are these required?</p>
+<p>Geostatistical modeling is usually performed in a grid axes aligned, flattened, regular grid, but our data and models exist in an original space that is not usually,</p>
+<ul class="simple">
+<li><p>aligned with Eastings (X) and Northings (Y) (geodesic projection from latitude and longitude respectively of our planet to a local plane). Aligning our grids with Eastings and Northings would result in a lot of unnecessary model cells that waste computation and storage.</p></li>
+<li><p>flat in the vertical. Yes, geological is deposited flat originally, but there is often post-depositional processes that result in dip, folds and even faults. Restoring, flattening the data and model integrates this information and greatly simplifies the model building calculations.</p></li>
+</ul>
+<p>For our aligned, flattened, regular grids we use the Geo-DAS convention (used in the Geostatistical Software Library - GSLIB) and these grids are parameterized as,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">xmn</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">xsiz</span> <span class="o">=</span> <span class="mf">10.0</span>                               <span class="c1"># model grid specification</span>
+<span class="n">ny</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">ymn</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">ysiz</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">nz</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">zmn</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span> <span class="n">zsiz</span> <span class="o">=</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>nx, ny, nz are the number of cells along the x, y and z axes</p></li>
+<li><p>xmn, ymn, zmn are the coordinates of the origin cell, note the grids are cell-centered; therefore, cell locations are given as the coordinate at the cell center</p></li>
+<li><p>xsiz, ysiz, zsiz are the extents of the cells in the direction of the x, y, and z axes</p></li>
+</ul>
+<p>Many call these “sugar cube” grids. While this is visually helpful, it can be misleading, because the regular grids in geostatistics are not limited to isotropic grids (like sugar cubes).</p>
+<ul class="simple">
+<li><p><strong>isotropic grid</strong> - the grid cells are all cubic, i.e., equal extent in x, y, and z directions for the grid cells.</p></li>
+</ul>
+<p>Standard geostatistical algorithms can handle anisotropic, regular grids also.</p>
+<ul class="simple">
+<li><p><strong>anisotropic grid</strong> - the grid cells are not cubic, i.e., unequal extent in x, y, and z directions for the grid cells. Note, the example above has cells with 10 x 10 m extents in x and y, but only 1 m in z; therefore, an anisotropic grid.</p></li>
+</ul>
+<p>The one immutable condition for geostatistical modeling grids is that they must be regular, i.e., not an adaptive or variable resolution grid.</p>
+<ul class="simple">
+<li><p><strong>regular grid</strong> - the size of the grid cells are constant over the model, the cells may be isotropic or anisotropic but they do not change locally.</p></li>
+</ul>
+<p>In many engineering applications, irregular grids are used to improve the solution accuracy and to speed up the calculation, e.g., reducing the cell sizes in locations with steeper gradients to better model these sharp changes.</p>
+<ul class="simple">
+<li><p><strong>irregular grid</strong> - the size of the grid cells vary over the model, i.e., both or either the cells’ volumes and anisotropy ratios of the cells.</p></li>
+</ul>
+<p>Now let’s return to the gridding in geostatistics, regular isotropic or anisotropic. The grids must be regular due to the assumption of the geostatistical algorithms of equal support size of all model cells.</p>
+<ul class="simple">
+<li><p>in fact, most geostatistical methods assume (usually incorrectly) that the model cells and data have the same support size. This is known as the missing scale problem, a very important limitation with geostatistics, but I won’t get into it here.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/coordinate/grid_alignment.png" style="display: block; margin: 0 auto; width: 55%;">
+  <figcaption style="text-align: center;">Cases of grid and coordinate basis alignment, grid non-aligned with coordinate basis (upper), grid aligned with coordinate basis (middle), and grid aligned with coordinate basis and grid corner on coordinate basis origin (x = 0, y = 0, and z = 0) .</figcaption>
+</figure>
+<p>An axes aligned grid has the following aspects:</p>
+<ul class="simple">
+<li><p>the x, y, and z coordinate axes (the basis of the Euclidian space) are aligned with the grid x, y, and z orientations.</p></li>
+</ul>
+<p>Often it is convenient to assign the basis origin (0,0,0) on a corner of the grid. The convention of Geo-DAS grids is that the grid origin is the intersection of the left (lowest value in x), lower (lowest value in y), bottom (lowest value in z) extents of the grid.</p>
+<ul class="simple">
+<li><p>in this case, because the grid is cell-centered the aligned grid origin parameters (xmn, ymn and zmn) are not set to the basis origin (0,0,0) but instead to the cell center such that the grid corner is on the basis origin,</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/coordinate/origin.png" style="display: block; margin: 0 auto; width: 25%;">
+  <figcaption style="text-align: center;">Illustration as origin cell (ix = 1, iy = 1, and iz = 1) with grid corner at x = 0, y = 0, and z = 0, the origin cell center, xmn, ymn and zmn is half the cell sizes, xsiz, ysiz and zsiz, in the x, y and z axes).</figcaption>
+</figure>
+<ul class="simple">
+<li><p>as shown above, for the case of grid corner at x = 0, y = 0, and z = 0, the origin cell centers are calculated as,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+xmn = \frac{xsiz}{2} \quad ymn = \frac{ysiz}{2} \quad zmn = \frac{zsiz}{2}
+\]</div>
+<ul class="simple">
+<li><p>Of course, the grid could be translated and this translation is reflected in the xmn, ymn and zmn values above, but this may complicate debugging and may even cause floating point errors if the values of the original coordinate system are very large.</p></li>
+</ul>
+<p>Finally, the grid is <strong>flattened</strong>. This is a bit complicated, but I can summarize the concept as the grid is conformable with the stratigraphic surface (top and/or base) and is projected such that the conformable stratigraphic layers are flat. In other words, the model and data are projected into a cuboid shaped grid model.</p>
+<ul class="simple">
+<li><p>if you are familiar with the concept of applying a datum to correct a dataset or visualization, this process is similar in result.</p></li>
+</ul>
+<p>Here’s an illustration of flattening,</p>
+<figure style="text-align: center;">
+  <img src="_static/coordinate/flatten.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;">Flattening a grid aligned with coordinate basis (upper) projected to a flattened grid aligned with the coordinate basis (lower).</figcaption>
+</figure>
+<ul class="simple">
+<li><p>we always have a mapped top and base surfaces over the areal extent of the model to define the volume of interest in the vertical direction. Given, this we often fit (stretch and squeeze) the model grid within these bounding surfaces at all locations, this is called the proportional stratal correlation style.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/coordinate/proportional.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;">Original data and model space with stratigraphic correlation (upper) to a proportional flattened grid (lower).</figcaption>
+</figure>
+<ul class="simple">
+<li><p>more complicated stratal correlation styles such as truncated (conformable to the base surface and cut by the top surface) or onlap (conformable to the top surface and cut by the base surface) are possible, but require careful assignment of nz and zsiz to appropriately fill the space.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/coordinate/onlap.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;">Model and data with onlap correlation style (upper) and model and data with truncation correlation style (lower).</figcaption>
+</figure>
+</section>
+<section id="applying-coordinate-transformations">
+<h2>Applying Coordinate Transformations<a class="headerlink" href="#applying-coordinate-transformations" title="Permalink to this heading">#</a></h2>
+<p>Once again, the fundamental idea is to take the spatial data and model cells and to project them into a grid axes aligned, flattened, regular grid. To accomplish this, we rely on these coordinate transformations:</p>
+<ol class="arabic simple">
+<li><p><strong>spatial coordinate translation</strong> - this is simply a uniform shift of the grid. This is performed by decomposing the shift, translation vector into X, Y and Z components, <span class="math notranslate nohighlight">\(\Delta X\)</span>, <span class="math notranslate nohighlight">\(\Delta Y\)</span>, and <span class="math notranslate nohighlight">\(\Delta Z\)</span> and then applying this to the dataset.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+X^t &amp; Y^t &amp; Z^t \\
+\end{bmatrix} 
+= 
+\begin{bmatrix}
+X^t &amp; Y^t &amp; Z^t \\
+\end{bmatrix} 
+-
+\begin{bmatrix}
+\Delta X &amp; \Delta Y &amp; \Delta Z \\
+\end{bmatrix} 
+=
+\begin{bmatrix}
+X^t - \Delta X &amp; Y^t - \Delta Y &amp; Z^t - \Delta Z \\
+\end{bmatrix} 
+\end{split}\]</div>
+<p>For example, we can shift the grid so the left, lower, base corner of the grid is at x = 0.0, y = 0.0 and z = 0.0, for <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> cell centers as,</p>
+<div class="math notranslate nohighlight">
+\[
+x^t_i = x_i - x_{corner}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+y^t_i = y_i - y_{corner}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+z^t_i = z_i - z_{corner}
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>spatial coordinate rotation</strong> - is performed with an orthogonal rotation matrix. The common practice is to select a grid orientation in 2D (x and y) that most efficiently covers the area of interest, calculate the angle from the y axis, <span class="math notranslate nohighlight">\(\alpha\)</span>, and then to apply the <span class="math notranslate nohighlight">\(-1 \times \alpha\)</span> rotation so align the grid with the x and y axes. Note, 3D rotation is not common, as the dip (and plunge) are accounted for with flattening. Given the rotation matrix,</p></li>
+</ol>
+<p>Given the a location vector in 3D, <span class="math notranslate nohighlight">\(\begin{bmatrix} X &amp; Y &amp; Z \\ \end{bmatrix}\)</span>, we apply the rotation matrix to calculate the rotated locations, <span class="math notranslate nohighlight">\(\begin{bmatrix} X_r &amp; Y_r &amp; Z_r \\ \end{bmatrix}\)</span> as follows,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+X^r &amp; Y^r &amp; Z^r \\
+\end{bmatrix} 
+=
+\begin{bmatrix}
+X &amp; Y &amp; Z \\
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\cos \alpha &amp; -\sin \alpha &amp; 0 \\
+\sin \alpha &amp; \cos \alpha &amp; 0 \\
+0 &amp; 0 &amp; 1 \\
+\end{bmatrix}
+\end{split}\]</div>
+<p>Given the Z coordinate is not impacted by the X and Y, areal only rotation, we could simplify the rotation matrix to,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+\cos \alpha &amp; -\sin \alpha \\
+\sin \alpha &amp; \cos \alpha \\
+\end{bmatrix}
+\end{split}\]</div>
+<p>and calculate the rotated X and Y coordinates over <span class="math notranslate nohighlight">\(i = 1, \ldots, n\)</span> data or grid cells as,</p>
+<div class="math notranslate nohighlight">
+\[
+x^s_i = x_i \cdot cos(\alpha) + y_i \cdot -1 \cdot sin(\alpha)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+y^s_i = x_i \cdot sin(\alpha) + y_i \cdot cos(\alpha)
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>spatial coordinate flattening</strong> - at each 2D location x and y find the z coordinate of the top and base bounding surfaces and then calculate the proportional coordinate between the top and base surfaces.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+z^s_i = \frac{z_i - z_{base_i}}{z_{top_i} - z_{base_i}}
+\]</div>
+</section>
+<section id="common-coordinate-transformation-workflow">
+<h2>Common Coordinate Transformation Workflow<a class="headerlink" href="#common-coordinate-transformation-workflow" title="Permalink to this heading">#</a></h2>
+<p>The common coordinate transformation workflow is applied to projects from original space to model space with these steps,</p>
+<ol class="arabic simple">
+<li><p>Rotation - first apply the 2D rotation to align the model grid with the X and Y axes. This makes it quite easy to figure out the next step, translating the model grid.</p></li>
+<li><p>Translation - then translate the model grid such that the outside origin cell corner (left, lower, bottom grid corner) is at x = 0, y = 0, and z = 0.</p></li>
+<li><p>Flatten - finally flatten the z coordinate with the assistance of stratigraphic surfaces (top and base) and a choice of stratal correlation style.</p></li>
+</ol>
+<p>The back projection from model space to original space is accomplished with the reverse of these steps,</p>
+<ol class="arabic simple">
+<li><p>Unflatten - unflatten the z coordinate with the assistance of stratigraphic surfaces (top and base) and a choice of stratal correlation style.</p></li>
+<li><p>Translation - then translate the model grid such that the outside origin cell corner (left, lower, bottom grid corner) is at the original space location (prior to step 2 in the forward procedure above).</p></li>
+<li><p>Rotation - first apply the reverse 2D rotation, with rotation angle above multiplied by negative one.</p></li>
+</ol>
+<p>Now we are ready to demonstrate this. Below we will first make a synthetic dataset. Don’t worry too much about how I make the dataset, I just quickly made a set of vertical well data and smooth bounding surfaces and then I translated and rotated them so we could demonstrate the general workflow.</p>
+<ul class="simple">
+<li><p>my method for making the synthetic surfaces was axes aligned, but I didn’t want to start with data already axes aligned. So this may seem confusing if you step through my synthetic data calculation. Remember, the synthetic data creation is not part of the actual workflow.</p></li>
+</ul>
+</section>
+<section id="load-the-required-libraries">
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<p>The following code loads the required libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilities, visualization and wrapper</span>
+<span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python      </span>
+<span class="kn">import</span> <span class="nn">geostatspy</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will also need some standard packages. These should have been installed with Anaconda 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
+
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># suppress the status bar</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>                       <span class="c1"># 3D scatter plots</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="p">(</span><span class="n">ndimage</span><span class="p">,</span><span class="n">stats</span><span class="p">)</span>                             <span class="c1"># convolution to make synthetic data</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.weightstats</span> <span class="kn">import</span> <span class="n">DescrStatsW</span>         <span class="c1"># any weighted statistics</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
+<span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
+    <span class="kn">import</span> <span class="nn">warnings</span>
+    <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-functions">
+<h2>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h2>
+<p>This function adds major and minor gridlines to improve plot interpretability. Note, we have rotation and flattening functions available in GeostatsPy.</p>
+<ul class="simple">
+<li><p>I added them to support this workflow!</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid2</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks   </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="make-synthetic-data">
+<h2>Make Synthetic Data<a class="headerlink" href="#make-synthetic-data" title="Permalink to this heading">#</a></h2>
+<p>Let’s make a simple, synthetic dataset in original x, y, and z coordinates to demonstrate the projection into the flattened, axes aligned grid.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndx</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">ndy</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">ndz</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">xdsiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">ydsiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">zdsiz</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># specify the pre-rotated and transformed grid for the bounding surfaces</span>
+<span class="n">xdmn</span> <span class="o">=</span> <span class="n">xdsiz</span><span class="o">*</span><span class="mf">0.5</span><span class="p">;</span> <span class="n">ydmn</span> <span class="o">=</span> <span class="n">ydsiz</span><span class="o">*</span><span class="mf">0.5</span><span class="p">;</span> <span class="n">zdmn</span> <span class="o">=</span> <span class="n">zdsiz</span><span class="o">*</span><span class="mf">0.5</span>
+
+<span class="n">nug</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">nst</span> <span class="o">=</span> <span class="mi">1</span>                                            <span class="c1"># variogram parameters for the bounding surfaces</span>
+<span class="n">it1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">cc1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">azi_maj</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">hmaj1</span> <span class="o">=</span> <span class="mf">800.0</span><span class="p">;</span> <span class="n">hmin1</span> <span class="o">=</span> <span class="mf">800.0</span><span class="p">;</span> <span class="n">hvert1</span> <span class="o">=</span> <span class="mf">4.0</span>
+
+<span class="n">vario_Vsh</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">make_variogram3D</span><span class="p">(</span><span class="n">nug</span><span class="p">,</span><span class="n">nst</span><span class="p">,</span><span class="n">it1</span><span class="p">,</span><span class="n">cc1</span><span class="p">,</span><span class="n">azi_maj</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="n">hmaj1</span><span class="p">,</span><span class="n">hmin1</span><span class="p">,</span><span class="n">hvert1</span><span class="p">)</span> <span class="c1"># make variogram model object</span>
+
+<span class="n">npadding</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">vario_Vsh</span><span class="p">[</span><span class="s1">&#39;hmaj&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">ydsiz</span><span class="p">),</span><span class="nb">int</span><span class="p">(</span><span class="n">vario_Vsh</span><span class="p">[</span><span class="s1">&#39;hmaj&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">xdsiz</span><span class="p">))</span> <span class="c1"># padding for convolution</span>
+
+<span class="n">xdmin</span> <span class="o">=</span> <span class="n">xdmn</span> <span class="o">-</span> <span class="n">xdsiz</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">xdmax</span> <span class="o">=</span> <span class="n">xdmin</span> <span class="o">+</span> <span class="n">ndx</span> <span class="o">*</span> <span class="n">xdsiz</span>           <span class="c1"># calculate the bounding surfaces extents</span>
+<span class="n">ydmin</span> <span class="o">=</span> <span class="n">ydmn</span> <span class="o">-</span> <span class="n">ydsiz</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">ydmax</span> <span class="o">=</span> <span class="n">ydmin</span> <span class="o">+</span> <span class="n">ndy</span> <span class="o">*</span> <span class="n">ydsiz</span>
+<span class="n">zdmin</span> <span class="o">=</span> <span class="n">zdmn</span> <span class="o">-</span> <span class="n">zdsiz</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">zdmax</span> <span class="o">=</span> <span class="n">zdmin</span> <span class="o">+</span> <span class="n">ndz</span> <span class="o">*</span> <span class="n">zdsiz</span>
+
+<span class="n">nwell</span> <span class="o">=</span> <span class="mi">6</span>                                                     <span class="c1"># select number of wells, random locations</span>
+
+<span class="n">wellx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">xdmin</span><span class="p">,</span><span class="n">xdmax</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">nwell</span><span class="p">);</span> <span class="n">welly</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">ydmin</span><span class="p">,</span><span class="n">ydmax</span><span class="p">,</span><span class="n">size</span> <span class="o">=</span> <span class="n">nwell</span><span class="p">)</span> <span class="c1"># calculate well locations</span>
+<span class="n">wellsx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwell</span><span class="o">*</span><span class="n">ndz</span><span class="p">);</span> <span class="n">wellsy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwell</span><span class="o">*</span><span class="n">ndz</span><span class="p">);</span> <span class="n">wellsz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwell</span><span class="o">*</span><span class="n">ndz</span><span class="p">);</span> <span class="n">wellsvsh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwell</span><span class="o">*</span><span class="n">ndz</span><span class="p">)</span> <span class="c1"># well 1D arrays</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>                                                     <span class="c1"># populate the wells with random values </span>
+<span class="k">for</span> <span class="n">iwell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nwell</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">iz</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ndz</span><span class="p">):</span>
+        <span class="n">wellsx</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">wellx</span><span class="p">[</span><span class="n">iwell</span><span class="p">];</span> <span class="n">wellsy</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">welly</span><span class="p">[</span><span class="n">iwell</span><span class="p">];</span> <span class="n">wellsvsh</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">)</span>  
+        <span class="n">wellsz</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">zdmn</span> <span class="o">+</span> <span class="n">iz</span> <span class="o">*</span> <span class="n">zdsiz</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">dfwell</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">wellsx</span><span class="p">,</span><span class="n">wellsy</span><span class="p">,</span><span class="n">wellsz</span><span class="p">,</span><span class="n">wellsvsh</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;Z&quot;</span><span class="p">,</span><span class="s2">&quot;Vsh&quot;</span><span class="p">])</span> <span class="c1"># make well DataFrame</span>
+
+<span class="n">nkx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">vario_Vsh</span><span class="p">[</span><span class="s1">&#39;hmaj&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="n">xdsiz</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>                     <span class="c1"># make convolution kernel  </span>
+<span class="n">nky</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">vario_Vsh</span><span class="p">[</span><span class="s1">&#39;hmaj&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span><span class="o">/</span><span class="n">ydsiz</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+
+<span class="n">ckx</span> <span class="o">=</span> <span class="n">nkx</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">cky</span> <span class="o">=</span> <span class="n">nky</span><span class="o">/</span><span class="mi">2</span>                                      <span class="c1"># calculate kernel center</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nky</span><span class="p">,</span><span class="n">nkx</span><span class="p">));</span> <span class="n">geo_dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">nky</span><span class="p">,</span><span class="n">nkx</span><span class="p">))</span>  <span class="c1"># allocate kernel matrices</span>
+
+<span class="k">for</span> <span class="n">iy</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nky</span><span class="p">):</span>                                       <span class="c1"># calculate binary kernel</span>
+    <span class="k">for</span> <span class="n">ix</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nkx</span><span class="p">):</span>
+        <span class="n">geo_dist</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span> <span class="p">(</span><span class="n">ix</span><span class="o">-</span><span class="n">ckx</span><span class="p">)</span><span class="o">*</span><span class="n">xdsiz</span><span class="o">/</span><span class="n">vario_Vsh</span><span class="p">[</span><span class="s1">&#39;hmaj&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span> <span class="p">(</span><span class="n">iy</span><span class="o">-</span><span class="n">cky</span><span class="p">)</span><span class="o">*</span><span class="n">xdsiz</span><span class="o">/</span><span class="n">vario_Vsh</span><span class="p">[</span><span class="s1">&#39;hmaj&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>           
+
+<span class="n">kernel</span><span class="p">[</span><span class="n">geo_dist</span> <span class="o">&lt;</span> <span class="mf">1.0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">kernel</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">kernel</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span> <span class="c1"># unbiasedness, sum to 1.0</span>
+
+<span class="n">top</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">ndy</span><span class="o">+</span><span class="n">npadding</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">ndx</span><span class="o">+</span><span class="n">npadding</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">cval</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># convolve and then transform to U[0,1] </span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="n">top</span><span class="p">[</span><span class="n">npadding</span><span class="p">:</span><span class="o">-</span><span class="n">npadding</span><span class="p">,</span><span class="n">npadding</span><span class="p">:</span><span class="o">-</span><span class="n">npadding</span><span class="p">],</span> <span class="s2">&quot;average&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">ndy</span><span class="o">*</span><span class="n">ndx</span><span class="p">),(</span><span class="n">ndy</span><span class="p">,</span><span class="n">ndx</span><span class="p">))</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">top</span><span class="o">*</span><span class="mf">10.0</span> <span class="o">+</span> <span class="mi">30</span>                                           <span class="c1"># shift and stretch top surface</span>
+
+<span class="n">base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">ndy</span><span class="o">+</span><span class="n">npadding</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span><span class="n">ndx</span><span class="o">+</span><span class="n">npadding</span><span class="o">*</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">kernel</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">cval</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># convolve and then transform to U[0,1] </span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">rankdata</span><span class="p">(</span><span class="n">base</span><span class="p">[</span><span class="n">npadding</span><span class="p">:</span><span class="o">-</span><span class="n">npadding</span><span class="p">,</span><span class="n">npadding</span><span class="p">:</span><span class="o">-</span><span class="n">npadding</span><span class="p">],</span> <span class="s2">&quot;average&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">ndy</span><span class="o">*</span><span class="n">ndx</span><span class="p">),(</span><span class="n">ndy</span><span class="p">,</span><span class="n">ndx</span><span class="p">))</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">base</span><span class="o">*</span><span class="mf">10.0</span> <span class="o">+</span> <span class="mi">10</span>                                         <span class="c1"># shift and stretch base surface</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ndx</span><span class="p">)</span><span class="o">*</span><span class="n">xdsiz</span> <span class="o">+</span> <span class="n">xdmn</span><span class="p">;</span> <span class="n">idy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ndy</span><span class="p">)</span><span class="o">*</span><span class="n">ydsiz</span> <span class="o">+</span> <span class="n">ydmn</span><span class="p">;</span> <span class="c1"># make indices for fast p-field simulation</span>
+<span class="n">idy_2D</span><span class="p">,</span> <span class="n">idx_2D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">idy</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>         <span class="c1"># x and y coordinates at all bounding surface cell centers</span>
+
+<span class="n">dftop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">idx_2D</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">idy_2D</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">top</span><span class="o">.</span><span class="n">flatten</span><span class="p">()],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;Top&quot;</span><span class="p">])</span> <span class="c1"># make bounding surface DataFrames</span>
+<span class="n">dfbase</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">idx_2D</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">idy_2D</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">base</span><span class="o">.</span><span class="n">flatten</span><span class="p">()],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;Base&quot;</span><span class="p">])</span>
+
+<span class="n">rotation</span> <span class="o">=</span> <span class="mi">35</span>                                                 <span class="c1"># rotation angle</span>
+
+<span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">rotation</span><span class="p">)</span> <span class="c1"># rotate well data and bounding surfaces</span>
+<span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">rotation</span><span class="p">)</span>
+<span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">rotation</span><span class="p">)</span>
+
+<span class="n">well_sz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nwell</span><span class="o">*</span><span class="n">ndz</span><span class="p">)</span>                                 <span class="c1"># put data in original z coordinate between bounding surfaces</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">iwell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nwell</span><span class="p">):</span>
+    <span class="n">ix</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">getindex</span><span class="p">(</span><span class="n">ndx</span><span class="p">,</span><span class="n">xdmn</span><span class="p">,</span><span class="n">xdsiz</span><span class="p">,</span><span class="n">wellx</span><span class="p">[</span><span class="n">iwell</span><span class="p">])</span>
+    <span class="n">iy</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">getindex</span><span class="p">(</span><span class="n">ndy</span><span class="p">,</span><span class="n">ydmn</span><span class="p">,</span><span class="n">ydsiz</span><span class="p">,</span><span class="n">welly</span><span class="p">[</span><span class="n">iwell</span><span class="p">])</span>
+    <span class="n">top_well</span> <span class="o">=</span> <span class="n">top</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span>
+    <span class="n">base_well</span> <span class="o">=</span> <span class="n">base</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span><span class="n">ix</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">iz</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">ndz</span><span class="p">):</span>
+        <span class="n">well_sz</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">zdmn</span> <span class="o">+</span> <span class="n">iz</span> <span class="o">*</span> <span class="n">zdsiz</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">ndz</span> <span class="o">*</span> <span class="n">zdsiz</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">top_well</span> <span class="o">-</span> <span class="n">base_well</span><span class="p">)</span> <span class="o">+</span> <span class="n">base_well</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">well_sz</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>                                            <span class="c1"># plot original data orthonormal </span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Base&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Top&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Well Data and Bounding Surfaces Original Space&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>                                    <span class="c1"># plot original data map view</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">xorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span> <span class="n">yorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">]);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xorig</span><span class="p">,</span><span class="n">yorig</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;xmn,ymn&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>                                    <span class="c1"># plot original data x-z view</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Base&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Top&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;top surface&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">]);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">]);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9dfa48f1b953d493c5793b3142aa33dc79468e86948589b8ef4300b559009c7c.png" src="_images/9dfa48f1b953d493c5793b3142aa33dc79468e86948589b8ef4300b559009c7c.png" />
+</div>
+</div>
+</section>
+<section id="project-data-and-bounging-surfaces-to-aligned-with-axes-and-flattened-coordinates">
+<h2>Project Data and Bounging Surfaces to Aligned with Axes and Flattened Coordinates<a class="headerlink" href="#project-data-and-bounging-surfaces-to-aligned-with-axes-and-flattened-coordinates" title="Permalink to this heading">#</a></h2>
+<p>We start a geomodeling project with sparse well (or drill hole) data and exhaustive bounding surfaces and then we select a subset of the space for the model.</p>
+<ul class="simple">
+<li><p>for this first example, let’s assume that we want to work with the entire bounding surface grid. So we actually need to know the areal grid parameters from the bounding surfaces.</p></li>
+<li><p>then we just need to assign a reasonable number of cells in the z direction, nz. Note in the flattened space we will assume the zmin is 0.0 and the zmax is nz * zsiz. Note, zmax and zsiz are arbitrary as we are actually using a proportional position with 0.0 as the base surface and 1.0 at the top surface.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">nz</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>                                    <span class="c1"># specify model grid</span>
+
+<span class="n">xsiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">ysiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">zsiz</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">rotation</span> <span class="o">=</span> <span class="o">-</span><span class="mf">35.0</span>
+
+<span class="n">xmn</span> <span class="o">=</span> <span class="n">xsiz</span><span class="o">*</span><span class="mf">0.5</span><span class="p">;</span> <span class="n">ymn</span> <span class="o">=</span> <span class="n">ysiz</span><span class="o">*</span><span class="mf">0.5</span><span class="p">;</span> <span class="n">zmn</span> <span class="o">=</span> <span class="n">zsiz</span><span class="o">*</span><span class="mf">0.5</span>                <span class="c1"># given choice to set origin at x = 0, y = 0, z = 0, we calculate the grid origin / limits</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="n">xdmn</span> <span class="o">-</span> <span class="n">xsiz</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">nx</span> <span class="o">*</span> <span class="n">xsiz</span> 
+<span class="n">ymin</span> <span class="o">=</span> <span class="n">ydmn</span> <span class="o">-</span> <span class="n">ysiz</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="n">ny</span> <span class="o">*</span> <span class="n">ysiz</span>
+<span class="n">zmin</span> <span class="o">=</span> <span class="n">zdmn</span> <span class="o">-</span> <span class="n">zsiz</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">zmax</span> <span class="o">=</span> <span class="n">zmin</span> <span class="o">+</span> <span class="n">nz</span> <span class="o">*</span> <span class="n">zsiz</span>
+
+<span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">rotation</span><span class="p">)</span> <span class="c1"># rotate the data and bounding surfaces to align with the x and y axes</span>
+<span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">rotation</span><span class="p">)</span>
+<span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">rotation</span><span class="p">)</span>
+
+<span class="n">corx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">-</span> <span class="n">xmn</span><span class="p">;</span> <span class="n">cory</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span> <span class="o">-</span> <span class="n">ymn</span> <span class="c1"># shift the lower, left grid corner to x = 0, y = 0</span>
+<span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">corx</span><span class="p">;</span> <span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cory</span>
+<span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">corx</span><span class="p">;</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cory</span>
+<span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">corx</span><span class="p">;</span> <span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">cory</span>
+
+<span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Zf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">top</span><span class="p">,</span><span class="n">base</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">zmin</span><span class="p">,</span><span class="n">zmax</span><span class="p">,</span><span class="n">dfwell</span><span class="p">,</span><span class="s1">&#39;Xs&#39;</span><span class="p">,</span><span class="s1">&#39;Ys&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">)</span> <span class="c1"># flatten the z coordinate, proportional correlation</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>                                            <span class="c1"># plot original data in 3D </span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">231</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Base&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Top&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Well Data and Bounding Surfaces Original Space&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">232</span><span class="p">)</span>                                    <span class="c1"># plot original data map view</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">xorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span> <span class="n">yorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">]);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xorig</span><span class="p">,</span><span class="n">yorig</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;xmn,ymn&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">233</span><span class="p">)</span>                                    <span class="c1"># plot original data x-z view</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Base&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Top&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;top surface&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">]);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">]);</span> <span class="n">add_grid2</span><span class="p">()</span>
+                                 
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">234</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>                   <span class="c1"># plot original data orthonormal</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">),</span><span class="n">zmin</span><span class="p">),</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">),</span><span class="n">zmax</span><span class="p">),</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Zf&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span> <span class="n">ax4</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">);</span> <span class="n">ax4</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax4</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">);</span> <span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Well Data and Bounding Surfaces Model Space&#39;</span><span class="p">)</span>
+
+<span class="n">ax5</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">235</span><span class="p">)</span>                                     <span class="c1"># plot original data map view</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">xorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span> <span class="n">yorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax5</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax5</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">]);</span> <span class="n">ax5</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xorig</span><span class="p">,</span><span class="n">yorig</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;xmn,ymn&#39;</span><span class="p">);</span> <span class="n">ax5</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">ax6</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">236</span><span class="p">)</span>                                     <span class="c1"># plot original data x-z view</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Zf&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">),</span><span class="n">zmin</span><span class="p">),</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">),</span><span class="n">zmax</span><span class="p">),</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;top surface&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax6</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">);</span> <span class="n">ax6</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">ax6</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">]);</span> <span class="n">ax6</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">]);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/360b5b41178c59aed132fca85b71372382d71cd21340c0b12619ba64de61f4c8.png" src="_images/360b5b41178c59aed132fca85b71372382d71cd21340c0b12619ba64de61f4c8.png" />
+</div>
+</div>
+</section>
+<section id="back-project-data-and-bounging-surfaces-from-the-aligned-with-axes-and-flattened-coordinates-to-original-data-space">
+<h2>Back Project Data and Bounging Surfaces from the Aligned with Axes and Flattened Coordinates to Original Data Space<a class="headerlink" href="#back-project-data-and-bounging-surfaces-from-the-aligned-with-axes-and-flattened-coordinates-to-original-data-space" title="Permalink to this heading">#</a></h2>
+<p>I demonstrate the data and bounding surfaces back projection for completeness, but in typical geostatistical modeling workflows, only the geostatistical grids are back projected to original space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Z_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">unflatten</span><span class="p">(</span><span class="n">top</span><span class="p">,</span><span class="n">base</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">zmin</span><span class="p">,</span><span class="n">zmax</span><span class="p">,</span><span class="n">dfwell</span><span class="p">,</span><span class="s1">&#39;Xs&#39;</span><span class="p">,</span><span class="s1">&#39;Ys&#39;</span><span class="p">,</span><span class="s1">&#39;Zf&#39;</span><span class="p">)</span> <span class="c1"># unflatten z</span>
+
+<span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;X_back&#39;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Y_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">],</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">rotation</span><span class="p">)</span> <span class="c1"># rotate the data and surfaces to align to x and y</span>
+<span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X_back&#39;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">],</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">rotation</span><span class="p">)</span>
+<span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;X_back&#39;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Y_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Xs&#39;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Ys&#39;</span><span class="p">],</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">rotation</span><span class="p">)</span>
+
+<span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;X_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;X_back&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">corx</span><span class="p">;</span> <span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Y_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Y_back&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">cory</span> <span class="c1"># shift the lower, left grid corner to the original origin</span>
+<span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X_back&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">corx</span><span class="p">;</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y_back&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">cory</span>
+<span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;X_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;X_back&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">corx</span><span class="p">;</span> <span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Y_back&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Y_back&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">cory</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>                                            <span class="c1"># plot original data orthonormal </span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">231</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>                   <span class="c1"># plot original data orthonormal</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">),</span><span class="n">zmin</span><span class="p">),</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">),</span><span class="n">zmax</span><span class="p">),</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Zf&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Well Data and Bounding Surfaces Model Space&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">232</span><span class="p">)</span>                                     <span class="c1"># plot original data map view</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Ys&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">xorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span> <span class="n">yorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">]);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xorig</span><span class="p">,</span><span class="n">yorig</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;xmn,ymn&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">233</span><span class="p">)</span>                                     <span class="c1"># plot original data x-z view</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Zf&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">),</span><span class="n">zmin</span><span class="p">),</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Xs&quot;</span><span class="p">],</span><span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">),</span><span class="n">zmax</span><span class="p">),</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;top surface&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">]);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">]);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">234</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Base&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Top&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">);</span> <span class="n">ax4</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">);</span> <span class="n">ax4</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax4</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax4</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Well Data and Bounding Surfaces Back Projected to Original Space&#39;</span><span class="p">)</span>
+
+<span class="n">ax5</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">235</span><span class="p">)</span>                                    <span class="c1"># plot original data map view</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">xorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span> <span class="n">yorig</span> <span class="o">=</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax5</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">ax5</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span><span class="mi">450</span><span class="p">]);</span> <span class="n">ax5</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">ax5</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xorig</span><span class="p">,</span><span class="n">yorig</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;xmn,ymn&#39;</span><span class="p">);</span> <span class="n">ax5</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">ax6</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">236</span><span class="p">)</span>                                    <span class="c1"># plot original data x-z view</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s2">&quot;Z&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Vsh&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;wells&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s2">&quot;Base&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Base&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;base surface&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s2">&quot;Top&quot;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Top&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;top surface&#39;</span><span class="p">)</span>
+<span class="n">ax6</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">ax6</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Z (m)&#39;</span><span class="p">);</span> <span class="n">ax6</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">ax6</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">]);</span> <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">]);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/cd1b40d09f5c1b911a68976c898cd095853f840c7f1779099369733b896763c1.png" src="_images/cd1b40d09f5c1b911a68976c898cd095853f840c7f1779099369733b896763c1.png" />
+</div>
+</div>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>This was a basic demonstration of coordinate transformations, forward and back projection from original space to the axes aligned, flattened model space and back. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>I hope this is helpful,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="the-author">
+<h2>The Author:<a class="headerlink" href="#the-author" title="Permalink to this heading">#</a></h2>
+<p>Michael Pyrcz, Professor, The University of Texas at Austin
+<em>Novel Data Analytics, Geostatistics and Machine Learning Subsurface Solutions</em></p>
+<p>With over 17 years of experience in subsurface consulting, research and development, Michael has returned to academia driven by his passion for teaching and enthusiasm for enhancing engineers’ and geoscientists’ impact in subsurface resource development.</p>
+<p>For more about Michael check out these links:</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+</section>
+<section id="want-to-work-together">
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+</section>
+<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
+<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GeostatsPy_probability.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Probability Concepts</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="GeostatsPy_univariate_distributions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Univariate Distributions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Coordinate Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-coordinate-transformations">Applying Coordinate Transformations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-coordinate-transformation-workflow">Common Coordinate Transformation Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-synthetic-data">Make Synthetic Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-data-and-bounging-surfaces-to-aligned-with-axes-and-flattened-coordinates">Project Data and Bounging Surfaces to Aligned with Axes and Flattened Coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#back-project-data-and-bounging-surfaces-from-the-aligned-with-axes-and-flattened-coordinates-to-original-data-space">Back Project Data and Bounging Surfaces from the Aligned with Axes and Flattened Coordinates to Original Data Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

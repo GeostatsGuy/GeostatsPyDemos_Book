@@ -4,14 +4,24 @@
 format: jb-book
 root: intro
 chapters:
+- file: GeostatsPy_concepts
+  title: Geostatistical Concepts
+- file: GeostatsPy_probability
+  title: Probability Concepts
+- file: GeostatsPy_coordinate_transformations
+  title: Coordinate Transformations
 - file: GeostatsPy_univariate_distributions
   title: Univariate Distributions
+- file: GeostatsPy_transformations
+  title: Distribution Transformations
+- file: GeostatsPy_plotting_spatial_data_models
+  title: Plotting Spatial Data and Models
 - file: GeostatsPy_bootstrap
   title: Bootstrap for Uncertainty Modeling
 - file: GeostatsPy_declustering
-  title: Declustering to Correct Sampling Bias, Cell-based
+  title: Declustering to Correct Sampling Bias
 - file: GeostatsPy_declustering_all_methods
-  title: Declustering to Correct Sampling Bias, Cell-based, Polygonal and Kriging-based
+  title: Advanced Declustering
 - file: GeostatsPy_variogram_calculation
   title: Variogram Calculation
 - file: GeostatsPy_variogram_models
@@ -29,13 +39,17 @@ chapters:
 - file: GeostatsPy_inv_distance
   title: Inverse Distance
 - file: GeostatsPy_kriging
-  title: Simple Kriging
+  title: Simple and Ordinary Kriging
+- file: GeostatsPy_categorical_indictor_kriging
+  title: Indicator Kriging
+- file: GeostatsPy_simulation
+  title: Stochastic Simulation
 - file: GeostatsPy_kriging_vs_simulation_1D
   title: Kriging vs. Simulation, 1D 
 - file: GeostatsPy_kriging_vs_simulation_maps
   title: Kriging vs. Simulation, 2D Maps
-- file: GeostatsPy_simulation
-  title: Stochastic Simulation
+- file: GeostatsPy_categorical_indicator_simulation
+  title: Indicator Simulation
 - file: GeostatsPy_cosimulation
   title: Cosimulation
 - file: GeostatsPy_ergodic_fluctuations
@@ -48,3 +62,8 @@ chapters:
   title: Volume Variance
 - file: conclusions
   title: Conclusions
+- file: GeostatsPy_glossary
+  title: Glossary
+- file: references
+  title: References
+
