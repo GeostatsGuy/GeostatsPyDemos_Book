@@ -173,10 +173,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
@@ -201,6 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -527,7 +528,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
 </pre></div>
 </div>
 </div>
@@ -630,33 +631,33 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
   <tbody>
     <tr>
       <th>0</th>
-      <td>250.0</td>
-      <td>419.0</td>
-      <td>0.124088</td>
+      <td>790.0</td>
+      <td>209.0</td>
+      <td>0.126480</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>720.0</td>
-      <td>819.0</td>
-      <td>0.137150</td>
+      <td>310.0</td>
+      <td>839.0</td>
+      <td>0.163076</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>680.0</td>
-      <td>429.0</td>
-      <td>0.116107</td>
+      <td>140.0</td>
+      <td>499.0</td>
+      <td>0.138823</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>900.0</td>
-      <td>79.0</td>
-      <td>0.149330</td>
+      <td>710.0</td>
+      <td>649.0</td>
+      <td>0.092093</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>520.0</td>
-      <td>729.0</td>
-      <td>0.109792</td>
+      <td>300.0</td>
+      <td>800.0</td>
+      <td>0.164797</td>
     </tr>
   </tbody>
 </table>
@@ -714,7 +715,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c9d0ef69dd6f843f6517c2f7589a8ab4dc479a3b8bb1f7e6a17d15a381cd6969.png" src="_images/c9d0ef69dd6f843f6517c2f7589a8ab4dc479a3b8bb1f7e6a17d15a381cd6969.png" />
+<img alt="_images/9a3a81c6697eb827db00b51151da34d1e8837ebd19df0759e11ab3379e7f61f4.png" src="_images/9a3a81c6697eb827db00b51151da34d1e8837ebd19df0759e11ab3379e7f61f4.png" />
 </div>
 </div>
 </section>
@@ -747,7 +748,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/14d53a9f7461d43716909e3cf1d6cf89f39a49efc1c2efefcdb96e43746f3605.png" src="_images/14d53a9f7461d43716909e3cf1d6cf89f39a49efc1c2efefcdb96e43746f3605.png" />
+<img alt="_images/df2921898e1307682c0807c7d1f991d6d1fb7ab1fb0f00631292a19c4f9a7eb3.png" src="_images/df2921898e1307682c0807c7d1f991d6d1fb7ab1fb0f00631292a19c4f9a7eb3.png" />
 </div>
 </div>
 <p>The e-type model is very similar to a kriging model, except for:</p>
@@ -789,7 +790,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/146a8924b8b257d0cb3705d3c2dbfbbfd28efe7cc38e5f40cccb1718d4bda3ad.png" src="_images/146a8924b8b257d0cb3705d3c2dbfbbfd28efe7cc38e5f40cccb1718d4bda3ad.png" />
+<img alt="_images/bc3e85308c634d3cf3d81aa06286d98807dc23d67cbbbf9538efa3ffe69d9f3d.png" src="_images/bc3e85308c634d3cf3d81aa06286d98807dc23d67cbbbf9538efa3ffe69d9f3d.png" />
 </div>
 </div>
 </section>
@@ -823,7 +824,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b4ddb48dede631929025fee238142df05fe98c9af47575382809482c931d1f92.png" src="_images/b4ddb48dede631929025fee238142df05fe98c9af47575382809482c931d1f92.png" />
+<img alt="_images/b82a14e22b2d87cc9405e249ba5956921c17c97e6646c6c2cf38c8ceb4c4b136.png" src="_images/b82a14e22b2d87cc9405e249ba5956921c17c97e6646c6c2cf38c8ceb4c4b136.png" />
 </div>
 </div>
 </section>

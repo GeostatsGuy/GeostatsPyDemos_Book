@@ -173,10 +173,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
@@ -201,6 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -502,7 +503,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
 </pre></div>
 </div>
 </div>
@@ -615,14 +616,14 @@ document.write(`
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>0.046372</td>
-      <td>929.459212</td>
+      <td>-0.266246</td>
+      <td>894.935903</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>0.462636</td>
-      <td>1304.964887</td>
+      <td>1.332640</td>
+      <td>1116.681981</td>
     </tr>
   </tbody>
 </table>
@@ -700,7 +701,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f663dba28fdab5852fbee4b23a895fe5ee874a7814eb50e0d7a1ccba585427a3.png" src="_images/f663dba28fdab5852fbee4b23a895fe5ee874a7814eb50e0d7a1ccba585427a3.png" />
+<img alt="_images/f84c93eec95001ad981fe821f5b25c6180a563b465a4b94e4977ef8692eda6d3.png" src="_images/f84c93eec95001ad981fe821f5b25c6180a563b465a4b94e4977ef8692eda6d3.png" />
 </div>
 </div>
 </section>
@@ -746,7 +747,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9926bcbc6ff5ccba360dd2e2b57c51525c675aefd6be8c113a96c72161db420a.png" src="_images/9926bcbc6ff5ccba360dd2e2b57c51525c675aefd6be8c113a96c72161db420a.png" />
+<img alt="_images/4bc7addccf043d310483a8dfa772137311940cb47210fc67f9310200fe9ac519.png" src="_images/4bc7addccf043d310483a8dfa772137311940cb47210fc67f9310200fe9ac519.png" />
 </div>
 </div>
 </section>
@@ -792,7 +793,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f5a44f16480721f693124bbaf75300952f8c1f162e3ef86a2d82468a3a342c8c.png" src="_images/f5a44f16480721f693124bbaf75300952f8c1f162e3ef86a2d82468a3a342c8c.png" />
+<img alt="_images/ad662b5a161365993ce19b0531ccbe86a6ac85953783c2e732476b4f566dc5a0.png" src="_images/ad662b5a161365993ce19b0531ccbe86a6ac85953783c2e732476b4f566dc5a0.png" />
 </div>
 </div>
 </section>
@@ -915,7 +916,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/16cee3734d18483e9b4c930ae2dea293f076d29be9fa79b03ee25f146cdf4929.png" src="_images/16cee3734d18483e9b4c930ae2dea293f076d29be9fa79b03ee25f146cdf4929.png" />
+<img alt="_images/8f9325ea152f91680f6af12095fb22961a9a665d768629d42490ca1f5a2e5ed5.png" src="_images/8f9325ea152f91680f6af12095fb22961a9a665d768629d42490ca1f5a2e5ed5.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with increasing short scale spatial continuity from exponential to spherical to Gaussian. But the long range spatial continuity does not change significantly.</p>
@@ -977,7 +978,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4574926b79a9e5950a2f1730d527cec0ce5479a54f765952ad159619d49b91aa.png" src="_images/4574926b79a9e5950a2f1730d527cec0ce5479a54f765952ad159619d49b91aa.png" />
+<img alt="_images/72310702b857cdaa1159752ccc44dc77ff9cbd1fdc2c722f21dddc3775a9a9a5.png" src="_images/72310702b857cdaa1159752ccc44dc77ff9cbd1fdc2c722f21dddc3775a9a9a5.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with decreasing short scale spatial continuity with increase in relative nugget effect.</p>

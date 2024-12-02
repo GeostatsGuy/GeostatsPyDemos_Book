@@ -173,10 +173,10 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
@@ -201,6 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -494,7 +495,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
 </pre></div>
 </div>
 </div>
@@ -618,31 +619,31 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.102883</td>
+      <td>0.105152</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.084332</td>
+      <td>0.096970</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.063981</td>
+      <td>0.127301</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.076139</td>
+      <td>0.084089</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.109320</td>
+      <td>0.092788</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
@@ -743,7 +744,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a19da6d31d62b2f5cfd1f7388a724385ccf8981d3f051b5cb10fd7c221ce1fb9.png" src="_images/a19da6d31d62b2f5cfd1f7388a724385ccf8981d3f051b5cb10fd7c221ce1fb9.png" />
+<img alt="_images/f805f883a2225bb8f2171ba4ca70fe975e93f992e4cfe1115e0746672dceda0e.png" src="_images/f805f883a2225bb8f2171ba4ca70fe975e93f992e4cfe1115e0746672dceda0e.png" />
 </div>
 </div>
 </section>
@@ -789,7 +790,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b319c3ece7e777748d0e2f393085d8b1adc29d6c0dad139423399d0934b58670.png" src="_images/b319c3ece7e777748d0e2f393085d8b1adc29d6c0dad139423399d0934b58670.png" />
+<img alt="_images/2cb79efcae1df83ddce43bec0d91c8305ef01532a69575a57560313d61280f3d.png" src="_images/2cb79efcae1df83ddce43bec0d91c8305ef01532a69575a57560313d61280f3d.png" />
 </div>
 </div>
 <p>and now the model with shorter range, isotropic spatial continuity.</p>
@@ -832,7 +833,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/222e4eee977969842a66b11af8cac965dd9da6ef8d18ea5a7646934567205000.png" src="_images/222e4eee977969842a66b11af8cac965dd9da6ef8d18ea5a7646934567205000.png" />
+<img alt="_images/b1755df0175c7ee82db7401e1b9a3074f076caecd6c58a4dc10ad7f8d36497b7.png" src="_images/b1755df0175c7ee82db7401e1b9a3074f076caecd6c58a4dc10ad7f8d36497b7.png" />
 </div>
 </div>
 </section>
@@ -880,7 +881,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/41083977acdc4d3acb6d7a5d27e46060c93ddd8ba60ba1793884520fcc00a5c5.png" src="_images/41083977acdc4d3acb6d7a5d27e46060c93ddd8ba60ba1793884520fcc00a5c5.png" />
+<img alt="_images/199b4743e29cbc5a34833af196bee44091336ce024662224899cffd282a98a65.png" src="_images/199b4743e29cbc5a34833af196bee44091336ce024662224899cffd282a98a65.png" />
 </div>
 </div>
 </section>
