@@ -177,6 +177,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
@@ -602,53 +605,53 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>270.0</td>
-      <td>49.0</td>
-      <td>0.043853</td>
-      <td>0.094627</td>
-      <td>-2.357812</td>
-      <td>-2.312088</td>
-      <td>-1.975971</td>
+      <td>820.0</td>
+      <td>389.0</td>
+      <td>0.093900</td>
+      <td>2.427176</td>
+      <td>0.886729</td>
+      <td>-0.877896</td>
+      <td>-0.385320</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>980.0</td>
-      <td>119.0</td>
-      <td>0.173764</td>
-      <td>107.932081</td>
-      <td>4.681502</td>
-      <td>1.880794</td>
-      <td>1.226528</td>
+      <td>570.0</td>
+      <td>199.0</td>
+      <td>0.081032</td>
+      <td>0.810566</td>
+      <td>-0.210023</td>
+      <td>-1.340755</td>
+      <td>-1.126391</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>620.0</td>
-      <td>389.0</td>
-      <td>0.100296</td>
-      <td>7.578784</td>
-      <td>2.025353</td>
-      <td>-0.674490</td>
-      <td>0.075270</td>
+      <td>310.0</td>
+      <td>839.0</td>
+      <td>0.163076</td>
+      <td>446.563251</td>
+      <td>6.101581</td>
+      <td>1.126391</td>
+      <td>1.644854</td>
     </tr>
     <tr>
       <th>3</th>
+      <td>800.0</td>
       <td>200.0</td>
-      <td>389.0</td>
-      <td>0.121670</td>
-      <td>3.254674</td>
-      <td>1.180092</td>
-      <td>-0.075270</td>
-      <td>-0.738847</td>
+      <td>0.129700</td>
+      <td>4.945909</td>
+      <td>1.598561</td>
+      <td>0.125661</td>
+      <td>0.025069</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>70.0</td>
-      <td>869.0</td>
-      <td>0.127860</td>
-      <td>4.896129</td>
-      <td>1.588445</td>
-      <td>0.176374</td>
-      <td>-0.495850</td>
+      <td>190.0</td>
+      <td>309.0</td>
+      <td>0.101047</td>
+      <td>1.815873</td>
+      <td>0.596566</td>
+      <td>-0.439913</td>
+      <td>-0.674490</td>
     </tr>
   </tbody>
 </table>
@@ -694,64 +697,64 @@ document.write(`
     <tr>
       <th>X</th>
       <td>50.0</td>
-      <td>513.600000</td>
-      <td>284.925769</td>
-      <td>50.000000</td>
-      <td>240.000000</td>
-      <td>5.350000e+02</td>
-      <td>727.500000</td>
-      <td>980.000000</td>
+      <td>545.000000</td>
+      <td>299.756704</td>
+      <td>60.000000</td>
+      <td>247.500000</td>
+      <td>5.850000e+02</td>
+      <td>800.000000</td>
+      <td>990.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>50.0</td>
-      <td>442.520000</td>
-      <td>297.678312</td>
-      <td>9.000000</td>
-      <td>181.500000</td>
-      <td>4.040000e+02</td>
-      <td>711.500000</td>
+      <td>524.000000</td>
+      <td>274.811995</td>
+      <td>99.000000</td>
+      <td>299.250000</td>
+      <td>4.940000e+02</td>
+      <td>781.500000</td>
       <td>959.000000</td>
     </tr>
     <tr>
       <th>Porosity</th>
       <td>50.0</td>
-      <td>0.123320</td>
-      <td>0.030437</td>
-      <td>0.043853</td>
-      <td>0.100314</td>
-      <td>1.250778e-01</td>
-      <td>0.142007</td>
-      <td>0.205586</td>
+      <td>0.122754</td>
+      <td>0.032712</td>
+      <td>0.065537</td>
+      <td>0.099384</td>
+      <td>1.224854e-01</td>
+      <td>0.147631</td>
+      <td>0.202755</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>50.0</td>
-      <td>71.884710</td>
-      <td>283.942343</td>
-      <td>0.094627</td>
-      <td>3.982902</td>
-      <td>7.356069e+00</td>
-      <td>35.725284</td>
-      <td>1991.097723</td>
+      <td>81.577481</td>
+      <td>271.986039</td>
+      <td>0.265882</td>
+      <td>1.858953</td>
+      <td>4.735917e+00</td>
+      <td>42.535556</td>
+      <td>1826.460861</td>
     </tr>
     <tr>
       <th>logPerm</th>
       <td>50.0</td>
-      <td>2.291334</td>
-      <td>1.844602</td>
-      <td>-2.357812</td>
-      <td>1.381996</td>
-      <td>1.995325e+00</td>
-      <td>3.571369</td>
-      <td>7.596441</td>
+      <td>2.113646</td>
+      <td>2.090650</td>
+      <td>-1.324702</td>
+      <td>0.619231</td>
+      <td>1.554191e+00</td>
+      <td>3.737002</td>
+      <td>7.510135</td>
     </tr>
     <tr>
       <th>nPorosity</th>
       <td>50.0</td>
-      <td>0.000285</td>
-      <td>0.996723</td>
-      <td>-2.312088</td>
+      <td>-0.011676</td>
+      <td>1.028132</td>
+      <td>-2.910142</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -760,9 +763,9 @@ document.write(`
     <tr>
       <th>nPerm</th>
       <td>50.0</td>
-      <td>0.007008</td>
-      <td>0.981831</td>
-      <td>-1.975971</td>
+      <td>-0.022894</td>
+      <td>1.062875</td>
+      <td>-3.471028</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -838,7 +841,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dd88ec598120dbe2323946bc6c8cb9dfbdcbb379a90679cb31b5dac1c7f65453.png" src="_images/dd88ec598120dbe2323946bc6c8cb9dfbdcbb379a90679cb31b5dac1c7f65453.png" />
+<img alt="_images/ebd0aad4852cd44d2dc91afd3ac5240f9262dd7458d8f9ecbe368a5c89b5f2d5.png" src="_images/ebd0aad4852cd44d2dc91afd3ac5240f9262dd7458d8f9ecbe368a5c89b5f2d5.png" />
 </div>
 </div>
 <p>Note we have already demonstrated univariate simulation checks for:</p>
@@ -912,7 +915,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/88e1d618271127b887a54c7d12283e17cbf5cd20abf6250a158911779e9e54d1.png" src="_images/88e1d618271127b887a54c7d12283e17cbf5cd20abf6250a158911779e9e54d1.png" />
+<img alt="_images/005e9ecc7c8d0542123d960103f85351abffe9935aeb36167067804499e7df4a.png" src="_images/005e9ecc7c8d0542123d960103f85351abffe9935aeb36167067804499e7df4a.png" />
 </div>
 </div>
 </section>
@@ -965,7 +968,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/093045459251aae98a1d1262cd689c45e27ee09e1eb8fe4015d537f2c74b4982.png" src="_images/093045459251aae98a1d1262cd689c45e27ee09e1eb8fe4015d537f2c74b4982.png" />
+<img alt="_images/691e850de8f97def393612981dfc896fd725e6e56954caa9298aafd741074921.png" src="_images/691e850de8f97def393612981dfc896fd725e6e56954caa9298aafd741074921.png" />
 </div>
 </div>
 </section>
@@ -1007,7 +1010,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6b7aaba16a8670270e53958dcaa9caac3cf74a13ce1095f1c994735a2d0db813.png" src="_images/6b7aaba16a8670270e53958dcaa9caac3cf74a13ce1095f1c994735a2d0db813.png" />
+<img alt="_images/8e9514dcde16fa194f0f496b2ca3d3e6764a1436aa37ff9eab40c5152d58aa82.png" src="_images/8e9514dcde16fa194f0f496b2ca3d3e6764a1436aa37ff9eab40c5152d58aa82.png" />
 </div>
 </div>
 </section>

@@ -177,6 +177,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
@@ -443,6 +446,7 @@ document.write(`
 <p>Uncertainty in the sample statistics</p>
 <ul class="simple">
 <li><p>one source of uncertainty is the paucity of data.</p></li>
+<li></li>
 <li><p>do 200 or even less wells provide a precise (and accurate estimate) of the mean? standard deviation? skew? P13?</p></li>
 </ul>
 <p>Would it be useful to know the uncertainty in these statistics due to limited sampling?</p>
@@ -652,28 +656,28 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>13</th>
-      <td>300</td>
-      <td>400</td>
+      <th>257</th>
+      <td>850</td>
+      <td>919</td>
       <td>1</td>
-      <td>0.118448</td>
-      <td>8.495566</td>
+      <td>0.120470</td>
+      <td>5.675279</td>
     </tr>
     <tr>
-      <th>117</th>
-      <td>130</td>
-      <td>769</td>
-      <td>1</td>
-      <td>0.128778</td>
-      <td>16.159792</td>
+      <th>178</th>
+      <td>740</td>
+      <td>679</td>
+      <td>0</td>
+      <td>0.074349</td>
+      <td>0.093252</td>
     </tr>
     <tr>
-      <th>73</th>
-      <td>730</td>
-      <td>219</td>
+      <th>143</th>
+      <td>180</td>
+      <td>149</td>
       <td>1</td>
-      <td>0.166514</td>
-      <td>28.032669</td>
+      <td>0.118724</td>
+      <td>9.178918</td>
     </tr>
   </tbody>
 </table>
@@ -723,32 +727,32 @@ document.write(`
     <tr>
       <th>X</th>
       <td>58.0</td>
-      <td>523.103448</td>
-      <td>262.693250</td>
+      <td>440.000000</td>
+      <td>251.870198</td>
       <td>0.000000</td>
-      <td>320.000000</td>
-      <td>495.000000</td>
-      <td>737.500000</td>
-      <td>990.000000</td>
+      <td>280.00000</td>
+      <td>400.000000</td>
+      <td>635.000000</td>
+      <td>980.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>58.0</td>
-      <td>540.362069</td>
-      <td>294.306541</td>
-      <td>9.000000</td>
-      <td>304.750000</td>
-      <td>529.500000</td>
-      <td>836.500000</td>
+      <td>533.206897</td>
+      <td>288.958126</td>
+      <td>69.000000</td>
+      <td>309.00000</td>
+      <td>509.500000</td>
+      <td>806.750000</td>
       <td>999.000000</td>
     </tr>
     <tr>
       <th>Facies</th>
       <td>58.0</td>
-      <td>0.775862</td>
-      <td>0.420655</td>
+      <td>0.793103</td>
+      <td>0.408619</td>
       <td>0.000000</td>
-      <td>1.000000</td>
+      <td>1.00000</td>
       <td>1.000000</td>
       <td>1.000000</td>
       <td>1.000000</td>
@@ -756,24 +760,24 @@ document.write(`
     <tr>
       <th>Porosity</th>
       <td>58.0</td>
-      <td>0.130826</td>
-      <td>0.035659</td>
-      <td>0.074373</td>
-      <td>0.110108</td>
-      <td>0.125774</td>
-      <td>0.141521</td>
-      <td>0.212797</td>
+      <td>0.130274</td>
+      <td>0.036311</td>
+      <td>0.074349</td>
+      <td>0.10565</td>
+      <td>0.124840</td>
+      <td>0.142239</td>
+      <td>0.223661</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>58.0</td>
-      <td>146.642211</td>
-      <td>363.706514</td>
-      <td>0.425414</td>
-      <td>4.271121</td>
-      <td>12.480591</td>
-      <td>28.782152</td>
-      <td>1602.049012</td>
+      <td>219.268090</td>
+      <td>620.217638</td>
+      <td>0.093252</td>
+      <td>3.70866</td>
+      <td>10.939223</td>
+      <td>31.754613</td>
+      <td>3178.630458</td>
     </tr>
   </tbody>
 </table>
@@ -816,7 +820,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8b8790294a6c7d16514c939fd7d3eed755b4fd9949a6b8017f8d9d1269a47e80.png" src="_images/8b8790294a6c7d16514c939fd7d3eed755b4fd9949a6b8017f8d9d1269a47e80.png" />
+<img alt="_images/96d8e893eb29999d826f0b21592fc2f3a5289b2b0a54fc9cac7fe4dddc3882f3.png" src="_images/96d8e893eb29999d826f0b21592fc2f3a5289b2b0a54fc9cac7fe4dddc3882f3.png" />
 </div>
 </div>
 </section>
@@ -849,7 +853,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6bed53be1c5aa1c32a5d32f281f1513e452033a15e75c2ff06745a336b4dce57.png" src="_images/6bed53be1c5aa1c32a5d32f281f1513e452033a15e75c2ff06745a336b4dce57.png" />
+<img alt="_images/00e5fbd7122637ec97dbb78d61c6992b66976da9c4849e4ab229a21f54f7fee3.png" src="_images/00e5fbd7122637ec97dbb78d61c6992b66976da9c4849e4ab229a21f54f7fee3.png" />
 </div>
 </div>
 <p>Now we proceed with a more complicated, robust work by first quantifying the spatial bias in the samples and assigned data weights to mitigate this bias.</p>
@@ -875,12 +879,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 58 data with:
-   mean of      0.13082600717241383 
-   min and max  0.074372863 and 0.212797425
-   standard dev 0.03534979041256406 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Declustered mean = 0.12 and declustered standard deviation = 0.033
+   mean of      0.1302739530862069 
+   min and max  0.074348923 and 0.223660709
+   standard dev 0.03599698329572927 
+Declustered mean = 0.122 and declustered standard deviation = 0.031
 </pre></div>
 </div>
 </div>
@@ -914,10 +916,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.120420618 and realization 2 = 0.11468692815517241
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.11995896105172414 and realization 2 = 0.11948674698275863
 </pre></div>
 </div>
-<img alt="_images/b56c34ee56705f5a98115e6bf147207c4bee48f32920b415c03c822b9f2c336a.png" src="_images/b56c34ee56705f5a98115e6bf147207c4bee48f32920b415c03c822b9f2c336a.png" />
+<img alt="_images/2a462ad523b70eaa4fb3a4a22b9f317f974478639bb57b894ea9a50836f0ce02.png" src="_images/2a462ad523b70eaa4fb3a4a22b9f317f974478639bb57b894ea9a50836f0ce02.png" />
 </div>
 </div>
 <p>Note that the bootstrap distributions vary quite a bit from the original.</p>
@@ -972,14 +974,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a3132f51ad51af4f308bbf546250d8a855378a1a4c495d306e1d53ce855fe635.png" src="_images/a3132f51ad51af4f308bbf546250d8a855378a1a4c495d306e1d53ce855fe635.png" />
+<img alt="_images/510b82a79e0036a699c11649e983b5857645211ad44c1cb36dd3763d929e1e64.png" src="_images/510b82a79e0036a699c11649e983b5857645211ad44c1cb36dd3763d929e1e64.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=1000, minmax=(0.10592035455172412, 0.13358615679310343), mean=0.11980637492856896, variance=1.836197936815877e-05, skewness=0.11912394487106365, kurtosis=-0.04835812279499052)
-P10: 0.114, P50: 0.12, P90: 0.125
+DescribeResult(nobs=1000, minmax=(0.10969246777586206, 0.1347478721724138), mean=0.12206520103436208, variance=1.66331355290819e-05, skewness=0.133720993856946, kurtosis=-0.04005154444187786)
+P10: 0.117, P50: 0.122, P90: 0.127
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=1000, minmax=(0.023110360989622557, 0.04212343259771716), mean=0.03278632220540206, variance=1.198526434244989e-05, skewness=0.052382829872787334, kurtosis=-0.3896810735249203)
-P10: 0.028, P50: 0.033, P90: 0.037
+DescribeResult(nobs=1000, minmax=(0.018593405209250725, 0.04106725358557991), mean=0.029994369711022678, variance=1.778886782179925e-05, skewness=-0.05545689487806349, kurtosis=-0.43612377472949015)
+P10: 0.025, P50: 0.03, P90: 0.035
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
@@ -1029,14 +1031,14 @@ P10: 0.028, P50: 0.033, P90: 0.037
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/da2bc470a3256ff657c626acd3ff173ddd7ae2c69824db229793cbb491bb01bf.png" src="_images/da2bc470a3256ff657c626acd3ff173ddd7ae2c69824db229793cbb491bb01bf.png" />
+<img alt="_images/b6e845885cdbabf1782f5748d383b1986d74493b00fa3f3befa28559267d7dcd.png" src="_images/b6e845885cdbabf1782f5748d383b1986d74493b00fa3f3befa28559267d7dcd.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=10000, minmax=(0.10365249906896551, 0.13801850410344826), mean=0.12003733069139828, variance=1.9371911832903733e-05, skewness=0.13179434513768187, kurtosis=-0.016842229268021036)
-P10: 0.114, P50: 0.12, P90: 0.126
+DescribeResult(nobs=10000, minmax=(0.10785642784482757, 0.1379068269137931), mean=0.12211472908387241, variance=1.627500974389659e-05, skewness=0.21199259594010267, kurtosis=0.05352049219820554)
+P10: 0.117, P50: 0.122, P90: 0.127
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=10000, minmax=(0.020527708422811528, 0.045265077379877915), mean=0.032713824018512735, variance=1.1868989051501876e-05, skewness=-0.05468415787311669, kurtosis=-0.11172196429351322)
-P10: 0.028, P50: 0.033, P90: 0.037
+DescribeResult(nobs=10000, minmax=(0.01737969918026946, 0.045627036268196156), mean=0.03005227789464562, variance=1.7613047444200755e-05, skewness=-0.041790304295376994, kurtosis=-0.1501944216565958)
+P10: 0.025, P50: 0.03, P90: 0.035
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
@@ -1047,8 +1049,7 @@ P10: 0.028, P50: 0.033, P90: 0.037
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of bootstrap for uncertainty modeling. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
-<p>I hope this is helpful,</p>
+<p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
 <p><em>Michael</em></p>
 </section>
 <section id="the-author">

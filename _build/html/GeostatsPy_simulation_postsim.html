@@ -177,6 +177,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
@@ -631,33 +634,33 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
   <tbody>
     <tr>
       <th>0</th>
-      <td>180.0</td>
-      <td>599.0</td>
-      <td>0.156497</td>
+      <td>220.0</td>
+      <td>539.0</td>
+      <td>0.162343</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>340.0</td>
-      <td>379.0</td>
-      <td>0.115374</td>
+      <td>710.0</td>
+      <td>789.0</td>
+      <td>0.102123</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>120.0</td>
-      <td>509.0</td>
-      <td>0.139301</td>
+      <td>800.0</td>
+      <td>400.0</td>
+      <td>0.106194</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>300.0</td>
-      <td>679.0</td>
-      <td>0.168196</td>
+      <td>860.0</td>
+      <td>999.0</td>
+      <td>0.129714</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>730.0</td>
-      <td>239.0</td>
-      <td>0.130362</td>
+      <td>300.0</td>
+      <td>700.0</td>
+      <td>0.165155</td>
     </tr>
   </tbody>
 </table>
@@ -715,7 +718,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/71dabd38780b7520ba05a3a2d8a7eb58a6ff1768ba57075cc8abd3d6ac82a594.png" src="_images/71dabd38780b7520ba05a3a2d8a7eb58a6ff1768ba57075cc8abd3d6ac82a594.png" />
+<img alt="_images/9f3a13b547bb9de0c2df90f5977080dd83c0bd8b3e68bc2252d6f4a196e4be1f.png" src="_images/9f3a13b547bb9de0c2df90f5977080dd83c0bd8b3e68bc2252d6f4a196e4be1f.png" />
 </div>
 </div>
 </section>
@@ -748,7 +751,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a1d48f026991aa344c945289940598689b9fe654f78bfd01cb2997d0d313b68d.png" src="_images/a1d48f026991aa344c945289940598689b9fe654f78bfd01cb2997d0d313b68d.png" />
+<img alt="_images/9802b8fd64feba6b33e6d37808abfb3715ebf1adec6c3cae1bc7f58a208aa411.png" src="_images/9802b8fd64feba6b33e6d37808abfb3715ebf1adec6c3cae1bc7f58a208aa411.png" />
 </div>
 </div>
 <p>The e-type model is very similar to a kriging model, except for:</p>
@@ -790,7 +793,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f82ecba47360a63af64cd944ca6c409bb5ab97dc0ea8982130c1cb6179eb0c5e.png" src="_images/f82ecba47360a63af64cd944ca6c409bb5ab97dc0ea8982130c1cb6179eb0c5e.png" />
+<img alt="_images/cd75f3064df7ccdd8e088d3bad0fb0132ca8d4d0e97f27b948d4d8c6cdcb7500.png" src="_images/cd75f3064df7ccdd8e088d3bad0fb0132ca8d4d0e97f27b948d4d8c6cdcb7500.png" />
 </div>
 </div>
 </section>
@@ -824,7 +827,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0ba07e73c256f46aaae5dbaf37f5f137bef1499a77e43a9d9fc33214bd47804d.png" src="_images/0ba07e73c256f46aaae5dbaf37f5f137bef1499a77e43a9d9fc33214bd47804d.png" />
+<img alt="_images/95a57debf8f8de46bf0db74a74763e3f10323e1c7760f379a46abbe3ae9190fc.png" src="_images/95a57debf8f8de46bf0db74a74763e3f10323e1c7760f379a46abbe3ae9190fc.png" />
 </div>
 </div>
 </section>

@@ -14,6 +14,12 @@ chapters:
   title: Univariate Distributions
 - file: GeostatsPy_transformations
   title: Distribution Transformations
+- file: GeostatsPy_bivariate
+  title: Bivariate Analysis
+- file: GeostatsPy_QQ
+  title: QQ-Plots
+- file: GeostatsPy_linear_regression
+  title: Linear Regression
 - file: GeostatsPy_plotting_spatial_data_models
   title: Plotting Spatial Data and Models
 - file: GeostatsPy_bootstrap
