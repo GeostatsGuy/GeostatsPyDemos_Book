@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Bootstrap for Uncertainty Modeling &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
+    <title>Bootstrap &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
   
   
   
@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -391,7 +391,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Bootstrap for Uncertainty Modeling</h1>
+    <h1>Bootstrap</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,7 +401,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">Bootstrap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bootstrap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-steps">Bootstrap Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bootstrap</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-another-package">Check Another Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
@@ -419,7 +421,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -431,8 +432,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="bootstrap-for-uncertainty-modeling">
-<h1>Bootstrap for Uncertainty Modeling<a class="headerlink" href="#bootstrap-for-uncertainty-modeling" title="Permalink to this heading">#</a></h1>
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="bootstrap">
+<h1>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
@@ -441,68 +445,84 @@ document.write(`
 © Copyright 2024.</p>
 <p>This chapter is a tutorial for / demonstration of <strong>Bootstrap</strong>.</p>
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/wCgdoImlLY0?si=lpTWz2H7QTdxHBy9">Bootstrap</a>. For your convenience here’s a summary of salient points.</p>
-<section id="bootstrap">
-<h2>Bootstrap<a class="headerlink" href="#bootstrap" title="Permalink to this heading">#</a></h2>
-<p>Uncertainty in the sample statistics</p>
+<section id="id1">
+<h2>Bootstrap<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Bootstrap is a statistical resampling procedure to calculate uncertainty in a calculated statistic from the sample data itself. Some general comments,</p>
 <ul class="simple">
-<li><p>one source of uncertainty is the paucity of data.</p></li>
-<li></li>
-<li><p>do 200 or even less wells provide a precise (and accurate estimate) of the mean? standard deviation? skew? P13?</p></li>
+<li><p><strong>sampling with replacement</strong> - <span class="math notranslate nohighlight">\(n\)</span> (number of data samples) Monte Carlo simulations from the dataset cumulative distribution function, this results in a new realization of the data</p></li>
+<li><p><strong>simulates the data collection process</strong> - the fundamental idea is to simulate the original data collection process. Instead of actually collecting new sample sets (this would be infeasible), we randomly select from the data to get data realizations</p></li>
+<li><p><strong>bootstrap any statistic</strong> - this approach is very flexible as we can calculate realizations of any statistics from the data realizations</p></li>
+<li><p><strong>computationally cheap</strong> - repeat this approach to get realizations of the statistic to build a complete distribution of uncertainty. Use a large number of realizations, <span class="math notranslate nohighlight">\(L\)</span>, for a reliable uncertainty model.</p></li>
+<li><p><strong>calculates the entire distribution of uncertainty</strong> - for any statistic, you calculate any summary statistic for the uncertainty model, e.g., mean, P10 and P90 of the uncertainty in the mean</p></li>
+<li><p><strong>bagging for machine learning</strong> - is the application with bootstrap to obtain data realizations to train predictive model realizations to aggregate predictions over ensembles of prediction models to reduce model variance</p></li>
 </ul>
-<p>Would it be useful to know the uncertainty in these statistics due to limited sampling?</p>
+<p>What are the limitations of bootstrap?</p>
 <ul class="simple">
-<li><p>what is the impact of uncertainty in the mean porosity e.g. 20%+/-2%?</p></li>
+<li><p>biased sample data will likely result in a biased bootstrapped uncertainty model, you must first debias the samples, e.g., declustering</p></li>
+<li><p>you must have a sufficient sample size</p></li>
+<li><p>integrates uncertainty due to sparse samples in space only, does not account for uncertainty due sampling error and sample bias.</p></li>
+<li><p>assumes independence between samples and does not account for the spatial context of the data, i.e., sample data locations, volume of interest nor the spatial continuity. There is a variant of bootstrap called <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Spatial_Bootstrap.ipynb">spatial bootstrap</a>.</p></li>
 </ul>
-<p><strong>Bootstrap</strong> is a method to assess the uncertainty in a sample statistic by repeated random sampling with replacement.</p>
-<p>Assumptions</p>
-<ul class="simple">
-<li><p>sufficient, representative sampling, identical, independent samples</p></li>
-</ul>
-<p>Limitations</p>
-<ol class="arabic simple">
-<li><p>assumes the samples are representative</p></li>
-<li><p>assumes stationarity</p></li>
-<li><p>only accounts for uncertainty due to too few samples, e.g. no uncertainty due to changes away from data</p></li>
-<li><p>does not account for boundary of area of interest</p></li>
-<li><p>assumes the samples are independent</p></li>
-<li><p>does not account for other local information sources</p></li>
-</ol>
-<p>The Bootstrap Approach (Efron, 1982)</p>
-<p>Statistical resampling procedure to calculate uncertainty in a calculated statistic from the data itself.</p>
-<ul class="simple">
-<li><p>Does this work?  Prove it to yourself, for uncertainty in the mean solution is standard error:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-\sigma^2_\overline{x} = \frac{\sigma^2_s}{n}
-\]</div>
-<p>Extremely powerful - could calculate uncertainty in any statistic!  e.g. P13, skew etc.</p>
-<ul class="simple">
-<li><p>Would not be possible access general uncertainty in any statistic without bootstrap.</p></li>
-<li><p>Advanced forms account for spatial information and sampling strategy (game theory and Journel’s spatial bootstrap (1993).</p></li>
-</ul>
-<p>Steps:</p>
+</section>
+<section id="bootstrap-steps">
+<h2>Bootstrap Steps<a class="headerlink" href="#bootstrap-steps" title="Permalink to this heading">#</a></h2>
+<p>These are the general steps for bootstrap,</p>
 <ol class="arabic simple">
 <li><p>assemble a sample set, must be representative, reasonable to assume independence between samples</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/bootstrap/bootstrap_data.png" style="display: block; margin: 0 auto; width: 40%;">
+  <figcaption style="text-align: center;"> Compile the data into a histogram.
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
 <li><p>optional: build a cumulative distribution function (CDF)</p>
 <ul class="simple">
 <li><p>may account for declustering weights, tail extrapolation</p></li>
 <li><p>could use analogous data to support</p></li>
 </ul>
 </li>
-<li><p>For <span class="math notranslate nohighlight">\(\ell = 1, \ldots, L\)</span> realizations, do the following:</p>
-<ul class="simple">
-<li><p>For <span class="math notranslate nohighlight">\(i = \alpha, \ldots, n\)</span> data, do the following:</p>
-<ul>
-<li><p>Draw a random sample with replacement from the sample set or Monte Carlo simulate from the CDF (if available).</p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Calculate a realization of the summary statistic of interest from the <span class="math notranslate nohighlight">\(n\)</span> samples, e.g. <span class="math notranslate nohighlight">\(m^\ell\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\ell}\)</span>. Return to 3 for another realization.</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/bootstrap/bootstrap_cdf.png" style="display: block; margin: 0 auto; width: 40%;">
+  <figcaption style="text-align: center;"> Compile the data into a histogram and convert to a CDF.
+</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>For <span class="math notranslate nohighlight">\(i = \alpha, \ldots, n\)</span> data, do the following, draw a random sample with replacement from the sample set or Monte Carlo simulate from the CDF (if available).</p></li>
+<li><p>Calculate a realization of the summary statistic of interest from the <span class="math notranslate nohighlight">\(n\)</span> samples, e.g. <span class="math notranslate nohighlight">\(m^\ell\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\ell}\)</span>.</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/bootstrap/bootstrap_1.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Calculate a realization of the statistic of interest from the data realization.
+</figcaption>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p>For <span class="math notranslate nohighlight">\(\ell = 1, \ldots, L\)</span> realizations, repeat steps 3 and 4 to calculate realizations of the sample statistic.</p></li>
 <li><p>Compile and summarize the <span class="math notranslate nohighlight">\(L\)</span> realizations of the statistic of interest.</p></li>
 </ol>
-<p>This is a very powerful method. Let’s try it out.</p>
+<figure style="text-align: center;">
+  <img src="_static/bootstrap/bootstrap_many.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Pool $L$ realizations of the statistic to calculate the entire distribution of uncertainty.
+</figcaption>
+</figure>
+</section>
+<section id="id2">
+<h2>Bootstrap<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>Here’s some additional comments about the bootstrap approach developed by Efron (1982),</p>
+<ul class="simple">
+<li><p><strong>Does this work?</strong> - it does sound counter-intuitive, right? Uncertainty in the statistic from the data itself! Prove it to yourself, compare your bootstrap uncertainty in the mean with the solution by standard error,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\sigma^2_\overline{x} = \frac{\sigma^2_s}{n}
+\]</div>
+<ul class="simple">
+<li><p><strong>Extremely versatile</strong> - could calculate uncertainty in any statistic! For example, P13, skew, fourth centered moment, Dykstra Parsons coefficient, etc.</p></li>
+<li><p>Would not be possible access general uncertainty in any statistic without bootstrap, but remember to not stop early. Get the realization of the data and finish calculating the realization of the statistic, e.g., for Dykstra-Parsons coefficient, calculate the realization of the <span class="math notranslate nohighlight">\(k_{50}\)</span> and <span class="math notranslate nohighlight">\(k_{16}\)</span> from the same data realization to get uncertainty in Dystra-Parsons coefficient. Do not calculate the uncertainty in the <span class="math notranslate nohighlight">\(k_{50}\)</span> and <span class="math notranslate nohighlight">\(k_{16}\)</span> separately!</p></li>
+<li><p>Advanced forms account for spatial information and sampling strategy, e.g., game theory and Journel’s spatial bootstrap (1993).</p></li>
+</ul>
+<p>This is a very powerful method. Let’s try it out!</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -656,28 +676,28 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>257</th>
-      <td>850</td>
-      <td>919</td>
+      <th>280</th>
+      <td>760</td>
+      <td>809</td>
       <td>1</td>
-      <td>0.120470</td>
-      <td>5.675279</td>
+      <td>0.114570</td>
+      <td>1.858293</td>
     </tr>
     <tr>
-      <th>178</th>
-      <td>740</td>
-      <td>679</td>
-      <td>0</td>
-      <td>0.074349</td>
-      <td>0.093252</td>
+      <th>53</th>
+      <td>410</td>
+      <td>884</td>
+      <td>1</td>
+      <td>0.218254</td>
+      <td>1923.286133</td>
     </tr>
     <tr>
-      <th>143</th>
-      <td>180</td>
-      <td>149</td>
+      <th>26</th>
+      <td>700</td>
+      <td>300</td>
       <td>1</td>
-      <td>0.118724</td>
-      <td>9.178918</td>
+      <td>0.140505</td>
+      <td>20.162171</td>
     </tr>
   </tbody>
 </table>
@@ -727,32 +747,32 @@ document.write(`
     <tr>
       <th>X</th>
       <td>58.0</td>
-      <td>440.000000</td>
-      <td>251.870198</td>
+      <td>509.310345</td>
+      <td>252.592606</td>
       <td>0.000000</td>
-      <td>280.00000</td>
-      <td>400.000000</td>
-      <td>635.000000</td>
-      <td>980.000000</td>
+      <td>340.000000</td>
+      <td>490.000000</td>
+      <td>740.000000</td>
+      <td>990.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>58.0</td>
-      <td>533.206897</td>
-      <td>288.958126</td>
-      <td>69.000000</td>
-      <td>309.00000</td>
-      <td>509.500000</td>
-      <td>806.750000</td>
+      <td>529.482759</td>
+      <td>317.722556</td>
+      <td>29.000000</td>
+      <td>251.500000</td>
+      <td>559.000000</td>
+      <td>831.500000</td>
       <td>999.000000</td>
     </tr>
     <tr>
       <th>Facies</th>
       <td>58.0</td>
-      <td>0.793103</td>
-      <td>0.408619</td>
+      <td>0.827586</td>
+      <td>0.381039</td>
       <td>0.000000</td>
-      <td>1.00000</td>
+      <td>1.000000</td>
       <td>1.000000</td>
       <td>1.000000</td>
       <td>1.000000</td>
@@ -760,24 +780,24 @@ document.write(`
     <tr>
       <th>Porosity</th>
       <td>58.0</td>
-      <td>0.130274</td>
-      <td>0.036311</td>
-      <td>0.074349</td>
-      <td>0.10565</td>
-      <td>0.124840</td>
-      <td>0.142239</td>
-      <td>0.223661</td>
+      <td>0.132561</td>
+      <td>0.037465</td>
+      <td>0.065626</td>
+      <td>0.107029</td>
+      <td>0.122723</td>
+      <td>0.149310</td>
+      <td>0.220049</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>58.0</td>
-      <td>219.268090</td>
-      <td>620.217638</td>
+      <td>175.878087</td>
+      <td>474.094664</td>
       <td>0.093252</td>
-      <td>3.70866</td>
-      <td>10.939223</td>
-      <td>31.754613</td>
-      <td>3178.630458</td>
+      <td>2.847680</td>
+      <td>12.244593</td>
+      <td>45.447224</td>
+      <td>1923.286133</td>
     </tr>
   </tbody>
 </table>
@@ -820,7 +840,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96d8e893eb29999d826f0b21592fc2f3a5289b2b0a54fc9cac7fe4dddc3882f3.png" src="_images/96d8e893eb29999d826f0b21592fc2f3a5289b2b0a54fc9cac7fe4dddc3882f3.png" />
+<img alt="_images/348eb74afaff92a22308090ac161f71df0c982d6550e52532178ee2d61cbbfe3.png" src="_images/348eb74afaff92a22308090ac161f71df0c982d6550e52532178ee2d61cbbfe3.png" />
 </div>
 </div>
 </section>
@@ -853,7 +873,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/00e5fbd7122637ec97dbb78d61c6992b66976da9c4849e4ab229a21f54f7fee3.png" src="_images/00e5fbd7122637ec97dbb78d61c6992b66976da9c4849e4ab229a21f54f7fee3.png" />
+<img alt="_images/26314187fb1ac8fefd51ee9be325296ef3a3886d9ff9afb46e79c9a8cb26f10c.png" src="_images/26314187fb1ac8fefd51ee9be325296ef3a3886d9ff9afb46e79c9a8cb26f10c.png" />
 </div>
 </div>
 <p>Now we proceed with a more complicated, robust work by first quantifying the spatial bias in the samples and assigned data weights to mitigate this bias.</p>
@@ -879,10 +899,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 58 data with:
-   mean of      0.1302739530862069 
-   min and max  0.074348923 and 0.223660709
-   standard dev 0.03599698329572927 
-Declustered mean = 0.122 and declustered standard deviation = 0.031
+   mean of      0.13256080734482759 
+   min and max  0.065626061 and 0.220049213
+   standard dev 0.0371407895900919 
+Declustered mean = 0.12 and declustered standard deviation = 0.035
 </pre></div>
 </div>
 </div>
@@ -916,10 +936,10 @@ Declustered mean = 0.122 and declustered standard deviation = 0.031
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.11995896105172414 and realization 2 = 0.11948674698275863
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.12330750924137932 and realization 2 = 0.11686676901724138
 </pre></div>
 </div>
-<img alt="_images/2a462ad523b70eaa4fb3a4a22b9f317f974478639bb57b894ea9a50836f0ce02.png" src="_images/2a462ad523b70eaa4fb3a4a22b9f317f974478639bb57b894ea9a50836f0ce02.png" />
+<img alt="_images/725494d9031a1abf5a24750158ffec7373ade063550c260287d9838f1e461be0.png" src="_images/725494d9031a1abf5a24750158ffec7373ade063550c260287d9838f1e461be0.png" />
 </div>
 </div>
 <p>Note that the bootstrap distributions vary quite a bit from the original.</p>
@@ -974,14 +994,14 @@ Declustered mean = 0.122 and declustered standard deviation = 0.031
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/510b82a79e0036a699c11649e983b5857645211ad44c1cb36dd3763d929e1e64.png" src="_images/510b82a79e0036a699c11649e983b5857645211ad44c1cb36dd3763d929e1e64.png" />
+<img alt="_images/767f08e1b15dce2d901a6dc2ac797fbb38362d77ad76ca3696f9c8c2c09b52a2.png" src="_images/767f08e1b15dce2d901a6dc2ac797fbb38362d77ad76ca3696f9c8c2c09b52a2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=1000, minmax=(0.10969246777586206, 0.1347478721724138), mean=0.12206520103436208, variance=1.66331355290819e-05, skewness=0.133720993856946, kurtosis=-0.04005154444187786)
-P10: 0.117, P50: 0.122, P90: 0.127
+DescribeResult(nobs=1000, minmax=(0.10495509670689653, 0.13674550013793102), mean=0.12016774528010345, variance=2.1111688080174735e-05, skewness=0.16366802605093209, kurtosis=0.1033974146772243)
+P10: 0.114, P50: 0.12, P90: 0.126
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=1000, minmax=(0.018593405209250725, 0.04106725358557991), mean=0.029994369711022678, variance=1.778886782179925e-05, skewness=-0.05545689487806349, kurtosis=-0.43612377472949015)
-P10: 0.025, P50: 0.03, P90: 0.035
+DescribeResult(nobs=1000, minmax=(0.022925825176479314, 0.04499988396619747), mean=0.034173809820473924, variance=1.4520326388840337e-05, skewness=-0.04718988748784551, kurtosis=-0.3236163769875571)
+P10: 0.029, P50: 0.034, P90: 0.039
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
@@ -1031,14 +1051,14 @@ P10: 0.025, P50: 0.03, P90: 0.035
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b6e845885cdbabf1782f5748d383b1986d74493b00fa3f3befa28559267d7dcd.png" src="_images/b6e845885cdbabf1782f5748d383b1986d74493b00fa3f3befa28559267d7dcd.png" />
+<img alt="_images/b50d22045bc8ae0fe204b6674b578d16879c1e7721b99f5241aff130815c1b50.png" src="_images/b50d22045bc8ae0fe204b6674b578d16879c1e7721b99f5241aff130815c1b50.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=10000, minmax=(0.10785642784482757, 0.1379068269137931), mean=0.12211472908387241, variance=1.627500974389659e-05, skewness=0.21199259594010267, kurtosis=0.05352049219820554)
-P10: 0.117, P50: 0.122, P90: 0.127
+DescribeResult(nobs=10000, minmax=(0.10450991048275861, 0.13760595787931035), mean=0.12024666055818274, variance=2.0150955945068518e-05, skewness=0.097384680219527, kurtosis=-0.027506411776440753)
+P10: 0.115, P50: 0.12, P90: 0.126
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=10000, minmax=(0.01737969918026946, 0.045627036268196156), mean=0.03005227789464562, variance=1.7613047444200755e-05, skewness=-0.041790304295376994, kurtosis=-0.1501944216565958)
-P10: 0.025, P50: 0.03, P90: 0.035
+DescribeResult(nobs=10000, minmax=(0.021524183795066727, 0.050730608841216406), mean=0.03423112340022318, variance=1.4191078952689196e-05, skewness=-0.01820413827455382, kurtosis=-0.11180608515362911)
+P10: 0.029, P50: 0.034, P90: 0.039
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
@@ -1071,9 +1091,7 @@ P10: 0.025, P50: 0.03, P90: 0.035
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1140,7 +1158,9 @@ P10: 0.025, P50: 0.03, P90: 0.035
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap">Bootstrap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bootstrap</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-steps">Bootstrap Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bootstrap</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-another-package">Check Another Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
@@ -1158,7 +1178,6 @@ P10: 0.025, P50: 0.03, P90: 0.035
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

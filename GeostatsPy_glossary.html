@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -485,7 +485,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutually-exclusive-events-probability"><strong>Mutually Exclusive Events</strong> (probability)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram"><strong>Normalized Histogram</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nugget-effect-variogram"><strong>Nugget Effect</strong> (variogram)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-relations-correction-indicator-kriging">Order Relations Correction** (indicator kriging)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-relations-correction-indicator-kriging"><strong>Order Relations Correction</strong> (indicator kriging)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-statistics"><strong>Parameters</strong> (statistics)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-machine-learning"><strong>Parameters</strong> (machine learning)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-declustering"><strong>Polygonal Declustering</strong></a></li>
@@ -495,7 +495,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-feature"><strong>Predictor Feature</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-data"><strong>Primary Data</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf"><strong>Probability Density Function (PDF)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-non-negativity-normalization">Probability Non-negativity, Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-non-negativity-normalization"><strong>Probability Non-negativity, Normalization</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-operators"><strong>Probability Operators</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-perspectives"><strong>Probability Perspectives</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#production-data"><strong>Production Data</strong></a></li>
@@ -552,7 +552,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -564,7 +563,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="geostatistics-glossary">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="geostatistics-glossary">
 <h1>Geostatistics Glossary<a class="headerlink" href="#geostatistics-glossary" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -704,8 +706,8 @@ P(\text{Model} | \text{New Data}) = \frac{P(\text{New Data} | \text{Model}) \cdo
 <li><p><em>simulates the data collection process</em> - the fundamental idea is to simulate the original data collection process. Instead of actually collecting new sample sets, we randomly select from the data to get data realizations</p></li>
 <li><p><em>bootstrap any statistic</em> - this approach is very flexible as we can calculate realizations of any statistics from the data realizations</p></li>
 <li><p><em>computationally cheap</em> - repeat this approach to get realizations of the statistic to build a complete distribution of uncertainty. Use a large number of realizations, <span class="math notranslate nohighlight">\(L\)</span>, for a reliable uncertainty model.</p></li>
-<li><p><em>calculates the entire distribution of uncertainty</em>* for any statistic, you calculate any summary statistic for the uncertainty model, e.g., mean, P10 and P90 of the uncertainty in the mean</p></li>
-<li><p><em>bagging for machine learning</em> is the application fo bootstrap to obtain data realizations to train predictive model realizations to aggregate predictions over ensembles of prediction models to reduce model variance</p></li>
+<li><p><em>calculates the entire distribution of uncertainty</em> - for any statistic, you calculate any summary statistic for the uncertainty model, e.g., mean, P10 and P90 of the uncertainty in the mean</p></li>
+<li><p><em>bagging for machine learning</em> - is the application fo bootstrap to obtain data realizations to train predictive model realizations to aggregate predictions over ensembles of prediction models to reduce model variance</p></li>
 </ul>
 <p>What are the limitations of bootstrap?</p>
 <ul class="simple">
@@ -995,7 +997,7 @@ P(C|B,A) = \frac{P(A,B,C)}{P(B,C)}
 <p>These methods start with a completed realization of the secondary feature, for example,</p>
 <ul class="simple">
 <li><p>first simulate a copper realization and then cosimulate the zinc (primary feature) realization given the copper (secondary feature) realization with the collocated cokriging and the correlation coefficient between Gaussian transformed copper and zinc data</p></li>
-<li><p>first simulate a poorsity realization and then cosimulate the permeability (primary feature) realization given the porosity (secondary feature) realization with cloud transform and the scatter plot of Gaussian transformed porosity and permeability</p></li>
+<li><p>first simulate a porosity realization and then cosimulate the permeability (primary feature) realization given the porosity (secondary feature) realization with cloud transform and the scatter plot of Gaussian transformed porosity and permeability</p></li>
 </ul>
 <p>With cosimulation there is a increasing likelihood that the multiple information sources are contradictory, when this occurs the lower priority information source is preferentially sacrificed</p>
 <p>While the full cokriging approach for cosimulation is available, due to the inference burden of modeling all the variograms and cross variograms, it is typically not used in practice.</p>
@@ -2016,7 +2018,7 @@ p_k = \frac{n_k}{n}, \forall \quad k = 1,\ldots,L
 </ul>
 </section>
 <section id="order-relations-correction-indicator-kriging">
-<h2>Order Relations Correction** (indicator kriging)<a class="headerlink" href="#order-relations-correction-indicator-kriging" title="Permalink to this heading">#</a></h2>
+<h2><strong>Order Relations Correction</strong> (indicator kriging)<a class="headerlink" href="#order-relations-correction-indicator-kriging" title="Permalink to this heading">#</a></h2>
 <p><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html"><span class="doc std std-doc">Indicator Kriging</span></a>: correction applied to local <strong>cumulative distribution function</strong>s estimated by indictor kriging. Due to the separate estimation of each cumulative probability over each threshold the cumulative distribution may not be valid, for example,</p>
 <ul class="simple">
 <li><p>nonmonotonic behavior for continuous features</p></li>
@@ -2158,7 +2160,7 @@ y = \hat{f}(x_1,\ldots,x_m) + \epsilon
 </ol>
 </section>
 <section id="probability-non-negativity-normalization">
-<h2>Probability Non-negativity, Normalization<a class="headerlink" href="#probability-non-negativity-normalization" title="Permalink to this heading">#</a></h2>
+<h2><strong>Probability Non-negativity, Normalization</strong><a class="headerlink" href="#probability-non-negativity-normalization" title="Permalink to this heading">#</a></h2>
 <p><a class="reference internal" href="GeostatsPy_probability.html"><span class="doc std std-doc">Probability Concepts</span></a>: fundamental constraints on probability including,</p>
 <ol class="arabic simple">
 <li><p>Bounded, <span class="math notranslate nohighlight">\(0.0 \le P(A) \le 1.0\)</span></p></li>
@@ -3059,9 +3061,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -3212,7 +3212,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutually-exclusive-events-probability"><strong>Mutually Exclusive Events</strong> (probability)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram"><strong>Normalized Histogram</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nugget-effect-variogram"><strong>Nugget Effect</strong> (variogram)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-relations-correction-indicator-kriging">Order Relations Correction** (indicator kriging)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#order-relations-correction-indicator-kriging"><strong>Order Relations Correction</strong> (indicator kriging)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-statistics"><strong>Parameters</strong> (statistics)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-machine-learning"><strong>Parameters</strong> (machine learning)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-declustering"><strong>Polygonal Declustering</strong></a></li>
@@ -3222,7 +3222,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predictor-feature"><strong>Predictor Feature</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#primary-data"><strong>Primary Data</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf"><strong>Probability Density Function (PDF)</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-non-negativity-normalization">Probability Non-negativity, Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-non-negativity-normalization"><strong>Probability Non-negativity, Normalization</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-operators"><strong>Probability Operators</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-perspectives"><strong>Probability Perspectives</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#production-data"><strong>Production Data</strong></a></li>
@@ -3279,7 +3279,6 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

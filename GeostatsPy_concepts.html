@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -423,7 +423,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -435,7 +434,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="geostatistics-concepts">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="geostatistics-concepts">
 <h1>Geostatistics Concepts<a class="headerlink" href="#geostatistics-concepts" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -539,12 +541,12 @@ document.write(`
 </ul>
 <p>Now, let’s use a Venn diagram to visualize statistics / data analytics and geostatistics / spatial data analytics:</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/Venn_stats.png" style="display: block; margin: 0 auto; width: 40%;">
+  <img src="_static/concepts/Venn_stats.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Venn diagram for statistics and geostatistics.</figcaption>
 </figure>
 <p>Now we can add our previously discussed big data to our Venn diagram resulting in big data analytics and spatial big data analytics.</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/Venn_big_data.png" style="display: block; margin: 0 auto; width: 40%;">
+  <img src="_static/concepts/Venn_big_data.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Venn diagram for statistics and geostatistics with big data added.</figcaption>
 </figure>
 <p>So, geostatistics is actually spatial data analytics, or more generally, let’s call it spatial data science. Now, let’s talk a bit about data science.</p>
@@ -664,7 +666,7 @@ document.write(`
 </div>
 <p>This may sound a bit arrogant, but let me back this up with this timeline:</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/history.png" style="display: block; margin: 0 auto; width: 100%;">
+  <img src="_static/concepts/history.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Timeline of data science development from the perspective of subsurface engineering and geoscience.</figcaption>
 </figure>
 <ol class="arabic simple">
@@ -689,7 +691,7 @@ document.write(`
 <h2>Population and Samples<a class="headerlink" href="#population-and-samples" title="Permalink to this heading">#</a></h2>
 <p>To understand geostatistics we need to first differentiate between the population and the sample, so that we can then understand the context for features, inference, prediction, etc.</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/population.png" style="display: block; margin: 0 auto; width: 50%;">
+  <img src="_static/concepts/population.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">Population and sample (modified Image from https://energyeducation.ca/encyclopedia/Oil_and_gas_reservoir
 ).</figcaption>
 </figure>
@@ -730,7 +732,7 @@ document.write(`
 </ul>
 <p>Consider this carbonate thin section from Bureau of Economic Geology, The University of Texas at Austin from <a class="reference external" href="http://www.beg.utexas.edu/lmod/_IOL-CM07/old-4.29.03/cm07-step05.htm">geoscience course</a> by F. Jerry Lucia.</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/thin_section.png" style="display: block; margin: 0 auto; width: 50%;">
+  <img src="_static/concepts/thin_section.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">Carbonate thin section image (from <a href="http://www.beg.utexas.edu/lmod/_IOL-CM07/old-4.29.03/cm07-step05.htm">this link</a> by F. Jerry Lucia).</figcaption>
 </figure>
 <p>Note, the blue dye indicates the void space in the rock, but is porosity the blue area divided by the total area of the sample?</p>
@@ -743,7 +745,7 @@ document.write(`
 <h2>Predictor and Response Features<a class="headerlink" href="#predictor-and-response-features" title="Permalink to this heading">#</a></h2>
 <p>To understand the difference between predictor and response features let’s look at the most concise, simple expression of a data science model.</p>
 <figure style="text-align: center;">
-  <img src="_static/concepts/ML_equation.png" style="display: block; margin: 0 auto; width: 50%;">
+  <img src="_static/concepts/ML_equation.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;">The fundamental predictive machine learning model that maps from predictor to response features.</figcaption>
 </figure>
 <p>The predictors (or independent) features (or variables) the model inputs, i.e., the <span class="math notranslate nohighlight">\(X_1,\ldots,X_m\)</span>, response (or dependent) feature(s) (or variable(s)) are the model output, <span class="math notranslate nohighlight">\(y\)</span>, and there is an error term, <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p>
@@ -914,7 +916,7 @@ document.write(`
 <li><p>Make the optimum decision accounting for this uncertainty model</p></li>
 </ol>
 <figure style="text-align: center;">
-  <img src="_static/concepts/workflow.png" style="display: block; margin: 0 auto; width: 80%;">
+  <img src="_static/concepts/workflow.png" style="display: block; margin: 0 auto; width: 90%;">
   <figcaption style="text-align: center;">The common geostatistical modeling workflow (modified from Pyrcz and Deutsch, 2014).</figcaption>
 </figure>
 <p>Let’s fill in the one gap here, what is the?</p>
@@ -1012,9 +1014,7 @@ document.write(`
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1103,7 +1103,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

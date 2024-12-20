@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -401,16 +401,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-of-spatial-sampling-bias">Source of Spatial Sampling Bias</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mitigating-sampling-bias">Mitigating Sampling Bias</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-based-declustering">Polygonal-based Declustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging-based-declustering">Kriging-based Declustering</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-based-declustering">Polygonal-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging-based-declustering">Kriging-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -423,7 +417,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -435,7 +428,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="correcting-sampling-bias-with-cell-based-polygonal-and-kriging-based-declustering">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="correcting-sampling-bias-with-cell-based-polygonal-and-kriging-based-declustering">
 <h1>Correcting Sampling Bias with Cell-based, Polygonal, and Kriging-based Declustering<a class="headerlink" href="#correcting-sampling-bias-with-cell-based-polygonal-and-kriging-based-declustering" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -452,9 +448,31 @@ document.write(`
 </ul>
 <section id="geostatistical-sampling-representativity">
 <h2>Geostatistical Sampling Representativity<a class="headerlink" href="#geostatistical-sampling-representativity" title="Permalink to this heading">#</a></h2>
-<p>In general, we should assume that all spatial data that we work with is sampled in a biased manner. Why? …</p>
-<section id="source-of-spatial-sampling-bias">
-<h3>Source of Spatial Sampling Bias<a class="headerlink" href="#source-of-spatial-sampling-bias" title="Permalink to this heading">#</a></h3>
+<p>Here’s a dataset,</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/data_unlabeled.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Spatial dataset within an area of interest in plan view.
+</figcaption>
+</figure>
+<p>Do you have any concerns with this data? What if I add this information?</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/data_areas.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Spatial dataset within an area of interest with areas of high and low values indicated in plan view.
+</figcaption>
+</figure>
+<p>Do you see what is going on? The samples are actually clustered in the high area. It can get much worse,</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/data_areas_worse.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Spatial dataset within an area of interest with areas of high and low values indicated in plan view.
+</figcaption>
+</figure>
+<p>and as we continue to sample in the high region we will increase the bias in the sample statistics,</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/sample_bias.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Sample statistic vs. true population parameter over time as more clustered samples are collected.
+</figcaption>
+</figure>
+<p><strong>Source of Spatial Sampling Bias</strong> - in general, we should assume that all spatial data that we work with is biased.</p>
 <p>Data is collected to answer questions:</p>
 <ul class="simple">
 <li><p>how far does the contaminant plume extend? – sample peripheries</p></li>
@@ -464,6 +482,12 @@ document.write(`
 and to maximize NPV directly:</p></li>
 <li><p>maximize production rates</p></li>
 </ul>
+<p>Here’s an example sample set with the inaccessible population shown for demonstration,</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/sample_population.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Samples and inaccessible population.
+</figcaption>
+</figure>
 <p><strong>Random Sampling</strong>: when every item in the population has a equal chance of being chosen. Selection of every item is independent of every other selection.
 Is random sampling sufficient for subsurface?  Is it available?</p>
 <ul class="simple">
@@ -496,12 +520,8 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 <p>We should not change current sampling methods as they result in best economics, we should address sampling bias in the data.</p>
 <p>Never use raw spatial data without access sampling bias / correcting.</p>
 </section>
-</section>
-<section id="mitigating-sampling-bias">
-<h2>Mitigating Sampling Bias<a class="headerlink" href="#mitigating-sampling-bias" title="Permalink to this heading">#</a></h2>
-<p>Here’s a summary of all the methods:</p>
 <section id="cell-based-declustering">
-<h3>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h3>
+<h2>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h2>
 <p>Place a cell mesh over the data and share the weight over each cell. Data in densely sampled areas or volumes will get less weight while data in sparsely sampled areas or volumes will get more weight.</p>
 <p>Cell-based declustering weights are calculated by first identifying the cell that the data occupies, <span class="math notranslate nohighlight">\(\ell\)</span>, then,</p>
 <div class="math notranslate nohighlight">
@@ -509,6 +529,11 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(n_{\ell}\)</span> is the number of data in the <span class="math notranslate nohighlight">\(\ell\)</span> cell standardized by the ratio of <span class="math notranslate nohighlight">\(n\)</span> is the total number of data divided by <span class="math notranslate nohighlight">\(L_o\)</span> number of cells with data. As a result the sum of all weights is <span class="math notranslate nohighlight">\(n\)</span> and nominal weight is 1.0.</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/cell_decluster.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Cell declustering with cell mesh (dark grey lines) and data weights calculated for some cells.
+</figcaption>
+</figure>
 <p>Additional considerations:</p>
 <ul class="simple">
 <li><p>influence of cell mesh origin is removed by averaging the data weights over multiple random cell mesh origins</p></li>
@@ -517,8 +542,17 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 <p>In this demonstration we will take a biased spatial sample data set and apply declustering using <strong>GeostatsPy</strong> functionality.</p>
 </section>
 <section id="polygonal-based-declustering">
-<h3>Polygonal-based Declustering<a class="headerlink" href="#polygonal-based-declustering" title="Permalink to this heading">#</a></h3>
-<p>Assign Voronoi polygons to the data within the area or volume of interest. Then apply data weights proportional to the area or volume of the associated Voronoi polygon and standardized by the total area or volume.</p>
+<h2>Polygonal-based Declustering<a class="headerlink" href="#polygonal-based-declustering" title="Permalink to this heading">#</a></h2>
+<p>Here’s the steps for polygonal-based desclutering,</p>
+<ol class="arabic simple">
+<li><p>Assign Voronoi polygons to the data within the area or volume of interest.</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/decluster/polygonal.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Spatial dataset with Voronoi polygons.
+</figcaption>
+</figure>
+<p>Then apply data weights proportional to the area or volume of the associated Voronoi polygon and standardized by the total area or volume.</p>
 <div class="math notranslate nohighlight">
 \[
 w(\bf{𝐮}_j) = \frac{a_j}{A} \cdot n
@@ -529,7 +563,7 @@ w(\bf{𝐮}_j) = \frac{a_j}{A} \cdot n
 </ul>
 </section>
 <section id="kriging-based-declustering">
-<h3>Kriging-based Declustering<a class="headerlink" href="#kriging-based-declustering" title="Permalink to this heading">#</a></h3>
+<h2>Kriging-based Declustering<a class="headerlink" href="#kriging-based-declustering" title="Permalink to this heading">#</a></h2>
 <p>Assign a grid over the area or volume of interest and perform kriging. While performing kriging, sum the weight assigned to each data over all the grid cells. Assign declustering weights as the sum of kriging weights standardized by the total number of data divided by the total kriging weight over all data and grid cells.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -540,7 +574,6 @@ w(\bf{𝐮}_j) = \sum_{i_y = 1}^{n_y} \sum_{i_x = 1}^{n_x} \lambda_{j,ix,iy} \cd
 <li><p>this method is sensitive to the grid extends and integrates the concept of spatial continuity through the variogram.</p></li>
 <li><p>high resolution grids will increase accuracy but takes longer to calculate</p></li>
 </ul>
-</section>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -570,7 +603,6 @@ w(\bf{𝐮}_j) = \sum_{i_y = 1}^{n_y} \sum_{i_x = 1}^{n_x} \lambda_{j,ix,iy} \cd
 <span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
-<span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
@@ -1245,7 +1277,9 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Porosity naive mean is 0.135.
-Porosity declustered mean is 0.125.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Porosity declustered mean is 0.125.
 Correction of 0.0742.
 
 Summary statistics of the declustering weights:
@@ -1498,9 +1532,7 @@ DescribeResult(nobs=289, minmax=(0.012138, 4.989585), mean=1.0, variance=0.44723
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1567,16 +1599,10 @@ DescribeResult(nobs=289, minmax=(0.012138, 4.989585), mean=1.0, variance=0.44723
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-of-spatial-sampling-bias">Source of Spatial Sampling Bias</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mitigating-sampling-bias">Mitigating Sampling Bias</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-based-declustering">Polygonal-based Declustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging-based-declustering">Kriging-based Declustering</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-based-declustering">Polygonal-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging-based-declustering">Kriging-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -1589,7 +1615,6 @@ DescribeResult(nobs=289, minmax=(0.012138, 4.989585), mean=1.0, variance=0.44723
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

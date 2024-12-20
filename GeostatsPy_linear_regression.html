@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -424,7 +424,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -436,7 +435,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="linear-regression">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="linear-regression">
 <h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -468,8 +470,8 @@ document.write(`
 <h2>Linear Regression<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Linear regression for prediction, let’s start by looking at a linear model fit to a set of data.</p>
 <figure style="text-align: center;">
-  <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 80%;">
-  <figcaption style="text-align: center;">Example linear regression model to predict porosity from rock density.</figcaption>
+  <img src="_static/linear/linear_example.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">Example linear regression model.</figcaption>
 </figure>
 <p>Let’s start by defining some terms,</p>
 <ul class="simple">
@@ -487,6 +489,11 @@ document.write(`
 \[
 y = \sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0
 \]</div>
+<p>Here’s the visualization of the linear model parameters,</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_model.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">The linear model parameters.</figcaption>
+</figure>
 <p><strong>Least Squares</strong></p>
 <p>The analytical solution for the model parameters, <span class="math notranslate nohighlight">\(b_1,\ldots,b_m,b_0\)</span>, is available for the L2 norm loss function, the errors are summed and squared known a least squares.</p>
 <ul class="simple">
@@ -497,6 +504,11 @@ y = \sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0
 RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_0) \right)^2
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(y_i\)</span> is the actual response feature values and <span class="math notranslate nohighlight">\(\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha} + b_0\)</span> are the model predictions, over the <span class="math notranslate nohighlight">\(\alpha = 1,\ldots,n\)</span> training data.</p>
+<p>Here’s a visualization of the L2 norm loss function, MSE,</p>
+<figure style="text-align: center;">
+  <img src="_static/linear/linear_MSE.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;">The linear model loss function, mean square error.</figcaption>
+</figure>
 <ul class="simple">
 <li><p>this may be simplified as the sum of square error over the training data,</p></li>
 </ul>
@@ -516,7 +528,7 @@ RSS = \sum_{i=1}^n \left(y_i - (\sum_{\alpha = 1}^m b_{\alpha} x_{\alpha,i} + b_
 </section>
 <section id="linear-regression-training">
 <h2>Linear Regression Training<a class="headerlink" href="#linear-regression-training" title="Permalink to this heading">#</a></h2>
-<p>For the least squares (L2) norm the linear regression model parameters can be trained with training data with an analytical solution. Let’s derive it for linear regresion analytical solution for the case of 1 predictor feature.</p>
+<p>For the least squares (L2) norm the linear regression model parameters can be trained with training data with an analytical solution. Let’s derive it for linear regression analytical solution for the case of 1 predictor feature.</p>
 <p>To calculated the slope coefficient, <span class="math notranslate nohighlight">\(b_1\)</span>, we start with the loss function,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -583,7 +595,7 @@ b_1 = \frac{\sum_{i=1}^n \left( x_i - \overline{x} \right) \cdot \left( y_i - \o
 \[
 RSS = \sum_{i=1}^n \left(y_i - \left( b_{1} x_{i} + b_0 \right) \right)^2 = \sum_{i=1}^n \left(y_i - b_{1} x_{i} - b_0 \right)^2
 \]</div>
-<p>and this time we take the partial derrivative with respect to <span class="math notranslate nohighlight">\(b_0\)</span>,</p>
+<p>and this time we take the partial derivative with respect to <span class="math notranslate nohighlight">\(b_0\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{\partial}{\partial b_0} \sum_{i=1}^n \left(y_i - b_{1} x_{i} - b_0 \right)^2 = \sum_{i=1}^n -2 \left(y_i - b_0 -b_1 x_i \right)
@@ -1384,9 +1396,7 @@ and the t-statistic is -8.4
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1476,7 +1486,6 @@ and the t-statistic is -8.4
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

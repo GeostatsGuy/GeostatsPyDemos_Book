@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -415,7 +415,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -427,12 +426,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="volume-variance-relations-for-scaling-statistics">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="volume-variance-relations-for-scaling-statistics">
 <h1>Volume Variance Relations for Scaling Statistics<a class="headerlink" href="#volume-variance-relations-for-scaling-statistics" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
-<p>Cite as: Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the GeostatsPyDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035">https://zenodo.org/doi/10.5281/zenodo.12667035</a></p>
+<p><a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035"><img alt="DOI" src="https://zenodo.org/badge/777871341.svg" /></a></p>
+</div>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
 <p>This chapter is a tutorial for / demonstration of <strong>Volume Variance Relations</strong>. It is critical to remember:</p>
@@ -622,31 +633,31 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.091106</td>
+      <td>0.046769</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.047077</td>
+      <td>0.055110</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.062781</td>
+      <td>0.077494</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.083388</td>
+      <td>0.057385</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.049508</td>
+      <td>0.071029</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
@@ -667,7 +678,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <span class="n">pormin</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mf">0.22</span>                                  <span class="c1"># set feature min and max for colorbars</span>
 <span class="n">permmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">permmax</span> <span class="o">=</span> <span class="mi">70</span>
 <span class="n">vmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">vmax</span> <span class="o">=</span> <span class="mf">0.2</span>                                        <span class="c1"># property min and max</span>
-<span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">999</span>                                       <span class="c1"># trimming limi</span>
+<span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">999</span>                                       <span class="c1"># trimming limits</span>
 <span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">10</span>                                         <span class="c1"># set minimum and maximum number of data</span>
 </pre></div>
 </div>
@@ -747,7 +758,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/79ec4a306102eaca41b7fa174a877dc2a454a3dca17dd5e71d0756a69507a99c.png" src="_images/79ec4a306102eaca41b7fa174a877dc2a454a3dca17dd5e71d0756a69507a99c.png" />
+<img alt="_images/70cffd9b45f157656777d4b532783f6c6ecf7925430afb41e71340089f224abf.png" src="_images/70cffd9b45f157656777d4b532783f6c6ecf7925430afb41e71340089f224abf.png" />
 </div>
 </div>
 </section>
@@ -793,7 +804,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/524685d99b633c674920aa8f471316697151cc0bebd80f98ca43f306f19292da.png" src="_images/524685d99b633c674920aa8f471316697151cc0bebd80f98ca43f306f19292da.png" />
+<img alt="_images/be005497c06a0348b185152e491749fd6d1f726ac8429790436a55f2ad8bd4d3.png" src="_images/be005497c06a0348b185152e491749fd6d1f726ac8429790436a55f2ad8bd4d3.png" />
 </div>
 </div>
 <p>and now the model with shorter range, isotropic spatial continuity.</p>
@@ -836,7 +847,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cfacbfc8ae7ef51ab8c2ed5e988e7715132d1ae0318dbfa7211d6b19eb0e844f.png" src="_images/cfacbfc8ae7ef51ab8c2ed5e988e7715132d1ae0318dbfa7211d6b19eb0e844f.png" />
+<img alt="_images/266342b59c85a235acaa94e719037aad01ee3164ec49902e214d705c2b053dc0.png" src="_images/266342b59c85a235acaa94e719037aad01ee3164ec49902e214d705c2b053dc0.png" />
 </div>
 </div>
 </section>
@@ -884,7 +895,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/059a8adf2bbc0313e5b3480cd5af67a4c2f0c518c673e4f1247a44bd06755a4e.png" src="_images/059a8adf2bbc0313e5b3480cd5af67a4c2f0c518c673e4f1247a44bd06755a4e.png" />
+<img alt="_images/7f569864774d676635ef45df9ef9c50459f9602643d3f90968023956c63bccee.png" src="_images/7f569864774d676635ef45df9ef9c50459f9602643d3f90968023956c63bccee.png" />
 </div>
 </div>
 </section>
@@ -913,9 +924,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -996,7 +1005,6 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

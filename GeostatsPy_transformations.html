@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -414,11 +414,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-score-transform-gaussian-anamorphosis">Normal Score Transform / Gaussian Anamorphosis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-distribution-transformation">General Distribution Transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transformation-to-a-parametric-distribution">Distribution Transformation to a Parametric Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transform-to-a-non-parametric-distribution">Distribution Transform to a Non-Parametric Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -430,7 +432,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="distribution-transformations">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="distribution-transformations">
 <h1>Distribution Transformations<a class="headerlink" href="#distribution-transformations" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -449,31 +454,13 @@ document.write(`
 <li><p>a specific distribution assumption is required</p></li>
 <li><p>correct for outliers</p></li>
 </ul>
-<p>How do we perform distribution transformations?:</p>
-<p>There are a variety of transformations. In general, we are transforming the values from the cumulative distribution function (CDF), <span class="math notranslate nohighlight">\(F_{X}\)</span>, to a new CDF , <span class="math notranslate nohighlight">\(G_{Y}\)</span>. This can be generalized with the quantile - quantile transformation applied to all the sample data:</p>
-<ul class="simple">
-<li><p>The forward transform:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-Y = G_{Y}^{-1}(F_{X}(X))
-\]</div>
-<ul class="simple">
-<li><p>The reverse transform:</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-X = F_{X}^{-1}(G_{Y}(Y))
-\]</div>
-<p>This may be applied to any data, nonparametric or samples from a parametric distribution. We just need to be able to map from one distribution to another through percentiles, so it is a:</p>
-<ul class="simple">
-<li><p>Rank preserving transform</p></li>
-</ul>
-<p>We will cover three examples including:</p>
+<p>We will cover three methods:</p>
 <ol class="arabic simple">
-<li><p><strong>Affine Correction</strong> - rescaling the distribution mean and variance without shape change</p></li>
+<li><p><strong>Affine correction</strong> - rescaling the distribution mean and variance without shape change</p></li>
 <li><p><strong>Normal score transform</strong> - transformation to a Gaussian distribution with shape change</p></li>
+<li><p><strong>General distribution transformation</strong> - transformation to any parametric or nonparametric target distribution with shape change</p></li>
 </ol>
+<p>I’ll provide some for information on each in the workflow flow.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -508,6 +495,7 @@ X = F_{X}^{-1}(G_{Y}(Y))
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>                                       <span class="c1"># summary statistics</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>                                  <span class="c1"># Gaussian parametric distribution</span>
 <span class="kn">from</span> <span class="nn">statsmodels.stats.weightstats</span> <span class="kn">import</span> <span class="n">DescrStatsW</span>         <span class="c1"># any weighted statistics</span>
 <span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># trig etc.</span>
 <span class="kn">import</span> <span class="nn">scipy.signal</span> <span class="k">as</span> <span class="nn">signal</span>                                 <span class="c1"># kernel for moving window calculation</span>
@@ -517,6 +505,7 @@ X = F_{X}^{-1}(G_{Y}(Y))
     <span class="kn">import</span> <span class="nn">warnings</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># color map</span>
+<span class="n">seed</span> <span class="o">=</span> <span class="mi">13</span>                                                     <span class="c1"># random number seed</span>
 </pre></div>
 </div>
 </div>
@@ -1063,7 +1052,31 @@ y = \frac{\sigma_y}{\sigma_x}(x - \overline{x}) + \overline{y}
 </section>
 <section id="normal-score-transform-gaussian-anamorphosis">
 <h2>Normal Score Transform / Gaussian Anamorphosis<a class="headerlink" href="#normal-score-transform-gaussian-anamorphosis" title="Permalink to this heading">#</a></h2>
-<p>We showed that the correction of the mean to 0.0 and standard deviation to 1.0 with affine correction does not change the shape; therefore, does not make a Gaussian distributed property. For many statistic / geostatistical methods the assumption of Gaussian distributed is required. We need normal score transforms in many subsurface modeling workflows.</p>
+<p>We showed that the correction of the mean to 0.0 and standard deviation to 1.0 with affine correction does not change the shape; therefore, does not make a Gaussian distributed property.</p>
+<ul class="simple">
+<li><p>for many statistic or geostatistical methods the assumption of Gaussian distributed is required. We need normal score transforms in many subsurface modeling workflows</p></li>
+</ul>
+<p>Gaussian anamorphosis is applied through the cumulative distribution functions (CDF)s, <span class="math notranslate nohighlight">\(F_{X}\)</span>, to a new CDF , <span class="math notranslate nohighlight">\(G_{Y}\)</span>. This can be generalized with the quantile - quantile transformation applied to all the sample data:</p>
+<ul class="simple">
+<li><p>The forward transform:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+Y = G_{Y}^{-1}(F_{X}(X))
+\]</div>
+<ul class="simple">
+<li><p>The reverse transform:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+X = F_{X}^{-1}(G_{Y}(Y))
+\]</div>
+<p>Here’s a visualization of the Gaussian transformation,</p>
+<figure style="text-align: center;">
+  <img src="_static/transformations/norm_score.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Gaussian anamorphosis to transform the original distribution to standard normal, Gaussian shape with a mean of 0.0 and variance of 1.0.
+</figcaption>
+</figure>
 <p>Let’s check out the GSLIB NSCORE program translated to Python in GeostatsPy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1277,6 +1290,164 @@ y = \frac{\sigma_y}{\sigma_x}(x - \overline{x}) + \overline{y}
 </div></div></div>
 </div>
 </section>
+<section id="general-distribution-transformation">
+<h2>General Distribution Transformation<a class="headerlink" href="#general-distribution-transformation" title="Permalink to this heading">#</a></h2>
+<p>The distribution transformation may be applied to transform any distribution, <span class="math notranslate nohighlight">\(F_x(x)\)</span> to any other distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>.</p>
+<ul class="simple">
+<li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be nonparametric, i.e., a set of values. In this case the data is converted to a CDF and some form of interpolation is applied to find the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span></p></li>
+<li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be any parametric distribution, and the calculation of the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span> is available through an analytical solution</p></li>
+</ul>
+<p>I have built out an interactive Python dashboard <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Distribution_Transformations.ipynb">Distribution Transformation</a> with a transformation to a parametric distribution,</p>
+<figure style="text-align: center;">
+  <img src="_static/transformations/interactive_transforms_par.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python dashboard for distribution transformation to a parametric target distribution.
+</figcaption>
+</figure>
+<p>and a transformation to a nonparametric distribution,</p>
+<figure style="text-align: center;">
+  <img src="_static/transformations/interactive_transforms_nonpar.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python dashboard for distribution transformation to a nonparametric target distribution.
+</figcaption>
+</figure>
+</section>
+<section id="distribution-transformation-to-a-parametric-distribution">
+<h2>Distribution Transformation to a Parametric Distribution<a class="headerlink" href="#distribution-transformation-to-a-parametric-distribution" title="Permalink to this heading">#</a></h2>
+<p>We can transform our data feature distribution to any parametric distribution with this workflow.</p>
+<ol class="arabic simple">
+<li><p>Calculate the cumulative probability value of each of our data values, <span class="math notranslate nohighlight">\(p_{\alpha} = F_x(x_\alpha)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
+<li><p>Apply the inverse of the target parametric cumulative distribution function (CDF) to calculate the transformed values. <span class="math notranslate nohighlight">\(y_{\alpha} = G_y^{-1}\left(F_x(x_\alpha)\right)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
+</ol>
+<p>While assigning the cumulative probabilities you must make an assumption about the distribution tails (minimum and maximum values).</p>
+<ul class="simple">
+<li><p><strong>known tail</strong> - the minimum or maximum value in the dataset is the minimum or maximum value of the distribution</p></li>
+<li><p><strong>unknown tail</strong> - the minimum or maximum value of the distribution is known</p></li>
+</ul>
+<p>For each possible case we calculate cumulative probability of the sorted in ascending order data as,</p>
+<ol class="arabic simple">
+<li><p>known lower and upper tail,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+F_i = \frac{i-1}{n-1}
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>unknown lower and known upper tail,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+F_i = \frac{i}{n}
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>known lower and unknown upper tail,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+F_i = \frac{i-1}{n}
+\]</div>
+<ol class="arabic simple" start="4">
+<li><p>unknown upper and lower tail,</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+F_i = \frac{i}{n+1}
+\]</div>
+<p>this is more important with sparsely sampled datasets. When <span class="math notranslate nohighlight">\(n\)</span> is large this is not as important,</p>
+<ul class="simple">
+<li><p>the range of cumulative probability at the tails is very small!</p></li>
+<li><p>the minimum and maximum of the feature may be well-known</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>                 <span class="c1"># make a deepcopy of the feature from the DataFrame</span>
+
+<span class="n">por</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">por</span><span class="p">)</span>                                            <span class="c1"># sort the data in ascending order</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">por</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>                                              <span class="c1"># get the number of data samples</span>
+
+<span class="n">cprob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">cprob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span> <span class="o">/</span> <span class="n">n</span>                                      <span class="c1"># known upper tail</span>
+    <span class="c1"># cprob[i] = (index - 1)/n                                # known lower tail</span>
+    <span class="c1"># cprob[i] = (index - 1)/(n - 1)                          # known upper and lower tails</span>
+    <span class="c1"># cprob[i] = index/(n+1)                                  # unknown tails  </span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">cprob</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">por</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot piecewise linear interpolation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">por</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot the CDF points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.25</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Probability&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Non-parametric Porosity Cumulative Distribution Function&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot piecewise linear interpolation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot the CDF points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Probability&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;After Distribution Transformation to Gaussian&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f5af7ee7a1535242d2bccd6a1c03ce69d2cd1a5c67fbf22d3ff33315e1d32e72.png" src="_images/f5af7ee7a1535242d2bccd6a1c03ce69d2cd1a5c67fbf22d3ff33315e1d32e72.png" />
+</div>
+</div>
+</section>
+<section id="distribution-transform-to-a-non-parametric-distribution">
+<h2>Distribution Transform to a Non-Parametric Distribution<a class="headerlink" href="#distribution-transform-to-a-non-parametric-distribution" title="Permalink to this heading">#</a></h2>
+<p>We can apply the mapping through cumulative probabilities to transform from any distribution to any other distribution.</p>
+<ul class="simple">
+<li><p>let’s make a new data set by randomly sampling from the previous one and adding error</p></li>
+</ul>
+<p>Then we can demonstrate transforming this dataset to match the original distribution</p>
+<ul class="simple">
+<li><p>this is mimicking the situation where we transform a dataset to match the distribution of a better sampled analog distribution</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_sample</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">df_sample</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n_sample</span><span class="p">,</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">seed</span><span class="p">)</span>
+                      
+<span class="n">df_sample</span> <span class="o">=</span> <span class="n">df_sample</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># make a deepcopy of the feature from the DataFrame</span>
+
+<span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">n_sample</span><span class="p">)</span>
+
+<span class="n">df_sample</span> <span class="o">=</span> <span class="n">df_sample</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;Porosity&#39;</span><span class="p">)</span>                <span class="c1"># sort the DataFrame</span>
+<span class="n">por_sample</span> <span class="o">=</span> <span class="n">df_sample</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">cprob_sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_sample</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n_sample</span><span class="p">):</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">cprob_sample</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">index</span> <span class="o">/</span> <span class="n">n_sample</span>       <span class="c1"># known upper tail</span>
+    <span class="c1"># cprob[i] = (index - 1)/n               # known lower tail</span>
+    <span class="c1"># cprob[i] = (index - 1)/(n - 1)         # known upper and lower tails</span>
+    <span class="c1"># cprob[i] = index/(n+1)                 # unknown tails  </span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">por_sample</span><span class="p">,</span><span class="n">cprob_sample</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot piecewise linear interpolation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">por_sample</span><span class="p">,</span><span class="n">cprob_sample</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot the CDF points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.25</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Probability&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sparse Sample with Noise Cumulative Distribution Function&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">por</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot piecewise linear interpolation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">por</span><span class="p">,</span><span class="n">cprob</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">)</span> <span class="c1"># plot the CDF points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.25</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Porosity (fraction)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative Probability&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Non-parametric Porosity Cumulative Distribution Function&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0803b92c1ff13753bc3a89bb0c0f19fa89a127e7154a515e94938a27e9e7184c.png" src="_images/0803b92c1ff13753bc3a89bb0c0f19fa89a127e7154a515e94938a27e9e7184c.png" />
+</div>
+</div>
+</section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic demonstration of distribution transformations with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
@@ -1304,9 +1475,7 @@ y = \frac{\sigma_y}{\sigma_x}(x - \overline{x}) + \overline{y}
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1386,11 +1555,13 @@ y = \frac{\sigma_y}{\sigma_x}(x - \overline{x}) + \overline{y}
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-score-transform-gaussian-anamorphosis">Normal Score Transform / Gaussian Anamorphosis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-distribution-transformation">General Distribution Transformation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transformation-to-a-parametric-distribution">Distribution Transformation to a Parametric Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transform-to-a-non-parametric-distribution">Distribution Transform to a Non-Parametric Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
   </nav></div>
 

@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -415,7 +415,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -427,12 +426,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="inverse-distance-estimation">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="inverse-distance-estimation">
 <h1>Inverse Distance Estimation<a class="headerlink" href="#inverse-distance-estimation" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
-<p>Cite as: Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the GeostatsPyDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035">https://zenodo.org/doi/10.5281/zenodo.12667035</a></p>
+<p><a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035"><img alt="DOI" src="https://zenodo.org/badge/777871341.svg" /></a></p>
+</div>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
 <p>This chapter is a tutorial for / demonstration of  <strong>Inverse Distance Estimation</strong>, a very simple, intuitive and widely applied spatial estimation method.</p>
@@ -466,7 +477,7 @@ y^{*}(\bf{u}) = z^{*}(\bf{u}) - \overline{z}(\bf{u})
 \[
 y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 \]</div>
-<p>while satisfying the unbaisedness constraint.</p>
+<p>while satisfying the unbiasedness constraint.</p>
 </section>
 <section id="inverse-distance-spatial-estimation">
 <h2>Inverse Distance Spatial Estimation<a class="headerlink" href="#inverse-distance-spatial-estimation" title="Permalink to this heading">#</a></h2>
@@ -481,7 +492,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 <li><p>larger <span class="math notranslate nohighlight">\(p\)</span> will increase sensitivity to distance resulting a more specific, rougher model, with higher variance</p></li>
 <li><p>smaller <span class="math notranslate nohighlight">\(p\)</span> will decrease sensitivity to distance resulting in a more general, smoother model, with lower variance.</p></li>
 </ul>
-<p>Note, this is weighting based on closeness to the unknown location, there is not integration of redudancy between data nor the variogram model.</p>
+<p>Note, this is weighting based on closeness to the unknown location, there is not integration of redundancy between data nor the variogram model.</p>
 <p>In this workflow we will start with some very simple, 3 data only, cases to observe inverse distance and then build a map with more data.</p>
 </section>
 <section id="load-the-required-libraries">
@@ -489,7 +500,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilies, visualization and wrapper</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>                              <span class="c1"># GSLIB utilities, visualization and wrapper</span>
 <span class="kn">import</span> <span class="nn">geostatspy.geostats</span> <span class="k">as</span> <span class="nn">geostats</span>                        <span class="c1"># GSLIB methods convert to Python      </span>
 <span class="kn">import</span> <span class="nn">geostatspy</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;GeostatsPy version: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">geostatspy</span><span class="o">.</span><span class="n">__version__</span><span class="p">))</span>
@@ -507,12 +518,12 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>                                                     <span class="c1"># set working directory, run executables</span>
 
-<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># supress the status bar</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>                                         <span class="c1"># suppress the status bar</span>
 <span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partialmethod</span>
 <span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="n">partialmethod</span><span class="p">(</span><span class="n">tqdm</span><span class="o">.</span><span class="fm">__init__</span><span class="p">,</span> <span class="n">disable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">ignore_warnings</span> <span class="o">=</span> <span class="kc">True</span>                                        <span class="c1"># ignore warnings?</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrys for gridded data</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
@@ -670,7 +681,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 <span class="n">invdist_map_power2</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">invdist</span><span class="p">(</span><span class="n">dftest</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="n">power</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">invdist_map_power3</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">invdist</span><span class="p">(</span><span class="n">dftest</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span><span class="p">,</span><span class="n">power</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 
-<span class="c1"># plot the reuslting estimated maps</span>
+<span class="c1"># plot the resulting estimated maps</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
 <span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">invdist_map_power1</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">,</span><span class="n">dftest</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span><span class="s1">&#39;Power = 1&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
 
@@ -706,7 +717,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 <span class="n">invdist_map_radius2</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">invdist</span><span class="p">(</span><span class="n">dftest</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span><span class="n">power</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">invdist_map_radius3</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">invdist</span><span class="p">(</span><span class="n">dftest</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">xmn</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ymn</span><span class="p">,</span><span class="n">ysiz</span><span class="p">,</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="p">,</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span><span class="n">power</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
-<span class="c1"># plot the reuslting estimated maps</span>
+<span class="c1"># plot the resulting estimated maps</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>
 <span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">invdist_map_radius1</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">,</span><span class="n">dftest</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Var&#39;</span><span class="p">,</span><span class="s1">&#39;Radius = 100&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Feature&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
 
@@ -798,9 +809,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -881,7 +890,6 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 
