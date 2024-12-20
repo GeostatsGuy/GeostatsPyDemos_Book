@@ -1,3 +1,7 @@
+<figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+
 ### Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy 
 
 Michael Pyrcz, Professor, The University of Texas at Austin 
@@ -22,9 +26,9 @@ For a deeper dive into the theory and practice of geostatistics follow the links
 
 All the original geostatistics Python Jupyter notebook workflows are available in my [GeostatsPyDemos](https://github.com/GeostatsGuy/GeostatsPyDemos) GitHub repository. 
 
-<h1 align="center"<p>
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/geostatspy_logo.png?raw=true" width="200" height="200" />
-</p></h1>
+<figure style="text-align: center;">
+  <img src="_static/intro/geostatspy_logo.png" style="display: block; margin: 0 auto; width: 80%;">
+</figure>
 
 <h1 align="center">GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1)</h1>
 

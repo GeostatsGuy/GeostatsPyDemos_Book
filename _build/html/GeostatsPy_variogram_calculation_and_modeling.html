@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Variogram Calculation and Modeling &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
+    <title>Variogram Modeling &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
   
   
   
@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -391,7 +391,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Variogram Calculation and Modeling</h1>
+    <h1>Variogram Modeling</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,18 +401,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-semivariogram">The Semivariogram</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">Observation #3 - Need to plot the sill to know the degree of correlation.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-directions-of-spatial-continuity">Detecting Directions of Spatial Continuity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-modeling">Variogram Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-interpretation">Variogram Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reasons-for-variogram-modeling">Reasons for Variogram Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Variogram Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-positive-definite-structures">Variogram Positive Definite Structures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -427,7 +419,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -439,15 +430,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="variogram-calculation-and-modeling">
-<h1>Variogram Calculation and Modeling<a class="headerlink" href="#variogram-calculation-and-modeling" title="Permalink to this heading">#</a></h1>
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="variogram-modeling">
+<h1>Variogram Modeling<a class="headerlink" href="#variogram-modeling" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
 <p>Cite as: Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
-<p>This chapter is a tutorial for / demonstration of <strong>Calculating and Modeling Variograms</strong> with GeostatsPy.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Variogram Modeling</strong> with GeostatsPy.</p>
 <p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://youtu.be/jVRLGOsnYuw?si=RD5exyGl_I_LAl4H">Variogram Introduction</a></p></li>
@@ -457,96 +451,101 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/-Bi63Y3u6TU?si=-kwvFLicNTbg85xL">Variogram Modeling</a></p></li>
 </ul>
 <p>For your convenience here’s a summary of salient points.</p>
-<section id="spatial-continuity">
-<h2>Spatial Continuity<a class="headerlink" href="#spatial-continuity" title="Permalink to this heading">#</a></h2>
-<p><strong>Spatial Continuity</strong> is the correlation between values over distance.</p>
+<section id="variogram-interpretation">
+<h2>Variogram Interpretation<a class="headerlink" href="#variogram-interpretation" title="Permalink to this heading">#</a></h2>
+<p>Before we model our variograms, let’s make sure that we understand common observed variogram interpretation cues.</p>
+<p><strong>Geometric Anisotropy</strong> - the same structures are observed, but the range depends on the direction</p>
+<p>Commonly, the vertical range of correlation is much less than the horizontal range due to the formation of layering due to sedimentary processes.</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_model/geometric_anisotropy.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Geometric anisotropy, exhaustive dataset (above) and experimental variograms (below).
+</figcaption>
+</figure>
 <ul class="simple">
-<li><p>No spatial continuity – no correlation between values over distance, random values at each location in space regardless of separation distance.</p></li>
-<li><p>Homogenous phenomenon have perfect spatial continuity, since all values as the same (or very similar) they are correlated.</p></li>
+<li><p>the ratio of the horizontal:vertical range is commonly known as the horizontal to vertical anisotropy ratio</p></li>
+<li><p>geometric anisotropy is common for the horizontal directions also</p></li>
 </ul>
-<p>We need a statistic to quantify spatial continuity! A convenient statistic is the semivariogram.</p>
-</section>
-<section id="the-semivariogram">
-<h2>The Semivariogram<a class="headerlink" href="#the-semivariogram" title="Permalink to this heading">#</a></h2>
-<p>Function of dissimilarity over distance.</p>
+<p>We assume geometric anisotropy to model 2D and 3D variogram from experimental variograms calculated in primary directions,</p>
 <ul class="simple">
-<li><p>The expected (average) squared difference between values separated by a lag distance vector (distance and direction), <span class="math notranslate nohighlight">\(h\)</span>:</p></li>
+<li><p>this model provides a valid interpolation of the variogram between the primary directions.</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[
-\gamma(\bf{h}) = \frac{1}{2 N(\bf{h})} \sum^{N(\bf{h})}_{\alpha=1} (z(\bf{u}_\alpha) - z(\bf{u}_\alpha + \bf{h}))^2  
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha)\)</span> and <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha + \bf{h})\)</span> are the spatial sample values at tail and head locations of the lag vector respectively.</p>
+<p>This is assumed to build nested variogram models with structures that:</p>
 <ul class="simple">
-<li><p>Calculated over a suite of lag distances to obtain a continuous function.</p></li>
-<li><p>the <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> term converts a variogram into a semivariogram, but in practice the term variogram is used instead of semivariogram.</p></li>
-<li><p>We prefer the semivariogram because it relates directly to the covariance function, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span> and univariate variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>:</p></li>
+<li><p>describe components of the variance</p></li>
+<li><p>act over all directions.</p></li>
 </ul>
-<div class="math notranslate nohighlight">
-\[
-C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
-\]</div>
-<p>Note the correlogram is related to the covariance function as:</p>
-<div class="math notranslate nohighlight">
-\[
-\rho_x(\bf{h}) = \frac{C_x(\bf{h})}{\sigma^2_x}
-\]</div>
-<p>The correlogram provides of function of the <span class="math notranslate nohighlight">\(\bf{h}-\bf{h}\)</span> scatter plot correlation vs. lag offset <span class="math notranslate nohighlight">\(\bf{h}\)</span>.</p>
-<div class="math notranslate nohighlight">
-\[
--1.0 \le \rho_x(\bf{h}) \le 1.0
-\]</div>
+<p><strong>Variogram Cyclicity</strong> - cyclicity may be linked to underlying geological periodicity, cycles in the deposition</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_model/cyclicity.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Cyclicity in the $Y$ direction, exhaustive dataset (above) and experimental variograms (below).
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>sometimes noise in the experimental variogram due to too few data is mistaken as cyclicity</p></li>
+<li><p>the wavelength of the cycles in the experimental variogram is the wavelength of the spatial cycles</p></li>
+</ul>
+<p><strong>Zonal Anisotropy</strong> - When the experimental variogram does not reach the sill in a direction</p>
+<ul class="simple">
+<li><p>often paired with cyclicity or trend in the other (orthogonal) direction</p></li>
+<li><p>the variance at which the variogram levels off is called an apparent sill</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/variogram_model/zonal_anisotropy.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Zonal anisotropy in the $X$ direction, exhaustive dataset (above) and experimental variograms (below).
+</figcaption>
+</figure>
+<p>We can use the apparent sill to partition variance,</p>
+<ul class="simple">
+<li><p>variability within layers - the apparent sill</p></li>
+<li><p>variability between layers - sill minus the apparent sill</p></li>
+</ul>
+<p><strong>Variogram Trend</strong> - experimental variogram points rise approximately linearly above the sill.</p>
+<ul class="simple">
+<li><p>indicates a trend in the spatial data, for example, fining upward, compacting with depth, etc.</p></li>
+<li><p>could be interpreted as a fractal, fit a power law function</p></li>
+</ul>
+<p>May have to explicitly account for the trend in later simulation/modeling</p>
+<ul class="simple">
+<li><p>model, remove the trend, work with the residual</p></li>
+<li><p>if the trend is removed the residual variogram will plateau at the sill, we cannot model our variograms above the sill</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/variogram_model/trend.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Trend in the $Y$ direction, exhaustive dataset (above) and experimental variograms (below).
+</figcaption>
+</figure>
+<p>Here’s a fun example with the spatial continuity of Holstein cows</p>
+<ul class="simple">
+<li><p>variogram interpretation consists of explaining the variability over different distance scales.</p></li>
+<li><p>here’s a cow image converted to greyscale and cropped to improve stationarity.</p></li>
+</ul>
+<p>If you want to try your own image, my workflow is in the chapter <a class="reference internal" href="GeostatsPy_variogram_from_image.html"><span class="doc std std-doc">Variogram Calculation from Image</span></a>.</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_model/cows.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Spatial continuity of a image of cows (above) and resulting experimental variograms (below).
+</figcaption>
+</figure>
+<p>Do you see the geometric anisotropy and cyclicity? Can you identify the <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> directional, experimental variograms without looking at the labels?</p>
 </section>
-<section id="variogram-observations">
-<h2>Variogram Observations<a class="headerlink" href="#variogram-observations" title="Permalink to this heading">#</a></h2>
-<p>The following are common observations for variograms that should assist with their practical use.</p>
-<section id="observation-1-as-distance-increases-variability-increase-in-general">
-<h3>Observation #1 - As distance increases, variability increase (in general).<a class="headerlink" href="#observation-1-as-distance-increases-variability-increase-in-general" title="Permalink to this heading">#</a></h3>
-<p>This is common since in general, over greater distance offsets, there is often more difference between the head and tail samples.</p>
-<p>In some cases, such as with spatial cyclicity of the hole effect variogram model the variogram may have negative slope over some lag distance intervals</p>
-<p>Negative slopes at lag distances greater than half the data extent are often caused by too few pairs for a reliable variogram calculation</p>
-</section>
-<section id="observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">
-<h3>Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.<a class="headerlink" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h" title="Permalink to this heading">#</a></h3>
-<p>We scan through the entire data set, searching for all possible pair combinations with all other data.  We then calculate the variogram as one half the expectation of squared difference between all pairs.</p>
-<p>More pairs results in a more reliable measure.</p>
-</section>
-<section id="observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">
-<h3>Observation #3 - Need to plot the sill to know the degree of correlation.<a class="headerlink" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation" title="Permalink to this heading">#</a></h3>
-<p><strong>Sill</strong> is the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span></p>
-<p>Given stationarity of the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>, and variogram <span class="math notranslate nohighlight">\(\gamma(\bf{h})\)</span>:</p>
-<p>we can define the covariance function:</p>
-<div class="math notranslate nohighlight">
-\[
-C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
-\]</div>
-<p>The covariance measure is a measure of similarity over distance (the mirror image of the variogram as shown by the equation above).</p>
-<p>Given a standardized distribution <span class="math notranslate nohighlight">\(\sigma^2_x = 1.0\)</span>, the covariance, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span>, is equal to the correlogram, <span class="math notranslate nohighlight">\(\rho_x(\bf{h})\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
-\rho_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
-\]</div>
-</section>
-<section id="observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">
-<h3>Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.<a class="headerlink" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range" title="Permalink to this heading">#</a></h3>
-<p>At the range, knowing the data value at the tail location provides no information about a value at the head location of the lag distance vector.</p>
-</section>
-<section id="observation-5-the-nugget-effect-a-discontinuity-at-the-origin">
-<h3>Observation #5 - The nugget effect, a discontinuity at the origin<a class="headerlink" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin" title="Permalink to this heading">#</a></h3>
-<p>Sometimes there is a discontinuity in the variogram at distances less than the minimum data spacing.  This is known as <strong>nugget effect</strong>.</p>
-<p>The ratio of nugget / sill, is known as relative nugget effect (%). Modeled as a discontinuity with no correlation structure that at lags, <span class="math notranslate nohighlight">\(h \gt \epsilon\)</span>, an infinitesimal lag distance, and perfect correlation at <span class="math notranslate nohighlight">\(\bf{h} = 0\)</span>.
-Caution when including nugget effect in the variogram model as measurement error, mixing populations cause apparent nugget effect</p>
-<p>This exercise demonstrates the semivariogram calculation with GeostatsPy. The steps include:</p>
+<section id="reasons-for-variogram-modeling">
+<h2>Reasons for Variogram Modeling<a class="headerlink" href="#reasons-for-variogram-modeling" title="Permalink to this heading">#</a></h2>
+<p>Why do we model the variogram? Why don’t we just stop with our directional, experimental variograms calculated in the major and minor directions?</p>
 <ol class="arabic simple">
-<li><p>generate a 2D model with sequential Gaussian simulation</p></li>
-<li><p>sample from the simulation</p></li>
-<li><p>calculate and visualize experimental semivariograms</p></li>
+<li><p>Need to know the variogram for all possible <span class="math notranslate nohighlight">\(\bf{h}\)</span> lags, distances and directions, not just the ones calculated, i.e., first, second, etc. lags in the major and minor directions.</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/variogram_model/reasons.png" style="display: block; margin: 0 auto; width: 90%;">
+  <figcaption style="text-align: center;"> Spatial continuity of a image of cows (above) and resulting experimental variograms (below).
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Incorporate additional geological knowledge, such as analogue information or information on directions of continuity, etc.</p></li>
+<li><p>The variogram model must be positive definite, a legitimate measure of distance, that is, the variance of any linear combination must be positive</p></li>
 </ol>
 </section>
-</section>
-<section id="detecting-directions-of-spatial-continuity">
-<h2>Detecting Directions of Spatial Continuity<a class="headerlink" href="#detecting-directions-of-spatial-continuity" title="Permalink to this heading">#</a></h2>
-<p>Spatial continuity can be described with nested spatial continuity models:</p>
+<section id="id1">
+<h2>Variogram Modeling<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Spatial continuity can be flexibly modeled with nested variogram models, <span class="math notranslate nohighlight">\(\gamma_i(\bf{ h })\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \Gamma_x(\bf{ h }) = \sum_{i=1}^{nst} \gamma_i(\bf{ h })
@@ -560,14 +559,8 @@ Caution when including nugget effect in the variogram model as measurement error
 \]</div>
 <p>Therefore, if we know the major direction, range in major and minor directions, we may completely describe each nested component of the complete spatial continuity of the variable of interest, <span class="math notranslate nohighlight">\(i = 1,\dots,nst\)</span>.</p>
 </section>
-<section id="variogram-modeling">
-<h2>Variogram Modeling<a class="headerlink" href="#variogram-modeling" title="Permalink to this heading">#</a></h2>
-<p>Spatial continuity can be modeled with nested, positive definite variogram structures:</p>
-<div class="math notranslate nohighlight">
-\[
-\Gamma_x(\bf{h}) = \sum_{i=1}^{nst} \gamma_i(\bf{h})
-\]</div>
-<p>where <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span> is the nested variogram model resulting from the summation of <span class="math notranslate nohighlight">\(nst\)</span> nested variograms  <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>.</p>
+<section id="variogram-positive-definite-structures">
+<h2>Variogram Positive Definite Structures<a class="headerlink" href="#variogram-positive-definite-structures" title="Permalink to this heading">#</a></h2>
 <p>The types of structure commonly applied include:</p>
 <ul class="simple">
 <li><p>spherical</p></li>
@@ -575,6 +568,7 @@ Caution when including nugget effect in the variogram model as measurement error
 <li><p>Gaussian</p></li>
 <li><p>nugget</p></li>
 </ul>
+<p>for visualizations of the these variogram structures, see chapter <a class="reference internal" href="GeostatsPy_variogram_models.html"><span class="doc std std-doc">Variogram Positive Definite Models</span></a>.</p>
 <p>Other less common models include:</p>
 <ul class="simple">
 <li><p>hole effect</p></li>
@@ -582,7 +576,11 @@ Caution when including nugget effect in the variogram model as measurement error
 <li><p>power law</p></li>
 </ul>
 <p>these will not be covered here.</p>
-<p>Each one of these variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>, is based on a geometric anisotropy model parameterized by the orientation and range in the major and minor directions.  In 2D this is simply an azimuth and ranges, <span class="math notranslate nohighlight">\(azi\)</span>, <span class="math notranslate nohighlight">\(a_{maj}\)</span> and <span class="math notranslate nohighlight">\(a_{min}\)</span>. Note, the range in the minor direction (orthogonal to the major direction).</p>
+<p>Each one of these variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>, is based on a geometric anisotropy model parameterized by the orientation and range in the major and minor directions.</p>
+<ul class="simple">
+<li><p>in 2D this is simply an azimuth and ranges, <span class="math notranslate nohighlight">\(azi\)</span>, <span class="math notranslate nohighlight">\(a_{maj}\)</span> and <span class="math notranslate nohighlight">\(a_{min}\)</span></p></li>
+<li><p>note, the range in the minor direction (orthogonal to the major direction)</p></li>
+</ul>
 <p>The geometric anisotropy model assumes that the range in all off-diagonal directions is based on an ellipse with the major and minor axes aligned with and set to the major and minor for the variogram.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -596,7 +594,13 @@ Caution when including nugget effect in the variogram model as measurement error
 <li><p>the geometric anisotropy model is based on azimuth of the major direction of continuity, range in the major direction and range in the minor direction (orthogonal to the major direction).  The range is interpolated between the major and minor azimuths with a ellipse model</p></li>
 <li><p>we can vary the type of variogram, direction or azimuth of the major direction, and major and minor ranges by structure</p></li>
 </ul>
-<p>In this workflow we will explore methods to calculate spatial continuity with GeostatsPy, from a spatial dataset.</p>
+<p>to help my students gain hands-on experience with calculating and modeling variograms, I built out an interactive Python <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Variogram_Calculation_Modeling.ipynb">Variogram Calculation and Modeling Dashboard</a>.</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_model/interactive_variogram_model.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python variogram calculation and modeling dashboard.
+</figcaption>
+</figure>
+<p>In this workflow we will explore methods to calculate and model spatial continuity with GeostatsPy, from a spatial dataset.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -1397,9 +1401,7 @@ it1 = 1; cc1 = 1.0; azi1 = 45; hmaj1 =500; hmin1 = 350                # first st
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1466,18 +1468,10 @@ it1 = 1; cc1 = 1.0; azi1 = 45; hmaj1 =500; hmin1 = 350                # first st
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-semivariogram">The Semivariogram</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">Observation #3 - Need to plot the sill to know the degree of correlation.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-directions-of-spatial-continuity">Detecting Directions of Spatial Continuity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-modeling">Variogram Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-interpretation">Variogram Interpretation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reasons-for-variogram-modeling">Reasons for Variogram Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Variogram Modeling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-positive-definite-structures">Variogram Positive Definite Structures</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -1492,7 +1486,6 @@ it1 = 1; cc1 = 1.0; azi1 = 45; hmaj1 =500; hmin1 = 350                # first st
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

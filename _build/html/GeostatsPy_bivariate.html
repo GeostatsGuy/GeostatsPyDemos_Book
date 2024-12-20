@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -426,7 +426,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -438,7 +437,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="bivariate-analysis">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="bivariate-analysis">
 <h1>Bivariate Analysis<a class="headerlink" href="#bivariate-analysis" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -489,7 +491,7 @@ document.write(`
 </ul>
 <p>Here’s an example of an interesting bivariate relationship. When we scatter plot the data and plot the facies we can see the natural groups with respect to porosity and permeability. Clearly, considering only porosity or permeability would not be sufficient to understand this data.</p>
 <figure style="text-align: center;">
-  <img src="_static/bivariate/bivariate_example.png" style="display: block; margin: 0 auto; width: 80%;">
+  <img src="_static/bivariate/bivariate_example.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Example of a complicated bivariate relationship.</figcaption>
 </figure>
 <p>Bivariate statistics are our tools to quantify and impose these bivariate relationships in our geostatistical models.</p>
@@ -533,7 +535,16 @@ C_{xy}  = \frac{\sum_{i=1}^{n} (x_i - \overline{x})(y_i - \overline{y})}{(n-1)}
 \[
 \rho_{xy}  = \frac{C_{xy}}{\sigma_x \sigma_y}
 \]</div>
-<p>The Person’s correlation coefficient is quite sensitive to outliers and departure from linear behavior (in the bivariate sense).  We have an alternative known as the Spearman’s rank correlations coefficient.</p>
+<p>To help you calibrate you eye to the correlation coefficient I developed an interactive <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Correlation_Coefficient.ipynb">correlation dashboard</a>.</p>
+<ul class="simple">
+<li><p>for the bivariate Gaussian case vary the correlation coefficient and observe the samples, condition expectation and joint probability density</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/bivariate/correlation.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Interactive Python dashboard for visualizing correlation coefficient.</figcaption>
+</figure>
+<p>The Person’s correlation coefficient is quite sensitive to outliers and departure from linear behavior (in the bivariate sense).</p>
+<p>For an more robust correlation measure in the presence of outliers and nonlinearity, we have an alternative known as the Spearman’s rank correlations coefficient.</p>
 <div class="math notranslate nohighlight">
 \[
 \rho_{R_x R_y}  = \frac{\sum_{i=1}^{n} (R_{x_i} - \overline{R_x})(R_{y_i} - \overline{R_y})}{(n-1)\sigma_{R_x} \sigma_{R_y}}, \, -1.0 \le \rho_{R_x,R_y} \le 1.0
@@ -547,7 +558,15 @@ x_\alpha, \, \forall \alpha = 1,\dots, n, \, | \, x_i \ge x_j \, \forall \, i \g
 \[
 R_{x_i} = i
 \]</div>
-<p>The correlation coefficients provide useful metrics to quantify relationships between two variables at a time. We can also consider bivariate scatter plots and matrix scatter plots to visualize multivariate data. In general, current practical subsurface modeling is bivariate, two variables at a time.</p>
+<p>To compare Pearson and rank correlation in the presence of an outlier I developed this <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Correlation_Coefficient_Issues.ipynb">correlation outlier dashboard</a>,</p>
+<figure style="text-align: center;">
+  <img src="_static/bivariate/correlation_outlier.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Interactive Python dashboard for visualizing correlation coefficient.</figcaption>
+</figure>
+<p>The correlation coefficients provide useful metrics to quantify relationships between two variables at a time. We can also consider bivariate scatter plots and matrix scatter plots to visualize multivariate data.</p>
+<ul class="simple">
+<li><p>remember, current practical subsurface modeling is bivariate, two variables at a time</p></li>
+</ul>
 </section>
 <section id="multivariate-statistics">
 <h2>Multivariate Statistics<a class="headerlink" href="#multivariate-statistics" title="Permalink to this heading">#</a></h2>
@@ -1619,9 +1638,7 @@ Rank Correlation p-value:
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael J. Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1713,7 +1730,6 @@ Rank Correlation p-value:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

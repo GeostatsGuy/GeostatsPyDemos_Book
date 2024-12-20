@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -402,6 +402,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">Stationarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity-exercise">Stationarity Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-on-stationarity">Comments on Stationarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Spatial Continuity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-semivariogram">The Semivariogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
@@ -411,7 +415,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-directions-of-spatial-continuity">Detecting Directions of Spatial Continuity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-calculation-parameters">Variogram Calculation Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isotropic-and-anisotropic-experimental-variogram">Isotropic and Anisotropic Experimental Variogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -436,7 +441,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="variogram-calculation">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="variogram-calculation">
 <h1>Variogram Calculation<a class="headerlink" href="#variogram-calculation" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -447,6 +455,8 @@ document.write(`
 <p>This chapter is a tutorial for / demonstration of  <strong>Calculating Variograms</strong> with GeostatsPy.</p>
 <p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
 <ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/QwxQ9xuUHlU?si=7GK0qTeskd1VsqQQ">Stationarity</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/j0I5SGFm00c?si=6rQJQenNvvUGzuvs">Spatial Continuity</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/jVRLGOsnYuw?si=RD5exyGl_I_LAl4H">Variogram Introduction</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/mzPLicovE7Q?si=-ZPgFK52h2xp1cER">Variogram Calculation</a></p></li>
 <li><p><a class="reference external" href="https://youtu.be/NE4xfhIHAm4?si=dF18zj5_M2yVwxoD">Variogram Parameters</a></p></li>
@@ -463,6 +473,168 @@ document.write(`
 </ul>
 <p>We need a statistic to quantify spatial continuity! A convenient method is the Semivariogram.</p>
 </section>
+<section id="stationarity">
+<h2>Stationarity<a class="headerlink" href="#stationarity" title="Permalink to this heading">#</a></h2>
+<p>Any statistic requires replicates, repeated sampling (e.g., air or water samples from a monitoring station). In our geo-spatial problems repeated samples are not available at a location in the subsurface.</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/core_sample.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Core sample (left), what remains after the sample is taken (right).
+</figcaption>
+</figure>
+<p>The decision of the stationary domain for sampling is an expert choice. Without it we are stuck in the “hole” and cannot calculate any statistics nor say anything about the behavior of the subsurface between the sample data.</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/core_samples.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Core samples at locations, \(u_1, u_2, \ldots, u_7\) within the area of interest.
+</figcaption>
+</figure>
+<p>From the above image we can see two important components for stationarity,</p>
+<ol class="arabic simple">
+<li><p><strong>Import License</strong> - choice to pool specific samples to evaluate a statistic.</p></li>
+<li><p><strong>Export License</strong> - choice of where in the subsurface this statistic is applicable.</p></li>
+</ol>
+<p>How do we define stationarity? Here’s a geological and an engineering or statistical definition of stationarity,</p>
+<p><strong>Geological Definition</strong> - for example, The rock over the stationary domain is sourced, deposited, preserved, and post-depositionally altered in a similar manner, the domain is map-able and may be used for local prediction or as information for analogous locations within the subsurface; therefore, it is useful to pool information over this expert mapped volume of the subsurface.</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/outcrop.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Outcrop with mapped units, \(S3, S4, \ldots, S6\). Each unit is deemed to be stationary by the geological definition (image from Fildani et al., 2009).
+</figcaption>
+</figure>
+<p><strong>Engineering or Statistical Definition</strong>: The metrics of interest are invariant under translation over the domain.  For example, one point stationarity indicates the that histogram and associated statistics do not rely on location, <span class="math notranslate nohighlight">\(\bf{u}\)</span>.  Statistical stationarity for some common statistics:</p>
+<p>Stationary mean,</p>
+<div class="math notranslate nohighlight">
+\[
+𝐸{𝑍(\bf{u})} = m, \quad \forall \quad \bf{u} 
+\]</div>
+<p>Stationary Distribution,</p>
+<div class="math notranslate nohighlight">
+\[
+𝐹(\bf{𝐮};𝑧)=𝐹(𝑧), \quad \forall \quad \bf{u} 
+\]</div>
+<p>Stationary Semivariogram,</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma_𝑧 (\bf{𝐮};\bf{𝐡})= \gamma_𝑧(\bf{h}), \quad \forall \bf{u} 
+\]</div>
+<p>May be extended to any statistic of interest including,</p>
+<ul class="simple">
+<li><p>facies proportions</p></li>
+<li><p>bivariate distributions</p></li>
+<li><p>multiple point statistics</p></li>
+<li><p>correlation</p></li>
+<li><p>etc.</p></li>
+</ul>
+<p>Note for engineering or statistical definition of stationarity there are two questions the we must answer,</p>
+<ol class="arabic simple">
+<li><p>What metric / statistic?</p></li>
+<li><p>Over what volume?</p></li>
+</ol>
+<p>Some further comments on stationarity,</p>
+<ul class="simple">
+<li><p><strong>Stationarity is a decision, not a hypothesis</strong>; therefore, it cannot be tested.  Data may demonstrate that it is inappropriate.</p></li>
+<li><p><strong>The stationarity assessment depends on scale.</strong> This choice of modeling scale(s) should be based on the specific problem and project needs.</p></li>
+<li><p><strong>instead of time, we must pool samples over space</strong> to calculate our statistics. This decision to pool is the decision of stationarity.  It is the decision that the subset of the subsurface is all the “same stuff”.</p></li>
+</ul>
+</section>
+<section id="stationarity-exercise">
+<h2>Stationarity Exercise<a class="headerlink" href="#stationarity-exercise" title="Permalink to this heading">#</a></h2>
+<p>Let’s test our knowledge by staring at stone wall on the 40 acres, campus of The University of Texas at Austin.</p>
+<p>Is this stone wall stationary?</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/wall.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Stone wall from north side of Patton Hall. The stone is Indiana limestone from Bedford, Indiana.
+</figcaption>
+</figure>
+<p>While you stare at this, focus on the entire image, and see how it changes over the image? What if we zoom in here?</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/wall2a.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Stone wall from north side of Patton Hall. The stone is Indiana limestone from Bedford, Indiana.
+</figcaption>
+</figure>
+<p>Now let’s look at only the center, is this more or less stationary?</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/wall2b.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Stone wall from north side of Patton Hall. The stone is Indiana limestone from Bedford, Indiana.
+</figcaption>
+</figure>
+<p>Now let’s zoom in here,</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/wall3a.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Stone wall from north side of Patton Hall. The stone is Indiana limestone from Bedford, Indiana.
+</figcaption>
+</figure>
+<p>Now only looking at this part, is this more or less stationary?</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/wall3b.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Stone wall from north side of Patton Hall. The stone is Indiana limestone from Bedford, Indiana.
+</figcaption>
+</figure>
+<p>Let’s return to the statistical definition of stationarity, what were you looking at?</p>
+<ul class="simple">
+<li><p>brick color</p></li>
+<li><p>brick size</p></li>
+<li><p>brick aspect ratio</p></li>
+<li><p>fossils (bivalves)</p></li>
+</ul>
+<p>Did you notice that the (1) entire image appears stationary, the (2) zoomed in appears less stationary, (3) second zoomed in image appears more stationary again!</p>
+<ul class="simple">
+<li><p>remember, stationarity is not homogeneity, it is ok to have change by there is not a consistent change over the area of investigation.</p></li>
+</ul>
+</section>
+<section id="comments-on-stationarity">
+<h2>Comments on Stationarity<a class="headerlink" href="#comments-on-stationarity" title="Permalink to this heading">#</a></h2>
+<p><strong>We cannot avoid a decision of stationarity</strong>. No stationarity decision and we cannot move beyond the data.  Conversely, assuming broad stationarity over all the data and over large volumes of the earth is naïve.</p>
+<p><strong>Geomodeling stationarity is the decision</strong>: (1) over what region to pool data (import license) and (2) over what region to use the resulting statistics (export license).</p>
+<p><strong>Nonstationary trends</strong> may be mapped, and the remaining stationary residual modelled statistically / stochastically, trends may be treated uncertain.</p>
+<p><strong>Good geological mapping and data integration is essential!</strong> It is the framework of any subsurface model.</p>
+<p>Now that we understand stationarity we can calculate and model spatial continuity.</p>
+</section>
+<section id="id1">
+<h2>Spatial Continuity<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Let’s make a simple example,</p>
+<p>Area of interest
+2D 1,000 m x 1,000 m
+1 Injector and 4 producers</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/example.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> Example 2D water flood model over 1,000 x 1,000 m with 1 injector and 4 producers.
+</figcaption>
+</figure>
+<p>Note, for all models the porosity and permeability distributions are held constant, porosity and permeability are highly correlated and I will only show the permeability models for brevity.</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/distributions.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Example 2D water flood model porosity and permeability distributions.
+</figcaption>
+</figure>
+<p>Now consider these two models, remember they have the same univariate distributions,</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/model1.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Example 2D water flood model over 1,000 x 1,000 m with 1 injector and 4 producers.
+</figcaption>
+</figure>
+<p>What’s the difference? The spatial arrangement of the permeability, how far can we go and the permeability is still similar, this is spatial continuity. The model on the left has no spatial continuity and the model on the right has short spatial continuity.</p>
+<p>Does spatial continuity impact our transfer functions? Let’s run the water flood and looks at travel time (earliest arrival) of water.</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/marching1.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Example water flood travel earliest arrival times for no spatial continuity (left) and short spatial continuity (right).
+</figcaption>
+</figure>
+<p>The model with no spatial continuity has better, more uniform, piston-like sweep for better recovery. What if we increase the spatial continuity?</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/marching2.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Example water flood travel earliest arrival times for no spatial continuity (left) and long spatial continuity (right).
+</figcaption>
+</figure>
+<p>With greater spatial continuity the sweep is even worse. One more example,</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/marching3.png" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Example water flood travel earliest arrival times for no spatial continuity (left) and long, anisotropic spatial continuity (right).
+</figcaption>
+</figure>
+<p>This long, anisotropic spatial continuity is resulting in preferred pathways due to high permeability streaks. Clearly spatial continuity matters, so we must calculate it and model it.</p>
+<ul class="simple">
+<li><p>the semivariogram is one of our tools to calculate and model spatial continuity</p></li>
+</ul>
+</section>
 <section id="the-semivariogram">
 <h2>The Semivariogram<a class="headerlink" href="#the-semivariogram" title="Permalink to this heading">#</a></h2>
 <p>Function of difference over distance.</p>
@@ -474,8 +646,20 @@ document.write(`
 \gamma(\bf{h}) = \frac{1}{2 N(\bf{h})} \sum^{N(\bf{h})}_{\alpha=1} (z(\bf{u}_\alpha) - z(\bf{u}_\alpha + \bf{h}))^2  
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha)\)</span> and <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha + \bf{h})\)</span> are the spatial sample values at tail and head locations of the lag vector respectively.</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/variogram.png" style="display: block; margin: 0 auto; width: 30%;">
+  <figcaption style="text-align: center;"> Tail \(\bf{u}\) and head \(\bf{u} + \bf{h}\) locations separated by lag vector \(\bf{h}\). 
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Calculated over a suite of lag distances to obtain a continuous function.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/variogram2.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> Experimental variogram points, variogram value vs. lag \(\bf{h}\). 
+</figcaption>
+</figure>
+<ul class="simple">
 <li><p>the <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> term converts a variogram into a semivariogram, but in practice the term variogram is used instead of semivariogram.</p></li>
 <li><p>We prefer the semivariogram because it relates directly to the covariance function, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span> and univariate variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>:</p></li>
 </ul>
@@ -493,6 +677,12 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 \[
 -1.0 \le \rho_x(\bf{h}) \le 1.0
 \]</div>
+<p>To help my students visualize the relationship between variogram and correlation of the <span class="math notranslate nohighlight">\(\bf{h}-\bf{h}\)</span> scatter plot I build an interactive Python <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Variogram_h_Scatter.ipynb">variogram h-h scatter plot dashboard</a>,</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/interactive_hscatter.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python dashboard for variogram and h-h scatter plot correlation. 
+</figcaption>
+</figure>
 </section>
 <section id="variogram-observations">
 <h2>Variogram Observations<a class="headerlink" href="#variogram-observations" title="Permalink to this heading">#</a></h2>
@@ -518,6 +708,11 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 \]</div>
 <p>The covariance measure is a measure of similarity over distance (the mirror image of the variogram as shown by the equation above).</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/variogram_cov.png" style="display: block; margin: 0 auto; width: 30%;">
+  <figcaption style="text-align: center;"> The relationship between variogram, sill and covariance function. 
+</figcaption>
+</figure>
 <p>Given a standardized distribution <span class="math notranslate nohighlight">\(\sigma^2_x = 1.0\)</span>, the covariance, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span>, is equal to the correlogram, <span class="math notranslate nohighlight">\(\rho_x(\bf{h})\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -539,24 +734,95 @@ Caution when including nugget effect in the variogram model as measurement error
 <li><p>sample from the simulation</p></li>
 <li><p>calculate and visualize experimental semivariograms</p></li>
 </ol>
+<p>To help my students visualize the nugget I build an interactive Python <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Variogram_Nugget_Effect.ipynb">variogram nugget effect dashboard</a>,</p>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/interactive_nugget.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python dashboard for variogram nugget effect. 
+</figcaption>
+</figure>
 </section>
 </section>
-<section id="detecting-directions-of-spatial-continuity">
-<h2>Detecting Directions of Spatial Continuity<a class="headerlink" href="#detecting-directions-of-spatial-continuity" title="Permalink to this heading">#</a></h2>
-<p>Spatial continuity can be described with nested spatial continuity models:</p>
+<section id="variogram-calculation-parameters">
+<h2>Variogram Calculation Parameters<a class="headerlink" href="#variogram-calculation-parameters" title="Permalink to this heading">#</a></h2>
+<p>For commonly encountered irregularly space spatial data samples, if we specific a specific lag vector, <span class="math notranslate nohighlight">\(\bf{h}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
-\Gamma_x(\bf{ h }) = \sum_{i=1}^{nst} \gamma_i(\bf{ h })
+\bf{h} = 100.00000 \text{ m at } 90.0000 \text{ degrees azimuth}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span> is the nested variogram model resulting from the summation of <span class="math notranslate nohighlight">\(nst\)</span> nested variograms  <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>.</p>
-<p>Each one of these variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>, is based on a geometric anisotropy model parameterized by the orientation and range in the major and minor directions.  In 2D this is simply an azimuth and ranges, <span class="math notranslate nohighlight">\(azi\)</span>, <span class="math notranslate nohighlight">\(a_{maj}\)</span> and <span class="math notranslate nohighlight">\(a_{min}\)</span>. Note, the range in the minor direction (orthogonal to the major direction.</p>
-<p>The geometric anisotropy model assumes that the range in all off-diagonal directions is based on an ellipse with the major and minor axes aligned with and set to the major and minor for the variogram.</p>
-<div class="math notranslate nohighlight">
-\[
-\bf{ h } _i = \sqrt{\left(\frac{r_{maj}}{a_{maj_i}}\right)^2 + \left(\frac{r_{maj}}{a_{maj_i}}\right)^2}  
-\]</div>
-<p>Therefore, if we know the major direction, range in major and minor directions, we may completely describe each nested component of the complete spatial continuity of the variable of interest, <span class="math notranslate nohighlight">\(i = 1,\dots,nst\)</span>.</p>
-<p>In this workflow we will explore methods to calculate spatial continuity with GeostatsPy, from a spatial dataset.</p>
+<p>we are unlikely to find data pairs sperated by exactly that lag distance and direction. We need to use a search template to identify the pairs for a specific lag distance and direction.</p>
+<ol class="arabic simple">
+<li><p>First step is to select the direction as an <strong>azimuth</strong>, here 045 azimuth, 45 degrees from north towards east.</p></li>
+</ol>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/template.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Variogram calculation search template, azimuth parameter. 
+</figcaption>
+</figure>
+<ol class="arabic simple" start="2">
+<li><p>Set unit lag distance to at least the ‘common’ minimum data spacing <span class="math notranslate nohighlight">\(\rightarrow\)</span> no data pairs available at shorter lag distances.</p></li>
+</ol>
+<ul class="simple">
+<li><p>lag distance controls the number/frequency of experimental variogram points</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/template2.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Variogram calculation search template, unit lag distance.
+</figcaption>
+</figure>
+<ol class="arabic simple" start="3">
+<li><p>Set the lag tolerance, default to <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> the unit lag distance.</p></li>
+</ol>
+<ul class="simple">
+<li><p>lower lag tolerance will omit possible pairs</p></li>
+<li><p>larger lag tolerance will overlap the lag bins, smooth the results.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/template3.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Variogram calculation search template, lag tolerance.
+</figcaption>
+</figure>
+<ol class="arabic simple" start="4">
+<li><p>Set the azimuth tolerance to 90.0 for isotropic variograms. Set azimuth tolerance, default 22.5 degrees for directional variograms.</p></li>
+</ol>
+<ul class="simple">
+<li><p>lower azimuth tolerance is more direction specific and noisier</p></li>
+<li><p>larger azimuth tolerance is more isotropic and smoother</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/template4.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Variogram calculation search template, lag tolerance.
+</figcaption>
+</figure>
+<ol class="arabic simple" start="5">
+<li><p>Set a bandwidth limit is needed to limit the distance of investigation away from the lag vector.</p></li>
+</ol>
+<ul class="simple">
+<li><p>set bandwidth very large if isotropic to remove its influence and avoid artifacts</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/template5.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Variogram calculation search template, lag tolerance.
+</figcaption>
+</figure>
+</section>
+<section id="isotropic-and-anisotropic-experimental-variogram">
+<h2>Isotropic and Anisotropic Experimental Variogram<a class="headerlink" href="#isotropic-and-anisotropic-experimental-variogram" title="Permalink to this heading">#</a></h2>
+<p><strong>Isotropic or Omnidirectional</strong> – azimuth tolerance <span class="math notranslate nohighlight">\(= 90^{o}\)</span>,</p>
+<ul class="simple">
+<li><p>all pairs lag distance ± lag distance tolerance.</p></li>
+</ul>
+<p><strong>Anisotropic or Directional</strong> – azimuth Tolerance <span class="math notranslate nohighlight">\(\lt 90^{o}\)</span>.</p>
+<ul class="simple">
+<li><p>only considering pairs in a specified direction, larger azimuth tolerance will approach isotropic.</p></li>
+<li><p>calculate directional, experimental variograms in the major and minor directions to support interpretation and variogram modeling</p></li>
+<li><p>do not extend the azimuth tolerance <span class="math notranslate nohighlight">\(\gt 90^{o}\)</span>, results in a bias as some of the data pairs are counted twice in a lag due to arbitrary orientation.</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/variogram_calculate/directional.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> Azimuth tolerance and identified data pairs.
+</figcaption>
+</figure>
+<p>With this information you are ready to calculate experimental variograms.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -1219,6 +1485,10 @@ lag_dist = 100.0; lag_tol = 50.0; nlag = 7; bandh = 9999.9; azi = 0; atol = 90.0
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-continuity">Spatial Continuity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">Stationarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity-exercise">Stationarity Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-on-stationarity">Comments on Stationarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Spatial Continuity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-semivariogram">The Semivariogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-observations">Variogram Observations</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-1-as-distance-increases-variability-increase-in-general">Observation #1 - As distance increases, variability increase (in general).</a></li>
@@ -1228,7 +1498,8 @@ lag_dist = 100.0; lag_tol = 50.0; nlag = 7; bandh = 9999.9; azi = 0; atol = 90.0
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin">Observation #5 - The nugget effect, a discontinuity at the origin</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-directions-of-spatial-continuity">Detecting Directions of Spatial Continuity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variogram-calculation-parameters">Variogram Calculation Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isotropic-and-anisotropic-experimental-variogram">Isotropic and Anisotropic Experimental Variogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>

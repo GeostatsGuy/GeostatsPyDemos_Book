@@ -179,8 +179,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -400,6 +400,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-vs-simulation">Estimation vs. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodic-fluctuations">Ergodic Fluctuations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-parameters-data-with-reference-distribution">Simulation Parameters, Data with Reference Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-truth-model">Make Truth Model</a></li>
@@ -408,7 +409,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -420,12 +420,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="ergodic-fluctuations-between-stochastic-simulation-realizations">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="ergodic-fluctuations-between-stochastic-simulation-realizations">
 <h1>Ergodic Fluctuations Between Stochastic Simulation Realizations<a class="headerlink" href="#ergodic-fluctuations-between-stochastic-simulation-realizations" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
-<p>Cite as: Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the GeostatsPyDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035">https://zenodo.org/doi/10.5281/zenodo.12667035</a></p>
+<p><a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035"><img alt="DOI" src="https://zenodo.org/badge/777871341.svg" /></a></p>
+</div>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
 <p>This chapter is a tutorial for / demonstration of <strong>Ergodic Fluctuations Between Stochastic Simulation Realizations</strong>.</p>
@@ -440,8 +452,8 @@ document.write(`
 <p>For your convenience here’s a summary of salient points.</p>
 <section id="estimation-vs-simulation">
 <h2>Estimation vs. Simulation<a class="headerlink" href="#estimation-vs-simulation" title="Permalink to this heading">#</a></h2>
-<p>Let’s start by comparing spatial estimation and simulation.</p>
-<p>Estimation:</p>
+<p>Let’s start by comparing spatial estimation and simulation,</p>
+<p><strong>Estimation</strong>:</p>
 <ul class="simple">
 <li><p>honors local data</p></li>
 <li><p>locally accurate, primary goal of estimation is 1 estimate!</p></li>
@@ -449,7 +461,12 @@ document.write(`
 <li><p>too smooth, inappropriate for flow simulation</p></li>
 <li><p>one model, no assessment of global uncertainty</p></li>
 </ul>
-<p>Simulation:</p>
+<p>Let’s visualize a population, sample and estimation model. Note the estimation model is too smooth, too much spatial continuity and too little variance.</p>
+<figure style="text-align: center;">
+  <img src="_static/simulation/estimation.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Spatial dataset, truth, and an estimation model (left), estimation model and truth histograms (center) and experimental variograms (right).</figcaption>
+</figure>
+<p><strong>Simulation</strong>:</p>
 <ul class="simple">
 <li><p>honors local data</p></li>
 <li><p>sacrifices local accuracy, reproduces histogram</p></li>
@@ -457,6 +474,19 @@ document.write(`
 <li><p>alternative realizations, change random number seed</p></li>
 <li><p>many models (realizations), assessment of global uncertainty</p></li>
 </ul>
+<p>Now let’s visualize a population, sample and simulation model. Note the simulated realizations are locally less accurate, but are not too smooth, the spatial continuity and variance are correct.</p>
+<figure style="text-align: center;">
+  <img src="_static/simulation/simulation.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Spatial dataset, truth, and an simulation model (left), simulation model and truth histograms (center) and experimental variograms (right) for two realizations (above and below).</figcaption>
+</figure>
+<p>Note with estimation we calculate one model, and with simulation we calculate many realizations to represent uncertainty,</p>
+<figure style="text-align: center;">
+  <img src="_static/simulation/simulations.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;">Spatial data section (left), and truth, estimation and simulations models (right).</figcaption>
+</figure>
+</section>
+<section id="ergodic-fluctuations">
+<h2>Ergodic Fluctuations<a class="headerlink" href="#ergodic-fluctuations" title="Permalink to this heading">#</a></h2>
 <p>Simulation honors global statistics in expected value over multiple realizations:</p>
 <ul class="simple">
 <li><p>Expect some statistical fluctuation in the input statistics</p></li>
@@ -584,14 +614,14 @@ document.write(`
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>1.365792</td>
-      <td>548.998595</td>
+      <td>0.428821</td>
+      <td>857.932354</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>-0.225617</td>
-      <td>769.742204</td>
+      <td>-1.463350</td>
+      <td>871.434000</td>
     </tr>
   </tbody>
 </table>
@@ -655,7 +685,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2a8bd19da624b8a7cddbd2f4d43ac5d3b595c1ef18c707d983e77d61ee990499.png" src="_images/2a8bd19da624b8a7cddbd2f4d43ac5d3b595c1ef18c707d983e77d61ee990499.png" />
+<img alt="_images/c511102de2197068d8aedd8a59ecabe16922fcb8f729255ab887bf2d325d8cd9.png" src="_images/c511102de2197068d8aedd8a59ecabe16922fcb8f729255ab887bf2d325d8cd9.png" />
 </div>
 </div>
 </section>
@@ -779,7 +809,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/74a5b3da47351aab3033d4f4c39bff33c74dcb0f4efffb4cd05501ee8ef7ddc5.png" src="_images/74a5b3da47351aab3033d4f4c39bff33c74dcb0f4efffb4cd05501ee8ef7ddc5.png" />
+<img alt="_images/4b10ba6a64d76217dfbbc6d57c3b645bb93e8f7f108fe2ad74cf2775eccbc4c8.png" src="_images/4b10ba6a64d76217dfbbc6d57c3b645bb93e8f7f108fe2ad74cf2775eccbc4c8.png" />
 </div>
 </div>
 </section>
@@ -910,7 +940,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ae605beb7586dedb1e67e54e189595f7f6d932ba1dcd3fa0c3065e88fa16193.png" src="_images/7ae605beb7586dedb1e67e54e189595f7f6d932ba1dcd3fa0c3065e88fa16193.png" />
+<img alt="_images/56a98fe0572850b77a5fd14d4b36ccdf01996f981701eac5a79a3c4e6b1befcd.png" src="_images/56a98fe0572850b77a5fd14d4b36ccdf01996f981701eac5a79a3c4e6b1befcd.png" />
 </div>
 </div>
 </section>
@@ -939,9 +969,7 @@ document.write(`
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1009,6 +1037,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimation-vs-simulation">Estimation vs. Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodic-fluctuations">Ergodic Fluctuations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-parameters-data-with-reference-distribution">Simulation Parameters, Data with Reference Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-truth-model">Make Truth Model</a></li>
@@ -1017,7 +1046,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 

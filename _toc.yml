@@ -23,9 +23,9 @@ chapters:
 - file: GeostatsPy_plotting_spatial_data_models
   title: Plotting Spatial Data and Models
 - file: GeostatsPy_bootstrap
-  title: Bootstrap for Uncertainty Modeling
+  title: Bootstrap Uncertainty Models
 - file: GeostatsPy_declustering
-  title: Declustering to Correct Sampling Bias
+  title: Declustering to Debias Data
 - file: GeostatsPy_declustering_all_methods
   title: Advanced Declustering
 - file: GeostatsPy_variogram_calculation

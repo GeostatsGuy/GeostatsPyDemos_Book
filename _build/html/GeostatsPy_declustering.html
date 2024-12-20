@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Correcting Sampling Bias with Cell-based, Polygonal, and Kriging-based Declustering" href="GeostatsPy_declustering_all_methods.html" />
-    <link rel="prev" title="Bootstrap for Uncertainty Modeling" href="GeostatsPy_bootstrap.html" />
+    <link rel="prev" title="Bootstrap" href="GeostatsPy_bootstrap.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -181,8 +181,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap for Uncertainty Modeling</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Declustering to Correct Sampling Bias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Declustering to Debias Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
@@ -401,10 +401,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-of-spatial-sampling-bias">Source of Spatial Sampling Bias</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mitigating-sampling-bias-with-cell-based-declustering">Mitigating Sampling Bias with Cell-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
@@ -420,7 +417,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -432,7 +428,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="declustering-to-correct-sampling-bias">
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="declustering-to-correct-sampling-bias">
 <h1>Declustering to Correct Sampling Bias<a class="headerlink" href="#declustering-to-correct-sampling-bias" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
@@ -444,9 +443,31 @@ document.write(`
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/w0HgVibxpMQ?si=8sOBf4sUIRqfvOc7">Sources of Spatial Bias</a> and <a class="reference external" href="https://youtu.be/rN0RKcTIVcI?si=6EOJvDKEplGtkXKD">Spatial Data Declustering</a>. For your convenience here’s a summary of the salient points.</p>
 <section id="geostatistical-sampling-representativity">
 <h2>Geostatistical Sampling Representativity<a class="headerlink" href="#geostatistical-sampling-representativity" title="Permalink to this heading">#</a></h2>
-<p>In general, we should assume that all spatial data that we work with is biased.</p>
-<section id="source-of-spatial-sampling-bias">
-<h3>Source of Spatial Sampling Bias<a class="headerlink" href="#source-of-spatial-sampling-bias" title="Permalink to this heading">#</a></h3>
+<p>Here’s a dataset,</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/data_unlabeled.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Spatial dataset within an area of interest in plan view.
+</figcaption>
+</figure>
+<p>Do you have any concerns with this data? What if I add this information?</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/data_areas.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Spatial dataset within an area of interest with areas of high and low values indicated in plan view.
+</figcaption>
+</figure>
+<p>Do you see what is going on? The samples are actually clustered in the high area. It can get much worse,</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/data_areas_worse.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Spatial dataset within an area of interest with areas of high and low values indicated in plan view.
+</figcaption>
+</figure>
+<p>and as we continue to sample in the high region we will increase the bias in the sample statistics,</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/sample_bias.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Sample statistic vs. true population parameter over time as more clustered samples are collected.
+</figcaption>
+</figure>
+<p><strong>Source of Spatial Sampling Bias</strong> - in general, we should assume that all spatial data that we work with is biased.</p>
 <p>Data is collected to answer questions:</p>
 <ul class="simple">
 <li><p>how far does the contaminant plume extend? – sample peripheries</p></li>
@@ -456,6 +477,12 @@ document.write(`
 and to maximize NPV directly:</p></li>
 <li><p>maximize production rates</p></li>
 </ul>
+<p>Here’s an example sample set with the inaccessible population shown for demonstration,</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/sample_population.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> Samples and inaccessible population.
+</figcaption>
+</figure>
 <p><strong>Random Sampling</strong>: when every item in the population has a equal chance of being chosen. Selection of every item is independent of every other selection.
 Is random sampling sufficient for subsurface?  Is it available?</p>
 <ul class="simple">
@@ -488,7 +515,6 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 <p>We should not change current sampling methods as they result in best economics, we should address sampling bias in the data.</p>
 <p>Never use raw spatial data without access sampling bias / correcting.</p>
 </section>
-</section>
 <section id="mitigating-sampling-bias-with-cell-based-declustering">
 <h2>Mitigating Sampling Bias with Cell-based Declustering<a class="headerlink" href="#mitigating-sampling-bias-with-cell-based-declustering" title="Permalink to this heading">#</a></h2>
 <p>Place a cell mesh over the data and share the weight over each cell. Data in densely sampled areas or volumes will get less weight while data in sparsely sampled areas or volumes will get more weight.</p>
@@ -498,6 +524,11 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(n_{\ell}\)</span> is the number of data in the <span class="math notranslate nohighlight">\(\ell\)</span> cell standardized by the ratio of <span class="math notranslate nohighlight">\(n\)</span> is the total number of data divided by <span class="math notranslate nohighlight">\(L_o\)</span> number of cells with data. As a result the sum of all weights is <span class="math notranslate nohighlight">\(n\)</span> and nominal weight is 1.0.</p>
+<figure style="text-align: center;">
+  <img src="_static/decluster/cell_decluster.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Cell declustering with cell mesh (dark grey lines) and data weights calculated for some cells.
+</figcaption>
+</figure>
 <p>Additional considerations:</p>
 <ul class="simple">
 <li><p>influence of cell mesh origin is removed by averaging the data weights over multiple random cell mesh origins</p></li>
@@ -1159,9 +1190,7 @@ DescribeResult(nobs=270, minmax=(0.21254664273011956, 5.642565586948079), mean=1
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1201,7 +1230,7 @@ DescribeResult(nobs=270, minmax=(0.21254664273011956, 5.642565586948079), mean=1
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Bootstrap for Uncertainty Modeling</p>
+        <p class="prev-next-title">Bootstrap</p>
       </div>
     </a>
     <a class="right-next"
@@ -1228,10 +1257,7 @@ DescribeResult(nobs=270, minmax=(0.21254664273011956, 5.642565586948079), mean=1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source-of-spatial-sampling-bias">Source of Spatial Sampling Bias</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mitigating-sampling-bias-with-cell-based-declustering">Mitigating Sampling Bias with Cell-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
@@ -1247,7 +1273,6 @@ DescribeResult(nobs=270, minmax=(0.21254664273011956, 5.642565586948079), mean=1
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-geostatistics-book-youtube-applied-geostats-in-python-e-book-applied-machine-learning-in-python-e-book-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Geostatistics Book | YouTube  | Applied Geostats in Python e-book | Applied Machine Learning in Python e-book | LinkedIn</a></li>
 </ul>
   </nav></div>
 
