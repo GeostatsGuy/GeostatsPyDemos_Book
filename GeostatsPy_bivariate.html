@@ -203,6 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
@@ -409,6 +410,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-custom-color-map">Design Custom Color Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-correlation">Visualizing Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-outliers-on-correlation-coefficients">Impact of Outliers on Correlation Coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
@@ -752,7 +754,9 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 <img alt="_images/24686a1a011b7aab7199f4c7fea20d81cb19122760ff29299d6ff4c5179e4bc6.png" src="_images/24686a1a011b7aab7199f4c7fea20d81cb19122760ff29299d6ff4c5179e4bc6.png" />
 </div>
 </div>
-<p>Impact of Outliers on Correlation Coefficients</p>
+</section>
+<section id="impact-of-outliers-on-correlation-coefficients">
+<h2>Impact of Outliers on Correlation Coefficients<a class="headerlink" href="#impact-of-outliers-on-correlation-coefficients" title="Permalink to this heading">#</a></h2>
 <p>Let’s observe the impact of a single outlier on the correlation coefficient.</p>
 <ul class="simple">
 <li><p>compare Person product moment and Spearman rank correlation coefficient</p></li>
@@ -1207,7 +1211,7 @@ The variance of porosity is 0.000936
 </div>
 </div>
 </div>
-<p>Here’s the correlation coefficient.</p>
+<p>Here’s the correlation coefficient matrix.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>                                         <span class="c1"># correlation matrix</span>
@@ -1296,13 +1300,13 @@ The variance of porosity is 0.000936
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">permmin</span><span class="p">,</span><span class="n">permmax</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{\phi,k}$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">corr</span><span class="p">,</span><span class="mi">3</span><span class="p">)),[</span><span class="mf">0.075</span><span class="p">,</span><span class="mf">1600.0</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{\phi,k}, \alpha$ = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">corr_p_value</span><span class="p">,</span><span class="mi">20</span><span class="p">)),[</span><span class="mf">0.075</span><span class="p">,</span><span class="mf">1500.0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\rho_{\phi,k}$, p-value = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">corr_p_value</span><span class="p">,</span><span class="mi">20</span><span class="p">)),[</span><span class="mf">0.075</span><span class="p">,</span><span class="mf">1500.0</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a49b8d5e78459d325b583b646f608de985bb63da19c541dbf3e1c487488ee099.png" src="_images/a49b8d5e78459d325b583b646f608de985bb63da19c541dbf3e1c487488ee099.png" />
+<img alt="_images/b7686c6dc96be9614c207297741721888cbdb15bdcbf4e6d4fcf6c54f140b248.png" src="_images/b7686c6dc96be9614c207297741721888cbdb15bdcbf4e6d4fcf6c54f140b248.png" />
 </div>
 </div>
 <p>The alpha value for the correlation is very small, how small? We can check it like this.</p>
@@ -1713,6 +1717,7 @@ Rank Correlation p-value:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#design-custom-color-map">Design Custom Color Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-correlation">Visualizing Correlation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#impact-of-outliers-on-correlation-coefficients">Impact of Outliers on Correlation Coefficients</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
