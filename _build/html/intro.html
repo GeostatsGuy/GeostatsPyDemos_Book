@@ -200,6 +200,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
@@ -406,18 +407,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-workflow-repository">The Workflow Repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-geostatspy">Installing GeostatsPy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-package-dependencies">GeostatsPy Package Dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-geostatspy-python-package-for-spatial-data-analytics-and-geostatistics">Information about the GeostatsPy Python Package for Spatial Data Analytics and Geostatistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geostatspy-authors">The GeostatsPy Authors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-inventory">Package Inventory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-gslib-functions">geostatspy.GSLIB Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-geostats-functions">geostatspy.geostats Functions</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-e-book">How to Use this e-book?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
             </nav>
         </div>
@@ -436,12 +427,31 @@ document.write(`
 <h1>Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy<a class="headerlink" href="#applied-geostatistics-in-python-a-hands-on-guide-with-geostatspy" title="Permalink to this heading">#</a></h1>
 <p>Michael Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
-<p>This e-book provides an accessible, online version of my GeostatsPyDemos GitHub repository. This repository includes well-documented demonstration Python Jupyter workflows for many common geostatistical modeling workflows with the GeostatsPy geostatistics Python package converted into a book with the <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html">jupyter-book package</a>. The goal of the e-book is to share this content beyond the GitHub users that are often experts and developers.</p>
+<p>This e-book provides an accessible, online version, a new vehicle to share my <strong>Data Analytics and Geostatistics Undergraduate Course</strong> at The University of Texas at Austin, that includes,</p>
+<ul class="simple">
+<li><p><strong>Well Documented Demonstration Python Workflows</strong> - almost half the lecture time is spend with these workflows from my <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPyDemos">GeostatsPyDemos</a> GitHub repository, that includes well-documented demonstration Python Jupyter workflows for many common geostatistics workflows completed with my GeostatsPy python package. One goal of this e-book is to share this content beyond the GitHub users, often only the experts and developers - to reach and help more people!</p></li>
+<li><p><strong>Course Notes</strong> - I’m also making an effort to continue adding more of the course notes into this e-book, to provid even more coverage of theory and implimentation details.</p></li>
+<li><p><strong>Interactive Python Dashboards</strong> - I have a lot of interactive Python dashboards that I use in my classes that I will continue to explain and cite in this e-book to help you get the entire in-class experience. These are all available in my <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython">DataScienceInteractivePython</a> GitHub repository.</p></li>
+<li><p><strong>Recorded Lectures</strong> - there are many thousands of views of my lectures every month on <a class="reference external" href="https://www.youtube.com/GeostatsGuyLectures">YouTube channel</a>, but many of those people are not on GitHub. I will add links to this e-book to support them. Also, the YouTube channel can enhance the e-book experience, read the book and drop by to hear my explanations.</p></li>
+</ul>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Welcome!</p>
 <p>The goal of this e-book is to teach the application of geostatistics in Python, for those new to geostatistics I provide theory and links to my course content, and for those experienced practitioners I provide example workflows and plots that you can implement.</p>
 </div>
-<p>This is my first attempt to convert my repository of well-documented Python workflows, <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPyDemos">GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository</a> <span id="id1">[<a class="reference internal" href="references.html#id4" title="M.J. Pyrcz. GeostatsPy Demos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository. https://github.com/GeostatsGuy/GeostatsPyDemos, 2024. doi:10.5281/zenodo.12667035.">Pyr24b</a>]</span> into an online e-book. Given this source for the content of this e-book, there are natural consequences on the e-book scope, i.e., what is included and what is not? All the workflows demonstrate the functionality of GeostatsPy and the use of GeostatsPy to accomplish fundamental geostatistics workflow steps. Therefore, this is not a general introduction to statistics nor is it a comprehensive treatment of geostatistics. For this I invite you to refer to a standard textbook like, <a class="reference external" href="https://a.co/d/4tspALH">Geostatistical Reservoir Modeling</a> <span id="id2">[<a class="reference internal" href="references.html#id6" title="M.J. Pyrcz and C.V. Deutsch. Geostatistical Reservoir Modeling. Oxford University Press, New York, United States, 2014.">PD14</a>]</span>. Alternatively, you can review the linked lectures from my <a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;si=zBls7dCMaYLzraoe">Data Analytics and Geostatistics Lecture Series</a> <span id="id3">[<a class="reference internal" href="references.html#id8" title="M.J. Pyrcz. Data Analytics and Geostatistics, GeostatsGuy Lectures. https://www.youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ, August 2024.">Pyr24a</a>]</span> for a deeper dive into the theory and practice of geostatistics. Also, I have a recent book chapter that summarizes GeostatsPy, <a class="reference external" href="https://www.intechopen.com/online-first/89590">GeostatsPy: Open-Source Geostatistics in Python</a><span id="id4">[<a class="reference internal" href="references.html#id2" title="M.J. Pyrcz. GeostatsPy: Open-source Geostatistics in Python. In J. Yarus, T. Coburn, M. Maucec, and M.J. Pyrcz, editors, Applied Spatiotemporal Data Analytics and Machine Learning. IntechOpen, London, United Kingdom, 2024. doi:10.5772/intechopen.114981.">Pyr24c</a>]</span> that may be helpful.</p>
+<p>This is my first attempt to convert my repository of well-documented Python workflows, <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPyDemos">GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository</a> <span id="id1">[<a class="reference internal" href="references.html#id4" title="M.J. Pyrcz. GeostatsPy Demos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository. https://github.com/GeostatsGuy/GeostatsPyDemos, 2024. doi:10.5281/zenodo.12667035.">Pyr24b</a>]</span> into an online e-book.</p>
+<ul class="simple">
+<li><p>this e-book provides the essential theory to complete standard geostatistical workflow steps</p></li>
+<li><p>while I make an effort to include foundamental concepts such as geostatistical concepts, probability, univariate statistics, etc. I have yet to include all the concent from my Data Analytics and Geostatistics Undergraduate Course.</p></li>
+</ul>
+<p>For a more complete treatment I invite you to refer to a standard textbook like,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://a.co/d/4tspALH">Geostatistical Reservoir Modeling</a> <span id="id2">[<a class="reference internal" href="references.html#id6" title="M.J. Pyrcz and C.V. Deutsch. Geostatistical Reservoir Modeling. Oxford University Press, New York, United States, 2014.">PD14</a>]</span>.</p></li>
+</ul>
+<p>Alternatively, you can review the linked lectures from my,</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;si=zBls7dCMaYLzraoe">Data Analytics and Geostatistics Course</a> <span id="id3">[<a class="reference internal" href="references.html#id8" title="M.J. Pyrcz. Data Analytics and Geostatistics, GeostatsGuy Lectures. https://www.youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ, August 2024.">Pyr24a</a>]</span></p></li>
+</ul>
+<p>for a deeper dive into the theory and practice of geostatistics. Also, I have a recent book chapter that summarizes GeostatsPy, <a class="reference external" href="https://www.intechopen.com/online-first/89590">GeostatsPy: Open-Source Geostatistics in Python</a><span id="id4">[<a class="reference internal" href="references.html#id2" title="M.J. Pyrcz. GeostatsPy: Open-source Geostatistics in Python. In J. Yarus, T. Coburn, M. Maucec, and M.J. Pyrcz, editors, Applied Spatiotemporal Data Analytics and Machine Learning. IntechOpen, London, United Kingdom, 2024. doi:10.5772/intechopen.114981.">Pyr24c</a>]</span> that may be helpful.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Linked Recorded Lectures are Available</p>
 <p>For a deeper dive into the theory and practice of geostatistics follow the links at the top of each chapter to my recorded YouTube lectures.</p>
@@ -508,6 +518,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
@@ -557,142 +568,6 @@ document.write(`
 <li><p>spatial model checking</p></li>
 <li><p>volume variance relations</p></li>
 </ul>
-<p>and now, here is some information about the GeostatsPy package, first setting it up and then what is it. Note, you can use this e-book, i.e., read and review the workflows, without ever running the code. You only need to install GeostatsPy and the dependency Python packages if you want to download and run these workflows for yourself.</p>
-</section>
-<section id="installing-geostatspy">
-<h2>Installing GeostatsPy<a class="headerlink" href="#installing-geostatspy" title="Permalink to this heading">#</a></h2>
-<p>Firstly, if you haven’t installed GeostatsPy, here’s the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy/tree/master">GeostatsPy GitHub</a> <span id="id10">[<a class="reference internal" href="references.html#id3" title="M.J. Pyrcz, Jo. H., A. Kupenko, W. Liu, A.E. Gigliotti, T. Salomaki, and J. Santos. Geostatspy Python Package. https://github.com/GeostatsGuy/GeostatsPy, 2021.">PHK+21</a>]</span>. GeostatsPy is available on the Python Package Index (PyPI) <a class="reference external" href="https://pypi.org/project/geostatspy/">GeostatsPy PyPI</a>.</p>
-<p>To install GeostatsPy, use pip</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">pip install geostatspy</span>
-</pre></div>
-</div>
-</section>
-<hr class="docutils" />
-<section id="geostatspy-package-dependencies">
-<h2>GeostatsPy Package Dependencies<a class="headerlink" href="#geostatspy-package-dependencies" title="Permalink to this heading">#</a></h2>
-<p>The functions rely on the following packages:</p>
-<ol class="arabic simple">
-<li><p><strong>numpy</strong> - for ndarrays</p></li>
-<li><p><strong>pandas</strong> - for DataFrames</p></li>
-<li><p><strong>numpy.linalg</strong> - for linear algebra</p></li>
-<li><p><strong>numba</strong> - for numerical speed up</p></li>
-<li><p><strong>scipy</strong> - for fast nearest neighbor search</p></li>
-<li><p><strong>matplotlib.pyplot</strong> - for plotting</p></li>
-<li><p><strong>tqdm</strong> - for progress bar</p></li>
-<li><p><strong>statsmodels</strong> - for weighted (debiased) statistics</p></li>
-</ol>
-<p>These packages should be available with any modern Python distribution, e.g. <a class="reference external" href="https://www.anaconda.com/download/">Anaconda</a>.</p>
-<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
-</section>
-<hr class="docutils" />
-<section id="information-about-the-geostatspy-python-package-for-spatial-data-analytics-and-geostatistics">
-<h2>Information about the <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy">GeostatsPy Python Package</a> for Spatial Data Analytics and Geostatistics<a class="headerlink" href="#information-about-the-geostatspy-python-package-for-spatial-data-analytics-and-geostatistics" title="Permalink to this heading">#</a></h2>
-<p>The GeostatsPy Package brings <a class="reference external" href="http://www.gslib.com/">GSLIB: Geostatistical Library</a><span id="id11">[<a class="reference internal" href="references.html#id7" title="C.V. Deutsch and A.G. Journel. GSLIB Geostatistical Software Library and Users Guide. Oxford University Press, New York, United States, 1997.">DJ97</a>]</span> functions and more geostatistics to Python. GSLIB is a practical and extremely robust set of code for building spatial modeling workflows.</p>
-<p>I created the GeostatsPy Python Package to support my students in my courses:</p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ&amp;si=MzTdgS7IfHEhvF4Q">Data Analytics and Geostatistics Course</a> <span id="id12">[<a class="reference internal" href="references.html#id8" title="M.J. Pyrcz. Data Analytics and Geostatistics, GeostatsGuy Lectures. https://www.youtube.com/playlist?list=PLG19vXLQHvSB-D4XKYieEku9GQMQyAzjJ, August 2024.">Pyr24a</a>]</span></p></li>
-<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSDUmEOmBoaxGbFAbvaLdfx4&amp;si=Pd9bNQLVFZ9Yqz6-">Spatial Data Analytics Course</a></p></li>
-<li><p><a class="reference external" href="https://youtube.com/playlist?list=PLG19vXLQHvSC2ZKFIkgVpI9fCjkN38kwf&amp;si=tfOVljWgWiduwGYl">Machine Learning</a></p></li>
-</ol>
-<p>I find my students benefit from hands-on opportunities, in fact it is hard to imagine teaching these topics without providing the opportunity to handle the numerical methods and build workflows. In 2017, I tried to have my students use the original FORTRAN executables, and even with support and worked out examples, it was an uphill battle. In addition, all my students and I are now working in Python for our research. Thus, having access to geostatistical methods in Python directly impacts and facilitates the research of my group. This package retains the spirit of GSLIB:</p>
-<ul class="simple">
-<li><p><strong>modularity</strong> - a collection of standalone functions that may be applied in sequence for maximum flexibility for building workflows</p></li>
-<li><p><strong>minimalist</strong> - the simplest possible code to support the “look at the code” approach to learning</p></li>
-<li><p><strong>fundamental</strong> - based on the well-established geostatistical theory by avoiding ad hoc methods and assumptions</p></li>
-</ul>
-<p>The work on this Python package deepened my respect to the original geostatistics open-source authors, Prof. Clayton V. Deutsch and Prof. Andre G. Journel (emeritus).</p>
-<p>This package contains 2 parts:</p>
-<ol class="arabic simple">
-<li><p><strong>geostatspy.geostats</strong> includes GSLIB functions rewritten in Python. This currently includes all the variogram, distribution transformations, and spatial estimation and simulation methods. I will continue adding functions to support modeling operations for practical subsurface model construction.</p></li>
-<li><p><strong>geostatspy.GSLIB</strong> includes reimplementation of the GSLIB visualizations and low tech wrappers of the numerical methods (note: the low-tech wrapper require access to GSLIB executables as they write the parameter files, run the GSLIB .exe and read in the outputs).</p></li>
-</ol>
-</section>
-<section id="the-geostatspy-authors">
-<h2>The GeostatsPy Authors<a class="headerlink" href="#the-geostatspy-authors" title="Permalink to this heading">#</a></h2>
-<p>The GeostatsPy package is being developed at The University of Texas in the Texas Center for Geostatistics.</p>
-<ul class="simple">
-<li><p><strong>Professor Michael J. Pyrcz, Ph.D., P.Eng.</strong> - professor with The University of Texas at Austin. Primary author of the package, translated and wrote many of the functions and maintains the package.</p></li>
-<li><p><strong>Professor Honggeun Jo</strong> - assistant professor with Inha University, South Korea. Author of 3D subroutines, 3D variogram calculation and modeling and wrapper for sgsim for 3D modeling and more! Thank you, Professor Jo!</p></li>
-<li><p><strong>Anton Kupenko</strong> - bug fixes, added docstrings, code refractory for PEP8, removed duplicated functions and variables. Thank you, Anton!</p></li>
-<li><p><strong>Wendi Liu, Ph.D.</strong> - while a Ph.D. student working with Michael Pyrcz at The University of Texas at Austin. Author of 3D subroutines and gammabar method. Also, GSLIB compiles in Mac OSX, and 3D variogram calculation wrapper. Thank you, Dr. Wendi Liu!</p></li>
-<li><p><strong>Alex E. Gigliotti</strong> - undergraduate student working with Michael Pyrcz at The University of Texas at Austin. Established unit testing.  Thank you Alex!</p></li>
-<li><p><strong>Travis Salomaki</strong> - as an undergraduate student research project with Michael Pyrcz at The University of Texas at Austin. Improving package docs. Thank you, Travis!</p></li>
-<li><p><strong>Javier Santos, Ph.D.</strong> - while a Ph.D. student working with Michael Pyrcz at The University of Texas at Austin. Author of the post processing algorithm for summarizing over multiple realizations. Thank you, Javier!</p></li>
-</ul>
-</section>
-<section id="package-inventory">
-<h2>Package Inventory<a class="headerlink" href="#package-inventory" title="Permalink to this heading">#</a></h2>
-<p>Here’s a list and some details on each of the functions available.</p>
-<section id="geostatspy-gslib-functions">
-<h3>geostatspy.GSLIB Functions<a class="headerlink" href="#geostatspy-gslib-functions" title="Permalink to this heading">#</a></h3>
-<p>Utilities to support moving between Python DataFrames and ndarrays, Data Tables, Gridded Data and Models in Geo-EAS file format (standard to GSLIB):</p>
-<ol class="arabic simple">
-<li><p><strong>ndarray2GSLIB</strong> - utility to convert 1D or 2D numpy ndarray to a GSLIB Geo-EAS file for use with GSLIB methods</p></li>
-<li><p><strong>GSLIB2ndarray</strong> - utility to convert GSLIB Geo-EAS files to a 1D or 2D numpy ndarray for use with Python methods</p></li>
-<li><p><strong>Dataframe2GSLIB(data_file,df)</strong> - utility to convert pandas DataFrame to a GSLIB Geo-EAS file for use with GSLIB methods</p></li>
-<li><p><strong>GSLIB2Dataframe</strong> - utility to convert GSLIB Geo-EAS files to a pandas DataFrame for use with Python methods</p></li>
-<li><p><strong>DataFrame2ndarray</strong> - take spatial data from a DataFrame and make a sparse 2D ndarray (NaN where no data in cell)</p></li>
-</ol>
-<p>Visualization functions with the same parameterization as GSLIB using matplotlib:</p>
-<ol class="arabic simple" start="6">
-<li><p><strong>pixelplt</strong> - reimplementation in Python of GSLIB pixelplt with matplotlib methods</p></li>
-<li><p><strong>pixelplt_st</strong> - reimplementation in Python of GSLIB pixelplt with matplotlib methods with support for sub plots</p></li>
-<li><p><strong>pixelplt_log_st</strong> - reimplementation in Python of GSLIB pixelplt with matplotlib methods with support for sub plots and log color bar</p></li>
-<li><p><strong>locpix</strong> - pixel plot and location map, reimplementation in Python of a GSLIB MOD with MatPlotLib methods</p></li>
-<li><p><strong>locpix_st</strong> - pixel plot and location map, reimplementation in Python of a GSLIB MOD with MatPlotLib methods with support for sub plots</p></li>
-<li><p><strong>locpix_log_st</strong> - pixel plot and location map, reimplementation in Python of a GSLIB MOD with MatPlotLib methods with support for sub plots and log color bar</p></li>
-<li><p><strong>hist</strong> - histograms reimplemented in Python of GSLIB hist with MatPlotLib methods</p></li>
-<li><p><strong>hist_st</strong> - histograms reimplemented in Python of GSLIB hist with MatPlotLib methods with support for sub plots</p></li>
-</ol>
-<p>Data transformations</p>
-<ol class="arabic simple" start="14">
-<li><p><strong>affine</strong> - affine distribution transformation to correct feature mean and standard deviation</p></li>
-<li><p><strong>nscore</strong> - normal score transform, wrapper for nscore from GSLIB (GSLIB’s nscore.exe must be in working directory)</p></li>
-<li><p><strong>declus</strong> - cell-based declustering, 2D wrapper for declus from GSLIB (GSLIB’s declus.exe must be in working directory)</p></li>
-</ol>
-<p>Spatial Continuity</p>
-<ol class="arabic simple" start="17">
-<li><p><strong>make_variogram</strong> - make a dictionary of variogram parameters to for application with spatial estimation and simulation</p></li>
-<li><p><strong>gamv</strong> - irregularly sampled variogram, 2D wrapper for gam from GSLIB (.exe must be in working directory)</p></li>
-<li><p><strong>varmap</strong> - regular spaced data, 2D wrapper for varmap from GSLIB (.exe must be in working directory)</p></li>
-<li><p><strong>varmapv</strong> - irregular spaced data, 2D wrapper for varmap from GSLIB (.exe must be in working directory)</p></li>
-<li><p><strong>vmodel</strong> - variogram model, 2D wrapper for vmodel from GSLIB (.exe must be in working directory)</p></li>
-</ol>
-<p>Spatial Modeling</p>
-<ol class="arabic simple" start="22">
-<li><p><strong>kb2d</strong> - kriging estimation, 2D wrapper for kb2d from GSLIB (GSLIB’s kb2d.exe must be in working directory)</p></li>
-<li><p><strong>sgsim_uncond</strong> - sequential Gaussian simulation, 2D unconditional wrapper for sgsim from GSLIB (GSLIB’s sgsim.exe must be in working directory)</p></li>
-<li><p><strong>sgsim</strong> - sequential Gaussian simulation, 2D and 3D wrapper for sgsim from GSLIB (GSLIB’s sgsim.exe must be in working directory)</p></li>
-<li><p><strong>cosgsim_uncond</strong> - sequential Gaussian simulation, 2D unconditional wrapper for sgsim from GSLIB (GSLIB’s sgsim.exe must be in working directory)</p></li>
-</ol>
-<p>Spatial Model Resampling</p>
-<ol class="arabic simple" start="26">
-<li><p><strong>sample</strong> - sample 2D model with provided X and Y and append to DataFrame</p></li>
-<li><p><strong>gkern</strong> - make a Gaussian kernel for convolution, moving window averaging (from Teddy Hartano, Stack Overflow)</p></li>
-<li><p><strong>regular_sample</strong> - extract regular spaced samples from a 2D spatial model</p></li>
-<li><p><strong>random_sample</strong> - extract random samples from a 2D spatial model</p></li>
-<li><p><strong>DataFrame2ndarray</strong> - convent spatial point data in a DataFrame to a sparse ndarray grid</p></li>
-</ol>
-</section>
-<section id="geostatspy-geostats-functions">
-<h3>geostatspy.geostats Functions<a class="headerlink" href="#geostatspy-geostats-functions" title="Permalink to this heading">#</a></h3>
-<p>Numerical methods in GSLIB (Deutsch and Journel, 1997)<span id="id13">[<a class="reference internal" href="references.html#id7" title="C.V. Deutsch and A.G. Journel. GSLIB Geostatistical Software Library and Users Guide. Oxford University Press, New York, United States, 1997.">DJ97</a>]</span> translated to Python:</p>
-<ol class="arabic simple" start="31">
-<li><p><strong>correct_trend</strong> - correct the order relations of an indicator-based trend model</p></li>
-<li><p><strong>backtr</strong> - GSLIB’s backtr function  to transform a distribution</p></li>
-<li><p><strong>declus</strong> - GSLIB’s DECLUS program reimplemented for cell-based declustering in 2D</p></li>
-<li><p><strong>gam</strong> - GSLIB’s GAM program reimplemented for variogram calculation with regular data in 2D</p></li>
-<li><p><strong>gamv</strong> - GSLIB’s GAMV program reimplemented for variogram calculation with iregular data in 2D</p></li>
-<li><p><strong>varmapv</strong> - GSLIB’s VARMAP program reimplemented for irregularly spaced spatial data in 2D</p></li>
-<li><p><strong>vmodel</strong> - GSLIB’s VMODEL program reimplemented for visualization of nested variogram models in 2D</p></li>
-<li><p><strong>nscore</strong> - GSLIB’s NSCORE program reimplemented for normal score distribution transformation</p></li>
-<li><p><strong>kb2d</strong> - GSLIB’s KB2D program reimplemented for 2D kriging-based spatial estimation</p></li>
-<li><p><strong>ik2d</strong> - GSLIB’s IK3D program reimplemented for 2D indicator-based kriging estimation</p></li>
-<li><p><strong>kb3d</strong> - GSLIB’s kt3d program reimplemented for 3D kriging-based spatial kriging estimation</p></li>
-<li><p><strong>sgsim</strong> - GSLIB’s sgsim program reimplemented for 2D spatial simulation</p></li>
-<li><p><strong>postsim</strong> - GSLIB’s postsim program reimplemented for summarizing over multiple realizations</p></li>
-</ol>
-</section>
 </section>
 <section id="how-to-use-this-e-book">
 <h2>How to Use this e-book?<a class="headerlink" href="#how-to-use-this-e-book" title="Permalink to this heading">#</a></h2>
@@ -713,9 +588,7 @@ document.write(`
 <p>I’m always happy to discuss,</p>
 <p><em>Michael</em></p>
 <p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
-</section>
-<section id="more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">
-<h2>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h2>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -781,18 +654,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-workflow-repository">The Workflow Repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-geostatspy">Installing GeostatsPy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-package-dependencies">GeostatsPy Package Dependencies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-geostatspy-python-package-for-spatial-data-analytics-and-geostatistics">Information about the GeostatsPy Python Package for Spatial Data Analytics and Geostatistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-geostatspy-authors">The GeostatsPy Authors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-inventory">Package Inventory</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-gslib-functions">geostatspy.GSLIB Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatspy-geostats-functions">geostatspy.geostats Functions</a></li>
-</ul>
-</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-e-book">How to Use this e-book?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-resources-available-at-twitter-github-website-googlescholar-book-youtube-linkedin">More Resources Available at: Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
 </ul>
   </nav></div>
 

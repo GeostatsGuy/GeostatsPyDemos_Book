@@ -66,6 +66,8 @@ chapters:
   title: Model Checking
 - file: GeostatsPy_volume_variance
   title: Volume Variance
+- file: GeostatsPy
+  title: GeostatsPy Package
 - file: conclusions
   title: Conclusions
 - file: GeostatsPy_glossary
