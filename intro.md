@@ -1,23 +1,27 @@
+<figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+
 ### Introduction
 
 Michael J. Pyrcz, Professor, The University of Texas at Austin 
 
 [Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Geostatistics Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [Applied Geostats in Python e-book](https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html) | [Applied Machine Learning in Python e-book](https://geostatsguy.github.io/MachineLearningDemos_Book/) | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)
 
-Chapter of e-book "Applied Machine Learning in Python: a Hands-on Guide with Code". 
+Chapter of e-book "Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy". 
 
 ```{admonition} Cite this e-Book as:
 :class: remove-from-content-only
 
-Pyrcz, M.J., 2024, Applied Machine Learning in Python: a Hands-on Guide with Code, https://geostatsguy.github.io/MachineLearningDemos_Book. 
+Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, https://geostatsguy.github.io/GeostatsPyDemos_Book. 
 ```
 
 The workflows in this book and more are available here:
 
-```{admonition} Cite the MachineLearningDemos GitHub Repository as:
+```{admonition} Cite my GeostatsPyDemos GitHub Repository as:
 :class: remove-from-content-only
 
-Pyrcz, M.J., 2024, MachineLearningDemos: Python Machine Learning Demonstration Workflows Repository (0.0.1). Zenodo. [![DOI](https://zenodo.org/badge/862519860.svg)](https://zenodo.org/doi/10.5281/zenodo.13835312)
+Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. https://zenodo.org/doi/10.5281/zenodo.12667035
 ```
 
 By Michael J. Pyrcz <br />
@@ -132,41 +136,6 @@ Yet, I'm excited to compile all this content into an accessible format, linked t
 For me, this is a wonderful vehicle to combine and share all my educational content. Yes, thousands can follow my workflows on GitHub, but the e-book will share this content much more widely. Accessible and actionable educational content is my personal mantra. Some might wonder, why does Michael do this? Check out my story and you will learn that education changed my life. I grew up in a low income family in a small town in Canada. In middle school (junior high for my Canadian friends), I delivered newspapers for over a year to save up for my first computer that our school guidance councilor helped me buy at a local used computer store. A random engineering student talked to me in a gas station late one cold evening and that got me interested in an university education. Education changed my life, so it is my mission to share all my university educational content. Perhaps, I may lift someone as I was lifted. 
 
 Before we get started, here's more information about the associated repository, the source of the workflows for this e-book.
-
-#### Motivation for Open Educational Content
-
-There is more to be done, yet I am excited to compile all this content into an accessible format, linked to lectures and with repeatable code. My goal is to help people get started or to improve their application of machine learning. With an e-book, I realize my dream of sharing educational content with,
-
-* **living documents**, I will continuously make improvements and add new content over time, so send me suggestions and errata and return often!
-
-* **repeatable results**, all examples and plots show the code and anyone can reproduce all the results! The code is immediately downloadable, and all data are online available.
-
-* **links**, for rapid access to all associated resources, bringing together all of my educational content.
-
-* **no pay wall**, for anyone around the world to access my content.
-
-For me, this is a wonderful vehicle to combine and share all my educational content. Yes, thousands can follow and mirror my workflows on GitHub, but the e-book will share this content much more widely. I see this with my YouTube channel with tens of thousands of subscribers and as many views per month vs. my GitHub account with about 3,600 following. 
-
-* accessible and actionable educational content is my personal mantra.
-
-Some might wonder, why does Michael do this? Check out [my story](https://michaelpyrcz.com/my-story) and you will learn that education changed my life. Here's the summary,
-
-* I grew up in a low income family in a small town in Canada. 
-
-* a random engineering student talked to me in a gas station late one cold evening and that got me interested in an university education. 
-
-* I supported myself and young family through an engineering B.Sc. and Ph.D., and as a result had a challenging, exciting and rewarding career.
-
-Now it is my mission to share all my university educational content in that hope that I may lift someone else as I was lifted.
-
-<figure style="text-align: center;">
-  <img src="_static/intro/Gathering_Q2_2022c.jpg" style="display: block; margin: 0 auto; width: 100%;">
-  <figcaption style="text-align: center;"> Gathering of my graduate students at my home in Austin, Texas in the Spring of 2022.
-</figcaption>
-</figure>
-
-Before we get started, here's more information about my motivation for sharing my university educational content.
-
 
 #### Motivation for Open Educational Content
 
@@ -383,56 +352,3 @@ I'm always happy to discuss,
 Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin
 
 More Resources Available at: [Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Geostatistics Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [Applied Geostats in Python e-book](https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html) | [Applied Machine Learning in Python e-book](https://geostatsguy.github.io/MachineLearningDemos_Book/) | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)
-
-
-#### How to Use this e-book?
-
-This is a topical approach to the hands-on application of geostatistics. Each chapter stands alone and covers a unique demonstration or workflow using GeostatsPy. Want to visualize univariate distributions, debias your spatial data with declustering, make estimates in space with kriging or simulate a spatial heterogeneity model? Open up the respective chapter and walkthrough the example with all requisite steps, including data loading, data visualization and geostatistics steps, all codes and results shown. Go to the linked lecture to fill any gaps in your knowledge and then download and update the workflow for your application, please remember to cite the e-book in your work, so that others will see and use this resource! Remember, that this content is for educational purposes only and I do not provide any guarantees. There may be errors in the codes, there may be issues with your case that invalidate the assumptions of the e-book's workflows. It is up to you to evaluate your results.
-
-```{warning}
-If you adopt any workflows from this e-book or any codes from the GeostatsPy Python package you must check your own work.
-```
-
-#### Comments
-
-This is an introduction to my Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy e-book, I have many more resources. Check out my [shared resource inventory](https://michaelpyrcz.com/my-resources) and the YouTube lecture links at the start of this chapter with resource links in the videos' descriptions.
-
-I hope this is helpful,
-
-*Michael*
-
-#### About the Author
-
-<figure style="text-align: center;">
-  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
-  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
-</figcaption>
-</figure>
-
-Michael Pyrcz is a professor in the [Cockrell School of Engineering](https://cockrell.utexas.edu/faculty-directory/alphabetical/p), and the [Jackson School of Geosciences](https://www.jsg.utexas.edu/researcher/michael_pyrcz/), at [The University of Texas at Austin](https://www.utexas.edu/), where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,
-
-* the principal investigator of the [Energy Analytics](https://fri.cns.utexas.edu/energy-analytics) freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin
-
-* an associate editor for [Computers and Geosciences](https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board), and a board member for [Mathematical Geosciences](https://link.springer.com/journal/11004/editorial-board), the International Association for Mathematical Geosciences. 
-
-Michael has written over 70 [peer-reviewed publications](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en), a [Python package](https://pypi.org/project/geostatspy/) for spatial data analytics, co-authored a textbook on spatial data analytics, [Geostatistical Reservoir Modeling](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) and author of two recently released e-books, [Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy](https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html) and [Applied Machine Learning in Python: a Hands-on Guide with Code](https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html).
-
-All of Michael’s university lectures are available on his [YouTube Channel](https://www.youtube.com/@GeostatsGuyLectures) with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his [GitHub account](https://github.com/GeostatsGuy), to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his [Website](www.michaelpyrcz.com).
-
-#### Want to Work Together?
-
-I hope this content is helpful to those that want to learn more about subsurface, spatial modeling, data analytics and geostatistics. Students and working professionals are welcome to participate. I'm happy to collaborate with your organization.
-
-* Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I'd be happy to drop by and work with you! 
-
-* Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PIs including Profs. Foster, Torres-Verdin and van Oort)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!
-
-* I can be reached at mpyrcz@austin.utexas.edu.
-
-I'm always happy to discuss,
-
-*Michael*
-
-Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin
-
-More Resources Available at: [Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)

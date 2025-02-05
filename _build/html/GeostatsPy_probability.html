@@ -204,7 +204,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusion</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
@@ -1417,8 +1419,9 @@ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)} = \
 <li><p>our test was being impacted by a relatively high probability of false positive, seismic showing a channel when there is no channel present, <span class="math notranslate nohighlight">\(P(B|A^c) = 0.3\)</span> paired with a relatively high rate of no channel present, <span class="math notranslate nohighlight">\(P(A^c) = 0.4\)</span>.</p></li>
 </ul>
 <p>now we switch gears and look at another illustrative example of Bayesian updating with machines on a production line.</p>
-<p><strong>Bayesian Updating Example #2</strong> - You have 3 machines making the same product (imagine a large production line). They have different volumes and errors.</p>
+<p><strong>Bayesian Updating Example #2</strong> - You have 3 machines making the same product (imagine a large production center with 3 separate production lines working in parallel).</p>
 <ul class="simple">
+<li><p>Each production line produces at different rates (different proportions of total production) and with different error rates (probability of an error for each unit produced).</p></li>
 <li><p>Note we assume the products are mutually exclusive (only come from a single machine), and exhaustive (all products come from one of the 3 machines).</p></li>
 </ul>
 <figure style="text-align: center;">
