@@ -175,8 +175,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions.html">Parametric Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions_fitting.html">Parametric Distributions Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_expectation.html">Statistical Expectation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_confidence_interval.html">Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
@@ -204,9 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusion</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
@@ -407,6 +411,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qq-plot">QQ-Plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qq-plot-interpretation">QQ-Plot Interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-plot">PP-plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-dashboards">Interactive Dashboards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
@@ -519,6 +524,22 @@ x = F_x^{-1}\left( F_y(y) \right)
   <img src="_static/QQ/PP_calc.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">The QQ-plot and PP-plot methods for matching between distributions (left), an illustration of the calculation of a single point 0.3 cumulative probability for a QQ-plot (center), and an illustration of the calculation of a single point 0.35 porosity for a PP-plot (right).</figcaption>
 </figure>
+</section>
+<section id="interactive-dashboards">
+<h2>Interactive Dashboards<a class="headerlink" href="#interactive-dashboards" title="Permalink to this heading">#</a></h2>
+<p>To help you learn this concept by interacting with the method, I have built out an interactive Python dashboard <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_QQ_Plot.ipynb">QQ-plots</a>,</p>
+<figure style="text-align: center;">
+  <img src="_static/QQ/interactive_QQ.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python dashboard for QQ-plots.
+</figcaption>
+</figure>
+<p>and another interactive Python dashboard <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_PP_Plot.ipynb">PP-plots</a>.</p>
+<figure style="text-align: center;">
+  <img src="_static/QQ/interactive_PP.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python dashboard for PP-plots.
+</figcaption>
+</figure>
+<p>For each of the interactive Python dashboard you can vary the mean, variance and number of samples for the distributions and observe the changes in the QQ-plot or PP-plot.</p>
 </section>
 <section id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
@@ -672,7 +693,7 @@ x = F_x^{-1}\left( F_y(y) \right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ca1078fe238c8c9755519acbbafc9d6d5893f992ff1f1399e7d9537f8d594f8a.png" src="_images/ca1078fe238c8c9755519acbbafc9d6d5893f992ff1f1399e7d9537f8d594f8a.png" />
+<img alt="_images/82d358aeefb1cd12c3aa808c5de1feea133b4fd0e7eea9fff0d5388787374f67.png" src="_images/82d358aeefb1cd12c3aa808c5de1feea133b4fd0e7eea9fff0d5388787374f67.png" />
 </div>
 </div>
 </section>
@@ -728,7 +749,7 @@ x = F_x^{-1}\left( F_y(y) \right)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/de43c522c7971069fc41aef57732d9637fd9a94e9ac59739d350b1c1a4746dba.png" src="_images/de43c522c7971069fc41aef57732d9637fd9a94e9ac59739d350b1c1a4746dba.png" />
+<img alt="_images/cbcc73c39235e02485f128aa662cefe3d5d00a8c098b59dd61c555e24ef94a2f.png" src="_images/cbcc73c39235e02485f128aa662cefe3d5d00a8c098b59dd61c555e24ef94a2f.png" />
 </div>
 </div>
 </section>
@@ -833,6 +854,7 @@ x = F_x^{-1}\left( F_y(y) \right)
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qq-plot">QQ-Plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qq-plot-interpretation">QQ-Plot Interpretation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pp-plot">PP-plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-dashboards">Interactive Dashboards</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Getting Started</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>

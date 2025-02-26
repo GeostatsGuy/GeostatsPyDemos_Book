@@ -175,8 +175,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions.html">Parametric Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions_fitting.html">Parametric Distributions Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_expectation.html">Statistical Expectation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_confidence_interval.html">Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
@@ -204,9 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusion</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
@@ -633,14 +637,14 @@ document.write(`
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>-0.534450</td>
-      <td>1030.535320</td>
+      <td>1.423142</td>
+      <td>881.205646</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>0.752119</td>
-      <td>1158.758836</td>
+      <td>0.928804</td>
+      <td>966.245204</td>
     </tr>
   </tbody>
 </table>
@@ -718,7 +722,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c01d38dd5bab494300679335dcdd6c02fb796a96916f310bac10080c194ce35d.png" src="_images/c01d38dd5bab494300679335dcdd6c02fb796a96916f310bac10080c194ce35d.png" />
+<img alt="_images/a43042b1b56297b2c4d7d5b694f54510a6114517e78f80364e953eb87e95d0a8.png" src="_images/a43042b1b56297b2c4d7d5b694f54510a6114517e78f80364e953eb87e95d0a8.png" />
 </div>
 </div>
 </section>
@@ -764,7 +768,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/18bfec5f53448fa2eec1a3f678be1649b022ba80716a81ae3ebe179bfbd82e6a.png" src="_images/18bfec5f53448fa2eec1a3f678be1649b022ba80716a81ae3ebe179bfbd82e6a.png" />
+<img alt="_images/c939c7192831d7d0b9269b45f7f349c2f8cd5cb6b69fc0aba908fa4494ee0213.png" src="_images/c939c7192831d7d0b9269b45f7f349c2f8cd5cb6b69fc0aba908fa4494ee0213.png" />
 </div>
 </div>
 </section>
@@ -810,7 +814,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a9daff000740e5d6ac040800649469d09bd634bda7d4d9e3795af24ae0c5768c.png" src="_images/a9daff000740e5d6ac040800649469d09bd634bda7d4d9e3795af24ae0c5768c.png" />
+<img alt="_images/91291eb5e9769d8cbf433c865b5d1d34120dd530b7fa4fc0f482a10c6b7467fe.png" src="_images/91291eb5e9769d8cbf433c865b5d1d34120dd530b7fa4fc0f482a10c6b7467fe.png" />
 </div>
 </div>
 </section>
@@ -933,7 +937,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4e71ef7cee287f840974a1c56826a110bea13b69659b862592ed71276a2d22e5.png" src="_images/4e71ef7cee287f840974a1c56826a110bea13b69659b862592ed71276a2d22e5.png" />
+<img alt="_images/48daf1b13a97bdba6d7a3ca796027fc366b8268852569e3c5c552bc2f9a09419.png" src="_images/48daf1b13a97bdba6d7a3ca796027fc366b8268852569e3c5c552bc2f9a09419.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with increasing short scale spatial continuity from exponential to spherical to Gaussian. But the long range spatial continuity does not change significantly.</p>
@@ -995,7 +999,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2a981e638cda743667549cd83e4afb3ffc961d9bd9e6806b8dc668b81eb8a264.png" src="_images/2a981e638cda743667549cd83e4afb3ffc961d9bd9e6806b8dc668b81eb8a264.png" />
+<img alt="_images/5352835e44cc60218585047fead02d38055641ef304f1eead27926fc48428971.png" src="_images/5352835e44cc60218585047fead02d38055641ef304f1eead27926fc48428971.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with decreasing short scale spatial continuity with increase in relative nugget effect.</p>

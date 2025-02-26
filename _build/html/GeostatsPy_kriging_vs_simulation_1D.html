@@ -175,8 +175,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions.html">Parametric Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions_fitting.html">Parametric Distributions Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_expectation.html">Statistical Expectation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_confidence_interval.html">Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
@@ -204,9 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusion</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
@@ -659,14 +663,14 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>-0.615115</td>
-      <td>986.272808</td>
+      <td>-0.918400</td>
+      <td>927.233497</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>0.448403</td>
-      <td>1123.605683</td>
+      <td>1.595754</td>
+      <td>775.279377</td>
     </tr>
   </tbody>
 </table>
@@ -732,7 +736,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/11cd99dece38172de7b324b90760319594c9a90d487232198dfa6337437773a4.png" src="_images/11cd99dece38172de7b324b90760319594c9a90d487232198dfa6337437773a4.png" />
+<img alt="_images/610a0e1d9952d000283f59962d12ad6d00c9eaa2c5d00bc7969867bf92821d6e.png" src="_images/610a0e1d9952d000283f59962d12ad6d00c9eaa2c5d00bc7969867bf92821d6e.png" />
 </div>
 </div>
 </section>
@@ -817,7 +821,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b9d88172facee826bfdc56936269c4dac6d9bc332e0dbe0916c3778179d0995b.png" src="_images/b9d88172facee826bfdc56936269c4dac6d9bc332e0dbe0916c3778179d0995b.png" />
+<img alt="_images/b9665037aaea11ed60da5ddba2dd9d7ebebd294d87d3a9de7849ca648fd9df87.png" src="_images/b9665037aaea11ed60da5ddba2dd9d7ebebd294d87d3a9de7849ca648fd9df87.png" />
 </div>
 </div>
 </section>
@@ -917,7 +921,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/aa6235ae5e95ac29046f04923213cb8c59911b20f4c1bb4ac176db2fe7278d0a.png" src="_images/aa6235ae5e95ac29046f04923213cb8c59911b20f4c1bb4ac176db2fe7278d0a.png" />
+<img alt="_images/97bda91a49ff41df87b37d69f4c24b7666491ef8e3b6f6e37e0564bc1426b1bc.png" src="_images/97bda91a49ff41df87b37d69f4c24b7666491ef8e3b6f6e37e0564bc1426b1bc.png" />
 </div>
 </div>
 </section>
@@ -989,7 +993,7 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7ca4d2cdcf292fb6ee5404e7576666ef3337e2de3ee8a0d64a69c141cbb981fd.png" src="_images/7ca4d2cdcf292fb6ee5404e7576666ef3337e2de3ee8a0d64a69c141cbb981fd.png" />
+<img alt="_images/18efd4080ac3bead370a1b98b0f78c01fa9f89ef17f6e35f0da8ef71879aceea.png" src="_images/18efd4080ac3bead370a1b98b0f78c01fa9f89ef17f6e35f0da8ef71879aceea.png" />
 </div>
 </div>
 </section>
