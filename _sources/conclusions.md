@@ -55,16 +55,6 @@ Hildebrand Department of Petroleum and Geosystems Engineering and Bureau of Econ
 
 ***
 
-### Cite this e-Book as:
-
-Pyrcz, M.J., 2024, Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy, https://geostatsguy.github.io/GeostatsPyDemos_Book.
-
-### Cite GeostatsPyDemos GitHub Repository {cite}`pyrczdemos2024` as:
-
-Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. https://zenodo.org/doi/10.5281/zenodo.12667035
-
-[![DOI](https://zenodo.org/badge/777871341.svg)](https://zenodo.org/doi/10.5281/zenodo.12667035)
-
 #### About the Author
 
 <figure style="text-align: center;">

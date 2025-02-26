@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_coordinate_transformations';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Univariate Distributions" href="GeostatsPy_univariate_distributions.html" />
+    <link rel="next" title="Univariate Statistics" href="GeostatsPy_univariate_statistics.html" />
     <link rel="prev" title="Probability Concepts" href="GeostatsPy_probability.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -175,8 +175,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Coordinate Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions.html">Parametric Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions_fitting.html">Parametric Distributions Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_expectation.html">Statistical Expectation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_confidence_interval.html">Confidence Intervals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
@@ -204,9 +210,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
-<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusion</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
@@ -813,7 +817,7 @@ z^s_i = \frac{z_i - z_{base_i}}{z_{top_i} - z_{base_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b520b616e599bc9f723aca06250604ed499743b50865a33e2c0c0712f46926ae.png" src="_images/b520b616e599bc9f723aca06250604ed499743b50865a33e2c0c0712f46926ae.png" />
+<img alt="_images/d52c59d7e20df08d25aba822910b03ebc30c6530a1e4a4d78f49361b91b61b80.png" src="_images/d52c59d7e20df08d25aba822910b03ebc30c6530a1e4a4d78f49361b91b61b80.png" />
 </div>
 </div>
 </section>
@@ -898,7 +902,7 @@ z^s_i = \frac{z_i - z_{base_i}}{z_{top_i} - z_{base_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/948f7ca7dd03771460353ab26d916af44e099048486f08d7d2e9cdd93be38ff3.png" src="_images/948f7ca7dd03771460353ab26d916af44e099048486f08d7d2e9cdd93be38ff3.png" />
+<img alt="_images/35caf578acde73326ffa2fa8d8b6c5604c11137615c582eae476385b6cbe07dc.png" src="_images/35caf578acde73326ffa2fa8d8b6c5604c11137615c582eae476385b6cbe07dc.png" />
 </div>
 </div>
 </section>
@@ -972,7 +976,7 @@ z^s_i = \frac{z_i - z_{base_i}}{z_{top_i} - z_{base_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b88a260bb9a67e8d268102fe7e9c72aea7464c4d6a100af367e01a25ba08c6cf.png" src="_images/b88a260bb9a67e8d268102fe7e9c72aea7464c4d6a100af367e01a25ba08c6cf.png" />
+<img alt="_images/4e6d675e33501a28eb5819bb10837e34032c517f7bbf25d5d3ae073bf6067f41.png" src="_images/4e6d675e33501a28eb5819bb10837e34032c517f7bbf25d5d3ae073bf6067f41.png" />
 </div>
 </div>
 </section>
@@ -1052,11 +1056,11 @@ z^s_i = \frac{z_i - z_{base_i}}{z_{top_i} - z_{base_i}}
       </div>
     </a>
     <a class="right-next"
-       href="GeostatsPy_univariate_distributions.html"
+       href="GeostatsPy_univariate_statistics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Univariate Distributions</p>
+        <p class="prev-next-title">Univariate Statistics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
