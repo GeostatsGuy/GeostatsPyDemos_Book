@@ -181,6 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_confidence_interval.html">Confidence Intervals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_hypothesis_testing.html">Hypothesis Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
@@ -572,6 +573,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;c:/PGE383&quot;</span><span class="p">)</span>                                         <span class="c1"># set the working directory</span>
+
+<span class="ne">FileNotFoundError</span>: [WinError 2] The system cannot find the file specified: &#39;c:/PGE383&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="loading-tabular-data">
@@ -730,7 +741,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/324e70d99b01f22bbc7ccb54841f0adba6e05e2d602c99a9290ccdd6ddcac8c7.png" src="_images/324e70d99b01f22bbc7ccb54841f0adba6e05e2d602c99a9290ccdd6ddcac8c7.png" />
+<img alt="_images/8c4d301aea7a22eaec2f026ec892014413e16d4b1b7a533ba6759cd3b2130928.png" src="_images/8c4d301aea7a22eaec2f026ec892014413e16d4b1b7a533ba6759cd3b2130928.png" />
 </div>
 </div>
 </section>
@@ -784,7 +795,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e8efaa1fa118d7d6e61f6867de4021cd4f17ee34430d5bdc11c38bf02bbccb0a.png" src="_images/e8efaa1fa118d7d6e61f6867de4021cd4f17ee34430d5bdc11c38bf02bbccb0a.png" />
+<img alt="_images/83480317fd6b41c459d52bb9ef3f7ec7a0debe2de9bdb1653ff636aa9603dd67.png" src="_images/83480317fd6b41c459d52bb9ef3f7ec7a0debe2de9bdb1653ff636aa9603dd67.png" />
 </div>
 </div>
 <p>For the provided data and simulated realizations ‘look good’:</p>
@@ -819,7 +830,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/610df3b9614a34f7f21631c3a890f63e8d9b267ad4148a79589651af7a72e66e.png" src="_images/610df3b9614a34f7f21631c3a890f63e8d9b267ad4148a79589651af7a72e66e.png" />
+<img alt="_images/4fc0df65e6bb3e7796a39439cfe78c27db523b01bec537f9c07304f592434e6e.png" src="_images/4fc0df65e6bb3e7796a39439cfe78c27db523b01bec537f9c07304f592434e6e.png" />
 </div>
 </div>
 <p>Due to the use of point data and cells represented by points at the cell centroids, there is some scatter in the result above.</p>
@@ -841,7 +852,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6a191d8feec9732ecf65ee5d78e76e488b1af7c230e3e253ecc0e5434866421a.png" src="_images/6a191d8feec9732ecf65ee5d78e76e488b1af7c230e3e253ecc0e5434866421a.png" />
+<img alt="_images/4394a45b3d790c9e990f2ed708f799e668aeaf25c243d3766ac8ffc62e3d0632.png" src="_images/4394a45b3d790c9e990f2ed708f799e668aeaf25c243d3766ac8ffc62e3d0632.png" />
 </div>
 </div>
 <p>In general, this look pretty good. Some observations:</p>
@@ -882,7 +893,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/32d1a72ec07751374bd3ca1ffbc2cf80d73d83cd18cc5336a14b2797231ea7c8.png" src="_images/32d1a72ec07751374bd3ca1ffbc2cf80d73d83cd18cc5336a14b2797231ea7c8.png" />
+<img alt="_images/b58cb78be57f7f36a516e920cf7226a71b2275797de147d21542e2c013bece5b.png" src="_images/b58cb78be57f7f36a516e920cf7226a71b2275797de147d21542e2c013bece5b.png" />
 </div>
 </div>
 <p>The reproduction of the data distribution shape looks very good. I include the regular data normalized histogram to help visualize the impact of the kernel density estimate of the PDF.</p>
@@ -946,7 +957,7 @@ document.write(`
  x,y,z offsets = 7.071067830903227,-7.071067792827723
 </pre></div>
 </div>
-<img alt="_images/97dbcca6a5dab450935ea7e9e7674da314ce50dd3424ebd77efbb5b2b5f30617.png" src="_images/97dbcca6a5dab450935ea7e9e7674da314ce50dd3424ebd77efbb5b2b5f30617.png" />
+<img alt="_images/02fe809283687c55a9f7db7989b54f26d1c4ac04e6b0553417405671a9fb02eb.png" src="_images/02fe809283687c55a9f7db7989b54f26d1c4ac04e6b0553417405671a9fb02eb.png" />
 </div>
 </div>
 <p>Note the cyclicity was not in the variogram model, but it is impose by the data. There is some inflation of short scale discontinuity that may the result of the limited model resolution.</p>
@@ -975,7 +986,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c6f6049485d23cf6e787ce6694267e71fed6710b401073c10b99c263176b2522.png" src="_images/c6f6049485d23cf6e787ce6694267e71fed6710b401073c10b99c263176b2522.png" />
+<img alt="_images/e9cc5f8976d55619f438cb022a7dc3ea939e1527eb7c344668d453d36912293b.png" src="_images/e9cc5f8976d55619f438cb022a7dc3ea939e1527eb7c344668d453d36912293b.png" />
 </div>
 </div>
 </section>
