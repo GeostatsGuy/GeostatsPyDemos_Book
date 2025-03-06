@@ -26,6 +26,8 @@ chapters:
   title: Distribution Transformations
 - file: GeostatsPy_confidence_interval
   title: Confidence Intervals
+- file: GeostatsPy_hypothesis_testing
+  title: Hypothesis Testing
 - file: GeostatsPy_bivariate
   title: Bivariate Analysis
 - file: GeostatsPy_QQ

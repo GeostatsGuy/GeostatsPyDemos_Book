@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Data Analytics &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
+    <title>Hypothesis Testing &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
   
   
   
@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_hypothesis_testing';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bivariate Analysis" href="GeostatsPy_bivariate.html" />
+    <link rel="prev" title="Confidence Intervals" href="GeostatsPy_confidence_interval.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,7 +171,7 @@ const thebe_selector_output = ".output, .cell_output"
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
@@ -181,6 +183,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_confidence_interval.html">Confidence Intervals</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Hypothesis Testing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
@@ -396,7 +399,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Data Analytics</h1>
+    <h1>Hypothesis Testing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -406,33 +409,32 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-and-hypothesis-testing-in-python-in-python">Confidence Intervals and Hypothesis Testing in Python in Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-associate-professor-the-university-of-texas-at-austin">Michael Pyrcz, Associate Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caveats">Caveats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-hypothesis-testing">Motivation for Hypothesis Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing-concepts">Hypothesis Testing Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-hypotheses">Example Hypotheses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-hypothesis-testing-method">General Hypothesis Testing Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-and-two-tail-tests">One and Two Tail Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-hypothesis-testing">Limitations of Hypothesis Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pooled-variance-method-for-difference-in-means">Pooled Variance Method for Difference in Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-t-test-for-difference-in-means">Welch’s t-test for Difference in Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-of-difference-means-hypothesis-tests">Demonstration of Difference Means Hypothesis Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-test-for-difference-in-variances">F-test for Difference in Variances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-hypothesis-test-for-difference-in-variances">Example #2: Hypothesis Test for Difference in Variances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-hypothesis-testing-dashboard">Interactive Hypothesis Testing Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pooled-variance-t-test-difference-in-means">Pooled Variance t-test Difference in Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-t-test-difference-in-means">Welch’s t-test Difference in Means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-test-difference-in-variances">F-test Difference in Variances</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-goal">Project Goal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-mean">Confidence Interval for the Mean</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-mean-by-hand">Confidence Interval for the Mean By-Hand</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-plot-the-result">Let’s Plot the Result</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-proportion">Confidence Interval for the Proportion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-proportion-by-hand">Confidence Interval for the Proportion By-Hand</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">Hypothesis Testing</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pooled-variance-t-test-difference-in-means">Pooled Variance t-test Difference in Means</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-t-test-difference-in-means">Welch’s t-test Difference in Means</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#f-test-difference-in-variances">F-test Difference in Variances</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-code-solution-hypothesis-test-student-s-t-test-for-difference-in-means">Compact Code Solution - Hypothesis Test, Student’s t-test for Difference in Means</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-code-solution-hypothesis-test-f-test-for-difference-in-variances">Compact Code Solution - Hypothesis Test, F-test for Difference in Variances</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-code-solution-hypothesis-test-student-s-t-test-for-difference-in-means">Compact Code Solution - Hypothesis Test, Student’s t-test for Difference in Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-code-solution-hypothesis-test-f-test-for-difference-in-variances">Compact Code Solution - Hypothesis Test, F-test for Difference in Variances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
             </nav>
         </div>
@@ -444,42 +446,379 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p align="center">
-    <img src="https://github.com/GeostatsGuy/GeostatsPy/blob/master/TCG_color_logo.png?raw=true" width="220" height="240" />
-</p>
-<section id="data-analytics">
-<h1>Data Analytics<a class="headerlink" href="#data-analytics" title="Permalink to this heading">#</a></h1>
-<section id="confidence-intervals-and-hypothesis-testing-in-python-in-python">
-<h2>Confidence Intervals and Hypothesis Testing in Python in Python<a class="headerlink" href="#confidence-intervals-and-hypothesis-testing-in-python-in-python" title="Permalink to this heading">#</a></h2>
-<section id="michael-pyrcz-associate-professor-the-university-of-texas-at-austin">
-<h3>Michael Pyrcz, Associate Professor, The University of Texas at Austin<a class="headerlink" href="#michael-pyrcz-associate-professor-the-university-of-texas-at-austin" title="Permalink to this heading">#</a></h3>
-<section id="twitter-github-website-googlescholar-book-youtube-linkedin">
-<h4><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a><a class="headerlink" href="#twitter-github-website-googlescholar-book-youtube-linkedin" title="Permalink to this heading">#</a></h4>
-<p>This is a tutorial / demonstration of <strong>Confidence Intervals and Hypothesis Testing in Python</strong>.  In Python, the SciPy package, specifically the Stats functions (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/stats.html">https://docs.scipy.org/doc/scipy/reference/stats.html</a>) provide excellent tools for efficient use of statistics.</p>
-<p>I have previously provided these examples worked out by-hand in Excel (<a class="github reference external" href="https://github.com/GeostatsGuy/LectureExercises/blob/master/Lecture7_CI_Hypoth_eg_R.xlsx">GeostatsGuy/LectureExercises</a>) and also in R (<a class="github reference external" href="https://github.com/GeostatsGuy/LectureExercises/blob/master/Lecture7_CI_Hypoth_eg.R">GeostatsGuy/LectureExercises</a>).  In all cases, I use the same dataset available as a comma delimited file (<a class="reference external" href="https://git.io/fxLAt">https://git.io/fxLAt</a>).</p>
-<p>This tutorial includes basic, typical confidence interval and hypothesis testing methods that would commonly be required for Engineers and Geoscientists including:</p>
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="hypothesis-testing">
+<h1>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book">https://geostatsguy.github.io/GeostatsPyDemos_Book</a>.</p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the GeostatsPyDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository (0.0.1). Zenodo. <a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035">https://zenodo.org/doi/10.5281/zenodo.12667035</a></p>
+<p><a class="reference external" href="https://zenodo.org/doi/10.5281/zenodo.12667035"><img alt="DOI" src="https://zenodo.org/badge/777871341.svg" /></a></p>
+</div>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2024.</p>
+<p>This chapter is a tutorial for / demonstration of <strong>Hypothesis Testing</strong>.</p>
+<p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/rvt9UM148tQ?si=4GRsjw8XCIUzst5f">Hypothesis Testing</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/oaXCcTWcU04?si=MSxr1PtYO7ZDfmH2">Confidence Intervals</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/wCgdoImlLY0?si=n0hHzQWAS4R1IpGg">Bootstrap</a></p></li>
+</ul>
+<section id="motivation-for-hypothesis-testing">
+<h2>Motivation for Hypothesis Testing<a class="headerlink" href="#motivation-for-hypothesis-testing" title="Permalink to this heading">#</a></h2>
+<p>We need to report uncertainty and significance of our results! Otherwise, we do not know if any of our results are meaningful. For example, if we collected 2 sample sets, one from well 1 and the other from well 2, we will want to know if the difference in the means are,</p>
+<ul class="simple">
+<li><p><strong>statistically significant</strong> - suggesting that we may sampled 2 distinct populations</p></li>
+<li><p><strong>statistically insignificant</strong> - suggesting that we may be sampling the same population (with respect to the mean)</p></li>
+</ul>
+<p>We will take all the related information, for example, sample means, sample standard deviations, and number of samples and calculate the expected distribution of difference assuming the same population and then calculate the critical values that if exceeded indicate a significant difference.</p>
+<figure style="text-align: center;">
+  <img src="_static/hypothesis/significance.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">Average fraction of shale uncertainty models that appear to be different (left), but is that different significant (right).</figcaption>
+</figure>
+<p>this is an illustration of the hypothesis testing approach that is not completely accurate (i.e., our sampling distribution is in standardized difference and not in difference), but communicates the concepts.</p>
+</section>
+<section id="hypothesis-testing-concepts">
+<h2>Hypothesis Testing Concepts<a class="headerlink" href="#hypothesis-testing-concepts" title="Permalink to this heading">#</a></h2>
+<p>To understand hypothesis testing, we must understand the following concepts. Let’s start with the hypothesis,</p>
+<ul class="simple">
+<li><p><strong>Hypothesis</strong>- a statement about a population parameter, for example, <span class="math notranslate nohighlight">\(\mu_1 = \mu_2\)</span>. Note, we never use sample statistics, for example, <span class="math notranslate nohighlight">\(\overline{X_1} = \overline{X_2}\)</span>, because we know the sample statistics and there is no need to make any inference concerning them.</p></li>
+</ul>
+<p>We start by accepting the null hypothesis, <span class="math notranslate nohighlight">\(H_0\)</span>, and then test it.</p>
+<ul class="simple">
+<li><p><strong>Null Hypothesis (<span class="math notranslate nohighlight">\(H0\)</span>)</strong> and <strong>Alternative Hypothesis (<span class="math notranslate nohighlight">\(H1\)</span>)</strong> - two complementary hypotheses in a hypothesis testing problem</p></li>
+</ul>
 <ol class="arabic simple">
-<li><p>Student-t confidence interval for the mean and proportion</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(H_0\)</span></strong> – no effect, e.g. means are the same, one is not larger, difference due to limited samples and random effect</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(H_1\)</span></strong> – a significant difference, the effect we are checking for</p></li>
+</ol>
+<p>To test the null hypothesis we calculate the,</p>
+<ul class="simple">
+<li><p><strong>Sampling Distribution</strong> - the theoretical distributions given the null hypothesis is true, for example,</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>Student’s t</strong> - for Student’s t‐test for comparing the means of two sample sets</p></li>
+<li><p><strong>F‐distribution</strong> - for the F-test for Comparing the variances of two sample sets</p></li>
+<li><p><strong>Chi‐Square distribution</strong> - for CHi-square test for comparing entire histograms of two sample sets</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>statistic</strong> - a measure of difference in units of standard deviations from the 0 difference, generally calculated as the measure divided by standard error. The measure is the difference, for example, the difference in the means. Standard error integrates information such as sample standard deviations and number of samples such that the resulting statistic is in standard deviations and plots on the standard sampling distribution.</p></li>
+<li><p><strong>Hypothesis Test Result</strong> - there are 2 possible outcomes from an hypothesis test,</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>Reject the null hypothesis</strong> - evidence to support the alternative hypothesis <span class="math notranslate nohighlight">\(H1\)</span></p></li>
+<li><p><strong>Fail to reject the null hypothesis</strong> - retain the null hypothesis, <span class="math notranslate nohighlight">\(H0\)</span></p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>Error Types</strong> - there are two possible errors with hypothesis testing,</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>Type 1 error</strong> - incorrectly rejecting the null hypothesis (false positive)</p></li>
+<li><p><strong>Type 2 error</strong> - incorrectly retaining the null hypothesis (false negative)</p></li>
+</ol>
+</section>
+<section id="example-hypotheses">
+<h2>Example Hypotheses<a class="headerlink" href="#example-hypotheses" title="Permalink to this heading">#</a></h2>
+<p>Collected data from a new well. Does this new data come from the same population as the previous wells or is there a geological discontinuity?</p>
+<p>Test if the means are the same between the new data and the old data.</p>
+<div class="math notranslate nohighlight">
+\[𝐻_0: \mu_n = \mu_p\]</div>
+<p>the well data is from the same population as the previous wells</p>
+<div class="math notranslate nohighlight">
+\[𝐻_1: \mu_n \ne \mu_p\]</div>
+<p>the well is from a different population than the previous wells</p>
+<p>Applied a new lab measurement for permeability from core data.  Does the new method result in consistent amount of permeability variance?</p>
+<p>Test if the variance is the same between the two methods.</p>
+<div class="math notranslate nohighlight">
+\[𝐻_0: \sigma_{𝑚1}^2 = \sigma_{𝑚2}^2\]</div>
+<p>the permeability variance of the two methods is the same</p>
+<div class="math notranslate nohighlight">
+\[𝐻_1: \sigma_{𝑚1}^2 \ne \sigma_{𝑚2}^2\]</div>
+<p>the permeability variance of the two methods is different</p>
+</section>
+<section id="general-hypothesis-testing-method">
+<h2>General Hypothesis Testing Method<a class="headerlink" href="#general-hypothesis-testing-method" title="Permalink to this heading">#</a></h2>
+<p>Here’s the steps for hypothesis testing, for the example of t-test for difference in means,</p>
+<ol class="arabic simple">
+<li><p><strong>Calculate the Test Statistic</strong> - the distance in standard deviations on the sampling distribution from the null hypothesis of the observed outcome</p></li>
+<li><p><strong>Look Up the Critical Value</strong> - from the confidence level or alpha value, this is the percentile value of the lower and / or upper bound from the sampling distribution. This is available from a function or look up table given alpha, number of tails and possibly the degree of freedom.</p></li>
+<li><p><strong>Compare the Test Statistic to the Critical Value</strong> - with two possible outcomes,</p></li>
+</ol>
+<ul class="simple">
+<li><p>Fail to reject <span class="math notranslate nohighlight">\(𝐻_0\)</span> - if statistic fails to exceed the critical value(s), for example,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[-t_{critcial} \le \hat{t} \le t_{critical}\]</div>
+<ul class="simple">
+<li><p>Reject <span class="math notranslate nohighlight">\(𝐻_0\)</span> - if statistic exceeds the critical value(s), for example,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\hat{t} &lt; -t_{critical} \quad \text{or} \quad \hat{t} &gt; t_{critical}\]</div>
+<p>Later we will fill the details for calculating the test statistic, <span class="math notranslate nohighlight">\(\hat{t}\)</span>, and critical value, <span class="math notranslate nohighlight">\(t_{critical}\)</span>.</p>
+</section>
+<section id="one-and-two-tail-tests">
+<h2>One and Two Tail Tests<a class="headerlink" href="#one-and-two-tail-tests" title="Permalink to this heading">#</a></h2>
+<p>Let’s first visualize the one and two tail test and then explain the details,</p>
+<figure style="text-align: center;">
+  <img src="_static/hypothesis/tails.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;">One tail test (left), and two tail test (right).</figcaption>
+</figure>
+<p>Here’s a one tail test, is well 1 in better rock than well 2 (by average porosity)? In this case we are only testing if well 1’s mean porosity is significantly greater than well 2’s mean porosity.</p>
+<ul class="simple">
+<li><p>well 1 average porosity is less than or equal to the well 2 average porosity,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[𝐻_0: \mu_1 \le \mu_2\]</div>
+<ul class="simple">
+<li><p>well 1 average porosity is greater than well 2 average porosity,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[𝐻_1: \mu_1 &gt; \mu_2\]</div>
+<p>and now, here’s a two tail test, are wells 1 and 2 in different (according to average porosity)? In this case we are testing for significant difference without concern for which well has a larger mean.</p>
+<ul class="simple">
+<li><p>well 1 &amp; 2 average porosity are the same,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[𝐻_0: \mu_1= \mu_2\]</div>
+<ul class="simple">
+<li><p>well 1 and 2 average porosity are the different,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[𝐻_1: \mu_1 \ne \mu_2\]</div>
+<p>The choice of one or two tail test also impacts the percentile applied. For a two tail test we split alpha over the lower and upper tails, so we use the percentile for,</p>
+<div class="math notranslate nohighlight">
+\[
+t_{critical} = \pm F^{-1}(\frac{\alpha}{2})
+\]</div>
+<p>while for a single tail test we order the measure so we only use the lower tail percentile for,</p>
+<div class="math notranslate nohighlight">
+\[
+t_{critical} = F^{-1}(\frac{\alpha}{2})
+\]</div>
+</section>
+<section id="limitations-of-hypothesis-testing">
+<h2>Limitations of Hypothesis Testing<a class="headerlink" href="#limitations-of-hypothesis-testing" title="Permalink to this heading">#</a></h2>
+<p>Before we go any further, let’s mention the limitations of hypothesis testing. This is really important, because these issues have caused hypothesis testing to fall out of favor in some scientific communities.</p>
+<p>Publication Bias – only publish results that reject the null, i.e., show significant results</p>
+<ul class="simple">
+<li><p>Recall, <span class="math notranslate nohighlight">\(\alpha\)</span> probability of false positive</p></li>
+<li><p>Data mining for any effect will find insignificant differences that look significantly different (by random)</p></li>
+<li><p>Meta studies have indicated the possibility that many studies have selectively reported significant results</p></li>
+</ul>
+<p>Very small sample sizes, poorly understood phenomenon</p>
+<ul class="simple">
+<li><p>we cannot demonstrate conformity with the test assumptions</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/hypothesis/hans.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> Clever Hans, the horse that could do math in the early 1900s. In fact, the horse was taking cues from the examiner. </figcaption>
+</figure>
+<p>Other Data Issues, Poor Sampling Practice</p>
+<ul class="simple">
+<li><p>Contamination of sample, for example, the clever Hans effect where the examinee is taking cues from the examiner</p></li>
+<li><p>Placebo effect, impact of subject motivation</p></li>
+</ul>
+<p>Due to these there is some mistakes and skepticism concerning the use of hypothesis testing in publications. Solutions include avoiding small sample sizes and reporting p-values instead of binary reject or fail to reject</p>
+</section>
+<section id="pooled-variance-method-for-difference-in-means">
+<h2>Pooled Variance Method for Difference in Means<a class="headerlink" href="#pooled-variance-method-for-difference-in-means" title="Permalink to this heading">#</a></h2>
+<p>For the Student’s t-test, equal variances, pooled variance method (William Gosset, 1876-1937), we state the hypotheses as,</p>
+<div class="math notranslate nohighlight">
+\[𝐻_0: \mu_1= \mu_2\]</div>
+<div class="math notranslate nohighlight">
+\[𝐻_1: \mu_1 \ne \mu_2\]</div>
+<p>and then we use the Student’s t distribution to model the sampling distribution and calculate the t-statistic as,</p>
+<div class="math notranslate nohighlight">
+\[ 
+\hat{t} = \frac{|\bar{x}_1 - \bar{x}_2|}{\sqrt{\left( \frac{1}{n_1} + \frac{1}{n_2} \right) \left( \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2} \right) }}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{x}_1\)</span> and <span class="math notranslate nohighlight">\(\bar{x}_2\)</span> are the sample means, <span class="math notranslate nohighlight">\(s_1^2\)</span> and <span class="math notranslate nohighlight">\(s_2^2\)</span> are the sample standard deviations, and <span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span> are the number of samples.</p>
+<p>and then we calculate the <span class="math notranslate nohighlight">\(t_{critical}\)</span> as,</p>
+<div class="math notranslate nohighlight">
+\[
+t_{critical} = abs\left( t(\frac{\alpha}{2},𝑛_1 + 𝑛_2 − 2)\right)
+\]</div>
+<p>Then we fail to reject <span class="math notranslate nohighlight">\(𝐻_0\)</span> if,</p>
+<div class="math notranslate nohighlight">
+\[-t_{critcial} \le \hat{t} \le t_{critical}\]</div>
+<p>or reject <span class="math notranslate nohighlight">\(𝐻_0\)</span> if,</p>
+<div class="math notranslate nohighlight">
+\[\hat{t} &lt; -t_{critical} \quad \text{or} \quad \hat{t} &gt; t_{critical}\]</div>
+<p>Note, this test assumes that the variables are Gaussian distributed, and the standard deviations are not significantly different.</p>
+<ul class="simple">
+<li><p>If your sample size is large enough, the central limit theorem suggests that the sampling distribution of the sample mean will approach normality, even if the data itself is not normally distributed.</p></li>
+<li><p>In such cases, you may still use the t-test, but this assumes your sample sizes are sufficiently large (generally, n &gt; 30 is considered acceptable).</p></li>
+</ul>
+</section>
+<section id="welch-s-t-test-for-difference-in-means">
+<h2>Welch’s t-test for Difference in Means<a class="headerlink" href="#welch-s-t-test-for-difference-in-means" title="Permalink to this heading">#</a></h2>
+<p>For the Student’s t-test for unequal variances, Welch’s t-test (Bernard Welch, 1911-1989), we again state the hypotheses as,</p>
+<div class="math notranslate nohighlight">
+\[𝐻_0: \mu_1= \mu_2\]</div>
+<div class="math notranslate nohighlight">
+\[𝐻_1: \mu_1 \ne \mu_2\]</div>
+<p>and then we use the Student’s t distribution to model the sampling distribution and calculate the t-statistic as,</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{t} = \frac{\bar{x}_1 - \bar{x}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{x}_1\)</span> and <span class="math notranslate nohighlight">\(\bar{x}_2\)</span> are the sample means, <span class="math notranslate nohighlight">\(s_1^2\)</span> and <span class="math notranslate nohighlight">\(s_2^2\)</span> are the sample standard deviations, and <span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span> are the number of samples.</p>
+<p>and then we calculate the <span class="math notranslate nohighlight">\(t_{critical}\)</span> as,</p>
+<div class="math notranslate nohighlight">
+\[
+t_{critical} = abs\left( t(\frac{\alpha}{2},\nu)\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\nu\)</span> is calculated as,</p>
+<div class="math notranslate nohighlight">
+\[
+\nu = \frac{\left( \frac{1}{n_1} + \frac{u}{n_2} \right)^2}{\frac{1}{n_1^2(n_1 - 1)} + \frac{u^2}{n_2^2(n_2 - 1)}}
+\]</div>
+<p>and <span class="math notranslate nohighlight">\(u\)</span> is calculated as,</p>
+<div class="math notranslate nohighlight">
+\[
+u = \frac{s_2^2}{s_1^2}
+\]</div>
+<p>Then we fail to reject <span class="math notranslate nohighlight">\(𝐻_0\)</span> if,</p>
+<div class="math notranslate nohighlight">
+\[-t_{critcial} \le \hat{t} \le t_{critical}\]</div>
+<p>or reject <span class="math notranslate nohighlight">\(𝐻_0\)</span> if,</p>
+<div class="math notranslate nohighlight">
+\[\hat{t} &lt; -t_{critical} \quad \text{or} \quad \hat{t} &gt; t_{critical}\]</div>
+<p>Note, this test assumes that the variables are Gaussian distributed, and variances are unequal. Welch’s t-test.</p>
+<ul class="simple">
+<li><p>If your sample size is large enough, the central limit theorem suggests that the sampling distribution of the sample mean will approach normality, even if the data itself is not normally distributed.</p></li>
+<li><p>In such cases, you may still use the t-test, but this assumes your sample sizes are sufficiently large (generally, n &gt; 30 is considered acceptable).</p></li>
+</ul>
+</section>
+<section id="demonstration-of-difference-means-hypothesis-tests">
+<h2>Demonstration of Difference Means Hypothesis Tests<a class="headerlink" href="#demonstration-of-difference-means-hypothesis-tests" title="Permalink to this heading">#</a></h2>
+<p>Example #1: Hypothesis Test for Difference in Means, Equal Variance Method</p>
+<p>The samples include,</p>
+<ul class="simple">
+<li><p>Well 1 - <span class="math notranslate nohighlight">\(n_1 = 20\)</span> samples, <span class="math notranslate nohighlight">\(\bar{\phi_1} = 13%\)</span>, <span class="math notranslate nohighlight">\(s_{\phi_1} = 2%\)</span></p></li>
+<li><p>Well 2 - <span class="math notranslate nohighlight">\(n_2 = 25\)</span> samples, <span class="math notranslate nohighlight">\(\bar{\phi_2} = 15%\)</span>, <span class="math notranslate nohighlight">\(s_{\phi_2} = 3%\)</span></p></li>
+</ul>
+<p>At a 95% confidence level (<span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>) test <span class="math notranslate nohighlight">\(𝐻_0: \mu_1= \mu_2\)</span></p>
+<p>First we calculate the t-statistic, <span class="math notranslate nohighlight">\(\hat{t}\)</span>, as,</p>
+<div class="math notranslate nohighlight">
+\[ 
+\hat{t} = \frac{|\bar{x}_1 - \bar{x}_2|}{\sqrt{\left( \frac{1}{n_1} + \frac{1}{n_2} \right) \left( \frac{(n_1 - 1)s_1^2 + (n_2 - 1)s_2^2}{n_1 + n_2 - 2} \right) }}
+\]</div>
+<p>we substitute and solve as,</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{t} = \frac{|13\% - 15\%|}{\sqrt{\left( \frac{1}{20} + \frac{1}{25} \right) \left( \frac{(20 - 1)4 + (25 - 1)9}{20 + 25 - 2} \right) }} = \frac{2}{0.78} = 2.56
+\]</div>
+<p>Then we calculate the t-critical, <span class="math notranslate nohighlight">\(t_{critical}\)</span> as,</p>
+<div class="math notranslate nohighlight">
+\[
+t_{critical} = abs\left( t(\frac{\alpha}{2},𝑛_1 + 𝑛_2 − 2)\right)
+\]</div>
+<p>we substitute and solve as,</p>
+<div class="math notranslate nohighlight">
+\[
+t_{critical} =  abs\left( t(\frac{0.05}{2},20 + 25 − 2)\right) = \pm 2.02
+\]</div>
+<figure style="text-align: center;">
+  <img src="_static/hypothesis/example1.png" style="display: block; margin: 0 auto; width: 30%;">
+  <figcaption style="text-align: center;"> Visualization of the results from the hypothesis test for difference in means, equal variance method.</figcaption>
+</figure>
+<p><span class="math notranslate nohighlight">\(\hat{t} = 2.56\)</span> is outside interval <span class="math notranslate nohighlight">\([-2.02, 2.02]\)</span> therefore, we reject the null hypothesis.  We adopt the alternative hypothesis that,</p>
+<div class="math notranslate nohighlight">
+\[
+𝑯_𝟏: \mu_𝟏 \ne \mu_𝟐
+\]</div>
+<p>If the means are significantly different, then the distributions are significantly different, and we are drilling potentially new rock.</p>
+</section>
+<section id="f-test-for-difference-in-variances">
+<h2>F-test for Difference in Variances<a class="headerlink" href="#f-test-for-difference-in-variances" title="Permalink to this heading">#</a></h2>
+<p>The F‐test for Difference in Variance (Snedecor and Cochran, 1989), we state the hypotheses as,</p>
+<div class="math notranslate nohighlight">
+\[𝐻_0: \frac{\sigma_1^2}{\sigma_2^2} = 1.0 \text{,} \quad \text{where} \quad s_1^2 &gt; s_2^2\]</div>
+<div class="math notranslate nohighlight">
+\[𝐻_1: \frac{\sigma_1^2}{\sigma_2^2} &gt; 1.0\]</div>
+<p>and then we use the F-distribution to model the sampling distribution and calculate the t-statistic as,</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{F} = \frac{s_1^2}{s_2^2} \text{,} \quad \text{where} \quad s_1^2 &gt; s_2^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(s_1^2\)</span> and <span class="math notranslate nohighlight">\(s_2^2\)</span> are the sample variances and then we calculate the <span class="math notranslate nohighlight">\(F_{critical}\)</span> as,</p>
+<div class="math notranslate nohighlight">
+\[
+F_{critical} = f\left(𝑛_1−1, 𝑛_2 − 1,1-\alpha \right)
+\]</div>
+<p>Then we reject <span class="math notranslate nohighlight">\(𝐻_0\)</span> if,</p>
+<div class="math notranslate nohighlight">
+\[\hat{F} &gt; F_{critical}\]</div>
+<p>or fail to reject <span class="math notranslate nohighlight">\(𝐻_0\)</span> if,</p>
+<div class="math notranslate nohighlight">
+\[\hat{F} \le F_{critical}\]</div>
+</section>
+<section id="example-2-hypothesis-test-for-difference-in-variances">
+<h2>Example #2: Hypothesis Test for Difference in Variances<a class="headerlink" href="#example-2-hypothesis-test-for-difference-in-variances" title="Permalink to this heading">#</a></h2>
+<p>The samples include,</p>
+<ul class="simple">
+<li><p>Well 1 - <span class="math notranslate nohighlight">\(n_1 = 20\)</span>, <span class="math notranslate nohighlight">\(s^2_{\phi_1} = 4%\)</span></p></li>
+<li><p>Well 2 - <span class="math notranslate nohighlight">\(n_2 = 25\)</span>, <span class="math notranslate nohighlight">\(s^2_{\phi_2} = 9%\)</span></p></li>
+</ul>
+<p>At a 95% confidence level (<span class="math notranslate nohighlight">\(\alpha = 0.05\)</span>) test <span class="math notranslate nohighlight">\(\frac{\sigma_1^2}{\sigma_2^2} = 1.0\)</span>.</p>
+<p>First we calculate the F-statistic, <span class="math notranslate nohighlight">\(\hat{F}\)</span>, as,</p>
+<div class="math notranslate nohighlight">
+\[ 
+\hat{F} = \frac{s_1^2}{s_2^2}
+\]</div>
+<p>we substitute and solve as,</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{F} = \frac{9}{4} = 2.25
+\]</div>
+<p>Then we calculate the F-critical, <span class="math notranslate nohighlight">\(F_{critical}\)</span> as,</p>
+<div class="math notranslate nohighlight">
+\[
+F_{critical} = f\left(𝑛_1−1, 𝑛_2 − 1,1-\alpha \right)
+\]</div>
+<p>we substitute and solve as,</p>
+<div class="math notranslate nohighlight">
+\[
+F_{critical} = f\left(25−1, 20 − 1,1-0.05 \right) = 2.11
+\]</div>
+<figure style="text-align: center;">
+  <img src="_static/hypothesis/example2.png" style="display: block; margin: 0 auto; width: 30%;">
+  <figcaption style="text-align: center;"> Visualization of the results from the hypothesis test for difference in variances.</figcaption>
+</figure>
+<p><span class="math notranslate nohighlight">\(\hat{F} = 2.25\)</span> is outside interval <span class="math notranslate nohighlight">\([0, 2.11]\)</span> therefore, we reject the null hypothesis.  We adopt the alternative hypothesis that,</p>
+<div class="math notranslate nohighlight">
+\[
+𝐻_1: \frac{\sigma_1^2}{\sigma_2^2} &gt; 1.0
+\]</div>
+<p>If the variances are significantly different, then the distributions are significantly different, and we are drilling potentially new rock.</p>
+<p>Note, this test assumes the sample and population distributions are of both samples are Gaussian, but at 5% alpha with similar number of samples it is robust if non-normal (not Gaussian distributed).</p>
+</section>
+<section id="interactive-hypothesis-testing-dashboard">
+<h2>Interactive Hypothesis Testing Dashboard<a class="headerlink" href="#interactive-hypothesis-testing-dashboard" title="Permalink to this heading">#</a></h2>
+<p>To help visualize hypothesis testing, I built an interactive Python <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Hypothesis_Testing.ipynb">Hypothesis Testing Dashboard</a>.</p>
+<figure style="text-align: center;">
+  <img src="_static/hypothesis/interactive_hypothesis.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive dashboard to visualize hypothesis testing.</figcaption>
+</figure>
+<p>Now I demonstrate the following in Python,</p>
+<ol class="arabic simple">
 <li><p>Student-t hypothesis test for difference in means (pooled variance)</p></li>
 <li><p>Student-t hypothesis test for difference in means (difference variances), Welch’s t Test</p></li>
 <li><p>F-distribution hypothesis test for difference in variances</p></li>
 </ol>
 </section>
-<section id="caveats">
-<h4>Caveats<a class="headerlink" href="#caveats" title="Permalink to this heading">#</a></h4>
-<p>I have not included all the details, specifically the test assumptions in this document.  These are included in the accompanying course notes, Lec08_hypothesis.pdf.</p>
-</section>
-</section>
-<section id="project-goal">
-<h3>Project Goal<a class="headerlink" href="#project-goal" title="Permalink to this heading">#</a></h3>
-<ol class="arabic simple" start="0">
-<li><p>Introduction to Python in Jupyter including setting a working directory, loading data into a Pandas DataFrame.</p></li>
-<li><p>Learn the basics for working with confidence intervals and hypothesis testing in Python.</p></li>
-<li><p>Demonstrate the efficiency of using Python and SciPy package for statistical analysis.</p></li>
-</ol>
-</section>
 <section id="load-the-required-libraries">
-<h3>Load the required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h3>
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -497,7 +836,7 @@ document.write(`
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
 <section id="declare-functions">
-<h3>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h3>
+<h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">welch_dof</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>                                          <span class="c1"># DOF for Welch&#39;s test from https://pythonfordatascienceorg.wordpress.com/welch-t-test-python-pandas/</span>
@@ -509,37 +848,27 @@ document.write(`
 </div>
 </section>
 <section id="set-the-working-directory">
-<h3>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h3>
+<h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).  Also, in this case make sure to place the required (see below) data file in this directory.  When we are done with this tutorial we will write our new dataset back to this directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;C:\PGE337&quot;)                                  # set the working directory</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;C:\PGE337&quot;)                                      # set the working directory</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="loading-data">
-<h3>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h3>
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
 <p>Let’s load the provided dataset. ‘PorositySamples2Units.csv’ is available at <a class="github reference external" href="https://github.com/GeostatsGuy/GeoDataSets">GeostatsGuy/GeoDataSets</a>. It is a comma delimited file with 20 porosity measures from 2 rock units from the subsurface, porosity (as a fraction). We load it with the pandas ‘read_csv’ function into a data frame we called ‘df’ and then preview it by printing a slice and by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df = pd.read_csv(&quot;PorositySample2Units.csv&quot;)                # read a .csv file in as a DataFrame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/PorositySample2Units.csv&quot;</span><span class="p">)</span> <span class="c1"># load data from Prof. Pyrcz&#39;s github</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,:])</span>                                       <span class="c1"># display first 4 samples in the table as a preview</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/PorositySample2Units.csv&quot;</span><span class="p">)</span> <span class="c1"># load data from Prof. Pyrcz&#39;s github</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>                                                   <span class="c1"># we could also use this command for a table preview </span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     X1    X2
-0  0.21  0.20
-1  0.17  0.26
-2  0.15  0.20
-3  0.20  0.19
-4  0.19  0.13
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -595,7 +924,7 @@ document.write(`
 <p>It is useful to review the summary statistics of our loaded DataFrame.  That can be accomplished with the ‘describe’ DataFrame member function.  We transpose to switch the axes for ease of visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>   
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                   <span class="c1"># statistical summaries</span>
 </pre></div>
 </div>
 </div>
@@ -658,172 +987,28 @@ document.write(`
 <p>Here we extract the X1 and X2 unit porosity samples from the DataFrame into separate arrays called ‘X1’ and ‘X2’ for convenience.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>                                        <span class="c1"># extract features as 1D ndarrays</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="confidence-interval-for-the-mean">
-<h3>Confidence Interval for the Mean<a class="headerlink" href="#confidence-interval-for-the-mean" title="Permalink to this heading">#</a></h3>
-<p>Let’s first demonstrate the calculation of the confidence interval for the sample mean at a 95% confidence level.  This could be interpreted as the interval over which there is a 95% confidence that it contains the true population.  We use the student’s t distribution as we assume we do not know the variance and the sample size is small.</p>
-<p>\begin{equation}
-x̅ \pm t_{\frac{\alpha}{2},n-1} \times \frac {s}{\sqrt{n}}
-\end{equation}</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ci_mean_95_x1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X1</span><span class="p">),</span> <span class="n">scale</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">sem</span><span class="p">(</span><span class="n">X1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The confidence interval for the X1 mean is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ci_mean_95_x1</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The confidence interval for the X1 mean is [0.151 0.178]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="confidence-interval-for-the-mean-by-hand">
-<h3>Confidence Interval for the Mean By-Hand<a class="headerlink" href="#confidence-interval-for-the-mean-by-hand" title="Permalink to this heading">#</a></h3>
-<p>Let’s not use the interval function and do each part by-hand.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X1</span><span class="p">);</span> <span class="n">sstdev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">X1</span><span class="p">);</span> <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span>
-<span class="n">dof</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
-<span class="n">tscore</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">([</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span> <span class="n">df</span> <span class="o">=</span> <span class="n">dof</span><span class="p">)</span>
-<span class="n">SE</span> <span class="o">=</span> <span class="n">sstdev</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="n">lower_CI</span><span class="p">,</span><span class="n">upper_CI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">smean</span> <span class="o">+</span> <span class="n">tscore</span><span class="o">*</span><span class="n">SE</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Statistic +/- t-score x Standard Error&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">smean</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;  +/-   &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">tscore</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;  x     &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">SE</span><span class="p">,</span><span class="mi">5</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The confidence interval by-hand for the X1 mean is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">([</span><span class="n">lower_CI</span><span class="p">,</span><span class="n">upper_CI</span><span class="p">],</span><span class="mi">3</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Statistic +/- t-score x Standard Error
-   0.164  +/-   2.09  x     0.00606
-The confidence interval by-hand for the X1 mean is [0.15 0.18]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="let-s-plot-the-result">
-<h3>Let’s Plot the Result<a class="headerlink" href="#let-s-plot-the-result" title="Permalink to this heading">#</a></h3>
-<p>Plot the full distribution and the upper and lower confidence intervals for the uncertainty in the population mean.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.26</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">tpdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">smean</span><span class="p">,</span><span class="n">df</span><span class="o">=</span><span class="n">dof</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">SE</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Values&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confidence Interval for the Population Mean&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.26</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">80</span><span class="p">])</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;lower interval = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lower_CI</span><span class="p">),[</span><span class="n">lower_CI</span><span class="o">-</span><span class="mf">0.0015</span><span class="p">,</span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">lower_CI</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">dof</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">smean</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">sstdev</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">+</span><span class="mi">5</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;upper interval = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">upper_CI</span><span class="p">),[</span><span class="n">upper_CI</span><span class="o">-</span><span class="mf">0.0015</span><span class="p">,</span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">upper_CI</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">dof</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">smean</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">sstdev</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">+</span><span class="mi">6</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;$\overline</span><span class="si">{x}</span><span class="s1"> = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">smean</span><span class="p">,</span><span class="mi">3</span><span class="p">)),[</span><span class="n">smean</span><span class="o">-</span><span class="mf">0.0015</span><span class="p">,</span><span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">smean</span><span class="p">,</span><span class="n">df</span> <span class="o">=</span> <span class="n">dof</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">smean</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">sstdev</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="o">+</span><span class="mi">2</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
-    
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">where</span><span class="o">=</span> <span class="n">xval</span> <span class="o">&lt;</span> <span class="n">lower_CI</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">where</span><span class="o">=</span> <span class="n">xval</span> <span class="o">&gt;</span> <span class="n">upper_CI</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">smean</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">65</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">lower_CI</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">upper_CI</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/db6e2727aaa414c2b3fc3cbb3bcceec2ed2f94c196162a4755ae8b4836b8c8e1.png" src="_images/db6e2727aaa414c2b3fc3cbb3bcceec2ed2f94c196162a4755ae8b4836b8c8e1.png" />
-</div>
-</div>
-</section>
-<section id="confidence-interval-for-the-proportion">
-<h3>Confidence Interval for the Proportion<a class="headerlink" href="#confidence-interval-for-the-proportion" title="Permalink to this heading">#</a></h3>
-<p>Now I demonstrate the calculation of the confidence interval for a proportion.</p>
-<p>\begin{equation}
-\hat{p} \pm t_{\frac{\alpha}{2},n-1} \times \frac {\hat{p}(1-\hat{p})}{\sqrt{n}}
-\end{equation}</p>
-<p>First we need to make a new categorical feature to demonstrate confidence intervals for proportions.</p>
-<ul class="simple">
-<li><p>we will assign samples as category ‘high porosity’ when their porosity is greater than 18%</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CX1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">X1</span> <span class="o">&lt;</span> <span class="mf">0.18</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">prop_CX1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">CX1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">CX1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New binary feature, 1 = high porosity, 0 = low porosity&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">CX1</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Proportion of high porosity rock in well X1 is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">prop_CX1</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>New binary feature, 1 = high porosity, 0 = low porosity
-[1 0 0 1 1 1 0 0 0 0 0 0 1 0 0 0 0 1 1 0]
-
-Proportion of high porosity rock in well X1 is 0.35
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we are ready to calculate the confidence interval in the proportion with the SciPy stats t interval function.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SE_prop</span> <span class="o">=</span> <span class="p">(</span><span class="n">prop_CX1</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">prop_CX1</span><span class="p">))</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">CX1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ci_prop_95_x1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">interval</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="n">CX1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">prop_CX1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">SE_prop</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The confidence interval for the X1 proportion of high porosity is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ci_prop_95_x1</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The confidence interval for the X1 proportion of high porosity is [0.244 0.456]
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="confidence-interval-for-the-proportion-by-hand">
-<h3>Confidence Interval for the Proportion By-Hand<a class="headerlink" href="#confidence-interval-for-the-proportion-by-hand" title="Permalink to this heading">#</a></h3>
-<p>Let’s repeat this calculation by-hand without the SciPy stats function to test our knowledge.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample_prop</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">CX1</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">CX1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">tscore</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">([</span><span class="mf">0.025</span><span class="p">,</span><span class="mf">0.975</span><span class="p">],</span> <span class="n">df</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">SE_prop</span> <span class="o">=</span> <span class="p">(</span><span class="n">prop_CX1</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">prop_CX1</span><span class="p">))</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">CX1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">ci_prop_BH_95_x1</span> <span class="o">=</span> <span class="n">sample_prop</span> <span class="o">+</span> <span class="n">tscore</span> <span class="o">*</span> <span class="n">SE_prop</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Statistic +/- t-score x Standard Error&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;   &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sample_prop</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;   +/-   &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">tscore</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;  x     &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">SE_prop</span><span class="p">,</span><span class="mi">4</span><span class="p">)))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The confidence interval for the X1 proportion of high porosity is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ci_prop_BH_95_x1</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Statistic +/- t-score x Standard Error
-   0.35   +/-   2.09  x     0.0509
-The confidence interval for the X1 proportion of high porosity is [0.244 0.456]
-</pre></div>
-</div>
-</div>
-</div>
-<p>One can check the Excel file linked above with the confidence interval calculated by hand and confirm that this result is correct.</p>
-<section id="hypothesis-testing">
-<h4>Hypothesis Testing<a class="headerlink" href="#hypothesis-testing" title="Permalink to this heading">#</a></h4>
-<p>Now, let’s try the t test, hypothesis test for difference in means. This test assumes that the variances are similar along with the data being Gaussian distributed (see the course notes for more on this).  This is our test:</p>
-<p>\begin{equation}
-H_0: \mu_{X1} = \mu_{X2}
-\end{equation}</p>
-<p>\begin{equation}
-H_1: \mu_{X1} \ne \mu_{X2}
-\end{equation}</p>
-<p>For the resulting t-statistic and p-value we run this command.</p>
-</section>
 <section id="pooled-variance-t-test-difference-in-means">
-<h4>Pooled Variance t-test Difference in Means<a class="headerlink" href="#pooled-variance-t-test-difference-in-means" title="Permalink to this heading">#</a></h4>
+<h2>Pooled Variance t-test Difference in Means<a class="headerlink" href="#pooled-variance-t-test-difference-in-means" title="Permalink to this heading">#</a></h2>
+<p>Now, let’s try the t-test, hypothesis test for difference in means. This test assumes that the variances are similar along with the data being Gaussian distributed (see the course notes for more on this).  This is our test:</p>
+<div class="math notranslate nohighlight">
+\[
+H_0: \mu_{X1} = \mu_{X2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_1: \mu_{X1} \ne \mu_{X2}
+\]</div>
+<p>For the resulting t-statistic and p-value we run this command.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_pooled</span><span class="p">,</span> <span class="n">p_pooled</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">)</span> <span class="c1"># assuminng equal variance</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_pooled</span><span class="p">,</span> <span class="n">p_pooled</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">)</span>                 <span class="c1"># assuming equal variance</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The t statistic is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">t_pooled</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; and the p-value is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">p_pooled</span><span class="p">,</span><span class="mi">5</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -834,8 +1019,13 @@ H_1: \mu_{X1} \ne \mu_{X2}
 </div>
 </div>
 </div>
-<p>The p-value, <span class="math notranslate nohighlight">\(p\)</span>, is the symmetric interval probaiblity our outside.  In other words the <span class="math notranslate nohighlight">\(p\)</span> reported is 2 x cumulative probability of the t statistic applied to the sampling t distribution.  Another way to look at it, if one used the <span class="math notranslate nohighlight">\(\pm t_{t_{statistic},.d.f}\)</span> statistic as thresholds, <span class="math notranslate nohighlight">\(p\)</span> is the probability being outside this symmetric interval. So we will reject the null hypothesis if <span class="math notranslate nohighlight">\(p \lt \alpha\)</span>.  From the p-value alone it is clear that we would reject the null hypothesis and accept the alternative hypothesis that the means are not equal.</p>
-<p>In case you want to compare the t-statistic to t-critical, we can apply the inverse of the student’s t distribution at <span class="math notranslate nohighlight">\(\frac{\alpha}{2}\)</span> and <span class="math notranslate nohighlight">\(1-\frac{\alpha}{2}\)</span> to get the upper and lower critcal values.</p>
+<p>The p-value, <span class="math notranslate nohighlight">\(p\)</span>, is the symmetric interval probability our outside.</p>
+<ul class="simple">
+<li><p>In other words the <span class="math notranslate nohighlight">\(p\)</span> reported is 2 x cumulative probability of the t statistic applied to the sampling t distribution.</p></li>
+<li><p>Another way to look at it, if one used the <span class="math notranslate nohighlight">\(\pm t_{t_{statistic},.d.f}\)</span> statistic as thresholds, <span class="math notranslate nohighlight">\(p\)</span> is the probability being outside this symmetric interval. So we will reject the null hypothesis if <span class="math notranslate nohighlight">\(p \lt \alpha\)</span>.</p></li>
+<li><p>From the p-value alone it is clear that we would reject the null hypothesis and accept the alternative hypothesis that the means are not equal.</p></li>
+</ul>
+<p>In case you want to compare the t-statistic to t-critical, we can apply the inverse of the student’s t distribution at <span class="math notranslate nohighlight">\(\frac{\alpha}{2}\)</span> and <span class="math notranslate nohighlight">\(1-\frac{\alpha}{2}\)</span> to get the upper and lower critical values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X1</span><span class="p">);</span> <span class="n">n2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span>
@@ -859,7 +1049,8 @@ H_1: \mu_{X1} \ne \mu_{X2}
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">tpdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">df</span><span class="o">=</span><span class="n">dof</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Values&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hypothesis Test, Pooled (Equal Variance) Difference in Means&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sampling Distribution&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hypothesis Test, Pooled (Equal Variance) Difference in Means&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.6</span><span class="p">])</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;$-t_</span><span class="si">{critical}</span><span class="s1"> = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">0</span><span class="p">]),[</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
@@ -876,13 +1067,22 @@ H_1: \mu_{X1} \ne \mu_{X2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/51fb350791d681f51bf1161ebccc9ed18128642fee26f1e668185d3f0f918365.png" src="_images/51fb350791d681f51bf1161ebccc9ed18128642fee26f1e668185d3f0f918365.png" />
+<img alt="_images/e84aef9e36573030a9900bffe1cca26d5d3853fad0c897f3699f4bbd3d43c868.png" src="_images/e84aef9e36573030a9900bffe1cca26d5d3853fad0c897f3699f4bbd3d43c868.png" />
 </div>
 </div>
 </section>
 <section id="welch-s-t-test-difference-in-means">
-<h4>Welch’s t-test Difference in Means<a class="headerlink" href="#welch-s-t-test-difference-in-means" title="Permalink to this heading">#</a></h4>
-<p>Now let’s try the t-test, hypothesis test for difference in means allowing for unequal variances, this is also known as the Welch’s t test.  All we have to do is set the parameter ‘equal_var’ to false, note it defaults to true (e.g. the command above).</p>
+<h2>Welch’s t-test Difference in Means<a class="headerlink" href="#welch-s-t-test-difference-in-means" title="Permalink to this heading">#</a></h2>
+<p>Now let’s try the t-test, hypothesis test for difference in means allowing for unequal variances, this is also known as the Welch’s t test, with the same hypotheses as above,</p>
+<div class="math notranslate nohighlight">
+\[
+H_0: \mu_{X1} = \mu_{X2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+H_1: \mu_{X1} \ne \mu_{X2}
+\]</div>
+<p>All we have to do is set the parameter ‘equal_var’ to false, note it defaults to true (e.g. the command above).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_Welch</span><span class="p">,</span><span class="n">p_Welch</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">,</span> <span class="n">equal_var</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="c1"># allowing for difference in variance</span>
@@ -897,17 +1097,18 @@ H_1: \mu_{X1} \ne \mu_{X2}
 </div>
 </div>
 <p>Once again we can see by <span class="math notranslate nohighlight">\(p\)</span> that we will clearly reject the null hypothesis.</p>
-<p>Now let’s plot the result!</p>
+<p>Now let’s plot the result,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">tpdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">df</span><span class="o">=</span><span class="n">welch_dof</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Values&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hypothesis Test, Welch</span><span class="se">\&#39;</span><span class="s1">s (Unequal Variance) Difference in Means&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sampling Distribution&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">);</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Hypothesis Test, Welch</span><span class="se">\&#39;</span><span class="s1">s (Unequal Variance) Difference in Means&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">4.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.6</span><span class="p">])</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;$-t_</span><span class="si">{critical}</span><span class="s1"> = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">0</span><span class="p">]),[</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;$+t_</span><span class="si">{critical}</span><span class="s1"> = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">1</span><span class="p">]),[</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;$t_</span><span class="si">{Welch}</span><span class="s1"> = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">t_Welch</span><span class="p">,</span><span class="mi">3</span><span class="p">)),[</span><span class="n">t_Welch</span><span class="o">-</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$-t_</span><span class="si">{critical}</span><span class="s1"> = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">0</span><span class="p">]),[</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$+t_</span><span class="si">{critical}</span><span class="s1"> = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">1</span><span class="p">]),[</span><span class="n">t_critical</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$t_</span><span class="si">{Welch}</span><span class="s1"> = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">t_Welch</span><span class="p">,</span><span class="mi">3</span><span class="p">)),[</span><span class="n">t_Welch</span><span class="o">-</span><span class="mf">0.18</span><span class="p">,</span><span class="mf">0.4</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mf">90.0</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
     
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">where</span><span class="o">=</span> <span class="n">xval</span> <span class="o">&lt;</span> <span class="n">t_critical</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xval</span><span class="p">,</span><span class="n">tpdf</span><span class="p">,</span><span class="n">where</span><span class="o">=</span> <span class="n">xval</span> <span class="o">&gt;</span> <span class="n">t_critical</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
@@ -919,12 +1120,11 @@ H_1: \mu_{X1} \ne \mu_{X2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/88017bbbd3c6618197a9baa4892161b92409efbd04d4ee4262b816513572b435.png" src="_images/88017bbbd3c6618197a9baa4892161b92409efbd04d4ee4262b816513572b435.png" />
+<img alt="_images/f1c6b38d592951a54c743a0a53906dca2174d22fbbb7b12b24abd564c792c1d0.png" src="_images/f1c6b38d592951a54c743a0a53906dca2174d22fbbb7b12b24abd564c792c1d0.png" />
 </div>
 </div>
-</section>
 <section id="f-test-difference-in-variances">
-<h4>F-test Difference in Variances<a class="headerlink" href="#f-test-difference-in-variances" title="Permalink to this heading">#</a></h4>
+<h3>F-test Difference in Variances<a class="headerlink" href="#f-test-difference-in-variances" title="Permalink to this heading">#</a></h3>
 <p>Let’s now compare the variances with the F-test for difference in variances.</p>
 <p>\begin{equation}
 H_0: \frac{\sigma^{2}<em>{X_2}}{\sigma^{2}</em>{X_1}} = 1.0
@@ -951,7 +1151,7 @@ H_1: \frac{\sigma^{2}<em>{X_2}}{\sigma^{2}</em>{X_1}} &gt; 1.0
 </section>
 </section>
 <section id="compact-code-solution-hypothesis-test-student-s-t-test-for-difference-in-means">
-<h3>Compact Code Solution - Hypothesis Test, Student’s t-test for Difference in Means<a class="headerlink" href="#compact-code-solution-hypothesis-test-student-s-t-test-for-difference-in-means" title="Permalink to this heading">#</a></h3>
+<h2>Compact Code Solution - Hypothesis Test, Student’s t-test for Difference in Means<a class="headerlink" href="#compact-code-solution-hypothesis-test-student-s-t-test-for-difference-in-means" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -964,8 +1164,7 @@ H_1: \frac{\sigma^{2}<em>{X_2}}{\sigma^{2}</em>{X_1}} &gt; 1.0
 
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
 <span class="n">t_critical</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="n">t_pooled</span><span class="p">,</span> <span class="n">p_pooled</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">)</span> <span class="c1"># assuminng equal variance</span>
+<span class="n">t_pooled</span><span class="p">,</span> <span class="n">p_pooled</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">)</span>                 <span class="c1"># assuming equal variance</span>
 <span class="k">if</span><span class="p">(</span><span class="n">t_pooled</span> <span class="o">&lt;</span> <span class="n">t_critical</span> <span class="ow">or</span> <span class="n">t_pooled</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">t_critical</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Equal Variance: t-critical and t-statistic are &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">t_critical</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; ≤ &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">t_pooled</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> 
       <span class="s1">&#39; ≤ &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">t_critical</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;; therefore, reject the null hypothesis&#39;</span><span class="p">)</span>
@@ -995,7 +1194,7 @@ Welch&#39;s test: t-critical and t-statistic are -2.02 ≤ -2.98 ≤ 2.02; there
 </div>
 </section>
 <section id="compact-code-solution-hypothesis-test-f-test-for-difference-in-variances">
-<h3>Compact Code Solution - Hypothesis Test, F-test for Difference in Variances<a class="headerlink" href="#compact-code-solution-hypothesis-test-f-test-for-difference-in-variances" title="Permalink to this heading">#</a></h3>
+<h2>Compact Code Solution - Hypothesis Test, F-test for Difference in Variances<a class="headerlink" href="#compact-code-solution-hypothesis-test-f-test-for-difference-in-variances" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1007,8 +1206,7 @@ Welch&#39;s test: t-critical and t-statistic are -2.02 ≤ -2.98 ≤ 2.02; there
 <span class="n">X1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X1&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">;</span> <span class="n">X2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;X2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
 <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
-
-<span class="n">var_X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">var_X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># sample variance</span>
+<span class="n">var_X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">var_X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X2</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># sample variance</span>
 <span class="n">f_stat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">([</span><span class="n">var_X1</span><span class="p">,</span><span class="n">var_X2</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">var_X1</span><span class="p">,</span><span class="n">var_X2</span><span class="p">])</span>
 <span class="k">if</span> <span class="n">var_X1</span> <span class="o">&gt;</span> <span class="n">var_X2</span><span class="p">:</span>
     <span class="n">f_critical</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X2</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
@@ -1031,12 +1229,37 @@ Welch&#39;s test: t-critical and t-statistic are -2.02 ≤ -2.98 ≤ 2.02; there
 </div>
 </section>
 <section id="comments">
-<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h3>
-<p>We are just scratching the surface for confidence intervals and hypothesis tests.  Once again there are a lot of details left out of the problem formulation and assumptions, see the course notes for more coverage.  By running the same confidence interval and hypothesis tests 1) by hand in Excel and with 2) R and 3) Python code, I hope this demonstration will enable and encourage more engineers and scientists to make these R and Python tools part of their common practice. I’m always happy to discuss,</p>
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>I hope you found this chapter helpful. Much more could be done and discussed, I have many more resources. Check out my <a class="reference external" href="https://michaelpyrcz.com/my-resources">shared resource inventory</a>,</p>
 <p><em>Michael</em></p>
-<p>Michael Pyrcz, Ph.D., P.Eng. Associate Professor The Hildebrand Department of Petroleum and Geosystems Engineering, Bureau of Economic Geology, The Jackson School of Geosciences, The University of Texas at Austin
-On twitter I’m the &#64;GeostatsGuy.</p>
 </section>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+</section>
+<section id="want-to-work-together">
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 </section>
 </section>
 
@@ -1070,6 +1293,24 @@ On twitter I’m the &#64;GeostatsGuy.</p>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="GeostatsPy_confidence_interval.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Confidence Intervals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="GeostatsPy_bivariate.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bivariate Analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1085,33 +1326,32 @@ On twitter I’m the &#64;GeostatsGuy.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-intervals-and-hypothesis-testing-in-python-in-python">Confidence Intervals and Hypothesis Testing in Python in Python</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michael-pyrcz-associate-professor-the-university-of-texas-at-austin">Michael Pyrcz, Associate Professor, The University of Texas at Austin</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-github-website-googlescholar-book-youtube-linkedin">Twitter | GitHub | Website | GoogleScholar | Book | YouTube  | LinkedIn</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#caveats">Caveats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-hypothesis-testing">Motivation for Hypothesis Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing-concepts">Hypothesis Testing Concepts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-hypotheses">Example Hypotheses</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-hypothesis-testing-method">General Hypothesis Testing Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-and-two-tail-tests">One and Two Tail Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-hypothesis-testing">Limitations of Hypothesis Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pooled-variance-method-for-difference-in-means">Pooled Variance Method for Difference in Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-t-test-for-difference-in-means">Welch’s t-test for Difference in Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demonstration-of-difference-means-hypothesis-tests">Demonstration of Difference Means Hypothesis Tests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-test-for-difference-in-variances">F-test for Difference in Variances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-hypothesis-test-for-difference-in-variances">Example #2: Hypothesis Test for Difference in Variances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-hypothesis-testing-dashboard">Interactive Hypothesis Testing Dashboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pooled-variance-t-test-difference-in-means">Pooled Variance t-test Difference in Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-t-test-difference-in-means">Welch’s t-test Difference in Means</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#f-test-difference-in-variances">F-test Difference in Variances</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#project-goal">Project Goal</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the required libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-mean">Confidence Interval for the Mean</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-mean-by-hand">Confidence Interval for the Mean By-Hand</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-plot-the-result">Let’s Plot the Result</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-proportion">Confidence Interval for the Proportion</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-proportion-by-hand">Confidence Interval for the Proportion By-Hand</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hypothesis-testing">Hypothesis Testing</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pooled-variance-t-test-difference-in-means">Pooled Variance t-test Difference in Means</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#welch-s-t-test-difference-in-means">Welch’s t-test Difference in Means</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#f-test-difference-in-variances">F-test Difference in Variances</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-code-solution-hypothesis-test-student-s-t-test-for-difference-in-means">Compact Code Solution - Hypothesis Test, Student’s t-test for Difference in Means</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-code-solution-hypothesis-test-f-test-for-difference-in-variances">Compact Code Solution - Hypothesis Test, F-test for Difference in Variances</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-code-solution-hypothesis-test-student-s-t-test-for-difference-in-means">Compact Code Solution - Hypothesis Test, Student’s t-test for Difference in Means</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-code-solution-hypothesis-test-f-test-for-difference-in-variances">Compact Code Solution - Hypothesis Test, F-test for Difference in Variances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
   </nav></div>
 
