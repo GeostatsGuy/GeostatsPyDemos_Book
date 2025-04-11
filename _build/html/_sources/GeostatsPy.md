@@ -4,13 +4,28 @@
 
 ### GeostatsPy Python Package
 
-Michael Pyrcz, Professor, The University of Texas at Austin 
+Michael J. Pyrcz, Professor, The University of Texas at Austin 
 
-[Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)
+[Twitter](https://twitter.com/geostatsguy) | [GitHub](https://github.com/GeostatsGuy) | [Website](http://michaelpyrcz.com) | [GoogleScholar](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en&oi=ao) | [Book](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) | [YouTube](https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig)  | [Applied Geostats in Python e-book](https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html) | [LinkedIn](https://www.linkedin.com/in/michael-pyrcz-61a648a1)
 
-This chapter provides more information about GeostatsPy, the geostatistical Python package.
+Chapter of e-book "Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy". 
 
-* to follow along with the well-document workflows as downloadable chapters for this e-book, you only need to install GeostatsPy and the dependency Python packages.
+```{admonition} Cite this e-Book as:
+:class: remove-from-content-only
+
+Pyrcz, M.J., 2024, *Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy* [e-book]. Zenodo. doi:10.5281/zenodo.15169133 [![DOI](https://zenodo.org/badge/838927017.svg)](https://doi.org/10.5281/zenodo.15169132)  
+```
+
+The workflows in this book and more are available here:
+
+```{admonition} Cite the GeostatsPyDemos GitHub Repository as:
+:class: remove-from-content-only
+
+Pyrcz, M.J., 2024, *GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository* (0.0.1) [Software]. Zenodo. doi:10.5281/zenodo.12667036. GitHub Repository: https://github.com/GeostatsGuy/GeostatsPyDemos [![DOI](https://zenodo.org/badge/777871341.svg)](https://doi.org/10.5281/zenodo.12667035)
+```
+
+By Michael J. Pyrcz <br />
+&copy; Copyright 2024.
 
 #### Installing GeostatsPy
 
