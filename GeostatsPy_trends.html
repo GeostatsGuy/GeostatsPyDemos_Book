@@ -210,6 +210,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_decision_making.html">Decision Making with Uncertainty</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
@@ -625,6 +627,13 @@ y^{*}(\bf{u}) = \sum^{n}_{\alpha = 1} \lambda_{\alpha} y(\bf{u}_{\alpha})
 <li><p><strong>Smoothing effect</strong> of kriging can be forecast. We will use this to build stochastic simulations later.</p></li>
 </ul>
 <p>We limit ourselves to simple data-driven methods, but acknowledge much more is needed. In fact, trend modeling requires a high degree of knowledge concerning local geoscience and engineering, data and physics.</p>
+<p>To help my students gain hands-on experience with calculating and modeling trend models, I built out an interactive Python <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Trend.ipynb">Trend Modeling Dashboard</a>.</p>
+<figure style="text-align: center;">
+  <img src="_static/trend/interactive_trend.png" style="display: block; margin: 0 auto; width: 100%;">
+  <figcaption style="text-align: center;"> Interactive Python trend modeling.
+</figcaption>
+</figure>
+<p>In this workflow we will explore methods to calculate and model spatial trends with GeostatsPy, from a spatial dataset.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>

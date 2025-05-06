@@ -210,6 +210,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume Variance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_decision_making.html">Decision Making with Uncertainty</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
@@ -695,53 +697,53 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
   <tbody>
     <tr>
       <th>0</th>
-      <td>710.0</td>
-      <td>789.0</td>
-      <td>0.102123</td>
-      <td>0.653171</td>
-      <td>-0.425916</td>
-      <td>-0.954165</td>
-      <td>-1.475791</td>
+      <td>400.0</td>
+      <td>900.0</td>
+      <td>0.158800</td>
+      <td>174.258300</td>
+      <td>5.160539</td>
+      <td>1.126391</td>
+      <td>1.126391</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>900.0</td>
-      <td>200.0</td>
-      <td>0.139414</td>
-      <td>7.750533</td>
-      <td>2.047762</td>
-      <td>0.385320</td>
-      <td>-0.176374</td>
+      <td>700.0</td>
+      <td>500.0</td>
+      <td>0.111167</td>
+      <td>14.593652</td>
+      <td>2.680587</td>
+      <td>-0.227545</td>
+      <td>0.495850</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>900.0</td>
-      <td>894.0</td>
-      <td>0.126350</td>
-      <td>1.838804</td>
-      <td>0.609115</td>
-      <td>-0.025069</td>
-      <td>-1.126391</td>
+      <td>790.0</td>
+      <td>329.0</td>
+      <td>0.099120</td>
+      <td>2.306577</td>
+      <td>0.835765</td>
+      <td>-0.806421</td>
+      <td>-0.553385</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>230.0</td>
-      <td>859.0</td>
-      <td>0.154095</td>
-      <td>103.851187</td>
-      <td>4.642959</td>
+      <td>150.0</td>
+      <td>449.0</td>
+      <td>0.140782</td>
+      <td>8.493640</td>
+      <td>2.139318</td>
       <td>0.738847</td>
-      <td>0.954165</td>
+      <td>0.227545</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>500.0</td>
-      <td>700.0</td>
-      <td>0.107520</td>
-      <td>10.459677</td>
-      <td>2.347528</td>
-      <td>-0.738847</td>
-      <td>-0.075270</td>
+      <td>460.0</td>
+      <td>469.0</td>
+      <td>0.102737</td>
+      <td>10.841503</td>
+      <td>2.383382</td>
+      <td>-0.553385</td>
+      <td>0.279319</td>
     </tr>
   </tbody>
 </table>
@@ -787,64 +789,64 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
     <tr>
       <th>X</th>
       <td>50.0</td>
-      <td>522.600000</td>
-      <td>271.907923</td>
-      <td>30.000000</td>
-      <td>292.500000</td>
-      <td>5.650000e+02</td>
-      <td>720.000000</td>
-      <td>920.000000</td>
+      <td>527.200000</td>
+      <td>266.649965</td>
+      <td>20.000000</td>
+      <td>322.500000</td>
+      <td>5.050000e+02</td>
+      <td>727.500000</td>
+      <td>990.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>50.0</td>
-      <td>553.920000</td>
-      <td>266.099018</td>
-      <td>69.000000</td>
-      <td>326.500000</td>
-      <td>6.045000e+02</td>
-      <td>776.500000</td>
-      <td>999.000000</td>
+      <td>525.560000</td>
+      <td>266.034228</td>
+      <td>19.000000</td>
+      <td>329.000000</td>
+      <td>5.000000e+02</td>
+      <td>699.750000</td>
+      <td>969.000000</td>
     </tr>
     <tr>
       <th>Porosity</th>
       <td>50.0</td>
-      <td>0.131237</td>
-      <td>0.030061</td>
-      <td>0.084574</td>
-      <td>0.111423</td>
-      <td>1.269237e-01</td>
-      <td>0.151750</td>
-      <td>0.210258</td>
+      <td>0.121661</td>
+      <td>0.029297</td>
+      <td>0.066615</td>
+      <td>0.100426</td>
+      <td>1.204924e-01</td>
+      <td>0.139669</td>
+      <td>0.185299</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>50.0</td>
-      <td>123.298331</td>
-      <td>337.913844</td>
-      <td>0.260590</td>
-      <td>3.452076</td>
-      <td>1.242687e+01</td>
-      <td>51.727932</td>
-      <td>1991.097723</td>
+      <td>89.382203</td>
+      <td>204.519239</td>
+      <td>0.156520</td>
+      <td>2.232573</td>
+      <td>5.505723e+00</td>
+      <td>16.243461</td>
+      <td>860.780327</td>
     </tr>
     <tr>
       <th>logPerm</th>
       <td>50.0</td>
-      <td>2.726849</td>
-      <td>2.065782</td>
-      <td>-1.344806</td>
-      <td>1.234129</td>
-      <td>2.519819e+00</td>
-      <td>3.942811</td>
-      <td>7.596441</td>
+      <td>2.217661</td>
+      <td>2.138745</td>
+      <td>-1.854574</td>
+      <td>0.803144</td>
+      <td>1.705099e+00</td>
+      <td>2.787413</td>
+      <td>6.757839</td>
     </tr>
     <tr>
       <th>nPorosity</th>
       <td>50.0</td>
-      <td>-0.009947</td>
-      <td>1.023219</td>
-      <td>-2.823679</td>
+      <td>0.006282</td>
+      <td>0.983338</td>
+      <td>-2.012243</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -853,9 +855,9 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
     <tr>
       <th>nPerm</th>
       <td>50.0</td>
-      <td>-0.021653</td>
-      <td>1.058796</td>
-      <td>-3.408989</td>
+      <td>-0.018835</td>
+      <td>1.049744</td>
+      <td>-3.268076</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -931,7 +933,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/06f5425e1be823abe19304ab407ff154e8b078e26101b5161ca42bb2248b9262.png" src="_images/06f5425e1be823abe19304ab407ff154e8b078e26101b5161ca42bb2248b9262.png" />
+<img alt="_images/49dd0e9c7d82826402a8f26d24da78897180973753260c7bc2a7a21108dbc8ce.png" src="_images/49dd0e9c7d82826402a8f26d24da78897180973753260c7bc2a7a21108dbc8ce.png" />
 </div>
 </div>
 <p>Note we have already demonstrated univariate simulation checks for:</p>
@@ -1005,7 +1007,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c387e24273d9401938ddb5b861b944c2c7228b981a56d2626644b7a4f2303bcc.png" src="_images/c387e24273d9401938ddb5b861b944c2c7228b981a56d2626644b7a4f2303bcc.png" />
+<img alt="_images/c1203c3753f6f74b8f1e0ab1870a89d76cf06e2f12d49096a2c60d8ede4d7531.png" src="_images/c1203c3753f6f74b8f1e0ab1870a89d76cf06e2f12d49096a2c60d8ede4d7531.png" />
 </div>
 </div>
 </section>
@@ -1058,7 +1060,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/faaf8a366ea04957da1e234984edfe2aa6009b48ec80ba8916414badc8d7079a.png" src="_images/faaf8a366ea04957da1e234984edfe2aa6009b48ec80ba8916414badc8d7079a.png" />
+<img alt="_images/89aa4dd3da3e9268632ca2eb402d1fcd6f7e832e333b125971e15c23584e0657.png" src="_images/89aa4dd3da3e9268632ca2eb402d1fcd6f7e832e333b125971e15c23584e0657.png" />
 </div>
 </div>
 </section>
@@ -1100,7 +1102,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/973a1d67e0daebeea90cdb809c98f6aba26ba43cd66132778beca6065f1f5d36.png" src="_images/973a1d67e0daebeea90cdb809c98f6aba26ba43cd66132778beca6065f1f5d36.png" />
+<img alt="_images/b51ab2455d47dec09c373d5ab260d5e4d389b8bfcb40b2ec42056add1acf1f52.png" src="_images/b51ab2455d47dec09c373d5ab260d5e4d389b8bfcb40b2ec42056add1acf1f52.png" />
 </div>
 </div>
 </section>
