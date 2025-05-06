@@ -80,6 +80,8 @@ chapters:
   title: Model Checking
 - file: GeostatsPy_volume_variance
   title: Volume Variance
+- file: GeostatsPy_decision_making
+  title: Decision Making with Uncertainty
 - file: GeostatsPy
   title: GeostatsPy Package
 - file: conclusions
