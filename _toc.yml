@@ -79,7 +79,7 @@ chapters:
 - file: GeostatsPy_model_checking
   title: Model Checking
 - file: GeostatsPy_volume_variance
-  title: Volume Variance
+  title: Volume-Variance Relations
 - file: GeostatsPy_decision_making
   title: Decision Making with Uncertainty
 - file: GeostatsPy
