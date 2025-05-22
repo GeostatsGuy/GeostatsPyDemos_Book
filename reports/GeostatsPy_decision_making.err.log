@@ -15,29 +15,139 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import numpy as np                        # ndarrys for gridded data
-import pandas as pd                       # DataFrames for tabular data
-import os                                 # set working directory, run executables
-import matplotlib.pyplot as plt           # for plotting
-from scipy import stats                   # summary statistics
-import math                               # trig etc.
-import random
-from ipywidgets import interactive        # widgets and interactivity
-from ipywidgets import widgets                            
-from ipywidgets import Layout
-from ipywidgets import Label
-from ipywidgets import VBox, HBox
+# interactive calculation of the random sample set (control of source parametric distribution and number of samples)
+l = widgets.Text(value='                                      Optimum Decision Making Demonstration, Michael Pyrcz, Professor, The University of Texas at Austin',layout=Layout(width='950px', height='30px'))
+
+mean = widgets.FloatSlider(min=0.0, max = 1.0, value = 0.5,step=0.01,description = r'$\mu$',orientation='horizontal',layout=Layout(width='230px', height='50px'),continuous_update=False)
+mean.style.handle_color = 'darkorange'
+
+stdev = widgets.FloatSlider(min=0.001, max = 0.25, value = 0.15,step=0.01,description = r'$\sigma$',orientation='horizontal',layout=Layout(width='230px', height='50px'),continuous_update=False)
+stdev.style.handle_color = 'darkorange'
+
+ui1 = widgets.VBox([mean,stdev],kwargs = {'justify_content':'center'})
+
+slope_under = widgets.FloatSlider(min=0.00, max = 1.0,value = 0.1,step=0.01,description = r'$m_{under}$',orientation='horizontal',layout=Layout(width='230px', height='50px'),continuous_update=False)
+slope_under.style.handle_color = 'green'
+
+power_under = widgets.FloatSlider(min=1.0, max = 5.0, value = 0.0, description = r'$p_{under}$',orientation='horizontal',layout=Layout(width='230px', height='50px'),continuous_update=False)
+power_under.style.handle_color = 'green'
+
+ui2 = widgets.VBox([slope_under,power_under],kwargs = {'justify_content':'center'})
+
+slope_over = widgets.FloatSlider(min=0.00, max = 1.0,value = 0.1,step=0.1,description = r'$m_{over}$',orientation='horizontal',layout=Layout(width='230px', height='50px'),continuous_update=False)
+slope_over.style.handle_color = 'blue'
+
+power_over = widgets.FloatSlider(min=1.0, max = 5.0, value = 0.0, description = r'$p_{over}$',orientation='horizontal',layout=Layout(width='230px', height='50px'),continuous_update=False)
+power_over.style.handle_color = 'blue'
+
+ui3 = widgets.VBox([slope_over,power_over],kwargs = {'justify_content':'center'})
+
+step = widgets.FloatLogSlider(min=-4, max = -1, value = 0.02, description = 'Step',orientation='horizontal',layout=Layout(width='230px', height='50px'),continuous_update=False)
+step.style.handle_color = 'gray'
+
+ui4 = widgets.VBox([step],kwargs = {'justify_content':'none'})
+
+ui = widgets.HBox([ui1,ui2,ui3,ui4])
+ui_title = widgets.VBox([l,ui],)
+
+def make_plot(mean,stdev,slope_under,power_under,slope_over,power_over,step):
+    seed = 73073
+    xmin = mean - 5.0 * stdev    
+    xmax = mean + 5.0 * stdev
+    X = np.arange(xmin,xmax,step)              # build uncertainty distribution
+    pdf = stats.norm.pdf(X, loc = mean, scale = stdev)
+    y = stats.norm.rvs(loc=mean,scale=stdev,size=10000,random_state=seed)
+   
+    delta = np.arange(-1*(xmax-xmin)*4,(xmax-xmin)*4,step) # build loss function
+    loss = np.zeros(len(delta))
+    rloss = np.zeros(len(delta))               # flip for convolve operator
+    
+    for id, d in enumerate(delta):
+        if d < 0.0: 
+            loss[id] = pow(abs(d),power_under)*slope_under
+            rloss[len(delta)-id-1] = pow(abs(d),power_under)*slope_under 
+        else: 
+            loss[id] = pow(d,power_over)*slope_over
+            rloss[len(delta)-id-1] = pow(d,power_over)*slope_over
+   
+    pdf_norm = pdf / pdf.sum()                 # calculate expected loss
+    exp_loss = np.convolve(pdf_norm,loss,mode='valid')
+    x_exp_loss = np.arange(-0.5*step*(len(exp_loss))+mean,0.5*step*(len(exp_loss))+mean,step)
+    x_exp_loss = x_exp_loss[0:len(exp_loss)]   # avoid rounding error
+    inside = np.logical_and(x_exp_loss >= xmin, x_exp_loss <= xmax)
+    max_loss_plot = np.max(exp_loss,where = inside,initial=0.0)
+    best_estimate = x_exp_loss[np.argmin(exp_loss)]
+    min_loss = np.min(exp_loss)
+ 
+    plt.subplot(131)                           # plot uncertainty distribution
+    plt.plot(X,pdf,color='darkorange',alpha=0.7,zorder=10,lw=3,ls='--')
+    hist = plt.hist(y,bins=X,edgecolor='black',color='darkorange',alpha=0.7,density=True,stacked=True,
+                   histtype=u'step',linewidth=2)
+    plt.hist(y,bins=X,color='grey',alpha=0.2,zorder=20,density=True)
+    if best_estimate >= 0 and best_estimate <= 1.0:
+        plt.plot([best_estimate,best_estimate],[0,np.max(hist[0])*1.2],color='black',linestyle='--',zorder=100)
+        plt.annotate('Optimum Estimate = ' + str(np.round(best_estimate,2)),[best_estimate,np.max(hist[0])*0.7], rotation=270)
+    elif best_estimate < 0.0: 
+        plt.annotate('Optimum Estimate = ' + str(r'$-\infty$'),[0,np.max(hist[0])*0.7], rotation=270)
+    else:
+        plt.annotate('Optimum Estimate = ' + str(r'$+\infty$'),[0.96,np.max(hist[0])*0.7], rotation=270)
+    plt.xlim(0.0,1.0); plt.xlabel(r"Feature, $y_1$"); plt.ylim([0,np.max(hist[0])*1.2])
+    plt.title('Uncertainty Distribution'); plt.ylabel('Density')
+    plt.grid(color='grey', ls = '-.', lw = 0.1)
+
+    plt.subplot(132)                           # plot loss function, loss vs. estimate error
+    plt.plot(delta[delta>0],loss[delta>0],color='blue',alpha=0.8,lw=3)
+    plt.plot(delta[delta<0],loss[delta<0],color='green',alpha=0.8,lw=3)
+#    plt.plot([0,0],[0,np.max(loss)],color='black',linestyle='--',alpha=0.3)
+    plt.plot([0,0],[0,1.0],color='black',linestyle='--',alpha=0.8)
+#    plt.annotate('Underestimation',[(xmax-xmin)*-0.1,np.max(loss)*0.8], rotation=0,horizontalalignment='right')
+#    plt.annotate('Overestimation',[(xmax-xmin)*0.1,np.max(loss)*0.8], rotation=0,horizontalalignment='left')
+    plt.annotate('Underestimation',[(xmax-xmin)*-0.1,0.7], rotation=0,horizontalalignment='right')
+    plt.annotate('Overestimation',[(xmax-xmin)*0.1,0.7], rotation=0,horizontalalignment='left')
+#    plt.xlim([-1*(xmax-xmin)*3,(xmax-xmin)*3])
+#   plt.ylim([0,np.max(loss)])
+    plt.xlim([-1,1]); plt.ylim([0,1.0])
+    plt.xlabel('Error In Estimate'); plt.title('Loss Function'); plt.ylabel('Loss') 
+    plt.grid(color='grey', ls = '-.', lw = 0.1)
+    
+    plt.subplot(133)                           # plot expected loss vs. estimate
+    #plt.plot(X,pdf/1000*stdev,'--',color='black',alpha=0.7,zorder=1)
+    plt.plot(x_exp_loss,exp_loss,color='red',alpha=0.8,lw=3)
+    if best_estimate >= 0 and best_estimate <= 1.0:
+        plt.plot([best_estimate,best_estimate],[0,max_loss_plot],color='black',linestyle='--',lw=2)
+        plt.annotate('Optimum Estimate = ' + str(np.round(best_estimate,2)),[best_estimate,max_loss_plot*0.6], rotation=270)
+    elif best_estimate < 0:
+        plt.annotate('Optimum Estimate = ' + str(r'$-\infty$'),[0,max_loss_plot*0.6], rotation=270)
+    else:
+        plt.annotate('Optimum Estimate = ' + str(r'$+\infty$'),[0.96,max_loss_plot*0.6], rotation=270)
+        
+    plt.xlim([0.0,1.0]); # plt.ylim([0,1.0])
+#    plt.plot([xmin,xmax],[min_loss,min_loss],color='black',linestyle='--',alpha=0.3)
+    plt.plot([0,1],[min_loss,min_loss],color='black',linestyle='--',alpha=0.7,lw=2)
+    plt.annotate('Minimum Expected Loss',[xmin+(xmax-xmin)*0.2,min_loss*1.1], rotation=0,horizontalalignment='left')
+    plt.ylim([0,max_loss_plot])
+    plt.xlabel(r'Estimate, $y^*_1$'); plt.title('Expected Loss vs. Estimate'); plt.ylabel('Expected Loss')
+    ax2 = plt.gca().twinx()
+    ax2.plot(X,pdf,'--',color='darkorange',alpha=0.7,zorder=1,lw=3)
+    ax2.set_ylim([0,np.max(hist[0])*1.2])
+    ax2.set_ylabel('Density',rotation=270,labelpad=10)
+    plt.grid(color='grey', ls = '-.', lw = 0.1)
+   
+    plt.subplots_adjust(left=0.0, bottom=0.0, right=3.0, top=1.2, wspace=0.2, hspace=0.2); plt.show()   
+    
+interactive_plot = widgets.interactive_output(make_plot, {'mean':mean,'stdev':stdev,'slope_under':slope_under,'power_under':power_under,'slope_over':slope_over,'power_over':power_over,'step':step})
+interactive_plot.clear_output(wait = True)                # reduce flickering by delaying plot updating 
+    
 ------------------
 
 
 [1;31m---------------------------------------------------------------------------[0m
-[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [1;32mIn[2], line 8[0m
-[0;32m      6[0m [38;5;28;01mimport[39;00m [38;5;21;01mmath[39;00m                               [38;5;66;03m# trig etc.[39;00m
-[0;32m      7[0m [38;5;28;01mimport[39;00m [38;5;21;01mrandom[39;00m
-[1;32m----> 8[0m [38;5;28;01mfrom[39;00m [38;5;21;01mipywidgets[39;00m [38;5;28;01mimport[39;00m interactive        [38;5;66;03m# widgets and interactivity[39;00m
-[0;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01mipywidgets[39;00m [38;5;28;01mimport[39;00m widgets                            
-[0;32m     10[0m [38;5;28;01mfrom[39;00m [38;5;21;01mipywidgets[39;00m [38;5;28;01mimport[39;00m Layout
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[9], line 2[0m
+[0;32m      1[0m [38;5;66;03m# interactive calculation of the random sample set (control of source parametric distribution and number of samples)[39;00m
+[1;32m----> 2[0m l [38;5;241m=[39m [43mwidgets[49m[38;5;241m.[39mText(value[38;5;241m=[39m[38;5;124m'[39m[38;5;124m                                      Optimum Decision Making Demonstration, Michael Pyrcz, Professor, The University of Texas at Austin[39m[38;5;124m'[39m,layout[38;5;241m=[39mLayout(width[38;5;241m=[39m[38;5;124m'[39m[38;5;124m950px[39m[38;5;124m'[39m, height[38;5;241m=[39m[38;5;124m'[39m[38;5;124m30px[39m[38;5;124m'[39m))
+[0;32m      4[0m mean [38;5;241m=[39m widgets[38;5;241m.[39mFloatSlider([38;5;28mmin[39m[38;5;241m=[39m[38;5;241m0.0[39m, [38;5;28mmax[39m [38;5;241m=[39m [38;5;241m1.0[39m, value [38;5;241m=[39m [38;5;241m0.5[39m,step[38;5;241m=[39m[38;5;241m0.01[39m,description [38;5;241m=[39m [38;5;124mr[39m[38;5;124m'[39m[38;5;124m$[39m[38;5;124m\[39m[38;5;124mmu$[39m[38;5;124m'[39m,orientation[38;5;241m=[39m[38;5;124m'[39m[38;5;124mhorizontal[39m[38;5;124m'[39m,layout[38;5;241m=[39mLayout(width[38;5;241m=[39m[38;5;124m'[39m[38;5;124m230px[39m[38;5;124m'[39m, height[38;5;241m=[39m[38;5;124m'[39m[38;5;124m50px[39m[38;5;124m'[39m),continuous_update[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[0;32m      5[0m mean[38;5;241m.[39mstyle[38;5;241m.[39mhandle_color [38;5;241m=[39m [38;5;124m'[39m[38;5;124mdarkorange[39m[38;5;124m'[39m
 
-[1;31mModuleNotFoundError[0m: No module named 'ipywidgets'
+[1;31mNameError[0m: name 'widgets' is not defined
 
