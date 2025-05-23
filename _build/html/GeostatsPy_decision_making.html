@@ -211,7 +211,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume-Variance Relations</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Decision Making with Uncertainty</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
@@ -411,13 +410,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Decision Making with Uncertainty</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-decision-making-with-uncertainty">Motivation for Decision Making with Uncertainty</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-uncertainty-models">Building Uncertainty Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-decisions">Types of Decisions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aspects-of-subsurface-decision-making">Aspects of Subsurface Decision Making</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-profit-workflow">Expected Profit Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uncertainty-model">The Uncertainty Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-development-scenarios">The Development Scenarios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-decision-scenarios">The Decision Scenarios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-profit-metric">The Profit Metric</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-profit">Expected Profit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximize-expected-profit">Maximize Expected Profit</a></li>
@@ -426,17 +424,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximizing-the-expected-profit-example">Maximizing the Expected Profit Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-estimate-with-a-loss-function-example">Optimum Estimate with a Loss Function Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-estimate-with-a-loss-function-example">Optimum Estimate with a Loss Function Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-uncertainty">Distribution of Uncertainty</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-decision-making-demonstration">Optimum Decision Making Demonstration</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-expected-loss-for-an-estimate">Calculate Expected Loss for an Estimate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-the-expected-loss">Minimizing the Expected Loss</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -468,12 +465,14 @@ document.write(`
 © Copyright 2024.</p>
 <p>This chapter is a summary of <strong>Decision Making with Uncertainty</strong> including essential concepts:</p>
 <ul class="simple">
-<li><p>loss functions</p></li>
-<li><p>expected loss vs. estimate</p></li>
+<li><p>establishing model realizations and decision scenarios</p></li>
+<li><p>calculating expected profit over decision scenarios and selecting decision scenario that maximizes expected profit</p></li>
+<li><p>designing loss functions</p></li>
+<li><p>calculating the estimate that minimize the expected loss</p></li>
 </ul>
 <p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://youtu.be/Yu9jDlqBrJE?si=3SURJ97ElUrky_5w">Decision Making</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/Yu9jDlqBrJE?si=3SURJ97ElUrky_5w">Decision Making in the Presence of Uncertainty</a></p></li>
 </ul>
 <p>For convenience here’s a summary of the salient points.</p>
 <section id="motivation-for-decision-making-with-uncertainty">
@@ -487,7 +486,7 @@ document.write(`
 </section>
 <section id="building-uncertainty-models">
 <h2>Building Uncertainty Models<a class="headerlink" href="#building-uncertainty-models" title="Permalink to this heading">#</a></h2>
-<p>How Did We Calculate Uncertainty Models? Some examples:</p>
+<p>How did we calculate our uncertainty model(s)? Some examples,</p>
 <ul class="simple">
 <li><p><strong>Bayesian Updating</strong> - prior plus likelihood to calculate the posterior, for example, probability that a coin is fair, uncertainty in reservoir OIP</p></li>
 <li><p><strong>Bootstrap + Monte Carlo Simulation and Transfer Function</strong> - uncertainty the mean porosity by bootstrap, then Monte Carlo simulation for uncertainty in oil-in-place</p></li>
@@ -505,28 +504,26 @@ document.write(`
   <figcaption style="text-align: center;"> Two realizations of soil lead concentration near a closed lead smelter Superfund site in West Dallas, Texas (Pyrcz, 2000). Units are PPM.
 </figcaption>
 </figure>
-<p>and now we must make a decision with that uncertainty model, for examples,</p>
+<p>and now we must make a decision with that uncertainty model, for example,</p>
 <ul class="simple">
 <li><p>number and locations of wells</p></li>
 <li><p>time and volume injected for water of chemical flood, pump and treat remediation</p></li>
 <li><p>dig limits and mine plan</p></li>
 </ul>
 </section>
-<section id="types-of-decisions">
-<h2>Types of Decisions<a class="headerlink" href="#types-of-decisions" title="Permalink to this heading">#</a></h2>
-<p>For example well site selection methods include,</p>
+<section id="aspects-of-subsurface-decision-making">
+<h2>Aspects of Subsurface Decision Making<a class="headerlink" href="#aspects-of-subsurface-decision-making" title="Permalink to this heading">#</a></h2>
+<p>Decision making for subsurface development is a massive, integrated challenge! For an example consider the various aspects related to well site selection,</p>
 <ul class="simple">
-<li><p><strong>Integer programing</strong> problem, output must be an integer, not a fraction</p></li>
-<li><p><strong>Optimization</strong> combined with <strong>simulation</strong> one potential well at a time</p></li>
-<li><p><strong>Experimental design</strong> and response surface methodology</p></li>
+<li><p><strong>Integer programing</strong> problem, output must be an integer or discrete choice and not continuous</p></li>
+<li><p><strong>Optimization</strong> including single choice and joint choice optimization with constraints between each choice</p></li>
+<li><p><strong>Experimental design</strong> to explore a potentially vast uncertainty model space and then statistical / machine learning models to develop response surface, surrrogate models to support larger Monte Carlo simulation studies</p></li>
 </ul>
-<p>Optimize the profitability of reservoir production,</p>
+<p>Let’s back up and consider the problem from a data science perspect, our well site selection problem includes,</p>
 <ul class="simple">
-<li><p><strong>High dimensional</strong> - complicated by large number of parameters and timing</p></li>
-<li><p><strong>Interactions</strong> - locations of injector and producers,</p></li>
-<li><p><strong>Multivariate</strong> - injection, well completions</p></li>
+<li><p><strong>High dimensionality</strong> - complicated by large number of geological and engineering parameters in space and time</p></li>
+<li><p><strong>Interactions</strong> - complicated constraints and feedbacks between the geological and engineeirng parameters and our decisions, i.e., it is not appropriate to make <span class="math notranslate nohighlight">\(L\)</span>-optimum choices, a set of choices that are optimum for each model, instead we must make one globally optimum choice.</p></li>
 </ul>
-<p>We could make <span class="math notranslate nohighlight">\(L\)</span> optimum choices, a set of choices that are optimum for each model. Or we could make one globally optimum choice.</p>
 <figure style="text-align: center;">
   <img src="_static/decision/global.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;"> Global optimum vs. L suboptimum (Pyrcz and Deutsch, 2014).
@@ -554,18 +551,22 @@ document.write(`
 <li><p><strong>Realizations</strong> - change the random number seed to capture spatial uncertainty</p></li>
 <li><p><strong>Multivariate</strong> - include all needed features, and their relations</p></li>
 </ul>
-<p>The <strong>uncertainty model</strong> is represented by multiple models of the subsurface.</p>
+<p>The <strong>uncertainty model</strong> is represented by multiple models, scenarios and realizations, of the subsurface. For brevity, we just use the term subsurface realizations going forward.</p>
 <figure style="text-align: center;">
   <img src="_static/decision/realizations.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> \(\ell=1,…,6\) subsurface models, realizations and scenarios of the subsurface.
 </figcaption>
 </figure>
 </section>
-<section id="the-development-scenarios">
-<h2>The Development Scenarios<a class="headerlink" href="#the-development-scenarios" title="Permalink to this heading">#</a></h2>
-<p>Discrete alternatives for developing the spatial, subsurface resource</p>
-<p>Includes all details needed to simulate extraction, e.g., well locations, completion types, dig limits, mining block sequence</p>
-<p>For example, 3 potential well locations with drainage radius,</p>
+<section id="the-decision-scenarios">
+<h2>The Decision Scenarios<a class="headerlink" href="#the-decision-scenarios" title="Permalink to this heading">#</a></h2>
+<p><strong>Decision Scenario</strong> - discrete choices for developing the spatial, subsurface resource.</p>
+<ul class="simple">
+<li><p><strong>complete</strong> - each decision scenario includes all details needed to simulate extraction, for example, well locations, completion types, dig limits, mining block sequence</p></li>
+<li><p><strong>mutually exclusive</strong> - you can only make one choice, it is not possible to select 2 or more choices</p></li>
+<li><p><strong>exhaustive</strong> - all possible choices are included, there is no other choices available</p></li>
+</ul>
+<p>For an example of decision scenarios, consider 3 potential well locations with drainage radius,</p>
 <figure style="text-align: center;">
   <img src="_static/decision/scenarios.png" style="display: block; margin: 0 auto; width: 40%;">
   <figcaption style="text-align: center;"> \(s=1,…,3\) development scenarios.
@@ -574,20 +575,19 @@ document.write(`
 </section>
 <section id="the-profit-metric">
 <h2>The Profit Metric<a class="headerlink" href="#the-profit-metric" title="Permalink to this heading">#</a></h2>
-<p>The profit metric,</p>
+<p>The profit metric is,</p>
 <ul class="simple">
-<li><p>is a transfer function to map from spatial features to value, <span class="math notranslate nohighlight">\(P(\ell,s)\)</span></p></li>
-<li><p>include inputs subsurface realization, <span class="math notranslate nohighlight">\(\ell\)</span>, and development scenario, <span class="math notranslate nohighlight">\(s\)</span></p></li>
-<li><p>In the units of the thing are we trying to maximize? For example, net present value, tonnage contaminant removed from soil, or volume of resource recovered</p></li>
+<li><p>a <strong>transfer function</strong> to map from spatial realizations, <span class="math notranslate nohighlight">\(\ell\)</span>, and decision scenario, <span class="math notranslate nohighlight">\(s\)</span>, to a value metric, <span class="math notranslate nohighlight">\(P(\ell,s)\)</span></p></li>
+<li><p>is in the <strong>units</strong> of the thing are we trying to maximize. For example, net present value, tonnage contaminant removed from soil, or volume of resource recovered</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/decision/profit.png" style="display: block; margin: 0 auto; width: 40%;">
-  <figcaption style="text-align: center;"> Profit for \(𝑙=5\), realization, \(𝑠=2\) development scenario.
+  <figcaption style="text-align: center;"> Profit for \(𝑙=5\), realization, \(𝑠=2\) decision scenario.
 </figcaption>
 </figure>
-<p>We calculated profit over all <span class="math notranslate nohighlight">\(L\)</span> subsurface realizations, and <span class="math notranslate nohighlight">\(S\)</span> development scenarios. If possible we work with the,</p>
+<p>We calculate profit over all <span class="math notranslate nohighlight">\(L\)</span> subsurface realizations, and <span class="math notranslate nohighlight">\(S\)</span> decision scenarios. If computational feasible, we work with the,</p>
 <ul class="simple">
-<li><p><strong>full combinatorial</strong> of <span class="math notranslate nohighlight">\(L\)</span> subsurface realizations and <span class="math notranslate nohighlight">\(S\)</span> development scenarios, <span class="math notranslate nohighlight">\(P(\ell = 1,\ldots,L,s=1,\ldots,S)\)</span></p></li>
+<li><p><strong>full combinatorial</strong> of <span class="math notranslate nohighlight">\(L\)</span> subsurface realizations and <span class="math notranslate nohighlight">\(S\)</span> decision scenarios, <span class="math notranslate nohighlight">\(P(\ell = 1,\ldots,L,s=1,\ldots,S)\)</span></p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/decision/profits.png" style="display: block; margin: 0 auto; width: 40%;">
@@ -597,13 +597,15 @@ document.write(`
 </section>
 <section id="expected-profit">
 <h2>Expected Profit<a class="headerlink" href="#expected-profit" title="Permalink to this heading">#</a></h2>
-<p>Calculation expected profit <span class="math notranslate nohighlight">\(E\{P(S)\}\)</span></p>
-<p>Expected profit is a probability, 𝜆_𝑙, weighted average of profit over subsurface uncertainty</p>
+<p>To integrate the uncertainty model, we calculate expected profit <span class="math notranslate nohighlight">\(E\{P(S)\}\)</span></p>
+<ul class="simple">
+<li><p>expected profit is a probability, <span class="math notranslate nohighlight">\(\lambda_l\)</span>, weighted average of profit over subsurface uncertainty</p></li>
+</ul>
 <div class="math notranslate nohighlight">
 \[
 \mathbb{E}\{P(s = 2)\} = \frac{1}{\sum_{\ell=1}^{L} \lambda_l} \sum_{\ell=1}^{L} \lambda_l \cdot P(\ell, s = 2)
 \]</div>
-<p>if all models are equiprobable,</p>
+<p>if all models are equiprobable, this simplifies to,</p>
 <div class="math notranslate nohighlight">
 \[
 \lambda_l = \frac{1}{L}, \quad \ell = 1, \dots, L
@@ -612,12 +614,15 @@ document.write(`
 <section id="maximize-expected-profit">
 <h2>Maximize Expected Profit<a class="headerlink" href="#maximize-expected-profit" title="Permalink to this heading">#</a></h2>
 <p>Now we maximize the expected profit <span class="math notranslate nohighlight">\(E\{P(S)\}\)</span>,</p>
+<ol class="arabic simple">
+<li><p>calculate the expected profit for all decision scenarios, <span class="math notranslate nohighlight">\(s = 1,\ldots, S\)</span></p></li>
+</ol>
 <ul class="simple">
-<li><p>select the development scenario that maximizes expected profit over the subsurface realizations, <span class="math notranslate nohighlight">\(L\)</span></p></li>
+<li><p>select the development scenario, <span class="math notranslate nohighlight">\(s\)</span>, that maximizes expected profit over the subsurface realizations, <span class="math notranslate nohighlight">\(L\)</span>, represented as,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-s=𝒂𝒓𝒈𝒎𝒂𝒙(E{P(S,L)})
+s=𝒂𝒓𝒈𝒎𝒂𝒙(E\{P(S,L)\})
 \]</div>
 <figure style="text-align: center;">
   <img src="_static/decision/expectedprofits.png" style="display: block; margin: 0 auto; width: 50%;">
@@ -625,7 +630,7 @@ s=𝒂𝒓𝒈𝒎𝒂𝒙(E{P(S,L)})
 </figcaption>
 </figure>
 <p>This is the fundamental workflow for making an optimum decision in the presence of uncertainty.</p>
-<p>Below we demonstrate this approach to select a single estimate. But, let’s first talk about uncertainty.</p>
+<p>Below we demonstrate this approach to select a single estimate from an uncertainty distribution. But, let’s first talk about uncertainty.</p>
 <p>How do we make optimum estimates in the presence of uncertainty?</p>
 <ul class="simple">
 <li><p>we cannot provide an uncertainty distribution to operations for decision making.</p></li>
@@ -675,7 +680,7 @@ s=𝒂𝒓𝒈𝒎𝒂𝒙(E{P(S,L)})
 <h2>Decision Making with Loss Functions<a class="headerlink" href="#decision-making-with-loss-functions" title="Permalink to this heading">#</a></h2>
 <p>This is the workflow for decision making in the presence of uncertainty,</p>
 <ol class="arabic simple">
-<li><p>quantify cost of over and underestimation in a loss function</p></li>
+<li><p>quantify cost of over- and underestimation in a loss function</p></li>
 <li><p>apply loss function to the random variable of interest for a range of estimates</p></li>
 <li><p>calculate the expected loss for each estimate</p></li>
 </ol>
@@ -684,7 +689,7 @@ s=𝒂𝒓𝒈𝒎𝒂𝒙(E{P(S,L)})
 E\{Loss(z^{*})\} = \int_{-\infty}^{\infty} \text{Loss}(z - z^*) \cdot f_z(z) \, dz
 \]</div>
 <ol class="arabic simple" start="4">
-<li><p>make decision that minimizes loss</p></li>
+<li><p>make the decision that minimizes loss</p></li>
 </ol>
 <figure style="text-align: center;">
   <img src="_static/decision/nutsbolts.png" style="display: block; margin: 0 auto; width: 40%;">
@@ -699,9 +704,9 @@ E\{Loss(z^{*})\} = \int_{-\infty}^{\infty} \text{Loss}(z - z^*) \cdot f_z(z) \, 
 </figure>
 <p>Now we can explain the results,</p>
 <ul class="simple">
-<li><p>the black estimate is the lowest because the mode of the uncertainty distribution (highest probability) includes the lowest loss portions of the loss function.</p></li>
-<li><p>the red estimate is the highest because the cost of over estimation is more costly and the entire uncertainty distribution is in the over estimated portion of the loss function</p></li>
-<li><p>the blue estimate is quite low, but the cost of underestimation levels off, so the loss is not that high</p></li>
+<li><p>the estimate (black) is the lowest because the mode of the uncertainty distribution (highest probability) includes the lowest loss portions of the loss function.</p></li>
+<li><p>the estimate (red) is the highest because the cost of over estimation is more costly and the entire uncertainty distribution is in the over estimated portion of the loss function</p></li>
+<li><p>the estimate (blue) is quite low, but the cost of underestimation levels off, so the loss is not that high</p></li>
 </ul>
 <p>Let’s actually demonstrate the calculation of expected loss for a discrete case, we turn the uncertainty model into a normalized histogram with probability to be in each bin,</p>
 <div class="math notranslate nohighlight">
@@ -726,7 +731,7 @@ E\{Loss(z^{*})\} = \int_{-\infty}^{\infty} \text{Loss}(z - z^*) \cdot f_z(z) \, 
   <figcaption style="text-align: center;"> Expected loss for an estimate of 700 MMbbl.
 </figcaption>
 </figure>
-<p>Now I provide an interactive dashboard for decision making in the presence of uncertainty.</p>
+<p>To demonstrate this, I built out an interactive dashboard for decision making in the presence of uncertainty.</p>
 <ul class="simple">
 <li><p>this will not render in the book, so in the future I will add static examples for the book.</p></li>
 <li><p>here is the <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Decision_Making.ipynb">interactive dashboard</a>.</p></li>
@@ -788,6 +793,11 @@ E\{Loss(z^{*})\} = \int_{-\infty}^{\infty} \text{Loss}(z - z^*) \cdot f_z(z) \, 
     <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks  </span>
+
+<span class="k">def</span> <span class="nf">add_grid</span><span class="p">(</span><span class="n">sub_plot</span><span class="p">):</span>
+    <span class="n">sub_plot</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">sub_plot</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">sub_plot</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">sub_plot</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">sub_plot</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">sub_plot</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks</span>
 
 <span class="k">def</span> <span class="nf">generate_gaussian_fields</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">):</span>     <span class="c1"># Generate L random 2D Gaussian fields (white noise).</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span><span class="p">)</span>
@@ -1081,162 +1091,358 @@ E\{Loss(z^{*})\} = \int_{-\infty}^{\infty} \text{Loss}(z - z^*) \cdot f_z(z) \, 
 </section>
 <section id="optimum-estimate-with-a-loss-function-example">
 <h2>Optimum Estimate with a Loss Function Example<a class="headerlink" href="#optimum-estimate-with-a-loss-function-example" title="Permalink to this heading">#</a></h2>
+<p>Let’s start by parameterizing and plotting our loss function.</p>
+<ul class="simple">
+<li><p>I designed a function similar to the illustrations above for loss due to over- or underestimation of hydrocarbon resources in millions of barrels.</p></li>
+<li><p>for convenience, I made a function for my loss function, i.e., a loss function, function.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># interactive calculation of the random sample set (control of source parametric distribution and number of samples)</span>
-<span class="n">l</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;                                      Optimum Decision Making Demonstration, Michael Pyrcz, Professor, The University of Texas at Austin&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;950px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;30px&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m_over</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">m_under</span> <span class="o">=</span> <span class="mf">7.0</span><span class="p">;</span> <span class="n">max_under</span> <span class="o">=</span> <span class="mf">50.0</span>
 
-<span class="n">mean</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">description</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;230px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;50px&#39;</span><span class="p">),</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">mean</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">handle_color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span>
+<span class="n">delta_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">0.02</span><span class="p">)</span>
 
-<span class="n">stdev</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mf">0.15</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">description</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\sigma$&#39;</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;230px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;50px&#39;</span><span class="p">),</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">stdev</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">handle_color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span>
+<span class="k">def</span> <span class="nf">loss_function</span><span class="p">(</span><span class="n">error</span><span class="p">,</span><span class="n">m_under</span><span class="p">,</span><span class="n">max_under</span><span class="p">,</span><span class="n">m_over</span><span class="p">):</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">error</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">error</span> <span class="o">*</span> <span class="n">m_under</span><span class="p">,</span><span class="n">a_min</span><span class="o">=</span> <span class="kc">None</span><span class="p">,</span><span class="n">a_max</span> <span class="o">=</span> <span class="n">max_under</span><span class="p">),</span><span class="n">error</span> <span class="o">*</span> <span class="n">m_over</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">loss</span>
 
-<span class="n">ui1</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">mean</span><span class="p">,</span><span class="n">stdev</span><span class="p">],</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;justify_content&#39;</span><span class="p">:</span><span class="s1">&#39;center&#39;</span><span class="p">})</span>
+<span class="n">loss_plot</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">delta_values</span><span class="p">,</span><span class="n">m_under</span><span class="p">,</span><span class="n">max_under</span><span class="p">,</span><span class="n">m_over</span><span class="p">)</span>
 
-<span class="n">slope_under</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.00</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">description</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$m_</span><span class="si">{under}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;230px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;50px&#39;</span><span class="p">),</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">slope_under</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">handle_color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_values</span><span class="p">,</span><span class="n">loss_plot</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta_values</span><span class="p">,</span><span class="n">loss_plot</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Accurate&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="mi">70</span><span class="p">],</span><span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Underestimation&#39;</span><span class="p">,[</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span><span class="mi">70</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Overestimation&#39;</span><span class="p">,[</span><span class="mi">6</span><span class="p">,</span><span class="mi">70</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 
-<span class="n">power_under</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$p_</span><span class="si">{under}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;230px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;50px&#39;</span><span class="p">),</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">power_under</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">handle_color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">]);</span> <span class="n">add_grid2</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Loss Function&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cost (M$)&#39;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Error, Estimate - Truth ($OIP^*-OIP$ MMbbls)&#39;</span><span class="p">)</span>
 
-<span class="n">ui2</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">slope_under</span><span class="p">,</span><span class="n">power_under</span><span class="p">],</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;justify_content&#39;</span><span class="p">:</span><span class="s1">&#39;center&#39;</span><span class="p">})</span>
-
-<span class="n">slope_over</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.00</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span><span class="n">value</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">description</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$m_</span><span class="si">{over}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;230px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;50px&#39;</span><span class="p">),</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">slope_over</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">handle_color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
-
-<span class="n">power_over</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$p_</span><span class="si">{over}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;230px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;50px&#39;</span><span class="p">),</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">power_over</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">handle_color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
-
-<span class="n">ui3</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">slope_over</span><span class="p">,</span><span class="n">power_over</span><span class="p">],</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;justify_content&#39;</span><span class="p">:</span><span class="s1">&#39;center&#39;</span><span class="p">})</span>
-
-<span class="n">step</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatLogSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">4</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mf">0.02</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;Step&#39;</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;230px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;50px&#39;</span><span class="p">),</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">step</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">handle_color</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span>
-
-<span class="n">ui4</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">step</span><span class="p">],</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;justify_content&#39;</span><span class="p">:</span><span class="s1">&#39;none&#39;</span><span class="p">})</span>
-
-<span class="n">ui</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">HBox</span><span class="p">([</span><span class="n">ui1</span><span class="p">,</span><span class="n">ui2</span><span class="p">,</span><span class="n">ui3</span><span class="p">,</span><span class="n">ui4</span><span class="p">])</span>
-<span class="n">ui_title</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">VBox</span><span class="p">([</span><span class="n">l</span><span class="p">,</span><span class="n">ui</span><span class="p">],)</span>
-
-<span class="k">def</span> <span class="nf">make_plot</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span><span class="n">stdev</span><span class="p">,</span><span class="n">slope_under</span><span class="p">,</span><span class="n">power_under</span><span class="p">,</span><span class="n">slope_over</span><span class="p">,</span><span class="n">power_over</span><span class="p">,</span><span class="n">step</span><span class="p">):</span>
-    <span class="n">seed</span> <span class="o">=</span> <span class="mi">73073</span>
-    <span class="n">xmin</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">-</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="n">stdev</span>    
-    <span class="n">xmax</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">+</span> <span class="mf">5.0</span> <span class="o">*</span> <span class="n">stdev</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">step</span><span class="p">)</span>              <span class="c1"># build uncertainty distribution</span>
-    <span class="n">pdf</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">mean</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">stdev</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">stdev</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
-   
-    <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="p">,(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="p">,</span><span class="n">step</span><span class="p">)</span> <span class="c1"># build loss function</span>
-    <span class="n">loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">delta</span><span class="p">))</span>
-    <span class="n">rloss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">delta</span><span class="p">))</span>               <span class="c1"># flip for convolve operator</span>
-    
-    <span class="k">for</span> <span class="nb">id</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">delta</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span> 
-            <span class="n">loss</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">d</span><span class="p">),</span><span class="n">power_under</span><span class="p">)</span><span class="o">*</span><span class="n">slope_under</span>
-            <span class="n">rloss</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">-</span><span class="nb">id</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">d</span><span class="p">),</span><span class="n">power_under</span><span class="p">)</span><span class="o">*</span><span class="n">slope_under</span> 
-        <span class="k">else</span><span class="p">:</span> 
-            <span class="n">loss</span><span class="p">[</span><span class="nb">id</span><span class="p">]</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">power_over</span><span class="p">)</span><span class="o">*</span><span class="n">slope_over</span>
-            <span class="n">rloss</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="o">-</span><span class="nb">id</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">power_over</span><span class="p">)</span><span class="o">*</span><span class="n">slope_over</span>
-   
-    <span class="n">pdf_norm</span> <span class="o">=</span> <span class="n">pdf</span> <span class="o">/</span> <span class="n">pdf</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>                 <span class="c1"># calculate expected loss</span>
-    <span class="n">exp_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">pdf_norm</span><span class="p">,</span><span class="n">loss</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s1">&#39;valid&#39;</span><span class="p">)</span>
-    <span class="n">x_exp_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">step</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">exp_loss</span><span class="p">))</span><span class="o">+</span><span class="n">mean</span><span class="p">,</span><span class="mf">0.5</span><span class="o">*</span><span class="n">step</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">exp_loss</span><span class="p">))</span><span class="o">+</span><span class="n">mean</span><span class="p">,</span><span class="n">step</span><span class="p">)</span>
-    <span class="n">x_exp_loss</span> <span class="o">=</span> <span class="n">x_exp_loss</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">exp_loss</span><span class="p">)]</span>   <span class="c1"># avoid rounding error</span>
-    <span class="n">inside</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">x_exp_loss</span> <span class="o">&gt;=</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">x_exp_loss</span> <span class="o">&lt;=</span> <span class="n">xmax</span><span class="p">)</span>
-    <span class="n">max_loss_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">exp_loss</span><span class="p">,</span><span class="n">where</span> <span class="o">=</span> <span class="n">inside</span><span class="p">,</span><span class="n">initial</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
-    <span class="n">best_estimate</span> <span class="o">=</span> <span class="n">x_exp_loss</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">exp_loss</span><span class="p">)]</span>
-    <span class="n">min_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">exp_loss</span><span class="p">)</span>
- 
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>                           <span class="c1"># plot uncertainty distribution</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">pdf</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-    <span class="n">hist</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-                   <span class="n">histtype</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;step&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">X</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">best_estimate</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">best_estimate</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">best_estimate</span><span class="p">,</span><span class="n">best_estimate</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">1.2</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Optimum Estimate = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">best_estimate</span><span class="p">,</span><span class="mi">2</span><span class="p">)),[</span><span class="n">best_estimate</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">0.7</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">best_estimate</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span> 
-        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Optimum Estimate = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$-\infty$&#39;</span><span class="p">),[</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">0.7</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Optimum Estimate = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$+\infty$&#39;</span><span class="p">),[</span><span class="mf">0.96</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">0.7</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Feature, $y_1$&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">1.2</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Uncertainty Distribution&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>                           <span class="c1"># plot loss function, loss vs. estimate error</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta</span><span class="p">[</span><span class="n">delta</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span><span class="n">loss</span><span class="p">[</span><span class="n">delta</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">delta</span><span class="p">[</span><span class="n">delta</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">],</span><span class="n">loss</span><span class="p">[</span><span class="n">delta</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="c1">#    plt.plot([0,0],[0,np.max(loss)],color=&#39;black&#39;,linestyle=&#39;--&#39;,alpha=0.3)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="c1">#    plt.annotate(&#39;Underestimation&#39;,[(xmax-xmin)*-0.1,np.max(loss)*0.8], rotation=0,horizontalalignment=&#39;right&#39;)</span>
-<span class="c1">#    plt.annotate(&#39;Overestimation&#39;,[(xmax-xmin)*0.1,np.max(loss)*0.8], rotation=0,horizontalalignment=&#39;left&#39;)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Underestimation&#39;</span><span class="p">,[(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span><span class="o">*-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.7</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Overestimation&#39;</span><span class="p">,[(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span><span class="o">*</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.7</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-<span class="c1">#    plt.xlim([-1*(xmax-xmin)*3,(xmax-xmin)*3])</span>
-<span class="c1">#   plt.ylim([0,np.max(loss)])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Error In Estimate&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Loss Function&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Loss&#39;</span><span class="p">)</span> 
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>                           <span class="c1"># plot expected loss vs. estimate</span>
-    <span class="c1">#plt.plot(X,pdf/1000*stdev,&#39;--&#39;,color=&#39;black&#39;,alpha=0.7,zorder=1)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_exp_loss</span><span class="p">,</span><span class="n">exp_loss</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">best_estimate</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">best_estimate</span> <span class="o">&lt;=</span> <span class="mf">1.0</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">best_estimate</span><span class="p">,</span><span class="n">best_estimate</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">max_loss_plot</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Optimum Estimate = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">best_estimate</span><span class="p">,</span><span class="mi">2</span><span class="p">)),[</span><span class="n">best_estimate</span><span class="p">,</span><span class="n">max_loss_plot</span><span class="o">*</span><span class="mf">0.6</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">best_estimate</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Optimum Estimate = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$-\infty$&#39;</span><span class="p">),[</span><span class="mi">0</span><span class="p">,</span><span class="n">max_loss_plot</span><span class="o">*</span><span class="mf">0.6</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Optimum Estimate = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$+\infty$&#39;</span><span class="p">),[</span><span class="mf">0.96</span><span class="p">,</span><span class="n">max_loss_plot</span><span class="o">*</span><span class="mf">0.6</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">)</span>
-        
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">]);</span> <span class="c1"># plt.ylim([0,1.0])</span>
-<span class="c1">#    plt.plot([xmin,xmax],[min_loss,min_loss],color=&#39;black&#39;,linestyle=&#39;--&#39;,alpha=0.3)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="n">min_loss</span><span class="p">,</span><span class="n">min_loss</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Minimum Expected Loss&#39;</span><span class="p">,[</span><span class="n">xmin</span><span class="o">+</span><span class="p">(</span><span class="n">xmax</span><span class="o">-</span><span class="n">xmin</span><span class="p">)</span><span class="o">*</span><span class="mf">0.2</span><span class="p">,</span><span class="n">min_loss</span><span class="o">*</span><span class="mf">1.1</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">max_loss_plot</span><span class="p">])</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Estimate, $y^*_1$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Expected Loss vs. Estimate&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Expected Loss&#39;</span><span class="p">)</span>
-    <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">pdf</span><span class="p">,</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">hist</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mf">1.2</span><span class="p">])</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">,</span><span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span><span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">ls</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
-   
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>   
-    
-<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">interactive_output</span><span class="p">(</span><span class="n">make_plot</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;mean&#39;</span><span class="p">:</span><span class="n">mean</span><span class="p">,</span><span class="s1">&#39;stdev&#39;</span><span class="p">:</span><span class="n">stdev</span><span class="p">,</span><span class="s1">&#39;slope_under&#39;</span><span class="p">:</span><span class="n">slope_under</span><span class="p">,</span><span class="s1">&#39;power_under&#39;</span><span class="p">:</span><span class="n">power_under</span><span class="p">,</span><span class="s1">&#39;slope_over&#39;</span><span class="p">:</span><span class="n">slope_over</span><span class="p">,</span><span class="s1">&#39;power_over&#39;</span><span class="p">:</span><span class="n">power_over</span><span class="p">,</span><span class="s1">&#39;step&#39;</span><span class="p">:</span><span class="n">step</span><span class="p">})</span>
-<span class="n">interactive_plot</span><span class="o">.</span><span class="n">clear_output</span><span class="p">(</span><span class="n">wait</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>                <span class="c1"># reduce flickering by delaying plot updating </span>
-    
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># interactive calculation of the random sample set (control of source parametric distribution and number of samples)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">l</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;                                      Optimum Decision Making Demonstration, Michael Pyrcz, Professor, The University of Texas at Austin&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;950px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;30px&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">value</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span><span class="n">description</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span><span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span><span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;230px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;50px&#39;</span><span class="p">),</span><span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">mean</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">handle_color</span> <span class="o">=</span> <span class="s1">&#39;darkorange&#39;</span>
+<img alt="_images/3190197969a4a0960f4d26907802ddf16b19cd650b97b92378fc20141906e5ae.png" src="_images/3190197969a4a0960f4d26907802ddf16b19cd650b97b92378fc20141906e5ae.png" />
+</div>
+</div>
+<section id="distribution-of-uncertainty">
+<h3>Distribution of Uncertainty<a class="headerlink" href="#distribution-of-uncertainty" title="Permalink to this heading">#</a></h3>
+<p>Let’s assume a parametric uncertainty distribution for resources that we can easily modify to try out some different cases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">;</span> <span class="n">beta</span> <span class="o">=</span> <span class="mf">7.0</span>                               <span class="c1"># parameters of the beta distribution</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">stdev</span> <span class="o">=</span> <span class="mf">3.0</span>
 
-<span class="ne">NameError</span>: name &#39;widgets&#39; is not defined
+<span class="n">uncertainty_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">beta</span><span class="p">(</span><span class="n">a</span><span class="o">=</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">beta</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">uncertainty_samples</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">affine</span><span class="p">(</span><span class="n">uncertainty_samples</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">stdev</span><span class="p">)</span>
+
+<span class="n">prob</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">uncertainty_samples</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">),</span><span class="n">density</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span> <span class="n">add_grid2</span><span class="p">()</span>
+<span class="n">bin_centroids</span> <span class="o">=</span> <span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bin_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Resources OIP (MMbbls)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Uncertainty Model&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="_images/5c80c996e68c2bf06187779f6ed664315fc8ce6ad369bae53a4e7b3333ed680a.png" src="_images/5c80c996e68c2bf06187779f6ed664315fc8ce6ad369bae53a4e7b3333ed680a.png" />
+</div>
 </div>
 </section>
 </section>
-<section id="optimum-decision-making-demonstration">
-<h1>Optimum Decision Making Demonstration<a class="headerlink" href="#optimum-decision-making-demonstration" title="Permalink to this heading">#</a></h1>
+<section id="calculate-expected-loss-for-an-estimate">
+<h2>Calculate Expected Loss for an Estimate<a class="headerlink" href="#calculate-expected-loss-for-an-estimate" title="Permalink to this heading">#</a></h2>
+<p>Now, let’s select a single estimate and calculate the expected loss.</p>
 <ul class="simple">
-<li><p>specify the uncertainty distribuiton <span class="math notranslate nohighlight">\(\mu\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span> and loss function <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(p\)</span> and observe the loss function, expected loss and optimum estimate</p></li>
+<li><p>we repeat the calculation for a range of estimates to also visualize the expected loss vs. estimate curve.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">ui_title</span><span class="p">,</span> <span class="n">interactive_plot</span><span class="p">)</span>                            <span class="c1"># display the interactive plot</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">estimate</span> <span class="o">=</span> <span class="mf">13.5</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span><span class="n">sharey</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">prob</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">uncertainty_samples</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">),</span><span class="n">density</span> <span class="o">=</span> <span class="kc">True</span><span class="p">);</span>
+<span class="n">add_grid</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">bin_centroids</span> <span class="o">=</span> <span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bin_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">error</span> <span class="o">=</span> <span class="n">bin_centroids</span> <span class="o">-</span> <span class="n">estimate</span>
+<span class="n">loss_plot_est</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">error</span><span class="p">,</span><span class="n">m_under</span><span class="p">,</span><span class="n">max_under</span><span class="p">,</span><span class="n">m_over</span><span class="p">)</span>
+
+<span class="c1">#ax1.plot([estimate,estimate],[0,0.25],color=&#39;black&#39;,ls=&#39;--&#39;); ax1.annotate(&#39;Accurate&#39;,[0,70],rotation=270)</span>
+
+<span class="n">ax1b</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax1b</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_centroids</span><span class="p">,</span><span class="n">loss_plot_est</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">ax1b</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_centroids</span><span class="p">,</span><span class="n">loss_plot_est</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax1b</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">120.</span><span class="p">]);</span> <span class="n">add_grid</span><span class="p">(</span><span class="n">ax2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Resources OIP (MMbbls)&#39;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Uncertainty Model and Loss Function&#39;</span><span class="p">)</span> 
+<span class="n">ax1b</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Loss (M$)&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ibin</span><span class="p">,</span><span class="n">bincenter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bin_centroids</span><span class="p">):</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">prob</span><span class="p">[</span><span class="n">ibin</span><span class="p">],</span><span class="mi">3</span><span class="p">),[</span><span class="n">bincenter</span><span class="p">,</span><span class="n">prob</span><span class="p">[</span><span class="n">ibin</span><span class="p">]</span><span class="o">+</span><span class="mf">0.002</span><span class="p">],</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">uncertainty_samples</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">26</span><span class="p">),</span><span class="n">density</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span>
+<span class="n">ax2b</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">expected_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">loss_plot_est</span><span class="p">,</span><span class="n">prob</span><span class="p">)</span>
+<span class="n">ax2b</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">estimate</span><span class="p">,</span><span class="n">expected_loss</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax2b</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Expected Loss = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">expected_loss</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;M&#39;</span><span class="p">,[</span><span class="n">estimate</span><span class="p">,</span><span class="n">expected_loss</span><span class="o">+</span><span class="mi">2</span><span class="p">],</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax2b</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">estimate</span><span class="p">,</span><span class="n">estimate</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="n">expected_loss</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax2b</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">estimate</span><span class="p">,</span><span class="mi">25</span><span class="p">],[</span><span class="n">expected_loss</span><span class="p">,</span><span class="n">expected_loss</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax2b</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Expected Loss (E{M$})&#39;</span><span class="p">);</span> <span class="n">ax2b</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">]);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+
+<span class="n">est_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">exp_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">est_mat</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">iest</span><span class="p">,</span> <span class="n">est</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">est_mat</span><span class="p">):</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">bin_centroids</span> <span class="o">-</span> <span class="n">est</span>
+    <span class="n">loss_plot_est_curve</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">error</span><span class="p">,</span><span class="n">m_under</span><span class="p">,</span><span class="n">max_under</span><span class="p">,</span><span class="n">m_over</span><span class="p">)</span>  
+    <span class="n">exp_loss</span><span class="p">[</span><span class="n">iest</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">loss_plot_est_curve</span><span class="p">,</span><span class="n">prob</span><span class="p">)</span>
+
+<span class="n">ax2b</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">est_mat</span><span class="p">,</span><span class="n">exp_loss</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax2b</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">est_mat</span><span class="p">,</span><span class="n">exp_loss</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">]);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Resources OIP (MMbbls)&#39;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Expected Loss vs. Estimated Resources&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/56dbb7cc7c7f1bcfb5f724208e78c9b64f2f5c0d97a51ba6c27a5d1a1ead6ca8.png" src="_images/56dbb7cc7c7f1bcfb5f724208e78c9b64f2f5c0d97a51ba6c27a5d1a1ead6ca8.png" />
+</div>
+</div>
+<p>To help you understand the nuts and bolts of the expected loss calculation for the estimate above, let’s make a table with,</p>
+<ul class="simple">
+<li><p><strong>truth values</strong>: bin centroids of the histogram</p></li>
+<li><p><strong>error</strong>: estimate - truth</p></li>
+<li><p><strong>loss</strong>: loss function applied to the error</p></li>
+<li><p><strong>probability</strong>: probability of truth being each outcome</p></li>
+<li><p><strong>probability times loss</strong>: for each possible for each outcome</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">bin_centroids</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">loss_plot_est</span><span class="p">,</span> <span class="n">prob</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span><span class="n">prob</span><span class="o">*</span><span class="n">loss_plot_est</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Truth&#39;</span><span class="p">,</span> <span class="s1">&#39;Error&#39;</span><span class="p">,</span> <span class="s1">&#39;Loss&#39;</span><span class="p">,</span> <span class="s1">&#39;Prob&#39;</span><span class="p">,</span><span class="s1">&#39;Prob x Loss&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>15</th>
+      <th>16</th>
+      <th>17</th>
+      <th>18</th>
+      <th>19</th>
+      <th>20</th>
+      <th>21</th>
+      <th>22</th>
+      <th>23</th>
+      <th>24</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Truth</th>
+      <td>0.5</td>
+      <td>1.5</td>
+      <td>2.5</td>
+      <td>3.5</td>
+      <td>4.5</td>
+      <td>5.5</td>
+      <td>6.5</td>
+      <td>7.5</td>
+      <td>8.5</td>
+      <td>9.5</td>
+      <td>...</td>
+      <td>15.5</td>
+      <td>16.5</td>
+      <td>17.5</td>
+      <td>18.5</td>
+      <td>19.5</td>
+      <td>20.5</td>
+      <td>21.5</td>
+      <td>22.5</td>
+      <td>23.5</td>
+      <td>24.5</td>
+    </tr>
+    <tr>
+      <th>Error</th>
+      <td>-24.5</td>
+      <td>-23.5</td>
+      <td>-22.5</td>
+      <td>-21.5</td>
+      <td>-20.5</td>
+      <td>-19.5</td>
+      <td>-18.5</td>
+      <td>-17.5</td>
+      <td>-16.5</td>
+      <td>-15.5</td>
+      <td>...</td>
+      <td>-9.5</td>
+      <td>-8.5</td>
+      <td>-7.5</td>
+      <td>-6.5</td>
+      <td>-5.5</td>
+      <td>-4.5</td>
+      <td>-3.5</td>
+      <td>-2.5</td>
+      <td>-1.5</td>
+      <td>-0.5</td>
+    </tr>
+    <tr>
+      <th>Loss</th>
+      <td>50.0</td>
+      <td>50.0</td>
+      <td>50.0</td>
+      <td>50.0</td>
+      <td>50.0</td>
+      <td>50.0</td>
+      <td>49.0</td>
+      <td>42.0</td>
+      <td>35.0</td>
+      <td>28.0</td>
+      <td>...</td>
+      <td>20.0</td>
+      <td>30.0</td>
+      <td>40.0</td>
+      <td>50.0</td>
+      <td>60.0</td>
+      <td>70.0</td>
+      <td>80.0</td>
+      <td>90.0</td>
+      <td>100.0</td>
+      <td>110.0</td>
+    </tr>
+    <tr>
+      <th>Prob</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.5</td>
+      <td>13.2</td>
+      <td>17.4</td>
+      <td>13.6</td>
+      <td>12.2</td>
+      <td>...</td>
+      <td>2.6</td>
+      <td>1.8</td>
+      <td>1.2</td>
+      <td>0.8</td>
+      <td>0.4</td>
+      <td>0.4</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>Prob x Loss</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.8</td>
+      <td>6.5</td>
+      <td>7.3</td>
+      <td>4.8</td>
+      <td>3.4</td>
+      <td>...</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.5</td>
+      <td>0.4</td>
+      <td>0.2</td>
+      <td>0.3</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 25 columns</p>
+</div></div></div>
+</div>
+<p>Now to calculate the expected loss for our estimate, we sum the ‘Prob x Loss’ row.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expected_loss_demo</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Prob x Loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">expected_loss_demo</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>29.0
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="minimizing-the-expected-loss">
+<h2>Minimizing the Expected Loss<a class="headerlink" href="#minimizing-the-expected-loss" title="Permalink to this heading">#</a></h2>
+<p>Let’s repeat the calculation of expected loss vs. estimate and then select the estimate that minimizes the expected loss.</p>
+<ul class="simple">
+<li><p>the plot above included additional information for illustration, including the loss function positioned to calculate the expected loss of a specific estimate, so we remove that now</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">expected_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">loss_plot_est</span><span class="p">,</span><span class="n">prob</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Expected Loss (E{M$})&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">120</span><span class="p">]);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+
+<span class="n">est_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">exp_loss</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">est_mat</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">iest</span><span class="p">,</span> <span class="n">est</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">est_mat</span><span class="p">):</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">bin_centroids</span> <span class="o">-</span> <span class="n">est</span>
+    <span class="n">loss_plot_est</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">error</span><span class="p">,</span><span class="n">m_under</span><span class="p">,</span><span class="n">max_under</span><span class="p">,</span><span class="n">m_over</span><span class="p">)</span>  
+    <span class="n">exp_loss</span><span class="p">[</span><span class="n">iest</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">loss_plot_est</span><span class="p">,</span><span class="n">prob</span><span class="p">)</span>
+
+<span class="n">min_est</span> <span class="o">=</span> <span class="n">est_mat</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">exp_loss</span><span class="p">)]</span>
+<span class="n">min_est_loss</span> <span class="o">=</span> <span class="n">exp_loss</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">exp_loss</span><span class="p">)]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Minimum Expected Loss = $&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">min_est_loss</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;M&#39;</span><span class="p">,[</span><span class="mi">15</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">min_est</span><span class="p">,</span><span class="n">min_est_loss</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">est_mat</span><span class="p">,</span><span class="n">exp_loss</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">est_mat</span><span class="p">,</span><span class="n">exp_loss</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Resources OIP (MMbbls)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Expected Loss vs. Estimated Resources&#39;</span><span class="p">);</span> <span class="n">add_grid2</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/de825a4a168de3d02403503ce6b2d90da2a86a33ddb9e1bde136cc2503fb1c3d.png" src="_images/de825a4a168de3d02403503ce6b2d90da2a86a33ddb9e1bde136cc2503fb1c3d.png" />
+</div>
+</div>
+</section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic demonstration of optimum decision making in the precense of uncertainty.</p>
@@ -1340,13 +1546,12 @@ E\{Loss(z^{*})\} = \int_{-\infty}^{\infty} \text{Loss}(z - z^*) \cdot f_z(z) \, 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Decision Making with Uncertainty</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-decision-making-with-uncertainty">Motivation for Decision Making with Uncertainty</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-uncertainty-models">Building Uncertainty Models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-decisions">Types of Decisions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aspects-of-subsurface-decision-making">Aspects of Subsurface Decision Making</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-profit-workflow">Expected Profit Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uncertainty-model">The Uncertainty Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-development-scenarios">The Development Scenarios</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-decision-scenarios">The Decision Scenarios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-profit-metric">The Profit Metric</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-profit">Expected Profit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximize-expected-profit">Maximize Expected Profit</a></li>
@@ -1355,17 +1560,16 @@ E\{Loss(z^{*})\} = \int_{-\infty}^{\infty} \text{Loss}(z - z^*) \cdot f_z(z) \, 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximizing-the-expected-profit-example">Maximizing the Expected Profit Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-estimate-with-a-loss-function-example">Optimum Estimate with a Loss Function Example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-estimate-with-a-loss-function-example">Optimum Estimate with a Loss Function Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-uncertainty">Distribution of Uncertainty</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#optimum-decision-making-demonstration">Optimum Decision Making Demonstration</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-expected-loss-for-an-estimate">Calculate Expected Loss for an Estimate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-the-expected-loss">Minimizing the Expected Loss</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

@@ -121,6 +121,19 @@ This book integrates many of the GeostatsPy demonstration workflows to support u
 
 Here's some highlights from recent updates:
 
+* added a new coordinate transformations chapter
+
+* added a new heterogeneity metrics chapter
+
+* added a new confidence intervals chapter
+
+* added a new hypothesis testing chapter
+
+* added a new decision making chapter
+
+* added a new volume variance chapter
+
+
 ##### What's New with Version 0.0.1
 
 * there are many minor formatting issues that I will resolve over the next couple of months.
