@@ -82,6 +82,8 @@ chapters:
   title: Volume-Variance Relations
 - file: GeostatsPy_decision_making
   title: Decision Making with Uncertainty
+- file: GeostatsPy_datasets
+  title: Synthetic Datasets
 - file: GeostatsPy
   title: GeostatsPy Package
 - file: conclusions

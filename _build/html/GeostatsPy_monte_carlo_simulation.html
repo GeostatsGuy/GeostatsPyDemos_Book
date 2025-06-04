@@ -211,6 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume-Variance Relations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_decision_making.html">Decision Making with Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
@@ -605,7 +606,7 @@ OIP^\ell = V^\ell \cdot \overline{\phi}^\ell \cdot \overline{s_o}^\ell, , \foral
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/024f698b979a5512a346afb06cb0de2a025034a8fd2970d35a7abc8a19fd42e5.png" src="_images/024f698b979a5512a346afb06cb0de2a025034a8fd2970d35a7abc8a19fd42e5.png" />
+<img alt="_images/a387b70ce8384353b0db362e00d64626fd0b7cc8ba76f12ea0abd7c76cd38c39.png" src="_images/a387b70ce8384353b0db362e00d64626fd0b7cc8ba76f12ea0abd7c76cd38c39.png" />
 </div>
 </div>
 <p>This looks good, the shapes are Gaussian, lognormal and uniform and the central tendency and dispersion make sense given the parameters that we selected.</p>
@@ -626,7 +627,7 @@ OIP^\ell = V^\ell \cdot \overline{\phi}^\ell \cdot \overline{s_o}^\ell \cdot 6.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7107ce9431d2f03cade5b968a9403fe79f8aced13f333ad4c834662528ca0085.png" src="_images/7107ce9431d2f03cade5b968a9403fe79f8aced13f333ad4c834662528ca0085.png" />
+<img alt="_images/3538a87ca009ea0974dbdfe5053c104c06132151fdbebc6b3e27e5668e9ef86f.png" src="_images/3538a87ca009ea0974dbdfe5053c104c06132151fdbebc6b3e27e5668e9ef86f.png" />
 </div>
 </div>
 <p>It’s not a bad idea to check your calculation. Let’s compare the first and last realizations of <span class="math notranslate nohighlight">\(OIP\)</span> to the results from performing the calculation by hand.</p>
@@ -638,8 +639,8 @@ OIP^\ell = V^\ell \cdot \overline{\phi}^\ell \cdot \overline{s_o}^\ell \cdot 6.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Check realization 0, broadcast method = 0.213 compare to by-hand 0.213
-Check realization L-1, broadcast method = 0.055 compare to by-hand 0.055
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Check realization 0, broadcast method = 0.056 compare to by-hand 0.056
+Check realization L-1, broadcast method = 0.075 compare to by-hand 0.075
 </pre></div>
 </div>
 </div>
@@ -693,9 +694,9 @@ Check realization L-1, broadcast method = 0.055 compare to by-hand 0.055
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/44ddda00cd3c6bd4b96f970c454c9b952f46f41a10bff18344e2e639404e31a0.png" src="_images/44ddda00cd3c6bd4b96f970c454c9b952f46f41a10bff18344e2e639404e31a0.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average OIP for large number of realizations = 0.141
-The average OIP for small number of realizations = 0.136, 0.144,0.157
+<img alt="_images/5d179de3dffbd9bba4511edfda9dec0fa6449a31c935fcf77eafb7403fe40560.png" src="_images/5d179de3dffbd9bba4511edfda9dec0fa6449a31c935fcf77eafb7403fe40560.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average OIP for large number of realizations = 0.143
+The average OIP for small number of realizations = 0.142, 0.136,0.145
 </pre></div>
 </div>
 </div>
