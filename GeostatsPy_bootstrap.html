@@ -211,6 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume-Variance Relations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_decision_making.html">Decision Making with Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
@@ -503,23 +504,26 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>                            <span class="c1"># custom axes</span>
 <span class="kn">import</span> <span class="nn">geostatspy.GSLIB</span> <span class="k">as</span> <span class="nn">GSLIB</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">ticker</span><span class="o">.</span><span class="n">FuncFormatter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">,.0f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">;</span> <span class="n">ymin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">;</span> <span class="n">csize</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">pormin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">10000.0</span><span class="p">;</span> <span class="n">ymin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">ymax</span> <span class="o">=</span> <span class="mf">10000.0</span><span class="p">;</span> <span class="n">csize</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="n">pormin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">pormax</span> <span class="o">=</span> <span class="mi">25</span>
 
 <span class="n">por_sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/spatial_nonlinear_MV_facies_v5_sand_only.csv&#39;</span><span class="p">)</span>
 <span class="n">por_truth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/refs/heads/master/spatial_nonlinear_MV_facies_v5_sand_only_truth_por.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 
 <span class="c1">#GSLIB.locmap_st(por_sample,&#39;X&#39;,&#39;Y&#39;,&#39;Por&#39;,xmin,xmax,ymin,ymax,pormin,pormax,&#39;Well Data - Porosity&#39;,&#39;X(m)&#39;,&#39;Y(m)&#39;,&#39;Porosity (fraction)&#39;,cmap)</span>
-<span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_truth</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">csize</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">por_sample</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Por&#39;</span><span class="p">,</span><span class="s1">&#39;Samples and Inaccessible Truth&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_truth</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">csize</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">por_sample</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Por&#39;</span><span class="p">,</span><span class="s1">&#39;Samples and Inaccessible Truth&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a71133ea43a78da4f3665ccb88c133522edaf6d685f62373c740520662c0738a.png" src="_images/a71133ea43a78da4f3665ccb88c133522edaf6d685f62373c740520662c0738a.png" />
+<img alt="_images/74e054e483abf18c298a05c7f2a3f68f1ca80dd938d20d2422a1ca340085e621.png" src="_images/74e054e483abf18c298a05c7f2a3f68f1ca80dd938d20d2422a1ca340085e621.png" />
 </div>
 </div>
 <p>We can see the inaccessible truth and the samples. Now, let’s demonstrate 4 dataset realizations from the truth model.</p>
@@ -535,27 +539,29 @@ document.write(`
     <span class="n">df_temp</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">por_truth</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">csize</span><span class="p">,</span><span class="s1">&#39;por_real&#39;</span><span class="p">,</span><span class="n">df_temp</span><span class="p">,</span><span class="s1">&#39;x_rel&#39;</span><span class="p">,</span><span class="s1">&#39;y_rel&#39;</span><span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_truth</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">csize</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">df_temp</span><span class="p">,</span><span class="s1">&#39;x_rel&#39;</span><span class="p">,</span><span class="s1">&#39;y_rel&#39;</span><span class="p">,</span><span class="s1">&#39;por_real&#39;</span><span class="p">,</span><span class="s1">&#39;Parallel Universe #&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
-    
+    <span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">por_truth</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">csize</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="n">df_temp</span><span class="p">,</span><span class="s1">&#39;x_rel&#39;</span><span class="p">,</span><span class="s1">&#39;y_rel&#39;</span><span class="p">,</span><span class="s1">&#39;por_real&#39;</span><span class="p">,</span><span class="s1">&#39;Parallel Universe #&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6c6d3a5f9f60ea2fa9fb9e1467081a3929d8f60741fff011f7d6b09511e0e3cf.png" src="_images/6c6d3a5f9f60ea2fa9fb9e1467081a3929d8f60741fff011f7d6b09511e0e3cf.png" />
+<img alt="_images/97478e6305f3eb3efb20d8dce5d5be486c9d5c5f15c689a1e1a536b31c62d90a.png" src="_images/97478e6305f3eb3efb20d8dce5d5be486c9d5c5f15c689a1e1a536b31c62d90a.png" />
 </div>
 </div>
 <p>What we actually have is only this, the single sample dataset,</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap_st</span><span class="p">(</span><span class="n">por_sample</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Por&#39;</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="s1">&#39;Well Data - Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">GSLIB</span><span class="o">.</span><span class="n">locmap_st</span><span class="p">(</span><span class="n">por_sample</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Por&#39;</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">pormin</span><span class="p">,</span><span class="n">pormax</span><span class="p">,</span><span class="s1">&#39;Well Data - Porosity&#39;</span><span class="p">,</span><span class="s1">&#39;X (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity (fraction)&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f7358d925bd3821d9be56d69b320e72792c2ff7ee7f813a9cbdf3a03ffa76f39.png" src="_images/f7358d925bd3821d9be56d69b320e72792c2ff7ee7f813a9cbdf3a03ffa76f39.png" />
+<img alt="_images/a6a72be1c6b7d8bc8ba5c593d4dc9f3215877479c7cce17edfe5e59b6bf1edfd.png" src="_images/a6a72be1c6b7d8bc8ba5c593d4dc9f3215877479c7cce17edfe5e59b6bf1edfd.png" />
 </div>
 </div>
 <p>For bootstrap we draw <span class="math notranslate nohighlight">\(n\)</span> samples with replacement from this dataset.</p>
@@ -572,7 +578,8 @@ document.write(`
     
     <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">por_real</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">por_real</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">por_real</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">pormin</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="n">pormax</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bootstrap #&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y (m)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bootstrap #&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">));</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">])</span>
     <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s2">&quot;vertical&quot;</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">pormin</span><span class="p">,</span> <span class="n">pormax</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
     <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Bootstrap #&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">270</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
@@ -581,7 +588,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3bc52818ae5374ca6dbedcf23b1ca36530f4aedc6cd17097875dd58309dc868a.png" src="_images/3bc52818ae5374ca6dbedcf23b1ca36530f4aedc6cd17097875dd58309dc868a.png" />
+<img alt="_images/64c5306da8fb705c195292faf5ae79f5c7a1b14f0a27e9018b906826ce34d681.png" src="_images/64c5306da8fb705c195292faf5ae79f5c7a1b14f0a27e9018b906826ce34d681.png" />
 </div>
 </div>
 </section>
@@ -797,28 +804,28 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>46</th>
-      <td>410</td>
-      <td>904</td>
+      <th>239</th>
+      <td>550</td>
+      <td>979</td>
       <td>1</td>
-      <td>0.220049</td>
-      <td>1906.662897</td>
+      <td>0.152277</td>
+      <td>71.454424</td>
     </tr>
     <tr>
-      <th>265</th>
-      <td>200</td>
-      <td>79</td>
+      <th>68</th>
+      <td>640</td>
+      <td>529</td>
       <td>1</td>
-      <td>0.106247</td>
-      <td>4.012234</td>
+      <td>0.120547</td>
+      <td>10.801778</td>
     </tr>
     <tr>
-      <th>279</th>
-      <td>300</td>
-      <td>999</td>
+      <th>78</th>
+      <td>290</td>
+      <td>149</td>
       <td>1</td>
-      <td>0.160674</td>
-      <td>78.901693</td>
+      <td>0.159123</td>
+      <td>33.388219</td>
     </tr>
   </tbody>
 </table>
@@ -868,32 +875,32 @@ document.write(`
     <tr>
       <th>X</th>
       <td>58.0</td>
-      <td>517.413793</td>
-      <td>242.520105</td>
-      <td>10.000000</td>
-      <td>310.000000</td>
-      <td>440.000000</td>
-      <td>722.500000</td>
-      <td>950.000000</td>
+      <td>507.413793</td>
+      <td>247.617138</td>
+      <td>0.000000</td>
+      <td>320.000000</td>
+      <td>490.000000</td>
+      <td>697.500000</td>
+      <td>990.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>58.0</td>
-      <td>541.948276</td>
-      <td>298.152994</td>
-      <td>29.000000</td>
-      <td>284.250000</td>
-      <td>544.000000</td>
-      <td>844.000000</td>
-      <td>999.000000</td>
+      <td>506.482759</td>
+      <td>289.111964</td>
+      <td>9.000000</td>
+      <td>300.000000</td>
+      <td>509.500000</td>
+      <td>679.000000</td>
+      <td>979.000000</td>
     </tr>
     <tr>
       <th>Facies</th>
       <td>58.0</td>
-      <td>0.827586</td>
-      <td>0.381039</td>
+      <td>0.724138</td>
+      <td>0.450851</td>
       <td>0.000000</td>
-      <td>1.000000</td>
+      <td>0.000000</td>
       <td>1.000000</td>
       <td>1.000000</td>
       <td>1.000000</td>
@@ -901,24 +908,24 @@ document.write(`
     <tr>
       <th>Porosity</th>
       <td>58.0</td>
-      <td>0.140057</td>
-      <td>0.035864</td>
-      <td>0.079189</td>
-      <td>0.114416</td>
-      <td>0.135506</td>
-      <td>0.157114</td>
-      <td>0.228790</td>
+      <td>0.130742</td>
+      <td>0.039020</td>
+      <td>0.074349</td>
+      <td>0.100419</td>
+      <td>0.121756</td>
+      <td>0.143301</td>
+      <td>0.223661</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>58.0</td>
-      <td>261.436577</td>
-      <td>789.792259</td>
-      <td>0.148384</td>
-      <td>8.310702</td>
-      <td>21.760244</td>
-      <td>59.360818</td>
-      <td>5308.842566</td>
+      <td>217.950476</td>
+      <td>534.690105</td>
+      <td>0.089169</td>
+      <td>3.253038</td>
+      <td>11.450569</td>
+      <td>41.492085</td>
+      <td>2372.383732</td>
     </tr>
   </tbody>
 </table>
@@ -961,7 +968,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1eec6509c798e14fd82b3fbeedb069f8fd7a02ee114474a76f6be060599e7725.png" src="_images/1eec6509c798e14fd82b3fbeedb069f8fd7a02ee114474a76f6be060599e7725.png" />
+<img alt="_images/22fac301125477a8d5654659ae9bf075ec541f9d46d66bf442fa60fe50268cd8.png" src="_images/22fac301125477a8d5654659ae9bf075ec541f9d46d66bf442fa60fe50268cd8.png" />
 </div>
 </div>
 </section>
@@ -994,7 +1001,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c40d6d8337ff85cf6921bf31cfbb7e05a2cffe9ab2008afff60dbc4a87d36c5c.png" src="_images/c40d6d8337ff85cf6921bf31cfbb7e05a2cffe9ab2008afff60dbc4a87d36c5c.png" />
+<img alt="_images/e81cb99d90d584167c5eee3528541538ccb9c6558d2ad6d1b61d97c11837f046.png" src="_images/e81cb99d90d584167c5eee3528541538ccb9c6558d2ad6d1b61d97c11837f046.png" />
 </div>
 </div>
 <p>Now we proceed with a more complicated, robust work by first quantifying the spatial bias in the samples and assigned data weights to mitigate this bias.</p>
@@ -1020,10 +1027,10 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 58 data with:
-   mean of      0.14005733056896555 
-   min and max  0.079188826 and 0.228790002
-   standard dev 0.0355539290836307 
-Declustered mean = 0.131 and declustered standard deviation = 0.03
+   mean of      0.13074219132758622 
+   min and max  0.074348923 and 0.223660709
+   standard dev 0.0386818708755029 
+Declustered mean = 0.119 and declustered standard deviation = 0.03
 </pre></div>
 </div>
 </div>
@@ -1057,10 +1064,10 @@ Declustered mean = 0.131 and declustered standard deviation = 0.03
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.1357811990172414 and realization 2 = 0.1260375074827586
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.1271272426724138 and realization 2 = 0.1238174486551724
 </pre></div>
 </div>
-<img alt="_images/58f79d21c896ddb8d199b883f47add5226af68d64d2543d42c3791dff7cdf34d.png" src="_images/58f79d21c896ddb8d199b883f47add5226af68d64d2543d42c3791dff7cdf34d.png" />
+<img alt="_images/dce69226e8e72270782bf9635de52825610bbe779ff9509066241fea24f647d1.png" src="_images/dce69226e8e72270782bf9635de52825610bbe779ff9509066241fea24f647d1.png" />
 </div>
 </div>
 <p>Note that the bootstrap distributions vary quite a bit from the original.</p>
@@ -1115,13 +1122,13 @@ Declustered mean = 0.131 and declustered standard deviation = 0.03
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cdc141ea743cc25318a76afb2d02c6b9933236c285153d0f5bf5386b873ff082.png" src="_images/cdc141ea743cc25318a76afb2d02c6b9933236c285153d0f5bf5386b873ff082.png" />
+<img alt="_images/9a0c844c51b4af8e4560f700ec2735e199fe55ca6ae1d416382625a6221713c6.png" src="_images/9a0c844c51b4af8e4560f700ec2735e199fe55ca6ae1d416382625a6221713c6.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=1000, minmax=(0.11958268527586208, 0.14320063574137934), mean=0.13054382223989655, variance=1.596915942603994e-05, skewness=-0.029597980980315724, kurtosis=-0.2562870941800304)
-P10: 0.125, P50: 0.131, P90: 0.136
+DescribeResult(nobs=1000, minmax=(0.10878135187931036, 0.1322619299137931), mean=0.1193905127865, variance=1.6999560148896818e-05, skewness=0.004720621847868837, kurtosis=-0.2774077815068523)
+P10: 0.114, P50: 0.12, P90: 0.125
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=1000, minmax=(0.019997223595291866, 0.03993705366810085), mean=0.030055891615716944, variance=1.301952708062895e-05, skewness=-0.01077369549555957, kurtosis=-0.3490656525001752)
+DescribeResult(nobs=1000, minmax=(0.017676458232002566, 0.04207602686697348), mean=0.029864174006926193, variance=1.571991183137997e-05, skewness=-0.13097862810380806, kurtosis=-0.2958936650418962)
 P10: 0.025, P50: 0.03, P90: 0.035
 </pre></div>
 </div>
@@ -1172,13 +1179,13 @@ P10: 0.025, P50: 0.03, P90: 0.035
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/184da68b145db569e4c40aec9a4254b790c9f1e843fb637d4203be14de4717bd.png" src="_images/184da68b145db569e4c40aec9a4254b790c9f1e843fb637d4203be14de4717bd.png" />
+<img alt="_images/42845d10fb03bfee7c3423633d48c907b131e97d4c6792bc24f0d3d2abd66cd0.png" src="_images/42845d10fb03bfee7c3423633d48c907b131e97d4c6792bc24f0d3d2abd66cd0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=10000, minmax=(0.11625403603448276, 0.1470121886724138), mean=0.1305693489320414, variance=1.5960583690423123e-05, skewness=0.11219135283123528, kurtosis=0.012719980639885886)
-P10: 0.125, P50: 0.131, P90: 0.136
+DescribeResult(nobs=10000, minmax=(0.1052981649137931, 0.13452167096551723), mean=0.11951250730598104, variance=1.594763432053366e-05, skewness=0.16171120395175215, kurtosis=0.06360076434094841)
+P10: 0.115, P50: 0.119, P90: 0.125
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=10000, minmax=(0.016604725981180422, 0.04220878449367422), mean=0.030030883938300622, variance=1.2298005663197607e-05, skewness=-0.001691081810214621, kurtosis=-0.1704280469385293)
+DescribeResult(nobs=10000, minmax=(0.016910741695844198, 0.04546921629218046), mean=0.029901259598589063, variance=1.6233354373565006e-05, skewness=-0.008752870548468813, kurtosis=-0.17262519710499502)
 P10: 0.025, P50: 0.03, P90: 0.035
 </pre></div>
 </div>
