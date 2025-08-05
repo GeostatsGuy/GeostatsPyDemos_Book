@@ -24,6 +24,8 @@ chapters:
   title: Monte Carlo Simulation
 - file: GeostatsPy_transformations
   title: Distribution Transformations
+- file: GeostatsPy_heterogeneity_metrics
+  title: Spatial Heterogeneity Metrics
 - file: GeostatsPy_confidence_interval
   title: Confidence Intervals
 - file: GeostatsPy_hypothesis_testing
