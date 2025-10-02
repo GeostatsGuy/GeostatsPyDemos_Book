@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Ergodic Fluctuations Between Stochastic Simulation Realizations" href="GeostatsPy_ergodic_fluctuations.html" />
-    <link rel="prev" title="Indicator Simulation" href="GeostatsPy_categorical_indicator_simulation.html" />
+    <link rel="prev" title="3D Simulation" href="GeostatsPy_3D_simulation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
@@ -594,7 +595,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.78
 </pre></div>
 </div>
 </div>
@@ -698,53 +699,53 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
   <tbody>
     <tr>
       <th>0</th>
-      <td>160.0</td>
-      <td>499.0</td>
-      <td>0.138163</td>
-      <td>11.729801</td>
-      <td>2.462133</td>
-      <td>0.331853</td>
-      <td>-0.025069</td>
+      <td>840.0</td>
+      <td>59.0</td>
+      <td>0.125032</td>
+      <td>3.453027</td>
+      <td>1.239251</td>
+      <td>0.075270</td>
+      <td>-0.439913</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>840.0</td>
-      <td>729.0</td>
-      <td>0.121863</td>
-      <td>1.110405</td>
-      <td>0.104725</td>
-      <td>-0.125661</td>
-      <td>-1.126391</td>
+      <td>300.0</td>
+      <td>609.0</td>
+      <td>0.182676</td>
+      <td>931.189014</td>
+      <td>6.836462</td>
+      <td>1.880794</td>
+      <td>1.880794</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>130.0</td>
-      <td>459.0</td>
-      <td>0.144524</td>
-      <td>10.294907</td>
-      <td>2.331649</td>
-      <td>0.439913</td>
-      <td>-0.227545</td>
+      <td>300.0</td>
+      <td>100.0</td>
+      <td>0.078503</td>
+      <td>0.539648</td>
+      <td>-0.616839</td>
+      <td>-1.475791</td>
+      <td>-1.475791</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>550.0</td>
-      <td>9.0</td>
-      <td>0.138174</td>
-      <td>37.604931</td>
-      <td>3.627135</td>
-      <td>0.385320</td>
-      <td>0.738847</td>
+      <td>480.0</td>
+      <td>929.0</td>
+      <td>0.156589</td>
+      <td>103.466255</td>
+      <td>4.639246</td>
+      <td>1.036433</td>
+      <td>0.954165</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>420.0</td>
-      <td>429.0</td>
-      <td>0.107801</td>
-      <td>19.394443</td>
-      <td>2.964987</td>
-      <td>-0.553385</td>
-      <td>0.439913</td>
+      <td>940.0</td>
+      <td>159.0</td>
+      <td>0.143970</td>
+      <td>16.261319</td>
+      <td>2.788789</td>
+      <td>0.553385</td>
+      <td>0.495850</td>
     </tr>
   </tbody>
 </table>
@@ -790,64 +791,64 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
     <tr>
       <th>X</th>
       <td>50.0</td>
-      <td>451.200000</td>
-      <td>300.534490</td>
-      <td>0.000000</td>
-      <td>192.500000</td>
-      <td>3.500000e+02</td>
-      <td>752.500000</td>
+      <td>504.800000</td>
+      <td>309.715076</td>
+      <td>10.000000</td>
+      <td>240.000000</td>
+      <td>4.950000e+02</td>
+      <td>807.500000</td>
       <td>990.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>50.0</td>
-      <td>511.800000</td>
-      <td>277.541613</td>
-      <td>9.000000</td>
-      <td>289.000000</td>
-      <td>4.995000e+02</td>
-      <td>744.000000</td>
-      <td>969.000000</td>
+      <td>495.780000</td>
+      <td>280.339102</td>
+      <td>39.000000</td>
+      <td>259.000000</td>
+      <td>5.040000e+02</td>
+      <td>764.000000</td>
+      <td>979.000000</td>
     </tr>
     <tr>
       <th>Porosity</th>
       <td>50.0</td>
-      <td>0.129338</td>
-      <td>0.030647</td>
-      <td>0.066231</td>
-      <td>0.107379</td>
-      <td>1.265061e-01</td>
-      <td>0.149509</td>
-      <td>0.210258</td>
+      <td>0.124382</td>
+      <td>0.031893</td>
+      <td>0.065537</td>
+      <td>0.099943</td>
+      <td>1.215758e-01</td>
+      <td>0.149140</td>
+      <td>0.192486</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>50.0</td>
-      <td>86.606154</td>
-      <td>254.892368</td>
-      <td>0.404665</td>
-      <td>2.578504</td>
-      <td>1.186809e+01</td>
-      <td>33.195209</td>
-      <td>1665.384124</td>
+      <td>96.916357</td>
+      <td>239.992488</td>
+      <td>0.192133</td>
+      <td>2.145958</td>
+      <td>6.974027e+00</td>
+      <td>39.617446</td>
+      <td>1198.681716</td>
     </tr>
     <tr>
       <th>logPerm</th>
       <td>50.0</td>
-      <td>2.453223</td>
-      <td>2.003317</td>
-      <td>-0.904696</td>
-      <td>0.945120</td>
-      <td>2.473785e+00</td>
-      <td>3.500877</td>
-      <td>7.417811</td>
+      <td>2.255959</td>
+      <td>2.212254</td>
+      <td>-1.649566</td>
+      <td>0.760983</td>
+      <td>1.939303e+00</td>
+      <td>3.679252</td>
+      <td>7.088978</td>
     </tr>
     <tr>
       <th>nPorosity</th>
       <td>50.0</td>
-      <td>0.004032</td>
-      <td>0.988170</td>
-      <td>-2.124772</td>
+      <td>0.008264</td>
+      <td>0.979279</td>
+      <td>-1.913155</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -856,9 +857,9 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
     <tr>
       <th>nPerm</th>
       <td>50.0</td>
-      <td>0.005688</td>
-      <td>0.984592</td>
-      <td>-2.041968</td>
+      <td>0.006782</td>
+      <td>0.982298</td>
+      <td>-1.987258</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -934,7 +935,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d604b15f25b15c4ccb55d0f85a083d9353dd744943cf0eb59138f19c4d507824.png" src="_images/d604b15f25b15c4ccb55d0f85a083d9353dd744943cf0eb59138f19c4d507824.png" />
+<img alt="_images/ffb2fba14e8ffdd4c5286ee6b4ad328a9c9d7e250a86a093c001b76cb0df5d0e.png" src="_images/ffb2fba14e8ffdd4c5286ee6b4ad328a9c9d7e250a86a093c001b76cb0df5d0e.png" />
 </div>
 </div>
 <p>Note we have already demonstrated univariate simulation checks for:</p>
@@ -1008,7 +1009,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/096bd1689ce0b29139d4fce04f2774fa319bdd61577933e4bb79bcb6a301edd7.png" src="_images/096bd1689ce0b29139d4fce04f2774fa319bdd61577933e4bb79bcb6a301edd7.png" />
+<img alt="_images/e7dd8f3e16e550d73e438967d416f2165b00158924d6c434ace129e0eed3b50c.png" src="_images/e7dd8f3e16e550d73e438967d416f2165b00158924d6c434ace129e0eed3b50c.png" />
 </div>
 </div>
 </section>
@@ -1061,7 +1062,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/103c532ce7362086b9af702d8b217d3383f7a093b70da49aec4594801b63348e.png" src="_images/103c532ce7362086b9af702d8b217d3383f7a093b70da49aec4594801b63348e.png" />
+<img alt="_images/2b39bd0dad2797a9e0dc7043b06779d245ca8d01c625aaa55eb794b984bfe658.png" src="_images/2b39bd0dad2797a9e0dc7043b06779d245ca8d01c625aaa55eb794b984bfe658.png" />
 </div>
 </div>
 </section>
@@ -1103,7 +1104,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2c99083155b37e1a917fe6cba19377bbe68793b6c7401eeaf5716011edb2e378.png" src="_images/2c99083155b37e1a917fe6cba19377bbe68793b6c7401eeaf5716011edb2e378.png" />
+<img alt="_images/501f4fb4d73c6a96aae5686c35f7c781dc2ede56af43b2fa7563d61bdd94e020.png" src="_images/501f4fb4d73c6a96aae5686c35f7c781dc2ede56af43b2fa7563d61bdd94e020.png" />
 </div>
 </div>
 </section>
@@ -1174,12 +1175,12 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="GeostatsPy_categorical_indicator_simulation.html"
+       href="GeostatsPy_3D_simulation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Indicator Simulation</p>
+        <p class="prev-next-title">3D Simulation</p>
       </div>
     </a>
     <a class="right-next"

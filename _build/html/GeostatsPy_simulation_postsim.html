@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Simulation Post-processing</a></li>
@@ -552,7 +553,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.78
 </pre></div>
 </div>
 </div>
@@ -655,33 +656,33 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
   <tbody>
     <tr>
       <th>0</th>
-      <td>410.0</td>
-      <td>499.0</td>
-      <td>0.119853</td>
+      <td>980.0</td>
+      <td>119.0</td>
+      <td>0.173764</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>890.0</td>
-      <td>919.0</td>
-      <td>0.109401</td>
+      <td>160.0</td>
+      <td>579.0</td>
+      <td>0.156645</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>680.0</td>
-      <td>689.0</td>
-      <td>0.095578</td>
+      <td>800.0</td>
+      <td>900.0</td>
+      <td>0.127497</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>940.0</td>
-      <td>799.0</td>
-      <td>0.091960</td>
+      <td>50.0</td>
+      <td>269.0</td>
+      <td>0.084510</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>790.0</td>
-      <td>19.0</td>
-      <td>0.117937</td>
+      <td>0.0</td>
+      <td>489.0</td>
+      <td>0.200184</td>
     </tr>
   </tbody>
 </table>
@@ -739,7 +740,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8452a3077b69d095ba9ee0e2248916bedb6b396b407656c1865847dcc6e6ee61.png" src="_images/8452a3077b69d095ba9ee0e2248916bedb6b396b407656c1865847dcc6e6ee61.png" />
+<img alt="_images/aa5a9d663ce680cee1ad21591917de138a308e084b14a5fdab5a20aba18bdacd.png" src="_images/aa5a9d663ce680cee1ad21591917de138a308e084b14a5fdab5a20aba18bdacd.png" />
 </div>
 </div>
 </section>
@@ -772,7 +773,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5a3bfdc8439c048cabf03e05693826c5f5bb9e3aea82fedc599a1151e73a878e.png" src="_images/5a3bfdc8439c048cabf03e05693826c5f5bb9e3aea82fedc599a1151e73a878e.png" />
+<img alt="_images/569c6a2f8a911e96889a90d1ff327d6836e756f51fe6354c98e0563aaa9df902.png" src="_images/569c6a2f8a911e96889a90d1ff327d6836e756f51fe6354c98e0563aaa9df902.png" />
 </div>
 </div>
 <p>The e-type model is very similar to a kriging model, except for:</p>
@@ -814,7 +815,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3becff16ac97a2392e27d740e531cec4d8a4acf617a660e28404c01723af3686.png" src="_images/3becff16ac97a2392e27d740e531cec4d8a4acf617a660e28404c01723af3686.png" />
+<img alt="_images/97877522a75605850551c703682d86d0c4c6c26b94adf4a5617840a90f5a0669.png" src="_images/97877522a75605850551c703682d86d0c4c6c26b94adf4a5617840a90f5a0669.png" />
 </div>
 </div>
 </section>
@@ -848,7 +849,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/af1d0a6b5ba1f4f8cd0b07467818ebab23a59b08f8fda75ca93569e6375f81ff.png" src="_images/af1d0a6b5ba1f4f8cd0b07467818ebab23a59b08f8fda75ca93569e6375f81ff.png" />
+<img alt="_images/5be42c3aa8ebd820e77e30d9d918385cdbe55235ceb0a25dae7a3a7826b2a452.png" src="_images/5be42c3aa8ebd820e77e30d9d918385cdbe55235ceb0a25dae7a3a7826b2a452.png" />
 </div>
 </div>
 </section>

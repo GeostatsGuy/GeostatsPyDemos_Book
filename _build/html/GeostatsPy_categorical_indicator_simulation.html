@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_categorical_indicator_simulation';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Cosimulation" href="GeostatsPy_cosimulation.html" />
+    <link rel="next" title="3D Simulation" href="GeostatsPy_3D_simulation.html" />
     <link rel="prev" title="Kriging vs. Simulation, a 2D Map Example" href="GeostatsPy_kriging_vs_simulation_maps.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
@@ -430,6 +431,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-and-cdfs">PDF and CDFs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-the-grid">Specify the Grid</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sequential Indicator Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-data-conditioning">Check the Data Conditioning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-global-stationary-categorical-proportions">Changing the Global Stationary Categorical Proportions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-indicator-simulation-with-ordinary-kriging">Sequential Indicator Simulation with Ordinary Kriging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-variable-proportions-categorical-trends">Locally Variable Proportions / Categorical Trends</a></li>
@@ -705,7 +707,7 @@ i(\bf{u}_{\alpha};z_k)^{\prime} = \frac{i(\bf{u}_{\alpha};z_k)}{\sum_{i=1}^K i(\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.78
 </pre></div>
 </div>
 </div>
@@ -724,6 +726,7 @@ i(\bf{u}_{\alpha};z_k)^{\prime} = \frac{i(\bf{u}_{\alpha};z_k)}{\sum_{i=1}^K i(\
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># DataFrames for tabular data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># for plotting</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>                                      <span class="c1"># custom colorbar</span>
+<span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>         
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
 <span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
@@ -768,8 +771,9 @@ i(\bf{u}_{\alpha};z_k)^{\prime} = \frac{i(\bf{u}_{\alpha};z_k)}{\sum_{i=1}^K i(\
 <p>We make this colorbar to display our categorical, sand and shale facies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap_facies</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;gold&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap_facies</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;gold&#39;</span><span class="p">])</span> <span class="c1"># sand and shale binary color map</span>
 <span class="n">cmap_facies</span><span class="o">.</span><span class="n">set_over</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">);</span> <span class="n">cmap_facies</span><span class="o">.</span><span class="n">set_under</span><span class="p">(</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+<span class="n">cmap_facies_cont</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="o">.</span><span class="n">from_list</span><span class="p">(</span><span class="s2">&quot;cmap_facies_cont&quot;</span><span class="p">,[</span><span class="s2">&quot;grey&quot;</span><span class="p">,</span> <span class="s2">&quot;gold&quot;</span><span class="p">],)</span> <span class="c1"># continuous color map variant</span>
 </pre></div>
 </div>
 </div>
@@ -1094,6 +1098,30 @@ i(\bf{u}_{\alpha};z_k)^{\prime} = \frac{i(\bf{u}_{\alpha};z_k)}{\sum_{i=1}^K i(\
 </div>
 <p>Looks good, we have some ergodic fluctuations, but that is expected.</p>
 </section>
+<section id="check-the-data-conditioning">
+<h2>Check the Data Conditioning<a class="headerlink" href="#check-the-data-conditioning" title="Permalink to this heading">#</a></h2>
+<p>E-type models are convenient to check data conditioning. The e-type is calculated as the average at each model cell over all the realizations.</p>
+<ul class="simple">
+<li><p>in this case we get the proportion of sand, since sand is 1.0 and shale is 0.0</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">etype</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">sim_ik</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>                     <span class="c1"># average over axis = 0, the realizations at each node</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>                                  
+<span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">etype</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">xsiz</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;Sequential Indicator Simulation - E-type &#39;</span><span class="p">,</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies_cont</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b845a29a1d6f4af6e56d1f88858e7e5b4e22eb4d4fa157bd497ed4451b8589ed.png" src="_images/b845a29a1d6f4af6e56d1f88858e7e5b4e22eb4d4fa157bd497ed4451b8589ed.png" />
+</div>
+</div>
+<p>Looks like the proportion of sand is approaching 0 or 1 at the well locations, indicating that the models are conditional over the realizations.</p>
+</section>
 <section id="changing-the-global-stationary-categorical-proportions">
 <h2>Changing the Global Stationary Categorical Proportions<a class="headerlink" href="#changing-the-global-stationary-categorical-proportions" title="Permalink to this heading">#</a></h2>
 <p>Let’s run three realizations and significantly change the global stationary proportions and then check the results.</p>
@@ -1381,11 +1409,11 @@ Global proportion of sand = 0.602
       </div>
     </a>
     <a class="right-next"
-       href="GeostatsPy_cosimulation.html"
+       href="GeostatsPy_3D_simulation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Cosimulation</p>
+        <p class="prev-next-title">3D Simulation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1422,6 +1450,7 @@ Global proportion of sand = 0.602
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-and-cdfs">PDF and CDFs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-the-grid">Specify the Grid</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Sequential Indicator Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#check-the-data-conditioning">Check the Data Conditioning</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-global-stationary-categorical-proportions">Changing the Global Stationary Categorical Proportions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-indicator-simulation-with-ordinary-kriging">Sequential Indicator Simulation with Ordinary Kriging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locally-variable-proportions-categorical-trends">Locally Variable Proportions / Categorical Trends</a></li>

@@ -72,6 +72,8 @@ chapters:
   title: Kriging vs. Simulation, 2D Maps
 - file: GeostatsPy_categorical_indicator_simulation
   title: Indicator Simulation
+- file: GeostatsPy_3D_simulation
+  title: 3D Simulation
 - file: GeostatsPy_cosimulation
   title: Cosimulation
 - file: GeostatsPy_ergodic_fluctuations

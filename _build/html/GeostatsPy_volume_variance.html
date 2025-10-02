@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
@@ -711,7 +712,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.72
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.78
 </pre></div>
 </div>
 </div>
@@ -896,31 +897,31 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.093921</td>
+      <td>0.111494</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.136183</td>
+      <td>0.117484</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.130594</td>
+      <td>0.083311</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.063678</td>
+      <td>0.072000</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.070017</td>
+      <td>0.073125</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
@@ -1035,7 +1036,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e92e6f85ae3e25c7110a9a8fb24d79cb24125e7dd8b98faf145157dacb42b6a7.png" src="_images/e92e6f85ae3e25c7110a9a8fb24d79cb24125e7dd8b98faf145157dacb42b6a7.png" />
+<img alt="_images/cf06544a2445d5b3fa3be64d4949e74cbb5a81d8bef79a43744e9ab4486d3193.png" src="_images/cf06544a2445d5b3fa3be64d4949e74cbb5a81d8bef79a43744e9ab4486d3193.png" />
 </div>
 </div>
 <p>Let’s observe the impact of upscaling scaling on the two model’s distributions and variances.</p>
@@ -1096,7 +1097,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ec1c98d46f6a1aceaca34813bb019a152ff90f5efe352574644c98c61d27519c.png" src="_images/ec1c98d46f6a1aceaca34813bb019a152ff90f5efe352574644c98c61d27519c.png" />
+<img alt="_images/6f9b52a087dfe893994e3456385869a3cb0dadd76756a64cfa81eaab0bfee569.png" src="_images/6f9b52a087dfe893994e3456385869a3cb0dadd76756a64cfa81eaab0bfee569.png" />
 </div>
 </div>
 <p>and now the model with shorter range, isotropic spatial continuity.</p>
@@ -1155,7 +1156,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7f4bb965a04c017832de54c6b9190daf01dd0ca4433b2bc0226d38a2097d9195.png" src="_images/7f4bb965a04c017832de54c6b9190daf01dd0ca4433b2bc0226d38a2097d9195.png" />
+<img alt="_images/8a164bff20f44afa30bd4a96aa92f7c0ac97786f830cfcb340433806c2dc9f77.png" src="_images/8a164bff20f44afa30bd4a96aa92f7c0ac97786f830cfcb340433806c2dc9f77.png" />
 </div>
 </div>
 <p>We can see that with shorter ranges of spatial continuity, our variance reduces faster as we increase the support volume, i.e., the model cell size.</p>
@@ -1195,7 +1196,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3c654eec5a37609d1ed67e2a1a1f6bd5739b729dd964e68aedfe56e416c52f87.png" src="_images/3c654eec5a37609d1ed67e2a1a1f6bd5739b729dd964e68aedfe56e416c52f87.png" />
+<img alt="_images/8dc4602fa8352bbc624b1942b5997b3374481663687ea922a77e5a8edad6cf22.png" src="_images/8dc4602fa8352bbc624b1942b5997b3374481663687ea922a77e5a8edad6cf22.png" />
 </div>
 </div>
 <p>It is convenient to represent this as variance reduction factors,</p>
@@ -1224,7 +1225,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bb4dd047dc3118b6d7ae1a2245c000432fb1dd56b57a69cb6e22fe1b10538e29.png" src="_images/bb4dd047dc3118b6d7ae1a2245c000432fb1dd56b57a69cb6e22fe1b10538e29.png" />
+<img alt="_images/adb3e6a44b8e52585588aa39bc070011aa0b588bfa6b940c69fdb4149b6d4eb8.png" src="_images/adb3e6a44b8e52585588aa39bc070011aa0b588bfa6b940c69fdb4149b6d4eb8.png" />
 </div>
 </div>
 <p>Since we’ve gone this far, let’s complete a larger experiment by looping over many variogram ranges and model volume supports and visualize the variance reduction.</p>
@@ -1269,7 +1270,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7983369f59c4359e4cd236ff527a6026af7957ff5cbc52a8f04875e255ff4cd8.png" src="_images/7983369f59c4359e4cd236ff527a6026af7957ff5cbc52a8f04875e255ff4cd8.png" />
+<img alt="_images/6194389082390c065413c0c96e6c5643945609f4e3a20d58c1b94991b59e68ea.png" src="_images/6194389082390c065413c0c96e6c5643945609f4e3a20d58c1b94991b59e68ea.png" />
 </div>
 </div>
 <p>See the trade-off between volume support, as a function of cell size, and the variogram range?</p>
@@ -1394,7 +1395,7 @@ D^2(v,V) = \overline{\gamma}_{V,V} - \overline{\gamma}_{v,v}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/41bf8647941b69277eaaf8a2e2998b9da9562342e711b5c319bf48eec9275883.png" src="_images/41bf8647941b69277eaaf8a2e2998b9da9562342e711b5c319bf48eec9275883.png" />
+<img alt="_images/f58d2bb0042b91c4747ecb7f50514becd78bc896b5c56279eb0dfff8955a14e7.png" src="_images/f58d2bb0042b91c4747ecb7f50514becd78bc896b5c56279eb0dfff8955a14e7.png" />
 </div>
 </div>
 <p>Firstly, both results are quite similar with 2 important differences,</p>
