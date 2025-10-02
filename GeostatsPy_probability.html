@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
@@ -1170,17 +1171,17 @@ P(B \cup A) = P(B,A) = P(A|B) \cdot P(B)
 <p>Given the probability multiplication rule,</p>
 <div class="math notranslate nohighlight">
 \[
-P(A \cup B) = P(A,B) = P(B|A) \cdot P(A)
+P(A \cap B) = P(A,B) = P(B|A) \cdot P(A)
 \]</div>
 <p>now we ask the question, what is the conditional probability <span class="math notranslate nohighlight">\(P(B|A)\)</span> if events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent? Given independence between <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> we would expect that knowing about <span class="math notranslate nohighlight">\(A\)</span> will not impact the outcome of <span class="math notranslate nohighlight">\(B\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 P(B|A) = P(B)
 \]</div>
-<p>if we substitute this into <span class="math notranslate nohighlight">\(P(A \cup B) = P(A,B) = P(B|A) \cdot P(A)\)</span> we get,</p>
+<p>if we substitute this into <span class="math notranslate nohighlight">\(P(A \cap B) = P(A,B) = P(B|A) \cdot P(A)\)</span> we get,</p>
 <div class="math notranslate nohighlight">
 \[
-P(A \cup B) = P(B) \cdot P(A)
+P(A \cap B) = P(B) \cdot P(A)
 \]</div>
 <p>by the same logic we can show,</p>
 <div class="math notranslate nohighlight">
@@ -1313,14 +1314,14 @@ P(B) = \int_{A} P(B|A) \cdot P(A) dA
 </ul>
 <div class="math notranslate nohighlight">
 \[
-P(B) = P(B|A) \cdot P(A) + P(B|A^c) \cdot P(B^c)
+P(B) = P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)
 \]</div>
 <ul class="simple">
 <li><p>and by substitution we get this expanded but usually easier to calculate form of Bayes’ theorem,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
-P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(B^c)}
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)}
 \]</div>
 <ul class="simple">
 <li><p>we can generalize this marginalization for any number of discrete, mutually exclusive, exhaustive events as,</p></li>
@@ -1378,7 +1379,7 @@ P(B) = \sum_{i=1}^{m} P(B|A_i) \cdot P(A_i), \quad \forall \quad i = 1,\ldots,m
 <p>Now we write out Bayes’ theorem, the regular and expanded evidence term by marginalization,</p>
 <div class="math notranslate nohighlight">
 \[
-P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(B^c)}
+P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)} = \frac{P(B|A) \cdot P(A)}{P(B|A) \cdot P(A) + P(B|A^c) \cdot P(A^c)}
 \]</div>
 <p>What do we know? From the question above we have,</p>
 <ul class="simple">

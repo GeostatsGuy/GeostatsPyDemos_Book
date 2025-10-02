@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_heterogeneity_metrics';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -204,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
@@ -420,6 +423,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering">Feature Engineering</a></li>
@@ -429,6 +433,16 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dykstra-parsons">Dykstra Parsons</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dykstra-parsons-improved-by-fitting-a-lognormal-distribution-to-permeability">Dykstra-Parsons Improved by Fitting a Lognormal Distribution to Permeability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-lognormal-permeability-parametric-distribution">Visualize the Lognormal Permeability Parametric Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-single-well">Load a Single Well</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lorenz-coefficient-method">Lorenz Coefficient Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Feature Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-the-data-in-descending">2. Sort the Data in Descending</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-storage-and-flow-capacities">3. Calculate Storage and Flow Capacities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-cumulative-storage-and-flow-capacities">4. Calculate the Cumulative Storage and Flow Capacities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-cumulative-fraction-of-storage-and-flow-capacities">5. Calculate the Cumulative Fraction of Storage and Flow Capacities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-lorenz-coefficient">6. Calculate the Lorenz Coefficient</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -519,6 +533,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># arrays</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                                           <span class="c1"># dataframes</span>
 <span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>                                   <span class="c1"># statistical functions</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>                              <span class="c1"># for numerical integration</span>
 <span class="kn">import</span> <span class="nn">math</span>                                                   <span class="c1"># square root to calculate standard deviation from variance</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># plotting</span>
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
@@ -535,6 +550,20 @@ document.write(`
 </div>
 <p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
 </section>
+<section id="define-functions">
+<h2>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h2>
+<p>This is a convenience function to add major and minor gridlines to improve plot interpretability.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="set-the-working-directory">
 <h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
 <p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).</p>
@@ -549,6 +578,9 @@ document.write(`
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
 <p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<ul class="simple">
+<li><p>we will use this spatial dataset for our heterogeneity metrics up to Lorenz coefficient, for this Lorenz coefficient load a single well with porosity and permeability features</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/PorPermSample1.csv&#39;</span><span class="p">)</span>
@@ -618,10 +650,17 @@ document.write(`
 </section>
 <section id="feature-engineering">
 <h2>Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this heading">#</a></h2>
-<p>We will need to make a new feature, rock quality index, the ratio of permeability divided by porosity.</p>
+<p>We will need to make a new feature, approximate rock quality index, the ratio of permeability divided by porosity.</p>
+<ul class="simple">
+<li><p>rock quality index (RQI) approximation - the formula for calculating RQI includes permeability divided by porosity and is commonly used to identify rock groups, like facies. While we only use the permeability divided by porosity ratio, the complete equation for RQI is,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+RQI = 0.0314 \times \sqrt{\frac{k}{\phi}}
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PermPor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PermPor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">/</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>       <span class="c1"># new feature as permability divided by porosity</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -694,13 +733,13 @@ document.write(`
 </section>
 <section id="variance-of-permeability">
 <h2>Variance of Permeability<a class="headerlink" href="#variance-of-permeability" title="Permalink to this heading">#</a></h2>
-<p>It is common to use the sample or population variance. I demonstrate the sample mean.</p>
+<p>It is common to use the sample or population variance of permeability as a measure of heterogeneity. I demonstrate the sample variance.</p>
 <p>\begin{equation}
 \sigma_{X_k}^2 = \frac{1}{n} \sum_{i=1}^{n-1} (x_{k,i} - \overline{x_k})^2
 \end{equation}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>                   <span class="c1"># sample variance of permeability </span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Sample Variance of Permeability: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">var_perm</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; mD^2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -714,14 +753,14 @@ document.write(`
 </section>
 <section id="coefficient-of-variation-of-permeability">
 <h2>Coefficient of Variation of Permeability<a class="headerlink" href="#coefficient-of-variation-of-permeability" title="Permalink to this heading">#</a></h2>
-<p>Another common metric is the coefficient of variation, the standard deviation standardized by the mean.</p>
+<p>Another common heternogeneity metric is the coefficient of variation, the standard deviation standardized by the mean.</p>
 <p>\begin{equation}
 C_{v_k} = \frac{\sigma_k}{\overline{k} }
 \end{equation}</p>
 <p>Note, by specifying the ddof arguement of 1, we are using the sample standard deviation in the calculation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coefvar_perm</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">variation</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coefvar_perm</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">variation</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># coefficient of variation of permeability</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coefficeint of Variation of Permeability: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">coefvar_perm</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; unitless&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -735,13 +774,13 @@ C_{v_k} = \frac{\sigma_k}{\overline{k} }
 </section>
 <section id="coefficient-of-variation-of-permeability-porosity">
 <h2>Coefficient of Variation of Permeability / Porosity<a class="headerlink" href="#coefficient-of-variation-of-permeability-porosity" title="Permalink to this heading">#</a></h2>
-<p>Also it is common to calculate the coefficient of variation of the rock quality index feature, permeability divided by porosity.</p>
+<p>Also it is common to calculate the coefficient of variation of the ratio of permeability divided by porosity.</p>
 <p>\begin{equation}
 C_{v_\frac{k}{\phi}} = \frac{\sigma_{\frac{k}{\phi}}}{\overline{\frac{k}{\phi}} }
 \end{equation}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coefvar_permpor</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">variation</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PermPor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coefvar_permpor</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">variation</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PermPor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># coefficient of variation of permeability divided by porosity</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Coefficient of Variation of Permeability / Porosity: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">coefvar_permpor</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; unitless&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -761,13 +800,13 @@ DP = \frac{P50_k - P16_k}{P50_k}
 \end{equation}</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P16_perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>
-<span class="n">P50_perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P16_perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="mi">16</span><span class="p">)</span>                <span class="c1"># the permeability 16th percentile</span>
+<span class="n">P50_perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>                <span class="c1"># the permeability 50th percentile (median)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Permeability P16: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">P16_perm</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Permeability P50: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">P50_perm</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
 
-<span class="n">dp</span> <span class="o">=</span> <span class="p">(</span><span class="n">P50_perm</span> <span class="o">-</span> <span class="n">P16_perm</span><span class="p">)</span><span class="o">/</span><span class="n">P50_perm</span>
+<span class="n">dp</span> <span class="o">=</span> <span class="p">(</span><span class="n">P50_perm</span> <span class="o">-</span> <span class="n">P16_perm</span><span class="p">)</span><span class="o">/</span><span class="n">P50_perm</span>                           <span class="c1"># Dykstra Parsons</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Dykstra-Parsons Coefficient: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; unitless&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -791,9 +830,9 @@ Dykstra-Parsons Coefficient: 0.412 unitless
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_perm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>                     <span class="c1"># average of permeability</span>
 
-<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">mean_perm</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_perm</span> <span class="o">+</span> <span class="n">mean_perm</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">mean_perm</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_perm</span> <span class="o">+</span> <span class="n">mean_perm</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="c1"># given the average and variance, calculate the associated lognormal mu and sigma</span>
 <span class="n">sigma</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">var_perm</span><span class="o">/</span><span class="p">(</span><span class="n">mean_perm</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lognormal distribution parameters are, mu: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;, and sigma: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">sigma</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
@@ -812,7 +851,7 @@ Dykstra-Parsons Coefficient: 0.412 unitless
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P16_perm_lognorm</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">P16_perm_lognorm</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.16</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu</span><span class="p">))</span> <span class="c1"># calculate permeability P16 and P50 from our estimated lognormal distribution</span>
 <span class="n">P50_perm_lognorm</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.50</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Permeability P16 from Lognormal Parametric Distribution: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">P16_perm_lognorm</span><span class="p">,</span><span class="mi">3</span><span class="p">)))</span>
@@ -829,7 +868,7 @@ Permeability P50 from Lognormal Parametric Distribution: 143.869
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dp_lognorm</span> <span class="o">=</span> <span class="p">(</span><span class="n">P50_perm_lognorm</span> <span class="o">-</span> <span class="n">P16_perm_lognorm</span><span class="p">)</span><span class="o">/</span><span class="n">P50_perm_lognorm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dp_lognorm</span> <span class="o">=</span> <span class="p">(</span><span class="n">P50_perm_lognorm</span> <span class="o">-</span> <span class="n">P16_perm_lognorm</span><span class="p">)</span><span class="o">/</span><span class="n">P50_perm_lognorm</span> <span class="c1"># Dykstra-Parsons coefficient</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Dykstra-Parsons Coefficient: &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">dp_lognorm</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39; unitless&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -849,23 +888,605 @@ Permeability P50 from Lognormal Parametric Distribution: 143.869
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cumul_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.999</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cumul_prob</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.999</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>                      <span class="c1"># get points on our estimated lognormal distribution</span>
 <span class="n">lognormal</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">cumul_prob</span><span class="p">,</span><span class="n">s</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">mu</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lognormal</span><span class="p">,</span><span class="n">cumul_prob</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Parametric Distribution&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Probability&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Permeability Data Nonparametric and Lognormal Parametric Distributions&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">600</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Perm&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/14044410f5b83b1e56f77a22c7eedca9aa871579ed60fa08dc1ab743f421e53e.png" src="_images/14044410f5b83b1e56f77a22c7eedca9aa871579ed60fa08dc1ab743f421e53e.png" />
+<img alt="_images/4c6110c7cc6f4d7440521b83760417e910a647881ef1b042e014ac2d9485cc8f.png" src="_images/4c6110c7cc6f4d7440521b83760417e910a647881ef1b042e014ac2d9485cc8f.png" />
 </div>
 </div>
+</section>
+<section id="load-a-single-well">
+<h2>Load a Single Well<a class="headerlink" href="#load-a-single-well" title="Permalink to this heading">#</a></h2>
+<p>For the Lorenz coefficient we work with the statistics of stacked stratigraphic units in a single well.</p>
+<ul class="simple">
+<li><p>we could sumarize the Lorenz coefficient over many wells but this would require a more complicated geological modeling workflow.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_well</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/WellPorPermSample_3.csv&#39;</span><span class="p">)</span> 
+<span class="n">df_well</span> <span class="o">=</span> <span class="n">df_well</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Depth (m)&quot;</span><span class="p">:</span><span class="s2">&quot;Depth&quot;</span><span class="p">,</span> <span class="s2">&quot;Por (%)&quot;</span><span class="p">:</span><span class="s2">&quot;Por&quot;</span><span class="p">,</span> <span class="s2">&quot;Perm (mD)&quot;</span><span class="p">:</span><span class="s2">&quot;Perm&quot;</span><span class="p">})</span>
+<span class="n">nwell</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df_well</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of samples in the well = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">nwell</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">],</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Porosity (%)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">26</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">20</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">],</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Depth&#39;</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Permeability (mD)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Depth (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">26</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">600</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of samples in the well = 105
+</pre></div>
+</div>
+<img alt="_images/e91dd3871644e56fc799e5057d43955e0515e23fdab2cbd5e659a1c80ffd7e5f.png" src="_images/e91dd3871644e56fc799e5057d43955e0515e23fdab2cbd5e659a1c80ffd7e5f.png" />
+</div>
+</div>
+</section>
+<section id="lorenz-coefficient-method">
+<h2>Lorenz Coefficient Method<a class="headerlink" href="#lorenz-coefficient-method" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>1. Feature Engineering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>To prepare for the calculation of Lorenz Coefficient we need,</p>
+<ul class="simple">
+<li><p>thickness - the thickness of eacch unit, in this case we observed equal thickness units at 0.25 m</p></li>
+<li><p>rock quality index (RQI) approximation - once again we approximate RQI with only the ratio of permeability divided by porosity. For our application here we only need to sort the rock in descending rock quality index, so the square root and constant term would not change this order.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> since the square root and constant do not impact the order after sorting (below) we leave them out for brevity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Thick&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_well</span><span class="p">),</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;PermPor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span>
+<span class="n">df_well</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Depth</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>Thick</th>
+      <th>PermPor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.25</td>
+      <td>13.0</td>
+      <td>265.5</td>
+      <td>0.25</td>
+      <td>20.423077</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.50</td>
+      <td>13.6</td>
+      <td>116.9</td>
+      <td>0.25</td>
+      <td>8.595588</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.75</td>
+      <td>9.0</td>
+      <td>136.9</td>
+      <td>0.25</td>
+      <td>15.211111</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.00</td>
+      <td>17.6</td>
+      <td>216.7</td>
+      <td>0.25</td>
+      <td>12.312500</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.25</td>
+      <td>9.4</td>
+      <td>131.6</td>
+      <td>0.25</td>
+      <td>14.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="sort-the-data-in-descending">
+<h3>2. Sort the Data in Descending<a class="headerlink" href="#sort-the-data-in-descending" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_well</span> <span class="o">=</span> <span class="n">df_well</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;PermPor&#39;</span><span class="p">,</span><span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>                   <span class="c1"># sort in descending order</span>
+<span class="n">df_well</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Depth</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>Thick</th>
+      <th>PermPor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>78</th>
+      <td>19.75</td>
+      <td>17.2</td>
+      <td>573.5</td>
+      <td>0.25</td>
+      <td>33.343023</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>26.00</td>
+      <td>9.2</td>
+      <td>263.5</td>
+      <td>0.25</td>
+      <td>28.641304</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>24.50</td>
+      <td>11.0</td>
+      <td>305.1</td>
+      <td>0.25</td>
+      <td>27.736364</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>18.25</td>
+      <td>8.9</td>
+      <td>244.1</td>
+      <td>0.25</td>
+      <td>27.426966</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>23.00</td>
+      <td>17.2</td>
+      <td>380.1</td>
+      <td>0.25</td>
+      <td>22.098837</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="calculate-storage-and-flow-capacities">
+<h3>3. Calculate Storage and Flow Capacities<a class="headerlink" href="#calculate-storage-and-flow-capacities" title="Permalink to this heading">#</a></h3>
+<p>We calculate these as, storage capacity (SC),</p>
+<div class="math notranslate nohighlight">
+\[
+\text{SC} = \phi \times \text{Th}
+\]</div>
+<p>and flow capacity (FC),</p>
+<div class="math notranslate nohighlight">
+\[
+\text{FC} = k \times \text{Th}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Storage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Por&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Thick&#39;</span><span class="p">]</span>
+<span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Flow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Perm&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Thick&#39;</span><span class="p">]</span>
+<span class="n">df_well</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Depth</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>Thick</th>
+      <th>PermPor</th>
+      <th>Storage</th>
+      <th>Flow</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>78</th>
+      <td>19.75</td>
+      <td>17.2</td>
+      <td>573.5</td>
+      <td>0.25</td>
+      <td>33.343023</td>
+      <td>4.300</td>
+      <td>143.375</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>26.00</td>
+      <td>9.2</td>
+      <td>263.5</td>
+      <td>0.25</td>
+      <td>28.641304</td>
+      <td>2.300</td>
+      <td>65.875</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>24.50</td>
+      <td>11.0</td>
+      <td>305.1</td>
+      <td>0.25</td>
+      <td>27.736364</td>
+      <td>2.750</td>
+      <td>76.275</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>18.25</td>
+      <td>8.9</td>
+      <td>244.1</td>
+      <td>0.25</td>
+      <td>27.426966</td>
+      <td>2.225</td>
+      <td>61.025</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>23.00</td>
+      <td>17.2</td>
+      <td>380.1</td>
+      <td>0.25</td>
+      <td>22.098837</td>
+      <td>4.300</td>
+      <td>95.025</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="calculate-the-cumulative-storage-and-flow-capacities">
+<h3>4. Calculate the Cumulative Storage and Flow Capacities<a class="headerlink" href="#calculate-the-cumulative-storage-and-flow-capacities" title="Permalink to this heading">#</a></h3>
+<p>We apply the cummulative sum down each column, storage capacity and flow capacity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Storage_Cumul&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Storage&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Flow_Cumul&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Flow&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="n">df_well</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Depth</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>Thick</th>
+      <th>PermPor</th>
+      <th>Storage</th>
+      <th>Flow</th>
+      <th>Storage_Cumul</th>
+      <th>Flow_Cumul</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>78</th>
+      <td>19.75</td>
+      <td>17.2</td>
+      <td>573.5</td>
+      <td>0.25</td>
+      <td>33.343023</td>
+      <td>4.300</td>
+      <td>143.375</td>
+      <td>4.300</td>
+      <td>143.375</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>26.00</td>
+      <td>9.2</td>
+      <td>263.5</td>
+      <td>0.25</td>
+      <td>28.641304</td>
+      <td>2.300</td>
+      <td>65.875</td>
+      <td>6.600</td>
+      <td>209.250</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>24.50</td>
+      <td>11.0</td>
+      <td>305.1</td>
+      <td>0.25</td>
+      <td>27.736364</td>
+      <td>2.750</td>
+      <td>76.275</td>
+      <td>9.350</td>
+      <td>285.525</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>18.25</td>
+      <td>8.9</td>
+      <td>244.1</td>
+      <td>0.25</td>
+      <td>27.426966</td>
+      <td>2.225</td>
+      <td>61.025</td>
+      <td>11.575</td>
+      <td>346.550</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>23.00</td>
+      <td>17.2</td>
+      <td>380.1</td>
+      <td>0.25</td>
+      <td>22.098837</td>
+      <td>4.300</td>
+      <td>95.025</td>
+      <td>15.875</td>
+      <td>441.575</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="calculate-the-cumulative-fraction-of-storage-and-flow-capacities">
+<h3>5. Calculate the Cumulative Fraction of Storage and Flow Capacities<a class="headerlink" href="#calculate-the-cumulative-fraction-of-storage-and-flow-capacities" title="Permalink to this heading">#</a></h3>
+<p>We divide the storage and flow capacities by the largest value, i.e., the value in the last row, so that our statistics represent the fraction of the total cumulative.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Storage_Cumul_Frac&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Storage_Cumul&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Storage_Cumul&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Flow_Cumul_Frac&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Flow_Cumul&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Flow_Cumul&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">df_well</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Depth</th>
+      <th>Por</th>
+      <th>Perm</th>
+      <th>Thick</th>
+      <th>PermPor</th>
+      <th>Storage</th>
+      <th>Flow</th>
+      <th>Storage_Cumul</th>
+      <th>Flow_Cumul</th>
+      <th>Storage_Cumul_Frac</th>
+      <th>Flow_Cumul_Frac</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>78</th>
+      <td>19.75</td>
+      <td>17.2</td>
+      <td>573.5</td>
+      <td>0.25</td>
+      <td>33.343023</td>
+      <td>4.300</td>
+      <td>143.375</td>
+      <td>4.300</td>
+      <td>143.375</td>
+      <td>0.014024</td>
+      <td>0.033922</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>26.00</td>
+      <td>9.2</td>
+      <td>263.5</td>
+      <td>0.25</td>
+      <td>28.641304</td>
+      <td>2.300</td>
+      <td>65.875</td>
+      <td>6.600</td>
+      <td>209.250</td>
+      <td>0.021525</td>
+      <td>0.049508</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>24.50</td>
+      <td>11.0</td>
+      <td>305.1</td>
+      <td>0.25</td>
+      <td>27.736364</td>
+      <td>2.750</td>
+      <td>76.275</td>
+      <td>9.350</td>
+      <td>285.525</td>
+      <td>0.030493</td>
+      <td>0.067555</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>18.25</td>
+      <td>8.9</td>
+      <td>244.1</td>
+      <td>0.25</td>
+      <td>27.426966</td>
+      <td>2.225</td>
+      <td>61.025</td>
+      <td>11.575</td>
+      <td>346.550</td>
+      <td>0.037750</td>
+      <td>0.081994</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>23.00</td>
+      <td>17.2</td>
+      <td>380.1</td>
+      <td>0.25</td>
+      <td>22.098837</td>
+      <td>4.300</td>
+      <td>95.025</td>
+      <td>15.875</td>
+      <td>441.575</td>
+      <td>0.051773</td>
+      <td>0.104476</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="calculate-the-lorenz-coefficient">
+<h3>6. Calculate the Lorenz Coefficient<a class="headerlink" href="#calculate-the-lorenz-coefficient" title="Permalink to this heading">#</a></h3>
+<p>This code may look a bit complicated, but the steps are simply,</p>
+<ol class="arabic simple">
+<li><p><strong>Lorez Curve Model</strong> - fit a ploynomial (3rd order is sufficient) to the experimental Lorenz curve points</p></li>
+<li><p><strong>Lorenz Area</strong> - integrate between the fit polynomial curve and the homogeneous <span class="math notranslate nohighlight">\(Y = X\)</span> line</p></li>
+<li><p><strong>Lorenz Coefficient</strong> - divide by 0.5 to get the ratio of the Lorenz area divided by the total area above the homogeneous line</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">nwell</span><span class="p">)</span>                                     
+<span class="n">weights</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span> <span class="n">weights</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1000</span>                 <span class="c1"># to ensure the fit converges to (0,0) and (1,1)</span>
+    
+<span class="n">coeffs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Storage_Cumul_Frac&#39;</span><span class="p">],</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Flow_Cumul_Frac&#39;</span><span class="p">],</span> <span class="n">deg</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">weights</span><span class="p">)</span>
+<span class="n">poly_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">poly1d</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span>                          <span class="c1"># create a polynomial function from the coefficients</span>
+
+<span class="k">def</span> <span class="nf">diff</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">poly_fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span>
+
+<span class="n">lorenz_area</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">LC</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">lorenz_area</span><span class="o">/</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Storage_Cumul_Frac&#39;</span><span class="p">],</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Flow_Cumul_Frac&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Experimental Lorenz Coefficient&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Storage_Cumul_Frac&#39;</span><span class="p">],</span><span class="n">df_well</span><span class="p">[</span><span class="s1">&#39;Flow_Cumul_Frac&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">poly_fit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;coral&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Polynomial Model&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="s1">&#39;Lorenz Coefficient = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">LC</span><span class="p">),[</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">poly_fit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)),</span>
+                 <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">),</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;coral&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Fraction of Storage Capacity (ratio)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Cumulative Fraction of Flow Capacity (ratio)&#39;</span><span class="p">)</span>
+<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Homogeneous&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.2</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.4</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/685cd2d623b22a32b89522bf57bc1c58462a99aec31aae2583f7ecbe25eb6281.png" src="_images/685cd2d623b22a32b89522bf57bc1c58462a99aec31aae2583f7ecbe25eb6281.png" />
+</div>
+</div>
+</section>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
@@ -976,6 +1597,7 @@ Permeability P50 from Lognormal Parametric Distribution: 143.869
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the working directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-engineering">Feature Engineering</a></li>
@@ -985,6 +1607,16 @@ Permeability P50 from Lognormal Parametric Distribution: 143.869
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dykstra-parsons">Dykstra Parsons</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dykstra-parsons-improved-by-fitting-a-lognormal-distribution-to-permeability">Dykstra-Parsons Improved by Fitting a Lognormal Distribution to Permeability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-lognormal-permeability-parametric-distribution">Visualize the Lognormal Permeability Parametric Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-a-single-well">Load a Single Well</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lorenz-coefficient-method">Lorenz Coefficient Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. Feature Engineering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort-the-data-in-descending">2. Sort the Data in Descending</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-storage-and-flow-capacities">3. Calculate Storage and Flow Capacities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-cumulative-storage-and-flow-capacities">4. Calculate the Cumulative Storage and Flow Capacities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-cumulative-fraction-of-storage-and-flow-capacities">5. Calculate the Cumulative Fraction of Storage and Flow Capacities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-the-lorenz-coefficient">6. Calculate the Lorenz Coefficient</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
