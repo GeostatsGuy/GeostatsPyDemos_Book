@@ -658,7 +658,7 @@ z^s_i = \frac{z_i - z_{base_i}}{z_{top_i} - z_{base_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.78
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
 </pre></div>
 </div>
 </div>
@@ -821,7 +821,18 @@ z^s_i = \frac{z_i - z_{base_i}}{z_{top_i} - z_{base_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/70baaddf0c65faa38b613034d167983b2a25dd8bce78d3b2c0e177a08dffeffa.png" src="_images/70baaddf0c65faa38b613034d167983b2a25dd8bce78d3b2c0e177a08dffeffa.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">60</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="n">dfbase</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">idx_2D</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">idy_2D</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span><span class="n">base</span><span class="o">.</span><span class="n">flatten</span><span class="p">()],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;Base&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="n">rotation</span> <span class="o">=</span> <span class="mi">35</span>                                                 <span class="c1"># rotation angle</span>
+<span class="ne">---&gt; </span><span class="mi">60</span> <span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfwell</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">rotation</span><span class="p">)</span> <span class="c1"># rotate well data and bounding surfaces</span>
+<span class="g g-Whitespace">     </span><span class="mi">61</span> <span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dftop</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">rotation</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">rotate2D</span><span class="p">(</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">dfbase</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">rotation</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: module &#39;geostatspy.geostats&#39; has no attribute &#39;rotate2D&#39;
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -906,7 +917,7 @@ z^s_i = \frac{z_i - z_{base_i}}{z_{top_i} - z_{base_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/dbc834053029c60489363777a7c57eb20620bda2ed1133c99e9f3fd9d3f2d2fa.png" src="_images/dbc834053029c60489363777a7c57eb20620bda2ed1133c99e9f3fd9d3f2d2fa.png" />
+<img alt="_images/953f6cb6b48f059c9b7ed106d47a21aaac8452f641c571684c72f0cc9b6539d4.png" src="_images/953f6cb6b48f059c9b7ed106d47a21aaac8452f641c571684c72f0cc9b6539d4.png" />
 </div>
 </div>
 </section>
@@ -980,7 +991,7 @@ z^s_i = \frac{z_i - z_{base_i}}{z_{top_i} - z_{base_i}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0f85cc96d39d80a5f31ed02e5887eadca8446ddf412f70434545154c9053ddb7.png" src="_images/0f85cc96d39d80a5f31ed02e5887eadca8446ddf412f70434545154c9053ddb7.png" />
+<img alt="_images/0b0e8c5acf88be7369da1a5349ae071acb583d1ee2f9f84c0233070e72f02608.png" src="_images/0b0e8c5acf88be7369da1a5349ae071acb583d1ee2f9f84c0233070e72f02608.png" />
 </div>
 </div>
 </section>

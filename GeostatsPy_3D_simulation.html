@@ -518,7 +518,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.78
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
 </pre></div>
 </div>
 </div>
@@ -808,7 +808,22 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96cac9d24ed448a04dc8ff8e34bb2862dcd9558524b898021496256e7f39f77c.png" src="_images/96cac9d24ed448a04dc8ff8e34bb2862dcd9558524b898021496256e7f39f77c.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">22</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">nreal</span> <span class="o">=</span> <span class="mi">3</span>                                                     <span class="c1"># number of realizations</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="k">if</span> <span class="n">run_model</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="n">sim_ik</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">sisim_3D</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="n">ivtype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">koption</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ncut</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">thresh</span><span class="o">=</span><span class="n">thresh</span><span class="p">,</span><span class="n">gcdf</span><span class="o">=</span><span class="n">gcdf</span><span class="p">,</span><span class="n">trend</span><span class="o">=</span><span class="n">dummy_trend</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span>         <span class="n">tmin</span><span class="o">=</span><span class="n">tmin</span><span class="p">,</span><span class="n">tmax</span><span class="o">=</span><span class="n">tmax</span><span class="p">,</span><span class="n">zmin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">zmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">ltail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ltpar</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">middle</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">mpar</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">utail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">utpar</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">nreal</span><span class="o">=</span><span class="n">nreal</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">24</span>         <span class="n">nx</span><span class="o">=</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;nx&#39;</span><span class="p">],</span><span class="n">xmn</span><span class="o">=</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;xmn&#39;</span><span class="p">],</span><span class="n">xsiz</span><span class="o">=</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;xsiz&#39;</span><span class="p">],</span><span class="n">ny</span><span class="o">=</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;ny&#39;</span><span class="p">],</span><span class="n">ymn</span><span class="o">=</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;ymn&#39;</span><span class="p">],</span><span class="n">ysiz</span><span class="o">=</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;ysiz&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span>         <span class="n">nz</span><span class="o">=</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;nz&#39;</span><span class="p">],</span><span class="n">zmn</span><span class="o">=</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;zmn&#39;</span><span class="p">],</span><span class="n">zsiz</span><span class="o">=</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;zsiz&#39;</span><span class="p">],</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>         <span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span><span class="p">,</span><span class="n">ndmin</span><span class="o">=</span><span class="n">ndmin</span><span class="p">,</span><span class="n">ndmax</span><span class="o">=</span><span class="n">ndmax</span><span class="p">,</span><span class="n">nodmax</span><span class="o">=</span><span class="n">nodmax</span><span class="p">,</span><span class="n">mults</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">nmult</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">noct</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">ktype</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">varios</span><span class="o">=</span><span class="n">facies_varios</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">28</span> <span class="n">nrow</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(((</span><span class="n">nreal</span><span class="o">+</span><span class="mf">0.9</span><span class="p">)</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span><span class="mi">0</span><span class="p">))</span>                          <span class="c1"># adjust plot for the number of realizations</span>
+<span class="g g-Whitespace">     </span><span class="mi">29</span> <span class="k">for</span> <span class="n">ireal</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">nreal</span><span class="p">):</span>
+
+<span class="ne">AttributeError</span>: module &#39;geostatspy.geostats&#39; has no attribute &#39;sisim_3D&#39;
+</pre></div>
+</div>
 </div>
 </div>
 <p>Let’s plot all the iz layers of the first realization.</p>
@@ -834,7 +849,21 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b96fb428c6f51c4af6f28b8de268a5e1494288532104bde0f515ae9cbb3747bc.png" src="_images/b96fb428c6f51c4af6f28b8de268a5e1494288532104bde0f515ae9cbb3747bc.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">nrow</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">iz</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>   
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">if</span> <span class="n">iz</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">7</span>     <span class="n">GSLIB</span><span class="o">.</span><span class="n">locpix_st</span><span class="p">(</span><span class="n">sim_ik</span><span class="p">[</span><span class="n">ireal</span><span class="p">][</span><span class="n">iz</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;xmin&#39;</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;xmax&#39;</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;ymin&#39;</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;ymax&#39;</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;xsiz&#39;</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>             <span class="s1">&#39;Sequential Indicator Simulation - Realization #&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ireal</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; - iz = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">iz</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="n">cmap_facies</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">GSLIB</span><span class="o">.</span><span class="n">pixelplt_st</span><span class="p">(</span><span class="n">sim_ik</span><span class="p">[</span><span class="n">ireal</span><span class="p">][</span><span class="n">iz</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;xmin&#39;</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;xmax&#39;</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;ymin&#39;</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;ymax&#39;</span><span class="p">],</span><span class="n">grd3D</span><span class="p">[</span><span class="s1">&#39;xsiz&#39;</span><span class="p">],</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>                      <span class="s1">&#39;Sequential Indicator Simulation - Realization #&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">ireal</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; - iz = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">iz</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="s1">&#39;X(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Y(m)&#39;</span><span class="p">,</span><span class="s1">&#39;Facies&#39;</span><span class="p">,</span><span class="n">cmap_facies</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sim_ik&#39; is not defined
+</pre></div>
+</div>
+<img alt="_images/3a7dc027e3b839e7a30b4de37416032a24f36d8404632f4db0fd3c5a74383651.png" src="_images/3a7dc027e3b839e7a30b4de37416032a24f36d8404632f4db0fd3c5a74383651.png" />
 </div>
 </div>
 <p>Now let’s look at the center slices for a single realization of our 3D facies model,</p>
@@ -853,7 +882,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/56daceef3e5912d4fc7b453d0d6da03a6fe95274425a1b59bd0c7af48546b585.png" src="_images/56daceef3e5912d4fc7b453d0d6da03a6fe95274425a1b59bd0c7af48546b585.png" />
+<img alt="_images/6739a64edc104444f84ce93d2ea54e0e4117b5c4d1f98b67d06d661a4f9be01f.png" src="_images/6739a64edc104444f84ce93d2ea54e0e4117b5c4d1f98b67d06d661a4f9be01f.png" />
 </div>
 </div>
 </section>
@@ -919,7 +948,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a797c84a3efc9b0cd026b12ad401263ec76d667a7d7fabe8d3e50a7e6f529953.png" src="_images/a797c84a3efc9b0cd026b12ad401263ec76d667a7d7fabe8d3e50a7e6f529953.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">nreal</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">variomaj</span> <span class="o">=</span> <span class="mf">70.0</span><span class="p">;</span> <span class="n">variomin</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">;</span> <span class="n">variovert</span> <span class="o">=</span> <span class="mf">1.0</span>             <span class="c1"># porosity variogram, assumed same for shale and sand facies</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">porosity_vario</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">make_variogram3D</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span><span class="n">dip1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="n">variomaj</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="n">variomin</span><span class="p">,</span><span class="n">hvert1</span><span class="o">=</span><span class="n">variovert</span><span class="p">)</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">4</span>                                          <span class="c1"># minimum and maximum data for indicator kriging</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">nodmax</span> <span class="o">=</span> <span class="mi">10</span>                                                   <span class="c1"># maximum previously simulated nodes for indicator kriging</span>
+
+<span class="ne">NameError</span>: name &#39;geostats&#39; is not defined
+</pre></div>
+</div>
 </div>
 </div>
 <p>Let’s plot all the iz layers of the first realization.</p>
@@ -945,7 +985,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/21692d6cf37deeabbb3d31dccdc160a79651c38ced694ca6a55090aed6dabc0f.png" src="_images/21692d6cf37deeabbb3d31dccdc160a79651c38ced694ca6a55090aed6dabc0f.png" />
+<img alt="_images/748708f269e017d6534f5b0f3fd6451c18d6d479959c15439a97bb3fecf3c870.png" src="_images/748708f269e017d6534f5b0f3fd6451c18d6d479959c15439a97bb3fecf3c870.png" />
 </div>
 </div>
 <p>Now let’s look at the center slices for a single porosity realization,</p>
@@ -964,7 +1004,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9591ab314738bfaba95388889a9f1479c067ec41e841bfb7ecec591d1c18b9b8.png" src="_images/9591ab314738bfaba95388889a9f1479c067ec41e841bfb7ecec591d1c18b9b8.png" />
+<img alt="_images/6521b8fde79176aa4b16cea376c060e1467bedd20d9daef9a24c0c9e3afc934b.png" src="_images/6521b8fde79176aa4b16cea376c060e1467bedd20d9daef9a24c0c9e3afc934b.png" />
 </div>
 </div>
 </section>
