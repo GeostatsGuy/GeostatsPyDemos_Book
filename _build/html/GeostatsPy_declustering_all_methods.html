@@ -608,7 +608,7 @@ w(\bf{𝐮}_j) = \sum_{i_y = 1}^{n_y} \sum_{i_x = 1}^{n_x} \lambda_{j,ix,iy} \cd
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.78
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GeostatsPy version: 0.0.71
 </pre></div>
 </div>
 </div>
@@ -1166,7 +1166,7 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Estimated   10000 blocks 
-      average   0.0891648242566334  variance  0.0017161183202220997
+      average   0.08916381871701572  variance  0.001716058685217398
 </pre></div>
 </div>
 </div>
@@ -1216,7 +1216,7 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
       <td>0.115359</td>
       <td>5.736104</td>
       <td>3.423397</td>
-      <td>2.057207</td>
+      <td>2.057241</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1226,7 +1226,7 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
       <td>0.136425</td>
       <td>17.211462</td>
       <td>1.254062</td>
-      <td>1.542487</td>
+      <td>1.542512</td>
     </tr>
     <tr>
       <th>2</th>
@@ -1236,7 +1236,7 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
       <td>0.135810</td>
       <td>43.724752</td>
       <td>1.037802</td>
-      <td>1.170248</td>
+      <td>1.170267</td>
     </tr>
     <tr>
       <th>3</th>
@@ -1246,7 +1246,7 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
       <td>0.094414</td>
       <td>1.609942</td>
       <td>1.112225</td>
-      <td>1.938369</td>
+      <td>1.938401</td>
     </tr>
     <tr>
       <th>4</th>
@@ -1256,7 +1256,7 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
       <td>0.113049</td>
       <td>10.886001</td>
       <td>1.176394</td>
-      <td>1.964978</td>
+      <td>1.965010</td>
     </tr>
   </tbody>
 </table>
@@ -1297,16 +1297,14 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Porosity naive mean is 0.135.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Porosity declustered mean is 0.125.
+Porosity declustered mean is 0.125.
 Correction of 0.0742.
 
 Summary statistics of the declustering weights:
-DescribeResult(nobs=289, minmax=(-0.11154380045658627, 2.4301148927963636), mean=1.0, variance=0.3317473129698282, skewness=0.05096624432935356, kurtosis=-0.8372026953833722)
+DescribeResult(nobs=289, minmax=(-0.10447464028497624, 2.4301543951532585), mean=1.0, variance=0.331769922663696, skewness=0.05089008207065122, kurtosis=-0.8375034409311848)
 </pre></div>
 </div>
-<img alt="_images/7d536d69737300fa3833b82d37e3b395e71cc54683dac23c829786cc765b14ec.png" src="_images/7d536d69737300fa3833b82d37e3b395e71cc54683dac23c829786cc765b14ec.png" />
+<img alt="_images/4a427c1c701476cdd8c4d1e9ec59d15005fc1c824eb08d6d599187c267901785.png" src="_images/4a427c1c701476cdd8c4d1e9ec59d15005fc1c824eb08d6d599187c267901785.png" />
 </div>
 </div>
 <p>Recall, the kriging-based declustering weights integrate:</p>
@@ -1347,7 +1345,7 @@ DescribeResult(nobs=289, minmax=(-0.11154380045658627, 2.4301148927963636), mean
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fef57ec43a3619bb60345bccea1ef8108207bc5d4d9e6fa6d16db044a3b05e22.png" src="_images/fef57ec43a3619bb60345bccea1ef8108207bc5d4d9e6fa6d16db044a3b05e22.png" />
+<img alt="_images/98d01bc7e424e3b1d0f46b1b7b4ca987ce6555c1aec709bc1eaa5fc49f5199e7.png" src="_images/98d01bc7e424e3b1d0f46b1b7b4ca987ce6555c1aec709bc1eaa5fc49f5199e7.png" />
 </div>
 </div>
 <p>Add the weights to the original DataFrame.</p>
@@ -1396,8 +1394,8 @@ DescribeResult(nobs=289, minmax=(-0.11154380045658627, 2.4301148927963636), mean
       <td>0.115359</td>
       <td>5.736104</td>
       <td>3.423397</td>
-      <td>2.057207</td>
-      <td>4.989585</td>
+      <td>2.057241</td>
+      <td>4.988718</td>
     </tr>
     <tr>
       <th>1</th>
@@ -1407,7 +1405,7 @@ DescribeResult(nobs=289, minmax=(-0.11154380045658627, 2.4301148927963636), mean
       <td>0.136425</td>
       <td>17.211462</td>
       <td>1.254062</td>
-      <td>1.542487</td>
+      <td>1.542512</td>
       <td>1.283449</td>
     </tr>
     <tr>
@@ -1418,7 +1416,7 @@ DescribeResult(nobs=289, minmax=(-0.11154380045658627, 2.4301148927963636), mean
       <td>0.135810</td>
       <td>43.724752</td>
       <td>1.037802</td>
-      <td>1.170248</td>
+      <td>1.170267</td>
       <td>1.039822</td>
     </tr>
     <tr>
@@ -1429,7 +1427,7 @@ DescribeResult(nobs=289, minmax=(-0.11154380045658627, 2.4301148927963636), mean
       <td>0.094414</td>
       <td>1.609942</td>
       <td>1.112225</td>
-      <td>1.938369</td>
+      <td>1.938401</td>
       <td>1.675044</td>
     </tr>
     <tr>
@@ -1440,8 +1438,8 @@ DescribeResult(nobs=289, minmax=(-0.11154380045658627, 2.4301148927963636), mean
       <td>0.113049</td>
       <td>10.886001</td>
       <td>1.176394</td>
-      <td>1.964978</td>
-      <td>1.657704</td>
+      <td>1.965010</td>
+      <td>1.657993</td>
     </tr>
   </tbody>
 </table>
@@ -1483,13 +1481,13 @@ DescribeResult(nobs=289, minmax=(-0.11154380045658627, 2.4301148927963636), mean
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Porosity naive mean is 0.135.
 Porosity polygonal declustering mean is 0.122.
-Correction of 0.0938.
+Correction of 0.0939.
 
 Summary statistics of the declustering weights:
-DescribeResult(nobs=289, minmax=(0.012138, 4.989585), mean=1.0, variance=0.4472374804183195, skewness=1.8188548488761462, kurtosis=7.321556969433955)
+DescribeResult(nobs=289, minmax=(0.012138, 4.9887179999999995), mean=1.0, variance=0.44681492157900693, skewness=1.8060785761144078, kurtosis=7.229681691580751)
 </pre></div>
 </div>
-<img alt="_images/c03defdd732976d501654204fb8197521d447b20bb7714609a3e65cf0fa14cb9.png" src="_images/c03defdd732976d501654204fb8197521d447b20bb7714609a3e65cf0fa14cb9.png" />
+<img alt="_images/46bf4c9bee8a291be6c28679b884c26848593450960a4e13a5ace5556182d4b3.png" src="_images/46bf4c9bee8a291be6c28679b884c26848593450960a4e13a5ace5556182d4b3.png" />
 </div>
 </div>
 <p>The polygonal declustering weights integrate:</p>
