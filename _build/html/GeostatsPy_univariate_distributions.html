@@ -206,6 +206,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_MPS.html">Multiple Point Simulation</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
@@ -1352,7 +1354,7 @@ The mean is 0.15
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=261, minmax=(0.0588710426408954, 0.2422978845362023), mean=0.15035706160196555, variance=0.0024783238419715933, skewness=0.08071652694567066, kurtosis=-1.5618166076333853)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DescribeResult(nobs=np.int64(261), minmax=(np.float64(0.0588710426408954), np.float64(0.2422978845362023)), mean=np.float64(0.15035706160196555), variance=np.float64(0.0024783238419715933), skewness=np.float64(0.08071652694567066), kurtosis=np.float64(-1.5618166076333853))
 Porosity kurtosis is -1.56
 </pre></div>
 </div>
@@ -1389,7 +1391,7 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0304aa89909daf44171bf2478f2a6eff12d730a183ab136dd23aa4c7b19a4407.png" src="_images/0304aa89909daf44171bf2478f2a6eff12d730a183ab136dd23aa4c7b19a4407.png" />
+<img alt="_images/a8183f1789e797d716730e51483049e609aa56f5cc02bcb247384c21fdc6c5b8.png" src="_images/a8183f1789e797d716730e51483049e609aa56f5cc02bcb247384c21fdc6c5b8.png" />
 </div>
 </div>
 <p>What’s going on here? Looks quite bimodal.</p>
@@ -1411,7 +1413,7 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ab35886826178c6003300c45f3337709bfe5d2d6d6131e3e28df53a20e335e41.png" src="_images/ab35886826178c6003300c45f3337709bfe5d2d6d6131e3e28df53a20e335e41.png" />
+<img alt="_images/462d22ad295068afadafe8a60a5c4d3aefc7035a6b181994333a020e6f8110e0.png" src="_images/462d22ad295068afadafe8a60a5c4d3aefc7035a6b181994333a020e6f8110e0.png" />
 </div>
 </div>
 <p>See what happens when we use:</p>
@@ -1435,7 +1437,7 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96216c8bd9f48f48989eed49badc33d47aeab7c6ead9e2ebbd3645190d0bd727.png" src="_images/96216c8bd9f48f48989eed49badc33d47aeab7c6ead9e2ebbd3645190d0bd727.png" />
+<img alt="_images/b7d29c0023e5853bbe3c632473561572d2345f5ab4c6276c9dfd19a69f930306.png" src="_images/b7d29c0023e5853bbe3c632473561572d2345f5ab4c6276c9dfd19a69f930306.png" />
 </div>
 </div>
 <p>Now we can demonstrate normalized histograms with matplotlib.</p>
@@ -1459,7 +1461,7 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f7ee58d3c8c274716b6853d5a0a9f5162818f92065ad4a07e55decee8eaf87fd.png" src="_images/f7ee58d3c8c274716b6853d5a0a9f5162818f92065ad4a07e55decee8eaf87fd.png" />
+<img alt="_images/ab0dcf69242a06a888b8e823fc76193c335c3dfb4e4410e6127a9b2dc2507a72.png" src="_images/ab0dcf69242a06a888b8e823fc76193c335c3dfb4e4410e6127a9b2dc2507a72.png" />
 </div>
 </div>
 </section>
@@ -1491,7 +1493,7 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8e248aa6370c4c874fd26761084c54fefb4e4a08951e7432f3d984e8e5613b17.png" src="_images/8e248aa6370c4c874fd26761084c54fefb4e4a08951e7432f3d984e8e5613b17.png" />
+<img alt="_images/2874ef63b07b33a57850adf0bff4e3c69bd50acaafd2b523979068077e8e0ffd.png" src="_images/2874ef63b07b33a57850adf0bff4e3c69bd50acaafd2b523979068077e8e0ffd.png" />
 </div>
 </div>
 <p>Now we can use the Seaborn Python package to calculate and plot the PDF from our data.</p>
@@ -1507,7 +1509,7 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b3ff5f196410f884108fd2d18d9f73c6df5720ac471f50f5e52585a2eb074f92.png" src="_images/b3ff5f196410f884108fd2d18d9f73c6df5720ac471f50f5e52585a2eb074f92.png" />
+<img alt="_images/9684381d7fd89067c425d07e9079904501aba9d912c83d8151d18bac3ebd8fae.png" src="_images/9684381d7fd89067c425d07e9079904501aba9d912c83d8151d18bac3ebd8fae.png" />
 </div>
 </div>
 <p>What is the impact of changing the kernel width on the KDE PDF model?</p>
