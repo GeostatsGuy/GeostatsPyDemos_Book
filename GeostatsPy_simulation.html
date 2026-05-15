@@ -206,6 +206,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_MPS.html">Multiple Point Simulation</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
@@ -738,48 +740,48 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>660.0</td>
-      <td>569.0</td>
-      <td>0.0</td>
-      <td>0.078110</td>
-      <td>1.097682</td>
-      <td>0.093200</td>
+      <td>370.0</td>
+      <td>379.0</td>
+      <td>1.0</td>
+      <td>0.152883</td>
+      <td>90.600276</td>
+      <td>4.506457</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>790.0</td>
-      <td>129.0</td>
+      <td>440.0</td>
+      <td>929.0</td>
       <td>1.0</td>
-      <td>0.144097</td>
-      <td>7.153502</td>
-      <td>1.967602</td>
+      <td>0.136261</td>
+      <td>49.988412</td>
+      <td>3.911791</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>410.0</td>
-      <td>489.0</td>
+      <td>370.0</td>
+      <td>689.0</td>
       <td>1.0</td>
-      <td>0.129625</td>
-      <td>83.215347</td>
-      <td>4.421432</td>
+      <td>0.142434</td>
+      <td>218.419949</td>
+      <td>5.386420</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>740.0</td>
-      <td>879.0</td>
-      <td>1.0</td>
-      <td>0.150874</td>
-      <td>16.288411</td>
-      <td>2.790454</td>
+      <td>600.0</td>
+      <td>600.0</td>
+      <td>0.0</td>
+      <td>0.087710</td>
+      <td>1.826601</td>
+      <td>0.602457</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>700.0</td>
-      <td>900.0</td>
+      <td>640.0</td>
+      <td>929.0</td>
       <td>1.0</td>
-      <td>0.144936</td>
-      <td>20.634470</td>
-      <td>3.026963</td>
+      <td>0.157730</td>
+      <td>76.628367</td>
+      <td>4.338967</td>
     </tr>
   </tbody>
 </table>
@@ -800,7 +802,7 @@ document.write(`
 <span class="n">nx</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span> <span class="n">ny</span> <span class="o">=</span> <span class="mi">80</span><span class="p">;</span> <span class="n">xsiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">ysiz</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">xmn</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">ymn</span> <span class="o">=</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">nxdis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">nydis</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># grid specification</span>
 <span class="n">nreal</span> <span class="o">=</span> <span class="mi">3</span>                                                 <span class="c1"># number of realizations</span>
 <span class="n">ndmin</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">ndmax</span> <span class="o">=</span> <span class="mi">20</span>                                     <span class="c1"># number of data for each kriging system</span>
-<span class="n">vario</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">vario</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span><span class="n">nst</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">it1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">cc1</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">azi1</span><span class="o">=</span><span class="mf">45.0</span><span class="p">,</span><span class="n">hmaj1</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span><span class="n">hmin1</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
 <span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mi">999</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">999</span>
 <span class="n">sill</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 
@@ -835,7 +837,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e0346e2b754029923a1a82529df49bd06f08ea3353477c1b4bd5dc23daf5c5b7.png" src="_images/e0346e2b754029923a1a82529df49bd06f08ea3353477c1b4bd5dc23daf5c5b7.png" />
+<img alt="_images/8ba1763949ce114b6d16e52260ba8de72cc3bf32ee70552148a0ac2b8e414595.png" src="_images/8ba1763949ce114b6d16e52260ba8de72cc3bf32ee70552148a0ac2b8e414595.png" />
 </div>
 </div>
 </section>
