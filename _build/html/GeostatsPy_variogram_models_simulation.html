@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_MPS.html">Multiple Point Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
@@ -623,32 +624,32 @@ document.write(`
     <tr>
       <th>0</th>
       <td>105.0</td>
-      <td>5.000000</td>
+      <td>5.00000</td>
       <td>800.000000</td>
     </tr>
     <tr>
       <th>1</th>
       <td>505.0</td>
-      <td>5.000000</td>
+      <td>5.00000</td>
       <td>1000.000000</td>
     </tr>
     <tr>
       <th>2</th>
       <td>905.0</td>
-      <td>5.000000</td>
+      <td>5.00000</td>
       <td>1300.000000</td>
     </tr>
     <tr>
       <th>3</th>
       <td>-9999.0</td>
-      <td>0.111347</td>
-      <td>869.619081</td>
+      <td>0.50448</td>
+      <td>975.727116</td>
     </tr>
     <tr>
       <th>4</th>
       <td>-9999.0</td>
-      <td>-1.278348</td>
-      <td>763.466218</td>
+      <td>1.69420</td>
+      <td>983.922885</td>
     </tr>
   </tbody>
 </table>
@@ -726,7 +727,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/50c2a673fe64365adb2e343cd440a9de91e4e5cb3eb34b8cbe6bc37c131ab663.png" src="_images/50c2a673fe64365adb2e343cd440a9de91e4e5cb3eb34b8cbe6bc37c131ab663.png" />
+<img alt="_images/c50a9167f710305855b1cdb4203851040ed168d53b7efbc87966ef54101c598d.png" src="_images/c50a9167f710305855b1cdb4203851040ed168d53b7efbc87966ef54101c598d.png" />
 </div>
 </div>
 </section>
@@ -772,7 +773,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2516b0dc39cb6e9e281a0e0582793244e04766b4e00b236f07fb658732d77771.png" src="_images/2516b0dc39cb6e9e281a0e0582793244e04766b4e00b236f07fb658732d77771.png" />
+<img alt="_images/a5be15901f2d01287d7781cfd0af8b54bd479413e998a9eba0307a26d241d8b2.png" src="_images/a5be15901f2d01287d7781cfd0af8b54bd479413e998a9eba0307a26d241d8b2.png" />
 </div>
 </div>
 </section>
@@ -818,7 +819,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/962ba3dd43e9603f475f26e2e5dcd66a86c87f3da03daf25d1b2be9cd5b23896.png" src="_images/962ba3dd43e9603f475f26e2e5dcd66a86c87f3da03daf25d1b2be9cd5b23896.png" />
+<img alt="_images/6128aaa98c1826a60e4bf9a94af6cdad4aef36ae02e867f93623186ab42fb52e.png" src="_images/6128aaa98c1826a60e4bf9a94af6cdad4aef36ae02e867f93623186ab42fb52e.png" />
 </div>
 </div>
 </section>
@@ -941,7 +942,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6333efc21f188ab57f4ed0cfb7d280fc348cd71b4d1183f2091ed5d0fad42f5d.png" src="_images/6333efc21f188ab57f4ed0cfb7d280fc348cd71b4d1183f2091ed5d0fad42f5d.png" />
+<img alt="_images/a4b1aba0577ccf97cd4445c3b4fbfa6243308596e8d0d9c55385d11a6583fda4.png" src="_images/a4b1aba0577ccf97cd4445c3b4fbfa6243308596e8d0d9c55385d11a6583fda4.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with increasing short scale spatial continuity from exponential to spherical to Gaussian. But the long range spatial continuity does not change significantly.</p>
@@ -1003,7 +1004,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/183ce32d2d4550620efcac11759f96106c9633f2984758f08e7ae956ec285791.png" src="_images/183ce32d2d4550620efcac11759f96106c9633f2984758f08e7ae956ec285791.png" />
+<img alt="_images/b617e86d54360410ad51797fa16ddc6f502bcaddd679dbe77b848b6a53175263.png" src="_images/b617e86d54360410ad51797fa16ddc6f502bcaddd679dbe77b848b6a53175263.png" />
 </div>
 </div>
 <p>There is a clear difference in short scale continuity, with decreasing short scale spatial continuity with increase in relative nugget effect.</p>
