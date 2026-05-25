@@ -206,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_MPS.html">Multiple Point Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
@@ -656,33 +657,33 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
   <tbody>
     <tr>
       <th>0</th>
-      <td>200.0</td>
-      <td>600.0</td>
-      <td>0.164923</td>
+      <td>500.0</td>
+      <td>300.0</td>
+      <td>0.085487</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>250.0</td>
-      <td>879.0</td>
-      <td>0.139499</td>
+      <td>800.0</td>
+      <td>200.0</td>
+      <td>0.129700</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>110.0</td>
-      <td>49.0</td>
-      <td>0.088687</td>
+      <td>600.0</td>
+      <td>100.0</td>
+      <td>0.152042</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>750.0</td>
-      <td>189.0</td>
-      <td>0.138428</td>
+      <td>800.0</td>
+      <td>169.0</td>
+      <td>0.142415</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>200.0</td>
-      <td>400.0</td>
-      <td>0.125382</td>
+      <td>170.0</td>
+      <td>969.0</td>
+      <td>0.089944</td>
     </tr>
   </tbody>
 </table>
@@ -740,7 +741,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4943257c40d718d669eebd05318faa14ddd6d9e0ce6ed4c4bc123fde9200fd03.png" src="_images/4943257c40d718d669eebd05318faa14ddd6d9e0ce6ed4c4bc123fde9200fd03.png" />
+<img alt="_images/2cf08acfa1692b960ecd0d0d1722835d50e5c6b88555a810b6457ae3e9f3cf12.png" src="_images/2cf08acfa1692b960ecd0d0d1722835d50e5c6b88555a810b6457ae3e9f3cf12.png" />
 </div>
 </div>
 </section>
@@ -773,7 +774,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/774b16c65c5d8f69e611142de8dd7d0d49f04e1f44501150ee63f1fd279f16de.png" src="_images/774b16c65c5d8f69e611142de8dd7d0d49f04e1f44501150ee63f1fd279f16de.png" />
+<img alt="_images/5d3e9426b4fc9813972bea4e05702db7785fc555824e71398671172168ab6d21.png" src="_images/5d3e9426b4fc9813972bea4e05702db7785fc555824e71398671172168ab6d21.png" />
 </div>
 </div>
 <p>The e-type model is very similar to a kriging model, except for:</p>
@@ -815,7 +816,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1fba198ae50f7410eb622c1a881e690189404e0c248a846a4a8e35ffa8d7b90c.png" src="_images/1fba198ae50f7410eb622c1a881e690189404e0c248a846a4a8e35ffa8d7b90c.png" />
+<img alt="_images/3e63c3d593b391782bbc1f230a90d764efedd3a627b915e7e6fbcfcf9a7179cc.png" src="_images/3e63c3d593b391782bbc1f230a90d764efedd3a627b915e7e6fbcfcf9a7179cc.png" />
 </div>
 </div>
 </section>
@@ -849,7 +850,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7bf41927114aa593a843d35329acd296ad218412240b4bc8f7185b7a451bc67e.png" src="_images/7bf41927114aa593a843d35329acd296ad218412240b4bc8f7185b7a451bc67e.png" />
+<img alt="_images/a06ddd1abfdbea7aeb67950e0296c582c8990f24aec11d728707acb140a62734.png" src="_images/a06ddd1abfdbea7aeb67950e0296c582c8990f24aec11d728707acb140a62734.png" />
 </div>
 </div>
 </section>

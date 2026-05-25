@@ -207,7 +207,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Multiple Point Simulation</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
@@ -415,24 +414,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multiple Point Simulation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-custom-colorbar">Make Custom Colorbar</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-and-training-image">Loading Data and Training Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-circumstances-for-a-step-in-multiple-point-simulation">Set Up the Circumstances for a Step in Multiple Point Simulation</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-multiple-point-simulation">Perform Multiple Point Simulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-multiple-point-simulation">Perform Multiple Point Simulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-simulation-demonstration">Multiple Point Simulation Demonstration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-at-the-first-grid-cell-along-the-random-path">Simulation at the First Grid Cell Along the Random Path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-at-a-grid-cell-along-the-random-path">Simulation at a Grid Cell Along the Random Path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-at-the-last-grid-cell-along-the-random-path">Simulation at the Last Grid Cell Along the Random Path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-multiple-realizations">Compare Multiple Realizations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -506,12 +503,6 @@ document.write(`
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>                                      <span class="c1"># custom colorbar</span>
 <span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>                         <span class="c1"># categorical legend</span>
 
-<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interactive</span>                            <span class="c1"># widgets and interactivity</span>
-<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">widgets</span>                            
-<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Layout</span>
-<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Label</span>
-<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">VBox</span><span class="p">,</span> <span class="n">HBox</span>
-
 <span class="kn">from</span> <span class="nn">matplotlib.colors</span> <span class="kn">import</span> <span class="n">LinearSegmentedColormap</span>         
 <span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
@@ -520,20 +511,6 @@ document.write(`
     <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
 <span class="n">cmap</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">inferno</span>                                         <span class="c1"># color map</span>
 <span class="n">seed</span> <span class="o">=</span> <span class="mi">42</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>                                      <span class="c1"># custom colorbar</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="kn">import</span> <span class="nn">matplotlib.patches</span> <span class="k">as</span> <span class="nn">mpatches</span>                         <span class="c1"># categorical legend</span>
-<span class="ne">---&gt; </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interactive</span>                            <span class="c1"># widgets and interactivity</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">widgets</span>                            
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Layout</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;ipywidgets&#39;
 </pre></div>
 </div>
 </div>
@@ -662,7 +639,6 @@ document.write(`
     <span class="k">return</span> <span class="n">matches</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;facies_0&quot;</span><span class="p">:</span> <span class="n">p0</span><span class="p">,</span> <span class="s2">&quot;facies_1&quot;</span><span class="p">:</span> <span class="n">p1</span><span class="p">}</span>
 
 <span class="k">def</span> <span class="nf">template_match_probs_drop</span><span class="p">(</span><span class="n">sim</span><span class="p">,</span> <span class="n">TI</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">):</span>
-
     <span class="n">ny</span><span class="p">,</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">TI</span><span class="o">.</span><span class="n">shape</span>
     <span class="n">template</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">template</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>                                    <span class="c1"># no conditioning data → global TI prior</span>
@@ -760,6 +736,12 @@ document.write(`
     <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">&quot;Shale&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand&quot;</span><span class="p">])</span>
     <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Facies&quot;</span><span class="p">)</span>
 
+<span class="k">def</span> <span class="nf">just_plot_simulated</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="n">cmap</span><span class="p">,</span><span class="n">ax</span><span class="p">):</span>   
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span><span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">],</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">)</span> <span class="c1"># plot updated realization</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;X (m)&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Y (m)&quot;</span><span class="p">)</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">&quot;Shale&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand&quot;</span><span class="p">])</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Facies&quot;</span><span class="p">)</span>
+
 <span class="k">def</span> <span class="nf">copy_truth_values</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">truth</span><span class="p">,</span><span class="n">unsim</span><span class="p">,</span><span class="n">iunsim</span><span class="p">):</span>            <span class="c1"># copy truth values as &quot;previously simulated nodes&quot;, mimic partially simulated</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">iunsim</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unsim</span><span class="p">))</span>                               <span class="c1"># safety check</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -778,7 +760,6 @@ document.write(`
     <span class="n">outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                                         <span class="c1"># define the output choices corresponding to facies_0 and facies_1</span>
     <span class="n">probabilities</span> <span class="o">=</span> <span class="p">[</span><span class="n">matches_dict</span><span class="p">[</span><span class="s1">&#39;facies_0&#39;</span><span class="p">],</span> <span class="n">matches_dict</span><span class="p">[</span><span class="s1">&#39;facies_1&#39;</span><span class="p">]]</span> <span class="c1"># extract probabilities from the specific keys</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">outcomes</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probabilities</span><span class="p">)</span>        <span class="c1"># return a single random selection</span>
-
 
 <span class="k">def</span> <span class="nf">sample_facies_fast</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="n">p1</span><span class="p">):</span>                                <span class="c1"># draws a random 0 or 1 based on the facies probabilities in the dictionary.</span>
     <span class="n">outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>                                         <span class="c1"># define the output choices corresponding to facies_0 and facies_1</span>
@@ -872,7 +853,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ff367d7d0bc4e75ad8eaf13621eec2cd5f585c6d6744e5ca71ba9546dccc322b.png" src="_images/ff367d7d0bc4e75ad8eaf13621eec2cd5f585c6d6744e5ca71ba9546dccc322b.png" />
+<img alt="_images/29d3d94b3e0f790b48d4b066eb6d1425c814f46e249ab0776e993d52c97f2c02.png" src="_images/29d3d94b3e0f790b48d4b066eb6d1425c814f46e249ab0776e993d52c97f2c02.png" />
 </div>
 </div>
 </section>
@@ -920,28 +901,61 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1f5d493de20b686f339bfbeca13303d31a5ce578339086c0d7e7b0555541d148.png" src="_images/1f5d493de20b686f339bfbeca13303d31a5ce578339086c0d7e7b0555541d148.png" />
+<img alt="_images/5d75e6f699efe51915e0f921c1e571bee19f6caeb2aa94a8647fe0d299f61712.png" src="_images/5d75e6f699efe51915e0f921c1e571bee19f6caeb2aa94a8647fe0d299f61712.png" />
 </div>
 </div>
-</section>
 </section>
 <section id="perform-multiple-point-simulation">
-<h1>Perform Multiple Point Simulation<a class="headerlink" href="#perform-multiple-point-simulation" title="Permalink to this heading">#</a></h1>
-<p>Multiple point simulation is applied to sample the random variable,</p>
+<h2>Perform Multiple Point Simulation<a class="headerlink" href="#perform-multiple-point-simulation" title="Permalink to this heading">#</a></h2>
+<p>Multiple point simulation is applied to calculate stochastic categorical realizations conditional to available data. The caculation of a realization  can be concisely expressed as a joint sampling of the random function,</p>
 <div class="math notranslate nohighlight">
 \[
 Z(\bf{u}), \bf{u} \in AOI
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(AOI\)</span> is the set of all grid cells in the simulation model, and <span class="math notranslate nohighlight">\(Z\)</span> is the feature of interest.</p>
+<p>where <span class="math notranslate nohighlight">\(\bf{u}\)</span> is a location vector, <span class="math notranslate nohighlight">\(AOI\)</span> is the set of all grid cells in the simulation model, and <span class="math notranslate nohighlight">\(Z\)</span> is the feature of interest.</p>
+<p>This doesn’t look too difficult, so let’s expand it to gain an appreciation for the size of the problem.</p>
+<div class="math notranslate nohighlight">
+\[
+P\big(Z(\mathbf{u}_1),Z(\mathbf{u}_1),\ldots Z(\mathbf{u}_{N-1}),Z(\mathbf{u}_N)\big) 
+\]</div>
+<p>This is a <span class="math notranslate nohighlight">\(N\)</span> dimensional probability density function where <span class="math notranslate nohighlight">\(N\)</span> is commonly greater than one million grid cells; therefore, this is typically a vast solution space and this sampling is not possible.</p>
+<p>We use the recursive application of the multiplication rule, <span class="math notranslate nohighlight">\(P(A,B) = P(A \mid B)\,P(B)\)</span> i.e., chain rule of probability, to make this practical,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P\big(Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_N)\big)
+&amp;= P\big(Z(\mathbf{u}_N)\mid Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_{N-1})\big)\, P\big(Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_{N-1})\big) \\
+&amp;= P\big(Z(\mathbf{u}_N)\mid Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_{N-1})\big)\,
+   P\big(Z(\mathbf{u}_{N-1})\mid Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_{N-2})\big)\,
+   P\big(Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_{N-2})\big) \\
+&amp;= P\big(Z(\mathbf{u}_N)\mid Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_{N-1})\big)\,
+   P\big(Z(\mathbf{u}_{N-1})\mid Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_{N-2})\big)\,
+   \cdots \,
+   P\big(Z(\mathbf{u}_2)\mid Z(\mathbf{u}_1)\big)\,
+   P\big(Z(\mathbf{u}_1)\big)
+\end{align*}
+\end{split}\]</div>
+<p>In words, the sequential simulation workflow proceeds by,</p>
 <ol class="arabic simple">
-<li><p><strong>Define the multiple point template</strong> (mps_template) - the template is represented by a 2D array <span class="math notranslate nohighlight">\([ n_{points}, \Delta^{ix,iy} ]\)</span>. For example, 2 nodes is the unknown location, <span class="math notranslate nohighlight">\(\Delta^{ix}_0 = 0\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_0 = 0\)</span>, with one other location relative to the unknown location, e.g., <span class="math notranslate nohighlight">\(\Delta^{ix}_1 = -1\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_1 = 1\)</span> is up one cell and left one cell.</p></li>
+<li><p>Monte Carlo simulate at the first grid cell location, <span class="math notranslate nohighlight">\(\bf{u}_1\)</span> from the marginal probability density function, <span class="math notranslate nohighlight">\(P\big(Z(\mathbf{u}_1)\big)\)</span></p></li>
+<li><p>Monte Carlo simulate at the second grid cell location, <span class="math notranslate nohighlight">\(\bf{u}_2\)</span> from the conditional probability density function, <span class="math notranslate nohighlight">\(P\big(Z(\mathbf{u}_2)\mid Z(\mathbf{u}_1)\big)\)</span></p></li>
+<li><p>Monte Carlo simulate at the third grid cell location, <span class="math notranslate nohighlight">\(\bf{u}_3\)</span> from the conditional probability density function, <span class="math notranslate nohighlight">\(P\big(Z(\mathbf{u}_3)\mid Z(\mathbf{u}_2), Z(\mathbf{u}_1)\big)\)</span></p></li>
 </ol>
-<p><span class="math notranslate nohighlight">\(\quad\)</span> The multple point template is defined as,</p>
+<p>Given this sequential simulation paradigm, now let’s walk through the steps in the case of multiple point simulation. Note, the multiple point template, training image and data events are applied to calculate these marginal and conditional probablities to support our Monte Carlo simulation of local realizations that we put together to calculate the realization over all grid cells. Here are the steps with implementation details,</p>
+<ol class="arabic simple">
+<li><p><strong>Define the multiple point template</strong> - the template is represented by a 2D array <span class="math notranslate nohighlight">\([ n_{points}, \Delta^{ix,iy} ]\)</span>. For example, 2 nodes is the unknown location, <span class="math notranslate nohighlight">\(\Delta^{ix}_0 = 0\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_0 = 0\)</span>, with one other location relative to the unknown location, e.g., <span class="math notranslate nohighlight">\(\Delta^{ix}_1 = -1\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_1 = 1\)</span> is up one cell and left one cell.</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> The multiple point template is defined as,</p>
 <div class="math notranslate nohighlight">
 \[
 \tau = \{\bf{h}_{1}, \bf{h}_{2}, \ldots, \bf{h}_{m}\}
 \]</div>
-<p><span class="math notranslate nohighlight">\(\quad\)</span> where each <span class="math notranslate nohighlight">\(\bf{h}_i\)</span> is an offset in cells from the unknown location, <span class="math notranslate nohighlight">\(\Delta^{ix}_i, \Delta^{iy}_i,\)</span>.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> where each <span class="math notranslate nohighlight">\(\bf{h}_i\)</span> is an offset in grid cells from the unknown location, <span class="math notranslate nohighlight">\(\Delta^{ix}_i, \Delta^{iy}_i,\)</span>.</p>
+<figure style="text-align: center;">
+  <img src="_static/mps/mp_template.png" style="display: block; margin: 0 auto; width: 30%;">
+  <figcaption style="text-align: center;"> Example multiple point template with 5 points, including the tail, unknown, location.
+</figcaption>
+</figure>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> For the example, below we have a 5 point multiple point template with the unknown location and all the adjacent cells on each face,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -958,22 +972,31 @@ Z(\bf{u}), \bf{u} \in AOI
 0 &amp; 0 \\
 -1 &amp; 0 \\
 1 &amp; 0 \\
-0 &amp; 1 \\
-0 &amp; -1
+0 &amp; -1 \\
+0 &amp; 1
 \end{bmatrix}
 \end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> For clarity, here is an illustration of this multiple point template,</p>
+<figure style="text-align: center;">
+  <img src="_static/mps/mp_template_verysimple.png" style="display: block; margin: 0 auto; width: 10%;">
+  <figcaption style="text-align: center;"> Example multiple point template with 5 points, including the tail, unknown, location, and adjacent cells on each face.
+</figcaption>
+</figure>
 <ol class="arabic simple" start="2">
-<li><p><strong>Go to a location along the random path</strong> - sequential visit grid nodes (without assigned data) along the random path. The random (instead of ordered) path is prefered to avoid path artifacts such as smearing of values along the path that will appear as striations, e.g., like you would see in an agricultural crop from an airplane window, due to variations in seeding and other treatments along the path of the tractor.</p></li>
+<li><p><strong>Visit a location along the random path</strong> - sequentially visit grid cells (without assigned data) along the random path. The random (instead of ordered) path is prefered to avoid path artifacts such as smearing of values along the path that will appear as striations, e.g., like you would see in an cereal crop field from an airplane window, due to variations in seeding and other treatments along the path of the tractor.</p></li>
 </ol>
-<p><span class="math notranslate nohighlight">\(\quad\)</span> At a simulation step <span class="math notranslate nohighlight">\(k\)</span>, condition information includes,</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> At grid cell <span class="math notranslate nohighlight">\(k\)</span>, along the random path conditioning information includes,</p>
 <ul class="simple">
-<li><p>hard data assigned to nearest grid cells, <span class="math notranslate nohighlight">\(z(\bf{u_{\alpha}}), \quad \forall \quad \alpha = 1, \ldots, n_{data}\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of data.</p></li>
-<li><p>previously simulated nodes,<span class="math notranslate nohighlight">\(z(\bf{u_{\beta}}), \quad \forall \quad \beta = 1, \ldots, n_{sim}\)</span>, where <span class="math notranslate nohighlight">\(n_{sim}\)</span> is the number of previously simulated nodes.</p></li>
+<li><p>hard data assigned to nearest grid cells, <span class="math notranslate nohighlight">\(z(\bf{u_{\alpha}}), \quad \forall \quad \alpha = 1, \ldots, n_{data}(\bf{u}_k)\)</span>, where <span class="math notranslate nohighlight">\(n_{data}(\bf{u}_k)\)</span> is the number of data conditioning grid cell, <span class="math notranslate nohighlight">\(\bf{u}_k\)</span></p></li>
+<li><p>previously simulated grid cells, <span class="math notranslate nohighlight">\(z(\bf{u_{\beta}}), \quad \forall \quad \beta = 1, \ldots, n_{sim}\)</span>, where <span class="math notranslate nohighlight">\(n_{sim}(\bf{u}_k)\)</span> is the number of previously simulated grid cells conditioning grid cell, <span class="math notranslate nohighlight">\(\bf{u}_k\)</span></p></li>
 </ul>
 <ol class="arabic simple" start="3">
-<li><p><strong>Extract the multiple point event</strong> - at the current location along the random path apply the multiple point template, <span class="math notranslate nohighlight">\(\tau\)</span>, and extract the multple point event from the simulation model.</p></li>
+<li><p><strong>Extract the multiple point data event</strong> - at the current location along the random path apply the multiple point template, <span class="math notranslate nohighlight">\(\tau\)</span>, and extract the multple point data event from the simulation model for template locations, <span class="math notranslate nohighlight">\(\bf{u}_k+\bf{h}_1 \ldots \bf{u}_k + \bf{h}_m\)</span>.</p></li>
 </ol>
-<p><span class="math notranslate nohighlight">\(\quad\)</span> For a target location <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, the multiple-point event (data event) is the set of values extracted from the simulation grid at the template, <span class="math notranslate nohighlight">\(\tau\)</span>, locations:</p>
+<ul class="simple">
+<li><p>note, the first point in the template, <span class="math notranslate nohighlight">\(\mathbf{u}_k\)</span>, is dropped from the multiple point data event as it is unknown and we are going to calculate the conditional probability distribution for it given the data event.</p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> For a grid cell location along the random path, <span class="math notranslate nohighlight">\(\mathbf{u}_k\)</span>, the multiple-point event (data event) is the set of values extracted from the simulation grid at the template, <span class="math notranslate nohighlight">\(\tau\)</span>, locations:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{d}(\mathbf{\bf{u}_k}) =
@@ -984,24 +1007,39 @@ z(\mathbf{\bf{u}_k}+\mathbf{h}_2),
 z(\mathbf{\bf{u}_k}+\mathbf{h}_m)
 \Big)
 \]</div>
-<p><span class="math notranslate nohighlight">\(\quad\)</span> If any of the template, <span class="math notranslate nohighlight">\(\tau\)</span>, locations do not have a previously simulated node nor data, then it is dropped from the template.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> Here is an example 5 point data event,</p>
+<figure style="text-align: center;">
+  <img src="_static/mps/data_event.png" style="display: block; margin: 0 auto; width: 50%;">
+  <figcaption style="text-align: center;"> Example data event for the previous multiple point template with 5 points.
+</figcaption>
+</figure>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> If any of the template, <span class="math notranslate nohighlight">\(\tau\)</span>, grid cells do not have a previously simulated node nor data, then it is dropped from the template.</p>
 <ul class="simple">
-<li><p>note, for the early nodes along the random path it is quite likely that non of the locations, <span class="math notranslate nohighlight">\(i = 1, \ldots, m\)</span> in the multiple point template are informed. In this case, all locations in the training image match and the resulting probability for each facies are the global proportions from the training image (but I’m getting ahead of myself!)</p></li>
+<li><p>For example, here is a reduced data event template,</p></li>
+</ul>
+<figure style="text-align: center;">
+  <img src="_static/mps/data_event_reduced.png" style="display: block; margin: 0 auto; width: 45%;">
+  <figcaption style="text-align: center;"> Example reduced data event for the previous multiple point template with 4 points given 1 point was uninformed in the simulated grid by data nor previously simulated grid cell and is dropped.
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>note, for the early nodes along the random path it is quite likely that none of the locations, <span class="math notranslate nohighlight">\(i = 1, \ldots, m\)</span> in the multiple point template are informed by data nor previously simulated grid cells</p></li>
+<li><p>in this null data event case, all grid cells in the training image match and the resulting condition probability density function for each facies are the global proportions from the training image. But I’m getting ahead of myself as I demonstrate this below.</p></li>
 </ul>
 <ol class="arabic simple" start="4">
-<li><p><strong>Calculate the conditional distribution from the training image</strong> - scan the training image for replicates of the multiple point event, and pool the observed feature values at the first template location,</p></li>
+<li><p><strong>Calculate the conditional distribution from the training image</strong> - scan the training image for replicates of the multiple point data event, and pool the observed feature categorical values at the first template location, <span class="math notranslate nohighlight">\(\bf{u}_k\)</span>,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
 Z(\mathbf{u}_k) \sim f\Big(z(\mathbf{u}_k) \mid \mathbf{d}(\mathbf{u}_k)\Big)
 \]</div>
-<p><span class="math notranslate nohighlight">\(\quad\)</span> For categorical variables, this is often written as:</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> For categorical feature we can further specify the conditional probability density function at grid cell location <span class="math notranslate nohighlight">\(\mathbf{u}_k\)</span> along the random path as,</p>
 <div class="math notranslate nohighlight">
 \[
 f_{z(\bf{u}_k)}) = P\Big(Z(\mathbf{u}_k) = C_k \mid \mathbf{d}(\mathbf{u}_k)\Big)
 \]</div>
 <ol class="arabic simple" start="5">
-<li><p><strong>Monte Carlo simulation of a new realization at the current node</strong> - at simulation step <span class="math notranslate nohighlight">\(k\)</span>, let the current unsimulated node be denoted by:</p></li>
+<li><p><strong>Monte Carlo simulation of a new realization at the current grid cell</strong> - we have calculated the conditional probability density function, <span class="math notranslate nohighlight">\(f_{z(\bf{u}_k)})\)</span>, the final step is to perform Monte Carlo simulation, random sampling from this conditional probability density function to calculate a local realization <span class="math notranslate nohighlight">\(z^{\ell}(\bf{u}_k)\)</span>,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
@@ -1009,19 +1047,42 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 \]</div>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> where <span class="math notranslate nohighlight">\(p\)</span> is a random number, <span class="math notranslate nohighlight">\(p \sim U[0,1]\)</span></p>
 <ol class="arabic simple" start="6">
-<li><p><strong>Sequential update of the conditioning set</strong> - after simulation at location <span class="math notranslate nohighlight">\(\bf{u}_k\)</span>, this simulated value is treated as data for any subsequent nodes along the random path.</p></li>
+<li><p><strong>Sequential update of the conditioning set</strong> - after Monte Carlo simulation at location <span class="math notranslate nohighlight">\(\bf{u}_k\)</span>, this simulated value, <span class="math notranslate nohighlight">\(z^{\ell}(\bf{u}_k)\)</span> is added to the grid as a previously simulated grid cell and is treated as data for any subsequent nodes along the random path.</p></li>
+<li><p><strong>Go to the next grid cell along the random path</strong> - return to step 2 and proceed with the next grid cell along the random path. Repeat until all grid cells without assigned conditioning data have been visited.</p></li>
 </ol>
-<p>Return to step 2 and proceed with the next node along the random path.</p>
+</section>
 <section id="multiple-point-simulation-demonstration">
 <h2>Multiple Point Simulation Demonstration<a class="headerlink" href="#multiple-point-simulation-demonstration" title="Permalink to this heading">#</a></h2>
-<p>In the follow code you can run a multiple point realization with a lot of visualizations to demonstrate the step-by-step approacch of sequential simuation with multiple point simulation.</p>
+<p>In the follow code you can calculate a multiple point simulation realization and stop at any grid cell along the random path to visualize,</p>
 <ul class="simple">
-<li><p>run the sequential simulation approach along the random path up to the <span class="math notranslate nohighlight">\(current_node\)</span> that you can specify from 1 (first node on the random path) with only</p></li>
+<li><p>the current simulation grid with data and previously simulated grid cells all asigned as conditioning</p></li>
+<li><p>the random path order represented by a random path index</p></li>
+<li><p>the location of the current grid cell along the random path</p></li>
+<li><p>the data event extracted at the current grid cell</p></li>
+<li><p>the matches for the data event in the training image</p></li>
+<li><p>the updated simulation model with the local realization at the current grid cell added</p></li>
+</ul>
+<p>You can update this line to change the current grid cell,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">current_node</span> <span class="o">=</span> <span class="mi">580</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>select 1 to observe the multiple point sequential simulation process at the first grid cell along the random path to see the case with null data event and all grid cells in the training image match</p></li>
+<li><p>select 580 to observe the multiple point sequential simulation process at the last grid cell along the random path to see the case with a data event that includes all points in the multiple point template, an very few matches found in the training image.</p></li>
+</ul>
+<p>Note, it is possible that data event is not found in the training image, the standard practice is to sequentially drop grid cells from the data event until matches are found to facilitate calculation of the conditional probability distribution.</p>
+</section>
+<section id="simulation-at-the-first-grid-cell-along-the-random-path">
+<h2>Simulation at the First Grid Cell Along the Random Path<a class="headerlink" href="#simulation-at-the-first-grid-cell-along-the-random-path" title="Permalink to this heading">#</a></h2>
+<p>Let’s look at the case of simulation at the first grid cell along the random path,</p>
+<ul class="simple">
+<li><p>due to the lack of previously simulated grid cells nor data in the template the data event is null</p></li>
+<li><p>all locations in the training image match</p></li>
+<li><p>the conditional probability density function is the global proportions of sand and shale</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">current_node</span> <span class="o">=</span> <span class="mi">580</span>                                            <span class="c1"># current simulation node (set from 1 to 580)</span>
-<span class="c1"># seed = 42</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">current_node</span> <span class="o">=</span> <span class="mi">1</span>                                             <span class="c1"># current simulation node (set from 1 to 580)</span>
 
 <span class="n">mps_template</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>   <span class="c1"># current node</span>
@@ -1036,10 +1097,9 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 <span class="p">]</span>
 
 <span class="n">cur_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
-
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous nodes</span>
+<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous nodes</span>
     <span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">inode</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
         <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1081,26 +1141,267 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 <span class="n">ax4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>                                   <span class="c1"># plot the updates simulated realization</span>
 <span class="n">plot_simulated</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">proportions</span><span class="o">=</span><span class="n">proportions</span><span class="p">,</span><span class="n">xmin</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span>
     <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MPS Simulation with Next Sequential Realization&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.4</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># grid lines</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y_edges</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> 
-
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;my_subplot_figure.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span><span class="n">bbox_inches</span><span class="o">=</span><span class="s2">&quot;tight&quot;</span><span class="p">)</span>
-
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9fc24654875e9f1387cd9ba32fa1239f9d7fc20f931866ffa5c0ce2d06a19cbb.png" src="_images/9fc24654875e9f1387cd9ba32fa1239f9d7fc20f931866ffa5c0ce2d06a19cbb.png" />
+<img alt="_images/f1b74badc3fbbfffa21f5d68e6597efd22703a0a341385ee1eba6f5128c88a10.png" src="_images/f1b74badc3fbbfffa21f5d68e6597efd22703a0a341385ee1eba6f5128c88a10.png" />
+</div>
+</div>
+</section>
+<section id="simulation-at-a-grid-cell-along-the-random-path">
+<h2>Simulation at a Grid Cell Along the Random Path<a class="headerlink" href="#simulation-at-a-grid-cell-along-the-random-path" title="Permalink to this heading">#</a></h2>
+<p>Let’s look at the case of simulation at a grid cell about half way along the random path,</p>
+<ul class="simple">
+<li><p>the data event is partial, all grid cells in the multiple point template are not informed in the simulation grid</p></li>
+<li><p>there is a variable number of matches in the training image (the case of current_node = 300 there are only 31 matches)</p></li>
+<li><p>the conditional probability density function the proportion of shale and sand at the training image matches (red dots in the plot)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">current_node</span> <span class="o">=</span> <span class="mi">300</span>                                           <span class="c1"># current simulation node (set from 1 to 580)</span>
+
+<span class="n">mps_template</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>   <span class="c1"># current node</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>  <span class="c1"># left</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>   <span class="c1"># right</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>   <span class="c1"># up</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># down</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># lower left</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>  <span class="c1"># upper left</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>  <span class="c1"># upper right</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># lower right</span>
+<span class="p">]</span>
+
+<span class="n">cur_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous nodes</span>
+    <span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">inode</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+        <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">nmatch</span><span class="p">,</span> <span class="n">current_template</span> <span class="o">=</span> <span class="n">template_match_probs_drop</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span> <span class="n">TI</span><span class="p">,</span> <span class="n">current_mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="o">+</span><span class="n">inode</span><span class="p">)</span>
+    <span class="n">facies</span> <span class="o">=</span> <span class="n">sample_facies_fast</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="n">p1</span><span class="p">)</span>
+    <span class="n">cur_sim</span><span class="p">[</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">facies</span>
+
+<span class="n">inode</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">-</span><span class="mi">1</span>                                       <span class="c1"># now simulate the last node with all visualizations</span>
+<span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">inode</span><span class="p">]</span>
+    
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                                   <span class="c1"># plot the current simulation with data event for next node</span>
+<span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+    <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">iy</span><span class="p">,</span> <span class="n">ix</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">unsim</span><span class="p">):</span>                         <span class="c1"># label the random path</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">ny</span> <span class="o">-</span> <span class="p">(</span><span class="n">n_unsim</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">ix</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">;</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="p">((</span><span class="n">ny</span> <span class="o">-</span> <span class="n">iy</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cell_size</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">cell_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span><span class="n">y0</span> <span class="o">+</span> <span class="n">cell_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
+
+<span class="n">x_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">nx</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span> <span class="n">y_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">ny</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># grid lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y_edges</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.4</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                                   <span class="c1"># plot the training image with all the data event matches</span>
+<span class="n">matches</span> <span class="o">=</span> <span class="n">find_template_matches_TI</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">TI</span><span class="p">,</span><span class="n">current_mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Training Image with Data Event Matches&quot;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap_facies</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># grid lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y_edges</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> 
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>                                   <span class="c1"># plot the observed fequencies at the matches</span>
+<span class="n">proportions</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">n_matches</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plot_mps_pie</span><span class="p">(</span><span class="n">n_matches</span><span class="p">,</span> <span class="n">proportions</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Shale&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand&quot;</span><span class="p">),</span><span class="n">colors</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span> <span class="s2">&quot;gold&quot;</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Training Image Data Event Proportions&quot;</span><span class="p">)</span>
+
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>                                   <span class="c1"># plot the updates simulated realization</span>
+<span class="n">plot_simulated</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">proportions</span><span class="o">=</span><span class="n">proportions</span><span class="p">,</span><span class="n">xmin</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MPS Simulation with Next Sequential Realization&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.4</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># grid lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y_edges</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f778c403d2b9a5d58bdcb8bd999354356f0e45a69b0f753b962a9fec1f70601a.png" src="_images/f778c403d2b9a5d58bdcb8bd999354356f0e45a69b0f753b962a9fec1f70601a.png" />
+</div>
+</div>
+</section>
+<section id="simulation-at-the-last-grid-cell-along-the-random-path">
+<h2>Simulation at the Last Grid Cell Along the Random Path<a class="headerlink" href="#simulation-at-the-last-grid-cell-along-the-random-path" title="Permalink to this heading">#</a></h2>
+<p>Let’s look at the case of simulation at the last grid cell along the random path,</p>
+<ul class="simple">
+<li><p>the data event is complete, all grid cells in the multiple point template are informed in the simulation grid</p></li>
+<li><p>there are 78 data event matches in the training image</p></li>
+<li><p>the conditional probability density function the proportion of shale and sand at the training image matches (red dots in the plot)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">current_node</span> <span class="o">=</span> <span class="mi">580</span>                                           <span class="c1"># current simulation node (set from 1 to 580)</span>
+
+<span class="n">mps_template</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>   <span class="c1"># current node</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>  <span class="c1"># left</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>   <span class="c1"># right</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>   <span class="c1"># up</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># down</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># lower left</span>
+    <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>  <span class="c1"># upper left</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>  <span class="c1"># upper right</span>
+    <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># lower right</span>
+<span class="p">]</span>
+
+<span class="n">cur_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous nodes</span>
+    <span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">inode</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+        <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+    <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">nmatch</span><span class="p">,</span> <span class="n">current_template</span> <span class="o">=</span> <span class="n">template_match_probs_drop</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span> <span class="n">TI</span><span class="p">,</span> <span class="n">current_mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="o">+</span><span class="n">inode</span><span class="p">)</span>
+    <span class="n">facies</span> <span class="o">=</span> <span class="n">sample_facies_fast</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="n">p1</span><span class="p">)</span>
+    <span class="n">cur_sim</span><span class="p">[</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">facies</span>
+
+<span class="n">inode</span> <span class="o">=</span> <span class="n">current_node</span><span class="o">-</span><span class="mi">1</span>                                       <span class="c1"># now simulate the last node with all visualizations</span>
+<span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">inode</span><span class="p">]</span>
+    
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                                   <span class="c1"># plot the current simulation with data event for next node</span>
+<span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+    <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">iy</span><span class="p">,</span> <span class="n">ix</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">unsim</span><span class="p">):</span>                         <span class="c1"># label the random path</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">ny</span> <span class="o">-</span> <span class="p">(</span><span class="n">n_unsim</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">ix</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">;</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="p">((</span><span class="n">ny</span> <span class="o">-</span> <span class="n">iy</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cell_size</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">cell_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span><span class="n">y0</span> <span class="o">+</span> <span class="n">cell_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
+
+<span class="n">x_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">nx</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span> <span class="n">y_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">ny</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># grid lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y_edges</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.4</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>                                   <span class="c1"># plot the training image with all the data event matches</span>
+<span class="n">matches</span> <span class="o">=</span> <span class="n">find_template_matches_TI</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">TI</span><span class="p">,</span><span class="n">current_mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Training Image with Data Event Matches&quot;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span><span class="n">cmap</span> <span class="o">=</span> <span class="n">cmap_facies</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># grid lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y_edges</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> 
+
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>                                   <span class="c1"># plot the observed fequencies at the matches</span>
+<span class="n">proportions</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">n_matches</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">plot_mps_pie</span><span class="p">(</span><span class="n">n_matches</span><span class="p">,</span> <span class="n">proportions</span><span class="p">,</span> <span class="n">ax3</span><span class="p">,</span><span class="n">labels</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Shale&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand&quot;</span><span class="p">),</span><span class="n">colors</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;lightgrey&quot;</span><span class="p">,</span> <span class="s2">&quot;gold&quot;</span><span class="p">),</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Training Image Data Event Proportions&quot;</span><span class="p">)</span>
+
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>                                   <span class="c1"># plot the updates simulated realization</span>
+<span class="n">plot_simulated</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">proportions</span><span class="o">=</span><span class="n">proportions</span><span class="p">,</span><span class="n">xmin</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MPS Simulation with Next Sequential Realization&quot;</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.4</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># grid lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y_edges</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7ae5188aef995ffe015c6803f764ca47f106982a4f7e6c577961188090a2e5aa.png" src="_images/7ae5188aef995ffe015c6803f764ca47f106982a4f7e6c577961188090a2e5aa.png" />
+</div>
+</div>
+</section>
+<section id="compare-multiple-realizations">
+<h2>Compare Multiple Realizations<a class="headerlink" href="#compare-multiple-realizations" title="Permalink to this heading">#</a></h2>
+<p>Now let’s specify 4 random seeds (integers) and repeat the code above 4 times and just visualize the simulated realizations.</p>
+<ul class="simple">
+<li><p>I know that I should streamline this code by adding a proper multiple point simulation function to GeostatsPy.</p></li>
+</ul>
+<p>For now I reuse the code above as we can see all the components to make new realizations, the change in random number seed,</p>
+<ul class="simple">
+<li><p>changes the random path through the grid cells without assigned data</p></li>
+<li><p>changes the Monte Carlo simulations from the conditional probability density functions at each grid cell without assigned data</p></li>
+</ul>
+<p>For each realization let’s visualize the,</p>
+<ul class="simple">
+<li><p>the facies realizations at each grid cell</p></li>
+<li><p>the data locations to confirm the realizations are conditional</p></li>
+<li><p>the random path to confirm that the random path changes for each realization</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">current_node2</span> <span class="o">=</span> <span class="mi">580</span>
+<span class="n">seeds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
+<span class="n">mps_template2</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>                                    <span class="c1"># plot the updates simulated realization</span>
+    <span class="n">total_step</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">ny</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">total_step</span> <span class="o">-</span> <span class="n">current_node2</span>
+    
+    <span class="n">sim2</span><span class="p">,</span> <span class="n">unsim2</span><span class="p">,</span> <span class="n">cells_empty2</span>  <span class="o">=</span> <span class="n">remove_unsimulated_cells_fixed</span><span class="p">(</span><span class="n">truth</span><span class="p">,</span><span class="n">df</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="p">,</span><span class="n">n_unsim</span><span class="p">,</span><span class="n">seed</span><span class="o">=</span><span class="n">seeds</span><span class="p">[</span><span class="n">l</span><span class="p">])</span> <span class="c1"># assign only data and random path</span>
+    
+    <span class="n">cur_sim2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sim2</span><span class="p">)</span>
+    
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seeds</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous nodes</span>
+        <span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim2</span><span class="p">[</span><span class="n">inode</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim2</span><span class="p">,</span><span class="n">mps_template2</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+            <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">p0</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">nmatch</span><span class="p">,</span> <span class="n">current_template</span> <span class="o">=</span> <span class="n">template_match_probs_drop</span><span class="p">(</span><span class="n">cur_sim2</span><span class="p">,</span> <span class="n">TI</span><span class="p">,</span> <span class="n">current_mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c1"># np.random.seed(seed=seed+inode)</span>
+        <span class="n">facies</span> <span class="o">=</span> <span class="n">sample_facies_fast</span><span class="p">(</span><span class="n">p0</span><span class="p">,</span><span class="n">p1</span><span class="p">)</span>
+        <span class="n">cur_sim2</span><span class="p">[</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">facies</span>
+    
+    <span class="n">just_plot_simulated</span><span class="p">(</span><span class="n">cur_sim2</span><span class="p">,</span><span class="n">xmin</span><span class="o">=</span><span class="n">xmin</span><span class="p">,</span><span class="n">xmax</span><span class="o">=</span><span class="n">xmax</span><span class="p">,</span><span class="n">ymin</span><span class="o">=</span><span class="n">ymin</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="n">ymax</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;MPS Simulation - Realization &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">l</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span><span class="n">s</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Facies&#39;</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.4</span><span class="p">,</span><span class="n">vmax</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+        <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span><span class="n">edgecolors</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">iy</span><span class="p">,</span> <span class="n">ix</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">unsim2</span><span class="p">):</span>                         <span class="c1"># label the random path</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">ny</span> <span class="o">-</span> <span class="p">(</span><span class="n">n_unsim</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">x0</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">ix</span> <span class="o">*</span> <span class="n">cell_size</span><span class="p">;</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="p">((</span><span class="n">ny</span> <span class="o">-</span> <span class="n">iy</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">cell_size</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x0</span> <span class="o">+</span> <span class="n">cell_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span><span class="n">y0</span> <span class="o">+</span> <span class="n">cell_size</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="n">ha</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">x_edges</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> <span class="c1"># grid lines</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">y_edges</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span> 
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6be94716b33bee143e6403357db9c248380ff39fb04bd3a0abfe1d67d2552c3a.png" src="_images/6be94716b33bee143e6403357db9c248380ff39fb04bd3a0abfe1d67d2552c3a.png" />
 </div>
 </div>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of multiple point simulation for a categorical feature with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>This was a basic demonstration of multiple point simulation for a categorical feature with GeostatsPy.</p>
+<ul class="simple">
+<li><p>Once again, I have potentially erred on the side of verbose and unpolished code to improve method visualizations and explainability</p></li>
+</ul>
+<p>In practice, a MPS function outputs only the set of local realizations over all grid cells as a 2D / 3D array,</p>
+<ul class="simple">
+<li><p>I thought is was helpful to stop at any grid cell along the random path and completely vizualize the MPS method</p></li>
+</ul>
+<p>I am happy with the result and I hope that it helps you understand MPS. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1197,24 +1498,22 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Multiple Point Simulation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-custom-colorbar">Make Custom Colorbar</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-and-training-image">Loading Data and Training Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-the-circumstances-for-a-step-in-multiple-point-simulation">Set Up the Circumstances for a Step in Multiple Point Simulation</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-multiple-point-simulation">Perform Multiple Point Simulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-multiple-point-simulation">Perform Multiple Point Simulation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-simulation-demonstration">Multiple Point Simulation Demonstration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-at-the-first-grid-cell-along-the-random-path">Simulation at the First Grid Cell Along the Random Path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-at-a-grid-cell-along-the-random-path">Simulation at a Grid Cell Along the Random Path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-at-the-last-grid-cell-along-the-random-path">Simulation at the Last Grid Cell Along the Random Path</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-multiple-realizations">Compare Multiple Realizations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
