@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_simulation_postsim';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Model Checking" href="GeostatsPy_model_checking.html" />
+    <link rel="next" title="Ensemble Kalman Filtering (EnKF)" href="GeostatsPy_history_matching.html" />
     <link rel="prev" title="Ergodic Fluctuations Between Stochastic Simulation Realizations" href="GeostatsPy_ergodic_fluctuations.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -211,6 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Simulation Post-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_history_matching.html">History Matching</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume-Variance Relations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_decision_making.html">Decision Making with Uncertainty</a></li>
@@ -657,33 +658,33 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
   <tbody>
     <tr>
       <th>0</th>
-      <td>500.0</td>
-      <td>300.0</td>
-      <td>0.085487</td>
+      <td>700.0</td>
+      <td>609.0</td>
+      <td>0.100780</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>800.0</td>
-      <td>200.0</td>
-      <td>0.129700</td>
+      <td>780.0</td>
+      <td>429.0</td>
+      <td>0.123508</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>600.0</td>
-      <td>100.0</td>
-      <td>0.152042</td>
+      <td>140.0</td>
+      <td>499.0</td>
+      <td>0.138823</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>800.0</td>
-      <td>169.0</td>
-      <td>0.142415</td>
+      <td>270.0</td>
+      <td>709.0</td>
+      <td>0.171830</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>170.0</td>
-      <td>969.0</td>
-      <td>0.089944</td>
+      <td>320.0</td>
+      <td>829.0</td>
+      <td>0.180336</td>
     </tr>
   </tbody>
 </table>
@@ -741,7 +742,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2cf08acfa1692b960ecd0d0d1722835d50e5c6b88555a810b6457ae3e9f3cf12.png" src="_images/2cf08acfa1692b960ecd0d0d1722835d50e5c6b88555a810b6457ae3e9f3cf12.png" />
+<img alt="_images/f390511d20e3a7a76e7e1d631d72cdfe1f6a4438f20b60c83f812cc983d288f2.png" src="_images/f390511d20e3a7a76e7e1d631d72cdfe1f6a4438f20b60c83f812cc983d288f2.png" />
 </div>
 </div>
 </section>
@@ -774,7 +775,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5d3e9426b4fc9813972bea4e05702db7785fc555824e71398671172168ab6d21.png" src="_images/5d3e9426b4fc9813972bea4e05702db7785fc555824e71398671172168ab6d21.png" />
+<img alt="_images/b5ed8f9c87f2c732c6a6d154fc28fd90a859926ce027dc230e851c648d556117.png" src="_images/b5ed8f9c87f2c732c6a6d154fc28fd90a859926ce027dc230e851c648d556117.png" />
 </div>
 </div>
 <p>The e-type model is very similar to a kriging model, except for:</p>
@@ -816,7 +817,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3e63c3d593b391782bbc1f230a90d764efedd3a627b915e7e6fbcfcf9a7179cc.png" src="_images/3e63c3d593b391782bbc1f230a90d764efedd3a627b915e7e6fbcfcf9a7179cc.png" />
+<img alt="_images/17a02e63c9337ddb081ca3dda00bd8a00d2eeb7950facba06abfad47aabd5159.png" src="_images/17a02e63c9337ddb081ca3dda00bd8a00d2eeb7950facba06abfad47aabd5159.png" />
 </div>
 </div>
 </section>
@@ -850,7 +851,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a06ddd1abfdbea7aeb67950e0296c582c8990f24aec11d728707acb140a62734.png" src="_images/a06ddd1abfdbea7aeb67950e0296c582c8990f24aec11d728707acb140a62734.png" />
+<img alt="_images/cf2d3d753ddef22612cebdcb2fd073ab6ba04c471fdd0eb3ae46879e510f21ba.png" src="_images/cf2d3d753ddef22612cebdcb2fd073ab6ba04c471fdd0eb3ae46879e510f21ba.png" />
 </div>
 </div>
 </section>
@@ -930,11 +931,11 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
       </div>
     </a>
     <a class="right-next"
-       href="GeostatsPy_model_checking.html"
+       href="GeostatsPy_history_matching.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Model Checking</p>
+        <p class="prev-next-title">Ensemble Kalman Filtering (EnKF)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
