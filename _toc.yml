@@ -82,6 +82,8 @@ chapters:
   title: Ergodic Fluctuations
 - file: GeostatsPy_simulation_postsim
   title: Simulation Post-processing
+- file: GeostatsPy_history_matching
+  title: History Matching
 - file: GeostatsPy_model_checking
   title: Model Checking
 - file: GeostatsPy_volume_variance
