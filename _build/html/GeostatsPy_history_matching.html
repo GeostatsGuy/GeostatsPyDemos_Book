@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Ensemble Kalman Filtering (EnKF) &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
+    <title>History Matching &#8212; GeostatsPy Well-documented Demonstration Geostatistical Workflows</title>
   
   
   
@@ -405,7 +405,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Ensemble Kalman Filtering (EnKF)</h1>
+    <h1>History Matching</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -415,6 +415,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forecasting">Forecasting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inversion-and-history-matching">Inversion and History Matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-kalman-filter-enkf">Ensemble Kalman Filter (EnKF)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-ensemble-kalman-filter-enkf-workflow">General Ensemble Kalman Filter (EnKF) Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-the-unknown-state-variables-or-parameters">Step 1. Define the Unknown State Variables or Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-generate-an-initial-ensemble">Step 2. Generate an Initial Ensemble</a></li>
@@ -444,17 +447,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ensemble-statistics">5. Compute ensemble statistics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-kalman-gain">6. Compute the Kalman gain</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-permeability-ensemble">7. Update the permeability ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-sequentially-through-time">8. Repeat sequentially through time</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-sequentially-through-time">8. Repeat sequentially through time</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#darcys-law-1-cell-form-used-in-this-enkf-example">Darcy’s Law (1-cell form used in this EnKF example)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-enkf-problem">Synthetic EnKF Problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-prior-model">Assign Prior Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enkf-assimulation-cycles-over-time-steps">EnKF Assimulation Cycles Over Time Steps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-enkf-assimulation-cycles-over-time-steps">Visualize EnKF Assimulation Cycles Over Time Steps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-permeability-ensemble-distributions-over-assimulation-cycles">Visualize Permeability Ensemble Distributions Over Assimulation Cycles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enkf-assimilation-cycles-over-time-steps">EnKF Assimilation Cycles Over Time Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-enkf-assimilation-cycles-over-time-steps">Visualize EnKF Assimilation Cycles Over Time Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-permeability-ensemble-distributions-over-assimilation-cycles">Visualize Permeability Ensemble Distributions Over Assimilation Cycles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -472,8 +475,8 @@ document.write(`
   <figure style="text-align: center;">
   <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
 </figure>
-<section id="ensemble-kalman-filtering-enkf">
-<h1>Ensemble Kalman Filtering (EnKF)<a class="headerlink" href="#ensemble-kalman-filtering-enkf" title="Permalink to this heading">#</a></h1>
+<section id="history-matching">
+<h1>History Matching<a class="headerlink" href="#history-matching" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
 <p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
@@ -488,6 +491,63 @@ document.write(`
 </div>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2026.</p>
+<section id="forecasting">
+<h2>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this heading">#</a></h2>
+<p>Forecasting is the application of a forward model, <span class="math notranslate nohighlight">\(g(x)\)</span>, that maps a spatial Earth model, <span class="math notranslate nohighlight">\(x\)</span>, into measurable production or state responses, <span class="math notranslate nohighlight">\(y\)</span>, by solving the governing conservation equations (e.g., mass, momentum, and associated constitutive relations) in porous media.</p>
+<p>The forward model can be highly nonlinear and complex. In production forecasting, for example, this may include,</p>
+<ul class="simple">
+<li><p>multiphase flow governed by relative permeability functions, <span class="math notranslate nohighlight">\(k_{rp}(S)\)</span></p></li>
+<li><p>compressibility effects in rock and fluids, <span class="math notranslate nohighlight">\(\phi(p)\)</span>, <span class="math notranslate nohighlight">\(\rho(p)\)</span></p></li>
+</ul>
+<p>Despite this complexity, the forward model is typically treated as deterministic,</p>
+<ul class="simple">
+<li><p>no stochasticity in the physics given a fixed input model and boundary conditions
+uncertainty is introduced only through treating the inputs as random variables, e.g., varying the spatial Earth model, <span class="math notranslate nohighlight">\(x\)</span>, model parameters, and boundary conditions</p></li>
+</ul>
+<p>For a given Earth model, <span class="math notranslate nohighlight">\(x\)</span>, the forward model produces a unique deterministic response, <span class="math notranslate nohighlight">\(y\)</span>, assuming fixed physics, numerical discretization, and boundary and initial conditions.</p>
+<figure style="text-align: center;">
+  <img src="_static/history/forecast2.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> The general forecasting workflow from model state to model response.
+</figcaption>
+</figure>
+</section>
+<section id="inversion-and-history-matching">
+<h2>Inversion and History Matching<a class="headerlink" href="#inversion-and-history-matching" title="Permalink to this heading">#</a></h2>
+<p>Inversion is the general process of estimating unknown model parameters from observed data by working backward from system responses to the underlying spatial or physical model.</p>
+<p>In subsurface systems, inversion is fundamentally challenging because the problem is typically,</p>
+<ul class="simple">
+<li><p>underdetermined (many plausible models fit the data)</p></li>
+<li><p>nonlinear</p></li>
+<li><p>spatially high-dimensional</p></li>
+<li><p>uncertain</p></li>
+<li><p>affected by sparse and indirect observations.</p></li>
+</ul>
+<p>History matching is the specific inversion problem of adjusting subsurface models so that simulated dynamic responses reproduce historical production or monitoring data.</p>
+<figure style="text-align: center;">
+  <img src="_static/history/inversion.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> The general inversion workflow from model response to model state.
+</figcaption>
+</figure>
+<p>The central challenge of history matching is balancing,</p>
+<ul class="simple">
+<li><p>agreement with observed dynamic data</p></li>
+<li><p>preservation of geological realism</p></li>
+<li><p>consistency with prior knowledge</p></li>
+<li><p>uncertainty quantification</p></li>
+</ul>
+<p>Because many distinct subsurface models can reproduce the same historical data, history matching is inherently nonunique and should generally produce an ensemble of plausible solutions rather than a single “best” model.</p>
+<p>General approaches to solving history matching problems include,</p>
+<ul class="simple">
+<li><p>iteratively updating model parameters to reduce mismatch with observations</p></li>
+<li><p>propagating uncertainty through ensembles of realizations</p></li>
+<li><p>reducing model dimensionality</p></li>
+<li><p>incorporating geological constraints and prior information</p></li>
+<li><p>balancing data fit against overfitting and loss of model forecast accuracy</p></li>
+</ul>
+<p>Effective history matching seeks models that both honor observed system behavior and remain geologically and physically plausible for forecasting and decision making.</p>
+</section>
+<section id="ensemble-kalman-filter-enkf">
+<h2>Ensemble Kalman Filter (EnKF)<a class="headerlink" href="#ensemble-kalman-filter-enkf" title="Permalink to this heading">#</a></h2>
 <p>The Ensemble Kalman Filter (EnKF) is a sequential data assimilation method that,</p>
 <ul class="simple">
 <li><p>uses an ensemble of realizations to represent uncertainty</p></li>
@@ -501,9 +561,10 @@ document.write(`
 <li><p><strong>inverse analysis (back-analysis)</strong> – structural stability and failure analysis in rock mechanics</p></li>
 </ul>
 <p>Let’s first introduce the workflow with the detailed workflow and math. Then I will walk through a very, very simple toy problem for petroleum history matching with codes so we can play with this method.</p>
+</section>
 <section id="general-ensemble-kalman-filter-enkf-workflow">
 <h2>General Ensemble Kalman Filter (EnKF) Workflow<a class="headerlink" href="#general-ensemble-kalman-filter-enkf-workflow" title="Permalink to this heading">#</a></h2>
-<p>Let’s start by explaining the The Ensemble Kalman Filter (EnKF) is a sequential data assimilation method that combines,</p>
+<p>Let’s start by stating that the Ensemble Kalman Filter (EnKF) is a sequential data assimilation method that combines,</p>
 <ul class="simple">
 <li><p>uncertain model predictions</p></li>
 <li><p>noisy observations</p></li>
@@ -530,7 +591,7 @@ document.write(`
 </section>
 <section id="step-1-define-the-unknown-state-variables-or-parameters">
 <h2>Step 1. Define the Unknown State Variables or Parameters<a class="headerlink" href="#step-1-define-the-unknown-state-variables-or-parameters" title="Permalink to this heading">#</a></h2>
-<p>The Ensemble Kalman Filter (EnKF) estimates a vector of unknown model parameters,</p>
+<p>EnKF estimates a vector of unknown model parameters,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}
@@ -670,7 +731,7 @@ g(\mathbf{x}_{true,t})
 </section>
 <section id="step-5-compute-ensemble-statistics">
 <h2>Step 5. Compute Ensemble Statistics<a class="headerlink" href="#step-5-compute-ensemble-statistics" title="Permalink to this heading">#</a></h2>
-<p>The Ensemble Kalman Filter (EnKF) computes required statistics directly from the ensemble realizations.</p>
+<p>EnKF computes required statistics directly from the ensemble realizations.</p>
 <section id="ensemble-mean-state-space">
 <h3>Ensemble mean (state space)<a class="headerlink" href="#ensemble-mean-state-space" title="Permalink to this heading">#</a></h3>
 <p>The ensemble mean of the state (unknown parameter) is,</p>
@@ -727,7 +788,7 @@ g(\mathbf{x}_{true,t})
 </section>
 <section id="step-6-compute-the-kalman-gain">
 <h2>Step 6. Compute the Kalman Gain<a class="headerlink" href="#step-6-compute-the-kalman-gain" title="Permalink to this heading">#</a></h2>
-<p>The Kalman gain determines how strongly observations influence the update at time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<p>The Kalman gain determines how strongly observations influence the update at time <span class="math notranslate nohighlight">\(t\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{K}_t
@@ -769,8 +830,8 @@ t = 1,2,\ldots,N_t
 <p>where <span class="math notranslate nohighlight">\(t\)</span> are time steps and <span class="math notranslate nohighlight">\(N_t\)</span> is the total number of time steps. At each time step, <span class="math notranslate nohighlight">\(t\)</span>, we apply these steps once.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Ensemble Kalman Filter (EnKF) Workflow</p>
-<p>The Ensemble Kalman Filter (EnKF) operates as a sequential data assimilation cycle that integrates model predictions with observed data to update uncertain model parameters.</p>
-<p>The general workflow is:</p>
+<p>EnKF operates as a sequential data assimilation cycle that integrates model predictions with observed data to update uncertain model parameters.</p>
+<p>The general workflow is,</p>
 <p><strong>I. Forecast the system</strong><br />
 Propagate each ensemble member through the forward model to generate predicted observations.</p>
 <p><strong>II. Compare predictions with observations</strong><br />
@@ -808,7 +869,7 @@ Correct each ensemble member using the Kalman gain and the observation misfit.</
 </section>
 <section id="physics-model">
 <h2>Physics Model<a class="headerlink" href="#physics-model" title="Permalink to this heading">#</a></h2>
-<p>For our demonstration we have a simple, single phase hydrocarbon production problem. For this problem we have a physics-based deterministic model for the forward modeling based on conservation of mass and momentum.</p>
+<p>For our demonstration we have a simple, single phase hydrocarbon production problem. For this problem we have a physics-based deterministic model for forward modeling based on conservation of mass and momentum.</p>
 <p>The mathematical foundation for multiphase subsurface flow rests on a set of coupled, nonlinear partial differential equations (PDEs).</p>
 <section id="continuity-equation-conservation-of-mass">
 <h3>Continuity Equation (Conservation of Mass)<a class="headerlink" href="#continuity-equation-conservation-of-mass" title="Permalink to this heading">#</a></h3>
@@ -849,6 +910,11 @@ Correct each ensemble member using the Kalman gain and the observation misfit.</
 <section id="ensemble-kalman-filtering-enkf-for-estimating-permeability-from-pressure-observations">
 <h2>Ensemble Kalman Filtering (EnKF) for Estimating Permeability from Pressure Observations<a class="headerlink" href="#ensemble-kalman-filtering-enkf-for-estimating-permeability-from-pressure-observations" title="Permalink to this heading">#</a></h2>
 <p>In this demonstration, we use the Ensemble Kalman Filter (EnKF) to estimate a single unknown permeability value from noisy pressure observations collected through time.</p>
+<figure style="text-align: center;">
+  <img src="_static/history/problem.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> The simple inversion with a single cell model. Inversion for a single permeability model given constrained production flow rates and observed pressure over time.
+</figcaption>
+</figure>
 <p>The workflow includes,</p>
 <ol class="arabic simple">
 <li><p>Define the unknown model parameter</p></li>
@@ -933,10 +999,10 @@ K_t =
 k^{(\ell)} \leftarrow k^{(\ell)} + K_t \left(P_t^{obs,(\ell)} - \hat{P}_t^{(\ell)}\right)
 \]</div>
 </section>
-</section>
 <section id="repeat-sequentially-through-time">
-<h2>8. Repeat sequentially through time<a class="headerlink" href="#repeat-sequentially-through-time" title="Permalink to this heading">#</a></h2>
+<h3>8. Repeat sequentially through time<a class="headerlink" href="#repeat-sequentially-through-time" title="Permalink to this heading">#</a></h3>
 <p>Return to Step 3 as new pressure observations become available, continuously refining the permeability estimate.</p>
+</section>
 </section>
 <section id="darcys-law-1-cell-form-used-in-this-enkf-example">
 <h2>Darcy’s Law (1-cell form used in this EnKF example)<a class="headerlink" href="#darcys-law-1-cell-form-used-in-this-enkf-example" title="Permalink to this heading">#</a></h2>
@@ -1094,8 +1160,8 @@ k \rightarrow P_t
 </section>
 <section id="synthetic-enkf-problem">
 <h2>Synthetic EnKF Problem<a class="headerlink" href="#synthetic-enkf-problem" title="Permalink to this heading">#</a></h2>
-<p>The following code builds the simple production dataset with input flow rate, hidden true porosity (used to make the dataset but not known the the EnKF workflow).</p>
-<p>To ensure no issues with units, I have consistently used International System of Units or Système international d’unités (SI). Here’s a table of the units and typical ranges in this demonstration.</p>
+<p>The following code constructs a simple synthetic production dataset using a prescribed flow rate and a hidden “true” porosity/permeability field (used to generate observations but unknown to the EnKF workflow).</p>
+<p>To ensure consistency of units, all quantities are expressed in the International System of Units (SI). The table below summarizes variables and typical values used in this demonstration.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Quantity</p></th>
@@ -1144,23 +1210,23 @@ k \rightarrow P_t
 </tr>
 </tbody>
 </table>
-<p>Many of us of more comfortable with the units of Darcy’s for permeability, so I have convert the permeabilities after each workflow step from <span class="math notranslate nohighlight">\(m^{2}\)</span> to <span class="math notranslate nohighlight">\(mD\)</span> for visualization.</p>
-<p>For a physically-plausible synthetic dataset, flow rate is assigned as smoothly variable in time,</p>
+<p>Many practitioners are more familiar with Darcy units for permeability, so permeability is converted from SI units <span class="math notranslate nohighlight">\(m^2\)</span> to industry standard <span class="math notranslate nohighlight">\(mD\)</span> after each update step for visualization.</p>
+<p>For a physically plausible synthetic dataset, the flow rate is prescribed as a smoothly varying function of time:,</p>
 <div class="math notranslate nohighlight">
 \[
 q(t), \quad \forall \quad t = 1,\ldots,T  
 \]</div>
-<p>Then pressure is calculated from Dary’s law,</p>
+<p>Then pressure is calculated from Darcy’s law,</p>
 <div class="math notranslate nohighlight">
 \[
 P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 \]</div>
-<p>where terms are defined in the table above.</p>
+<p>where all terms are defined in the table above.</p>
 <p>We make the following assumptions,</p>
 <ul class="simple">
-<li><p>porosity is assumed to be constant (no storage capacity heterogeneity) not rate limiting for steady-state flow; therefore, lumped in permeability</p></li>
-<li><p>flow controlled by transmissibility not storage</p></li>
-<li><p><span class="math notranslate nohighlight">\(k_{true}\)</span> is the true permeability for the single grid cell that is not known by the EnKF model, but is applied to the physics model for calculating the <span class="math notranslate nohighlight">\(P_{obs}(t)\)</span> presure data (observations) over time and also for the forecast steps during our assimulation cycles</p></li>
+<li><p>porosity is treated as constant (no storage heterogeneity), and storage effects are neglected under steady-state conditions</p></li>
+<li><p>flow is controlled by transmissibility rather than compressibility or accumulation</p></li>
+<li><p><span class="math notranslate nohighlight">\(k_{true}\)</span> is the true permeability of the single-cell system, used to generate synthetic observations <span class="math notranslate nohighlight">\(P_{obs}(t)\)</span>, but is unknown to the EnKF and estimated through the assimilation cycle</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1207,16 +1273,24 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 </section>
 <section id="assign-prior-model">
 <h2>Assign Prior Model<a class="headerlink" href="#assign-prior-model" title="Permalink to this heading">#</a></h2>
-<p>Generate a prior model, an ensemble of permeability realizations,</p>
-<p>Assuming a lognormal distribution with <span class="math notranslate nohighlight">\(\mu = log⁡(1.2 \times 10^{−13})\)</span> and <span class="math notranslate nohighlight">\(\sigma = 0.5\)</span>.</p>
-<p>Each member represents,</p>
+<p>Generate a prior model as an ensemble of permeability realizations.</p>
+<p>We assume a lognormal prior distribution for permeability, defined such that,</p>
 <ul class="simple">
-<li><p>different permeability fields</p></li>
-<li><p>different porosity realizations</p></li>
-<li><p>prior geological uncertainty</p></li>
+<li><p><span class="math notranslate nohighlight">\(lnk \sim N(μ,σ^2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu = ln(1.2 \times 10^{−13})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma = 0.5\)</span></p></li>
 </ul>
-<p>This is a prior uncertainty model, prior to integration of historical production data.</p>
-<p>Note, EnFK updates entire ensemble together at each time step</p>
+<p>Each ensemble member represents a plausible realization of the subsurface, including,</p>
+<ul class="simple">
+<li><p>spatially variable permeability fields</p></li>
+<li><p>associated porosity realizations (if modeled jointly or as correlated uncertainty)</p></li>
+<li><p>prior geological uncertainty prior to data assimilation</p></li>
+</ul>
+<p>This ensemble defines the prior uncertainty model before incorporation of historical production data.</p>
+<ul class="simple">
+<li><p>it is important to emphasize that this prior represents uncertainty in the Earth model, not randomness in the physics.</p></li>
+</ul>
+<p>Finally, in the Ensemble Kalman Filter (EnKF), the full ensemble is updated simultaneously at each assimilation step, with each member being adjusted based on the data mismatch and ensemble-derived covariances.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ne</span> <span class="o">=</span> <span class="mi">1000</span>                                                     <span class="c1"># set number of samples in ensemble</span>
@@ -1247,15 +1321,15 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 </div>
 </div>
 </section>
-<section id="enkf-assimulation-cycles-over-time-steps">
-<h2>EnKF Assimulation Cycles Over Time Steps<a class="headerlink" href="#enkf-assimulation-cycles-over-time-steps" title="Permalink to this heading">#</a></h2>
-<p>We have all the parts,</p>
+<section id="enkf-assimilation-cycles-over-time-steps">
+<h2>EnKF Assimilation Cycles Over Time Steps<a class="headerlink" href="#enkf-assimilation-cycles-over-time-steps" title="Permalink to this heading">#</a></h2>
+<p>We have all the required components:</p>
 <ul class="simple">
-<li><p>physically plausible presure observations, <span class="math notranslate nohighlight">\(P_{obs}(t)\)</span> over time given hidden true permeability and flow rate schedule</p></li>
-<li><p>prior ensemble of permeability values, assigned at initial time, <span class="math notranslate nohighlight">\(t = 0\)</span>, <span class="math notranslate nohighlight">\(k^{\ell}(0)\)</span></p></li>
-<li><p>functions for each step of the EnKF assimulation cycle</p></li>
+<li><p>physically plausible pressure observations, <span class="math notranslate nohighlight">\(P_{obs}(t)\)</span>, generated over time from a hidden true permeability field and a prescribed flow-rate schedule</p></li>
+<li><p>A prior ensemble of permeability realizations initialized at time <span class="math notranslate nohighlight">\(t=0\)</span>, denoted <span class="math notranslate nohighlight">\(k^{(ℓ)}(0)\)</span></p></li>
+<li><p>A set of functions defining each step of the EnKF assimilation cycle</p></li>
 </ul>
-<p>Below is the code for the assimulation loops over all time steps.</p>
+<p>Below is the implementation of the assimilation loop over all time steps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_history</span> <span class="o">=</span> <span class="p">[]</span>                                                <span class="c1"># initialize list to store all permeability ensemble values over time</span>
@@ -1297,13 +1371,20 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 </div>
 </div>
 </section>
-<section id="visualize-enkf-assimulation-cycles-over-time-steps">
-<h2>Visualize EnKF Assimulation Cycles Over Time Steps<a class="headerlink" href="#visualize-enkf-assimulation-cycles-over-time-steps" title="Permalink to this heading">#</a></h2>
-<p>Now let’s visualize the permeability ensemble over the assimulation cycles over all time steps, including,</p>
+<section id="visualize-enkf-assimilation-cycles-over-time-steps">
+<h2>Visualize EnKF Assimilation Cycles Over Time Steps<a class="headerlink" href="#visualize-enkf-assimilation-cycles-over-time-steps" title="Permalink to this heading">#</a></h2>
+<p>We now visualize the evolution of the permeability ensemble across all assimilation cycles over time.</p>
+<p>The visualization includes,</p>
 <ul class="simple">
-<li><p>permeability ensemble over time</p></li>
-<li><p>true (hidden) permeability</p></li>
-<li><p>ensemble average permeability</p></li>
+<li><p>permeability ensemble evolution over time</p></li>
+<li><p>true (hidden) permeability field (reference model)</p></li>
+<li><p>ensemble mean permeability at each time step</p></li>
+</ul>
+<p>This allows direct assessment of,</p>
+<ul class="simple">
+<li><p>ensemble convergence toward the true model</p></li>
+<li><p>reduction of uncertainty through assimilation cycles</p></li>
+<li><p>preservation of ensemble spread and variability over time</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1347,15 +1428,23 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 <img alt="_images/1b1f8273226332a116764b68ce06a2ee3488c7eb084c7375619ebaba098f9906.png" src="_images/1b1f8273226332a116764b68ce06a2ee3488c7eb084c7375619ebaba098f9906.png" />
 </div>
 </div>
-<p>These results look good. Here are some observations,</p>
+<p>These results look good. Key observations include,</p>
 <ul class="simple">
-<li><p>prior permeability ensemble at (<span class="math notranslate nohighlight">\(t=0\)</span>) with high spread initialized as our log normally distributed prior with biased high mean</p></li>
-<li><p>assimilated permeability ensemble over assimulation cycles for every time step, <span class="math notranslate nohighlight">\(t = 1,\ldots,T\)</span>, reduces uncertainty (lower variance) and corrects mean (closer to hidden truth permeability)</p></li>
-<li><p>posterior permeability ensemble stabilizes with ensemble mean convergence to hidden truth permeability, uncertainty envelope narrowed but does not collapse</p></li>
+<li><p>prior permeability ensemble at t=0 exhibits high variance, initialized from a lognormal distribution with a slightly biased (high) mean, representing prior geological uncertainty.</p></li>
+<li><p>assimilated permeability ensemble over successive assimilation cycles for <span class="math notranslate nohighlight">\(t=1,\ldots,T\)</span> shows a progressive reduction in uncertainty (decreasing variance) and a correction of the ensemble mean toward the hidden true permeability.</p></li>
+<li><p>posterior permeability ensemble stabilizes over time, with the ensemble mean converging toward the true permeability. The uncertainty envelope narrows but does not collapse, preserving realistic posterior variability.</p></li>
 </ul>
 </section>
-<section id="visualize-permeability-ensemble-distributions-over-assimulation-cycles">
-<h2>Visualize Permeability Ensemble Distributions Over Assimulation Cycles<a class="headerlink" href="#visualize-permeability-ensemble-distributions-over-assimulation-cycles" title="Permalink to this heading">#</a></h2>
+<section id="visualize-permeability-ensemble-distributions-over-assimilation-cycles">
+<h2>Visualize Permeability Ensemble Distributions Over Assimilation Cycles<a class="headerlink" href="#visualize-permeability-ensemble-distributions-over-assimilation-cycles" title="Permalink to this heading">#</a></h2>
+<p>We now select four representative assimilation time steps and visualize histograms of the permeability ensemble at each selected time.</p>
+<p>This allows comparison of,</p>
+<ul class="simple">
+<li><p>prior distribution shape at early time steps</p></li>
+<li><p>progressive Bayesian updating through assimilation cycles</p></li>
+<li><p>evolution of ensemble spread and skewness over time</p></li>
+<li><p>convergence behavior toward the true permeability distribution</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viz_T</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>                                            <span class="c1"># assign assimulation cycles, time steps to plots</span>
@@ -1381,18 +1470,18 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 <img alt="_images/8986cddcfe9bcfac8611f19fb853a8b3319ec877aec879c0c4b7d0c6ec2928e1.png" src="_images/8986cddcfe9bcfac8611f19fb853a8b3319ec877aec879c0c4b7d0c6ec2928e1.png" />
 </div>
 </div>
-<p>These histograms of the permeability ensemble over assimulation cycles on time steps issustrate,</p>
+<p>These histograms of the permeability ensemble over assimilation cycles at selected time steps illustrate the following,</p>
 <ul class="simple">
-<li><p>permeability ensemble mean is converging on the hidden truth permeability</p></li>
-<li><p>the uncertainty is descreasing and then forms a stable posterior after sufficient assimulation cycles</p></li>
+<li><p>permeability ensemble mean converges toward the hidden true permeability</p></li>
+<li><p>uncertainty decreases progressively and then stabilizes, forming a consistent posterior distribution after sufficient assimilation cycles</p></li>
 </ul>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of history matching with Ensemble Kalman Filter (EnKF).</p>
+<p>This is a basic demonstration of history matching using the Ensemble Kalman Filter (EnKF).</p>
 <ul class="simple">
-<li><p>In the effort to provide a maximally accessible demonstration of the workflow, I have certainty erred on the side of simplicity with a single cell model.</p></li>
-<li><p>Yet, I think this is a good introduction with all the steps and calculations shown.</p></li>
+<li><p>in an effort to provide a maximally accessible illustration of the full workflow, I have intentionally used a highly simplified single-cell model.
+Nevertheless, I believe this provides a clear and useful introduction, with all key steps and calculations explicitly shown.</p></li>
 </ul>
 <p>Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
@@ -1491,6 +1580,9 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forecasting">Forecasting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inversion-and-history-matching">Inversion and History Matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-kalman-filter-enkf">Ensemble Kalman Filter (EnKF)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-ensemble-kalman-filter-enkf-workflow">General Ensemble Kalman Filter (EnKF) Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-the-unknown-state-variables-or-parameters">Step 1. Define the Unknown State Variables or Parameters</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-generate-an-initial-ensemble">Step 2. Generate an Initial Ensemble</a></li>
@@ -1520,17 +1612,17 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ensemble-statistics">5. Compute ensemble statistics</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-kalman-gain">6. Compute the Kalman gain</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-permeability-ensemble">7. Update the permeability ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-sequentially-through-time">8. Repeat sequentially through time</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-sequentially-through-time">8. Repeat sequentially through time</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#darcys-law-1-cell-form-used-in-this-enkf-example">Darcy’s Law (1-cell form used in this EnKF example)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-enkf-problem">Synthetic EnKF Problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-prior-model">Assign Prior Model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enkf-assimulation-cycles-over-time-steps">EnKF Assimulation Cycles Over Time Steps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-enkf-assimulation-cycles-over-time-steps">Visualize EnKF Assimulation Cycles Over Time Steps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-permeability-ensemble-distributions-over-assimulation-cycles">Visualize Permeability Ensemble Distributions Over Assimulation Cycles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enkf-assimilation-cycles-over-time-steps">EnKF Assimilation Cycles Over Time Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-enkf-assimilation-cycles-over-time-steps">Visualize EnKF Assimilation Cycles Over Time Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-permeability-ensemble-distributions-over-assimilation-cycles">Visualize Permeability Ensemble Distributions Over Assimilation Cycles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>

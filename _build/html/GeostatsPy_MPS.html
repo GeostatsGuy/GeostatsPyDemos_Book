@@ -460,15 +460,33 @@ document.write(`
 </div>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
-<p>This chapter is a tutorial for / demonstration of  <strong>Multiple Point Simulation</strong> for simulating spatial categorical features, e.g., like facies.</p>
+<p>This chapter is a tutorial for / demonstration of  <strong>Multiple Point Simulation (MPS)</strong> for simulating spatial categorical features, e.g., like facies.</p>
 <ul class="simple">
-<li><p>specifically we use multiple point simulation to simulate categorical features and to produce models with heterogeneities more complicated than variogram-based methods.</p></li>
+<li><p>specifically, we use multiple point simulation to simulate categorical features and to produce models with heterogeneities more complicated than variogram-based methods.</p></li>
 </ul>
 <p><strong>YouTube Lecture</strong>: check out my lectures on:</p>
 <ul class="simple">
 <li><p>TBD</p></li>
 </ul>
-<p>For your convenience here’s a summary of salient points.</p>
+<p>For your convenience here’s a summary of salient points for MPS,</p>
+<ul class="simple">
+<li><p>Traditional geostatistics is primarily based on 2-point statistics (variograms / covariances), which effectively capture continuity but cannot fully represent complex spatial patterns, curvilinearity, connectivity, ordering relationships, i.e., complicated geological architecture.</p></li>
+<li><p>Multiple-point statistics (MPS) extend spatial modeling beyond 2-point relationships by using higher-order spatial patterns, multiple point patterns, i.e., &gt; 2 points and typically with 5- and up to 20-points.</p></li>
+<li><p>In practice, calculating reliable &gt;2-point statistics directly from sparse subsurface data is generally impractical because the number of required spatial configurations grows combinatorially while conditioning data remain limited.</p></li>
+<li><p>MPS addresses this limitation through the training image paradigm, a TI provides a dense conceptual representation of expected geological patterns, connectivity, and morphology. The training image does not include local information nor conditioning and should be stationary with respect to the multiple point statistics and any other lower order statistics, e.g., proportions, indicator variogram (that includes Markov transition probabilities)</p></li>
+<li><p>Rather than explicitly computing all higher-order statistics, MPS reproduces spatial patterns by matching local data events to analogous patterns found in the TI. Multiple point matches are pooled to calculate the local conditional probability density function at each simulation location.</p></li>
+<li><p>MPS conveniently integrates into the standard sequential simulation workflow, as a plug-and-play replacement for traditional indicator probability calculations in sequential indicator simulation, we replace the indicator kriging system with a training image scan (or search tree discussed below)</p></li>
+<li><p>Conditioning to well data, hard data pre-assigned to grid cells, and local constraints including soft data and trends updating local conditional probabilities is readily incorporated during sequential simulation, preserving compatibility with established geostatistical workflows.</p></li>
+<li><p>MPS is especially effective for categorical/facies modeling where geological realism, channel connectivity, and object morphology are critical.</p></li>
+<li><p>Due to its ability to reproduce realistic geological architectures, MPS is now widely adopted for facies simulation and reservoir characterization across subsurface resource industries, including petroleum, mining, groundwater, and carbon storage applications.</p></li>
+</ul>
+<p>Additional details for advanced learning,</p>
+<ul class="simple">
+<li><p>MPS method demonstrated in this chapter is based on the earliest workflow developed by <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-94-011-1739-5_12">Guardiano and Srivastava (1992)</a>. This workflow is typically infeasible for large models and large training images.</p></li>
+<li><p><a class="reference external" href="https://link.springer.com/article/10.1023/A:1014009426274">Strebelle (2002)</a> introduced the search tree from computer science for efficient prior to simulation, calculation, storage, and retrieval of all required multiple point conditional probability density functions. This major innovation enabled wide MPS adoption.</p></li>
+<li><p>modern MPS has evolved in many ways, for example, continuous in addition to categorical feature simulation, integrating machine learning embedding methods, training images from rule based models, etc.</p></li>
+</ul>
+<p>Let’s code up the simplest form of MPS for binary categorical simulation with a small 2D model and training image to help you learn the basics.</p>
 <section id="load-the-required-libraries">
 <h2>Load the Required libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
 <p>The following code loads the required libraries.</p>
@@ -522,9 +540,9 @@ document.write(`
 <h2>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h2>
 <p>These are the fundamental functions required to calculate a multiple point simulation (MPS) realization, including,</p>
 <ul class="simple">
-<li><p><strong>plot_mps_template</strong> - return the data even given the current node location and the data and previously simulated nodes, with the option to plot the current simulation model with the data event highlighted in the grid</p></li>
+<li><p><strong>plot_mps_template</strong> - return the data even given the current node location and the data and previously simulated grid cells, with the option to plot the current simulation model with the data event highlighted in the grid</p></li>
 <li><p><strong>find_template_matches_TI</strong> - scan the training image and find data event matches, return the matches and frequencies of each facies at the matches with the option to plot the matches (red dots) over the training image</p></li>
-<li><p><strong>template_match_probs_drop</strong> - vectorized code for scanning the training image for data event matches, without visualization as a speed up for simulating all previous nodes before the current visualized node</p></li>
+<li><p><strong>template_match_probs_drop</strong> - vectorized code for scanning the training image for data event matches, without visualization as a speed up for simulating all previous grid cells before the current visualized node</p></li>
 </ul>
 <p>Along with convenience functions,</p>
 <ul class="simple">
@@ -571,9 +589,9 @@ document.write(`
         <span class="n">j</span> <span class="o">=</span> <span class="n">iy</span> <span class="o">+</span> <span class="n">diy</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">ix</span> <span class="o">+</span> <span class="n">dix</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">nx</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">ny</span><span class="p">:</span>              <span class="c1"># skip out-of-bounds</span>
             <span class="k">continue</span>
-        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]):</span>                              <span class="c1"># skip unsimulated (NaN) nodes in grid</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">grid</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">]):</span>                              <span class="c1"># skip unsimulated (NaN) grid cells</span>
             <span class="k">continue</span>
-        <span class="n">effective_template</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">dix</span><span class="p">,</span> <span class="n">diy</span><span class="p">))</span>                 <span class="c1"># draw only valid nodes</span>
+        <span class="n">effective_template</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">dix</span><span class="p">,</span> <span class="n">diy</span><span class="p">))</span>                 <span class="c1"># draw only valid, informed points </span>
         <span class="n">x0</span> <span class="o">=</span> <span class="n">xmin</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">dx</span><span class="p">;</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">ymin</span> <span class="o">+</span> <span class="p">((</span><span class="n">ny</span> <span class="o">-</span> <span class="n">j</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dy</span>
 
         <span class="k">if</span> <span class="n">plot_template</span><span class="p">:</span>
@@ -743,14 +761,14 @@ document.write(`
     <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]);</span> <span class="n">cbar</span><span class="o">.</span><span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s2">&quot;Shale&quot;</span><span class="p">,</span> <span class="s2">&quot;Sand&quot;</span><span class="p">])</span>
     <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s2">&quot;Facies&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">copy_truth_values</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">truth</span><span class="p">,</span><span class="n">unsim</span><span class="p">,</span><span class="n">iunsim</span><span class="p">):</span>            <span class="c1"># copy truth values as &quot;previously simulated nodes&quot;, mimic partially simulated</span>
+<span class="k">def</span> <span class="nf">copy_truth_values</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">truth</span><span class="p">,</span><span class="n">unsim</span><span class="p">,</span><span class="n">iunsim</span><span class="p">):</span>            <span class="c1"># copy truth values as &quot;previously simulated grid cells&quot;, mimic partially simulated</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">iunsim</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unsim</span><span class="p">))</span>                               <span class="c1"># safety check</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="n">iy</span><span class="p">,</span> <span class="n">ix</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
         <span class="n">cur_sim</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span> <span class="n">ix</span><span class="p">]</span> <span class="o">=</span> <span class="n">truth</span><span class="p">[</span><span class="n">iy</span><span class="p">,</span> <span class="n">ix</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">cur_sim</span>
 
-<span class="k">def</span> <span class="nf">copy_truth_values</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">truth</span><span class="p">,</span><span class="n">unsim</span><span class="p">,</span><span class="n">iunsim</span><span class="p">):</span>            <span class="c1"># copy truth values as &quot;previously simulated nodes&quot;, mimic partially simulated</span>
+<span class="k">def</span> <span class="nf">copy_truth_values</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">truth</span><span class="p">,</span><span class="n">unsim</span><span class="p">,</span><span class="n">iunsim</span><span class="p">):</span>            <span class="c1"># copy truth values as &quot;previously simulated grid cells&quot;, mimic partially simulated</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">iunsim</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">unsim</span><span class="p">))</span>                               <span class="c1"># safety check</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         <span class="n">iy</span><span class="p">,</span> <span class="n">ix</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
@@ -773,7 +791,7 @@ document.write(`
 </section>
 <section id="make-custom-colorbar">
 <h2>Make Custom Colorbar<a class="headerlink" href="#make-custom-colorbar" title="Permalink to this heading">#</a></h2>
-<p>We make this colorbar to display our categorical, sand and shale facies.</p>
+<p>We make this colorbar to display our categorical binary spatial feature, sand and shale facies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap_facies</span> <span class="o">=</span> <span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">ListedColormap</span><span class="p">([</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="s1">&#39;gold&#39;</span><span class="p">])</span>      <span class="c1"># sand and shale binary color map</span>
@@ -797,7 +815,7 @@ document.write(`
 </section>
 <section id="loading-data-and-training-image">
 <h2>Loading Data and Training Image<a class="headerlink" href="#loading-data-and-training-image" title="Permalink to this heading">#</a></h2>
-<p>Since I have not developed an efficient MPS simulation routine, I’m using the brute force method based on a complete scan of the training image for every local simulation, we work with a,</p>
+<p>For our demonstration, we apply a small 2D model, training image and data set for efficient, fast simulation runs. This is all extracted from a large truth model to ensure consistency between data and training image.</p>
 <ul class="simple">
 <li><p>small model, <span class="math notranslate nohighlight">\(n_x = 30\)</span>, <span class="math notranslate nohighlight">\(n_y = 20\)</span></p></li>
 <li><p>training image, <span class="math notranslate nohighlight">\(n_x = 30\)</span>, <span class="math notranslate nohighlight">\(n_y = 20\)</span></p></li>
@@ -805,13 +823,13 @@ document.write(`
 </ul>
 <p>Here’s the,</p>
 <ul class="simple">
-<li><p><strong>truth model</strong> (truth) - an exhaustive model that we extracted the data from that has similar spatial continuity as the training image (they are both extracted from different locations of the same larger model). I used this exhaustive truth model to ensure data and training image consistency (avoiding spatial contradictions). If your computer is slow, you can set, <span class="math notranslate nohighlight">\(n_unsim\)</span> below to a number less than 580 (<span class="math notranslate nohighlight">\(n_x \times n_y - n_{data}\)</span>) and truth model values will be assigned as previously simulated nodes along the random path.</p></li>
-<li><p><strong>training image</strong> (TI) - once again, extracted from the same larger model as the truth model, it has consistent patterns with the simulation (from truth model) and the data (also from the truth model). Remember the training image has no data conditioning nor local information, i.e., it is an exhaustive model with the correct spatial correlation structures.</p></li>
+<li><p><strong>truth model</strong> (truth) - an exhaustive model that we extracted the data from that has similar spatial continuity as the training image (they are both extracted from different locations of the same larger model). I used this exhaustive truth model to ensure data and training image consistency (avoiding spatial contradictions). If your computer is slow, you can set, <span class="math notranslate nohighlight">\(n_unsim\)</span> below to a number less than 580 (<span class="math notranslate nohighlight">\(n_x \times n_y - n_{data}\)</span>) and truth model values will be assigned as previously simulated grid cells along the random path.</p></li>
+<li><p><strong>training image</strong> (TI) - once again, extracted from the same larger model, it has consistent patterns with the simulation (from truth model) and the data (also from the truth model). Remember the training image has no data conditioning nor local information, i.e., it is an exhaustive model with the correct spatial correlation structures.</p></li>
 <li><p><strong>data set</strong> (df) - extracted from the truth model, and below it is initialized to the simulation model (as is the first step with geostatistical sequential simulation).</p></li>
 </ul>
 <p>Warning, for this demonstration we are assuming the simulation grid, truth grid and training image grid are all the same (same <span class="math notranslate nohighlight">\(n_x\)</span> and <span class="math notranslate nohighlight">\(n_y\)</span> and extents).</p>
 <ul class="simple">
-<li><p>in practice the training image and simuulate grid must have the same cell sizes, but may have different number of cells (<span class="math notranslate nohighlight">\(n_x\)</span> and <span class="math notranslate nohighlight">\(n_y\)</span>)</p></li>
+<li><p>in practice the training image and simulation grid must have the same cell sizes, but may have different number of cells (<span class="math notranslate nohighlight">\(n_x\)</span> and <span class="math notranslate nohighlight">\(n_y\)</span>)</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -865,15 +883,19 @@ document.write(`
 <li><p>make a copy of the truth model</p></li>
 <li><p>remove a random set of values from the truth model (not at data locations)</p></li>
 </ol>
-<p>Now we have the circumstances in the middle of the calculation of a multiple point simulation,</p>
+<p>Now we have set up the circumstances in the middle of the calculation of a multiple point simulation,</p>
 <ul class="simple">
-<li><p>data are assigned to nearest grid nodes and are immutable</p></li>
-<li><p>previously simulated values are assigned to grid and treated as data</p></li>
+<li><p>data are assigned to nearest grid cells and are immutable during the simulation</p></li>
+<li><p>previously simulated values are assigned to grid cells and treated as data</p></li>
 <li><p>unsimulated values (future steps on the random path) are unsimulated (unassigned at this step)</p></li>
 </ul>
+<p>If you would like to see the entire realization simulated, then used this setting so that only the data are assigned to the grid at the start of the simulation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_unsim</span> <span class="o">=</span> <span class="mi">580</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_unsim</span> <span class="o">=</span> <span class="mi">580</span>                                             <span class="c1"># number of unsimulated nodes in model (580 for only data in grid)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_unsim</span> <span class="o">=</span> <span class="mi">580</span>                                             <span class="c1"># number of unsimulated grid cells in model (580 for only data in grid)</span>
 <span class="n">total_step</span> <span class="o">=</span> <span class="n">nx</span><span class="o">*</span><span class="n">ny</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">step</span> <span class="o">=</span> <span class="n">total_step</span> <span class="o">-</span> <span class="n">n_unsim</span>
 
@@ -908,18 +930,18 @@ document.write(`
 </section>
 <section id="perform-multiple-point-simulation">
 <h2>Perform Multiple Point Simulation<a class="headerlink" href="#perform-multiple-point-simulation" title="Permalink to this heading">#</a></h2>
-<p>Multiple point simulation is applied to calculate stochastic categorical realizations conditional to available data. The caculation of a realization  can be concisely expressed as a joint sampling of the random function,</p>
+<p>Multiple point simulation is applied to calculate stochastic categorical realizations conditional to available data. The caclulation of a realization can be concisely expressed as a joint sampling of the random function,</p>
 <div class="math notranslate nohighlight">
 \[
 Z(\bf{u}), \bf{u} \in AOI
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\bf{u}\)</span> is a location vector, <span class="math notranslate nohighlight">\(AOI\)</span> is the set of all grid cells in the simulation model, and <span class="math notranslate nohighlight">\(Z\)</span> is the feature of interest.</p>
-<p>This doesn’t look too difficult, so let’s expand it to gain an appreciation for the size of the problem.</p>
+<p>This does not look too difficult, so let’s expand it to gain an appreciation for the size of the problem.</p>
 <div class="math notranslate nohighlight">
 \[
 P\big(Z(\mathbf{u}_1),Z(\mathbf{u}_1),\ldots Z(\mathbf{u}_{N-1}),Z(\mathbf{u}_N)\big) 
 \]</div>
-<p>This is a <span class="math notranslate nohighlight">\(N\)</span> dimensional probability density function where <span class="math notranslate nohighlight">\(N\)</span> is commonly greater than one million grid cells; therefore, this is typically a vast solution space and this sampling is not possible.</p>
+<p>This is a <span class="math notranslate nohighlight">\(N\)</span> dimensional probability density function where <span class="math notranslate nohighlight">\(N\)</span> is commonly greater than one million grid cells; therefore, this is typically a vast solution space, and this sampling is not possible.</p>
 <p>We use the recursive application of the multiplication rule, <span class="math notranslate nohighlight">\(P(A,B) = P(A \mid B)\,P(B)\)</span> i.e., chain rule of probability, to make this practical,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -942,9 +964,9 @@ P\big(Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_N)\big)
 <li><p>Monte Carlo simulate at the second grid cell location, <span class="math notranslate nohighlight">\(\bf{u}_2\)</span> from the conditional probability density function, <span class="math notranslate nohighlight">\(P\big(Z(\mathbf{u}_2)\mid Z(\mathbf{u}_1)\big)\)</span></p></li>
 <li><p>Monte Carlo simulate at the third grid cell location, <span class="math notranslate nohighlight">\(\bf{u}_3\)</span> from the conditional probability density function, <span class="math notranslate nohighlight">\(P\big(Z(\mathbf{u}_3)\mid Z(\mathbf{u}_2), Z(\mathbf{u}_1)\big)\)</span></p></li>
 </ol>
-<p>Given this sequential simulation paradigm, now let’s walk through the steps in the case of multiple point simulation. Note, the multiple point template, training image and data events are applied to calculate these marginal and conditional probablities to support our Monte Carlo simulation of local realizations that we put together to calculate the realization over all grid cells. Here are the steps with implementation details,</p>
+<p>Given this sequential simulation paradigm, now let’s walk through the steps in the case of multiple point simulation. Note, the multiple point template, training image and data events are applied to calculate these marginal and conditional probabilities to support our Monte Carlo simulation of local realizations that we put together to calculate the realization over all grid cells. Here are the steps with implementation details,</p>
 <ol class="arabic simple">
-<li><p><strong>Define the multiple point template</strong> - the template is represented by a 2D array <span class="math notranslate nohighlight">\([ n_{points}, \Delta^{ix,iy} ]\)</span>. For example, 2 nodes is the unknown location, <span class="math notranslate nohighlight">\(\Delta^{ix}_0 = 0\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_0 = 0\)</span>, with one other location relative to the unknown location, e.g., <span class="math notranslate nohighlight">\(\Delta^{ix}_1 = -1\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_1 = 1\)</span> is up one cell and left one cell.</p></li>
+<li><p><strong>Define the multiple point template</strong> - the template is represented by a 2D array <span class="math notranslate nohighlight">\([ n_{points}, \Delta^{ix,iy} ]\)</span>. For example, 2 points is the unknown location, <span class="math notranslate nohighlight">\(\Delta^{ix}_0 = 0\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_0 = 0\)</span>, with one other location relative to the unknown location, e.g., <span class="math notranslate nohighlight">\(\Delta^{ix}_1 = -1\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_1 = 1\)</span> is up one cell and left one cell.</p></li>
 </ol>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> The multiple point template is defined as,</p>
 <div class="math notranslate nohighlight">
@@ -984,7 +1006,7 @@ P\big(Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_N)\big)
 </figcaption>
 </figure>
 <ol class="arabic simple" start="2">
-<li><p><strong>Visit a location along the random path</strong> - sequentially visit grid cells (without assigned data) along the random path. The random (instead of ordered) path is prefered to avoid path artifacts such as smearing of values along the path that will appear as striations, e.g., like you would see in an cereal crop field from an airplane window, due to variations in seeding and other treatments along the path of the tractor.</p></li>
+<li><p><strong>Visit a location along the random path</strong> - sequentially visit grid cells (without assigned data) along the random path. The random (instead of ordered) path is preferred to avoid path artifacts such as smearing of values along the path that will appear as striations, e.g., like you would see in an cereal crop field from an airplane window, due to variations in seeding and other treatments along the path of the tractor.</p></li>
 </ol>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> At grid cell <span class="math notranslate nohighlight">\(k\)</span>, along the random path conditioning information includes,</p>
 <ul class="simple">
@@ -992,7 +1014,7 @@ P\big(Z(\mathbf{u}_1),\ldots,Z(\mathbf{u}_N)\big)
 <li><p>previously simulated grid cells, <span class="math notranslate nohighlight">\(z(\bf{u_{\beta}}), \quad \forall \quad \beta = 1, \ldots, n_{sim}\)</span>, where <span class="math notranslate nohighlight">\(n_{sim}(\bf{u}_k)\)</span> is the number of previously simulated grid cells conditioning grid cell, <span class="math notranslate nohighlight">\(\bf{u}_k\)</span></p></li>
 </ul>
 <ol class="arabic simple" start="3">
-<li><p><strong>Extract the multiple point data event</strong> - at the current location along the random path apply the multiple point template, <span class="math notranslate nohighlight">\(\tau\)</span>, and extract the multple point data event from the simulation model for template locations, <span class="math notranslate nohighlight">\(\bf{u}_k+\bf{h}_1 \ldots \bf{u}_k + \bf{h}_m\)</span>.</p></li>
+<li><p><strong>Extract the multiple point data event</strong> - at the current location along the random path apply the multiple point template, <span class="math notranslate nohighlight">\(\tau\)</span>, and extract the multiple point data event from the simulation model for template locations, <span class="math notranslate nohighlight">\(\bf{u}_k+\bf{h}_1 \ldots \bf{u}_k + \bf{h}_m\)</span>.</p></li>
 </ol>
 <ul class="simple">
 <li><p>note, the first point in the template, <span class="math notranslate nohighlight">\(\mathbf{u}_k\)</span>, is dropped from the multiple point data event as it is unknown and we are going to calculate the conditional probability distribution for it given the data event.</p></li>
@@ -1024,7 +1046,7 @@ z(\mathbf{\bf{u}_k}+\mathbf{h}_m)
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>note, for the early nodes along the random path it is quite likely that none of the locations, <span class="math notranslate nohighlight">\(i = 1, \ldots, m\)</span> in the multiple point template are informed by data nor previously simulated grid cells</p></li>
+<li><p>note, for the early grid cells along the random path it is quite likely that none of the points, <span class="math notranslate nohighlight">\(i = 1, \ldots, m\)</span> in the multiple point template are informed by data nor previously simulated grid cells</p></li>
 <li><p>in this null data event case, all grid cells in the training image match and the resulting condition probability density function for each facies are the global proportions from the training image. But I’m getting ahead of myself as I demonstrate this below.</p></li>
 </ul>
 <ol class="arabic simple" start="4">
@@ -1048,7 +1070,7 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 \]</div>
 <p><span class="math notranslate nohighlight">\(\quad\)</span> where <span class="math notranslate nohighlight">\(p\)</span> is a random number, <span class="math notranslate nohighlight">\(p \sim U[0,1]\)</span></p>
 <ol class="arabic simple" start="6">
-<li><p><strong>Sequential update of the conditioning set</strong> - after Monte Carlo simulation at location <span class="math notranslate nohighlight">\(\bf{u}_k\)</span>, this simulated value, <span class="math notranslate nohighlight">\(z^{\ell}(\bf{u}_k)\)</span> is added to the grid as a previously simulated grid cell and is treated as data for any subsequent nodes along the random path.</p></li>
+<li><p><strong>Sequential update of the conditioning set</strong> - after Monte Carlo simulation at location <span class="math notranslate nohighlight">\(\bf{u}_k\)</span>, this simulated value, <span class="math notranslate nohighlight">\(z^{\ell}(\bf{u}_k)\)</span> is added to the grid as a previously simulated grid cell and is treated as data for any subsequent grid cells along the random path.</p></li>
 <li><p><strong>Go to the next grid cell along the random path</strong> - return to step 2 and proceed with the next grid cell along the random path. Repeat until all grid cells without assigned conditioning data have been visited.</p></li>
 </ol>
 </section>
@@ -1056,7 +1078,7 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 <h2>Multiple Point Simulation Demonstration<a class="headerlink" href="#multiple-point-simulation-demonstration" title="Permalink to this heading">#</a></h2>
 <p>In the follow code you can calculate a multiple point simulation realization and stop at any grid cell along the random path to visualize,</p>
 <ul class="simple">
-<li><p>the current simulation grid with data and previously simulated grid cells all asigned as conditioning</p></li>
+<li><p>the current simulation grid with data and previously simulated grid cells all assigned as conditioning</p></li>
 <li><p>the random path order represented by a random path index</p></li>
 <li><p>the location of the current grid cell along the random path</p></li>
 <li><p>the data event extracted at the current grid cell</p></li>
@@ -1100,7 +1122,7 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 <span class="n">cur_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous nodes</span>
+<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous grid cells</span>
     <span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">inode</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
         <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1161,11 +1183,11 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 </section>
 <section id="simulation-at-a-grid-cell-along-the-random-path">
 <h2>Simulation at a Grid Cell Along the Random Path<a class="headerlink" href="#simulation-at-a-grid-cell-along-the-random-path" title="Permalink to this heading">#</a></h2>
-<p>Let’s look at the case of simulation at a grid cell about half way along the random path,</p>
+<p>Let’s look at the case of simulation at a grid cell about halfway along the random path,</p>
 <ul class="simple">
-<li><p>the data event is partial, all grid cells in the multiple point template are not informed in the simulation grid</p></li>
-<li><p>there is a variable number of matches in the training image (the case of current_node = 300 there are only 31 matches)</p></li>
-<li><p>the conditional probability density function the proportion of shale and sand at the training image matches (red dots in the plot)</p></li>
+<li><p>data event is partial, all grid cells in the multiple point template are not informed in the simulation grid</p></li>
+<li><p>moderate number of matches in the training image (the case of current_node = 300 there are only 31 matches)</p></li>
+<li><p>conditional probability density function is the proportion of shale and sand at the training image matches (red dots in the plot)</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1186,7 +1208,7 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 <span class="n">cur_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous nodes</span>
+<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous grid cells</span>
     <span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">inode</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
         <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1248,7 +1270,7 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 <p>Let’s look at the case of simulation at the last grid cell along the random path,</p>
 <ul class="simple">
 <li><p>the data event is complete, all grid cells in the multiple point template are informed in the simulation grid</p></li>
-<li><p>there are 78 data event matches in the training image</p></li>
+<li><p>generally smaller number of data event matches in the training image, i.e., 78 in this case</p></li>
 <li><p>the conditional probability density function the proportion of shale and sand at the training image matches (red dots in the plot)</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1270,7 +1292,7 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 <span class="n">cur_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous nodes</span>
+<span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous grid cells</span>
     <span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim</span><span class="p">[</span><span class="n">inode</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim</span><span class="p">,</span><span class="n">mps_template</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
         <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1333,16 +1355,16 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 <ul class="simple">
 <li><p>I know that I should streamline this code by adding a proper multiple point simulation function to GeostatsPy.</p></li>
 </ul>
-<p>For now I reuse the code above as we can see all the components to make new realizations, the change in random number seed,</p>
+<p>For now, I reuse the code above as we can see all the components to make new realizations, the change in random number seed,</p>
 <ul class="simple">
 <li><p>changes the random path through the grid cells without assigned data</p></li>
 <li><p>changes the Monte Carlo simulations from the conditional probability density functions at each grid cell without assigned data</p></li>
 </ul>
 <p>For each realization let’s visualize the,</p>
 <ul class="simple">
-<li><p>the facies realizations at each grid cell</p></li>
-<li><p>the data locations to confirm the realizations are conditional</p></li>
-<li><p>the random path to confirm that the random path changes for each realization</p></li>
+<li><p>facies realizations at each grid cell</p></li>
+<li><p>data locations to confirm the realizations are conditional</p></li>
+<li><p>random path to confirm that the random path changes for each realization</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1362,7 +1384,7 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
     <span class="n">cur_sim2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">sim2</span><span class="p">)</span>
     
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seeds</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
-    <span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous nodes</span>
+    <span class="k">for</span> <span class="n">inode</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">current_node</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>                          <span class="c1"># fast method for MPS over all previous grid cells</span>
         <span class="n">current_loc</span> <span class="o">=</span> <span class="n">unsim2</span><span class="p">[</span><span class="n">inode</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
         <span class="n">current_mps_template</span> <span class="o">=</span> <span class="n">plot_mps_template</span><span class="p">(</span><span class="n">cur_sim2</span><span class="p">,</span><span class="n">mps_template2</span><span class="p">,</span><span class="n">ix</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">iy</span><span class="o">=</span><span class="n">current_loc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">xmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
             <span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;MPS Simulation with Current Node, MPS template and Random Path&#39;</span><span class="p">,</span><span class="n">plot_template</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">cmap_facies</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
@@ -1396,7 +1418,7 @@ z^{\ell}(\bf{u}_k) = f^{-1}_{z(\bf{u}_k)}(p)
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
 <p>This was a basic demonstration of multiple point simulation for a categorical feature with GeostatsPy.</p>
 <ul class="simple">
-<li><p>Once again, I have potentially erred on the side of verbose and unpolished code to improve method visualizations and explainability</p></li>
+<li><p>I have potentially erred on the side of verbose and inefficient code to improve method visualizations and explainability.</p></li>
 </ul>
 <p>In practice, a MPS function outputs only the set of local realizations over all grid cells as a 2D / 3D array,</p>
 <ul class="simple">
