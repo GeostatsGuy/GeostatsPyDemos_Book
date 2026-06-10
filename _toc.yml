@@ -74,6 +74,8 @@ chapters:
   title: Indicator Simulation
 - file: GeostatsPy_MPS
   title: Multiple Point Simulation
+- file: GeostatsPy_object
+  title: Object-based Simulation
 - file: GeostatsPy_3D_simulation
   title: 3D Simulation
 - file: GeostatsPy_cosimulation
