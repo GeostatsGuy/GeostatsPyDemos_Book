@@ -207,6 +207,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_MPS.html">Multiple Point Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_object.html">Object-based Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
@@ -899,31 +900,31 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.085202</td>
+      <td>0.063292</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.100037</td>
+      <td>0.124940</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.093064</td>
+      <td>0.110697</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.087452</td>
+      <td>0.119859</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.124483</td>
+      <td>0.084822</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
@@ -1038,7 +1039,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ee7281e178c902eb643a0edf02df71bd6883803780342a0fc518904b74f99b41.png" src="_images/ee7281e178c902eb643a0edf02df71bd6883803780342a0fc518904b74f99b41.png" />
+<img alt="_images/ebc3736e45e512897b9cb292159ab3645d45d163ef9aa6f2fdd08635f6ff6be6.png" src="_images/ebc3736e45e512897b9cb292159ab3645d45d163ef9aa6f2fdd08635f6ff6be6.png" />
 </div>
 </div>
 <p>Let’s observe the impact of upscaling scaling on the two model’s distributions and variances.</p>
@@ -1099,7 +1100,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a77a8e166596a4d086eba326314cc5562943bbb4fa992732ee8c6001d49e0e30.png" src="_images/a77a8e166596a4d086eba326314cc5562943bbb4fa992732ee8c6001d49e0e30.png" />
+<img alt="_images/ca290a8124cd73dbf48ee4e1667073401a58b651ec17c5a3b135d2fa7fb87aa3.png" src="_images/ca290a8124cd73dbf48ee4e1667073401a58b651ec17c5a3b135d2fa7fb87aa3.png" />
 </div>
 </div>
 <p>and now the model with shorter range, isotropic spatial continuity.</p>
@@ -1158,7 +1159,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/63923e28ae7fd57dab491565885b2f036b7d99c077eb112dd51bc02f9a4422fa.png" src="_images/63923e28ae7fd57dab491565885b2f036b7d99c077eb112dd51bc02f9a4422fa.png" />
+<img alt="_images/8f92f4ecda354d41bb2c0c4f1fe2d1877be7b27d8c20ad4cbe0e7e6f93cb4af7.png" src="_images/8f92f4ecda354d41bb2c0c4f1fe2d1877be7b27d8c20ad4cbe0e7e6f93cb4af7.png" />
 </div>
 </div>
 <p>We can see that with shorter ranges of spatial continuity, our variance reduces faster as we increase the support volume, i.e., the model cell size.</p>
@@ -1198,7 +1199,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9aa7a673e926125497e4fb9a252b92c40a81b6b4d02619ed66164ed43131ffd7.png" src="_images/9aa7a673e926125497e4fb9a252b92c40a81b6b4d02619ed66164ed43131ffd7.png" />
+<img alt="_images/aff367d98ac307857a72a37d5997516be761171bd027678ee91944042d7add50.png" src="_images/aff367d98ac307857a72a37d5997516be761171bd027678ee91944042d7add50.png" />
 </div>
 </div>
 <p>It is convenient to represent this as variance reduction factors,</p>
@@ -1227,7 +1228,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8912b2a38968a053caf2472ce9959cd730bfd4233bf6a615b4b2b37d68183e15.png" src="_images/8912b2a38968a053caf2472ce9959cd730bfd4233bf6a615b4b2b37d68183e15.png" />
+<img alt="_images/17951f06ddc4c5284bcc1c02614114753f2aa2d2e6c1e543406377f94778c636.png" src="_images/17951f06ddc4c5284bcc1c02614114753f2aa2d2e6c1e543406377f94778c636.png" />
 </div>
 </div>
 <p>Since we’ve gone this far, let’s complete a larger experiment by looping over many variogram ranges and model volume supports and visualize the variance reduction.</p>
@@ -1272,7 +1273,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ed6e6e32b9f9e9398bc057ef4144038d87e25eddc9df8a0b22d5d57ee7ddcc9b.png" src="_images/ed6e6e32b9f9e9398bc057ef4144038d87e25eddc9df8a0b22d5d57ee7ddcc9b.png" />
+<img alt="_images/a882a69491ab49003dacc0d19339d5d5f347f979101c86a527b17785c4e7918e.png" src="_images/a882a69491ab49003dacc0d19339d5d5f347f979101c86a527b17785c4e7918e.png" />
 </div>
 </div>
 <p>See the trade-off between volume support, as a function of cell size, and the variogram range?</p>
@@ -1397,7 +1398,7 @@ D^2(v,V) = \overline{\gamma}_{V,V} - \overline{\gamma}_{v,v}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cd532ddedd7177e019f91c77635ead37744ba01f927c19942f8a80d2415152a7.png" src="_images/cd532ddedd7177e019f91c77635ead37744ba01f927c19942f8a80d2415152a7.png" />
+<img alt="_images/fbed574411ce80012cb69ec2af260a5e59bd6d98fd4f8cd617d158bcb730383a.png" src="_images/fbed574411ce80012cb69ec2af260a5e59bd6d98fd4f8cd617d158bcb730383a.png" />
 </div>
 </div>
 <p>Firstly, both results are quite similar with 2 important differences,</p>
