@@ -497,6 +497,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation-mcs"><strong>Monte Carlo Simulation (MCS)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation-workflow"><strong>Monte Carlo Simulation Workflow</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-rule-probability"><strong>Multiplication Rule</strong> (probability)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-data-event"><strong>Multiple Point Data Event</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-simulation-mps"><strong>Multiple Point Simulation (MPS)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-template"><strong>Multiple Point Template</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutually-exclusive-events-probability"><strong>Mutually Exclusive Events</strong> (probability)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram"><strong>Normalized Histogram</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nugget-effect-variogram"><strong>Nugget Effect</strong> (variogram)</a></li>
@@ -544,6 +547,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-practice"><strong>Statistics</strong> (practice)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-measurement"><strong>Statistics</strong> (measurement)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-distribution"><strong>Statistical Distribution</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-image-ti"><strong>Training Image (TI)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-reservoir-modeling-workflow"><strong>Transfer Function</strong> (reservoir modeling workflow)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-data"><strong>Trend</strong> (data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-model"><strong>Trend</strong> (model)</a></li>
@@ -597,7 +601,7 @@ document.write(`
 </div>
 <p>By Michael J. Pyrcz <br />
 © Copyright 2024.</p>
-<p>This chapter is a summary of essential <strong>Geostatistics Terminology</strong>.</p>
+<p>This chapter is a summary of essential <strong>Geostatistics Terminology</strong>. (UPDATED June 15, 2026)</p>
 <section id="motivation-for-geostatistics-concepts">
 <h2>Motivation for Geostatistics Concepts<a class="headerlink" href="#motivation-for-geostatistics-concepts" title="Permalink to this heading">#</a></h2>
 <p>Firstly, why do this? I have received the request for a course glossary from the students in my <strong>Data Analytics and Geostatistics</strong> undergraduate course. While I usually dedicated a definition slide in the lecture slide decks for salient terms, some of my students have requested course glossary, list of terminology in their course review. The e-book provides a great vehicle and motivation for this.</p>
@@ -620,6 +624,8 @@ P(A \cup B) = P(A) + P(B) - P(A,B)
 \[
 P\left( \bigcup_{i=1}^k A_i \right) = \sum_{i=1}^k P(A_i)
 \]</div>
+<p>Applications:
+<a class="reference internal" href="GeostatsPy_probability.html#probability-addition-rule"><span class="std std-ref">Addition rule in Probability Chapter</span></a></p>
 </section>
 <section id="affine-correction">
 <h2><strong>Affine Correction</strong><a class="headerlink" href="#affine-correction" title="Permalink to this heading">#</a></h2>
@@ -1982,6 +1988,33 @@ P(A \cup B) = P(A,B) = P(B|A) \cdot P(A)
 P(B|A) = \frac{P(A,B)}{P(A)}
 \]</div>
 </section>
+<section id="multiple-point-data-event">
+<h2><strong>Multiple Point Data Event</strong><a class="headerlink" href="#multiple-point-data-event" title="Permalink to this heading">#</a></h2>
+<p><a class="reference internal" href="GeostatsPy_MPS.html"><span class="doc std std-doc">Multiple Point Simulation</span></a>: for a multiple point template, <span class="math notranslate nohighlight">\(\tau\)</span>, the set of data and previously simulated nodes over the multiple point template locations, <span class="math notranslate nohighlight">\(\bf{u}_k+\bf{h}_1 \ldots \bf{u}_k + \bf{h}_m\)</span>.</p>
+<ul class="simple">
+<li><p>note, the first point in the template, <span class="math notranslate nohighlight">\(\mathbf{u}_k\)</span>, is dropped from the multiple point data event as it is unknown and we are going to calculate the conditional probability distribution for it given the data event.</p></li>
+<li><p>the conditional distribution for this multiple point data event is calculated by scanning the training image for replicates.</p></li>
+</ul>
+</section>
+<section id="multiple-point-simulation-mps">
+<h2><strong>Multiple Point Simulation (MPS)</strong><a class="headerlink" href="#multiple-point-simulation-mps" title="Permalink to this heading">#</a></h2>
+<p><a class="reference internal" href="GeostatsPy_MPS.html"><span class="doc std std-doc">Multiple Point Simulation</span></a>: a sequential simulation approach like sequential Gaussian simulation that extends spatial modeling beyond 2-point relationships (from the variogram) by using higher-order spatial patterns, multiple point patterns, i.e., &gt; 2 points and typically with 5- and up to 20-points.</p>
+<ul class="simple">
+<li><p>In practice, calculating reliable &gt;2-point statistics directly from sparse subsurface data is generally impractical because the number of required spatial configurations grows combinatorially while conditioning data remain limited.</p></li>
+<li><p>MPS addresses this limitation through borrowing these statistics from a training image, a training image provides a dense conceptual representation of expected geological patterns, connectivity, and morphology. The training image does not include local information nor conditioning and should be stationary with respect to the multiple point statistics and any other lower order statistics, e.g., proportions, indicator variogram (that includes Markov transition probabilities)</p></li>
+<li><p>MPS conveniently integrates into the standard sequential simulation workflow, as a plug-and-play replacement for traditional indicator probability calculations in sequential indicator simulation, we replace the indicator kriging system with a training image scan.</p></li>
+</ul>
+</section>
+<section id="multiple-point-template">
+<h2><strong>Multiple Point Template</strong><a class="headerlink" href="#multiple-point-template" title="Permalink to this heading">#</a></h2>
+<p><a class="reference internal" href="GeostatsPy_MPS.html"><span class="doc std std-doc">Multiple Point Simulation</span></a>: the multiple point pattern applied in multiple point simulation is defined by a multiple point template. The template is represented by a 2D array <span class="math notranslate nohighlight">\([ n_{points}, \Delta^{ix,iy} ]\)</span>. For example, 2 points is the unknown location, <span class="math notranslate nohighlight">\(\Delta^{ix}_0 = 0\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_0 = 0\)</span>, with one other location relative to the unknown location, e.g., <span class="math notranslate nohighlight">\(\Delta^{ix}_1 = -1\)</span>, <span class="math notranslate nohighlight">\(\Delta^{iy}_1 = 1\)</span> is up one cell and left one cell.</p>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> The multiple point template is defined as,</p>
+<div class="math notranslate nohighlight">
+\[
+\tau = \{\bf{h}_{1}, \bf{h}_{2}, \ldots, \bf{h}_{m}\}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\quad\)</span> where each <span class="math notranslate nohighlight">\(\bf{h}_i\)</span> is an offset in grid cells from the unknown location, <span class="math notranslate nohighlight">\(\Delta^{ix}_i, \Delta^{iy}_i,\)</span>.</p>
+</section>
 <section id="mutually-exclusive-events-probability">
 <h2><strong>Mutually Exclusive Events</strong> (probability)<a class="headerlink" href="#mutually-exclusive-events-probability" title="Permalink to this heading">#</a></h2>
 <p><a class="reference internal" href="GeostatsPy_probability.html"><span class="doc std std-doc">Probability Concepts</span></a>: the events do not intersect, i.e., do not have any common outcomes. We represent this as,</p>
@@ -2752,6 +2785,13 @@ F_z(\bf{u},z) = F_z(z), \quad \forall \quad \bf{u} \in AOI
 <li><p>do we have outliers, and any other values that don’t make sense and need explaining?</p></li>
 </ul>
 </section>
+<section id="training-image-ti">
+<h2><strong>Training Image (TI)</strong><a class="headerlink" href="#training-image-ti" title="Permalink to this heading">#</a></h2>
+<p><a class="reference internal" href="GeostatsPy_MPS.html"><span class="doc std std-doc">Multiple Point Simulation</span></a>: a training image provides a dense conceptual representation of expected geological patterns, connectivity, and morphology. The training image does not include local information nor conditioning and should be stationary with respect to the multiple point statistics and any other lower order statistics, e.g., proportions, and indicator variogram.</p>
+<ul class="simple">
+<li><p>For multiple point simulation, calculating reliable &gt;2-point statistics directly from sparse subsurface data is generally impractical because the number of required spatial configurations grows combinatorially while conditioning data remain limited, instead these statistics are borrowed from a training image.</p></li>
+</ul>
+</section>
 <section id="transfer-function-reservoir-modeling-workflow">
 <h2><strong>Transfer Function</strong> (reservoir modeling workflow)<a class="headerlink" href="#transfer-function-reservoir-modeling-workflow" title="Permalink to this heading">#</a></h2>
 <p><a class="reference internal" href="GeostatsPy_concepts.html"><span class="doc std std-doc">Geostatistical Concepts</span></a>: calculation applied to the spatial, subsurface model realizations and scenarios to calculate a decision criterion, a metric that is used to support decision making representing value, and health, environment and safety. Example transfer functions include,</p>
@@ -3223,6 +3263,9 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation-mcs"><strong>Monte Carlo Simulation (MCS)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation-workflow"><strong>Monte Carlo Simulation Workflow</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-rule-probability"><strong>Multiplication Rule</strong> (probability)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-data-event"><strong>Multiple Point Data Event</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-simulation-mps"><strong>Multiple Point Simulation (MPS)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-template"><strong>Multiple Point Template</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mutually-exclusive-events-probability"><strong>Mutually Exclusive Events</strong> (probability)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram"><strong>Normalized Histogram</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nugget-effect-variogram"><strong>Nugget Effect</strong> (variogram)</a></li>
@@ -3270,6 +3313,7 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-practice"><strong>Statistics</strong> (practice)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-measurement"><strong>Statistics</strong> (measurement)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-distribution"><strong>Statistical Distribution</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-image-ti"><strong>Training Image (TI)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transfer-function-reservoir-modeling-workflow"><strong>Transfer Function</strong> (reservoir modeling workflow)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-data"><strong>Trend</strong> (data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trend-model"><strong>Trend</strong> (model)</a></li>
