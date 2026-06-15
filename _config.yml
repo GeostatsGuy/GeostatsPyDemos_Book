@@ -41,3 +41,8 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+# Enable automatic anchor generation for all headings up to level 4 (####)
+sphinx:
+  config:
+    myst_heading_anchors: 4
