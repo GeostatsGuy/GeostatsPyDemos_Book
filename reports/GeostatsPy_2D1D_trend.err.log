@@ -1,0 +1,75 @@
+Traceback (most recent call last):
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import os                                                     # set working directory, run executables
+
+from tqdm import tqdm                                         # suppress the status bar
+from functools import partialmethod
+tqdm.__init__ = partialmethod(tqdm.__init__, disable=True)
+
+import math
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import pyvista as pv
+cmap = plt.cm.inferno
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mOSError[0m                                   Traceback (most recent call last)
+Cell [1;32mIn[1], line 11[0m
+[0;32m      9[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
+[0;32m     10[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[1;32m---> 11[0m [38;5;28;01mimport[39;00m [38;5;21;01mpyvista[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpv[39;00m
+[0;32m     12[0m cmap [38;5;241m=[39m plt[38;5;241m.[39mcm[38;5;241m.[39minferno
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pyvista\__init__.py:14[0m
+[0;32m     12[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyvista[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_version[39;00m [38;5;28;01mimport[39;00m __version__
+[0;32m     13[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyvista[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_version[39;00m [38;5;28;01mimport[39;00m version_info
+[1;32m---> 14[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyvista[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
+[0;32m     15[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyvista[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m [38;5;28;01mimport[39;00m _validation
+[0;32m     16[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyvista[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcore[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_vtk_core[39;00m [38;5;28;01mimport[39;00m vtk_version_info
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pyvista\core\__init__.py:6[0m
+[0;32m      3[0m [38;5;66;03m# ruff: noqa: F401[39;00m
+[0;32m      4[0m [38;5;28;01mfrom[39;00m [38;5;21;01m__future__[39;00m [38;5;28;01mimport[39;00m annotations
+[1;32m----> 6[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m _vtk_core
+[0;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_typing_core[39;00m [38;5;28;01mimport[39;00m [38;5;241m*[39m
+[0;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mcell[39;00m [38;5;28;01mimport[39;00m Cell
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\pyvista\core\_vtk_core.py:20[0m
+[0;32m     17[0m [38;5;28;01mfrom[39;00m [38;5;21;01mtyping[39;00m [38;5;28;01mimport[39;00m NamedTuple
+[0;32m     18[0m [38;5;28;01mimport[39;00m [38;5;21;01mwarnings[39;00m
+[1;32m---> 20[0m [38;5;28;01mfrom[39;00m [38;5;21;01mvtkmodules[39;00m[38;5;21;01m.[39;00m[38;5;21;01mvtkCommonCore[39;00m [38;5;28;01mimport[39;00m vtkVersion
+[0;32m     21[0m [38;5;28;01mfrom[39;00m [38;5;21;01mvtkmodules[39;00m[38;5;21;01m.[39;00m[38;5;21;01mvtkImagingSources[39;00m [38;5;28;01mimport[39;00m vtkImageEllipsoidSource
+[0;32m     22[0m [38;5;28;01mfrom[39;00m [38;5;21;01mvtkmodules[39;00m[38;5;21;01m.[39;00m[38;5;21;01mvtkImagingSources[39;00m [38;5;28;01mimport[39;00m vtkImageGaussianSource
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\vtkmodules\__init__.py:30[0m
+[0;32m     26[0m                 [38;5;28;01mif[39;00m os[38;5;241m.[39mpath[38;5;241m.[39misfile(lib_path) [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m kernel32[38;5;241m.[39mLoadLibraryExW(ctypes[38;5;241m.[39mc_wchar_p(lib_path), [38;5;28;01mNone[39;00m, [38;5;241m0x00000008[39m):
+[0;32m     27[0m                     [38;5;28;01mraise[39;00m [38;5;167;01mOSError[39;00m([38;5;124m'[39m[38;5;124mError loading [39m[38;5;132;01m{}[39;00m[38;5;124m; [39m[38;5;132;01m{}[39;00m[38;5;124m'[39m[38;5;241m.[39mformat(lib, ctypes[38;5;241m.[39mFormatError(ctypes[38;5;241m.[39mget_last_error())))
+[1;32m---> 30[0m [43m_delvewheel_patch_1_7_0[49m[43m([49m[43m)[49m
+[0;32m     31[0m [38;5;28;01mdel[39;00m _delvewheel_patch_1_7_0
+[0;32m     32[0m [38;5;66;03m# end delvewheel patch[39;00m
+
+File [1;32mC:\ProgramData\anaconda3\envs\MachineLearningBook\lib\site-packages\vtkmodules\__init__.py:27[0m, in [0;36m_delvewheel_patch_1_7_0[1;34m()[0m
+[0;32m     25[0m kernel32 [38;5;241m=[39m ctypes[38;5;241m.[39mWinDLL([38;5;124m'[39m[38;5;124mkernel32[39m[38;5;124m'[39m, use_last_error[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+[0;32m     26[0m [38;5;28;01mif[39;00m os[38;5;241m.[39mpath[38;5;241m.[39misfile(lib_path) [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m kernel32[38;5;241m.[39mLoadLibraryExW(ctypes[38;5;241m.[39mc_wchar_p(lib_path), [38;5;28;01mNone[39;00m, [38;5;241m0x00000008[39m):
+[1;32m---> 27[0m     [38;5;28;01mraise[39;00m [38;5;167;01mOSError[39;00m([38;5;124m'[39m[38;5;124mError loading [39m[38;5;132;01m{}[39;00m[38;5;124m; [39m[38;5;132;01m{}[39;00m[38;5;124m'[39m[38;5;241m.[39mformat(lib, ctypes[38;5;241m.[39mFormatError(ctypes[38;5;241m.[39mget_last_error())))
+
+[1;31mOSError[0m: Error loading vtkloguru-9.3-7ce4441c94269aa5d9aa9a37de7071bd.dll; The operation completed successfully.
+

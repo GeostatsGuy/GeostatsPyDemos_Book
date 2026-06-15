@@ -1,0 +1,1684 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>History Matching &#8212; Applied Geostatistics in Python</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'GeostatsPy_history_matching';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Model Checking" href="GeostatsPy_model_checking.html" />
+    <link rel="prev" title="Simulated Realizations Post-processing" href="GeostatsPy_simulation_postsim.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/AppliedGeostats.jpg" class="logo__image only-light" alt="Applied Geostatistics in Python - Home"/>
+    <script>document.write(`<img src="_static/AppliedGeostats.jpg" class="logo__image only-dark" alt="Applied Geostatistics in Python - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_distributions.html">Univariate Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions.html">Parametric Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_parametric_distributions_fitting.html">Parametric Distributions Fitting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_expectation.html">Statistical Expectation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_monte_carlo_simulation.html">Monte Carlo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_transformations.html">Distribution Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_heterogeneity_metrics.html">Spatial Heterogeneity Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_confidence_interval.html">Confidence Intervals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_hypothesis_testing.html">Hypothesis Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bivariate.html">Bivariate Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_QQ.html">QQ-Plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_linear_regression.html">Linear Regression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html">Plotting Spatial Data and Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_bootstrap.html">Bootstrap Uncertainty Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering.html">Declustering to Debias Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_declustering_all_methods.html">Advanced Declustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation.html">Variogram Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models.html">Variogram Positive Definite Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_models_simulation.html">Variogram Models, Simulation Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html">Variogram Calculation and Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_variogram_from_image.html">Variogram Calculation from an Image</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_trends.html">Trend Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_simulation.html">Indicator Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_MPS.html">Multiple Point Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_object.html">Object-based Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_3D_simulation.html">3D Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_cosimulation.html">Cosimulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_ergodic_fluctuations.html">Ergodic Fluctuations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation_postsim.html">Simulation Post-processing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">History Matching</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_model_checking.html">Model Checking</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_volume_variance.html">Volume-Variance Relations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_decision_making.html">Decision Making with Uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/GeostatsPyDemos_Book/issues/new?title=Issue%20on%20page%20%2FGeostatsPy_history_matching.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/GeostatsPy_history_matching.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>History Matching</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forecasting">Forecasting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inversion-and-history-matching">Inversion and History Matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-kalman-filter-enkf">Ensemble Kalman Filter (EnKF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-ensemble-kalman-filter-enkf-workflow">General Ensemble Kalman Filter (EnKF) Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-the-unknown-state-variables-or-parameters">Step 1. Define the Unknown State Variables or Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-generate-an-initial-ensemble">Step 2. Generate an Initial Ensemble</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-forecast-the-system-response">Step 3. Forecast the System Response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-collect-observations">Step 4. Collect Observations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-compute-ensemble-statistics">Step 5. Compute Ensemble Statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-mean-state-space">Ensemble mean (state space)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-mean-observation-space">Ensemble mean (observation space)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-covariance-stateobservation">Cross-covariance (state–observation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-compute-the-kalman-gain">Step 6. Compute the Kalman Gain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-update-the-ensemble">Step 7. Update the Ensemble</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-repeat-sequentially-through-time">Step 8. Repeat Sequentially Through Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-enkf-workflow-summary">General EnKF Workflow Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-model">Physics Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuity-equation-conservation-of-mass">Continuity Equation (Conservation of Mass)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#darcy-s-law-conservation-of-momentum">Darcy’s Law (Conservation of Momentum)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-kalman-filtering-enkf-for-estimating-permeability-from-pressure-observations">Ensemble Kalman Filtering (EnKF) for Estimating Permeability from Pressure Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-unknown-model-parameter">1. Define the unknown model parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-an-ensemble-of-permeability-realizations">2. Generate an ensemble of permeability realizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forecast-pressure-responses-for-each-ensemble-member">3. Forecast pressure responses for each ensemble member</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-noisy-observations">4. Generate noisy observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ensemble-statistics">5. Compute ensemble statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-kalman-gain">6. Compute the Kalman gain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-permeability-ensemble">7. Update the permeability ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-sequentially-through-time">8. Repeat sequentially through time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#darcys-law-1-cell-form-used-in-this-enkf-example">Darcy’s Law (1-cell form used in this EnKF example)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-enkf-problem">Synthetic EnKF Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-prior-model">Assign Prior Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enkf-assimilation-cycles-over-time-steps">EnKF Assimilation Cycles Over Time Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-enkf-assimilation-cycles-over-time-steps">Visualize EnKF Assimilation Cycles Over Time Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-permeability-ensemble-distributions-over-assimilation-cycles">Visualize Permeability Ensemble Distributions Over Assimilation Cycles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <figure style="text-align: center;">
+  <img src="_static/intro/title_page.png" style="display: block; margin: 0 auto; width: 100%;">
+</figure>
+<section id="history-matching">
+<h1>History Matching<a class="headerlink" href="#history-matching" title="Permalink to this heading">#</a></h1>
+<p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite this e-Book as:</p>
+<p>Pyrcz, M.J., 2024, <em>Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</em> [e-book]. Zenodo. doi:10.5281/zenodo.15169133 <a class="reference external" href="https://doi.org/10.5281/zenodo.15169132"><img alt="DOI" src="https://zenodo.org/badge/838927017.svg" /></a></p>
+</div>
+<p>The workflows in this book and more are available here:</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Cite the GeostatsPyDemos GitHub Repository as:</p>
+<p>Pyrcz, M.J., 2024, <em>GeostatsPyDemos: GeostatsPy Python Package for Spatial Data Analytics and Geostatistics Demonstration Workflows Repository</em> (0.0.1) [Software]. Zenodo. doi:10.5281/zenodo.12667036. GitHub Repository: <a class="github reference external" href="https://github.com/GeostatsGuy/GeostatsPyDemos">GeostatsGuy/GeostatsPyDemos</a> <a class="reference external" href="https://doi.org/10.5281/zenodo.12667035"><img alt="DOI" src="https://zenodo.org/badge/777871341.svg" /></a></p>
+</div>
+<p>By Michael J. Pyrcz <br />
+© Copyright 2026.</p>
+<section id="forecasting">
+<h2>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this heading">#</a></h2>
+<p>Forecasting is the application of a forward model, <span class="math notranslate nohighlight">\(g(x)\)</span>, that maps a spatial Earth model, <span class="math notranslate nohighlight">\(x\)</span>, into measurable production or state responses, <span class="math notranslate nohighlight">\(y\)</span>, by solving the governing conservation equations (e.g., mass, momentum, and associated constitutive relations) in porous media.</p>
+<p>The forward model can be highly nonlinear and complex. In production forecasting, for example, this may include,</p>
+<ul class="simple">
+<li><p>multiphase flow governed by relative permeability functions, <span class="math notranslate nohighlight">\(k_{rp}(S)\)</span></p></li>
+<li><p>compressibility effects in rock and fluids, <span class="math notranslate nohighlight">\(\phi(p)\)</span>, <span class="math notranslate nohighlight">\(\rho(p)\)</span></p></li>
+</ul>
+<p>Despite this complexity, the forward model is typically treated as deterministic,</p>
+<ul class="simple">
+<li><p>no stochasticity in the physics given a fixed input model and boundary conditions
+uncertainty is introduced only through treating the inputs as random variables, e.g., varying the spatial Earth model, <span class="math notranslate nohighlight">\(x\)</span>, model parameters, and boundary conditions</p></li>
+</ul>
+<p>For a given Earth model, <span class="math notranslate nohighlight">\(x\)</span>, the forward model produces a unique deterministic response, <span class="math notranslate nohighlight">\(y\)</span>, assuming fixed physics, numerical discretization, and boundary and initial conditions.</p>
+<figure style="text-align: center;">
+  <img src="_static/history/forecast2.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> The general forecasting workflow from model state to model response.
+</figcaption>
+</figure>
+</section>
+<section id="inversion-and-history-matching">
+<h2>Inversion and History Matching<a class="headerlink" href="#inversion-and-history-matching" title="Permalink to this heading">#</a></h2>
+<p>Inversion is the general process of estimating unknown model parameters from observed data by working backward from system responses to the underlying spatial or physical model.</p>
+<p>In subsurface systems, inversion is fundamentally challenging because the problem is typically,</p>
+<ul class="simple">
+<li><p>underdetermined (many plausible models fit the data)</p></li>
+<li><p>nonlinear</p></li>
+<li><p>spatially high-dimensional</p></li>
+<li><p>uncertain</p></li>
+<li><p>affected by sparse and indirect observations.</p></li>
+</ul>
+<p>History matching is the specific inversion problem of adjusting subsurface models so that simulated dynamic responses reproduce historical production or monitoring data.</p>
+<figure style="text-align: center;">
+  <img src="_static/history/inversion.png" style="display: block; margin: 0 auto; width: 80%;">
+  <figcaption style="text-align: center;"> The general inversion workflow from model response to model state.
+</figcaption>
+</figure>
+<p>The central challenge of history matching is balancing,</p>
+<ul class="simple">
+<li><p>agreement with observed dynamic data</p></li>
+<li><p>preservation of geological realism</p></li>
+<li><p>consistency with prior knowledge</p></li>
+<li><p>uncertainty quantification</p></li>
+</ul>
+<p>Because many distinct subsurface models can reproduce the same historical data, history matching is inherently nonunique and should generally produce an ensemble of plausible solutions rather than a single “best” model.</p>
+<p>General approaches to solving history matching problems include,</p>
+<ul class="simple">
+<li><p>iteratively updating model parameters to reduce mismatch with observations</p></li>
+<li><p>propagating uncertainty through ensembles of realizations</p></li>
+<li><p>reducing model dimensionality</p></li>
+<li><p>incorporating geological constraints and prior information</p></li>
+<li><p>balancing data fit against overfitting and loss of model forecast accuracy</p></li>
+</ul>
+<p>Effective history matching seeks models that both honor observed system behavior and remain geologically and physically plausible for forecasting and decision making.</p>
+</section>
+<section id="ensemble-kalman-filter-enkf">
+<h2>Ensemble Kalman Filter (EnKF)<a class="headerlink" href="#ensemble-kalman-filter-enkf" title="Permalink to this heading">#</a></h2>
+<p>The Ensemble Kalman Filter (EnKF) is a sequential data assimilation method that,</p>
+<ul class="simple">
+<li><p>uses an ensemble of realizations to represent uncertainty</p></li>
+<li><p>updates model states or parameters by combining model predictions with noisy observations through covariance-based corrections</p></li>
+</ul>
+<p>The method was introduced by Geir Evensen (1994) as a computationally efficient Monte Carlo implementation of the Kalman filter for large nonlinear systems.</p>
+<p>EnKF and related data assimilation methods are widely applied in subsurface modeling to integrate model responses with model parameters, a process also known as inverse modeling. Examples include,</p>
+<ul class="simple">
+<li><p><strong>production history matching</strong> – petroleum reservoir modeling in petroleum geology and petroleum engineering</p></li>
+<li><p><strong>model calibration</strong> – groundwater flow and catchment modeling in hydrology</p></li>
+<li><p><strong>inverse analysis (back-analysis)</strong> – structural stability and failure analysis in rock mechanics</p></li>
+</ul>
+<p>Let’s first introduce the workflow with the detailed workflow and math. Then I will walk through a very, very simple toy problem for petroleum history matching with codes so we can play with this method.</p>
+</section>
+<section id="general-ensemble-kalman-filter-enkf-workflow">
+<h2>General Ensemble Kalman Filter (EnKF) Workflow<a class="headerlink" href="#general-ensemble-kalman-filter-enkf-workflow" title="Permalink to this heading">#</a></h2>
+<p>Let’s start by stating that the Ensemble Kalman Filter (EnKF) is a sequential data assimilation method that combines,</p>
+<ul class="simple">
+<li><p>uncertain model predictions</p></li>
+<li><p>noisy observations</p></li>
+</ul>
+<p>to improve estimates of unknown system states or parameters.</p>
+<p>The EnKF represents uncertainty using an ensemble of realizations of the unknown model parameters and updates this ensemble sequentially in time as new observations become available.</p>
+<p>Here are the general EnKF steps,</p>
+<ol class="arabic simple">
+<li><p>Define the unknown model parameter(s), also known as the state variables</p></li>
+<li><p>Generate an initial ensemble, consisting of realizations of the unknown model parameters</p></li>
+<li><p>Forecast the system response by applying the forward (physics) model to each ensemble member</p></li>
+<li><p>Collect observations and compute the misfit between the observations and the forecasted system response</p></li>
+<li><p>Compute ensemble statistics (means and covariances)</p></li>
+<li><p>Compute the Kalman gain</p></li>
+<li><p>Update the ensemble using the observations</p></li>
+<li><p>Repeat sequentially through time, returning to Step 3 for the next time step</p></li>
+</ol>
+<p>We see the general EnKF loop,</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Forecast} \rightarrow \text{Observe} \rightarrow \text{Update} \rightarrow \text{Repeat at Next Time Step}
+\]</div>
+<p>Next, we will walk through each step and define all relevant terms in detail.</p>
+</section>
+<section id="step-1-define-the-unknown-state-variables-or-parameters">
+<h2>Step 1. Define the Unknown State Variables or Parameters<a class="headerlink" href="#step-1-define-the-unknown-state-variables-or-parameters" title="Permalink to this heading">#</a></h2>
+<p>EnKF estimates a vector of unknown model parameters,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the <strong>state vector</strong> (or model parameter vector).</p>
+<p><strong>Spatial representation of the state</strong></p>
+<p>In many subsurface applications, the state variables are defined over a spatial model grid in 1D, 2D, or 3D. The spatial location of each grid cell is represented by a coordinate vector,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{u}_\alpha
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> indexes location within the domain of interest.</p>
+<p>The spatially distributed state can then be written as,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}(\mathbf{u}_\alpha), \quad \forall \quad \alpha \in \text{AOI}
+\]</div>
+<p>where AOI is the area (or volume) of interest, and <span class="math notranslate nohighlight">\(\mathbf{x}(\mathbf{u}_\alpha)\)</span> is the state value at location <span class="math notranslate nohighlight">\(\mathbf{u}_\alpha\)</span></p>
+<ul class="simple">
+<li><p>while spatial location is implied, for concise notation I omit this location vector below.</p></li>
+</ul>
+<p><strong>Prior uncertainty and ensemble interpretation</strong></p>
+<p>The initial ensemble represents our prior uncertainty about the system state before any data assimilation,</p>
+<ul class="simple">
+<li><p>each ensemble member is a realization of the full state,</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{(\ell)}, \quad \ell = 1,\ldots,N_e
+\]</div>
+<p><strong>State space definition</strong></p>
+<p>The <strong>state space</strong> is the mathematical space containing all possible values of the system state vector. If the state vector is,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{x} =
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{bmatrix}
+\in \mathbb{R}^n
+\end{split}\]</div>
+<p>then the <strong>state space</strong> is,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{R}^n
+\]</div>
+<p><strong>Examples of state variables</strong></p>
+<p>Typical model state variables in subsurface and geoscience applications include,</p>
+<ul class="simple">
+<li><p>permeability</p></li>
+<li><p>pressure</p></li>
+<li><p>porosity</p></li>
+<li><p>temperature</p></li>
+<li><p>velocity</p></li>
+<li><p>saturation</p></li>
+</ul>
+</section>
+<section id="step-2-generate-an-initial-ensemble">
+<h2>Step 2. Generate an Initial Ensemble<a class="headerlink" href="#step-2-generate-an-initial-ensemble" title="Permalink to this heading">#</a></h2>
+<p>Uncertainty is represented using an ensemble of realizations for the state variable(s), <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{(1)},
+\mathbf{x}^{(2)},
+\ldots,
+\mathbf{x}^{(N_e)}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(N_e\)</span> is the number of ensemble members, and <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> is the <span class="math notranslate nohighlight">\(\ell\)</span>-th ensemble member, with <span class="math notranslate nohighlight">\(\ell = 1,\ldots,N_e\)</span></p>
+<p>The ensemble is sampled from a prior distribution,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{(\ell)} \sim f_{\text{prior}}(\mathbf{x})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(f_{\text{prior}}(\mathbf{x})\)</span> is the prior probability density function</p>
+<p>In this formulation, the state <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> represents a <strong>static unknown parameter</strong> and therefore does <strong>not carry a time index</strong>,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}^{(\ell)} \neq \mathbf{x}_t^{(\ell)}
+\]</div>
+<p>Time dependence will enter later through the <strong>observations</strong> and their model-predicted counterparts,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{y}^{obs}_t,\quad \hat{\mathbf{y}}^{(\ell)}_t = g(\mathbf{x}^{(\ell)})
+\]</div>
+</section>
+<section id="step-3-forecast-the-system-response">
+<h2>Step 3. Forecast the System Response<a class="headerlink" href="#step-3-forecast-the-system-response" title="Permalink to this heading">#</a></h2>
+<p>Each ensemble member is propagated through a forward model,</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\mathbf{y}}^{(\ell)}
+=
+g\left(
+\mathbf{x}^{(\ell)}
+\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(g(\cdot)\)</span> is the forward (observation) model, <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> is the <span class="math notranslate nohighlight">\(\ell\)</span>-th ensemble realization of the state, and <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}^{(\ell)}\)</span> is the model-predicted observation for ensemble member <span class="math notranslate nohighlight">\(\ell\)</span></p>
+<p>The collection,</p>
+<div class="math notranslate nohighlight">
+\[
+\left\{
+\hat{\mathbf{y}}^{(1)},
+\hat{\mathbf{y}}^{(2)},
+\ldots,
+\hat{\mathbf{y}}^{(N_e)}
+\right\}
+\]</div>
+<p>forms the <strong>ensemble of predicted observations</strong>, generated by mapping the ensemble of model parameters <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> into observation space through the forward model <span class="math notranslate nohighlight">\(g(\cdot)\)</span>.</p>
+</section>
+<section id="step-4-collect-observations">
+<h2>Step 4. Collect Observations<a class="headerlink" href="#step-4-collect-observations" title="Permalink to this heading">#</a></h2>
+<p>Measurements are collected from the real system at discrete times <span class="math notranslate nohighlight">\(t\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{y}^{obs}_t
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{y}^{obs}_t\)</span> is the observation vector at times <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(t = 1,2,\dots,N_t\)</span> and observations at these times are noisy, containing measurement uncertainty,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{y}^{obs}_t
+=
+g(\mathbf{x}_{true,t})
++
+\boldsymbol{\epsilon}_t
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}_{true}\)</span> is the true (unavailable) system state, and <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> is the observation error at time step, <span class="math notranslate nohighlight">\(t\)</span></p>
+<p>Observation error is often assumed Gaussian distributed,</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\epsilon}_t
+\sim
+\mathcal{N}(\mathbf{0},\mathbf{R})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is the observation error covariance matrix</p>
+</section>
+<section id="step-5-compute-ensemble-statistics">
+<h2>Step 5. Compute Ensemble Statistics<a class="headerlink" href="#step-5-compute-ensemble-statistics" title="Permalink to this heading">#</a></h2>
+<p>EnKF computes required statistics directly from the ensemble realizations.</p>
+<section id="ensemble-mean-state-space">
+<h3>Ensemble mean (state space)<a class="headerlink" href="#ensemble-mean-state-space" title="Permalink to this heading">#</a></h3>
+<p>The ensemble mean of the state (unknown parameter) is,</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{\mathbf{x}}
+=
+\frac{1}{N_e}
+\sum_{\ell=1}^{N_e}
+\mathbf{x}^{(\ell)}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> is the state (or parameter) of ensemble member <span class="math notranslate nohighlight">\(\ell\)</span>, <span class="math notranslate nohighlight">\(N_e\)</span> = number of ensemble members, and <span class="math notranslate nohighlight">\(\bar{\mathbf{x}}\)</span> = ensemble mean state</p>
+</section>
+<section id="ensemble-mean-observation-space">
+<h3>Ensemble mean (observation space)<a class="headerlink" href="#ensemble-mean-observation-space" title="Permalink to this heading">#</a></h3>
+<p>The ensemble mean of the predicted observations is,</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{\hat{\mathbf{y}}}_t
+=
+\frac{1}{N_e}
+\sum_{\ell=1}^{N_e}
+\hat{\mathbf{y}}_t^{(\ell)}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}_t^{(\ell)} = g(\mathbf{x}^{(\ell)})\)</span> is the model-predicted observation for ensemble member <span class="math notranslate nohighlight">\(\ell\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\bar{\hat{\mathbf{y}}}_t\)</span> is the ensemble mean of predicted observations at time <span class="math notranslate nohighlight">\(t\)</span></p>
+</section>
+<section id="cross-covariance-stateobservation">
+<h3>Cross-covariance (state–observation)<a class="headerlink" href="#cross-covariance-stateobservation" title="Permalink to this heading">#</a></h3>
+<p>The cross-covariance between the state ensemble and predicted observation ensemble at time <span class="math notranslate nohighlight">\(t\)</span> is,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{C}_{x\hat{y},t}
+=
+\frac{1}{N_e-1}
+\sum_{\ell=1}^{N_e}
+\left(
+\mathbf{x}^{(\ell)} - \bar{\mathbf{x}}
+\right)
+\left(
+\hat{\mathbf{y}}_t^{(\ell)} - \bar{\hat{\mathbf{y}}}_t
+\right)^T
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{C}_{x\hat{y},t}\)</span> is the cross-covariance between state and predicted observations at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> is the ensemble state, <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}_t^{(\ell)}\)</span> is the model-predicted observation at time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\((\cdot)^T\)</span> is the transpose operator</p>
+</section>
+<section id="interpretation">
+<h3>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this heading">#</a></h3>
+<p>The matrix <span class="math notranslate nohighlight">\(\mathbf{C}_{x\hat{y},t}\)</span> measures how variations in the model parameters (<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) are correlated with variations in the predicted observations (<span class="math notranslate nohighlight">\(\hat{\mathbf{y}}_t\)</span>).</p>
+<ul class="simple">
+<li><p>This relationship is computed <strong>at each observation time <span class="math notranslate nohighlight">\(t\)</span></strong></p></li>
+<li><p>It determines how strongly observational information at time <span class="math notranslate nohighlight">\(t\)</span> updates the state in the Kalman gain step</p></li>
+</ul>
+<p>Importantly, the <strong>state ensemble <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> does not carry a time index</strong>, since it represents a static unknown parameter. Only the forward-mapped predictions <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}_t^{(\ell)}\)</span> evolve with time.</p>
+</section>
+</section>
+<section id="step-6-compute-the-kalman-gain">
+<h2>Step 6. Compute the Kalman Gain<a class="headerlink" href="#step-6-compute-the-kalman-gain" title="Permalink to this heading">#</a></h2>
+<p>The Kalman gain determines how strongly observations influence the update at time <span class="math notranslate nohighlight">\(t\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{K}_t
+=
+\mathbf{C}_{x\hat{y},t}
+\left(
+\mathbf{C}_{\hat{y}\hat{y},t}
++
+\mathbf{R}_t
+\right)^{-1}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{K}_t\)</span> is the Kalman gain matrix at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}_{x\hat{y},t}\)</span> is the cross-covariance between the state ensemble and predicted observations at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}_{\hat{y}\hat{y},t}\)</span> is the covariance of the predicted observations at time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{R}_t\)</span> is the observation error covariance at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</section>
+<section id="step-7-update-the-ensemble">
+<h2>Step 7. Update the Ensemble<a class="headerlink" href="#step-7-update-the-ensemble" title="Permalink to this heading">#</a></h2>
+<p>Each ensemble member is updated using the innovation (the difference between observations and predictions) at time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x}_{new}^{(\ell)}
+=
+\mathbf{x}_{old}^{(\ell)}
++
+\mathbf{K}_t
+\left(
+\mathbf{y}_t^{obs,(\ell)}
+-
+\hat{\mathbf{y}}_t^{(\ell)}
+\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}_{old}^{(\ell)}\)</span> is the forecasted ensemble member before assimilation at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}_{new}^{(\ell)}\)</span> is the updated (analysis) ensemble member at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{y}_t^{obs,(\ell)}\)</span> is the perturbed observation at time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}_t^{(\ell)}\)</span> is the model-predicted observation at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+</section>
+<section id="step-8-repeat-sequentially-through-time">
+<h2>Step 8. Repeat Sequentially Through Time<a class="headerlink" href="#step-8-repeat-sequentially-through-time" title="Permalink to this heading">#</a></h2>
+<p>The EnKF assimilates observations sequentially (forward) through time,</p>
+<div class="math notranslate nohighlight">
+\[
+t = 1,2,\ldots,N_t
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> are time steps and <span class="math notranslate nohighlight">\(N_t\)</span> is the total number of time steps. At each time step, <span class="math notranslate nohighlight">\(t\)</span>, we apply these steps once.</p>
+<div class="remove-from-content-only admonition">
+<p class="admonition-title">Ensemble Kalman Filter (EnKF) Workflow</p>
+<p>EnKF operates as a sequential data assimilation cycle that integrates model predictions with observed data to update uncertain model parameters.</p>
+<p>The general workflow is,</p>
+<p><strong>I. Forecast the system</strong><br />
+Propagate each ensemble member through the forward model to generate predicted observations.</p>
+<p><strong>II. Compare predictions with observations</strong><br />
+Compute the innovation (misfit) between observed data and ensemble-predicted observations.</p>
+<p><strong>III. Compute ensemble statistics</strong><br />
+Estimate means and covariance relationships from the ensemble in state and observation space.</p>
+<p><strong>IV. Compute the Kalman gain</strong><br />
+Quantify how strongly observations should influence updates using covariance structure and observation uncertainty.</p>
+<p><strong>V. Update the ensemble</strong><br />
+Correct each ensemble member using the Kalman gain and the observation misfit.</p>
+<p>This process is repeated sequentially in time as new observations become available, continually refining the estimate of the unknown model parameters.</p>
+</div>
+<p>Note, this workflow assumes that errors are not large and are Gaussian distributed.</p>
+<ul class="simple">
+<li><p>very large updates or errors that invalidate the Gaussian assumption may break the math and degrade model performance</p></li>
+</ul>
+<p>For these cases consider the application of Iterative Ensemble Kalman Filter (IEnKF) or Ensemble Randomized Maximum Likelihood (EnRML) methods</p>
+<p>As more observations are assimilated,</p>
+<ul class="simple">
+<li><p>uncertainty decreases</p></li>
+<li><p>predictions improve</p></li>
+<li><p>the ensemble converges toward the true system</p></li>
+</ul>
+</section>
+<section id="general-enkf-workflow-summary">
+<h2>General EnKF Workflow Summary<a class="headerlink" href="#general-enkf-workflow-summary" title="Permalink to this heading">#</a></h2>
+<p>The salient aspects of Ensemble Kalman Filter (EnKF) includes,</p>
+<ul class="simple">
+<li><p>represents uncertainty with ensembles</p></li>
+<li><p>propagates uncertainty through a forward model</p></li>
+<li><p>compares predictions with observations</p></li>
+<li><p>updates realizations using covariance relationships</p></li>
+<li><p>sequentially improves estimates as new data arrive</p></li>
+</ul>
+</section>
+<section id="physics-model">
+<h2>Physics Model<a class="headerlink" href="#physics-model" title="Permalink to this heading">#</a></h2>
+<p>For our demonstration we have a simple, single phase hydrocarbon production problem. For this problem we have a physics-based deterministic model for forward modeling based on conservation of mass and momentum.</p>
+<p>The mathematical foundation for multiphase subsurface flow rests on a set of coupled, nonlinear partial differential equations (PDEs).</p>
+<section id="continuity-equation-conservation-of-mass">
+<h3>Continuity Equation (Conservation of Mass)<a class="headerlink" href="#continuity-equation-conservation-of-mass" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\nabla \cdot (\rho_p \mathbf{v}_p) + q_p
+=
+\frac{\partial (\phi \rho_p S_p)}{\partial t}
+\]</div>
+</section>
+<section id="darcy-s-law-conservation-of-momentum">
+<h3>Darcy’s Law (Conservation of Momentum)<a class="headerlink" href="#darcy-s-law-conservation-of-momentum" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{v}_p
+=
+-\frac{k k_{rp}}{\mu_p}
+\left(
+\nabla p_p - \rho_p g \nabla Z
+\right)
+\]</div>
+<p>where,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p_p\)</span> : pressure of phase <span class="math notranslate nohighlight">\(p\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(S_p\)</span> : saturation of phase <span class="math notranslate nohighlight">\(p\)</span> (e.g., oil, gas, water)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> : porosity of the rock</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{v}_p\)</span> : Darcy velocity</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> : absolute permeability</p></li>
+<li><p><span class="math notranslate nohighlight">\(k_{rp}\)</span> : relative permeability</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_p\)</span> : fluid viscosity</p></li>
+<li><p><span class="math notranslate nohighlight">\(\rho_p\)</span> : fluid density</p></li>
+<li><p><span class="math notranslate nohighlight">\(q_p\)</span> : source/sink term representing injection or production flow rates</p></li>
+<li><p><span class="math notranslate nohighlight">\(g\)</span> : gravitational acceleration</p></li>
+<li><p><span class="math notranslate nohighlight">\(Z\)</span> : elevation/depth coordinate</p></li>
+</ul>
+</section>
+</section>
+<section id="ensemble-kalman-filtering-enkf-for-estimating-permeability-from-pressure-observations">
+<h2>Ensemble Kalman Filtering (EnKF) for Estimating Permeability from Pressure Observations<a class="headerlink" href="#ensemble-kalman-filtering-enkf-for-estimating-permeability-from-pressure-observations" title="Permalink to this heading">#</a></h2>
+<p>In this demonstration, we use the Ensemble Kalman Filter (EnKF) to estimate a single unknown permeability value from noisy pressure observations collected through time.</p>
+<figure style="text-align: center;">
+  <img src="_static/history/problem.png" style="display: block; margin: 0 auto; width: 60%;">
+  <figcaption style="text-align: center;"> The simple inversion with a single cell model. Inversion for a single permeability model given constrained production flow rates and observed pressure over time.
+</figcaption>
+</figure>
+<p>The workflow includes,</p>
+<ol class="arabic simple">
+<li><p>Define the unknown model parameter</p></li>
+<li><p>Generate an ensemble of permeability realizations</p></li>
+<li><p>Forecast pressure responses for each ensemble member</p></li>
+<li><p>Generate noisy observations</p></li>
+<li><p>Compute ensemble statistics</p></li>
+<li><p>Compute the Kalman gain</p></li>
+<li><p>Update the permeability ensemble</p></li>
+<li><p>Repeat sequentially through time</p></li>
+</ol>
+<section id="define-the-unknown-model-parameter">
+<h3>1. Define the unknown model parameter<a class="headerlink" href="#define-the-unknown-model-parameter" title="Permalink to this heading">#</a></h3>
+<p>We estimate a single unknown permeability value:</p>
+<div class="math notranslate nohighlight">
+\[
+k
+\]</div>
+</section>
+<section id="generate-an-ensemble-of-permeability-realizations">
+<h3>2. Generate an ensemble of permeability realizations<a class="headerlink" href="#generate-an-ensemble-of-permeability-realizations" title="Permalink to this heading">#</a></h3>
+<p>Create an initial ensemble representing uncertainty in permeability:</p>
+<div class="math notranslate nohighlight">
+\[
+k^{(\ell)}, \quad \ell = 1,\ldots,N_e
+\]</div>
+</section>
+<section id="forecast-pressure-responses-for-each-ensemble-member">
+<h3>3. Forecast pressure responses for each ensemble member<a class="headerlink" href="#forecast-pressure-responses-for-each-ensemble-member" title="Permalink to this heading">#</a></h3>
+<p>Apply Darcy’s law to map permeability to pressure,</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{P}_t^{(\ell)} = \frac{q_t}{k^{(\ell)}}
+\]</div>
+</section>
+<section id="generate-noisy-observations">
+<h3>4. Generate noisy observations<a class="headerlink" href="#generate-noisy-observations" title="Permalink to this heading">#</a></h3>
+<p>Pressure observations are collected over time with measurement noise,</p>
+<div class="math notranslate nohighlight">
+\[
+P_t^{obs} = \frac{q_t}{k_{true}} + \epsilon_t
+\]</div>
+</section>
+<section id="compute-ensemble-statistics">
+<h3>5. Compute ensemble statistics<a class="headerlink" href="#compute-ensemble-statistics" title="Permalink to this heading">#</a></h3>
+<p>Compute statistics from the ensemble of parameters and predicted pressures,</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{k}, \quad \bar{\hat{P}}_t
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{k}\)</span> is the ensemble mean permeability and <span class="math notranslate nohighlight">\(\bar{\hat{P}}_t\)</span> is the ensemble mean predicted pressure at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>The cross-covariance is then computed as,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{C}_{k\hat{P},t}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{C}_{k\hat{P},t}\)</span> is the covariance between the permeability ensemble and the predicted pressure ensemble at time <span class="math notranslate nohighlight">\(t\)</span>, quantifying how variations in permeability are linearly related to variations in predicted pressure.</p>
+<p>This covariance is the key statistical link between the model parameters and the observations, and it directly controls the Kalman gain in the next step.</p>
+</section>
+<section id="compute-the-kalman-gain">
+<h3>6. Compute the Kalman gain<a class="headerlink" href="#compute-the-kalman-gain" title="Permalink to this heading">#</a></h3>
+<p>Compute the Kalman gain as,</p>
+<div class="math notranslate nohighlight">
+\[
+K_t =
+\frac{\mathbf{C}_{k\hat{P},t}}
+{\sigma^2_{\hat{P}_t} + R_t}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(K_t\)</span> is the Kalman gain at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}_{k\hat{P},t}\)</span> is the covariance between permeability and predicted pressure at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\hat{P}_t}\)</span> is the variance of the predicted pressure ensemble at time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(R_t\)</span> is the observation error variance at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{C}_{k\hat{P},t}\)</span> quantifies how variations in permeability explain variations in predicted pressure</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma^2_{\hat{P}_t}\)</span> represents the spread (uncertainty) of the predicted pressure ensemble</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_t\)</span> represents measurement noise in the observed pressure data</p></li>
+</ul>
+<p>This ratio determines how strongly the observation at time <span class="math notranslate nohighlight">\(t\)</span> will adjust the permeability ensemble.</p>
+</section>
+<section id="update-the-permeability-ensemble">
+<h3>7. Update the permeability ensemble<a class="headerlink" href="#update-the-permeability-ensemble" title="Permalink to this heading">#</a></h3>
+<p>Each ensemble member is updated using the observation misfit,</p>
+<div class="math notranslate nohighlight">
+\[
+k^{(\ell)} \leftarrow k^{(\ell)} + K_t \left(P_t^{obs,(\ell)} - \hat{P}_t^{(\ell)}\right)
+\]</div>
+</section>
+<section id="repeat-sequentially-through-time">
+<h3>8. Repeat sequentially through time<a class="headerlink" href="#repeat-sequentially-through-time" title="Permalink to this heading">#</a></h3>
+<p>Return to Step 3 as new pressure observations become available, continuously refining the permeability estimate.</p>
+</section>
+</section>
+<section id="darcys-law-1-cell-form-used-in-this-enkf-example">
+<h2>Darcy’s Law (1-cell form used in this EnKF example)<a class="headerlink" href="#darcys-law-1-cell-form-used-in-this-enkf-example" title="Permalink to this heading">#</a></h2>
+<p>In this simplified 1-cell system, we relate flow, pressure, and permeability using Darcy’s law,</p>
+<div class="math notranslate nohighlight">
+\[
+q_t = k \, A \, \frac{\Delta P_t}{L}
+\]</div>
+<p>Rearranged to express pressure (as used in the EnKF forward model),</p>
+<div class="math notranslate nohighlight">
+\[
+P_t = \frac{q_t L}{k A}
+\]</div>
+<p>For the single-cell demonstration, constants are often lumped into a single coefficient,</p>
+<div class="math notranslate nohighlight">
+\[
+P_t = \frac{q_t}{k}
+\]</div>
+<p>so the forward model becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{P}_t^{(\ell)} = \frac{q_t}{k^{(\ell)}}
+\]</div>
+<p>where,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(q_t\)</span> = flow rate at time <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_t\)</span> = pressure response at time <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta P_t\)</span> = pressure drop across the cell</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> = permeability (unknown parameter)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> = cross-sectional area</p></li>
+<li><p><span class="math notranslate nohighlight">\(L\)</span> = length of the cell</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{P}_t^{(\ell)}\)</span> = predicted pressure from ensemble member <span class="math notranslate nohighlight">\(\ell\)</span></p></li>
+</ul>
+<p>This reduced form of Darcy’s law assumes:</p>
+<ul class="simple">
+<li><p><strong>Single-phase flow</strong> (no multiphase effects such as gas–oil or water–oil coupling)</p></li>
+<li><p><strong>Steady-state or quasi-steady-state flow</strong> (no storage or transient accumulation within the cell model)</p></li>
+<li><p><strong>Linear flow regime</strong> (Darcy flow; no turbulence or non-Darcy effects)</p></li>
+<li><p><strong>Homogeneous properties within the cell</strong> (each ensemble member assigns a single effective permeability value)</p></li>
+<li><p><strong>Constant geometry</strong> (area <span class="math notranslate nohighlight">\(A\)</span> and length <span class="math notranslate nohighlight">\(L\)</span> do not vary with time or ensemble)</p></li>
+<li><p><strong>Known forcing term</strong> (<span class="math notranslate nohighlight">\(q_t\)</span> is assumed measured or prescribed)</p></li>
+</ul>
+<p>These assumptions reduce the physics to a simple monotonic mapping,</p>
+<div class="math notranslate nohighlight">
+\[
+k \rightarrow P_t
+\]</div>
+<p>which has several important consequences,</p>
+<ul class="simple">
+<li><p>The system is <strong>strongly nonlinear in the inverse sense</strong> (pressure depends on <span class="math notranslate nohighlight">\(1/k\)</span>)</p></li>
+<li><p>A single scalar parameter (<span class="math notranslate nohighlight">\(k\)</span>) is sufficient to explain all observations</p></li>
+<li><p>All uncertainty enters through permeability only (no model structural uncertainty)</p></li>
+<li><p>Each observation time provides independent information about the same static parameter</p></li>
+<li><p>The EnKF update progressively reduces uncertainty in <span class="math notranslate nohighlight">\(k\)</span> as more pressure data are assimilated</p></li>
+</ul>
+<p>This simplified Darcy formulation turns the subsurface flow problem into a clean inverse problem:</p>
+<ul class="simple">
+<li><p>infer a single static permeability value from repeated noisy pressure observations through a nonlinear forward mapping</p></li>
+</ul>
+</section>
+<section id="load-the-required-libraries">
+<h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
+<p>The following code loads the required libraries.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                                            <span class="c1"># ndarrays for gridded data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>                               <span class="c1"># plotting</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="p">(</span><span class="n">MultipleLocator</span><span class="p">,</span> <span class="n">AutoMinorLocator</span><span class="p">)</span> <span class="c1"># control of axes ticks</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mticker</span>
+<span class="n">seed</span><span class="o">=</span> <span class="mi">42</span>                                                      <span class="c1"># random number seed</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you get a package import error, you may have to first install some of these packages. This can usually be accomplished by opening up a command window on Windows and then typing ‘python -m pip install [package-name]’. More assistance is available with the respective package docs.</p>
+</section>
+<section id="define-functions">
+<h2>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h2>
+<p>These are the fundamental functions required to calculate a multiple point simulation (MPS) realization, including,</p>
+<ul class="simple">
+<li><p><strong>build_synthetic_pressure_dataset</strong> - build a simple synthetic pressure dataset given input flow rates (<span class="math notranslate nohighlight">\(\frac{m^3}{s}\)</span>), true permeability (<span class="math notranslate nohighlight">\(m^2\)</span>), and permeability error (<span class="math notranslate nohighlight">\(m^4\)</span>), fluid dynamic viscosity (<span class="math notranslate nohighlight">\(\mu\)</span>) (<span class="math notranslate nohighlight">\(Pa \cdot s\)</span>), length of flow path (<span class="math notranslate nohighlight">\(m\)</span>), cross sectional area (<span class="math notranslate nohighlight">\(m^2\)</span>)</p></li>
+<li><p><strong>generate_initial_ensemble</strong> - scan the training image and find data event matches, return the matches and frequencies of each facies at the matches with the option to plot the matches (red dots) over the training image</p></li>
+<li><p><strong>ensemble_mean</strong> - vectorized code for scanning the training image for data event matches, without visualization as a speed up for simulating all previous nodes before the current visualized node</p></li>
+</ul>
+<p>Along with convenience functions,</p>
+<ul class="simple">
+<li><p><strong>ensemble_variance</strong> - add data to simulation model, and include any number of truth values to mimic a partially completed simulation if computational time is too long for a complete simulated realization</p></li>
+<li><p><strong>ensemble_covariance, covariance_PP, covariance_qP</strong> - plot the simulation model with the new simulated realization added</p></li>
+<li><p><strong>compute_kalman_gain</strong> - plot the conditional PDF for facies given the data event and training image as a pie plot</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">build_synthetic_pressure_dataset</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">k_true</span><span class="p">,</span> <span class="n">q_t</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span>       <span class="c1"># build synthetic P(t) model from q(t) and true permeability</span>
+    <span class="n">mu</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">A</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">return_true</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">random_seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>                           <span class="c1"># set random seed for workflow repeatability       </span>
+
+    <span class="n">q_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">q_t</span><span class="p">)</span>
+    <span class="n">P_true</span> <span class="o">=</span> <span class="p">(</span><span class="n">q_t</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">k_true</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span>                    <span class="c1"># Darcy law (SI consistent)</span>
+
+    <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="n">T</span><span class="p">)</span>                <span class="c1"># additive Gaussian noise (EnKF-consistent)</span>
+    <span class="n">P_obs</span> <span class="o">=</span> <span class="n">P_true</span> <span class="o">+</span> <span class="n">noise</span>
+    <span class="n">P_obs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">P_obs</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>                         <span class="c1"># remove non-physical values</span>
+    
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">),</span><span class="s2">&quot;q_t&quot;</span><span class="p">:</span> <span class="n">q_t</span><span class="p">,</span><span class="s2">&quot;P_obs&quot;</span><span class="p">:</span> <span class="n">P_obs</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">return_true</span><span class="p">:</span>
+        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;P_true&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">P_true</span>                               <span class="c1"># P_true to output for model checking, use P_obs </span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="k">def</span> <span class="nf">generate_initial_ensemble</span><span class="p">(</span><span class="n">N_e</span><span class="p">,</span> <span class="n">mu_logk</span><span class="p">,</span> <span class="n">sigma_logk</span><span class="p">,</span>       <span class="c1"># Monte Carlo simulate initial k ensemble from lognormal distribution</span>
+    <span class="n">random_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+
+    <span class="k">if</span> <span class="n">random_seed</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>                               <span class="c1"># set random seed for workflow repeatability</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">random_seed</span><span class="p">)</span>
+
+    <span class="n">logk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu_logk</span><span class="p">,</span> <span class="n">sigma_logk</span><span class="p">,</span> <span class="n">N_e</span><span class="p">)</span>         <span class="c1"># Monte Carlo simulation n_e times</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">logk</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">k</span>
+
+<span class="k">def</span> <span class="nf">ensemble_mean</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>                                         <span class="c1"># calculate ensemble mean                          </span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">ensemble_variance</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>                                     <span class="c1"># calculate ensemble variance</span>
+    <span class="n">Ne</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ne</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">ensemble_covariance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>                                <span class="c1"># calculate covariance between two ensembles  </span>
+    <span class="n">Ne</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ne</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">covariance_PP</span><span class="p">(</span><span class="n">P_hat</span><span class="p">):</span>                                     <span class="c1"># calculate covariance within an ensemble over locations</span>
+    <span class="k">return</span> <span class="n">ensemble_covariance</span><span class="p">(</span><span class="n">P_hat</span><span class="p">,</span> <span class="n">P_hat</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">covariance_kP</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">P_hat</span><span class="p">):</span>                                  <span class="c1"># calculate covariance between two ensembles </span>
+    <span class="k">return</span> <span class="n">ensemble_covariance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">P_hat</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">compute_kalman_gain</span><span class="p">(</span><span class="n">C_xp</span><span class="p">,</span> <span class="n">C_pp</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>                       <span class="c1"># calculate Kalman gain (since 1 location all are scalers)</span>
+    <span class="k">return</span> <span class="n">C_kP</span> <span class="o">/</span> <span class="p">(</span><span class="n">C_PP</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span>                                  <span class="c1"># for more than 1 location must switch to matrix operations</span>
+
+<span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>                                               <span class="c1"># add grid lines to plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks </span>
+
+<span class="k">def</span> <span class="nf">add_grid2</span><span class="p">(</span><span class="n">sub_plot</span><span class="p">):</span>                                      <span class="c1"># add grid lines to plot</span>
+    <span class="n">sub_plot</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span> <span class="n">sub_plot</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span><span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="c1"># add y grids</span>
+    <span class="n">sub_plot</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span><span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">);</span> <span class="n">sub_plot</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">sub_plot</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">());</span> <span class="n">sub_plot</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_minor_locator</span><span class="p">(</span><span class="n">AutoMinorLocator</span><span class="p">())</span> <span class="c1"># turn on minor ticks  </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="synthetic-enkf-problem">
+<h2>Synthetic EnKF Problem<a class="headerlink" href="#synthetic-enkf-problem" title="Permalink to this heading">#</a></h2>
+<p>The following code constructs a simple synthetic production dataset using a prescribed flow rate and a hidden “true” porosity/permeability field (used to generate observations but unknown to the EnKF workflow).</p>
+<p>To ensure consistency of units, all quantities are expressed in the International System of Units (SI). The table below summarizes variables and typical values used in this demonstration.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Quantity</p></th>
+<th class="head"><p>Symbol</p></th>
+<th class="head"><p>SI Unit</p></th>
+<th class="head"><p>Typical value (demo)</p></th>
+<th class="head"><p>Details</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Permeability</p></td>
+<td><p>k</p></td>
+<td><p><span class="math notranslate nohighlight">\(m^{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-14}\)</span> to <span class="math notranslate nohighlight">\(10^{-12}\)</span></p></td>
+<td><p>ensemble variable updated over time, <span class="math notranslate nohighlight">\(k^{\ell}(t)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Flow rate</p></td>
+<td><p>q</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{m^3}{s}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-6}\)</span> to <span class="math notranslate nohighlight">\(10^{-3}\)</span></p></td>
+<td><p>variable over time, <span class="math notranslate nohighlight">\(q(t)\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>Pressure</p></td>
+<td><p>P</p></td>
+<td><p><span class="math notranslate nohighlight">\(Pa\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{5}\)</span> to <span class="math notranslate nohighlight">\(10^{7}\)</span></p></td>
+<td><p>variable over time, <span class="math notranslate nohighlight">\(P(t)\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Viscosity</p></td>
+<td><p>μ</p></td>
+<td><p><span class="math notranslate nohighlight">\(Pa \cdot s\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(10^{-3}\)</span> (water/oil-like)</p></td>
+<td><p>constant</p></td>
+</tr>
+<tr class="row-even"><td><p>Length</p></td>
+<td><p>L</p></td>
+<td><p><span class="math notranslate nohighlight">\(m\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1.0\)</span></p></td>
+<td><p>constant</p></td>
+</tr>
+<tr class="row-odd"><td><p>Area</p></td>
+<td><p>A</p></td>
+<td><p><span class="math notranslate nohighlight">\(m^2\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(1.0\)</span></p></td>
+<td><p>constant</p></td>
+</tr>
+</tbody>
+</table>
+<p>Many practitioners are more familiar with Darcy units for permeability, so permeability is converted from SI units <span class="math notranslate nohighlight">\(m^2\)</span> to industry standard <span class="math notranslate nohighlight">\(mD\)</span> after each update step for visualization.</p>
+<p>For a physically plausible synthetic dataset, the flow rate is prescribed as a smoothly varying function of time:,</p>
+<div class="math notranslate nohighlight">
+\[
+q(t), \quad \forall \quad t = 1,\ldots,T  
+\]</div>
+<p>Then pressure is calculated from Darcy’s law,</p>
+<div class="math notranslate nohighlight">
+\[
+P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
+\]</div>
+<p>where all terms are defined in the table above.</p>
+<p>We make the following assumptions,</p>
+<ul class="simple">
+<li><p>porosity is treated as constant (no storage heterogeneity), and storage effects are neglected under steady-state conditions</p></li>
+<li><p>flow is controlled by transmissibility rather than compressibility or accumulation</p></li>
+<li><p><span class="math notranslate nohighlight">\(k_{true}\)</span> is the true permeability of the single-cell system, used to generate synthetic observations <span class="math notranslate nohighlight">\(P_{obs}(t)\)</span>, but is unknown to the EnKF and estimated through the assimilation cycle</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">=</span> <span class="mi">20</span>                                                        <span class="c1"># number of produciton time and EnKF assimulation steps</span>
+
+<span class="n">k_true</span> <span class="o">=</span> <span class="mf">1.0e-13</span>                                              <span class="c1"># true permeability</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>                                         <span class="c1"># observation error variance</span>
+                    
+<span class="n">sigma_obs</span> <span class="o">=</span> <span class="mf">5000.0</span>                                            <span class="c1"># pressure observed error in st.dev.</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">sigma_obs</span><span class="o">**</span><span class="mi">2</span>                    
+                    
+<span class="n">q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-5</span>                                         <span class="c1"># known forcing (flow rate)</span>
+<span class="n">q</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.2e-5</span>
+<span class="n">q</span><span class="p">[</span><span class="mi">10</span><span class="p">:]</span> <span class="o">=</span> <span class="mf">8e-6</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">build_synthetic_pressure_dataset</span><span class="p">(</span><span class="n">T</span><span class="o">=</span><span class="n">T</span><span class="p">,</span><span class="n">k_true</span><span class="o">=</span><span class="n">k_true</span><span class="p">,</span><span class="n">q_t</span><span class="o">=</span><span class="n">q</span><span class="p">,</span><span class="n">R</span><span class="o">=</span><span class="n">R</span><span class="p">,</span><span class="n">random_seed</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span><span class="n">return_true</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># generate synthetic dataset</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;t&quot;</span><span class="p">]</span>  <span class="o">+</span> <span class="mi">1</span>                                            <span class="c1"># extract time and pressure</span>
+<span class="n">P_obs</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;P_obs&quot;</span><span class="p">]</span>
+<span class="n">P_true</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;P_true&quot;</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>                                     <span class="c1"># plot historical production data over time </span>
+<span class="n">line1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$q(t)$&quot;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time (Month)&quot;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Flow rate, $q(t)$ ($\frac{m^3}</span><span class="si">{s}</span><span class="s2">$)&quot;</span><span class="p">);</span> <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0e-5</span><span class="p">,</span><span class="mf">2.0e-5</span><span class="p">])</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">line2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">P_obs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$P_</span><span class="si">{obs}</span><span class="s2">(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Pressure Observed, $P_</span><span class="si">{obs}</span><span class="s2">(t)$ (Pa)&quot;</span><span class="p">);</span> <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">200000</span><span class="p">])</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="n">line1</span> <span class="o">+</span> <span class="n">line2</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">t</span><span class="p">)]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">q</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">P_obs</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Synthetic EnKF Dataset: Forcing (Flow Rate) and Observations (Pressure)&quot;</span><span class="p">);</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/03639e0cd93929014b70227326c7df553227d19c93893676ce06b48cf807a166.png" src="_images/03639e0cd93929014b70227326c7df553227d19c93893676ce06b48cf807a166.png" />
+</div>
+</div>
+</section>
+<section id="assign-prior-model">
+<h2>Assign Prior Model<a class="headerlink" href="#assign-prior-model" title="Permalink to this heading">#</a></h2>
+<p>Generate a prior model as an ensemble of permeability realizations.</p>
+<p>We assume a lognormal prior distribution for permeability, defined such that,</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(lnk \sim N(μ,σ^2)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu = ln(1.2 \times 10^{−13})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma = 0.5\)</span></p></li>
+</ul>
+<p>Each ensemble member represents a plausible realization of the subsurface, including,</p>
+<ul class="simple">
+<li><p>spatially variable permeability fields</p></li>
+<li><p>associated porosity realizations (if modeled jointly or as correlated uncertainty)</p></li>
+<li><p>prior geological uncertainty prior to data assimilation</p></li>
+</ul>
+<p>This ensemble defines the prior uncertainty model before incorporation of historical production data.</p>
+<ul class="simple">
+<li><p>it is important to emphasize that this prior represents uncertainty in the Earth model, not randomness in the physics.</p></li>
+</ul>
+<p>Finally, in the Ensemble Kalman Filter (EnKF), the full ensemble is updated simultaneously at each assimilation step, with each member being adjusted based on the data mismatch and ensemble-derived covariances.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ne</span> <span class="o">=</span> <span class="mi">1000</span>                                                     <span class="c1"># set number of samples in ensemble</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1.2e-13</span><span class="p">);</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># k_prior = np.random.lognormal(mean=np.log(1.2e-13),sigma=0.5,size=Ne) # Monte Carlo simulation from prior distribution</span>
+<span class="n">k_prior</span> <span class="o">=</span> <span class="n">generate_initial_ensemble</span><span class="p">(</span><span class="n">N_e</span><span class="o">=</span><span class="n">Ne</span><span class="p">,</span> <span class="n">mu_logk</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span>       <span class="c1"># Monte Carlo simulate initial k ensemble from lognormal distribution</span>
+    <span class="n">sigma_logk</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span><span class="n">random_seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span> 
+    
+<span class="n">kmD_prior</span> <span class="o">=</span> <span class="n">k_prior</span><span class="o">/</span><span class="mf">9.86923e-16</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># plot SI permeability ensemble histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">k_prior</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$k^{(\ell)}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">k_prior</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#CC5500&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E\{k^{(\ell)}\}$&#39;</span><span class="p">)</span>
+<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Permeability ($m^2$)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Prior Model (SI)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">kmD_prior</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$k^{(\ell)}$&#39;</span><span class="p">)</span> <span class="c1"># plot mD permeability ensemble histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">kmD_prior</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#CC5500&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E\{k^{(\ell)}\}$&#39;</span><span class="p">)</span>
+<span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Permeability ($mD$)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Prior Model (non-SI)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/267003d6029cc8365339f9430f04ab82259a40280e244864a111afcf6e479344.png" src="_images/267003d6029cc8365339f9430f04ab82259a40280e244864a111afcf6e479344.png" />
+</div>
+</div>
+</section>
+<section id="enkf-assimilation-cycles-over-time-steps">
+<h2>EnKF Assimilation Cycles Over Time Steps<a class="headerlink" href="#enkf-assimilation-cycles-over-time-steps" title="Permalink to this heading">#</a></h2>
+<p>We have all the required components:</p>
+<ul class="simple">
+<li><p>physically plausible pressure observations, <span class="math notranslate nohighlight">\(P_{obs}(t)\)</span>, generated over time from a hidden true permeability field and a prescribed flow-rate schedule</p></li>
+<li><p>A prior ensemble of permeability realizations initialized at time <span class="math notranslate nohighlight">\(t=0\)</span>, denoted <span class="math notranslate nohighlight">\(k^{(ℓ)}(0)\)</span></p></li>
+<li><p>A set of functions defining each step of the EnKF assimilation cycle</p></li>
+</ul>
+<p>Below is the implementation of the assimilation loop over all time steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_history</span> <span class="o">=</span> <span class="p">[]</span>                                                <span class="c1"># initialize list to store all permeability ensemble values over time</span>
+<span class="n">k_history</span> <span class="o">=</span> <span class="p">[</span><span class="n">k_prior</span><span class="o">.</span><span class="n">copy</span><span class="p">()]</span>                                  <span class="c1"># assign time step 0 as the prior permeability ensemble</span>
+
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">;</span> <span class="n">L</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">A</span> <span class="o">=</span> <span class="mf">1.0</span>                                   <span class="c1"># assign model constants as discussed above, viscosity, path length and area</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.3</span>                                                   <span class="c1"># analogous to step size to slow learning</span>
+
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">1.00</span>                                                    <span class="c1"># inflation / dampenning factor, slow learning for improved visualization of process                           </span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>                                     <span class="c1"># set random number seed for workflow repeatability</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="n">k_prior</span>                                                   <span class="c1"># current copy of permeability essemble as the prior ensemble</span>
+
+<span class="k">for</span> <span class="n">t_step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)):</span>                                  <span class="c1"># ENKF LOOP over assimulation cycles for each time step</span>
+    <span class="n">k_f</span> <span class="o">=</span> <span class="n">k</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>                                            <span class="c1"># make a working copy of the permeability essemble</span>
+
+    <span class="n">P_hat</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="p">[</span><span class="n">t_step</span><span class="p">]</span> <span class="o">*</span> <span class="n">mu</span> <span class="o">*</span> <span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">k_f</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span>                  <span class="c1"># forward forecast at current time step</span>
+    <span class="n">P_obs_ens</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">Ne</span><span class="p">,</span> <span class="n">P_obs</span><span class="p">[</span><span class="n">t_step</span><span class="p">])</span>                    <span class="c1"># replicate single observation Ne times for ensemble update (consistent vector length)                  </span>
+ 
+    <span class="n">k_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">k_f</span><span class="p">);</span> <span class="n">P_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">P_hat</span><span class="p">)</span>            <span class="c1"># calculate ensemble statistics, mean, variance, then covariance and cross-covariance</span>
+
+    <span class="n">C_kP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">k_f</span> <span class="o">-</span> <span class="n">k_mean</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">P_hat</span> <span class="o">-</span> <span class="n">P_mean</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ne</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">C_PP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">P_hat</span> <span class="o">-</span> <span class="n">P_mean</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ne</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">K</span> <span class="o">=</span> <span class="n">C_kP</span> <span class="o">/</span> <span class="p">(</span><span class="n">C_PP</span> <span class="o">+</span> <span class="n">R</span><span class="p">)</span>                                     <span class="c1"># calculate Kalman gain, since 1 location we use simplified scalar form</span>
+
+    <span class="n">k_a</span> <span class="o">=</span> <span class="n">k_f</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">K</span> <span class="o">*</span> <span class="p">(</span><span class="n">P_obs_ens</span> <span class="o">-</span> <span class="n">P_hat</span><span class="p">)</span>               <span class="c1"># calculate updated permeability ensemble</span>
+
+    <span class="n">k_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">k_a</span><span class="p">)</span>                                     <span class="c1"># apply dampenning factor to slow assimulation for improved visualization of process</span>
+    <span class="n">k_a</span> <span class="o">=</span> <span class="n">k_mean</span> <span class="o">+</span> <span class="n">rho</span> <span class="o">*</span> <span class="p">(</span><span class="n">k_a</span> <span class="o">-</span> <span class="n">k_mean</span><span class="p">)</span>
+
+    <span class="n">k_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">k_a</span><span class="p">,</span> <span class="mf">1e-16</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>                           <span class="c1"># optional physical constraint</span>
+
+    <span class="n">k</span> <span class="o">=</span> <span class="n">k_a</span>                                                   <span class="c1"># update permeability ensemble list and add to 2D array for visualization over time steps</span>
+    <span class="n">k_history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">k</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualize-enkf-assimilation-cycles-over-time-steps">
+<h2>Visualize EnKF Assimilation Cycles Over Time Steps<a class="headerlink" href="#visualize-enkf-assimilation-cycles-over-time-steps" title="Permalink to this heading">#</a></h2>
+<p>We now visualize the evolution of the permeability ensemble across all assimilation cycles over time.</p>
+<p>The visualization includes,</p>
+<ul class="simple">
+<li><p>permeability ensemble evolution over time</p></li>
+<li><p>true (hidden) permeability field (reference model)</p></li>
+<li><p>ensemble mean permeability at each time step</p></li>
+</ul>
+<p>This allows direct assessment of,</p>
+<ul class="simple">
+<li><p>ensemble convergence toward the true model</p></li>
+<li><p>reduction of uncertainty through assimilation cycles</p></li>
+<li><p>preservation of ensemble spread and variability over time</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k_history_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">k_history</span><span class="p">)</span>                         <span class="c1"># convert 2D permeabilty ensemble to 2D ndarray</span>
+<span class="n">kmD_history_array</span> <span class="o">=</span> <span class="n">k_history_array</span><span class="o">/</span><span class="mf">9.86923e-16</span>               <span class="c1"># convert to mD for improved visualizations</span>
+<span class="n">kmD_true</span> <span class="o">=</span> <span class="n">k_true</span><span class="o">/</span><span class="mf">9.86923e-16</span>
+
+<span class="n">T</span><span class="p">,</span> <span class="n">Ne</span> <span class="o">=</span> <span class="n">k_history_array</span><span class="o">.</span><span class="n">shape</span><span class="p">;</span> <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>            <span class="c1"># new time index with prior at t = 0</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>                                              <span class="c1"># plot permeability ensembles over assimulation cycles</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ne</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">k_history_array</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$k^{(\ell)}$&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">k_history_array</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">k_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">k_history_array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">k_mean</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#CC5500&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E\{k^{(\ell)}\}$&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">k_true</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$k_</span><span class="si">{truth}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time step&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Permeability, $k$ ($m^2$)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;EnKF Ensemble Evolution of Permeability&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5e-12</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ne</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">kmD_history_array</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$k^{(\ell)}$&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">kmD_history_array</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;darkorange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">kmD_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">kmD_history_array</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">kmD_mean</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#CC5500&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E\{k^{(\ell)}\}$&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">kmD_true</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;True k&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time step&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Permeability, $k$ (mD)&quot;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;EnKF Ensemble Evolution of Permeability&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mf">500.0</span><span class="p">]);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span> <span class="n">add_grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">),</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1b1f8273226332a116764b68ce06a2ee3488c7eb084c7375619ebaba098f9906.png" src="_images/1b1f8273226332a116764b68ce06a2ee3488c7eb084c7375619ebaba098f9906.png" />
+</div>
+</div>
+<p>These results look good. Key observations include,</p>
+<ul class="simple">
+<li><p>prior permeability ensemble at t=0 exhibits high variance, initialized from a lognormal distribution with a slightly biased (high) mean, representing prior geological uncertainty.</p></li>
+<li><p>assimilated permeability ensemble over successive assimilation cycles for <span class="math notranslate nohighlight">\(t=1,\ldots,T\)</span> shows a progressive reduction in uncertainty (decreasing variance) and a correction of the ensemble mean toward the hidden true permeability.</p></li>
+<li><p>posterior permeability ensemble stabilizes over time, with the ensemble mean converging toward the true permeability. The uncertainty envelope narrows but does not collapse, preserving realistic posterior variability.</p></li>
+</ul>
+</section>
+<section id="visualize-permeability-ensemble-distributions-over-assimilation-cycles">
+<h2>Visualize Permeability Ensemble Distributions Over Assimilation Cycles<a class="headerlink" href="#visualize-permeability-ensemble-distributions-over-assimilation-cycles" title="Permalink to this heading">#</a></h2>
+<p>We now select four representative assimilation time steps and visualize histograms of the permeability ensemble at each selected time.</p>
+<p>This allows comparison of,</p>
+<ul class="simple">
+<li><p>prior distribution shape at early time steps</p></li>
+<li><p>progressive Bayesian updating through assimilation cycles</p></li>
+<li><p>evolution of ensemble spread and skewness over time</p></li>
+<li><p>convergence behavior toward the true permeability distribution</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viz_T</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>                                            <span class="c1"># assign assimulation cycles, time steps to plots</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="mi">1</span>                                                     <span class="c1"># plot the permeability ensemble histograms at each time step</span>
+<span class="k">for</span> <span class="n">viz_t</span> <span class="ow">in</span> <span class="n">viz_T</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">kmD_history_array</span><span class="p">[</span><span class="n">viz_t</span><span class="p">,:],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$k^{(\ell)}$&#39;</span><span class="p">)</span> <span class="c1"># plot mD permeability ensemble histogram</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">kmD_history_array</span><span class="p">[</span><span class="n">viz_t</span><span class="p">,:]),</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;#CC5500&quot;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E\{k^{(\ell)}\}$&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">kmD_true</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$k_</span><span class="si">{truth}</span><span class="s1">$&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">)</span> 
+    <span class="n">add_grid</span><span class="p">();</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Permeability, $k$ ($mD$)&#39;</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">viz_t</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Permeability Ensemble Prior Model at Time = 0&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Permeability Ensemble, Assimulation Cycle at Time = &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">viz_t</span><span class="p">))</span>        
+    <span class="n">index</span> <span class="o">=</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mf">2.1</span><span class="p">,</span> <span class="n">wspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.2</span><span class="p">);</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8986cddcfe9bcfac8611f19fb853a8b3319ec877aec879c0c4b7d0c6ec2928e1.png" src="_images/8986cddcfe9bcfac8611f19fb853a8b3319ec877aec879c0c4b7d0c6ec2928e1.png" />
+</div>
+</div>
+<p>These histograms of the permeability ensemble over assimilation cycles at selected time steps illustrate the following,</p>
+<ul class="simple">
+<li><p>permeability ensemble mean converges toward the hidden true permeability</p></li>
+<li><p>uncertainty decreases progressively and then stabilizes, forming a consistent posterior distribution after sufficient assimilation cycles</p></li>
+</ul>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
+<p>This is a basic demonstration of history matching using the Ensemble Kalman Filter (EnKF).</p>
+<ul class="simple">
+<li><p>in an effort to provide a maximally accessible illustration of the full workflow, I have intentionally used a highly simplified single-cell model.
+Nevertheless, I believe this provides a clear and useful introduction, with all key steps and calculations explicitly shown.</p></li>
+</ul>
+<p>Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>I hope this is helpful,</p>
+<p><em>Michael</em></p>
+</section>
+<section id="about-the-author">
+<h2>About the Author<a class="headerlink" href="#about-the-author" title="Permalink to this heading">#</a></h2>
+<figure style="text-align: center;">
+  <img src="_static/intro/michael_pyrcz_officeshot_jacket.jpg" style="display: block; margin: 0 auto; width: 70%;">
+  <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
+</figcaption>
+</figure>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<ul class="simple">
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
+</ul>
+<p>Michael has written over 90 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+</section>
+<section id="want-to-work-together">
+<h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<ul class="simple">
+<li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
+</ul>
+<p>I’m always happy to discuss,</p>
+<p><em>Michael</em></p>
+<p>Michael Pyrcz, Ph.D., P.Eng. Professor, Cockrell School of Engineering and The Jackson School of Geosciences, The University of Texas at Austin</p>
+<p>More Resources Available at: <a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="GeostatsPy_simulation_postsim.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Simulated Realizations Post-processing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="GeostatsPy_model_checking.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Model Checking</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forecasting">Forecasting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inversion-and-history-matching">Inversion and History Matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-kalman-filter-enkf">Ensemble Kalman Filter (EnKF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-ensemble-kalman-filter-enkf-workflow">General Ensemble Kalman Filter (EnKF) Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-the-unknown-state-variables-or-parameters">Step 1. Define the Unknown State Variables or Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-generate-an-initial-ensemble">Step 2. Generate an Initial Ensemble</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-forecast-the-system-response">Step 3. Forecast the System Response</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-collect-observations">Step 4. Collect Observations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-compute-ensemble-statistics">Step 5. Compute Ensemble Statistics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-mean-state-space">Ensemble mean (state space)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-mean-observation-space">Ensemble mean (observation space)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-covariance-stateobservation">Cross-covariance (state–observation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-compute-the-kalman-gain">Step 6. Compute the Kalman Gain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-7-update-the-ensemble">Step 7. Update the Ensemble</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-8-repeat-sequentially-through-time">Step 8. Repeat Sequentially Through Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-enkf-workflow-summary">General EnKF Workflow Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physics-model">Physics Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuity-equation-conservation-of-mass">Continuity Equation (Conservation of Mass)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#darcy-s-law-conservation-of-momentum">Darcy’s Law (Conservation of Momentum)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ensemble-kalman-filtering-enkf-for-estimating-permeability-from-pressure-observations">Ensemble Kalman Filtering (EnKF) for Estimating Permeability from Pressure Observations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#define-the-unknown-model-parameter">1. Define the unknown model parameter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-an-ensemble-of-permeability-realizations">2. Generate an ensemble of permeability realizations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#forecast-pressure-responses-for-each-ensemble-member">3. Forecast pressure responses for each ensemble member</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-noisy-observations">4. Generate noisy observations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-ensemble-statistics">5. Compute ensemble statistics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-kalman-gain">6. Compute the Kalman gain</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-the-permeability-ensemble">7. Update the permeability ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repeat-sequentially-through-time">8. Repeat sequentially through time</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#darcys-law-1-cell-form-used-in-this-enkf-example">Darcy’s Law (1-cell form used in this EnKF example)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-enkf-problem">Synthetic EnKF Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assign-prior-model">Assign Prior Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#enkf-assimilation-cycles-over-time-steps">EnKF Assimilation Cycles Over Time Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-enkf-assimilation-cycles-over-time-steps">Visualize EnKF Assimilation Cycles Over Time Steps</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-permeability-ensemble-distributions-over-assimilation-cycles">Visualize Permeability Ensemble Distributions Over Assimilation Cycles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Michael J. Pyrcz
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

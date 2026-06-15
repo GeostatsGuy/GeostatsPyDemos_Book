@@ -1,0 +1,134 @@
+Traceback (most recent call last):
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 1305, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\asyncio\base_events.py", line 608, in run_until_complete
+    return future.result()
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 705, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 1058, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\pm27995\AppData\Local\anaconda3\envs\book\lib\site-packages\nbclient\client.py", line 914, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+ndx = 30; ndy = 30; ndz = 10; xdsiz = 10.0; ydsiz = 10.0; zdsiz = 1.0 # specify the pre-rotated and transformed grid for the bounding surfaces
+xdmn = xdsiz*0.5; ydmn = ydsiz*0.5; zdmn = zdsiz*0.5
+
+nug = 0.0; nst = 1                                            # variogram parameters for the bounding surfaces
+it1 = 1; cc1 = 1.0; azi_maj = 0.0; hmaj1 = 800.0; hmin1 = 800.0; hvert1 = 4.0
+
+vario_Vsh = geostats.make_variogram3D(nug,nst,it1,cc1,azi_maj,0.0,hmaj1,hmin1,hvert1) # make variogram model object
+
+npadding = max(int(vario_Vsh['hmaj'][0]/ydsiz),int(vario_Vsh['hmaj'][0]/xdsiz)) # padding for convolution
+
+xdmin = xdmn - xdsiz/2; xdmax = xdmin + ndx * xdsiz           # calculate the bounding surfaces extents
+ydmin = ydmn - ydsiz/2; ydmax = ydmin + ndy * ydsiz
+zdmin = zdmn - zdsiz/2; zdmax = zdmin + ndz * zdsiz
+
+nwell = 6                                                     # select number of wells, random locations
+
+wellx = np.random.uniform(xdmin,xdmax,size=nwell); welly = np.random.uniform(ydmin,ydmax,size = nwell) # calculate well locations
+wellsx = np.zeros(nwell*ndz); wellsy = np.zeros(nwell*ndz); wellsz = np.zeros(nwell*ndz); wellsvsh = np.zeros(nwell*ndz) # well 1D arrays
+
+index = 0                                                     # populate the wells with random values 
+for iwell in range(0,nwell):
+    for iz in range(0,ndz):
+        wellsx[index] = wellx[iwell]; wellsy[index] = welly[iwell]; wellsvsh[index] = np.random.uniform(0.0,1.0)  
+        wellsz[index] = zdmn + iz * zdsiz
+        index = index + 1
+
+dfwell = pd.DataFrame(np.c_[wellsx,wellsy,wellsz,wellsvsh], columns=["X","Y","Z","Vsh"]) # make well DataFrame
+
+nkx = int(vario_Vsh['hmaj'][0]*2/xdsiz)+1                     # make convolution kernel  
+nky = int(vario_Vsh['hmaj'][0]*2/ydsiz)+1
+
+ckx = nkx/2; cky = nky/2                                      # calculate kernel center
+kernel = np.zeros((nky,nkx)); geo_dist = np.zeros((nky,nkx))  # allocate kernel matrices
+
+for iy in range(0,nky):                                       # calculate binary kernel
+    for ix in range(0,nkx):
+        geo_dist[iy,ix] = ( (ix-ckx)*xdsiz/vario_Vsh['hmaj'][0])**2 + ( (iy-cky)*xdsiz/vario_Vsh['hmaj'][0])**2           
+
+kernel[geo_dist < 1.0] = 1.0
+kernel = kernel / np.sum(kernel.flatten()) # unbiasedness, sum to 1.0
+
+top = np.random.random(size=(ndy+npadding*2,ndx+npadding*2))
+top = ndimage.convolve(top, kernel, mode='constant', cval=0.5) # convolve and then transform to U[0,1] 
+top = np.reshape(stats.rankdata(top[npadding:-npadding,npadding:-npadding], "average") / (ndy*ndx),(ndy,ndx))
+top = top*10.0 + 30                                           # shift and stretch top surface
+
+base = np.random.random(size=(ndy+npadding*2,ndx+npadding*2))
+base = ndimage.convolve(base, kernel, mode='constant', cval=0.5) # convolve and then transform to U[0,1] 
+base = np.reshape(stats.rankdata(base[npadding:-npadding,npadding:-npadding], "average") / (ndy*ndx),(ndy,ndx))
+base = base*10.0 + 10                                         # shift and stretch base surface
+
+idx = np.arange(ndx)*xdsiz + xdmn; idy = np.arange(ndy)*ydsiz + ydmn; # make indices for fast p-field simulation
+idy_2D, idx_2D = np.meshgrid(idy, idx, indexing='ij')         # x and y coordinates at all bounding surface cell centers
+
+dftop = pd.DataFrame(np.c_[idx_2D.flatten(),idy_2D.flatten(),top.flatten()], columns=["X","Y","Top"]) # make bounding surface DataFrames
+dfbase = pd.DataFrame(np.c_[idx_2D.flatten(),idy_2D.flatten(),base.flatten()], columns=["X","Y","Base"])
+
+rotation = 35                                                 # rotation angle
+
+dfwell['X'],dfwell['Y'] = geostats.rotate2D(dfwell['X'],dfwell['Y'],rotation) # rotate well data and bounding surfaces
+dftop['X'],dftop['Y'] = geostats.rotate2D(dftop['X'],dftop['Y'],rotation)
+dfbase['X'],dfbase['Y'] = geostats.rotate2D(dfbase['X'],dfbase['Y'],rotation)
+
+well_sz = np.zeros(nwell*ndz)                                 # put data in original z coordinate between bounding surfaces
+
+index = 0
+for iwell in range(0,nwell):
+    ix = geostats.getindex(ndx,xdmn,xdsiz,wellx[iwell])
+    iy = geostats.getindex(ndy,ydmn,ydsiz,welly[iwell])
+    top_well = top[iy,ix]
+    base_well = base[iy,ix]
+    for iz in range(0,ndz):
+        well_sz[index] = (zdmn + iz * zdsiz)/(ndz * zdsiz) * (top_well - base_well) + base_well
+        index = index + 1
+
+dfwell['Z'] = well_sz
+
+fig = plt.figure()                                            # plot original data orthonormal 
+grid = fig.add_gridspec(2, 2, height_ratios=[2, 1])           # top figure larger
+
+ax = fig.add_subplot(grid[0, :],projection='3d')
+ax.scatter(dfbase["X"],dfbase["Y"],dfbase["Base"],c=dfbase['Base'],marker='s',cmap=cmap,alpha=0.1,zorder=1,vmin=0,vmax=50)
+ax.scatter(dftop["X"],dftop["Y"],dftop["Top"],c=dftop['Top'],marker='s',cmap=cmap,alpha=0.1,zorder=1,vmin=0,vmax=50)
+ax.scatter(dfwell["X"],dfwell["Y"],dfwell["Z"],c=dfwell['Vsh'],edgecolor='black',zorder=100)
+ax.set_xlim(-200,300); ax.set_ylim(-50,450); ax.set_zlim(0,50)
+ax.set_xlabel('X (m)'); ax.set_ylabel('Y (m)'); ax.set_zlabel('Z (m)'); ax.set_title('Well Data and Bounding Surfaces Original Space')
+
+ax2 = fig.add_subplot(grid[1, 0])                              # plot original data map view
+ax2.scatter(dfwell["X"],dfwell["Y"],c=dfwell['Vsh'],edgecolor='black',zorder=100,label='wells')
+ax2.scatter(dfbase["X"],dfbase["Y"],c=dfbase['Base'],marker='s',alpha=0.3,zorder=1,cmap=cmap,label='base surface')
+xorig = dftop['X'][0]; yorig = dftop['Y'][0]
+ax2.set_xlabel('X (m)'); ax2.set_ylabel('Y (m)'); ax2.set_ylim([-50,450]); ax2.set_xlim([-200,300])
+ax2.scatter(xorig,yorig,marker='x',label='xmn,ymn'); ax2.legend(loc='upper left'); add_grid2()
+ax2.set_title('Well Data and Bounding Surfaces Original Space - Plan View')
+                                 
+ax3 = fig.add_subplot(grid[1, 1])                               # plot original data x-z view
+ax3.scatter(dfwell["X"],dfwell["Z"],c=dfwell['Vsh'],edgecolor='black',zorder=100,label='wells')
+ax3.scatter(dfbase["X"],dfbase["Base"],c=dfbase['Base'],marker='s',alpha=0.3,zorder=1,cmap=cmap,vmin=0,vmax=50,label='base surface')
+ax3.scatter(dftop["X"],dftop["Top"],c=dftop['Top'],marker='s',alpha=0.3,zorder=1,cmap=cmap,vmin=0,vmax=50,label='top surface')
+ax3.set_xlabel('X (m)'); ax3.set_ylabel('Z (m)'); ax3.legend(loc='lower right'); ax3.set_ylim([0,50]); ax3.set_xlim([-200,300]); add_grid2()
+ax3.set_title('Well Data and Bounding Surfaces Original Space - X-Z View')
+
+plt.subplots_adjust(left=0.0, bottom=0.0, right=2.0, top=2.2, wspace=0.2, hspace=0.1); plt.show() 
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [1;32mIn[4], line 60[0m
+[0;32m     56[0m dfbase [38;5;241m=[39m pd[38;5;241m.[39mDataFrame(np[38;5;241m.[39mc_[idx_2D[38;5;241m.[39mflatten(),idy_2D[38;5;241m.[39mflatten(),base[38;5;241m.[39mflatten()], columns[38;5;241m=[39m[[38;5;124m"[39m[38;5;124mX[39m[38;5;124m"[39m,[38;5;124m"[39m[38;5;124mY[39m[38;5;124m"[39m,[38;5;124m"[39m[38;5;124mBase[39m[38;5;124m"[39m])
+[0;32m     58[0m rotation [38;5;241m=[39m [38;5;241m35[39m                                                 [38;5;66;03m# rotation angle[39;00m
+[1;32m---> 60[0m dfwell[[38;5;124m'[39m[38;5;124mX[39m[38;5;124m'[39m],dfwell[[38;5;124m'[39m[38;5;124mY[39m[38;5;124m'[39m] [38;5;241m=[39m [43mgeostats[49m[38;5;241;43m.[39;49m[43mrotate2D[49m(dfwell[[38;5;124m'[39m[38;5;124mX[39m[38;5;124m'[39m],dfwell[[38;5;124m'[39m[38;5;124mY[39m[38;5;124m'[39m],rotation) [38;5;66;03m# rotate well data and bounding surfaces[39;00m
+[0;32m     61[0m dftop[[38;5;124m'[39m[38;5;124mX[39m[38;5;124m'[39m],dftop[[38;5;124m'[39m[38;5;124mY[39m[38;5;124m'[39m] [38;5;241m=[39m geostats[38;5;241m.[39mrotate2D(dftop[[38;5;124m'[39m[38;5;124mX[39m[38;5;124m'[39m],dftop[[38;5;124m'[39m[38;5;124mY[39m[38;5;124m'[39m],rotation)
+[0;32m     62[0m dfbase[[38;5;124m'[39m[38;5;124mX[39m[38;5;124m'[39m],dfbase[[38;5;124m'[39m[38;5;124mY[39m[38;5;124m'[39m] [38;5;241m=[39m geostats[38;5;241m.[39mrotate2D(dfbase[[38;5;124m'[39m[38;5;124mX[39m[38;5;124m'[39m],dfbase[[38;5;124m'[39m[38;5;124mY[39m[38;5;124m'[39m],rotation)
+
+[1;31mAttributeError[0m: module 'geostatspy.geostats' has no attribute 'rotate2D'
+
