@@ -219,12 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Geostatistics Glossary</a></li>
-
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Glossary</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -421,7 +416,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Geostatistics Glossary</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-geostatistics-concepts">Motivation for Geostatistics Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-rule-probability"><strong>Addition Rule</strong> (probability)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-correction"><strong>Affine Correction</strong></a></li>
@@ -503,13 +497,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation-mcs"><strong>Monte Carlo Simulation (MCS)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation-workflow"><strong>Monte Carlo Simulation Workflow</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-rule-probability"><strong>Multiplication Rule</strong> (probability)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-1">Test 1</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-2">Test 2</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-3">Test 3</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-4">Test 4</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-5">Test 5</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-data-event"><strong>Multiple Point Data Event</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-simulation-mps"><strong>Multiple Point Simulation (MPS)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-template"><strong>Multiple Point Template</strong></a></li>
@@ -585,9 +572,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -630,7 +614,7 @@ document.write(`
 </section>
 <section id="addition-rule-probability">
 <h2><strong>Addition Rule</strong> (probability)<a class="headerlink" href="#addition-rule-probability" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_probability.html"><span class="doc std std-doc">Probability Concepts</span></a>: when we add probabilities (the union of outcomes), the probability of <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> is calculated with the probability addition rule,</p>
+<p>Method to calculate the probability of any event (the union of outcomes, represented by “or” grammar). For example, the probability of <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> is calculated with the probability addition rule,</p>
 <div class="math notranslate nohighlight">
 \[
 P(A \cup B) = P(A) + P(B) - P(A,B)
@@ -640,12 +624,14 @@ P(A \cup B) = P(A) + P(B) - P(A,B)
 \[
 P\left( \bigcup_{i=1}^k A_i \right) = \sum_{i=1}^k P(A_i)
 \]</div>
-<p>Applications:
-<a class="reference internal" href="GeostatsPy_probability.html#probability-addition-rule"><span class="std std-ref">Addition rule in Probability Chapter</span></a></p>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_probability.html#id1"><span class="std std-doc">Probability Addition Rule</span></a></p></li>
+</ul>
 </section>
 <section id="affine-correction">
 <h2><strong>Affine Correction</strong><a class="headerlink" href="#affine-correction" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_transformations.html"><span class="doc std std-doc">Distribution Transformations</span></a>: a distribution rescaling that can be thought of as shifting, and stretching or squeezing of a univariate distribution (e.g., <em>histogram</em>). For the case of affine correction of <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span>,</p>
+<p>A distribution rescaling method that can be thought of as shifting, and stretching or squeezing of a univariate distribution (e.g., <em>histogram</em>). For the case of affine correction of <span class="math notranslate nohighlight">\(X\)</span> to <span class="math notranslate nohighlight">\(Y\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 y_i = \frac{\sigma_y}{\sigma_x}(x_i - \overline{x}) + \overline{y}, \quad \forall \quad i, \ldots, n
@@ -655,18 +641,30 @@ y_i = \frac{\sigma_y}{\sigma_x}(x_i - \overline{x}) + \overline{y}, \quad \foral
 <ul class="simple">
 <li><p>there is no shape change for affine correction. For shape change consider <em>Distribution Transformation</em> like <em>Gaussian Anamorphosis</em>.</p></li>
 </ul>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_transformations.html#distribution-rescaling-with-affine-correction"><span class="std std-doc">Distribution Rescaling with Affine Correction</span></a></p></li>
+</ul>
 </section>
 <section id="anisotropic-or-directional-variogram">
 <h2><strong>Anisotropic or Directional</strong> (variogram)<a class="headerlink" href="#anisotropic-or-directional-variogram" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_variogram_calculation.html"><span class="doc std std-doc">Variogram Calculation</span></a>: variogram calculated or modelled such that direction (azimuth) is considered,</p>
+<p>A variogram calculated or modelled such that direction (azimuth) is considered,</p>
 <ul class="simple">
 <li><p>for an anisotropic experimental variogram set the azimuth tolerance less than 90 degrees, then the experimental variogram is sensitive to direction</p></li>
 <li><p>for an anisotropic variogram model set the major range greater than the minor range, then the variogram model is sensitive to direction</p></li>
 </ul>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation.html#variogram-calculation-parameters"><span class="std std-doc">Variogram Calculation Parameters</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation.html#isotropic-and-anisotropic-experimental-variograms"><span class="std std-doc">Isotropic and Anisotropic Experimental Variograms</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html#variogram-interpretation"><span class="std std-doc">Variogram Interpretation</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html#variogram-modeling"><span class="std std-doc">Variogram Modeling</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html#plotting-the-variogram-model"><span class="std std-doc">Plotting the Variogram Model</span></a></p></li>
+</ul>
 </section>
 <section id="azimuth-tolerance-variogram">
 <h2><strong>Azimuth Tolerance</strong> (variogram)<a class="headerlink" href="#azimuth-tolerance-variogram" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_variogram_calculation.html"><span class="doc std std-doc">Variogram Calculation</span></a>: for calculating directional experimental variograms, the tolerance <span class="math notranslate nohighlight">\(+/-\Delta\)</span> in azimuth applied to identify data pairs for that specific azimuth.</p>
+<p>For calculating directional experimental variograms, the tolerance <span class="math notranslate nohighlight">\(+/-\Delta\)</span> in azimuth applied to identify data pairs for that specific azimuth.</p>
 <ul class="simple">
 <li><p>for example, given an azimuth of 90 degrees (along the positive x axis in map view), we could assign an azimuth tolerance of 20 degrees and then all pairs with azimuths between 70 degrees and 110 degrees will be pooled to calculate the experimental variogram for this azimuth</p></li>
 </ul>
@@ -676,10 +674,18 @@ y_i = \frac{\sigma_y}{\sigma_x}(x_i - \overline{x}) + \overline{y}, \quad \foral
 <li><p>may be increased to smooth the experimental variogram for improved interpretability</p></li>
 <li><p>for isotropic (also called omnidirectional) experimental variograms (not sensitive to direction) use an azimuth tolerance of 90.0, resulting in 180.0 degrees angle inscribed in the search window to remove the influence of direction</p></li>
 </ul>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation.html#variogram-calculation-parameters"><span class="std std-doc">Variogram Calculation Parameters</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation.html#isotropic-and-anisotropic-experimental-variograms"><span class="std std-doc">Isotropic and Anisotropic Experimental Variograms</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html#variogram-interpretation"><span class="std std-doc">Variogram Interpretation</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html#variogram-modeling"><span class="std std-doc">Variogram Modeling</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation_and_modeling.html#plotting-the-variogram-model"><span class="std std-doc">Plotting the Variogram Model</span></a></p></li>
+</ul>
 </section>
 <section id="bandwidth-variogram">
 <h2><strong>Bandwidth</strong> (variogram)<a class="headerlink" href="#bandwidth-variogram" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_variogram_calculation.html"><span class="doc std std-doc">Variogram Calculation</span></a>: the maximum orthogonal deviation from the lag vector when identifying data pairs to calculate an experimental variogram.</p>
+<p>The maximum orthogonal deviation from the lag vector when identifying data pairs to calculate an experimental variogram.</p>
 <p>What is the motivation for using bandwidth?</p>
 <ul class="simple">
 <li><p>when working with a cross section (axes, y is vertical and x is horizontal) at large lag distances, <span class="math notranslate nohighlight">\(\bf{h}\)</span>, azimuth (dip) tolerance may result in including data from adjacent (mixing between) stratigraphic units.</p></li>
@@ -691,10 +697,15 @@ y_i = \frac{\sigma_y}{\sigma_x}(x_i - \overline{x}) + \overline{y}, \quad \foral
 <li><p>bandwidth is rarely used to calculate horizontal experimental variograms</p></li>
 <li><p>bandwidth is removed by setting it very large relative to the model extent</p></li>
 </ul>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation.html#variogram-calculation-parameters"><span class="std std-doc">Variogram Calculation Parameters</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_variogram_calculation.html#isotropic-and-anisotropic-experimental-variograms"><span class="std std-doc">Isotropic and Anisotropic Experimental Variograms</span></a></p></li>
+</ul>
 </section>
 <section id="bayesian-probability">
 <h2><strong>Bayesian Probability</strong><a class="headerlink" href="#bayesian-probability" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_probability.html"><span class="doc std std-doc">Probability Concepts</span></a>: probabilities based on a degree of belief (expert judgement and experience) in the likelihood of an event. The general approach,</p>
+<p>Probabilities based on a degree of belief (expert judgement and experience) in the likelihood of an event. The general approach,</p>
 <ul class="simple">
 <li><p>start with prior probability, prior to the collection of new information</p></li>
 <li><p>formulate a likelihood probability, based on new information alone</p></li>
@@ -703,10 +714,18 @@ y_i = \frac{\sigma_y}{\sigma_x}(x_i - \overline{x}) + \overline{y}, \quad \foral
 <li><p>solve probability problems that we cannot use simple frequencies, i.e., <em>frequentist probability</em> approach</p></li>
 <li><p>Bayesian updating is modeled with <em>Bayes’ Theorem</em></p></li>
 </ul>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_probability.html#calculating-probability"><span class="std std-doc">How to Calculate Probability?</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_probability.html#a-warning-about-calculating-probability"><span class="std std-doc">A Warning about Calculating Probability</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_probability.html#bayesian-probability"><span class="std std-doc">Bayesian Probability</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_probability.html#bayesian-probability-example-problems"><span class="std std-doc">Bayesian Probability Example Problems</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_cosimulation.html#collocated-cokriging"><span class="std std-doc">Collocated Cokriging</span></a></p></li>
+</ul>
 </section>
 <section id="bayes-theorem-probability">
 <h2><strong>Bayes’ Theorem</strong> (probability)<a class="headerlink" href="#bayes-theorem-probability" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_probability.html"><span class="doc std std-doc">Probability Concepts</span></a>: the mathematical model central to Bayesian probability for the Bayesian updating from prior probability, with likelihood probability from new information to posterior probability.</p>
+<p>The mathematical model central to Bayesian probability for the Bayesian updating from prior probability, with likelihood probability from new information to posterior probability.</p>
 <div class="math notranslate nohighlight">
 \[
 P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
@@ -717,10 +736,18 @@ P(A|B) = \frac{P(B|A) \cdot P(A)}{P(B)}
 P(\text{Model} | \text{New Data}) = \frac{P(\text{New Data} | \text{Model}) \cdot P(\text{Model})}{P(\text{New Data})}
 \]</div>
 <p>demonstrating that we are updating our model with new data</p>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_probability.html#calculating-probability"><span class="std std-doc">How to Calculate Probability?</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_probability.html#a-warning-about-calculating-probability"><span class="std std-doc">A Warning about Calculating Probability</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_probability.html#bayesian-probability"><span class="std std-doc">Bayesian Probability</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_probability.html#bayesian-probability-example-problems"><span class="std std-doc">Bayesian Probability Example Problems</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_cosimulation.html#collocated-cokriging"><span class="std std-doc">Collocated Cokriging</span></a></p></li>
+</ul>
 </section>
 <section id="big-data">
 <h2><strong>Big Data</strong><a class="headerlink" href="#big-data" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_concepts.html"><span class="doc std std-doc">Geostatistical Concepts</span></a>: you have big data if your data has a combination of these criteria:</p>
+<p>You have big data if your data has a combination of these criteria:</p>
 <ol class="arabic simple">
 <li><p><em>Data Volume</em> - many data samples and features, difficult to store, transmit and visualize</p></li>
 <li><p><em>Data Velocity</em> - high-rate collection, continuous data collection relative to decision making cycles, challenges keeping up with the new data while updating the models</p></li>
@@ -729,10 +756,18 @@ P(\text{Model} | \text{New Data}) = \frac{P(\text{New Data} | \text{Model}) \cdo
 <li><p><em>Data Veracity</em> - data has various levels of accuracy, the data is not certain</p></li>
 </ol>
 <p>For common subsurface applications most, if not all, of these criteria are met. Subsurface engineering and geoscience are often working with big data!</p>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_concepts.html#big-data"><span class="std std-doc">Big Data</span></a></p></li>
+</ul>
 </section>
 <section id="big-data-analytics">
 <h2><strong>Big Data Analytics</strong><a class="headerlink" href="#big-data-analytics" title="Permalink to this heading">#</a></h2>
 <p><a class="reference internal" href="GeostatsPy_concepts.html"><span class="doc std std-doc">Geostatistical Concepts</span></a>: the process of examining large and varied data (<em>big data</em>) sets to discover patterns and make decisions, the application of statistics to big data.</p>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_concepts.html#big-data"><span class="std std-doc">Big Data</span></a></p></li>
+</ul>
 </section>
 <section id="bootstrap">
 <h2><strong>Bootstrap</strong><a class="headerlink" href="#bootstrap" title="Permalink to this heading">#</a></h2>
@@ -752,10 +787,28 @@ P(\text{Model} | \text{New Data}) = \frac{P(\text{New Data} | \text{Model}) \cdo
 <li><p>integrates uncertainty due to sparse samples in space only</p></li>
 <li><p>does not account for the spatial context of the data, i.e., sample data locations, volume of interest nor the spatial continuity. There is a variant of bootstrap called <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Spatial_Bootstrap.ipynb">spatial bootstrap</a>.</p></li>
 </ul>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="GeostatsPy_bootstrap.html"><span class="doc std std-doc">Bootstrap Chapter</span></a></p></li>
+<li><p><span class="xref myst">Bootstrap Philosophy</span></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_bootstrap.html#bootstrap-steps"><span class="std std-doc">Bootstrap Steps</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_bootstrap.html#bootstrap-comments"><span class="std std-doc">Bootstrap Comments</span></a></p></li>
+</ul>
 </section>
 <section id="categorical-feature">
 <h2><strong>Categorical Feature</strong><a class="headerlink" href="#categorical-feature" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_concepts.html"><span class="doc std std-doc">Geostatistical Concepts</span></a>: a feature that can only take one of a limited, and usually fixed, number of possible values</p>
+<p>A feature that can only take one of a limited, and usually fixed, number of possible values.</p>
+<p>Used in:</p>
+<ul class="simple">
+<li><p><span class="xref myst">Make Custom Colorbar</span></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_plotting_spatial_data_models.html#other-ideas-for-interrogating-spatial-data"><span class="std std-doc">Other Ideas for Interrogating Spatial Data</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_univariate_distributions.html#histograms"><span class="std std-doc">Histograms</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_univariate_distributions.html#normalized-histograms"><span class="std std-doc">Normalized Histograms</span></a></p></li>
+<li><p><span class="xref myst">Probability Density Function (PDF)</span></p></li>
+<li><p><span class="xref myst">Indicator Formalism</span></p></li>
+<li><p><span class="xref myst">Indicator Variogram</span></p></li>
+<li><p><span class="xref myst">Indicator Kriging</span></p></li>
+</ul>
 </section>
 <section id="categorical-nominal-feature">
 <h2><strong>Categorical Nominal Feature</strong><a class="headerlink" href="#categorical-nominal-feature" title="Permalink to this heading">#</a></h2>
@@ -2003,28 +2056,9 @@ P(A \cup B) = P(A,B) = P(B|A) \cdot P(A)
 \[
 P(B|A) = \frac{P(A,B)}{P(A)}
 \]</div>
-<p>Applications:</p>
+<p>Applications:
+<a class="reference internal" href="GeostatsPy_probability.html#probability-multiplication-rule"><span class="std std-doc">Probability Multiplication Rule</span></a></p>
 </section>
-</section>
-<section id="test-1">
-<h1>Test 1<a class="headerlink" href="#test-1" title="Permalink to this heading">#</a></h1>
-<p><span class="xref std std-ref">Probability Multiplication Rule</span></p>
-</section>
-<section id="test-2">
-<h1>Test 2<a class="headerlink" href="#test-2" title="Permalink to this heading">#</a></h1>
-<p><span class="xref std std-ref">Probability Multiplication Rule</span></p>
-</section>
-<section id="test-3">
-<h1>Test 3<a class="headerlink" href="#test-3" title="Permalink to this heading">#</a></h1>
-<p><span class="xref myst">Probability Multiplication Rule</span></p>
-</section>
-<section id="test-4">
-<h1>Test 4<a class="headerlink" href="#test-4" title="Permalink to this heading">#</a></h1>
-<p><a class="reference internal" href="GeostatsPy_probability.html#probability-multiplication-rule"><span class="std std-doc">Probability Multiplication Rule</span></a></p>
-</section>
-<section id="test-5">
-<h1>Test 5<a class="headerlink" href="#test-5" title="Permalink to this heading">#</a></h1>
-<p><a class="reference internal" href="GeostatsPy_probability.html"><span class="doc">Probability Concepts</span></a></p>
 <section id="multiple-point-data-event">
 <h2><strong>Multiple Point Data Event</strong><a class="headerlink" href="#multiple-point-data-event" title="Permalink to this heading">#</a></h2>
 <p><a class="reference internal" href="GeostatsPy_MPS.html"><span class="doc std std-doc">Multiple Point Simulation</span></a>: for a multiple point template, <span class="math notranslate nohighlight">\(\tau\)</span>, the set of data and previously simulated nodes over the multiple point template locations, <span class="math notranslate nohighlight">\(\bf{u}_k+\bf{h}_1 \ldots \bf{u}_k + \bf{h}_m\)</span>.</p>
@@ -3219,7 +3253,6 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Geostatistics Glossary</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-geostatistics-concepts">Motivation for Geostatistics Concepts</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-rule-probability"><strong>Addition Rule</strong> (probability)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-correction"><strong>Affine Correction</strong></a></li>
@@ -3301,13 +3334,6 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation-mcs"><strong>Monte Carlo Simulation (MCS)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation-workflow"><strong>Monte Carlo Simulation Workflow</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplication-rule-probability"><strong>Multiplication Rule</strong> (probability)</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-1">Test 1</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-2">Test 2</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-3">Test 3</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-4">Test 4</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#test-5">Test 5</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-data-event"><strong>Multiple Point Data Event</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-simulation-mps"><strong>Multiple Point Simulation (MPS)</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-point-template"><strong>Multiple Point Template</strong></a></li>
@@ -3383,9 +3409,6 @@ f = \frac{D^2(v,V)}{D^2(\cdot,V)} = \frac{D^2(v,V)}{\sigma^2}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-author">The Author:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
 </ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
