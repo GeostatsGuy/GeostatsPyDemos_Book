@@ -417,7 +417,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering-summary">Cell-based Declustering Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-based-declustering">Polygonal-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging-based-declustering">Kriging-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
@@ -426,8 +426,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-the-area-of-interest">Specify the Area of Interest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Cell-based Declustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Kriging-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Kriging-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-declustering">Polygonal Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
@@ -543,8 +543,8 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 <p>We should not change current sampling methods as they result in best economics, we should address sampling bias in the data.</p>
 <p>Never use raw spatial data without access sampling bias / correcting.</p>
 </section>
-<section id="cell-based-declustering">
-<h2>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h2>
+<section id="cell-based-declustering-summary">
+<h2>Cell-based Declustering Summary<a class="headerlink" href="#cell-based-declustering-summary" title="Permalink to this heading">#</a></h2>
 <p>Place a cell mesh over the data and share the weight over each cell. Data in densely sampled areas or volumes will get less weight while data in sparsely sampled areas or volumes will get more weight.</p>
 <p>Cell-based declustering weights are calculated by first identifying the cell that the data occupies, <span class="math notranslate nohighlight">\(\ell\)</span>, then,</p>
 <div class="math notranslate nohighlight">
@@ -889,8 +889,8 @@ Let’s try out locmap. This is a reimplementation of GSLIB’s locmap program t
 </div>
 <p>Look carefully, and you’ll notice the spatial samples are more dense in the high porosity regions and lower in the low porosity regions.  There is preferential sampling.  We cannot use the naive statistics to represent this region.  We have to correct for the clustering of the samples in the high porosity regions.</p>
 </section>
-<section id="id1">
-<h2>Cell-based Declustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="cell-based-declustering">
+<h2>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h2>
 <p>Let’s try cell declustering. We can interpret that we will want to minimize the declustering mean and that a cell size of between 100 - 200m is likely a good cell size, this is ‘an ocular’ estimate of the largest average spacing in the sparsely sampled regions.</p>
 <p>Let’s check out the declus program reimplemented from GSLIB.</p>
 <div class="cell docutils container">
@@ -1112,8 +1112,8 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
 <li><p>the spatial arrangement of the data</p></li>
 </ul>
 </section>
-<section id="id2">
-<h2>Kriging-based Declustering<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>Kriging-based Declustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Let’s take the standard 2D kriging method and modify it</p>
 <ul class="simple">
 <li><p>we will sum the weights assigned to each spatial data</p></li>
@@ -1628,7 +1628,7 @@ DescribeResult(nobs=289, minmax=(0.012138, 4.9887179999999995), mean=1.0, varian
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering-summary">Cell-based Declustering Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-based-declustering">Polygonal-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kriging-based-declustering">Kriging-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
@@ -1637,8 +1637,8 @@ DescribeResult(nobs=289, minmax=(0.012138, 4.9887179999999995), mean=1.0, varian
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-the-area-of-interest">Specify the Area of Interest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Cell-based Declustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Kriging-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Kriging-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polygonal-declustering">Polygonal Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>

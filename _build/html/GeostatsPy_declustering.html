@@ -417,7 +417,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering-summary">Cell-based Declustering Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -426,9 +426,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-the-area-of-interest">Specify the Area of Interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-tabular-data-with-location-maps">Visualizing Tabular Data with Location Maps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-cell-based-declustering">Checking Cell-based Declustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-declustered-weighted-statistics">Calculating Declustered / Weighted Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-declustered-statistics">Calculating Declustered Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -538,8 +538,8 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 <p>We should not change current sampling methods as they result in best economics, we should address sampling bias in the data.</p>
 <p>Never use raw spatial data without access sampling bias / correcting.</p>
 </section>
-<section id="cell-based-declustering">
-<h2>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h2>
+<section id="cell-based-declustering-summary">
+<h2>Cell-based Declustering Summary<a class="headerlink" href="#cell-based-declustering-summary" title="Permalink to this heading">#</a></h2>
 <p>Sample data debiasing with cell-based declustering proceeds by placing a cell mesh over the data and share the weight over each cell.</p>
 <ul class="simple">
 <li><p>data in densely sampled areas or volumes will get less weight while data in sparsely sampled areas or volumes will get more weight.</p></li>
@@ -916,8 +916,8 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 </div>
 </div>
 </section>
-<section id="id1">
-<h2>Cell-based Declustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="cell-based-declustering">
+<h2>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h2>
 <p>Look carefully, and you’ll notice that the spatial samples are more dense in the high porosity regions and lower in the low porosity regions. There is preferential sampling. We cannot use the naive statistics to represent this region. We have to correct for the clustering of the samples in the high porosity regions.</p>
 <p>Let’s try cell declustering. We can interpret that we will want to minimize the declustering mean and that a cell size of between 100 - 200m is likely a good cell size, this is ‘an ocular’ estimate of the largest average spacing in the sparsely sampled regions.</p>
 <p>Let’s check out the declus program reimplemented in GeostatsPy from GSLIB.</p>
@@ -1154,8 +1154,8 @@ DescribeResult(nobs=270, minmax=(0.20904854434290107, 5.060379981544719), mean=1
 </div>
 <p>The cell size that minimizes the declustered mean is about 200m (estimated from the figure). This makes sense given our previous observation of the data spacing.</p>
 </section>
-<section id="calculating-declustered-weighted-statistics">
-<h2>Calculating Declustered / Weighted Statistics<a class="headerlink" href="#calculating-declustered-weighted-statistics" title="Permalink to this heading">#</a></h2>
+<section id="calculating-declustered-statistics">
+<h2>Calculating Declustered Statistics<a class="headerlink" href="#calculating-declustered-statistics" title="Permalink to this heading">#</a></h2>
 <p>There are methods available to calculate weighted means, histograms and CDFs. We can always calculate weighted statistics manually.</p>
 <p><strong>Weighted Variance</strong></p>
 <div class="math notranslate nohighlight">
@@ -1294,7 +1294,7 @@ DescribeResult(nobs=270, minmax=(0.20904854434290107, 5.060379981544719), mean=1
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geostatistical-sampling-representativity">Geostatistical Sampling Representativity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering-summary">Cell-based Declustering Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
@@ -1303,9 +1303,9 @@ DescribeResult(nobs=270, minmax=(0.20904854434290107, 5.060379981544719), mean=1
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-the-area-of-interest">Specify the Area of Interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-tabular-data-with-location-maps">Visualizing Tabular Data with Location Maps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Cell-based Declustering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-based-declustering">Cell-based Declustering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#checking-cell-based-declustering">Checking Cell-based Declustering</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-declustered-weighted-statistics">Calculating Declustered / Weighted Statistics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-declustered-statistics">Calculating Declustered Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>

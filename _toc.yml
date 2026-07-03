@@ -62,7 +62,7 @@ chapters:
   title: Inverse Distance
 - file: GeostatsPy_kriging
   title: Simple and Ordinary Kriging
-- file: GeostatsPy_categorical_indictor_kriging
+- file: GeostatsPy_categorical_indicator_kriging
   title: Indicator Kriging
 - file: GeostatsPy_simulation
   title: Stochastic Simulation

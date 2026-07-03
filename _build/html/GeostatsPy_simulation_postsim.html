@@ -427,7 +427,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-and-colorbars-and-grid-specification">Set Limits for Plotting and Colorbars and Grid Specification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-multiple-realizations">Calculating Multiple Realizations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-local-uncertainty-with-the-postsim-method">Summarizing Local Uncertainty with the POSTSIM Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-uncertainty">Local Uncertainty</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-type-and-conditional-variance">e-type and Conditional Variance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-percentiles">Local Percentiles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-of-exceedance">Probability of Exceedance</a></li>
@@ -659,33 +659,33 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
   <tbody>
     <tr>
       <th>0</th>
-      <td>700.0</td>
-      <td>200.0</td>
-      <td>0.118705</td>
+      <td>720.0</td>
+      <td>169.0</td>
+      <td>0.105101</td>
     </tr>
     <tr>
       <th>1</th>
       <td>900.0</td>
-      <td>894.0</td>
-      <td>0.126350</td>
+      <td>999.0</td>
+      <td>0.130281</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>230.0</td>
+      <td>990.0</td>
       <td>859.0</td>
-      <td>0.154095</td>
+      <td>0.123791</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>400.0</td>
-      <td>600.0</td>
-      <td>0.174147</td>
+      <td>20.0</td>
+      <td>459.0</td>
+      <td>0.142107</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>540.0</td>
-      <td>509.0</td>
-      <td>0.098945</td>
+      <td>230.0</td>
+      <td>639.0</td>
+      <td>0.171823</td>
     </tr>
   </tbody>
 </table>
@@ -743,12 +743,12 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6c35ae87c905f330e4c8d143560b4387f5fe50de2f59977ae083fbd0332bf8d0.png" src="_images/6c35ae87c905f330e4c8d143560b4387f5fe50de2f59977ae083fbd0332bf8d0.png" />
+<img alt="_images/fd599602ae9167a32be250aa0bb1b6cd92c1b08d8e3c936bf238633dd9397474.png" src="_images/fd599602ae9167a32be250aa0bb1b6cd92c1b08d8e3c936bf238633dd9397474.png" />
 </div>
 </div>
 </section>
-<section id="summarizing-local-uncertainty-with-the-postsim-method">
-<h2>Summarizing Local Uncertainty with the POSTSIM Method<a class="headerlink" href="#summarizing-local-uncertainty-with-the-postsim-method" title="Permalink to this heading">#</a></h2>
+<section id="local-uncertainty">
+<h2>Local Uncertainty<a class="headerlink" href="#local-uncertainty" title="Permalink to this heading">#</a></h2>
 <p>Let’s run the POSTSIM algorithm. It simply loops over all the locations ix and iy and calculates local summary statistics to quantify the local uncertainty.</p>
 </section>
 <section id="e-type-and-conditional-variance">
@@ -776,7 +776,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ae7a58d87bc03a2cdfdd050f1f8bb851915b90113d157942d4a5879f83bc284f.png" src="_images/ae7a58d87bc03a2cdfdd050f1f8bb851915b90113d157942d4a5879f83bc284f.png" />
+<img alt="_images/75d200aa07ee8d732ae4e61298269d4d5e3cc7ebe8bd2b01b931888cf8b7e278.png" src="_images/75d200aa07ee8d732ae4e61298269d4d5e3cc7ebe8bd2b01b931888cf8b7e278.png" />
 </div>
 </div>
 <p>The e-type model is very similar to a kriging model, except for:</p>
@@ -818,7 +818,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/38c2cbd9f96633df8ed1636d54929dfd86fc5f17bf58bc8124b78dc0f1bf3b9e.png" src="_images/38c2cbd9f96633df8ed1636d54929dfd86fc5f17bf58bc8124b78dc0f1bf3b9e.png" />
+<img alt="_images/2a13be7954f1b4aeb9eaa9c6df8452099f8bb48b388d6ecdf6a0f4136c99bd6f.png" src="_images/2a13be7954f1b4aeb9eaa9c6df8452099f8bb48b388d6ecdf6a0f4136c99bd6f.png" />
 </div>
 </div>
 </section>
@@ -852,7 +852,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bf38e9c2b2e8e383feac9378438ecda4ae54a5a18ff22552d992eaa4caea5be1.png" src="_images/bf38e9c2b2e8e383feac9378438ecda4ae54a5a18ff22552d992eaa4caea5be1.png" />
+<img alt="_images/7513cc14bee34561c49b724ae6e875d4bfa73cb492f87d5eb3e384d3bd790015.png" src="_images/7513cc14bee34561c49b724ae6e875d4bfa73cb492f87d5eb3e384d3bd790015.png" />
 </div>
 </div>
 </section>
@@ -966,7 +966,7 @@ P \{X(\bf{ u } _{\alpha}) \le x_k \} = 1 - \frac{1}{L} \cdot \sum^{L}_{\ell=1} i
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-limits-for-plotting-and-colorbars-and-grid-specification">Set Limits for Plotting and Colorbars and Grid Specification</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-multiple-realizations">Calculating Multiple Realizations</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summarizing-local-uncertainty-with-the-postsim-method">Summarizing Local Uncertainty with the POSTSIM Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-uncertainty">Local Uncertainty</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#e-type-and-conditional-variance">e-type and Conditional Variance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-percentiles">Local Percentiles</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-of-exceedance">Probability of Exceedance</a></li>

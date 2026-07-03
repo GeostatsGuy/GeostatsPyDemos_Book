@@ -428,7 +428,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-standardization">Affine Standardization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-score-transform-gaussian-anamorphosis">Normal Score Transform / Gaussian Anamorphosis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-score-transform">Normal Score Transform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-distribution-transformation">General Distribution Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transformation-to-a-parametric-distribution">Distribution Transformation to a Parametric Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transform-to-a-non-parametric-distribution">Distribution Transform to a Non-Parametric Distribution</a></li>
@@ -571,9 +571,6 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using 289 number of samples
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1075,13 +1072,14 @@ y = \frac{\sigma_y}{\sigma_x}(x - \overline{x}) + \overline{y}
 </ul>
 </section>
 </section>
-<section id="normal-score-transform-gaussian-anamorphosis">
-<h2>Normal Score Transform / Gaussian Anamorphosis<a class="headerlink" href="#normal-score-transform-gaussian-anamorphosis" title="Permalink to this heading">#</a></h2>
+<section id="normal-score-transform">
+<h2>Normal Score Transform<a class="headerlink" href="#normal-score-transform" title="Permalink to this heading">#</a></h2>
 <p>We showed that the correction of the mean to 0.0 and standard deviation to 1.0 with affine correction does not change the shape; therefore, does not make a Gaussian distributed property.</p>
 <ul class="simple">
-<li><p>for many statistic or geostatistical methods the assumption of Gaussian distributed is required. We need normal score transforms in many subsurface modeling workflows</p></li>
+<li><p>for many statistic or geostatistical methods the assumption of Gaussian distributed is required, and to accomplish this we need normal score transforms in many subsurface modeling workflows</p></li>
+<li><p>note, normal score transform is also known as gaussian anamorphosis</p></li>
 </ul>
-<p>Gaussian anamorphosis is applied through the cumulative distribution functions (CDF)s, <span class="math notranslate nohighlight">\(F_{X}\)</span>, to a new CDF , <span class="math notranslate nohighlight">\(G_{Y}\)</span>. This can be generalized with the quantile - quantile transformation applied to all the sample data:</p>
+<p>Normal score transform is applied through the cumulative distribution functions (CDF)s, <span class="math notranslate nohighlight">\(F_{X}\)</span>, to a new CDF , <span class="math notranslate nohighlight">\(G_{Y}\)</span>. This can be generalized with the quantile - quantile transformation applied to all the sample data:</p>
 <ul class="simple">
 <li><p>The forward transform:</p></li>
 </ul>
@@ -1584,7 +1582,7 @@ F_i = \frac{i}{n+1}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#affine-standardization">Affine Standardization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-score-transform-gaussian-anamorphosis">Normal Score Transform / Gaussian Anamorphosis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normal-score-transform">Normal Score Transform</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-distribution-transformation">General Distribution Transformation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transformation-to-a-parametric-distribution">Distribution Transformation to a Parametric Distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-transform-to-a-non-parametric-distribution">Distribution Transform to a Non-Parametric Distribution</a></li>
