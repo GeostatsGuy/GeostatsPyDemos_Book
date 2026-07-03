@@ -416,8 +416,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bootstrap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boostrap-philosophy">Boostrap Philosophy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-method">Bootstrap Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-philosophy">Bootstrap Philosophy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-steps">Bootstrap Steps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-comments">Bootstrap Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
@@ -469,8 +469,8 @@ document.write(`
 © Copyright 2024.</p>
 <p>This chapter is a tutorial for / demonstration of <strong>Bootstrap</strong>.</p>
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/wCgdoImlLY0?si=lpTWz2H7QTdxHBy9">Bootstrap</a>. For your convenience here’s a summary of salient points.</p>
-<section id="id1">
-<h2>Bootstrap<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="bootstrap-method">
+<h2>Bootstrap Method<a class="headerlink" href="#bootstrap-method" title="Permalink to this heading">#</a></h2>
 <p>Bootstrap is a statistical resampling procedure to calculate uncertainty in a calculated statistic from the sample data itself. Some general comments,</p>
 <ul class="simple">
 <li><p><strong>sampling with replacement</strong> - <span class="math notranslate nohighlight">\(n\)</span> (number of data samples) Monte Carlo simulations from the dataset cumulative distribution function, this results in a new realization of the data</p></li>
@@ -488,8 +488,8 @@ document.write(`
 <li><p>assumes independence between samples and does not account for the spatial context of the data, i.e., sample data locations, volume of interest nor the spatial continuity. There is a variant of bootstrap called <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Spatial_Bootstrap.ipynb">spatial bootstrap</a>.</p></li>
 </ul>
 </section>
-<section id="boostrap-philosophy">
-<h2>Boostrap Philosophy<a class="headerlink" href="#boostrap-philosophy" title="Permalink to this heading">#</a></h2>
+<section id="bootstrap-philosophy">
+<h2>Bootstrap Philosophy<a class="headerlink" href="#bootstrap-philosophy" title="Permalink to this heading">#</a></h2>
 <p>The general bootstrap approach developed by Efron (1979) is an attempt to simulate the sampling process to access the uncertainty due to the limited sample data.</p>
 <ul class="simple">
 <li><p>We could access this by existing over multiple parallel universes, in each we collect <span class="math notranslate nohighlight">\(n\)</span> different datasets. Then we could perform our operations, including calculating sample statistics and building predictive models.</p></li>
@@ -552,7 +552,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8c572cd508931d6cfdc4b2a894be6b0eef4e38eb1c2b211c7fe426fa08b1a731.png" src="_images/8c572cd508931d6cfdc4b2a894be6b0eef4e38eb1c2b211c7fe426fa08b1a731.png" />
+<img alt="_images/d3b7083785cc7001f3bab401e02add617e3364ab88e05a35de27782772f05ac9.png" src="_images/d3b7083785cc7001f3bab401e02add617e3364ab88e05a35de27782772f05ac9.png" />
 </div>
 </div>
 <p>What we actually have is only this, the single sample dataset,</p>
@@ -593,7 +593,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c8aa3261878fa9df853fef2ecedb3135d8eccc329fdaa20ca08cd351e97a3bb9.png" src="_images/c8aa3261878fa9df853fef2ecedb3135d8eccc329fdaa20ca08cd351e97a3bb9.png" />
+<img alt="_images/86b7092bee8be7a453339d8c77b390a03090d31b6a0f7d2b2c9472ddc80ef3f2.png" src="_images/86b7092bee8be7a453339d8c77b390a03090d31b6a0f7d2b2c9472ddc80ef3f2.png" />
 </div>
 </div>
 </section>
@@ -1006,7 +1006,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0922502dd885e4e17b01e9fb8b894a968872ba1864ed0e0d668bd5afd1c04328.png" src="_images/0922502dd885e4e17b01e9fb8b894a968872ba1864ed0e0d668bd5afd1c04328.png" />
+<img alt="_images/89775df99d232080a09f354c6632f4164bdcfe76fe3ac9c471adefb1f72f6f04.png" src="_images/89775df99d232080a09f354c6632f4164bdcfe76fe3ac9c471adefb1f72f6f04.png" />
 </div>
 </div>
 <p>Now we proceed with a more complicated, robust work by first quantifying the spatial bias in the samples and assigned data weights to mitigate this bias.</p>
@@ -1071,10 +1071,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.12104531643944635 and realization 2 = 0.12021612684775088
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.12332426788235296 and realization 2 = 0.12117247598615918
 </pre></div>
 </div>
-<img alt="_images/1f0cf83a7582dd2201e199618a1bae27a28f1a2e50e9df68259a4f6cb518492a.png" src="_images/1f0cf83a7582dd2201e199618a1bae27a28f1a2e50e9df68259a4f6cb518492a.png" />
+<img alt="_images/faa669b99aa9b361846220669071b0f7c9a05d5e61a81449aff70ef72c5edd52.png" src="_images/faa669b99aa9b361846220669071b0f7c9a05d5e61a81449aff70ef72c5edd52.png" />
 </div>
 </div>
 <p>Note that the bootstrap distributions vary quite a bit from the original.</p>
@@ -1129,13 +1129,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1fe65d600993cebf9119a1fdee9ec93f2ba931ad4e679c76c94306a28d5cbe13.png" src="_images/1fe65d600993cebf9119a1fdee9ec93f2ba931ad4e679c76c94306a28d5cbe13.png" />
+<img alt="_images/b6e9929196f8913fbf890240851c7d36d5ac89fa87ef6939954efb00a1e49045.png" src="_images/b6e9929196f8913fbf890240851c7d36d5ac89fa87ef6939954efb00a1e49045.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=1000, minmax=(0.11582394998615918, 0.12974029611764706), mean=0.12124076226387544, variance=3.909959618419394e-06, skewness=0.21442099072611412, kurtosis=-0.06710944048082457)
+DescribeResult(nobs=1000, minmax=(0.11511345994117646, 0.12854629801038062), mean=0.12122514801927682, variance=3.4252793487866536e-06, skewness=0.051232554708544445, kurtosis=0.18264369636843236)
 P10: 0.119, P50: 0.121, P90: 0.124
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=1000, minmax=(0.025864004202822755, 0.03802218635207931), mean=0.031788514445377176, variance=2.8571891912698823e-06, skewness=-0.1552298124241761, kurtosis=0.037710444087370565)
+DescribeResult(nobs=1000, minmax=(0.026529880661718144, 0.037719717597221834), mean=0.03169815521748832, variance=2.6742404863083237e-06, skewness=0.009080844683668203, kurtosis=0.0804870464336247)
 P10: 0.03, P50: 0.032, P90: 0.034
 </pre></div>
 </div>
@@ -1186,13 +1186,13 @@ P10: 0.03, P50: 0.032, P90: 0.034
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0e97d90059ec2caf3550221d6d658e43bee5c91504d11fb15ba682af7b96e337.png" src="_images/0e97d90059ec2caf3550221d6d658e43bee5c91504d11fb15ba682af7b96e337.png" />
+<img alt="_images/bc93e5d3b5c3a597b761f1ada0b2fe4ddc8ae1e0cbfe68444c35418bdc564446.png" src="_images/bc93e5d3b5c3a597b761f1ada0b2fe4ddc8ae1e0cbfe68444c35418bdc564446.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=10000, minmax=(0.11385905861245674, 0.1297121498131488), mean=0.12123664041274082, variance=3.5752840813307978e-06, skewness=0.08996212272626275, kurtosis=-0.050249414496219114)
+DescribeResult(nobs=10000, minmax=(0.1149105032768166, 0.12843819582698962), mean=0.12124292478733045, variance=3.385592650811025e-06, skewness=0.051508141886186125, kurtosis=-0.07320418237913495)
 P10: 0.119, P50: 0.121, P90: 0.124
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=10000, minmax=(0.024422975196171686, 0.038269250453580525), mean=0.03175548715690001, variance=2.6264597524763636e-06, skewness=0.006075935268411772, kurtosis=-0.07692948501875341)
+DescribeResult(nobs=10000, minmax=(0.025765862517642825, 0.0376428247815059), mean=0.03172654778497338, variance=2.5928507614610123e-06, skewness=-0.031517943259632863, kurtosis=-0.11449921575488764)
 P10: 0.03, P50: 0.032, P90: 0.034
 </pre></div>
 </div>
@@ -1300,8 +1300,8 @@ P10: 0.03, P50: 0.032, P90: 0.034
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bootstrap</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boostrap-philosophy">Boostrap Philosophy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-method">Bootstrap Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-philosophy">Bootstrap Philosophy</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-steps">Bootstrap Steps</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bootstrap-comments">Bootstrap Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>

@@ -434,6 +434,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-uncertainty-modeling">Subsurface Uncertainty Modeling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-common-geostatistical-modeling-workflow">The Common Geostatistical Modeling Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-and-using-statistics-and-data-analytics">Teaching and Using Statistics and Data Analytics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cognitive-biases"><strong>Cognitive Biases</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-and-professional-practice-concerns-with-data-science">Ethical and Professional Practice Concerns with Data Science</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
@@ -540,7 +541,7 @@ document.write(`
 </div>
 </section>
 <section id="statistics-geostatistics-and-data-analytics">
-<h2>Statistics, Geostatistics and Data Analytics<a class="headerlink" href="#statistics-geostatistics-and-data-analytics" title="Permalink to this heading">#</a></h2>
+<span id="statistics-geostatistics-data-analytics"></span><h2>Statistics, Geostatistics and Data Analytics<a class="headerlink" href="#statistics-geostatistics-and-data-analytics" title="Permalink to this heading">#</a></h2>
 <p>Statistics is collecting, organizing, and interpreting data, as well as drawing conclusions and making decisions. If you look up the definition of data analytics you will find criteria that include statistical analysis, and data visualization to support decision making. I’m going to call it, data analytics and statistics are the same thing.</p>
 <p>Now we can append, geostatistics, as a branch of applied statistics that accounts for:</p>
 <ol class="arabic simple">
@@ -955,6 +956,24 @@ document.write(`
 <li><p><strong>development of grammars of data analytics</strong>, frameworks for the minimal set of independent components and the methods to combine them to build workflows. This grammar approach is balanced for flexibility to adapt exisiting workflows and append new steps to take on new challenges. Constraints are included to prevent common mistakes or warn of potential mistakes.</p></li>
 </ul>
 </section>
+<section id="cognitive-biases">
+<h2><strong>Cognitive Biases</strong><a class="headerlink" href="#cognitive-biases" title="Permalink to this heading">#</a></h2>
+<p>Careful application of probability and statistics to our data, analog information, and expert judgment is essential for protecting ourselves from the potential consequences of cognitive biases. Cognitive biases are automatic (subconscious) mental shortcuts, or heuristics, that the human brain uses to efficiently process information based on personal experience and learned preferences. These heuristics have been critical to human evolution and survival by enabling rapid decision-making under uncertainty. However, they can also systematically distort reasoning and lead to errors in data science and engineering decisions.</p>
+<p>Common cognitive biases include:</p>
+<ol class="arabic simple">
+<li><p><em>Anchoring Bias</em>, too much emphasis on the first piece of information. Studies have shown that the first piece of information could be irrelevant as we are beginning to learn about a topic, and often the earliest data in a project has the largest uncertainty. Address anchoring bias by currating all data, integrating uncertainty, fostering open discussion and debate on your project team.</p></li>
+<li><p><em>Availability Heuristic</em>, overestimate importance of easily available information, for example, grandfather smoked 3 packs a day and lived to 100 years old, i.e., relying on anecdotes. Address availability heuristic by ensuring the project team documents all available information and applies quantitative analysis to move beyond anecdotes.</p></li>
+<li><p><em>Bandwagon Effect</em>, assessed probability increases with the number of people holding the same belief. Watch out for everyone jumping on board or the loudest voice influencing all others on your project teams. Encouraging all members of the project team to contribute and even separate meetings may be helpful to address bandwagon effect.</p></li>
+<li><p><em>Blind-spot Effect</em>, fail to see your own cognitive biases. This is the hardest cognitive bias of all. One possible solution is to invite arms length review of your project team’s methods, results and decisions.</p></li>
+<li><p><em>Choice-supportive Bias</em>, probability increases after a commitment, i.e., a decision is made. For example, it was good that I bought that car supported by focusing on positive information about the car. This is a specific case of confirmation bias.</p></li>
+<li><p><em>Clustering Illusion</em>, seeing patterns in random events. Yes, this heuristic helped us stay alive when large predictors hunted us, i.e., false positives are much better than false negatives! The solution is to model uncertainty confidence intervals and test all data and results against random effect.</p></li>
+<li><p><em>Confirmation Bias</em>, only consider new information that supports current model. Choice-supportive bias is a specific case of confirmation bias. The solution to confirmation bias is to seek out people that you will likely disagree with and build skilled project teams that hold diverse technical opinions and have different expert experience. My approach is to get nervous if everyone in the room agrees with me!</p></li>
+<li><p><em>Conservatism Bias</em>, favor old data to newly collected data. Data curation and quantiative analysis are helpful.</p></li>
+<li><p><em>Recency Bias</em>, favor the most recently collected data. Ensure your team documents previous data and choices to enhance team memory. Just like conservative bias, data curation and quantitative analysis are our first line of defense.</p></li>
+<li><p><em>Survivorship Bias</em>, focus on success cases only. Check for any possible pre-selection or filters on the data available to your team.</p></li>
+</ol>
+<p>Overcoming these biases is a major motivation of data science, including statistics, data analytics, geostatistics and machine learning.</p>
+</section>
 <section id="ethical-and-professional-practice-concerns-with-data-science">
 <h2>Ethical and Professional Practice Concerns with Data Science<a class="headerlink" href="#ethical-and-professional-practice-concerns-with-data-science" title="Permalink to this heading">#</a></h2>
 <p>Allow me to finish this discussion with a cautionary note. <a class="reference external" href="https://arxiv.org/pdf/1602.04938.pdf">Rideiro et al. (2016)</a> trained a logistic regression classifier with 20 wolf and dog images to detect the difference between wolves and dogs.</p>
@@ -1120,6 +1139,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subsurface-uncertainty-modeling">Subsurface Uncertainty Modeling</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-common-geostatistical-modeling-workflow">The Common Geostatistical Modeling Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#teaching-and-using-statistics-and-data-analytics">Teaching and Using Statistics and Data Analytics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cognitive-biases"><strong>Cognitive Biases</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ethical-and-professional-practice-concerns-with-data-science">Ethical and Professional Practice Concerns with Data Science</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>

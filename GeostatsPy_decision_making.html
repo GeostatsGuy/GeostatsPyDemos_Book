@@ -422,10 +422,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-profit-workflow">Expected Profit Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uncertainty-model">The Uncertainty Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-decision-scenarios">The Decision Scenarios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-profit-metric">The Profit Metric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profit-metric">Profit Metric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-the-common-geostatistical-modeling-workflow">Recall the Common Geostatistical Modeling Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-profit">Expected Profit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximize-expected-profit">Maximize Expected Profit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-functions">Loss Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-with-loss-functions">Decision Making with Loss Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
@@ -579,11 +580,12 @@ document.write(`
 </figcaption>
 </figure>
 </section>
-<section id="the-profit-metric">
-<h2>The Profit Metric<a class="headerlink" href="#the-profit-metric" title="Permalink to this heading">#</a></h2>
+<section id="profit-metric">
+<h2>Profit Metric<a class="headerlink" href="#profit-metric" title="Permalink to this heading">#</a></h2>
 <p>The profit metric is,</p>
 <ul class="simple">
-<li><p>a <strong>transfer function</strong> to map from spatial realizations, <span class="math notranslate nohighlight">\(\ell\)</span>, and decision scenario, <span class="math notranslate nohighlight">\(s\)</span>, to a value metric, <span class="math notranslate nohighlight">\(P(\ell,s)\)</span></p></li>
+<li><p>a <strong>transfer function</strong> to map from spatial realizations, <span class="math notranslate nohighlight">\(\ell\)</span>, and decision scenario, <span class="math notranslate nohighlight">\(s\)</span>, to a decision criteria, <span class="math notranslate nohighlight">\(P(\ell,s)\)</span></p></li>
+<li><p>as a <strong>decision criteria</strong> for maximizing profitability (or minimizing loss), this metric should be as close to value as possible, e.g., don’t stop short with resource in place, instead calculate the value of that resouce</p></li>
 <li><p>is in the <strong>units</strong> of the thing are we trying to maximize. For example, net present value, tonnage contaminant removed from soil, or volume of resource recovered</p></li>
 </ul>
 <figure style="text-align: center;">
@@ -600,6 +602,13 @@ document.write(`
   <figcaption style="text-align: center;"> Profit calculated over all subsurface realizations and development scenarios.
 </figcaption>
 </figure>
+</section>
+<section id="recall-the-common-geostatistical-modeling-workflow">
+<h2>Recall the Common Geostatistical Modeling Workflow<a class="headerlink" href="#recall-the-common-geostatistical-modeling-workflow" title="Permalink to this heading">#</a></h2>
+<p>We previously discussed the concept of decision criteria in the common geostatistical modeling workflow, moving from data to decision(s).</p>
+<p>a feature that is calculated by applying the transfer function to the subsurface model(s) to support decision making.</p>
+<p>decision criteria represent value, health, environment and safety.</p>
+<p>in decision making it is common to maximize or minimize loss, so we will see decision criteria called profit or loss, but they are all “decision criteria”</p>
 </section>
 <section id="expected-profit">
 <h2>Expected Profit<a class="headerlink" href="#expected-profit" title="Permalink to this heading">#</a></h2>
@@ -650,9 +659,9 @@ s=𝒂𝒓𝒈𝒎𝒂𝒙(E\{P(S,L)\})
 </ul>
 <p>Let’s formalize this with the concept of <strong>loss functions</strong>.</p>
 </section>
-<section id="loss-functions">
-<h2>Loss Functions<a class="headerlink" href="#loss-functions" title="Permalink to this heading">#</a></h2>
-<p>To make a decision in the presence of uncertainty we need to quantify the loss function,</p>
+<section id="loss-function">
+<h2>Loss Function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h2>
+<p>A common workflow to make a decision in the presence of uncertainty is calculate the decision criteria by loss function. A loss function has the following aspects,</p>
 <ul class="simple">
 <li><p>loss due to over- and underestimation of the true value</p></li>
 <li><p>no loss if the estimate is correct, i.e., if Estimate – Truth = 0</p></li>
@@ -1565,10 +1574,11 @@ E\{Loss(z^{*})\} = \int_{-\infty}^{\infty} \text{Loss}(z - z^*) \cdot f_z(z) \, 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-profit-workflow">Expected Profit Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-uncertainty-model">The Uncertainty Model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-decision-scenarios">The Decision Scenarios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-profit-metric">The Profit Metric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profit-metric">Profit Metric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-the-common-geostatistical-modeling-workflow">Recall the Common Geostatistical Modeling Workflow</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-profit">Expected Profit</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximize-expected-profit">Maximize Expected Profit</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-functions">Loss Functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-with-loss-functions">Decision Making with Loss Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>

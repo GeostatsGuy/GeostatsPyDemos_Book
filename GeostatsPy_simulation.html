@@ -741,48 +741,48 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>240.0</td>
-      <td>759.0</td>
-      <td>1.0</td>
-      <td>0.202755</td>
-      <td>1826.460861</td>
-      <td>7.510135</td>
+      <td>420.0</td>
+      <td>59.0</td>
+      <td>0.0</td>
+      <td>0.098272</td>
+      <td>0.833725</td>
+      <td>-0.181852</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>900.0</td>
-      <td>149.0</td>
-      <td>1.0</td>
-      <td>0.150604</td>
-      <td>16.099711</td>
-      <td>2.778801</td>
+      <td>240.0</td>
+      <td>79.0</td>
+      <td>0.0</td>
+      <td>0.094064</td>
+      <td>2.479957</td>
+      <td>0.908241</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>720.0</td>
-      <td>899.0</td>
+      <td>890.0</td>
+      <td>269.0</td>
       <td>1.0</td>
-      <td>0.148054</td>
-      <td>18.235939</td>
-      <td>2.903394</td>
+      <td>0.132431</td>
+      <td>6.758140</td>
+      <td>1.910748</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>210.0</td>
-      <td>259.0</td>
-      <td>0.0</td>
-      <td>0.100864</td>
-      <td>3.320768</td>
-      <td>1.200196</td>
+      <td>850.0</td>
+      <td>129.0</td>
+      <td>1.0</td>
+      <td>0.131835</td>
+      <td>4.390635</td>
+      <td>1.479474</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>500.0</td>
-      <td>900.0</td>
-      <td>1.0</td>
-      <td>0.163030</td>
-      <td>129.803630</td>
-      <td>4.866023</td>
+      <td>890.0</td>
+      <td>919.0</td>
+      <td>0.0</td>
+      <td>0.109401</td>
+      <td>1.335762</td>
+      <td>0.289502</td>
     </tr>
   </tbody>
 </table>
@@ -793,7 +793,9 @@ document.write(`
 <h2>Sequential Gaussian Simulation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Let’s jump right to building a variety of models with simulation and visualizing the results.  We will start with a test of 3 realizations.</p>
 <ul class="simple">
-<li><p>look at the realizations and check the histogram and variograms</p></li>
+<li><p>note, the data to standard Gaussian distribution (Gaussian with a mean of 0 and variance of 1) by normal score transform is performed in the sgsim algorithm.</p></li>
+<li><p>for brevity and visualization we are just “making up” the variogram model. For seuqential Gaussian simulation, variograms are calculated after normal score transform of the data.</p></li>
+<li><p>look at the realizations and check the histogram and variograms.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -838,7 +840,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e9413e8a3f749c443cf6a88e44f77f4db8ed4cddaf408826e92dfea2685cdf1e.png" src="_images/e9413e8a3f749c443cf6a88e44f77f4db8ed4cddaf408826e92dfea2685cdf1e.png" />
+<img alt="_images/1a8eaae0ed249a3ea7b4cefc53ff43dabdb5aec691e2de973600170517f78b9b.png" src="_images/1a8eaae0ed249a3ea7b4cefc53ff43dabdb5aec691e2de973600170517f78b9b.png" />
 </div>
 </div>
 </section>

@@ -417,7 +417,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-bivariate-analysis">Motivation for Bivariate Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bivariate Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bivariate-summary">Bivariate Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bivariate-statistics">Bivariate Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-statistics">Multivariate Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
@@ -430,10 +430,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-tabular-data-with-location-maps">Visualizing Tabular Data with Location Maps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bivariate Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bivariate Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-and-covariance">Correlation and Covariance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-correlation-matrix">Visualize the Correlation Matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">Spearman’s Rank Correlation Coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-analysis"><strong>Multivariate Analysis</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-correlation-and-rank-correlation-matrices">Plot Correlation and Rank Correlation Matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-scatter-plots">Matrix Scatter Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pair-grid-plot">Pair Grid Plot</a></li>
@@ -498,8 +499,8 @@ document.write(`
 </ul>
 <p>To do this we must understand bivariate analysis methods.</p>
 </section>
-<section id="id1">
-<h2>Bivariate Analysis<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="bivariate-summary">
+<h2>Bivariate Summary<a class="headerlink" href="#bivariate-summary" title="Permalink to this heading">#</a></h2>
 <p>Understand and quantify the relationship between two variables, i.e., the bivariate probability density function, <span class="math notranslate nohighlight">\(f_{x,y}(x,y)\)</span>, for example,</p>
 <ul class="simple">
 <li><p>porosity and permeability</p></li>
@@ -669,6 +670,7 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>                                         <span class="c1"># advanced plotting</span>
 <span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mtick</span>                             <span class="c1"># control tick label formatting</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;axes&#39;</span><span class="p">,</span> <span class="n">axisbelow</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                                <span class="c1"># plot all grids below the plot elements</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span>                     <span class="c1"># print equations</span>
 <span class="k">if</span> <span class="n">ignore_warnings</span> <span class="o">==</span> <span class="kc">True</span><span class="p">:</span>                                   
     <span class="kn">import</span> <span class="nn">warnings</span>
     <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
@@ -1176,8 +1178,8 @@ f_{Y | X_1, \ldots, X_m}(y | x_1,\ldots,x_m)
 </div>
 </div>
 </section>
-<section id="id2">
-<h2>Bivariate Analysis<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>Bivariate Analysis<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Let’s start with simple bivariate scatter plots, and calculating bivariate statistics. Here’s the scatter plots.</p>
 <ul class="simple">
 <li><p>I included code below (commented out) for writing the plot as an image file. Note, you can write to many different formats, e.g., .tif, jpg, etc. and you can also control the resolution.</p></li>
@@ -1334,14 +1336,13 @@ The variance of porosity is 0.000936
 <p>The alpha value for the correlation is very small, how small? We can check it like this.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corr_p_value</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\alpha = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">corr_p_value</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.156919517020207e-34
-</pre></div>
-</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle \alpha = 2.156919517020207e-34\]</div>
 </div>
 </div>
 </section>
@@ -1383,6 +1384,21 @@ Rank Correlation p-value:
 </div>
 </div>
 </div>
+</section>
+<section id="multivariate-analysis">
+<h2><strong>Multivariate Analysis</strong><a class="headerlink" href="#multivariate-analysis" title="Permalink to this heading">#</a></h2>
+<p>The analysis of more than two features (variables) measured over a collection of samples. Multivariate analysis investigates the relationships, dependence, and correlation among multiple variables simultaneously.</p>
+<p>Examples include:</p>
+<ul class="simple">
+<li><p>multivariate statistical models such as multilinear regression</p></li>
+<li><p>matrix scatter plots</p></li>
+<li><p>covariance and correlation matrices</p></li>
+<li><p>principal components analysis</p></li>
+</ul>
+<p>Below we demonstrate matrix correlation and matrix scatter plots.</p>
+<ul class="simple">
+<li><p>note, this is a simplified multivariate analysis since it considers only pairwise relationships among the variables.</p></li>
+</ul>
 </section>
 <section id="plot-correlation-and-rank-correlation-matrices">
 <h2>Plot Correlation and Rank Correlation Matrices<a class="headerlink" href="#plot-correlation-and-rank-correlation-matrices" title="Permalink to this heading">#</a></h2>
@@ -1739,7 +1755,7 @@ Rank Correlation p-value:
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-for-bivariate-analysis">Motivation for Bivariate Analysis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bivariate Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bivariate-summary">Bivariate Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bivariate-statistics">Bivariate Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-statistics">Multivariate Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
@@ -1752,10 +1768,11 @@ Rank Correlation p-value:
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-dataframe">Visualize the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-statistics-for-tabular-data">Summary Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-tabular-data-with-location-maps">Visualizing Tabular Data with Location Maps</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Bivariate Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Bivariate Analysis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-and-covariance">Correlation and Covariance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-correlation-matrix">Visualize the Correlation Matrix</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spearman-s-rank-correlation-coefficient">Spearman’s Rank Correlation Coefficient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multivariate-analysis"><strong>Multivariate Analysis</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-correlation-and-rank-correlation-matrices">Plot Correlation and Rank Correlation Matrices</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-scatter-plots">Matrix Scatter Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pair-grid-plot">Pair Grid Plot</a></li>

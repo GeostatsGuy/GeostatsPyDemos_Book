@@ -417,7 +417,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Cosimulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cosimulation-methods">Cosimulation Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cokriging"><strong>Cokriging</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collocated-cokriging">Collocated Cokriging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>
@@ -519,8 +520,8 @@ document.write(`
 <li><p>Back-transform the simulated values to the original data distribution</p></li>
 </ol>
 </section>
-<section id="id1">
-<h2>Cosimulation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="cosimulation-methods">
+<h2>Cosimulation Methods<a class="headerlink" href="#cosimulation-methods" title="Permalink to this heading">#</a></h2>
 <p>A set of methods for simulating a spatial realization of a primary feature conditional to a secondary feature realization. All of these methods attempt to capture the primary feature spatial continuity and conditioning to local data while honoring the relationship with the secondary feature.</p>
 <p>Each cosimulation method will have a conditioning priority,</p>
 <p><strong>collocated cokriging</strong> - prioritizes the primary feature histogram and variogram and may honor the correlation coefficient between the two primary and secondary features.</p>
@@ -538,7 +539,58 @@ document.write(`
 <li><p>first simulate a porosity realization and then cosimulate the permeability (primary feature) realization given the porosity (secondary feature) realization with cloud transform and the scatter plot of Gaussian transformed porosity and permeability</p></li>
 </ul>
 <p>With cosimulation there is a increasing likelihood that the multiple information sources are contradictory, when this occurs the lower priority information source is preferentially sacrificed</p>
-<p>While the full cokriging approach for cosimulation is available, due to the inference burden of modeling all the variograms and cross variograms, it is typically not used in practice.</p>
+<p>While the full cokriging approach for cosimulation is available, due to the inference burden of modeling all the variograms and cross variograms, it is typically not used in practice. Let’s start with the cokriging system and then introduce the more practical and widely applied collocated cokriging system.</p>
+</section>
+<section id="cokriging">
+<h2><strong>Cokriging</strong><a class="headerlink" href="#cokriging" title="Permalink to this heading">#</a></h2>
+<p>the general simple kriging approach that accounts for primary and secondary features at the same time in order to build multivariate spatial models.</p>
+<ul class="simple">
+<li><p>like regular kriging, a spatial estimation approach that relies on linear weights that account for spatial continuity, data closeness and redundancy.</p></li>
+<li><p>weights are unbiased and minimize the estimation variance</p></li>
+</ul>
+<p>The simple cokriging weights are calculated by solving a linear system of equations that may be represented with matrix notation as,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+C_z(\bf{u}_1,\bf{u}_1) &amp; C_z(\bf{u}_1,\bf{u}_2) &amp; \dots &amp; C_z(\bf{u}_1,\bf{u}_{n_z}) &amp; \textcolor{red}{C_{z,y}(\bf{u}_1,\bf{u}_1)} &amp; \textcolor{red}{C_{z,y}(\bf{u}_1,\bf{u}_2)} &amp; \dots &amp; \textcolor{red}{C_{z,y}(\bf{u}_1,\bf{u}_{n_y})} \\
+C_z(\bf{u}_2,\bf{u}_1) &amp; C_z(\bf{u}_2,\bf{u}_2) &amp; \dots &amp; C_z(\bf{u}_2,\bf{u}_{n_z}) &amp; \textcolor{red}{C_{z,y}(\bf{u}_2,\bf{u}_1)} &amp; \textcolor{red}{C_{z,y}(\bf{u}_2,\bf{u}_2)} &amp; \dots &amp; \textcolor{red}{C_{z,y}(\bf{u}_2,\bf{u}_{n_y})} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+C_z(\bf{u}_{n_z},\bf{u}_1) &amp; C_z(\bf{u}_{n_z},\bf{u}_2) &amp; \dots &amp; C_z(\bf{u}_{n_z},\bf{u}_{n_z}) &amp; \textcolor{red}{C_{z,y}(\bf{u}_{n_z},\bf{u}_1)} &amp; \textcolor{red}{C_{y,z}(\bf{u}_{n_z},\bf{u}_2)} &amp; \dots &amp; \textcolor{red}{C_{y,z}(\bf{u}_{n_z},\bf{u}_{n_y})} \\
+\textcolor{red}{C_{y,z}(\bf{u}_1,\bf{u}_1)} &amp; \textcolor{red}{C_{y,z}(\bf{u}_1,\bf{u}_2)} &amp; \dots &amp; \textcolor{red}{C_{y,z}(\bf{u}_1,\bf{u}_{n_z})} &amp; \textcolor{blue}{C_y(\bf{u}_1,\bf{u}_1)} &amp; \textcolor{blue}{C_y(\bf{u}_1,\bf{u}_2)} &amp; \dots &amp; \textcolor{blue}{C_y(\bf{u}_1,\bf{u}_{n_y})} \\
+\textcolor{red}{C_{z,y}(\bf{u}_2,\bf{u}_1)} &amp; \textcolor{red}{C_{z,y}(\bf{u}_2,\bf{u}_2)} &amp; \dots &amp; \textcolor{red}{C_{y,z}(\bf{u}_2,\bf{u}_{n_z})} &amp; \textcolor{blue}{C_y(\bf{u}_2,\bf{u}_1)} &amp; \textcolor{blue}{C_y(\bf{u}_2,\bf{u}_2)} &amp; \dots &amp; \textcolor{blue}{C_y(\bf{u}_2,\bf{u}_{n_y})} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\textcolor{red}{C_{y,z}(\bf{u}_{n_y},\bf{u}_{1})} &amp; \textcolor{red}{C_{y,z}(\bf{u}_{n_y},\bf{u}_{2})} &amp; \dots &amp; \textcolor{red}{C_{y,z}(\bf{u}_{n_y},\bf{u}_{n_z})} &amp; \textcolor{blue}{C_y(\bf{u}_{n_y},\bf{u}_1)} &amp; \textcolor{blue}{C_y(\bf{u}_{n_y},\bf{u}_2)} &amp; \dots &amp; \textcolor{blue}{C_y(\bf{u}_{n_y},\bf{u}_{n_y})} \\
+\end{bmatrix} \cdot 
+\begin{bmatrix} 
+\lambda_{z_1} \\ \lambda_{z_2} \\ \vdots \\ \lambda_{z_n} \\ \textcolor{blue}{\lambda_{y_1}} \\ \textcolor{blue}{\lambda_{y_2}} \\ \vdots \\ \textcolor{blue}{\lambda_{y_n}} \\
+\end{bmatrix} = 
+\begin{bmatrix} 
+C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) \\ \textcolor{blue}{C_{z,y}(\bf{u}_1,\bf{u})} \\ \textcolor{blue}{C_{z,y}(\bf{u}_2,\bf{u})} \\ \vdots \\ \textcolor{blue}{C_{z,y}(\bf{u}_n,\bf{u})}
+\end{bmatrix}
+\end{split}\]</div>
+<p>where we assume that there are <span class="math notranslate nohighlight">\(1, 2, \ldots, n_z\)</span> primary data <span class="math notranslate nohighlight">\(z\)</span>, and <span class="math notranslate nohighlight">\(1, 2, \ldots, n_y\)</span> secondary data <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<ul class="simple">
+<li><p>note, I could be more rigorous with the notation and indicate the location <span class="math notranslate nohighlight">\(\bf{u}_{1}\)</span> for <span class="math notranslate nohighlight">\(z\)</span> and <span class="math notranslate nohighlight">\(y\)</span> may not be the same location, but the notation was already getting quite dense.</p></li>
+</ul>
+<p>This system integrates the,</p>
+<ul class="simple">
+<li><p><em>spatial continuity</em> - as quantified by the variogram (and covariance function to calculate the covariance, <span class="math notranslate nohighlight">\(C\)</span>, values)</p></li>
+<li><p><em>redundancy</em> - the degree of spatial continuity between all of the available data with themselves, <span class="math notranslate nohighlight">\(C(\bf{u}_i,\bf{u}_j)\)</span></p></li>
+<li><p><em>closeness</em> - the degree of spatial continuity between the available data and the estimation location, <span class="math notranslate nohighlight">\(C(\bf{u}_i,\bf{u})\)</span></p></li>
+<li><p><em>relationship</em> - between the primary and secondary features over lag distance from the cross covariance terms, <span class="math notranslate nohighlight">\(C_{z,y}\)</span> and <span class="math notranslate nohighlight">\(C_{y,z}\)</span>.</p></li>
+</ul>
+<p>Once the weights are calculated from the above linear system of equations, the cokriging estimator is expressed as,</p>
+<div class="math notranslate nohighlight">
+\[
+z^{*}_{COK}(\bf{u}) = \sum_{\alpha_z = 1}^{n_z} \lambda_{\alpha_z} \cdot z(\bf{u}_{\alpha_z}) + \sum_{\alpha_y = 1}^{n_y} \lambda_{\alpha_y} \cdot y(\bf{u}_{\alpha_{y}}) 
+\]</div>
+<p>assuming that each feature is detrended such that the mean is 0.0.</p>
+<p>Some general comments about cokriging,</p>
+<ul class="simple">
+<li><p>the secondary data and primary data may be collocated, not collocated or even mixed with some collocated and some not</p></li>
+<li><p>we must calculate and model the direct variograms, <span class="math notranslate nohighlight">\(\gamma_z\)</span> and <span class="math notranslate nohighlight">\(\gamma_y\)</span> and the cross variogram <span class="math notranslate nohighlight">\(\gamma_{z,y}\)</span>. For all direct and cross variograms to be jointly positive definite we must used the constraints from the linear model of corregionalization.</p></li>
+<li><p>we could expand the model to consider any number of secondary features!</p></li>
+</ul>
 </section>
 <section id="collocated-cokriging">
 <h2>Collocated Cokriging<a class="headerlink" href="#collocated-cokriging" title="Permalink to this heading">#</a></h2>
@@ -702,53 +754,53 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
   <tbody>
     <tr>
       <th>0</th>
-      <td>940.0</td>
-      <td>799.0</td>
-      <td>0.091960</td>
-      <td>0.192133</td>
-      <td>-1.649566</td>
-      <td>-0.806421</td>
-      <td>-2.066476</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>610.0</td>
-      <td>519.0</td>
-      <td>0.092120</td>
-      <td>2.369140</td>
-      <td>0.862527</td>
-      <td>-0.738847</td>
-      <td>-0.331853</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>790.0</td>
-      <td>129.0</td>
-      <td>0.144097</td>
-      <td>7.153502</td>
-      <td>1.967602</td>
-      <td>0.674490</td>
+      <td>680.0</td>
+      <td>859.0</td>
+      <td>0.139132</td>
+      <td>15.031775</td>
+      <td>2.710166</td>
+      <td>0.439913</td>
       <td>0.125661</td>
     </tr>
     <tr>
+      <th>1</th>
+      <td>410.0</td>
+      <td>629.0</td>
+      <td>0.159714</td>
+      <td>423.506214</td>
+      <td>6.048568</td>
+      <td>1.036433</td>
+      <td>2.326348</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>710.0</td>
+      <td>529.0</td>
+      <td>0.112294</td>
+      <td>13.016758</td>
+      <td>2.566238</td>
+      <td>-0.439913</td>
+      <td>-0.075270</td>
+    </tr>
+    <tr>
       <th>3</th>
-      <td>520.0</td>
-      <td>69.0</td>
-      <td>0.116139</td>
-      <td>6.818116</td>
-      <td>1.919583</td>
-      <td>0.025069</td>
-      <td>0.075270</td>
+      <td>880.0</td>
+      <td>89.0</td>
+      <td>0.159047</td>
+      <td>22.188354</td>
+      <td>3.099568</td>
+      <td>0.954165</td>
+      <td>0.331853</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>770.0</td>
-      <td>699.0</td>
-      <td>0.103370</td>
-      <td>0.472603</td>
-      <td>-0.749499</td>
-      <td>-0.331853</td>
-      <td>-1.644854</td>
+      <td>510.0</td>
+      <td>29.0</td>
+      <td>0.094436</td>
+      <td>2.985174</td>
+      <td>1.093658</td>
+      <td>-1.340755</td>
+      <td>-0.674490</td>
     </tr>
   </tbody>
 </table>
@@ -794,64 +846,64 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
     <tr>
       <th>X</th>
       <td>50.0</td>
-      <td>519.400000</td>
-      <td>285.202470</td>
-      <td>20.000000</td>
-      <td>280.000000</td>
-      <td>5.450000e+02</td>
-      <td>755.000000</td>
-      <td>950.000000</td>
+      <td>519.200000</td>
+      <td>303.098556</td>
+      <td>0.000000</td>
+      <td>237.500000</td>
+      <td>5.250000e+02</td>
+      <td>770.000000</td>
+      <td>970.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>50.0</td>
-      <td>522.480000</td>
-      <td>279.866531</td>
-      <td>9.000000</td>
-      <td>286.500000</td>
-      <td>5.440000e+02</td>
-      <td>759.000000</td>
+      <td>539.860000</td>
+      <td>303.864767</td>
+      <td>29.000000</td>
+      <td>291.750000</td>
+      <td>5.000000e+02</td>
+      <td>866.500000</td>
       <td>999.000000</td>
     </tr>
     <tr>
       <th>Porosity</th>
       <td>50.0</td>
-      <td>0.119523</td>
-      <td>0.030364</td>
-      <td>0.065537</td>
-      <td>0.093941</td>
-      <td>1.155902e-01</td>
-      <td>0.143600</td>
-      <td>0.184602</td>
+      <td>0.128202</td>
+      <td>0.027362</td>
+      <td>0.066231</td>
+      <td>0.109020</td>
+      <td>1.228882e-01</td>
+      <td>0.149199</td>
+      <td>0.200184</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>50.0</td>
-      <td>66.358467</td>
-      <td>157.988850</td>
-      <td>0.192133</td>
-      <td>1.866999</td>
-      <td>5.716401e+00</td>
-      <td>43.670525</td>
-      <td>765.022251</td>
+      <td>39.349134</td>
+      <td>76.398999</td>
+      <td>0.262365</td>
+      <td>3.113263</td>
+      <td>1.313905e+01</td>
+      <td>42.092458</td>
+      <td>423.506214</td>
     </tr>
     <tr>
       <th>logPerm</th>
       <td>50.0</td>
-      <td>2.103876</td>
-      <td>2.094367</td>
-      <td>-1.649566</td>
-      <td>0.623649</td>
-      <td>1.740697e+00</td>
-      <td>3.772632</td>
-      <td>6.639905</td>
+      <td>2.332231</td>
+      <td>1.805723</td>
+      <td>-1.338019</td>
+      <td>1.133258</td>
+      <td>2.575585e+00</td>
+      <td>3.733481</td>
+      <td>6.048568</td>
     </tr>
     <tr>
       <th>nPorosity</th>
       <td>50.0</td>
-      <td>-0.122092</td>
-      <td>1.523082</td>
-      <td>-8.430943</td>
+      <td>-0.004788</td>
+      <td>1.009299</td>
+      <td>-2.565746</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -860,9 +912,9 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
     <tr>
       <th>nPerm</th>
       <td>50.0</td>
-      <td>0.005197</td>
-      <td>0.985638</td>
-      <td>-2.066476</td>
+      <td>-0.010702</td>
+      <td>1.025350</td>
+      <td>-2.861450</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
@@ -938,7 +990,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fa00a774d6e3181a9e873cbfcf832566c722d0fe789072c7f0fe4e68ea97463d.png" src="_images/fa00a774d6e3181a9e873cbfcf832566c722d0fe789072c7f0fe4e68ea97463d.png" />
+<img alt="_images/ff7e1801c7ec9e2be6c0f4fb842ce752b0694be3f9311c103b9225cd12203e8c.png" src="_images/ff7e1801c7ec9e2be6c0f4fb842ce752b0694be3f9311c103b9225cd12203e8c.png" />
 </div>
 </div>
 <p>Note we have already demonstrated univariate simulation checks for:</p>
@@ -1012,7 +1064,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a9a8766b34245ecd76138ada02d00529ac85600f5f336670dfd7b38a77b108f3.png" src="_images/a9a8766b34245ecd76138ada02d00529ac85600f5f336670dfd7b38a77b108f3.png" />
+<img alt="_images/e7c35882720f73b7b12386d71d82c11b88187c7e839a5c37144ff33ff6696a2a.png" src="_images/e7c35882720f73b7b12386d71d82c11b88187c7e839a5c37144ff33ff6696a2a.png" />
 </div>
 </div>
 </section>
@@ -1065,7 +1117,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7b878e95d1723653cfcfeb8e05de920223b1e3b8f001b139e6fb23d37bfcee79.png" src="_images/7b878e95d1723653cfcfeb8e05de920223b1e3b8f001b139e6fb23d37bfcee79.png" />
+<img alt="_images/861af723d2baaaa50d93f942ff595e4b2939002cf4b22894c35162bfe5c7eadd.png" src="_images/861af723d2baaaa50d93f942ff595e4b2939002cf4b22894c35162bfe5c7eadd.png" />
 </div>
 </div>
 </section>
@@ -1107,7 +1159,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1554153d8ff5917808d75b53f216fa7e9a00a526beccac805b2b37028c1175b3.png" src="_images/1554153d8ff5917808d75b53f216fa7e9a00a526beccac805b2b37028c1175b3.png" />
+<img alt="_images/aa69125a1b4ff566ee03fbcf0e2079029c274a4668341401a48063d3dc9633f2.png" src="_images/aa69125a1b4ff566ee03fbcf0e2079029c274a4668341401a48063d3dc9633f2.png" />
 </div>
 </div>
 </section>
@@ -1211,7 +1263,8 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequential-gaussian-simulation">Sequential Gaussian Simulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Cosimulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cosimulation-methods">Cosimulation Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cokriging"><strong>Cokriging</strong></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collocated-cokriging">Collocated Cokriging</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#declare-functions">Declare Functions</a></li>

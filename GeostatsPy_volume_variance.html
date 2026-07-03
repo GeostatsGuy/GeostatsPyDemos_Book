@@ -416,7 +416,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Volume Variance Relations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-variance-relations-methods">Volume Variance Relations Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-variance-correction">Empirical Variance Correction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-variance">Dispersion Variance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gammabar">Gammabar</a></li>
@@ -478,8 +478,8 @@ document.write(`
 <li><p><a class="reference external" href="https://youtu.be/MM7Tn8TU5Bk?si=0GVOKJ6nYx1cib28">Scaling Statistics</a></p></li>
 </ul>
 <p>For your convenience here’s a summary of salient points. Let’s start with volume variance relations and then methods to correct the variance for changes in volume, i.e., support volume of data and models within the area of interest.</p>
-<section id="id1">
-<h2>Volume Variance Relations<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="volume-variance-relations-methods">
+<h2>Volume Variance Relations Methods<a class="headerlink" href="#volume-variance-relations-methods" title="Permalink to this heading">#</a></h2>
 <p><strong>Volume-variance Relations</strong> - as the volume support increases the variance at that volume support reduces. To observe this effect, look at this example where I took a simulated model and numerically upscaled by averaging to a larger model volume support.</p>
 <ul class="simple">
 <li><p>the variance of the model histogram is reduced as volume support increases</p></li>
@@ -900,31 +900,31 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.121382</td>
+      <td>0.106385</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.121675</td>
+      <td>0.112583</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.115609</td>
+      <td>0.131836</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.123487</td>
+      <td>0.047603</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.010973</td>
+      <td>0.086355</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
@@ -1039,7 +1039,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1feafa2b684e1b2ae4dc293a9778a70e228733042ba15f7c760428f44774832b.png" src="_images/1feafa2b684e1b2ae4dc293a9778a70e228733042ba15f7c760428f44774832b.png" />
+<img alt="_images/465b2347b67de1796498d00345c434f600f2f4582715e2ad99c0719067905d63.png" src="_images/465b2347b67de1796498d00345c434f600f2f4582715e2ad99c0719067905d63.png" />
 </div>
 </div>
 <p>Let’s observe the impact of upscaling scaling on the two model’s distributions and variances.</p>
@@ -1100,7 +1100,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/143f326dda487177dafa060dbb019b2ac3ccfe2c04c48e6ef5344b95b5b970d3.png" src="_images/143f326dda487177dafa060dbb019b2ac3ccfe2c04c48e6ef5344b95b5b970d3.png" />
+<img alt="_images/d9206d67025d44953c73e4c8190cea1b1229754718549521d0a02e80d014b186.png" src="_images/d9206d67025d44953c73e4c8190cea1b1229754718549521d0a02e80d014b186.png" />
 </div>
 </div>
 <p>and now the model with shorter range, isotropic spatial continuity.</p>
@@ -1159,7 +1159,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/340879a3c1f30fb1998e0de0e2792988508c4815aed76190c80f6da5233c00b0.png" src="_images/340879a3c1f30fb1998e0de0e2792988508c4815aed76190c80f6da5233c00b0.png" />
+<img alt="_images/b6351d0d9d3f1dd2be3ebe8842218fef4903a6beb7f5700050fab27ac414be80.png" src="_images/b6351d0d9d3f1dd2be3ebe8842218fef4903a6beb7f5700050fab27ac414be80.png" />
 </div>
 </div>
 <p>We can see that with shorter ranges of spatial continuity, our variance reduces faster as we increase the support volume, i.e., the model cell size.</p>
@@ -1199,7 +1199,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/9de2705c87f4e24de05f8e90eaf62f44f14ef75856f6b34e1ff41d977e7fe920.png" src="_images/9de2705c87f4e24de05f8e90eaf62f44f14ef75856f6b34e1ff41d977e7fe920.png" />
+<img alt="_images/8b122ceb4bf205f153ca57a5e90365ce1ac38f68224ab54e16afe3090556983d.png" src="_images/8b122ceb4bf205f153ca57a5e90365ce1ac38f68224ab54e16afe3090556983d.png" />
 </div>
 </div>
 <p>It is convenient to represent this as variance reduction factors,</p>
@@ -1228,7 +1228,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1867d016360a20bf2dd6d4ab8fe534ad853b51a650fe9d98ae120db8127f4ad2.png" src="_images/1867d016360a20bf2dd6d4ab8fe534ad853b51a650fe9d98ae120db8127f4ad2.png" />
+<img alt="_images/73857eb8f3966f5e99218abfdbabf4659bdb660c80f70a8cb6ac3c5b4ebbe49e.png" src="_images/73857eb8f3966f5e99218abfdbabf4659bdb660c80f70a8cb6ac3c5b4ebbe49e.png" />
 </div>
 </div>
 <p>Since we’ve gone this far, let’s complete a larger experiment by looping over many variogram ranges and model volume supports and visualize the variance reduction.</p>
@@ -1273,7 +1273,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/da568c7cee516d842838e5e0cfb9e949d1da29d6d0091783cdcdb9e45171cf45.png" src="_images/da568c7cee516d842838e5e0cfb9e949d1da29d6d0091783cdcdb9e45171cf45.png" />
+<img alt="_images/c6831830060d71d75a66c27279db0f0d1457f1022e6b28331c6b0f77eeaf9ab8.png" src="_images/c6831830060d71d75a66c27279db0f0d1457f1022e6b28331c6b0f77eeaf9ab8.png" />
 </div>
 </div>
 <p>See the trade-off between volume support, as a function of cell size, and the variogram range?</p>
@@ -1398,7 +1398,7 @@ D^2(v,V) = \overline{\gamma}_{V,V} - \overline{\gamma}_{v,v}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/44cb6b0888d22db031838cfcc6e33945d9607dc4afb3c04ee7f04916ccaa154c.png" src="_images/44cb6b0888d22db031838cfcc6e33945d9607dc4afb3c04ee7f04916ccaa154c.png" />
+<img alt="_images/0c1f766d7e4df9d13895e2682e47a81664056f19d4db6973315fa4e84bae3312.png" src="_images/0c1f766d7e4df9d13895e2682e47a81664056f19d4db6973315fa4e84bae3312.png" />
 </div>
 </div>
 <p>Firstly, both results are quite similar with 2 important differences,</p>
@@ -1618,7 +1618,7 @@ D^2(v,V) = \overline{\gamma}_{V,V} - \overline{\gamma}_{v,v}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Volume Variance Relations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-variance-relations-methods">Volume Variance Relations Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-variance-correction">Empirical Variance Correction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dispersion-variance">Dispersion Variance</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gammabar">Gammabar</a></li>

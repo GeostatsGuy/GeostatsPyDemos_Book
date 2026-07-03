@@ -416,14 +416,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Statistical Expectation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-expectation-definition">Statistical Expectation Definition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-sample-and-visualize-our-random-variables">Specify, Sample and Visualize our Random Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-a-random-variable-constant">Expectation of a Random Variable + Constant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-a-product-of-a-random-variable-and-a-constant">Expectation of a Product of a Random Variable and a Constant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-the-addition-of-two-random-variables">Expectation of the Addition of Two Random Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-the-subtraction-of-two-random-variables">Expectation of the Subtraction of Two Random Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-the-product-of-two-random-variables">Expectation of the Product of Two Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-sample-and-visualize-random-variables">Specify, Sample and Visualize Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable-plus-constant">Random Variable Plus Constant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#product-of-a-random-variable-and-a-constant">Product of a Random Variable and a Constant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-of-two-random-variables">Addition of Two Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtraction-of-two-random-variables">Subtraction of Two Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#product-of-two-random-variables">Product of Two Random Variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>
@@ -459,8 +459,8 @@ document.write(`
 © Copyright 2024.</p>
 <p>This chapter is a tutorial for / demonstration of <strong>Spatial Data Declustering</strong>.</p>
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/QVgMt3cPMmM?si=jxTpkptDW6HcFa84">Statistical Expectation</a>. For your convenience here’s a summary of the salient points.</p>
-<section id="id1">
-<h2>Statistical Expectation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="statistical-expectation-definition">
+<h2>Statistical Expectation Definition<a class="headerlink" href="#statistical-expectation-definition" title="Permalink to this heading">#</a></h2>
 <p>Defined as a probability weighted average, <strong>statistical expectation</strong> is a powerful concept in statistics. It is used for:</p>
 <ul class="simple">
 <li><p>ANOVA (analysis of variance)</p></li>
@@ -491,8 +491,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="specify-sample-and-visualize-our-random-variables">
-<h2>Specify, Sample and Visualize our Random Variables<a class="headerlink" href="#specify-sample-and-visualize-our-random-variables" title="Permalink to this heading">#</a></h2>
+<section id="specify-sample-and-visualize-random-variables">
+<h2>Specify, Sample and Visualize Random Variables<a class="headerlink" href="#specify-sample-and-visualize-random-variables" title="Permalink to this heading">#</a></h2>
 <p>First we build a simple bivariate distribution for random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <ul class="simple">
 <li><p>we use the bivariate Gaussian distribution for convenience, but the derived equations for entral tendency and dispersion are general for any distribution.</p></li>
@@ -585,9 +585,9 @@ document.write(`
 <li><p>When applicable I also show variance relations (e.g., <span class="math notranslate nohighlight">\(\sigma^2_{X+c} = \sigma^2_{X}\)</span>), these can be derived by expectation, but I have not added the deriviations here for brevity.</p></li>
 </ul>
 </section>
-<section id="expectation-of-a-random-variable-constant">
-<h2>Expectation of a Random Variable + Constant<a class="headerlink" href="#expectation-of-a-random-variable-constant" title="Permalink to this heading">#</a></h2>
-<p>I demonstrate the following relationship with a random variable, <span class="math notranslate nohighlight">\(X\)</span>, and a constant, <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<section id="random-variable-plus-constant">
+<h2>Random Variable Plus Constant<a class="headerlink" href="#random-variable-plus-constant" title="Permalink to this heading">#</a></h2>
+<p>I demonstrate the following relationship with a random variable, <span class="math notranslate nohighlight">\(X\)</span>, plus a constant, <span class="math notranslate nohighlight">\(c\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 E\left[X + c\right] = E\left[X\right] + E\left[c\right] = E\left[X \right] + c
@@ -640,9 +640,9 @@ E\left[X + c\right] = E\left[X\right] + E\left[c\right] = E\left[X \right] + c
 </div>
 <p>Adding a constant shift the random variable’s distribution, and does not change the dispersion!</p>
 </section>
-<section id="expectation-of-a-product-of-a-random-variable-and-a-constant">
-<h2>Expectation of a Product of a Random Variable and a Constant<a class="headerlink" href="#expectation-of-a-product-of-a-random-variable-and-a-constant" title="Permalink to this heading">#</a></h2>
-<p>I demonstrate the following relationship with a random variable, <span class="math notranslate nohighlight">\(Y\)</span>, and a constant, <span class="math notranslate nohighlight">\(c\)</span>.</p>
+<section id="product-of-a-random-variable-and-a-constant">
+<h2>Product of a Random Variable and a Constant<a class="headerlink" href="#product-of-a-random-variable-and-a-constant" title="Permalink to this heading">#</a></h2>
+<p>I demonstrate the following relationship with the product of a random variable, <span class="math notranslate nohighlight">\(Y\)</span>, and a constant, <span class="math notranslate nohighlight">\(c\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 E\left[cY\right] = cE\left[Y\right]
@@ -752,9 +752,9 @@ E\left[cX\right] = cE\left[X\right]
 </div>
 <p>The constant scales the distribution, stretches or squeezes the distribution and shifts the expectation by <span class="math notranslate nohighlight">\(cE\left[X\right]\)</span>.</p>
 </section>
-<section id="expectation-of-the-addition-of-two-random-variables">
-<h2>Expectation of the Addition of Two Random Variables<a class="headerlink" href="#expectation-of-the-addition-of-two-random-variables" title="Permalink to this heading">#</a></h2>
-<p>I demonstrate the following relationship for the addition of two random variables, <span class="math notranslate nohighlight">\(X\)</span>, and , <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<section id="addition-of-two-random-variables">
+<h2>Addition of Two Random Variables<a class="headerlink" href="#addition-of-two-random-variables" title="Permalink to this heading">#</a></h2>
+<p>I demonstrate the relationship for the addition of two random variables, <span class="math notranslate nohighlight">\(X\)</span>, and , <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 E\left[X + Y\right] = E\left[X\right] + E\left[Y\right]
@@ -845,9 +845,9 @@ E\left[X + Y\right] = E\left[X\right] + E\left[Y\right]
 <p>Also the variances are additive, the only difference is that we have to include the covaraince term, <span class="math notranslate nohighlight">\(2 \cdot C_{X,Y}\)</span>, if there is correlation.</p>
 <p>That was addition of random variables, what about subtraction of random variables?</p>
 </section>
-<section id="expectation-of-the-subtraction-of-two-random-variables">
-<h2>Expectation of the Subtraction of Two Random Variables<a class="headerlink" href="#expectation-of-the-subtraction-of-two-random-variables" title="Permalink to this heading">#</a></h2>
-<p>I demonstrate the following relationship for the addition of two random variables, <span class="math notranslate nohighlight">\(X\)</span>, and , <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<section id="subtraction-of-two-random-variables">
+<h2>Subtraction of Two Random Variables<a class="headerlink" href="#subtraction-of-two-random-variables" title="Permalink to this heading">#</a></h2>
+<p>I demonstrate the following relationship for the subtraction of two random variables, <span class="math notranslate nohighlight">\(X\)</span>, and , <span class="math notranslate nohighlight">\(Y\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 E\left[X - Y\right] = E\left[X\right] - E\left[Y\right]
@@ -935,8 +935,8 @@ E\left[X - Y\right] = E\left[X\right] - E\left[Y\right]
 </div>
 </div>
 </section>
-<section id="expectation-of-the-product-of-two-random-variables">
-<h2>Expectation of the Product of Two Random Variables<a class="headerlink" href="#expectation-of-the-product-of-two-random-variables" title="Permalink to this heading">#</a></h2>
+<section id="product-of-two-random-variables">
+<h2>Product of Two Random Variables<a class="headerlink" href="#product-of-two-random-variables" title="Permalink to this heading">#</a></h2>
 <p>I demonstrate the following relationship for the product of two random variables, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Z\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1089,14 +1089,14 @@ E\left[XZ\right] = E\left[X\right] \cdot E\left[Z\right]
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Statistical Expectation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-expectation-definition">Statistical Expectation Definition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-sample-and-visualize-our-random-variables">Specify, Sample and Visualize our Random Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-a-random-variable-constant">Expectation of a Random Variable + Constant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-a-product-of-a-random-variable-and-a-constant">Expectation of a Product of a Random Variable and a Constant</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-the-addition-of-two-random-variables">Expectation of the Addition of Two Random Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-the-subtraction-of-two-random-variables">Expectation of the Subtraction of Two Random Variables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-of-the-product-of-two-random-variables">Expectation of the Product of Two Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specify-sample-and-visualize-random-variables">Specify, Sample and Visualize Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable-plus-constant">Random Variable Plus Constant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#product-of-a-random-variable-and-a-constant">Product of a Random Variable and a Constant</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addition-of-two-random-variables">Addition of Two Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subtraction-of-two-random-variables">Subtraction of Two Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#product-of-two-random-variables">Product of Two Random Variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about-the-author">About the Author</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#want-to-work-together">Want to Work Together?</a></li>

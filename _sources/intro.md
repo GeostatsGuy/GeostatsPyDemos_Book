@@ -91,7 +91,7 @@ along with additional supplemental series including:
 
 * "A Professor's Secret Weapon"
 
-* "Applying Machine Learning as a Compentent Engineer or Geoscientist"
+* "Applying Machine Learning as a Competent Engineer or Geoscientist"
 
 
 #### Source Notebooks and Other Demonstration Workflows
@@ -190,7 +190,7 @@ When I teach I avoid "copy and paste", instead,
 
 * every example is real and repeatable. Students can access the codes and data and run the classroom demonstration examples for themselves.
 
-For example, when I teach probablity density functions as part of data analytics, I show an example with different kernels.
+For example, when I teach probability density functions as part of data analytics, I show an example with different kernels.
 
 <figure style="text-align: center;">
   <img src="_static/intro/pdf_kernel.png" style="display: block; margin: 0 auto; width: 100%;">
@@ -198,7 +198,7 @@ For example, when I teach probablity density functions as part of data analytics
 </figcaption>
 </figure>
 
-In the course notes figure captions, I include the link to the workflow to reproduce this method and the actual plots, included in this e-book chapter [Univariate Analysis](GeostatsPy_univariate_analysis).
+In the course notes figure captions, I include the link to the workflow to reproduce this method and the actual plots, included in this e-book chapter [Univariate Distributions](GeostatsPy_univariate_distributions).
 
 Each geostatistics chapter in this e-book is a downloadable well-documented workflow,
 
@@ -345,7 +345,7 @@ Michael Pyrcz is a professor in the [Cockrell School of Engineering](https://coc
 
 Michael has written over 70 [peer-reviewed publications](https://scholar.google.com/citations?user=QVZ20eQAAAAJ&hl=en), a [Python package](https://pypi.org/project/geostatspy/) for spatial data analytics, co-authored a textbook on spatial data analytics, [Geostatistical Reservoir Modeling](https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446) and author of two recently released e-books, [Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy](https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html) and [Applied Machine Learning in Python: a Hands-on Guide with Code](https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html).
 
-All of Michael’s university lectures are available on his [YouTube Channel](https://www.youtube.com/@GeostatsGuyLectures) with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his [GitHub account](https://github.com/GeostatsGuy), to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his [Website](www.michaelpyrcz.com).
+All of Michael s university lectures are available on his [YouTube Channel](https://www.youtube.com/@GeostatsGuyLectures) with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his [GitHub account](https://github.com/GeostatsGuy), to support any interested students and working professionals with evergreen content. To find out more about Michael s work and shared educational resources visit his [Website](https://michaelpyrcz.com).
 
 
 #### Want to Work Together?

@@ -201,7 +201,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
@@ -424,7 +423,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-model-grid">Set Up Model Grid</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterized-channel-objects">Parameterized Channel Objects</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#placement-of-a-parameterized-object">Placement of a Parameterized Object</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unconditional-object-based-models">Unconditional Object-Based Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unconditional-object-based-model">Unconditional Object-Based Model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-distributions">Parameter Distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-proportions">Global Proportions</a></li>
 </ul>
@@ -1097,8 +1096,8 @@ g(x,y)=F(x,y \mid x_i,y_i,w,t,p),
 </div>
 </div>
 </section>
-<section id="unconditional-object-based-models">
-<h2>Unconditional Object-Based Models<a class="headerlink" href="#unconditional-object-based-models" title="Permalink to this heading">#</a></h2>
+<section id="unconditional-object-based-model">
+<h2>Unconditional Object-Based Model<a class="headerlink" href="#unconditional-object-based-model" title="Permalink to this heading">#</a></h2>
 <p>To perform unconditional object-based simulation, we require three key ingredients:</p>
 <ul class="simple">
 <li><p><strong>a parameterized object geometry</strong>  - in our example, each channel is defined by a channel width and channel thickness,</p></li>
@@ -1251,7 +1250,7 @@ N(10.0,2.0)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b1cd39ec55c94ed2f060c831380728750b6e9465fe6b06f15e9aae2524c09594.png" src="_images/b1cd39ec55c94ed2f060c831380728750b6e9465fe6b06f15e9aae2524c09594.png" />
+<img alt="_images/d5b62c9fcf0ca7dc4170292b2d3c3af07ceb4c9ac18656b399ed153271ba2ee8.png" src="_images/d5b62c9fcf0ca7dc4170292b2d3c3af07ceb4c9ac18656b399ed153271ba2ee8.png" />
 </div>
 </div>
 <section id="effect-of-random-number-seed">
@@ -1907,7 +1906,7 @@ CH_{thick} \sim \mathcal{N}(10.0, 0.2),
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-model-grid">Set Up Model Grid</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterized-channel-objects">Parameterized Channel Objects</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#placement-of-a-parameterized-object">Placement of a Parameterized Object</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unconditional-object-based-models">Unconditional Object-Based Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unconditional-object-based-model">Unconditional Object-Based Model</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameter-distributions">Parameter Distributions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#global-proportions">Global Proportions</a></li>
 </ul>

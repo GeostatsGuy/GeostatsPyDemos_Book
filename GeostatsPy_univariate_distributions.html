@@ -417,14 +417,14 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram">Normalized Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bin-size">Histogram Bin Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function">Probability Density Function</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-pdf">Calculating a PDF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function">Cumulative Distribution Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable">Random Variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
@@ -433,7 +433,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-dataframe">Visualizing the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-univariate-statistics-for-tabular-data">Summary Univariate Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-univariate-statistics">Weighted Univariate Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bins-number-of-bins-and-bin-size">Histogram Bins, Number of Bins and Bin Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-histogram-with-the-matplotlib-package">Plotting a Histogram with the matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histograms">Normalized Histograms</a></li>
@@ -514,8 +514,8 @@ document.write(`
 </li>
 </ul>
 </section>
-<section id="histograms">
-<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this heading">#</a></h2>
+<section id="histogram">
+<h2>Histogram<a class="headerlink" href="#histogram" title="Permalink to this heading">#</a></h2>
 <p>A histogram is a bar plot of frequency over an exhaustive set of bins or categories. A histogram is calculated with the following steps:</p>
 <ol class="arabic simple">
 <li><p>Divide the continuous feature range of possible values into 𝐾 equal size bins, ∆𝑥, or categories,</p></li>
@@ -595,9 +595,9 @@ document.write(`
 <li><p>the distribution may appear to approach a uniform distribution as the bin size approaches extremely too small or too large</p></li>
 </ul>
 </section>
-<section id="probability-density-function-pdf">
-<h2>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Permalink to this heading">#</a></h2>
-<p>A function, <span class="math notranslate nohighlight">\(𝑓_x(𝑥)\)</span>, of probability density across the range of all possible feature values, <span class="math notranslate nohighlight">\(𝑥\)</span>, with the following constraints:</p>
+<section id="probability-density-function">
+<h2>Probability Density Function<a class="headerlink" href="#probability-density-function" title="Permalink to this heading">#</a></h2>
+<p>Commonly known by its acronym PDF, it is a function, <span class="math notranslate nohighlight">\(𝑓_x(𝑥)\)</span>, of probability density across the range of all possible feature values, <span class="math notranslate nohighlight">\(𝑥\)</span>, with the following constraints:</p>
 <ul class="simple">
 <li><p>non-negativity, note for continuous variables (features) density may be <span class="math notranslate nohighlight">\(&gt; 1.0\)</span></p></li>
 </ul>
@@ -700,9 +700,9 @@ area_{triangle} = \frac{1}{2} \cdot w \cdot h = \frac{1}{2} \cdot 0.1 \cdot 1.0 
 </figure>
 </section>
 </section>
-<section id="cumulative-distribution-function-cdf">
-<h2>Cumulative Distribution Function (CDF)<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Permalink to this heading">#</a></h2>
-<p>The cumulative distribution function (CDF) is the sum of a discrete PDF or the integral of a continuous PDF.</p>
+<section id="cumulative-distribution-function">
+<h2>Cumulative Distribution Function<a class="headerlink" href="#cumulative-distribution-function" title="Permalink to this heading">#</a></h2>
+<p>Commonly known by its acronym CDF, it is the sum of a discrete PDF or the integral of a continuous PDF.</p>
 <ul class="simple">
 <li><p>the cumulative distribution function <span class="math notranslate nohighlight">\(𝑭_𝒙 (𝒙)\)</span> is the probability that a random sample, <span class="math notranslate nohighlight">\(𝑿\)</span>, is less than or equal to a value <span class="math notranslate nohighlight">\(𝒙\)</span>.</p></li>
 </ul>
@@ -1362,8 +1362,8 @@ Porosity kurtosis is -1.56
 </div>
 </div>
 </section>
-<section id="id1">
-<h2>Histograms<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="histograms">
+<h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this heading">#</a></h2>
 <p>Let’s display some histograms. I reimplemented the hist function from GSLIB. Preview the parameters by typing the command without parameters.</p>
 <ul class="simple">
 <li><p>also to learn about function parameters the alt-tab key combination with cursor in the function parentheses is often available to access the “docstrings” or check the Python package docs.</p></li>
@@ -1804,14 +1804,14 @@ F_i = \frac{i}{n+1}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions">Definitions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram">Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histogram">Normalized Histogram</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bin-size">Histogram Bin Size</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function">Probability Density Function</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-a-pdf">Calculating a PDF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function">Cumulative Distribution Function</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-variable">Random Variable</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
@@ -1820,7 +1820,7 @@ F_i = \frac{i}{n+1}
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-dataframe">Visualizing the DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-univariate-statistics-for-tabular-data">Summary Univariate Statistics for Tabular Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weighted-univariate-statistics">Weighted Univariate Statistics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Histograms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histograms">Histograms</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#histogram-bins-number-of-bins-and-bin-size">Histogram Bins, Number of Bins and Bin Size</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-a-histogram-with-the-matplotlib-package">Plotting a Histogram with the matplotlib Package</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalized-histograms">Normalized Histograms</a></li>
