@@ -1,0 +1,53 @@
+cff-version: 1.2.0
+title: "Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy"
+message: >
+  If you use this book, software, or educational materials in your
+  research or teaching, please cite the specific release version using the
+  metadata below.
+type: book
+
+authors:
+  - family-names: "Pyrcz"
+    given-names: "Michael J."
+    affiliation: "The University of Texas at Austin"
+    orcid: "0000-0002-5983-219X"
+
+abstract: >
+  An open-source, hands-on guide to applied geostatistics using Python and
+  GeostatsPy. The book integrates theory with practical, reproducible workflows
+  and interactive Jupyter notebooks. Topics include probability, spatial data
+  analysis, variogram modeling, kriging, stochastic simulation, uncertainty
+  quantification, and machine learning applications in subsurface
+  characterization. Supporting materials include a comprehensive glossary,
+  YouTube lecture series, GitHub repositories, and interactive computational
+  dashboards.
+
+keywords:
+  - geostatistics
+  - Python
+  - GeostatsPy
+  - spatial statistics
+  - kriging
+  - stochastic simulation
+  - variogram
+  - uncertainty
+  - machine learning
+  - earth science
+  - petroleum engineering
+
+license: CC-BY-NC-ND-4.0
+
+doi: 10.5281/zenodo.15169139
+
+repository-code: "https://github.com/GeostatsGuy/GeostatsPyDemos_Book"
+
+url: "https://geostatsguy.github.io/GeostatsPyDemos_Book"
+
+version: "2024.0"
+
+date-released: "2024-12-30"
+
+language: en
+
+publisher:
+  name: "The University of Texas at Austin"
