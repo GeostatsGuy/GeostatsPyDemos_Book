@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Kriging vs. Simulation, a 1D Example" href="GeostatsPy_kriging_vs_simulation_1D.html" />
-    <link rel="prev" title="Indicator Kriging" href="GeostatsPy_categorical_indictor_kriging.html" />
+    <link rel="prev" title="Indicator Kriging" href="GeostatsPy_categorical_indicator_kriging.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -201,7 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_kriging.html">Indicator Kriging</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
@@ -741,48 +741,48 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>420.0</td>
-      <td>59.0</td>
-      <td>0.0</td>
-      <td>0.098272</td>
-      <td>0.833725</td>
-      <td>-0.181852</td>
+      <td>800.0</td>
+      <td>200.0</td>
+      <td>1.0</td>
+      <td>0.129700</td>
+      <td>4.945909</td>
+      <td>1.598561</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>240.0</td>
-      <td>79.0</td>
+      <td>500.0</td>
+      <td>700.0</td>
       <td>0.0</td>
-      <td>0.094064</td>
-      <td>2.479957</td>
-      <td>0.908241</td>
+      <td>0.107520</td>
+      <td>10.459677</td>
+      <td>2.347528</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>890.0</td>
-      <td>269.0</td>
-      <td>1.0</td>
-      <td>0.132431</td>
-      <td>6.758140</td>
-      <td>1.910748</td>
+      <td>900.0</td>
+      <td>500.0</td>
+      <td>0.0</td>
+      <td>0.086313</td>
+      <td>1.031717</td>
+      <td>0.031224</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>850.0</td>
-      <td>129.0</td>
+      <td>190.0</td>
+      <td>889.0</td>
       <td>1.0</td>
-      <td>0.131835</td>
-      <td>4.390635</td>
-      <td>1.479474</td>
+      <td>0.151751</td>
+      <td>49.428282</td>
+      <td>3.900523</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>890.0</td>
-      <td>919.0</td>
-      <td>0.0</td>
-      <td>0.109401</td>
-      <td>1.335762</td>
-      <td>0.289502</td>
+      <td>100.0</td>
+      <td>800.0</td>
+      <td>1.0</td>
+      <td>0.147676</td>
+      <td>10.711789</td>
+      <td>2.371345</td>
     </tr>
   </tbody>
 </table>
@@ -840,7 +840,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1a8eaae0ed249a3ea7b4cefc53ff43dabdb5aec691e2de973600170517f78b9b.png" src="_images/1a8eaae0ed249a3ea7b4cefc53ff43dabdb5aec691e2de973600170517f78b9b.png" />
+<img alt="_images/d7f27dc05755db37239bfdbb1dd6623476af3559d0fb1b9d680f394a1a4ea65e.png" src="_images/d7f27dc05755db37239bfdbb1dd6623476af3559d0fb1b9d680f394a1a4ea65e.png" />
 </div>
 </div>
 </section>
@@ -863,7 +863,7 @@ document.write(`
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
 <p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -911,7 +911,7 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="GeostatsPy_categorical_indictor_kriging.html"
+       href="GeostatsPy_categorical_indicator_kriging.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">

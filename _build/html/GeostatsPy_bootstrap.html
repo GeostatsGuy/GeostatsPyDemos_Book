@@ -201,7 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_kriging.html">Indicator Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
@@ -552,7 +552,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d3b7083785cc7001f3bab401e02add617e3364ab88e05a35de27782772f05ac9.png" src="_images/d3b7083785cc7001f3bab401e02add617e3364ab88e05a35de27782772f05ac9.png" />
+<img alt="_images/439671f86c8e7813671afe0546e627d115f7371973a0905ec222cbb049af2065.png" src="_images/439671f86c8e7813671afe0546e627d115f7371973a0905ec222cbb049af2065.png" />
 </div>
 </div>
 <p>What we actually have is only this, the single sample dataset,</p>
@@ -593,7 +593,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/86b7092bee8be7a453339d8c77b390a03090d31b6a0f7d2b2c9472ddc80ef3f2.png" src="_images/86b7092bee8be7a453339d8c77b390a03090d31b6a0f7d2b2c9472ddc80ef3f2.png" />
+<img alt="_images/f1f3e25e95076a4a206056896a0cc66d926349578408a3d627295475dae63053.png" src="_images/f1f3e25e95076a4a206056896a0cc66d926349578408a3d627295475dae63053.png" />
 </div>
 </div>
 </section>
@@ -1006,7 +1006,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/89775df99d232080a09f354c6632f4164bdcfe76fe3ac9c471adefb1f72f6f04.png" src="_images/89775df99d232080a09f354c6632f4164bdcfe76fe3ac9c471adefb1f72f6f04.png" />
+<img alt="_images/f2ae96656596d8cee7c331aa8e11fd105ee3f6234671fd2a90e566aa1077782e.png" src="_images/f2ae96656596d8cee7c331aa8e11fd105ee3f6234671fd2a90e566aa1077782e.png" />
 </div>
 </div>
 <p>Now we proceed with a more complicated, robust work by first quantifying the spatial bias in the samples and assigned data weights to mitigate this bias.</p>
@@ -1035,9 +1035,7 @@ document.write(`
    mean of      0.13474387540138408 
    min and max  0.058547873 and 0.228790002
    standard dev 0.03767982164385208 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Declustered mean = 0.121 and declustered standard deviation = 0.032
+Declustered mean = 0.121 and declustered standard deviation = 0.032
 </pre></div>
 </div>
 </div>
@@ -1046,7 +1044,7 @@ document.write(`
 <h3>A Couple of Bootstrap Realizations<a class="headerlink" href="#a-couple-of-bootstrap-realizations" title="Permalink to this heading">#</a></h3>
 <p>We will attempt bootstrap by-hand and manually loop over <span class="math notranslate nohighlight">\(L\)</span> realizations and draw <span class="math notranslate nohighlight">\(n\)</span> samples to calculate the summary statistics of interest, mean and variance. The choice function from the random package simplifies sampling with replacement from a set of samples with weights.</p>
 <p>This command returns a ndarray with k samples with replacement from the ‘Porosity’ column of our DataFrame (df) accounting for the data weights in column ‘Wts’.</p>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>samples1 = random.choices(df[&#39;Porosity&#39;].values, weights=df[&#39;Wts&#39;].values, cum_weights=None, k=len(df))
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">samples1</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choices</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Wts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">cum_weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>It is instructive to look at a couple of these realizations from the original declustered data set.</p>
@@ -1071,10 +1069,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.12332426788235296 and realization 2 = 0.12117247598615918
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.12201361380622837 and realization 2 = 0.11855681934256056
 </pre></div>
 </div>
-<img alt="_images/faa669b99aa9b361846220669071b0f7c9a05d5e61a81449aff70ef72c5edd52.png" src="_images/faa669b99aa9b361846220669071b0f7c9a05d5e61a81449aff70ef72c5edd52.png" />
+<img alt="_images/8c0825d773e0e5d8fdb550365bd6f343d32bb4a2a5e25915de8eb92374aa6e85.png" src="_images/8c0825d773e0e5d8fdb550365bd6f343d32bb4a2a5e25915de8eb92374aa6e85.png" />
 </div>
 </div>
 <p>Note that the bootstrap distributions vary quite a bit from the original.</p>
@@ -1088,13 +1086,13 @@ document.write(`
 <ol class="arabic simple">
 <li><p>declaring arrays - NumPy has a lot of great array (ndarray) functionality. There are build in functions to make a ndarray of any length (and dimension). This includes ‘zeros’, ‘ones’ and ‘rand’, so when we use this code (we’re making arrays of length <span class="math notranslate nohighlight">\(L\)</span> pre-populated with zeros):</p></li>
 </ol>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>mean = np.zeros(L); stdev = np.zeros(L)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">);</span> <span class="n">stdev</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>For Loops - when we are using the command below, we are instructing the computer to loop over all the indented code below the command for <span class="math notranslate nohighlight">\(l = 0,1,2,\ldots,L-1\)</span> times. For each loop the <span class="math notranslate nohighlight">\(l\)</span> variable increments, so we can use this to save each result to a different index in the arrays mean and stdev. Note, Python arrays index starting at 0 and stop at the length - 1 (we are running each bootstrap resampled realization, calculating the average and standard deviation and storing them in the arrays that we already declared).</p></li>
 </ol>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>for l in range(0, L): 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span> 
 </pre></div>
 </div>
 <p>Now, let’s write the code for performing bootstrap and calculate the uncertainty in the mean and standard deviation.</p>
@@ -1129,13 +1127,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b6e9929196f8913fbf890240851c7d36d5ac89fa87ef6939954efb00a1e49045.png" src="_images/b6e9929196f8913fbf890240851c7d36d5ac89fa87ef6939954efb00a1e49045.png" />
+<img alt="_images/e1608378ec09b638e49a1b0e853c3a7a0355d062670cf2213bc173238a65ef0b.png" src="_images/e1608378ec09b638e49a1b0e853c3a7a0355d062670cf2213bc173238a65ef0b.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=1000, minmax=(0.11511345994117646, 0.12854629801038062), mean=0.12122514801927682, variance=3.4252793487866536e-06, skewness=0.051232554708544445, kurtosis=0.18264369636843236)
+DescribeResult(nobs=1000, minmax=(0.11589493167474048, 0.12805652063321799), mean=0.1212078098156955, variance=3.5658122398671316e-06, skewness=0.16527350790383857, kurtosis=-0.046192222282738005)
 P10: 0.119, P50: 0.121, P90: 0.124
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=1000, minmax=(0.026529880661718144, 0.037719717597221834), mean=0.03169815521748832, variance=2.6742404863083237e-06, skewness=0.009080844683668203, kurtosis=0.0804870464336247)
+DescribeResult(nobs=1000, minmax=(0.026338515397083952, 0.03674797888485365), mean=0.03173411564891276, variance=2.7038217552185265e-06, skewness=-0.09304213071347296, kurtosis=0.10525816353488748)
 P10: 0.03, P50: 0.032, P90: 0.034
 </pre></div>
 </div>
@@ -1186,13 +1184,13 @@ P10: 0.03, P50: 0.032, P90: 0.034
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bc93e5d3b5c3a597b761f1ada0b2fe4ddc8ae1e0cbfe68444c35418bdc564446.png" src="_images/bc93e5d3b5c3a597b761f1ada0b2fe4ddc8ae1e0cbfe68444c35418bdc564446.png" />
+<img alt="_images/e3d44b768e20bafebce8e707b07ed46aba1bc2f1f15d3e061aec6359f77673f9.png" src="_images/e3d44b768e20bafebce8e707b07ed46aba1bc2f1f15d3e061aec6359f77673f9.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=10000, minmax=(0.1149105032768166, 0.12843819582698962), mean=0.12124292478733045, variance=3.385592650811025e-06, skewness=0.051508141886186125, kurtosis=-0.07320418237913495)
+DescribeResult(nobs=10000, minmax=(0.11408218996193771, 0.12858679969896195), mean=0.12125700440364567, variance=3.5668128858680245e-06, skewness=0.06042307001105969, kurtosis=0.09775104156175196)
 P10: 0.119, P50: 0.121, P90: 0.124
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=10000, minmax=(0.025765862517642825, 0.0376428247815059), mean=0.03172654778497338, variance=2.5928507614610123e-06, skewness=-0.031517943259632863, kurtosis=-0.11449921575488764)
+DescribeResult(nobs=10000, minmax=(0.025617924290692127, 0.03715885894594094), mean=0.031770297079049235, variance=2.6460969819967735e-06, skewness=-0.05401054352619073, kurtosis=-0.03413788911602156)
 P10: 0.03, P50: 0.032, P90: 0.034
 </pre></div>
 </div>
@@ -1220,7 +1218,7 @@ P10: 0.03, P50: 0.032, P90: 0.034
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
 <p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>

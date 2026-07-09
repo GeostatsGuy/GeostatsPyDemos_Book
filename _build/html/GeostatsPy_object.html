@@ -201,6 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_kriging.html">Indicator Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
@@ -415,7 +416,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objects-based-and-geological-shapes">Objects-based and Geological Shapes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-based-and-geological-shapes">Object-based and Geological Shapes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-custom-colorbar">Make Custom Colorbar</a></li>
@@ -491,8 +492,8 @@ document.write(`
 <li><p>simulation models based on stochastic placement of parameterized geometries based on observations from outcrops and seismic data.</p></li>
 </ul>
 <p>Additional details for advanced learning,</p>
-<section id="objects-based-and-geological-shapes">
-<h2>Objects-based and Geological Shapes<a class="headerlink" href="#objects-based-and-geological-shapes" title="Permalink to this heading">#</a></h2>
+<section id="object-based-and-geological-shapes">
+<h2>Object-based and Geological Shapes<a class="headerlink" href="#object-based-and-geological-shapes" title="Permalink to this heading">#</a></h2>
 <p>Many subsurface geological resources exhibit distinctive geometries that arise from depositional and preservation processes. Rather than occurring as random distributions, geological facies are often organized into recognizable shapes and bodies.</p>
 <p>For example,</p>
 <ul class="simple">
@@ -1250,7 +1251,7 @@ N(10.0,2.0)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d5b62c9fcf0ca7dc4170292b2d3c3af07ceb4c9ac18656b399ed153271ba2ee8.png" src="_images/d5b62c9fcf0ca7dc4170292b2d3c3af07ceb4c9ac18656b399ed153271ba2ee8.png" />
+<img alt="_images/958a74d0e080a95f9fb74fa2f98c17c7f9af525dda5183b7ec07fbfc8a530dcf.png" src="_images/958a74d0e080a95f9fb74fa2f98c17c7f9af525dda5183b7ec07fbfc8a530dcf.png" />
 </div>
 </div>
 <section id="effect-of-random-number-seed">
@@ -1818,7 +1819,7 @@ CH_{thick} \sim \mathcal{N}(10.0, 0.2),
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
 <p>Michael has written over 90 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
@@ -1898,7 +1899,7 @@ CH_{thick} \sim \mathcal{N}(10.0, 0.2),
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objects-based-and-geological-shapes">Objects-based and Geological Shapes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-based-and-geological-shapes">Object-based and Geological Shapes</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-functions">Define Functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-custom-colorbar">Make Custom Colorbar</a></li>
