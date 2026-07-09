@@ -201,6 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_kriging.html">Indicator Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
@@ -614,7 +615,7 @@ OIP^\ell = V^\ell \cdot \overline{\phi}^\ell \cdot \overline{s_o}^\ell, , \foral
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/999c1d09689910bcd05a28c6080f1380ec66bf563842d6672ed350fc6042087d.png" src="_images/999c1d09689910bcd05a28c6080f1380ec66bf563842d6672ed350fc6042087d.png" />
+<img alt="_images/9a9d0b441feb4e02184157dbbd990f9c8ebb57e1966f9cd468ec25047957dfba.png" src="_images/9a9d0b441feb4e02184157dbbd990f9c8ebb57e1966f9cd468ec25047957dfba.png" />
 </div>
 </div>
 <p>This looks good, the shapes are Gaussian, lognormal and uniform and the central tendency and dispersion make sense given the parameters that we selected.</p>
@@ -635,7 +636,7 @@ OIP^\ell = V^\ell \cdot \overline{\phi}^\ell \cdot \overline{s_o}^\ell \cdot 6.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e6cb73112b4c75de5fb0f05c1ff36d8ed227d96fc53b1d24e8a03ee0d26c1cda.png" src="_images/e6cb73112b4c75de5fb0f05c1ff36d8ed227d96fc53b1d24e8a03ee0d26c1cda.png" />
+<img alt="_images/072a1ed736a04a64c81ff8bc111d911c08c8056f0d06532daeeee14f8d95e631.png" src="_images/072a1ed736a04a64c81ff8bc111d911c08c8056f0d06532daeeee14f8d95e631.png" />
 </div>
 </div>
 <p>It’s not a bad idea to check your calculation. Let’s compare the first and last realizations of <span class="math notranslate nohighlight">\(OIP\)</span> to the results from performing the calculation by hand.</p>
@@ -647,8 +648,8 @@ OIP^\ell = V^\ell \cdot \overline{\phi}^\ell \cdot \overline{s_o}^\ell \cdot 6.2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Check realization 0, broadcast method = 0.159 compare to by-hand 0.159
-Check realization L-1, broadcast method = 0.169 compare to by-hand 0.169
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Check realization 0, broadcast method = 0.163 compare to by-hand 0.163
+Check realization L-1, broadcast method = 0.428 compare to by-hand 0.428
 </pre></div>
 </div>
 </div>
@@ -702,9 +703,9 @@ Check realization L-1, broadcast method = 0.169 compare to by-hand 0.169
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b5e035bfd127e1ffabbe208590452b65a27535904bd0f9f85e7b5cdb1e7d12a1.png" src="_images/b5e035bfd127e1ffabbe208590452b65a27535904bd0f9f85e7b5cdb1e7d12a1.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average OIP for large number of realizations = 0.147
-The average OIP for small number of realizations = 0.127, 0.139,0.148
+<img alt="_images/372bab0b4f634ce825f72565c2ea3fbff8e1fe76a53219842da5b66e3c47167d.png" src="_images/372bab0b4f634ce825f72565c2ea3fbff8e1fe76a53219842da5b66e3c47167d.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The average OIP for large number of realizations = 0.146
+The average OIP for small number of realizations = 0.143, 0.14,0.138
 </pre></div>
 </div>
 </div>
@@ -714,7 +715,7 @@ The average OIP for small number of realizations = 0.127, 0.139,0.148
 <section id="non-parametric-monte-carlos-simulation">
 <h2>Non-Parametric Monte Carlos Simulation<a class="headerlink" href="#non-parametric-monte-carlos-simulation" title="Permalink to this heading">#</a></h2>
 <p>I have demonstrated the case of MCS with parametric distributions. Of course, we may have non-parametric distributions. In this case we are working with a list of values (typically in an 1D ndarray). For this case we simply substitute in the command:</p>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>apor = np.random.choice(array_average_porosity,size=L)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">apor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">array_average_porosity</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">L</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The result is a ndarray with <span class="math notranslate nohighlight">\(L\)</span> Monte Carlo simulations from the array ‘array_average_porosity’.  This is simply <span class="math notranslate nohighlight">\(L\)</span> random draws with replacement (so the same value may be selected again), from the list of values in the ndarray.</p>
@@ -738,7 +739,7 @@ The average OIP for small number of realizations = 0.127, 0.139,0.148
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
 <p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>

@@ -201,7 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_kriging.html">Indicator Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
@@ -900,31 +900,31 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.106385</td>
+      <td>0.071804</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.112583</td>
+      <td>0.124758</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.131836</td>
+      <td>0.118679</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.047603</td>
+      <td>0.028414</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.086355</td>
+      <td>0.104765</td>
       <td>-99999</td>
       <td>-99999</td>
     </tr>
@@ -1039,7 +1039,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/465b2347b67de1796498d00345c434f600f2f4582715e2ad99c0719067905d63.png" src="_images/465b2347b67de1796498d00345c434f600f2f4582715e2ad99c0719067905d63.png" />
+<img alt="_images/bd764a98fbe3e3b3cac64b9ec54b412d910d3fd925422452eb678989efdb68b0.png" src="_images/bd764a98fbe3e3b3cac64b9ec54b412d910d3fd925422452eb678989efdb68b0.png" />
 </div>
 </div>
 <p>Let’s observe the impact of upscaling scaling on the two model’s distributions and variances.</p>
@@ -1100,7 +1100,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d9206d67025d44953c73e4c8190cea1b1229754718549521d0a02e80d014b186.png" src="_images/d9206d67025d44953c73e4c8190cea1b1229754718549521d0a02e80d014b186.png" />
+<img alt="_images/9542b13f48e90c41e6da843a58d761adec35dbcd156fafd46085cbdb6c6d3a33.png" src="_images/9542b13f48e90c41e6da843a58d761adec35dbcd156fafd46085cbdb6c6d3a33.png" />
 </div>
 </div>
 <p>and now the model with shorter range, isotropic spatial continuity.</p>
@@ -1159,7 +1159,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/b6351d0d9d3f1dd2be3ebe8842218fef4903a6beb7f5700050fab27ac414be80.png" src="_images/b6351d0d9d3f1dd2be3ebe8842218fef4903a6beb7f5700050fab27ac414be80.png" />
+<img alt="_images/4617189263e747e2b6bc8787af77f6155c347ee059685100058f36e70d43f9d6.png" src="_images/4617189263e747e2b6bc8787af77f6155c347ee059685100058f36e70d43f9d6.png" />
 </div>
 </div>
 <p>We can see that with shorter ranges of spatial continuity, our variance reduces faster as we increase the support volume, i.e., the model cell size.</p>
@@ -1199,7 +1199,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8b122ceb4bf205f153ca57a5e90365ce1ac38f68224ab54e16afe3090556983d.png" src="_images/8b122ceb4bf205f153ca57a5e90365ce1ac38f68224ab54e16afe3090556983d.png" />
+<img alt="_images/d300d6df69da4d78099a4c4da4c5614feb50bc8982f98da90112a5a30c90018c.png" src="_images/d300d6df69da4d78099a4c4da4c5614feb50bc8982f98da90112a5a30c90018c.png" />
 </div>
 </div>
 <p>It is convenient to represent this as variance reduction factors,</p>
@@ -1228,7 +1228,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/73857eb8f3966f5e99218abfdbabf4659bdb660c80f70a8cb6ac3c5b4ebbe49e.png" src="_images/73857eb8f3966f5e99218abfdbabf4659bdb660c80f70a8cb6ac3c5b4ebbe49e.png" />
+<img alt="_images/95d3fb0503bbe540591cdc2aa3527c073d7fe00fca74d0b8b06bf1d3343551f5.png" src="_images/95d3fb0503bbe540591cdc2aa3527c073d7fe00fca74d0b8b06bf1d3343551f5.png" />
 </div>
 </div>
 <p>Since we’ve gone this far, let’s complete a larger experiment by looping over many variogram ranges and model volume supports and visualize the variance reduction.</p>
@@ -1273,7 +1273,7 @@ D^2(\cdot,V) = D^2(\cdot,v) + D^2(v,V)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c6831830060d71d75a66c27279db0f0d1457f1022e6b28331c6b0f77eeaf9ab8.png" src="_images/c6831830060d71d75a66c27279db0f0d1457f1022e6b28331c6b0f77eeaf9ab8.png" />
+<img alt="_images/b56a601748f9e73894fc184c8dd9a4c45c117dbaee5e0646af43eed5a69cc55f.png" src="_images/b56a601748f9e73894fc184c8dd9a4c45c117dbaee5e0646af43eed5a69cc55f.png" />
 </div>
 </div>
 <p>See the trade-off between volume support, as a function of cell size, and the variogram range?</p>
@@ -1398,7 +1398,7 @@ D^2(v,V) = \overline{\gamma}_{V,V} - \overline{\gamma}_{v,v}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0c1f766d7e4df9d13895e2682e47a81664056f19d4db6973315fa4e84bae3312.png" src="_images/0c1f766d7e4df9d13895e2682e47a81664056f19d4db6973315fa4e84bae3312.png" />
+<img alt="_images/f6cefa8191a4039510dccca1901ea43727670c282a7a3f39df01b79a73d5fc00.png" src="_images/f6cefa8191a4039510dccca1901ea43727670c282a7a3f39df01b79a73d5fc00.png" />
 </div>
 </div>
 <p>Firstly, both results are quite similar with 2 important differences,</p>
@@ -1538,7 +1538,7 @@ D^2(v,V) = \overline{\gamma}_{V,V} - \overline{\gamma}_{v,v}
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
 <p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>

@@ -201,7 +201,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_2D1D_trend.html">Spatial Trend Modeling, 1D + 2D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_inv_distance.html">Inverse Distance</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging.html">Simple and Ordinary Kriging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indictor_kriging.html">Indicator Kriging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_categorical_indicator_kriging.html">Indicator Kriging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_simulation.html">Stochastic Simulation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_1D.html">Kriging vs. Simulation, 1D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_kriging_vs_simulation_maps.html">Kriging vs. Simulation, 2D Maps</a></li>
@@ -1148,8 +1148,8 @@ document.write(`
 <section id="variogram-calculation">
 <h2>Variogram Calculation<a class="headerlink" href="#variogram-calculation" title="Permalink to this heading">#</a></h2>
 <p>We are ready to calculate variogram! Let’s calculate directional variograms for the transformed normal score porosity for sand, shale and all (without separating sand and shale).  Some information on the parameters that I chose:</p>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>tmin = -9999.; tmax = 9999.; 
-lag_dist = 100.0; lag_tol = 50.0; nlag = 7; bandh = 9999.9; azi = 45; atol = 22.5; isill = 1
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">9999.</span><span class="p">;</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mf">9999.</span><span class="p">;</span> 
+<span class="n">lag_dist</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">;</span> <span class="n">lag_tol</span> <span class="o">=</span> <span class="mf">50.0</span><span class="p">;</span> <span class="n">nlag</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="n">bandh</span> <span class="o">=</span> <span class="mf">9999.9</span><span class="p">;</span> <span class="n">azi</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span> <span class="n">atol</span> <span class="o">=</span> <span class="mf">22.5</span><span class="p">;</span> <span class="n">isill</span> <span class="o">=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -1234,8 +1234,8 @@ lag_dist = 100.0; lag_tol = 50.0; nlag = 7; bandh = 9999.9; azi = 45; atol = 22.
 <li><p>for only 1 structure plus optional nugget, omit the 2nd structure parameters and they will default to <span class="math notranslate nohighlight">\(cc2 = 0\)</span>, no contribution to the model</p></li>
 </ul>
 <p>Let’s start with all facies. Here’s my model:</p>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>nug = 0.0; nst = 1
-it1 = 1; cc1 = 1.0; azi1 = 45; hmaj1 =500; hmin1 = 350                # first structure
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nug</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">nst</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">it1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">cc1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span> <span class="n">azi1</span> <span class="o">=</span> <span class="mi">45</span><span class="p">;</span> <span class="n">hmaj1</span> <span class="o">=</span><span class="mi">500</span><span class="p">;</span> <span class="n">hmin1</span> <span class="o">=</span> <span class="mi">350</span>                <span class="c1"># first structure</span>
 </pre></div>
 </div>
 <p>Some comments on our model:</p>
@@ -1245,7 +1245,7 @@ it1 = 1; cc1 = 1.0; azi1 = 45; hmaj1 =500; hmin1 = 350                # first st
 <li><p>since the experimental variogram exceeds the sill with trend or cyclicity we could have attempted trend modeling and then worked with the residual, but we will not do this for workflow brevity and simplicity</p></li>
 </ul>
 <p>We input these model parameters to make a variogram model dictionary with the make_variogram function as follows:</p>
-<div class="highlight-p notranslate"><div class="highlight"><pre><span></span>vario = GSLIB.make_variogram(nug,nst,it1,cc1,azi1,hmaj1,hmin1,it2,cc2,azi2,hmaj2,hmin2)
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vario</span> <span class="o">=</span> <span class="n">GSLIB</span><span class="o">.</span><span class="n">make_variogram</span><span class="p">(</span><span class="n">nug</span><span class="p">,</span><span class="n">nst</span><span class="p">,</span><span class="n">it1</span><span class="p">,</span><span class="n">cc1</span><span class="p">,</span><span class="n">azi1</span><span class="p">,</span><span class="n">hmaj1</span><span class="p">,</span><span class="n">hmin1</span><span class="p">,</span><span class="n">it2</span><span class="p">,</span><span class="n">cc2</span><span class="p">,</span><span class="n">azi2</span><span class="p">,</span><span class="n">hmaj2</span><span class="p">,</span><span class="n">hmin2</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -1418,7 +1418,7 @@ it1 = 1; cc1 = 1.0; azi1 = 45; hmaj1 =500; hmin1 = 350                # first st
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
 <p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <span class="xref myst">Website</span>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
