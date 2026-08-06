@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -470,16 +474,16 @@ document.write(`
 <p>Here’s a simple workflow with some basic univariate distribution transformations for subsurface modeling workflows. This should help you get started data transformations.</p>
 <section id="data-distribution-transformations">
 <h2>Data Distribution Transformations<a class="headerlink" href="#data-distribution-transformations" title="Permalink to this heading">#</a></h2>
-<p>Why do we perform distribution transformations in geostatistical methods and workflows?:</p>
+<p>Why do we perform <a class="reference internal" href="GeostatsPy_glossary_a_d.html#distribution-transformation"><span class="std std-doc">distribution transformation</span></a>s in geostatistical methods and workflows?:</p>
 <ul class="simple">
-<li><p>variable has expected shape / correcting for too few data</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_t_z.html#variable"><span class="std std-doc">variable</span></a> has expected shape / correcting for too few <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>a specific distribution assumption is required</p></li>
 <li><p>correct for outliers</p></li>
 </ul>
 <p>We will cover three methods:</p>
 <ol class="arabic simple">
-<li><p><strong>Affine correction</strong> - rescaling the distribution mean and variance without shape change</p></li>
-<li><p><strong>Normal score transform</strong> - transformation to a Gaussian distribution with shape change</p></li>
+<li><p><strong><a class="reference internal" href="GeostatsPy_glossary_a_d.html#affine-correction"><span class="std std-doc">Affine correction</span></a></strong> - rescaling the distribution <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> and <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a> without shape change</p></li>
+<li><p><strong>Normal <a class="reference internal" href="GeostatsPy_glossary_n_s.html#score"><span class="std std-doc">score</span></a> transform</strong> - transformation to a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#gaussian-distribution"><span class="std std-doc">Gaussian distribution</span></a> with shape change</p></li>
 <li><p><strong>General distribution transformation</strong> - transformation to any parametric or nonparametric target distribution with shape change</p></li>
 </ol>
 <p>I’ll provide some for information on each in the workflow flow.</p>
@@ -560,7 +564,7 @@ document.write(`
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<p>Here’s the command to load our comma delimited <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> file in to a Pandas’ <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data_biased.csv&#39;</span><span class="p">)</span> <span class="c1"># load our data form my GitHub account</span>
@@ -638,11 +642,11 @@ document.write(`
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>The table includes X and Y coordinates (meters), Porosity (fraction), and permeability as Perm (mDarcy).</p>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames.</p>
+<p>The table includes X and Y coordinates (meters), Porosity (fraction), and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> as Perm (mDarcy).</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> from <a class="reference internal" href="GeostatsPy_glossary_t_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a>s.</p>
 <ul class="simple">
-<li><p>The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table.</p></li>
-<li><p>We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p></li>
+<li><p>The describe command provides count, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>, minimum, maximum, and quartiles all in a nice <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> table.</p></li>
+<li><p>We use transpose just to flip the table so that <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a>s are on the rows and the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a>s are on the columns.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -742,10 +746,10 @@ document.write(`
 </section>
 <section id="visualizing-tabular-data-with-location-maps">
 <h2>Visualizing Tabular Data with Location Maps<a class="headerlink" href="#visualizing-tabular-data-with-location-maps" title="Permalink to this heading">#</a></h2>
-<p>It is natural to set the x and y coordinate and feature ranges manually, e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display.</p>
+<p>It is natural to set the x and y coordinate and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a>s manually, e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display.</p>
 <ul class="simple">
 <li><p>I heard that plasma and inferno are known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I recall correctly).</p></li>
-<li><p>We will assume a study area of 0 to 1,000m in x and y and omit any data outside this area.</p></li>
+<li><p>We will assume a study area of 0 to 1,000m in x and y and omit any <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> outside this area.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -784,10 +788,10 @@ document.write(`
 </section>
 <section id="decluster-the-data">
 <h2>Decluster the Data<a class="headerlink" href="#decluster-the-data" title="Permalink to this heading">#</a></h2>
-<p>Look carefully, and you’ll notice that the spatial samples are more dense in the high porosity regions and less dense in the low porosity regions. There is preferential sampling.</p>
+<p>Look carefully, and you’ll notice that the spatial <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s are more dense in the high <a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a> regions and less dense in the low porosity regions. There is preferential sampling.</p>
 <ul class="simple">
-<li><p>We cannot use the naive statistics to represent this region. We have to correct for the clustering of the samples in the high porosity regions.</p></li>
-<li><p>Let’s try cell declustering. We can interpret that we will want to minimize the declustering mean and that a cell size of between 100 - 200m is likely a good cell size, this is ‘an ocular’ estimate of the largest average spacing in the sparsely sampled regions.</p></li>
+<li><p>We cannot use the naive <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> to represent this region. We have to correct for the clustering of the samples in the high porosity regions.</p></li>
+<li><p>Let’s try cell <a class="reference internal" href="GeostatsPy_glossary_a_d.html#declustering"><span class="std std-doc">declustering</span></a>. We can interpret that we will want to minimize the declustering <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> and that a cell size of between 100 - 200m is likely a good cell size, this is ‘an ocular’ estimate of the largest <a class="reference internal" href="GeostatsPy_glossary_a_d.html#average"><span class="std std-doc">average</span></a> spacing in the sparsely sampled regions.</p></li>
 </ul>
 <p>Let’s check out the declus program in GeostatsPy. Of course, I have a couple complete workflows for declustering with GeostatsPy that provide more complete descriptions.</p>
 <div class="cell docutils container">
@@ -961,12 +965,12 @@ document.write(`
 </section>
 <section id="distribution-rescaling-with-affine-correction">
 <h2>Distribution Rescaling with Affine Correction<a class="headerlink" href="#distribution-rescaling-with-affine-correction" title="Permalink to this heading">#</a></h2>
-<p>Distribution rescaling can be thought of as shifting, and stretching and squeezing a distribution. The common method is known as affine correction:</p>
+<p>Distribution rescaling can be thought of as shifting, and stretching and squeezing a distribution. The common method is known as <a class="reference internal" href="GeostatsPy_glossary_a_d.html#affine-correction"><span class="std std-doc">affine correction</span></a>:</p>
 <div class="math notranslate nohighlight">
 \[
 y = \frac{\sigma_y}{\sigma_x}(x - \overline{x}) + \overline{y}
 \]</div>
-<p>We can see above that the affine correlation method first centers the distribution, the rescales the dispersion based on the ratio of the new standard deviation to the original standard deviation and then shifts the distribution to centered on the target mean.</p>
+<p>We can see above that the affine correlation method first centers the distribution, the rescales the dispersion based on the ratio of the new <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> to the original standard deviation and then shifts the distribution to centered on the target <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>.</p>
 <p>We have a function in GeostatsPy to do the affine correction of the distribution.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1077,12 +1081,12 @@ y = \frac{\sigma_y}{\sigma_x}(x - \overline{x}) + \overline{y}
 </section>
 <section id="normal-score-transform">
 <h2>Normal Score Transform<a class="headerlink" href="#normal-score-transform" title="Permalink to this heading">#</a></h2>
-<p>We showed that the correction of the mean to 0.0 and standard deviation to 1.0 with affine correction does not change the shape; therefore, does not make a Gaussian distributed property.</p>
+<p>We showed that the correction of the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> to 0.0 and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> to 1.0 with <a class="reference internal" href="GeostatsPy_glossary_a_d.html#affine-correction"><span class="std std-doc">affine correction</span></a> does not change the shape; therefore, does not make a Gaussian distributed <a class="reference internal" href="GeostatsPy_glossary_n_s.html#property"><span class="std std-doc">property</span></a>.</p>
 <ul class="simple">
-<li><p>for many statistic or geostatistical methods the assumption of Gaussian distributed is required, and to accomplish this we need normal score transforms in many subsurface modeling workflows</p></li>
-<li><p>note, normal score transform is also known as gaussian anamorphosis</p></li>
+<li><p>for many <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a> or geostatistical methods the assumption of Gaussian distributed is required, and to accomplish this we need normal score transforms in many <a class="reference internal" href="GeostatsPy_glossary_n_s.html#subsurface-modeling-workflow"><span class="std std-doc">subsurface modeling workflow</span></a>s</p></li>
+<li><p>note, normal <a class="reference internal" href="GeostatsPy_glossary_n_s.html#score"><span class="std std-doc">score</span></a> transform is also known as gaussian anamorphosis</p></li>
 </ul>
-<p>Normal score transform is applied through the cumulative distribution functions (CDF)s, <span class="math notranslate nohighlight">\(F_{X}\)</span>, to a new CDF , <span class="math notranslate nohighlight">\(G_{Y}\)</span>. This can be generalized with the quantile - quantile transformation applied to all the sample data:</p>
+<p>Normal score transform is applied through the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cumulative-distribution-function"><span class="std std-doc">cumulative distribution function</span></a>s (CDF)s, <span class="math notranslate nohighlight">\(F_{X}\)</span>, to a new CDF , <span class="math notranslate nohighlight">\(G_{Y}\)</span>. This can be generalized with the quantile - quantile transformation applied to all the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a>:</p>
 <ul class="simple">
 <li><p>The forward transform:</p></li>
 </ul>
@@ -1318,9 +1322,9 @@ X = F_{X}^{-1}(G_{Y}(Y))
 </section>
 <section id="general-distribution-transformation">
 <h2>General Distribution Transformation<a class="headerlink" href="#general-distribution-transformation" title="Permalink to this heading">#</a></h2>
-<p>The distribution transformation may be applied to transform any distribution, <span class="math notranslate nohighlight">\(F_x(x)\)</span> to any other distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>.</p>
+<p>The <a class="reference internal" href="GeostatsPy_glossary_a_d.html#distribution-transformation"><span class="std std-doc">distribution transformation</span></a> may be applied to transform any distribution, <span class="math notranslate nohighlight">\(F_x(x)\)</span> to any other distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>.</p>
 <ul class="simple">
-<li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be nonparametric, i.e., a set of values. In this case the data is converted to a CDF and some form of interpolation is applied to find the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span></p></li>
+<li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be nonparametric, i.e., a set of values. In this case the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> is converted to a CDF and some form of <a class="reference internal" href="GeostatsPy_glossary_e_m.html#interpolation"><span class="std std-doc">interpolation</span></a> is applied to find the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span></p></li>
 <li><p>the target distribution, <span class="math notranslate nohighlight">\(F_y(y)\)</span>, could be any parametric distribution, and the calculation of the inverse of the target CDF, <span class="math notranslate nohighlight">\(F_y^{-1}(p)\)</span>, for any cumulative probability, <span class="math notranslate nohighlight">\(p\)</span> is available through an analytical solution</p></li>
 </ul>
 <p>I have built out an interactive Python dashboard <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Distribution_Transformations.ipynb">Distribution Transformation</a> with a transformation to a parametric distribution,</p>
@@ -1338,10 +1342,10 @@ X = F_{X}^{-1}(G_{Y}(Y))
 </section>
 <section id="distribution-transformation-to-a-parametric-distribution">
 <h2>Distribution Transformation to a Parametric Distribution<a class="headerlink" href="#distribution-transformation-to-a-parametric-distribution" title="Permalink to this heading">#</a></h2>
-<p>We can transform our data feature distribution to any parametric distribution with this workflow.</p>
+<p>We can transform our data <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a> distribution to any parametric distribution with this workflow.</p>
 <ol class="arabic simple">
-<li><p>Calculate the cumulative probability value of each of our data values, <span class="math notranslate nohighlight">\(p_{\alpha} = F_x(x_\alpha)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
-<li><p>Apply the inverse of the target parametric cumulative distribution function (CDF) to calculate the transformed values. <span class="math notranslate nohighlight">\(y_{\alpha} = G_y^{-1}\left(F_x(x_\alpha)\right)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
+<li><p>Calculate the cumulative probability value of each of our <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> values, <span class="math notranslate nohighlight">\(p_{\alpha} = F_x(x_\alpha)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
+<li><p>Apply the inverse of the target parametric <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cumulative-distribution-function"><span class="std std-doc">cumulative distribution function</span></a> (CDF) to calculate the transformed values. <span class="math notranslate nohighlight">\(y_{\alpha} = G_y^{-1}\left(F_x(x_\alpha)\right)\)</span>, <span class="math notranslate nohighlight">\(\forall\)</span> <span class="math notranslate nohighlight">\(\alpha = 1,\ldots, n\)</span>.</p></li>
 </ol>
 <p>While assigning the cumulative probabilities you must make an assumption about the distribution tails (minimum and maximum values).</p>
 <ul class="simple">
@@ -1379,7 +1383,7 @@ F_i = \frac{i}{n+1}
 \]</div>
 <p>this is more important with sparsely sampled datasets. When <span class="math notranslate nohighlight">\(n\)</span> is large this is not as important,</p>
 <ul class="simple">
-<li><p>the range of cumulative probability at the tails is very small!</p></li>
+<li><p>the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a> of cumulative probability at the tails is very small!</p></li>
 <li><p>the minimum and maximum of the feature may be well-known</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1427,7 +1431,7 @@ F_i = \frac{i}{n+1}
 <h2>Distribution Transform to a Non-Parametric Distribution<a class="headerlink" href="#distribution-transform-to-a-non-parametric-distribution" title="Permalink to this heading">#</a></h2>
 <p>We can apply the mapping through cumulative probabilities to transform from any distribution to any other distribution.</p>
 <ul class="simple">
-<li><p>let’s make a new data set by randomly sampling from the previous one and adding error</p></li>
+<li><p>let’s make a new <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> set by randomly sampling from the previous one and adding <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a></p></li>
 </ul>
 <p>Then we can demonstrate transforming this dataset to match the original distribution</p>
 <ul class="simple">
@@ -1476,7 +1480,7 @@ F_i = \frac{i}{n+1}
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of distribution transformations with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>This was a basic demonstration of <a class="reference internal" href="GeostatsPy_glossary_a_d.html#distribution-transformation"><span class="std std-doc">distribution transformation</span></a>s with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1487,20 +1491,20 @@ F_i = \frac{i}{n+1}
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1629,6 +1633,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

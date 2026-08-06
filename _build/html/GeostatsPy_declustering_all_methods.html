@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -477,19 +481,19 @@ document.write(`
   <figcaption style="text-align: center;"> Spatial dataset within an area of interest in plan view.
 </figcaption>
 </figure>
-<p>Do you have any concerns with this data? What if I add this information?</p>
+<p>Do you have any concerns with this <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a>? What if I add this information?</p>
 <figure style="text-align: center;">
   <img src="_static/decluster/data_areas.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Spatial dataset within an area of interest with areas of high and low values indicated in plan view.
 </figcaption>
 </figure>
-<p>Do you see what is going on? The samples are actually clustered in the high area. It can get much worse,</p>
+<p>Do you see what is going on? The <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s are actually clustered in the high area. It can get much worse,</p>
 <figure style="text-align: center;">
   <img src="_static/decluster/data_areas_worse.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Spatial dataset within an area of interest with areas of high and low values indicated in plan view.
 </figcaption>
 </figure>
-<p>and as we continue to sample in the high region we will increase the bias in the sample statistics,</p>
+<p>and as we continue to sample in the high region we will increase the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bias"><span class="std std-doc">bias</span></a> in the sample <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a>,</p>
 <figure style="text-align: center;">
   <img src="_static/decluster/sample_bias.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> Sample statistic vs. true population parameter over time as more clustered samples are collected.
@@ -499,8 +503,8 @@ document.write(`
 <p>Data is collected to answer questions:</p>
 <ul class="simple">
 <li><p>how far does the contaminant plume extend? – sample peripheries</p></li>
-<li><p>where is the fault? – drill based on seismic interpretation</p></li>
-<li><p>what is the highest mineral grade? – sample the best part</p></li>
+<li><p>where is the fault? – drill based on <a class="reference internal" href="GeostatsPy_glossary_n_s.html#seismic"><span class="std std-doc">seismic</span></a> interpretation</p></li>
+<li><p>what is the highest mineral <a class="reference internal" href="GeostatsPy_glossary_e_m.html#grade"><span class="std std-doc">grade</span></a>? – sample the best part</p></li>
 <li><p>who far does the reservoir extend? – offset drilling
 and to maximize NPV directly:</p></li>
 <li><p>maximize production rates</p></li>
@@ -511,7 +515,7 @@ and to maximize NPV directly:</p></li>
   <figcaption style="text-align: center;"> Samples and inaccessible population.
 </figcaption>
 </figure>
-<p><strong>Random Sampling</strong>: when every item in the population has a equal chance of being chosen. Selection of every item is independent of every other selection.
+<p><strong><a class="reference internal" href="GeostatsPy_glossary_n_s.html#random-sampling"><span class="std std-doc">Random Sampling</span></a></strong>: when every item in the population has a equal chance of being chosen. Selection of every item is independent of every other selection.
 Is random sampling sufficient for subsurface?  Is it available?</p>
 <ul class="simple">
 <li><p>it is not usually available, would not be economic</p></li>
@@ -526,17 +530,17 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 </ul>
 </li>
 </ul>
-<p><strong>Regular Sampling</strong>: when samples are taken at regular intervals (equally spaced).</p>
+<p><strong><a class="reference internal" href="GeostatsPy_glossary_n_s.html#regular-sampling"><span class="std std-doc">Regular Sampling</span></a></strong>: when samples are taken at regular intervals (equally spaced).</p>
 <ul class="simple">
 <li><p>less reliable than random sampling.</p></li>
-<li><p>Warning: may resonate with some unsuspected environmental variable.</p></li>
+<li><p>Warning: may resonate with some unsuspected environmental <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variable"><span class="std std-doc">variable</span></a>.</p></li>
 </ul>
 <p>What do we have?</p>
 <ul class="simple">
 <li><p>we usually have biased, opportunity sampling</p></li>
 <li><p>we must account for bias (debiasing will be discussed later)</p></li>
 </ul>
-<p>So if we were designing sampling for representativity of the sample set and resulting sample statistics, by theory we have 2 options, random sampling and regular sampling.</p>
+<p>So if we were designing sampling for representativity of the sample set and resulting sample <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a>s, by theory we have 2 options, random sampling and regular sampling.</p>
 <ul class="simple">
 <li><p>What would happen if you proposed random sampling in the Gulf of Mexico at $150M per well?</p></li>
 </ul>
@@ -545,8 +549,8 @@ Is random sampling sufficient for subsurface?  Is it available?</p>
 </section>
 <section id="cell-based-declustering-summary">
 <h2>Cell-based Declustering Summary<a class="headerlink" href="#cell-based-declustering-summary" title="Permalink to this heading">#</a></h2>
-<p>Place a cell mesh over the data and share the weight over each cell. Data in densely sampled areas or volumes will get less weight while data in sparsely sampled areas or volumes will get more weight.</p>
-<p>Cell-based declustering weights are calculated by first identifying the cell that the data occupies, <span class="math notranslate nohighlight">\(\ell\)</span>, then,</p>
+<p>Place a cell mesh over the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> and share the weight over each cell. Data in densely sampled areas or volumes will get less weight while data in sparsely sampled areas or volumes will get more weight.</p>
+<p>Cell-based <a class="reference internal" href="GeostatsPy_glossary_a_d.html#declustering"><span class="std std-doc">declustering</span></a> weights are calculated by first identifying the cell that the data occupies, <span class="math notranslate nohighlight">\(\ell\)</span>, then,</p>
 <div class="math notranslate nohighlight">
 \[
 w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
@@ -560,22 +564,22 @@ w(\bf{𝐮}_j) = \frac{1}{n_{\ell}} \cdot \frac{n}{L_o}
 <p>Additional considerations:</p>
 <ul class="simple">
 <li><p>influence of cell mesh origin is removed by averaging the data weights over multiple random cell mesh origins</p></li>
-<li><p>the optimum cell size is selected by minimizing or maximizing the declustered mean, based on whether the means is biased high or low respectively</p></li>
+<li><p>the optimum cell size is selected by minimizing or maximizing the declustered <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>, based on whether the means is biased high or low respectively</p></li>
 </ul>
-<p>In this demonstration we will take a biased spatial sample data set and apply declustering using <strong>GeostatsPy</strong> functionality.</p>
+<p>In this demonstration we will take a biased spatial <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> data set and apply declustering using <strong>GeostatsPy</strong> functionality.</p>
 </section>
 <section id="polygonal-based-declustering">
 <h2>Polygonal-based Declustering<a class="headerlink" href="#polygonal-based-declustering" title="Permalink to this heading">#</a></h2>
 <p>Here’s the steps for polygonal-based desclutering,</p>
 <ol class="arabic simple">
-<li><p>Assign Voronoi polygons to the data within the area or volume of interest.</p></li>
+<li><p>Assign Voronoi polygons to the data within the area or <a class="reference internal" href="GeostatsPy_glossary_t_z.html#volume-of-interest"><span class="std std-doc">volume of interest</span></a>.</p></li>
 </ol>
 <figure style="text-align: center;">
   <img src="_static/decluster/polygonal.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> Spatial dataset with Voronoi polygons.
 </figcaption>
 </figure>
-<p>Then apply data weights proportional to the area or volume of the associated Voronoi polygon and standardized by the total area or volume.</p>
+<p>Then apply <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> weights proportional to the area or volume of the associated Voronoi polygon and standardized by the total area or volume.</p>
 <div class="math notranslate nohighlight">
 \[
 w(\bf{𝐮}_j) = \frac{a_j}{A} \cdot n
@@ -587,15 +591,15 @@ w(\bf{𝐮}_j) = \frac{a_j}{A} \cdot n
 </section>
 <section id="kriging-based-declustering">
 <h2>Kriging-based Declustering<a class="headerlink" href="#kriging-based-declustering" title="Permalink to this heading">#</a></h2>
-<p>Assign a grid over the area or volume of interest and perform kriging. While performing kriging, sum the weight assigned to each data over all the grid cells. Assign declustering weights as the sum of kriging weights standardized by the total number of data divided by the total kriging weight over all data and grid cells.</p>
+<p>Assign a grid over the area or <a class="reference internal" href="GeostatsPy_glossary_t_z.html#volume-of-interest"><span class="std std-doc">volume of interest</span></a> and perform <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kriging"><span class="std std-doc">kriging</span></a>. While performing kriging, sum the weight assigned to each data over all the grid cells. Assign <a class="reference internal" href="GeostatsPy_glossary_a_d.html#declustering"><span class="std std-doc">declustering</span></a> weights as the sum of kriging weights standardized by the total number of data divided by the total kriging weight over all data and grid cells.</p>
 <div class="math notranslate nohighlight">
 \[
 w(\bf{𝐮}_j) = \sum_{i_y = 1}^{n_y} \sum_{i_x = 1}^{n_x} \lambda_{j,ix,iy} \cdot \frac{n}{\sum \lambda}
 \]</div>
 <p>Additional considerations:</p>
 <ul class="simple">
-<li><p>this method is sensitive to the grid extends and integrates the concept of spatial continuity through the variogram.</p></li>
-<li><p>high resolution grids will increase accuracy but takes longer to calculate</p></li>
+<li><p>this method is sensitive to the grid extends and integrates the concept of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a> through the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>.</p></li>
+<li><p>high <a class="reference internal" href="GeostatsPy_glossary_n_s.html#resolution"><span class="std std-doc">resolution</span></a> grids will increase accuracy but takes longer to calculate</p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -673,7 +677,7 @@ w(\bf{𝐮}_j) = \sum_{i_y = 1}^{n_y} \sum_{i_x = 1}^{n_x} \lambda_{j,ix,iy} \cd
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<p>Here’s the command to load our comma delimited <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> file in to a Pandas’ <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data_biased.csv&#39;</span><span class="p">)</span> <span class="c1"># load data</span>
@@ -750,8 +754,8 @@ w(\bf{𝐮}_j) = \sum_{i_y = 1}^{n_y} \sum_{i_x = 1}^{n_x} \lambda_{j,ix,iy} \cd
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>The table includes X and Y coordinates (meters), Facies 1 and 2 (1 is sandstone and 0 interbedded sand and mudstone), Porosity (fraction), and permeability as Perm (mDarcy).</p>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p>
+<p>The table includes X and Y coordinates (meters), <a class="reference internal" href="GeostatsPy_glossary_e_m.html#facies"><span class="std std-doc">Facies</span></a> 1 and 2 (1 is sandstone and 0 interbedded sand and mudstone), Porosity (fraction), and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> as Perm (mDarcy).</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> from <a class="reference internal" href="GeostatsPy_glossary_t_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a>s. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a>s are on the rows and the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a>s are on the columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                     <span class="c1"># summary statistics</span>
@@ -850,7 +854,7 @@ w(\bf{𝐮}_j) = \sum_{i_y = 1}^{n_y} \sum_{i_x = 1}^{n_x} \lambda_{j,ix,iy} \cd
 </section>
 <section id="specify-the-area-of-interest">
 <h2>Specify the Area of Interest<a class="headerlink" href="#specify-the-area-of-interest" title="Permalink to this heading">#</a></h2>
-<p>It is natural to set the x and y coordinate and feature ranges manually. e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display. I heard that plasma is known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I recall correctly). We will assume a study area of 0 to 1,000m in x and y and omit any data outside this area.</p>
+<p>It is natural to set the x and y coordinate and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a>s manually. e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display. I heard that plasma is known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I recall correctly). We will assume a study area of 0 to 1,000m in x and y and omit any <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> outside this area.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">1000.0</span>                                     <span class="c1"># range of x values</span>
@@ -891,7 +895,7 @@ Let’s try out locmap. This is a reimplementation of GSLIB’s locmap program t
 </section>
 <section id="cell-based-declustering">
 <h2>Cell-based Declustering<a class="headerlink" href="#cell-based-declustering" title="Permalink to this heading">#</a></h2>
-<p>Let’s try cell declustering. We can interpret that we will want to minimize the declustering mean and that a cell size of between 100 - 200m is likely a good cell size, this is ‘an ocular’ estimate of the largest average spacing in the sparsely sampled regions.</p>
+<p>Let’s try cell <a class="reference internal" href="GeostatsPy_glossary_a_d.html#declustering"><span class="std std-doc">declustering</span></a>. We can interpret that we will want to minimize the declustering <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> and that a cell size of between 100 - 200m is likely a good cell size, this is ‘an ocular’ estimate of the largest <a class="reference internal" href="GeostatsPy_glossary_a_d.html#average"><span class="std std-doc">average</span></a> spacing in the sparsely sampled regions.</p>
 <p>Let’s check out the declus program reimplemented from GSLIB.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1114,26 +1118,26 @@ DescribeResult(nobs=289, minmax=(0.29697647801768134, 4.929726774433297), mean=1
 </section>
 <section id="id1">
 <h2>Kriging-based Declustering<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Let’s take the standard 2D kriging method and modify it</p>
+<p>Let’s take the standard 2D <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kriging"><span class="std std-doc">kriging</span></a> method and modify it</p>
 <ul class="simple">
-<li><p>we will sum the weights assigned to each spatial data</p></li>
+<li><p>we will sum the weights assigned to each spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>calculate the weights as the normalized sum of the weights</p></li>
 </ul>
-<p>Note, I extracted and modified the krige algorithm from GeostatsPy below to make a 2D kriging-based declustering method.</p>
+<p>Note, I extracted and modified the krige algorithm from GeostatsPy below to make a 2D kriging-based <a class="reference internal" href="GeostatsPy_glossary_a_d.html#declustering"><span class="std std-doc">declustering</span></a> method.</p>
 <p>Let’s assume a reasonable grid for kriging</p>
 <ul class="simple">
-<li><p>sufficient resolution to capture the spatial context of the data</p></li>
+<li><p>sufficient <a class="reference internal" href="GeostatsPy_glossary_n_s.html#resolution"><span class="std std-doc">resolution</span></a> to capture the spatial context of the data</p></li>
 <li><p>higher resolution results in more precision in the declustering weights</p></li>
 </ul>
-<p>We will also assume simple kriging parameters.</p>
+<p>We will also assume simple kriging <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s.</p>
 <ul class="simple">
-<li><p>we want to limit the search to the range of correlation for computation efficiency</p></li>
+<li><p>we want to limit the search to the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a> of correlation for computation efficiency</p></li>
 </ul>
-<p>We will also assume a variogram</p>
+<p>We will also assume a <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a></p>
 <ul class="simple">
 <li><p>very large range will result in equal weights</p></li>
 <li><p>no spatial correlation will result in equal weights</p></li>
-<li><p>in practice the variogram is inferred from the data, for brevity here we assume a variogram model</p></li>
+<li><p>in practice the variogram is inferred from the data, for brevity here we assume a <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram-model"><span class="std std-doc">variogram model</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1321,7 +1325,7 @@ DescribeResult(nobs=289, minmax=(-0.10447464028497624, 2.4301543951532585), mean
 <h2>Polygonal Declustering<a class="headerlink" href="#polygonal-declustering" title="Permalink to this heading">#</a></h2>
 <p>Let’s calculate the polygons with a discretized approximation on a regular grid:</p>
 <ul class="simple">
-<li><p>assign the nearest data value to each cell</p></li>
+<li><p>assign the nearest <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> value to each cell</p></li>
 <li><p>calculate the weights as the normalized sum of the weights (number of cells assigned to each datum)</p></li>
 </ul>
 <p>Let’s refine the grid for greater accuracy (with some increased run time, complexity is <span class="math notranslate nohighlight">\(O(n^2)\)</span>, and then run to calculate the polygonal weights and check the model by looking at the polygons and the data.</p>
@@ -1530,7 +1534,7 @@ DescribeResult(nobs=289, minmax=(0.012138, 4.9887179999999995), mean=1.0, varian
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of cell-based, polygonal-based and kriging-based spatial data declustering for robust correction of sampling bias. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>This was a basic demonstration of cell-based, polygonal-based and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kriging"><span class="std std-doc">kriging</span></a>-based spatial data <a class="reference internal" href="GeostatsPy_glossary_a_d.html#declustering"><span class="std std-doc">declustering</span></a> for robust correction of sampling <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bias"><span class="std std-doc">bias</span></a>. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1541,20 +1545,20 @@ DescribeResult(nobs=289, minmax=(0.012138, 4.9887179999999995), mean=1.0, varian
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1680,6 +1684,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

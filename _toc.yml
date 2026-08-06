@@ -6,6 +6,8 @@ root: intro
 chapters:
 - file: GeostatsPy_concepts
   title: Geostatistical Concepts
+- file: GeostatsPy_subsurface_modeling
+  title: Subsurface Modeling
 - file: GeostatsPy_probability
   title: Probability Concepts
 - file: GeostatsPy_coordinate_transformations
@@ -98,8 +100,14 @@ chapters:
   title: GeostatsPy Package
 - file: conclusions
   title: Conclusions
-- file: GeostatsPy_glossary
-  title: Glossary
+- file: GeostatsPy_glossary_a_d
+  title: Glossary A-D
+- file: GeostatsPy_glossary_e_m
+  title: Glossary E-M
+- file: GeostatsPy_glossary_n_s
+  title: Glossary N-S
+- file: GeostatsPy_glossary_t_z
+  title: Glossary T-Z
 - file: references
   title: References
 

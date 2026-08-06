@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -473,23 +477,23 @@ document.write(`
 <p>For your convenience here’s a summary of salient points. First, let’s explain the concept of spatial simulation (1 feature).</p>
 <section id="sequential-gaussian-simulation">
 <h2>Sequential Gaussian Simulation<a class="headerlink" href="#sequential-gaussian-simulation" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="GeostatsPy_concepts.html"><span class="doc std std-doc">Geostatistical Concepts</span></a>: a simulation method to calculate realizations for spatial models based on the following principles,</p>
+<p><a class="reference internal" href="GeostatsPy_concepts.html"><span class="doc std std-doc">Geostatistical Concepts</span></a>: a simulation method to calculate <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> for spatial models based on the following principles,</p>
 <ul class="simple">
-<li><p><strong>Sequential</strong> - adding the previously simulated values to the data to ensure the covariance is correct between the simulated values</p></li>
-<li><p><strong>Gaussian</strong> - transformation to Gaussian space so that the local distributions of uncertainty are known given the kriging mean and kriging variance, and the global distribution is reproduced after back-transformation to the original distribution</p></li>
-<li><p><strong>Simulation</strong> - with Monte Carlo simulation from the local distributions to add in the missing variance and to calculate multiple, equiprobable realizations. The random seed determines the individual Monte Carlo simulations along with the random path for the sequential simulation.</p></li>
+<li><p><strong>Sequential</strong> - adding the previously simulated values to the data to ensure the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> is correct between the simulated values</p></li>
+<li><p><strong>Gaussian</strong> - transformation to Gaussian space so that the local distributions of uncertainty are known given the kriging mean and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kriging-variance"><span class="std std-doc">kriging variance</span></a>, and the global distribution is reproduced after back-transformation to the original distribution</p></li>
+<li><p><strong>Simulation</strong> - with <a class="reference internal" href="GeostatsPy_glossary_e_m.html#monte-carlo-simulation"><span class="std std-doc">Monte Carlo simulation</span></a> from the local distributions to add in the missing variance and to calculate multiple, equiprobable realizations. The random seed determines the individual Monte Carlo simulations along with the random path for the sequential simulation.</p></li>
 </ul>
-<p>Here are all the steps for sequential Gaussian simulation,</p>
+<p>Here are all the steps for <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sequential-gaussian-simulation"><span class="std std-doc">sequential Gaussian simulation</span></a>,</p>
 <ol class="arabic simple">
 <li><p>Establish grid network and coordinate system, flatten the system including flattening folds and restoring faults</p></li>
-<li><p>Assign data to the grid (account for scale change from data to model grid cells)</p></li>
+<li><p>Assign <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> to the grid (account for scale change from data to <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-grid"><span class="std std-doc">model grid</span></a> cells)</p></li>
 <li><p>Transform data to Gaussian space, Gaussian anamorphosis applied to original data distribution</p></li>
-<li><p>Calculate and model the variogram of the Gaussian transformed data</p></li>
+<li><p>Calculate and model the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> of the Gaussian transformed data</p></li>
 <li><p>Determine a random path through all of the grid nodes, at each node:</p>
 <ul class="simple">
 <li><p>find nearby data and previously simulated grid nodes</p></li>
-<li><p>construct the conditional distribution by kriging, mean as kriging estimate and variance as kriging variance</p></li>
-<li><p>Monte Carlo simulate a realization from the conditional distribution</p></li>
+<li><p>construct the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#conditional-distribution"><span class="std std-doc">conditional distribution</span></a> by kriging, mean as kriging estimate and <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a> as kriging variance</p></li>
+<li><p>Monte Carlo simulate a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> from the conditional distribution</p></li>
 <li><p>assign the simulated value to the grid as data</p></li>
 </ul>
 </li>
@@ -497,7 +501,7 @@ document.write(`
 </ol>
 <ul class="simple">
 <li><p>data at the data locations?</p></li>
-<li><p>honor the histogram, <span class="math notranslate nohighlight">\(N\left[0,1\right]\)</span> standard normal with a mean of zero and a variance of one?</p></li>
+<li><p>honor the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#histogram"><span class="std std-doc">histogram</span></a>, <span class="math notranslate nohighlight">\(N\left[0,1\right]\)</span> standard normal with a mean of zero and a variance of one?</p></li>
 <li><p>and honor the variogram?</p></li>
 </ul>
 <ol class="arabic simple" start="7">
@@ -508,47 +512,47 @@ document.write(`
 <ul class="simple">
 <li><p>geological concepts?</p></li>
 <li><p>geophysical data?</p></li>
-<li><p>historical production data?</p></li>
+<li><p>historical <a class="reference internal" href="GeostatsPy_glossary_n_s.html#production-data"><span class="std std-doc">production data</span></a>?</p></li>
 </ul>
 <ol class="arabic simple" start="10">
 <li><p>Calculate multiple realizations by repeating steps 5 through 9</p></li>
 </ol>
-<p>Here are the critical steps of the sequential Gaussian simulation algorithm only,</p>
+<p>Here are the critical steps of the sequential Gaussian <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a> algorithm only,</p>
 <ol class="arabic simple">
-<li><p>Transform the data to Gaussian with a mean of 0.0 and variance of 1.0 (known as standard normal)</p></li>
-<li><p>Assign a random path over the model grid, at each grid location sequentially simulation (apply kriging to calculate the local CDF, then Monte Carlo simulate a local realization, and assign the local realization to the data)</p></li>
+<li><p>Transform the data to Gaussian with a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> of 0.0 and variance of 1.0 (known as standard normal)</p></li>
+<li><p>Assign a random path over the model grid, at each grid location sequentially simulation (apply <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kriging"><span class="std std-doc">kriging</span></a> to calculate the local CDF, then Monte Carlo simulate a local realization, and assign the local realization to the data)</p></li>
 <li><p>Back-transform the simulated values to the original data distribution</p></li>
 </ol>
 </section>
 <section id="cosimulation-methods">
 <h2>Cosimulation Methods<a class="headerlink" href="#cosimulation-methods" title="Permalink to this heading">#</a></h2>
-<p>A set of methods for simulating a spatial realization of a primary feature conditional to a secondary feature realization. All of these methods attempt to capture the primary feature spatial continuity and conditioning to local data while honoring the relationship with the secondary feature.</p>
-<p>Each cosimulation method will have a conditioning priority,</p>
-<p><strong>collocated cokriging</strong> - prioritizes the primary feature histogram and variogram and may honor the correlation coefficient between the two primary and secondary features.</p>
+<p>A set of methods for simulating a spatial realization of a primary feature conditional to a secondary feature realization. All of these methods attempt to capture the primary feature <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a> and conditioning to local data while honoring the relationship with the secondary feature.</p>
+<p>Each <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cosimulation"><span class="std std-doc">cosimulation</span></a> method will have a conditioning priority,</p>
+<p><strong>collocated cokriging</strong> - prioritizes the primary feature <a class="reference internal" href="GeostatsPy_glossary_e_m.html#histogram"><span class="std std-doc">histogram</span></a> and <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> and may honor the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a> between the two primary and secondary features.</p>
 <ul class="simple">
-<li><p>the relationship with between the primary and secondary features is limited to a correlation coefficient (after Gaussian transform of both, i.e., in Gaussian space)</p></li>
-<li><p>in the case of dense conditioning data the relationship observed at the data locations will override the correlation coefficient.</p></li>
+<li><p>the relationship with between the primary and secondary <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a>s is limited to a correlation coefficient (after Gaussian transform of both, i.e., in Gaussian space)</p></li>
+<li><p>in the case of dense conditioning <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> the relationship observed at the data locations will override the correlation coefficient.</p></li>
 </ul>
-<p><strong>cloud transform</strong> - honors the specific form of the bivariate relationship (cloud) between the two features but may not honor the histogram nor the variogram.</p>
+<p><strong><a class="reference internal" href="GeostatsPy_glossary_a_d.html#cloud-transform"><span class="std std-doc">cloud transform</span></a></strong> - honors the specific form of the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bivariate"><span class="std std-doc">bivariate</span></a> relationship (cloud) between the two features but may not honor the histogram nor the variogram.</p>
 <ul class="simple">
-<li><p>the precise scatter plot between the primary and secondary feature is prioritized</p></li>
+<li><p>the precise <a class="reference internal" href="GeostatsPy_glossary_n_s.html#scatter-plot"><span class="std std-doc">scatter plot</span></a> between the primary and secondary feature is prioritized</p></li>
 </ul>
-<p>These methods start with a completed realization of the secondary feature, for example,</p>
+<p>These methods start with a completed <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> of the secondary feature, for example,</p>
 <ul class="simple">
-<li><p>first simulate a copper realization and then cosimulate the zinc (primary feature) realization given the copper (secondary feature) realization with the collocated cokriging and the correlation coefficient between Gaussian transformed copper and zinc data</p></li>
-<li><p>first simulate a porosity realization and then cosimulate the permeability (primary feature) realization given the porosity (secondary feature) realization with cloud transform and the scatter plot of Gaussian transformed porosity and permeability</p></li>
+<li><p>first simulate a copper realization and then cosimulate the zinc (primary feature) realization given the copper (secondary feature) realization with the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#collocated-cokriging"><span class="std std-doc">collocated cokriging</span></a> and the correlation coefficient between Gaussian transformed copper and zinc data</p></li>
+<li><p>first simulate a porosity realization and then cosimulate the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> (primary feature) realization given the porosity (secondary feature) realization with cloud transform and the scatter plot of Gaussian transformed porosity and permeability</p></li>
 </ul>
 <p>With cosimulation there is a increasing likelihood that the multiple information sources are contradictory, when this occurs the lower priority information source is preferentially sacrificed</p>
-<p>While the full cokriging approach for cosimulation is available, due to the inference burden of modeling all the variograms and cross variograms, it is typically not used in practice. Let’s start with the cokriging system and then introduce the more practical and widely applied collocated cokriging system.</p>
+<p>While the full <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cokriging"><span class="std std-doc">cokriging</span></a> approach for cosimulation is available, due to the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#inference"><span class="std std-doc">inference</span></a> burden of modeling all the variograms and cross variograms, it is typically not used in practice. Let’s start with the cokriging system and then introduce the more practical and widely applied collocated cokriging system.</p>
 </section>
 <section id="cokriging">
 <h2><strong>Cokriging</strong><a class="headerlink" href="#cokriging" title="Permalink to this heading">#</a></h2>
-<p>the general simple kriging approach that accounts for primary and secondary features at the same time in order to build multivariate spatial models.</p>
+<p>the general simple <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kriging"><span class="std std-doc">kriging</span></a> approach that accounts for primary and secondary features at the same time in order to build <a class="reference internal" href="GeostatsPy_glossary_e_m.html#multivariate"><span class="std std-doc">multivariate</span></a> spatial models.</p>
 <ul class="simple">
-<li><p>like regular kriging, a spatial estimation approach that relies on linear weights that account for spatial continuity, data closeness and redundancy.</p></li>
-<li><p>weights are unbiased and minimize the estimation variance</p></li>
+<li><p>like regular kriging, a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-estimation"><span class="std std-doc">spatial estimation</span></a> approach that relies on linear weights that account for spatial continuity, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> closeness and redundancy.</p></li>
+<li><p>weights are unbiased and minimize the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#estimation-variance"><span class="std std-doc">estimation variance</span></a></p></li>
 </ul>
-<p>The simple cokriging weights are calculated by solving a linear system of equations that may be represented with matrix notation as,</p>
+<p>The simple <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cokriging"><span class="std std-doc">cokriging</span></a> weights are calculated by solving a linear system of equations that may be represented with matrix notation as,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{bmatrix}
@@ -568,51 +572,51 @@ C_z(\bf{u}_{n_z},\bf{u}_1) &amp; C_z(\bf{u}_{n_z},\bf{u}_2) &amp; \dots &amp; C_
 C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) \\ \textcolor{blue}{C_{z,y}(\bf{u}_1,\bf{u})} \\ \textcolor{blue}{C_{z,y}(\bf{u}_2,\bf{u})} \\ \vdots \\ \textcolor{blue}{C_{z,y}(\bf{u}_n,\bf{u})}
 \end{bmatrix}
 \end{split}\]</div>
-<p>where we assume that there are <span class="math notranslate nohighlight">\(1, 2, \ldots, n_z\)</span> primary data <span class="math notranslate nohighlight">\(z\)</span>, and <span class="math notranslate nohighlight">\(1, 2, \ldots, n_y\)</span> secondary data <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<p>where we assume that there are <span class="math notranslate nohighlight">\(1, 2, \ldots, n_z\)</span> primary data <span class="math notranslate nohighlight">\(z\)</span>, and <span class="math notranslate nohighlight">\(1, 2, \ldots, n_y\)</span> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#secondary-data"><span class="std std-doc">secondary data</span></a> <span class="math notranslate nohighlight">\(y\)</span>.</p>
 <ul class="simple">
 <li><p>note, I could be more rigorous with the notation and indicate the location <span class="math notranslate nohighlight">\(\bf{u}_{1}\)</span> for <span class="math notranslate nohighlight">\(z\)</span> and <span class="math notranslate nohighlight">\(y\)</span> may not be the same location, but the notation was already getting quite dense.</p></li>
 </ul>
 <p>This system integrates the,</p>
 <ul class="simple">
-<li><p><em>spatial continuity</em> - as quantified by the variogram (and covariance function to calculate the covariance, <span class="math notranslate nohighlight">\(C\)</span>, values)</p></li>
-<li><p><em>redundancy</em> - the degree of spatial continuity between all of the available data with themselves, <span class="math notranslate nohighlight">\(C(\bf{u}_i,\bf{u}_j)\)</span></p></li>
-<li><p><em>closeness</em> - the degree of spatial continuity between the available data and the estimation location, <span class="math notranslate nohighlight">\(C(\bf{u}_i,\bf{u})\)</span></p></li>
-<li><p><em>relationship</em> - between the primary and secondary features over lag distance from the cross covariance terms, <span class="math notranslate nohighlight">\(C_{z,y}\)</span> and <span class="math notranslate nohighlight">\(C_{y,z}\)</span>.</p></li>
+<li><p><em>spatial continuity</em> - as quantified by the variogram (and <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance-function"><span class="std std-doc">covariance function</span></a> to calculate the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a>, <span class="math notranslate nohighlight">\(C\)</span>, values)</p></li>
+<li><p><em>redundancy</em> - the degree of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a> between all of the available data with themselves, <span class="math notranslate nohighlight">\(C(\bf{u}_i,\bf{u}_j)\)</span></p></li>
+<li><p><em>closeness</em> - the degree of spatial continuity between the available data and the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#estimation"><span class="std std-doc">estimation</span></a> location, <span class="math notranslate nohighlight">\(C(\bf{u}_i,\bf{u})\)</span></p></li>
+<li><p><em>relationship</em> - between the primary and secondary features over <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a> from the cross covariance terms, <span class="math notranslate nohighlight">\(C_{z,y}\)</span> and <span class="math notranslate nohighlight">\(C_{y,z}\)</span>.</p></li>
 </ul>
 <p>Once the weights are calculated from the above linear system of equations, the cokriging estimator is expressed as,</p>
 <div class="math notranslate nohighlight">
 \[
 z^{*}_{COK}(\bf{u}) = \sum_{\alpha_z = 1}^{n_z} \lambda_{\alpha_z} \cdot z(\bf{u}_{\alpha_z}) + \sum_{\alpha_y = 1}^{n_y} \lambda_{\alpha_y} \cdot y(\bf{u}_{\alpha_{y}}) 
 \]</div>
-<p>assuming that each feature is detrended such that the mean is 0.0.</p>
+<p>assuming that each <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a> is detrended such that the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> is 0.0.</p>
 <p>Some general comments about cokriging,</p>
 <ul class="simple">
-<li><p>the secondary data and primary data may be collocated, not collocated or even mixed with some collocated and some not</p></li>
-<li><p>we must calculate and model the direct variograms, <span class="math notranslate nohighlight">\(\gamma_z\)</span> and <span class="math notranslate nohighlight">\(\gamma_y\)</span> and the cross variogram <span class="math notranslate nohighlight">\(\gamma_{z,y}\)</span>. For all direct and cross variograms to be jointly positive definite we must used the constraints from the linear model of corregionalization.</p></li>
+<li><p>the secondary data and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#primary-data"><span class="std std-doc">primary data</span></a> may be collocated, not collocated or even mixed with some collocated and some not</p></li>
+<li><p>we must calculate and model the direct <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>s, <span class="math notranslate nohighlight">\(\gamma_z\)</span> and <span class="math notranslate nohighlight">\(\gamma_y\)</span> and the cross variogram <span class="math notranslate nohighlight">\(\gamma_{z,y}\)</span>. For all direct and cross variograms to be jointly positive definite we must used the constraints from the linear model of corregionalization.</p></li>
 <li><p>we could expand the model to consider any number of secondary features!</p></li>
 </ul>
 </section>
 <section id="collocated-cokriging">
 <h2>Collocated Cokriging<a class="headerlink" href="#collocated-cokriging" title="Permalink to this heading">#</a></h2>
-<p><a class="reference internal" href="#"><span class="doc std std-doc">Cosimulation</span></a>: a variant of cokriging that introduces 2 assumptions to greatly simplify the method.</p>
+<p><a class="reference internal" href="#"><span class="doc std std-doc">Cosimulation</span></a>: a variant of <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cokriging"><span class="std std-doc">cokriging</span></a> that introduces 2 assumptions to greatly simplify the method.</p>
 <ol class="arabic simple">
-<li><p><strong>Markov screening</strong> - only one (the collocated) secondary feature datum is considered, i.e., we only include the secondary datum at the location we are estimating the primary feature. We are assuming that the collocated secondary datum will screen all other secondary data at other locations away from the estimate.</p></li>
+<li><p><strong>Markov screening</strong> - only one (the collocated) secondary <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a> datum is considered, i.e., we only include the secondary datum at the location we are estimating the primary feature. We are assuming that the collocated secondary datum will screen all other <a class="reference internal" href="GeostatsPy_glossary_n_s.html#secondary-data"><span class="std std-doc">secondary data</span></a> at other locations away from the estimate.</p></li>
 </ol>
 <ul class="simple">
-<li><p>as a result, we don’t need to calculate the secondary variogram, and we have a much smaller cokriging system.</p></li>
+<li><p>as a result, we don’t need to calculate the secondary <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>, and we have a much smaller cokriging system.</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p><strong>Bayesian updating</strong> - the cross covariance <span class="math notranslate nohighlight">\(C_{z,y}(\bf{h})\)</span> is assumed to be a linear scaling of the direct covariance <span class="math notranslate nohighlight">\(C_z(\bf{h})\)</span>. The Bayesian formulation for <span class="math notranslate nohighlight">\(C_{z,y}(\bf{h})\)</span> is,</p></li>
+<li><p><strong><a class="reference internal" href="GeostatsPy_glossary_a_d.html#bayesian-updating"><span class="std std-doc">Bayesian updating</span></a></strong> - the cross <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> <span class="math notranslate nohighlight">\(C_{z,y}(\bf{h})\)</span> is assumed to be a linear scaling of the direct covariance <span class="math notranslate nohighlight">\(C_z(\bf{h})\)</span>. The Bayesian formulation for <span class="math notranslate nohighlight">\(C_{z,y}(\bf{h})\)</span> is,</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[
 C_{z,y}(\bf{h}) =  C_z(\bf{h}) \cdot \rho_{z,y}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\rho_{z,y}\)</span> is the prior, <span class="math notranslate nohighlight">\(C_z(\bf{h})\)</span> is the likelihood, and <span class="math notranslate nohighlight">\(C_{z,y}(\bf{h})\)</span> is the posterior.</p>
+<p>where <span class="math notranslate nohighlight">\(\rho_{z,y}\)</span> is the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prior"><span class="std std-doc">prior</span></a>, <span class="math notranslate nohighlight">\(C_z(\bf{h})\)</span> is the likelihood, and <span class="math notranslate nohighlight">\(C_{z,y}(\bf{h})\)</span> is the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#posterior"><span class="std std-doc">posterior</span></a>.</p>
 <ul class="simple">
 <li><p>as a result, we do not need to calculate the cross variogram</p></li>
 </ul>
-<p>The collocated cokriging system of equations in matrix notation are,</p>
+<p>The <a class="reference internal" href="GeostatsPy_glossary_a_d.html#collocated-cokriging"><span class="std std-doc">collocated cokriging</span></a> system of equations in matrix notation are,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{bmatrix}
@@ -629,13 +633,13 @@ C_z(\bf{u}_{n_z},\bf{u}_1) &amp; C_z(\bf{u}_{n_z},\bf{u}_2) &amp; \dots &amp; C_
 C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) \\ \textcolor{blue}{C_{z,y}(0)} \\
 \end{bmatrix}
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(C_{z,y}(0)\)</span> is the cross covariance at lag distance <span class="math notranslate nohighlight">\(\bf{h} = 0\)</span>, for standardized features (variance of 1.0) this is the correlation coefficient, <span class="math notranslate nohighlight">\(C_{z,y}(0) = \rho_{z,y}\)</span>.</p>
-<p>In this chapter we simulate porosity and log transform of permeability with,</p>
+<p>where <span class="math notranslate nohighlight">\(C_{z,y}(0)\)</span> is the cross covariance at <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a> <span class="math notranslate nohighlight">\(\bf{h} = 0\)</span>, for standardized features (<a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a> of 1.0) this is the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#correlation-coefficient"><span class="std std-doc">correlation coefficient</span></a>, <span class="math notranslate nohighlight">\(C_{z,y}(0) = \rho_{z,y}\)</span>.</p>
+<p>In this chapter we simulate porosity and log transform of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> with,</p>
 <ol class="arabic simple">
-<li><p><strong>Independent Sequential Gaussian Simulation of Two Features</strong> - each feature simulated separately one at a time</p></li>
-<li><p><strong>Sequential Gaussian Simulation with Collocated Cokriging</strong> - simulate a porosity realization and then cosimulate the log transform of permeability given the porosity realization.</p></li>
+<li><p><strong>Independent <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sequential-gaussian-simulation"><span class="std std-doc">Sequential Gaussian Simulation</span></a> of Two Features</strong> - each feature simulated separately one at a time</p></li>
+<li><p><strong>Sequential Gaussian <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">Simulation</span></a> with Collocated Cokriging</strong> - simulate a porosity <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> and then cosimulate the log transform of permeability given the porosity realization.</p></li>
 </ol>
-<p>Then we check the relationship between the porosity and log transformed permeability simulated realizations for both cases.</p>
+<p>Then we check the relationship between the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a> and log transformed permeability simulated <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> for both cases.</p>
 </section>
 <section id="load-the-required-libraries">
 <h2>Load the Required Libraries<a class="headerlink" href="#load-the-required-libraries" title="Permalink to this heading">#</a></h2>
@@ -709,7 +713,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object. We will also extract a limited sample to reduce data density. This way we can observe more of the heterogeneity from the simulation with the spatial continuity model, rather than mostly data driven heterogeneity.</p>
+<p>Here’s the command to load our comma delimited data file in to a Pandas’ <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a> object. We will also extract a limited sample to reduce data density. This way we can observe more of the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#heterogeneity"><span class="std std-doc">heterogeneity</span></a> from the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a> with the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a> model, rather than mostly data driven heterogeneity.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data_MV_biased.csv&quot;</span><span class="p">)</span> <span class="c1"># from Dr. Pyrcz&#39;s GitHub repo</span>
@@ -754,53 +758,53 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
   <tbody>
     <tr>
       <th>0</th>
-      <td>780.0</td>
-      <td>629.0</td>
-      <td>0.066703</td>
-      <td>0.265882</td>
-      <td>-1.324702</td>
-      <td>-1.340755</td>
-      <td>-1.644854</td>
+      <td>210.0</td>
+      <td>339.0</td>
+      <td>0.120769</td>
+      <td>3.946416</td>
+      <td>1.372808</td>
+      <td>-0.331853</td>
+      <td>-0.612813</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>50.0</td>
-      <td>819.0</td>
-      <td>0.134241</td>
-      <td>4.976402</td>
-      <td>1.604707</td>
-      <td>0.495850</td>
-      <td>-0.075270</td>
+      <td>960.0</td>
+      <td>39.0</td>
+      <td>0.154220</td>
+      <td>39.753944</td>
+      <td>3.682709</td>
+      <td>0.674490</td>
+      <td>0.331853</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>940.0</td>
-      <td>949.0</td>
-      <td>0.102437</td>
-      <td>0.956152</td>
-      <td>-0.044838</td>
-      <td>-0.495850</td>
-      <td>-0.954165</td>
+      <td>230.0</td>
+      <td>859.0</td>
+      <td>0.154095</td>
+      <td>103.851187</td>
+      <td>4.642959</td>
+      <td>0.612813</td>
+      <td>0.553385</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>200.0</td>
-      <td>400.0</td>
-      <td>0.125382</td>
-      <td>4.061772</td>
-      <td>1.401619</td>
-      <td>0.279319</td>
-      <td>-0.176374</td>
+      <td>240.0</td>
+      <td>809.0</td>
+      <td>0.168330</td>
+      <td>323.318514</td>
+      <td>5.778638</td>
+      <td>0.954165</td>
+      <td>1.126391</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>90.0</td>
-      <td>489.0</td>
-      <td>0.138742</td>
-      <td>9.540896</td>
-      <td>2.255587</td>
-      <td>0.553385</td>
-      <td>0.176374</td>
+      <td>730.0</td>
+      <td>179.0</td>
+      <td>0.120533</td>
+      <td>5.301364</td>
+      <td>1.667964</td>
+      <td>-0.439913</td>
+      <td>-0.331853</td>
     </tr>
   </tbody>
 </table>
@@ -846,79 +850,79 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
     <tr>
       <th>X</th>
       <td>50.0</td>
-      <td>422.800000</td>
-      <td>264.336211</td>
-      <td>40.000000</td>
-      <td>212.500000</td>
-      <td>3.250000e+02</td>
-      <td>650.000000</td>
-      <td>940.000000</td>
+      <td>516.800000</td>
+      <td>273.924166</td>
+      <td>100.000000</td>
+      <td>250.000000</td>
+      <td>4.750000e+02</td>
+      <td>767.500000</td>
+      <td>980.000000</td>
     </tr>
     <tr>
       <th>Y</th>
       <td>50.0</td>
-      <td>459.340000</td>
-      <td>297.878938</td>
-      <td>49.000000</td>
-      <td>196.500000</td>
-      <td>4.000000e+02</td>
-      <td>679.000000</td>
+      <td>540.020000</td>
+      <td>292.228558</td>
+      <td>19.000000</td>
+      <td>276.750000</td>
+      <td>6.090000e+02</td>
+      <td>799.750000</td>
       <td>999.000000</td>
     </tr>
     <tr>
       <th>Porosity</th>
       <td>50.0</td>
-      <td>0.117458</td>
-      <td>0.032785</td>
-      <td>0.043853</td>
-      <td>0.094798</td>
-      <td>1.165244e-01</td>
-      <td>0.139487</td>
-      <td>0.182676</td>
+      <td>0.131754</td>
+      <td>0.033150</td>
+      <td>0.041122</td>
+      <td>0.112712</td>
+      <td>1.267944e-01</td>
+      <td>0.154189</td>
+      <td>0.205586</td>
     </tr>
     <tr>
       <th>Perm</th>
       <td>50.0</td>
-      <td>69.688041</td>
-      <td>199.068783</td>
-      <td>0.094627</td>
-      <td>2.062059</td>
-      <td>6.642056e+00</td>
-      <td>17.049532</td>
-      <td>931.189014</td>
+      <td>153.004918</td>
+      <td>349.103245</td>
+      <td>0.120862</td>
+      <td>3.427610</td>
+      <td>1.076624e+01</td>
+      <td>106.945124</td>
+      <td>1991.097723</td>
     </tr>
     <tr>
       <th>logPerm</th>
       <td>50.0</td>
-      <td>1.977831</td>
-      <td>2.159313</td>
-      <td>-2.357812</td>
-      <td>0.723112</td>
-      <td>1.893269e+00</td>
-      <td>2.835784</td>
-      <td>6.836462</td>
+      <td>2.839848</td>
+      <td>2.323488</td>
+      <td>-2.113108</td>
+      <td>1.228271</td>
+      <td>2.376403e+00</td>
+      <td>4.672186</td>
+      <td>7.596441</td>
     </tr>
     <tr>
       <th>nPorosity</th>
       <td>50.0</td>
-      <td>-0.040914</td>
-      <td>1.127262</td>
-      <td>-4.372028</td>
+      <td>-0.001740</td>
+      <td>1.001608</td>
+      <td>-2.413350</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
-      <td>2.103571</td>
+      <td>2.326348</td>
     </tr>
     <tr>
       <th>nPerm</th>
       <td>50.0</td>
-      <td>0.006241</td>
-      <td>0.982395</td>
-      <td>-2.014321</td>
+      <td>0.007119</td>
+      <td>0.981603</td>
+      <td>-1.970417</td>
       <td>-0.659071</td>
       <td>5.551115e-16</td>
       <td>0.659071</td>
-      <td>2.103571</td>
+      <td>2.326348</td>
     </tr>
   </tbody>
 </table>
@@ -927,10 +931,10 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </section>
 <section id="plotting-and-kriging-parameters">
 <h2>Plotting and Kriging Parameters<a class="headerlink" href="#plotting-and-kriging-parameters" title="Permalink to this heading">#</a></h2>
-<p>Now we can set these values for kriging and plotting. For brevity we don’t cover details on these here.</p>
+<p>Now we can set these values for <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kriging"><span class="std std-doc">kriging</span></a> and plotting. For brevity we don’t cover details on these here.</p>
 <ul class="simple">
 <li><p>we are assuming a simple regular grid</p></li>
-<li><p>we are assuming variograms models and kriging search parameters</p></li>
+<li><p>we are assuming <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>s models and kriging search <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -990,7 +994,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6b49a4fe723379e30e86c65931a1362750a8cee75aa432b6278e2cf2544a9d34.png" src="_images/6b49a4fe723379e30e86c65931a1362750a8cee75aa432b6278e2cf2544a9d34.png" />
+<img alt="_images/b6889330b3bb185b35174475b356fc89fd377906af6fef165f95085aa0ad2b0a.png" src="_images/b6889330b3bb185b35174475b356fc89fd377906af6fef165f95085aa0ad2b0a.png" />
 </div>
 </div>
 <p>Note we have already demonstrated univariate simulation checks for:</p>
@@ -1011,10 +1015,10 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </section>
 <section id="independent-sequential-gaussian-simulation-of-two-features">
 <h2>Independent Sequential Gaussian Simulation of Two Features<a class="headerlink" href="#independent-sequential-gaussian-simulation-of-two-features" title="Permalink to this heading">#</a></h2>
-<p>Let’s jump right to building two independent simulations and visualizing the results.</p>
+<p>Let’s jump right to building two independent <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a>s and visualizing the results.</p>
 <ul class="simple">
-<li><p>independently simulate porosity and permeability</p></li>
-<li><p>check the porosity an permeability relationship, the scatter plot.</p></li>
+<li><p>independently simulate porosity and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a></p></li>
+<li><p>check the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a> an permeability relationship, the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#scatter-plot"><span class="std std-doc">scatter plot</span></a>.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1064,16 +1068,16 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8ea1fdfe718c9a9163db5823788f5a67ae48fd6e52c42b08aec6fa29ebd993f9.png" src="_images/8ea1fdfe718c9a9163db5823788f5a67ae48fd6e52c42b08aec6fa29ebd993f9.png" />
+<img alt="_images/8d187f04bee1ef74b2e414ebf7b3a447c7acf3bc51c745866e3ae65737f6e9b3.png" src="_images/8d187f04bee1ef74b2e414ebf7b3a447c7acf3bc51c745866e3ae65737f6e9b3.png" />
 </div>
 </div>
 </section>
 <section id="sequential-gaussian-simulation-with-collocated-cokriging">
 <h2>Sequential Gaussian Simulation with Collocated Cokriging<a class="headerlink" href="#sequential-gaussian-simulation-with-collocated-cokriging" title="Permalink to this heading">#</a></h2>
-<p>Now let’s demonstrate collocated cokriging.</p>
+<p>Now let’s demonstrate <a class="reference internal" href="GeostatsPy_glossary_a_d.html#collocated-cokriging"><span class="std std-doc">collocated cokriging</span></a>.</p>
 <ol class="arabic simple">
-<li><p>calculate a realization of porosity - DONE - we will use the porosity realization from above!</p></li>
-<li><p>collocated cokriging realization of permeability constrained to the porosity realization</p></li>
+<li><p>calculate a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a> - DONE - we will use the porosity realization from above!</p></li>
+<li><p>collocated <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cokriging"><span class="std std-doc">cokriging</span></a> realization of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> constrained to the porosity realization</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1117,7 +1121,7 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/92dafca17bd7e61377a4e23c5be991254f24a2ad5dbf3ad889a1d3cb504d17d7.png" src="_images/92dafca17bd7e61377a4e23c5be991254f24a2ad5dbf3ad889a1d3cb504d17d7.png" />
+<img alt="_images/46e0d0f2a6c2f443ab5452724fbe013314c28b2806cb9d87d472109473cf994d.png" src="_images/46e0d0f2a6c2f443ab5452724fbe013314c28b2806cb9d87d472109473cf994d.png" />
 </div>
 </div>
 </section>
@@ -1125,8 +1129,8 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 <h2>Compare the Secondary to Primary Relationship<a class="headerlink" href="#compare-the-secondary-to-primary-relationship" title="Permalink to this heading">#</a></h2>
 <p>Let’s put all the cross plots together.</p>
 <ul class="simple">
-<li><p><strong>data imposes correlation</strong> - at data and within the variogram range from data, the data correlation is imposed to some degree. This is why we don’t see independence between the features with independent simulation.</p></li>
-<li><p><strong>unrealistic combinations</strong> - of features occur with out cosimulation!</p></li>
+<li><p><strong><a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> imposes correlation</strong> - at data and within the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> range from data, the data correlation is imposed to some degree. This is why we don’t see <a class="reference internal" href="GeostatsPy_glossary_e_m.html#independence"><span class="std std-doc">independence</span></a> between the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a>s with independent <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a>.</p></li>
+<li><p><strong>unrealistic combinations</strong> - of features occur with out <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cosimulation"><span class="std std-doc">cosimulation</span></a>!</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1159,13 +1163,13 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/47451316236ea8679861b8cc47d2e27fb029591361db4648a615118e89349087.png" src="_images/47451316236ea8679861b8cc47d2e27fb029591361db4648a615118e89349087.png" />
+<img alt="_images/1b45f26e0483791c620930f5a98dcc16ac3d22618fee44a28242f9de366df94f.png" src="_images/1b45f26e0483791c620930f5a98dcc16ac3d22618fee44a28242f9de366df94f.png" />
 </div>
 </div>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration and comparison of cosimulation vs. independent simulation with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>This was a basic demonstration and comparison of <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cosimulation"><span class="std std-doc">cosimulation</span></a> vs. independent <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a> with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1176,20 +1180,20 @@ C_z(\bf{u}_1,\bf{u}) \\ C_z(\bf{u}_2,\bf{u})  \\ \vdots \\ C_z(\bf{u}_n,\bf{u}) 
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1314,6 +1318,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -489,41 +493,41 @@ document.write(`
 <p>For your convenience here’s a summary of salient points.</p>
 <section id="spatial-continuity">
 <h2>Spatial Continuity<a class="headerlink" href="#spatial-continuity" title="Permalink to this heading">#</a></h2>
-<p><strong>Spatial Continuity</strong> is the correlation between values over distance.</p>
+<p><strong><a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">Spatial Continuity</span></a></strong> is the correlation between values over distance.</p>
 <ul class="simple">
 <li><p>No spatial continuity – no correlation between values over distance, random values at each location in space regardless of separation distance.</p></li>
 <li><p>Homogenous phenomenon have perfect spatial continuity, since all values as the same (or very similar) they are correlated.</p></li>
 </ul>
-<p>We need a statistic to quantify spatial continuity! A convenient method is the Semivariogram.</p>
+<p>We need a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a> to quantify spatial continuity! A convenient method is the Semivariogram.</p>
 </section>
 <section id="stationarity">
 <h2>Stationarity<a class="headerlink" href="#stationarity" title="Permalink to this heading">#</a></h2>
-<p>Any statistic requires replicates, repeated sampling (e.g., air or water samples from a monitoring station). In our geo-spatial problems repeated samples are not available at a location in the subsurface.</p>
+<p>Any <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a> requires replicates, repeated sampling (e.g., air or water <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s from a monitoring station). In our geo-spatial problems repeated samples are not available at a location in the subsurface.</p>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/core_sample.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Core sample (left), what remains after the sample is taken (right).
 </figcaption>
 </figure>
-<p>The decision of the stationary domain for sampling is an expert choice. Without it we are stuck in the “hole” and cannot calculate any statistics nor say anything about the behavior of the subsurface between the sample data.</p>
+<p>The decision of the stationary domain for sampling is an expert choice. Without it we are stuck in the “hole” and cannot calculate any <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> nor say anything about the behavior of the subsurface between the sample data.</p>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/core_samples.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Core samples at locations, \(u_1, u_2, \ldots, u_7\) within the area of interest.
 </figcaption>
 </figure>
-<p>From the above image we can see two important components for stationarity,</p>
+<p>From the above image we can see two important components for <a class="reference internal" href="GeostatsPy_glossary_n_s.html#stationarity"><span class="std std-doc">stationarity</span></a>,</p>
 <ol class="arabic simple">
 <li><p><strong>Import License</strong> - choice to pool specific samples to evaluate a statistic.</p></li>
 <li><p><strong>Export License</strong> - choice of where in the subsurface this statistic is applicable.</p></li>
 </ol>
 <p>How do we define stationarity? Here’s a geological and an engineering or statistical definition of stationarity,</p>
-<p><strong>Geological Definition</strong> - for example, The rock over the stationary domain is sourced, deposited, preserved, and post-depositionally altered in a similar manner, the domain is map-able and may be used for local prediction or as information for analogous locations within the subsurface; therefore, it is useful to pool information over this expert mapped volume of the subsurface.</p>
+<p><strong>Geological Definition</strong> - for example, The rock over the stationary domain is sourced, deposited, preserved, and post-depositionally altered in a similar manner, the domain is map-able and may be used for local <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prediction"><span class="std std-doc">prediction</span></a> or as information for analogous locations within the subsurface; therefore, it is useful to pool information over this expert mapped volume of the subsurface.</p>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/outcrop.png" style="display: block; margin: 0 auto; width: 90%;">
   <figcaption style="text-align: center;"> Outcrop with mapped units, \(S3, S4, \ldots, S6\). Each unit is deemed to be stationary by the geological definition (image from Fildani et al., 2009).
 </figcaption>
 </figure>
-<p><strong>Engineering or Statistical Definition</strong>: The metrics of interest are invariant under translation over the domain.  For example, one point stationarity indicates the that histogram and associated statistics do not rely on location, <span class="math notranslate nohighlight">\(\bf{u}\)</span>.  Statistical stationarity for some common statistics:</p>
-<p>Stationary mean,</p>
+<p><strong>Engineering or Statistical Definition</strong>: The metrics of interest are invariant under translation over the domain.  For example, one point stationarity indicates the that <a class="reference internal" href="GeostatsPy_glossary_e_m.html#histogram"><span class="std std-doc">histogram</span></a> and associated statistics do not rely on location, <span class="math notranslate nohighlight">\(\bf{u}\)</span>.  Statistical stationarity for some common statistics:</p>
+<p>Stationary <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>,</p>
 <div class="math notranslate nohighlight">
 \[
 𝐸{𝑍(\bf{u})} = m, \quad \forall \quad \bf{u} 
@@ -540,8 +544,8 @@ document.write(`
 \]</div>
 <p>May be extended to any statistic of interest including,</p>
 <ul class="simple">
-<li><p>facies proportions</p></li>
-<li><p>bivariate distributions</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_e_m.html#facies"><span class="std std-doc">facies</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#proportions"><span class="std std-doc">proportions</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_a_d.html#bivariate"><span class="std std-doc">bivariate</span></a> distributions</p></li>
 <li><p>multiple point statistics</p></li>
 <li><p>correlation</p></li>
 <li><p>etc.</p></li>
@@ -553,7 +557,7 @@ document.write(`
 </ol>
 <p>Some further comments on stationarity,</p>
 <ul class="simple">
-<li><p><strong>Stationarity is a decision, not a hypothesis</strong>; therefore, it cannot be tested.  Data may demonstrate that it is inappropriate.</p></li>
+<li><p><strong>Stationarity is a decision, not a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#hypothesis"><span class="std std-doc">hypothesis</span></a></strong>; therefore, it cannot be tested.  <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> may demonstrate that it is inappropriate.</p></li>
 <li><p><strong>The stationarity assessment depends on scale.</strong> This choice of modeling scale(s) should be based on the specific problem and project needs.</p></li>
 <li><p><strong>instead of time, we must pool samples over space</strong> to calculate our statistics. This decision to pool is the decision of stationarity.  It is the decision that the subset of the subsurface is all the “same stuff”.</p></li>
 </ul>
@@ -591,7 +595,7 @@ document.write(`
   <figcaption style="text-align: center;"> Stone wall from north side of Patton Hall. The stone is Indiana limestone from Bedford, Indiana.
 </figcaption>
 </figure>
-<p>Let’s return to the statistical definition of stationarity, what were you looking at?</p>
+<p>Let’s return to the statistical definition of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#stationarity"><span class="std std-doc">stationarity</span></a>, what were you looking at?</p>
 <ul class="simple">
 <li><p>brick color</p></li>
 <li><p>brick size</p></li>
@@ -605,16 +609,16 @@ document.write(`
 </section>
 <section id="comments-on-stationarity">
 <h2>Comments on Stationarity<a class="headerlink" href="#comments-on-stationarity" title="Permalink to this heading">#</a></h2>
-<p><strong>We cannot avoid a decision of stationarity</strong>. No stationarity decision and we cannot move beyond the data.  Conversely, assuming broad stationarity over all the data and over large volumes of the earth is naïve.</p>
-<p><strong>Geomodeling stationarity is the decision</strong>: (1) over what region to pool data (import license) and (2) over what region to use the resulting statistics (export license).</p>
-<p><strong>Nonstationary trends</strong> may be mapped, and the remaining stationary residual modelled statistically / stochastically, trends may be treated uncertain.</p>
-<p><strong>Good geological mapping and data integration is essential!</strong> It is the framework of any subsurface model.</p>
-<p>Now that we understand stationarity we can calculate and model spatial continuity.</p>
+<p><strong>We cannot avoid a decision of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#stationarity"><span class="std std-doc">stationarity</span></a></strong>. No stationarity decision and we cannot move beyond the data.  Conversely, assuming broad stationarity over all the data and over large volumes of the earth is naïve.</p>
+<p><strong>Geomodeling stationarity is the decision</strong>: (1) over what region to pool data (import license) and (2) over what region to use the resulting <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> (export license).</p>
+<p><strong>Nonstationary <a class="reference internal" href="GeostatsPy_glossary_t_z.html#trend"><span class="std std-doc">trend</span></a>s</strong> may be mapped, and the remaining stationary <a class="reference internal" href="GeostatsPy_glossary_n_s.html#residual"><span class="std std-doc">residual</span></a> modelled statistically / stochastically, trends may be treated uncertain.</p>
+<p><strong>Good geological mapping and <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> integration is essential!</strong> It is the framework of any subsurface model.</p>
+<p>Now that we understand stationarity we can calculate and model <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a>.</p>
 </section>
 <section id="id1">
 <h2>Spatial Continuity<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Let’s make a simple example,</p>
-<p>Area of interest
+<p><a class="reference internal" href="GeostatsPy_glossary_a_d.html#area-of-interest"><span class="std std-doc">Area of interest</span></a>
 2D 1,000 m x 1,000 m
 1 Injector and 4 producers</p>
 <figure style="text-align: center;">
@@ -622,20 +626,20 @@ document.write(`
   <figcaption style="text-align: center;"> Example 2D water flood model over 1,000 x 1,000 m with 1 injector and 4 producers.
 </figcaption>
 </figure>
-<p>Note, for all models the porosity and permeability distributions are held constant, porosity and permeability are highly correlated and I will only show the permeability models for brevity.</p>
+<p>Note, for all models the porosity and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> distributions are held constant, porosity and permeability are highly correlated and I will only show the permeability models for brevity.</p>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/distributions.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Example 2D water flood model porosity and permeability distributions.
 </figcaption>
 </figure>
-<p>Now consider these two models, remember they have the same univariate distributions,</p>
+<p>Now consider these two models, remember they have the same <a class="reference internal" href="GeostatsPy_glossary_t_z.html#univariate"><span class="std std-doc">univariate</span></a> distributions,</p>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/model1.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Example 2D water flood model over 1,000 x 1,000 m with 1 injector and 4 producers.
 </figcaption>
 </figure>
-<p>What’s the difference? The spatial arrangement of the permeability, how far can we go and the permeability is still similar, this is spatial continuity. The model on the left has no spatial continuity and the model on the right has short spatial continuity.</p>
-<p>Does spatial continuity impact our transfer functions? Let’s run the water flood and looks at travel time (earliest arrival) of water.</p>
+<p>What’s the difference? The spatial arrangement of the permeability, how far can we go and the permeability is still similar, this is <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a>. The model on the left has no spatial continuity and the model on the right has short spatial continuity.</p>
+<p>Does spatial continuity impact our <a class="reference internal" href="GeostatsPy_glossary_t_z.html#transfer-function"><span class="std std-doc">transfer function</span></a>s? Let’s run the water flood and looks at travel time (earliest arrival) of water.</p>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/marching1.png" style="display: block; margin: 0 auto; width: 70%;">
   <figcaption style="text-align: center;"> Example water flood travel earliest arrival times for no spatial continuity (left) and short spatial continuity (right).
@@ -662,13 +666,13 @@ document.write(`
 <h2>Semivariogram<a class="headerlink" href="#semivariogram" title="Permalink to this heading">#</a></h2>
 <p>Function of difference over distance.</p>
 <ul class="simple">
-<li><p>The expected (average) squared difference between values separated by a lag distance vector (distance and direction), <span class="math notranslate nohighlight">\(h\)</span>:</p></li>
+<li><p>The expected (<a class="reference internal" href="GeostatsPy_glossary_a_d.html#average"><span class="std std-doc">average</span></a>) squared difference between values separated by a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a> vector (distance and direction), <span class="math notranslate nohighlight">\(h\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \gamma(\bf{h}) = \frac{1}{2 N(\bf{h})} \sum^{N(\bf{h})}_{\alpha=1} (z(\bf{u}_\alpha) - z(\bf{u}_\alpha + \bf{h}))^2  
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha)\)</span> and <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha + \bf{h})\)</span> are the spatial sample values at tail and head locations of the lag vector respectively.</p>
+<p>where <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha)\)</span> and <span class="math notranslate nohighlight">\(z(\bf{u}_\alpha + \bf{h})\)</span> are the spatial <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> values at tail and head locations of the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag"><span class="std std-doc">lag</span></a> vector respectively.</p>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/variogram.png" style="display: block; margin: 0 auto; width: 30%;">
   <figcaption style="text-align: center;"> Tail \(\bf{u}\) and head \(\bf{u} + \bf{h}\) locations separated by lag vector \(\bf{h}\). 
@@ -683,19 +687,19 @@ document.write(`
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p>the <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> term converts a variogram into a semivariogram, but in practice the term variogram is used instead of semivariogram.</p></li>
-<li><p>We prefer the semivariogram because it relates directly to the covariance function, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span> and univariate variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>:</p></li>
+<li><p>the <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> term converts a <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> into a semivariogram, but in practice the term variogram is used instead of semivariogram.</p></li>
+<li><p>We prefer the semivariogram because it relates directly to the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance-function"><span class="std std-doc">covariance function</span></a>, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span> and <a class="reference internal" href="GeostatsPy_glossary_t_z.html#univariate"><span class="std std-doc">univariate</span></a> variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>:</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 \]</div>
-<p>Note the correlogram is related to the covariance function as:</p>
+<p>Note the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#correlogram"><span class="std std-doc">correlogram</span></a> is related to the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> function as:</p>
 <div class="math notranslate nohighlight">
 \[
 \rho_x(\bf{h}) = \frac{C_x(\bf{h})}{\sigma^2_x}
 \]</div>
-<p>The correlogram provides of function of the <span class="math notranslate nohighlight">\(\bf{h}-\bf{h}\)</span> scatter plot correlation vs. lag offset <span class="math notranslate nohighlight">\(\bf{h}\)</span>.</p>
+<p>The correlogram provides of function of the <span class="math notranslate nohighlight">\(\bf{h}-\bf{h}\)</span> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#scatter-plot"><span class="std std-doc">scatter plot</span></a> correlation vs. lag offset <span class="math notranslate nohighlight">\(\bf{h}\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 -1.0 \le \rho_x(\bf{h}) \le 1.0
@@ -709,34 +713,34 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 </section>
 <section id="variogram-observations">
 <h2>Variogram Observations<a class="headerlink" href="#variogram-observations" title="Permalink to this heading">#</a></h2>
-<p>The following are common observations for variograms that should assist with their practical use.</p>
+<p>The following are common observations for <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>s that should assist with their practical use.</p>
 <section id="observation-1-as-distance-increases-variability-increase-in-general">
 <h3>Observation #1 - As distance increases, variability increase (in general).<a class="headerlink" href="#observation-1-as-distance-increases-variability-increase-in-general" title="Permalink to this heading">#</a></h3>
-<p>This is common since in general, over greater distance offsets, there is often more difference between the head and tail samples.</p>
-<p>In some cases, such as with spatial cyclicity of the hole effect variogram model the variogram may have negative slope over some lag distance intervals</p>
-<p>Negative slopes at lag distances greater than half the data extent are often caused by too few pairs for a reliable variogram calculation</p>
+<p>This is common since in general, over greater distance offsets, there is often more difference between the head and tail <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s.</p>
+<p>In some cases, such as with spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cyclicity"><span class="std std-doc">cyclicity</span></a> of the hole effect <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram-model"><span class="std std-doc">variogram model</span></a> the variogram may have negative slope over some lag distance intervals</p>
+<p>Negative slopes at <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a>s greater than half the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> extent are often caused by too few pairs for a reliable variogram calculation</p>
 </section>
 <section id="observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h">
 <h3>Observation #2 - Calculated with over all possible pairs separated by lag vector, <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span>.<a class="headerlink" href="#observation-2-calculated-with-over-all-possible-pairs-separated-by-lag-vector-bf-h" title="Permalink to this heading">#</a></h3>
-<p>We scan through the entire data set, searching for all possible pair combinations with all other data.  We then calculate the variogram as one half the expectation of squared difference between all pairs.</p>
+<p>We scan through the entire data set, searching for all possible pair combinations with all other data.  We then calculate the variogram as one half the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#expectation"><span class="std std-doc">expectation</span></a> of squared difference between all pairs.</p>
 <p>More pairs results in a more reliable measure.</p>
 </section>
 <section id="observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation">
 <h3>Observation #3 - Need to plot the sill to know the degree of correlation.<a class="headerlink" href="#observation-3-need-to-plot-the-sill-to-know-the-degree-of-correlation" title="Permalink to this heading">#</a></h3>
-<p><strong>Sill</strong> is the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span></p>
-<p>Given stationarity of the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>, and variogram <span class="math notranslate nohighlight">\(\gamma(\bf{h})\)</span>:</p>
-<p>we can define the covariance function:</p>
+<p><strong><a class="reference internal" href="GeostatsPy_glossary_n_s.html#sill"><span class="std std-doc">Sill</span></a></strong> is the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a>, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span></p>
+<p>Given <a class="reference internal" href="GeostatsPy_glossary_n_s.html#stationarity"><span class="std std-doc">stationarity</span></a> of the variance, <span class="math notranslate nohighlight">\(\sigma^2_x\)</span>, and variogram <span class="math notranslate nohighlight">\(\gamma(\bf{h})\)</span>:</p>
+<p>we can define the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance-function"><span class="std std-doc">covariance function</span></a>:</p>
 <div class="math notranslate nohighlight">
 \[
 C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 \]</div>
-<p>The covariance measure is a measure of similarity over distance (the mirror image of the variogram as shown by the equation above).</p>
+<p>The <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> measure is a measure of similarity over distance (the mirror image of the variogram as shown by the equation above).</p>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/variogram_cov.png" style="display: block; margin: 0 auto; width: 30%;">
   <figcaption style="text-align: center;"> The relationship between variogram, sill and covariance function. 
 </figcaption>
 </figure>
-<p>Given a standardized distribution <span class="math notranslate nohighlight">\(\sigma^2_x = 1.0\)</span>, the covariance, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span>, is equal to the correlogram, <span class="math notranslate nohighlight">\(\rho_x(\bf{h})\)</span>:</p>
+<p>Given a standardized distribution <span class="math notranslate nohighlight">\(\sigma^2_x = 1.0\)</span>, the covariance, <span class="math notranslate nohighlight">\(C_x(\bf{h})\)</span>, is equal to the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#correlogram"><span class="std std-doc">correlogram</span></a>, <span class="math notranslate nohighlight">\(\rho_x(\bf{h})\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \rho_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
@@ -744,17 +748,17 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 </section>
 <section id="observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range">
 <h3>Observation #4 - The lag distance at which the variogram reaches the sill is know as the range.<a class="headerlink" href="#observation-4-the-lag-distance-at-which-the-variogram-reaches-the-sill-is-know-as-the-range" title="Permalink to this heading">#</a></h3>
-<p>At the range, knowing the data value at the tail location provides no information about a value at the head location of the lag distance vector.</p>
+<p>At the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a>, knowing the data value at the tail location provides no information about a value at the head location of the lag distance vector.</p>
 </section>
 <section id="observation-5-the-nugget-effect-a-discontinuity-at-the-origin">
 <h3>Observation #5 - The nugget effect, a discontinuity at the origin<a class="headerlink" href="#observation-5-the-nugget-effect-a-discontinuity-at-the-origin" title="Permalink to this heading">#</a></h3>
-<p>Sometimes there is a discontinuity in the variogram at distances less than the minimum data spacing.  This is known as <strong>nugget effect</strong>.</p>
-<p>The ratio of nugget / sill, is known as relative nugget effect (%). Modeled as a discontinuity with no correlation structure that at lags, <span class="math notranslate nohighlight">\(h \gt \epsilon\)</span>, an infinitesimal lag distance, and perfect correlation at <span class="math notranslate nohighlight">\(\bf{h} = 0\)</span>.
-Caution when including nugget effect in the variogram model as measurement error, mixing populations cause apparent nugget effect</p>
+<p>Sometimes there is a discontinuity in the variogram at distances less than the minimum data spacing.  This is known as <strong><a class="reference internal" href="GeostatsPy_glossary_n_s.html#nugget-effect"><span class="std std-doc">nugget effect</span></a></strong>.</p>
+<p>The ratio of nugget / sill, is known as relative nugget effect (%). Modeled as a discontinuity with no correlation structure that at <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag"><span class="std std-doc">lag</span></a>s, <span class="math notranslate nohighlight">\(h \gt \epsilon\)</span>, an infinitesimal lag distance, and perfect correlation at <span class="math notranslate nohighlight">\(\bf{h} = 0\)</span>.
+Caution when including nugget effect in the variogram model as measurement <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a>, mixing <a class="reference internal" href="GeostatsPy_glossary_n_s.html#population"><span class="std std-doc">population</span></a>s cause apparent nugget effect</p>
 <p>This exercise demonstrates the semivariogram calculation with GeostatsPy. The steps include:</p>
 <ol class="arabic simple">
-<li><p>generate a 2D model with sequential Gaussian simulation</p></li>
-<li><p>sample from the simulation</p></li>
+<li><p>generate a 2D model with <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sequential-gaussian-simulation"><span class="std std-doc">sequential Gaussian simulation</span></a></p></li>
+<li><p>sample from the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a></p></li>
 <li><p>calculate and visualize experimental semivariograms</p></li>
 </ol>
 <p>To help my students visualize the nugget I build an interactive Python <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Variogram_Nugget_Effect.ipynb">variogram nugget effect dashboard</a>,</p>
@@ -767,12 +771,12 @@ Caution when including nugget effect in the variogram model as measurement error
 </section>
 <section id="variogram-calculation-parameters">
 <h2>Variogram Calculation Parameters<a class="headerlink" href="#variogram-calculation-parameters" title="Permalink to this heading">#</a></h2>
-<p>For commonly encountered irregularly space spatial data samples, if we specific a specific lag vector, <span class="math notranslate nohighlight">\(\bf{h}\)</span>,</p>
+<p>For commonly encountered irregularly space spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s, if we specific a specific lag vector, <span class="math notranslate nohighlight">\(\bf{h}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 \bf{h} = 100.00000 \text{ m at } 90.0000 \text{ degrees azimuth}
 \]</div>
-<p>we are unlikely to find data pairs sperated by exactly that lag distance and direction. We need to use a search template to identify the pairs for a specific lag distance and direction.</p>
+<p>we are unlikely to find data pairs sperated by exactly that <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a> and direction. We need to use a search template to identify the pairs for a specific lag distance and direction.</p>
 <ol class="arabic simple">
 <li><p>First step is to select the direction as an <strong>azimuth</strong>, here 045 azimuth, 45 degrees from north towards east.</p></li>
 </ol>
@@ -782,10 +786,10 @@ Caution when including nugget effect in the variogram model as measurement error
 </figcaption>
 </figure>
 <ol class="arabic simple" start="2">
-<li><p>Set unit lag distance to at least the ‘common’ minimum data spacing <span class="math notranslate nohighlight">\(\rightarrow\)</span> no data pairs available at shorter lag distances.</p></li>
+<li><p>Set <a class="reference internal" href="GeostatsPy_glossary_t_z.html#unit-lag-distance"><span class="std std-doc">unit lag distance</span></a> to at least the ‘common’ minimum data spacing <span class="math notranslate nohighlight">\(\rightarrow\)</span> no data pairs available at shorter lag distances.</p></li>
 </ol>
 <ul class="simple">
-<li><p>lag distance controls the number/frequency of experimental variogram points</p></li>
+<li><p>lag distance controls the number/frequency of <a class="reference internal" href="GeostatsPy_glossary_e_m.html#experimental-variogram"><span class="std std-doc">experimental variogram</span></a> points</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/template2.png" style="display: block; margin: 0 auto; width: 60%;">
@@ -793,7 +797,7 @@ Caution when including nugget effect in the variogram model as measurement error
 </figcaption>
 </figure>
 <ol class="arabic simple" start="3">
-<li><p>Set the lag tolerance, default to <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> the unit lag distance.</p></li>
+<li><p>Set the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag"><span class="std std-doc">lag</span></a> tolerance, default to <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> the unit lag distance.</p></li>
 </ol>
 <ul class="simple">
 <li><p>lower lag tolerance will omit possible pairs</p></li>
@@ -805,10 +809,10 @@ Caution when including nugget effect in the variogram model as measurement error
 </figcaption>
 </figure>
 <ol class="arabic simple" start="4">
-<li><p>Set the azimuth tolerance to 90.0 for isotropic variograms. Set azimuth tolerance, default 22.5 degrees for directional variograms.</p></li>
+<li><p>Set the azimuth tolerance to 90.0 for <a class="reference internal" href="GeostatsPy_glossary_e_m.html#isotropic-variogram"><span class="std std-doc">isotropic variogram</span></a>s. Set azimuth tolerance, default 22.5 degrees for directional variograms.</p></li>
 </ol>
 <ul class="simple">
-<li><p>lower azimuth tolerance is more direction specific and noisier</p></li>
+<li><p>lower <a class="reference internal" href="GeostatsPy_glossary_a_d.html#azimuth-tolerance"><span class="std std-doc">azimuth tolerance</span></a> is more direction specific and noisier</p></li>
 <li><p>larger azimuth tolerance is more isotropic and smoother</p></li>
 </ul>
 <figure style="text-align: center;">
@@ -817,7 +821,7 @@ Caution when including nugget effect in the variogram model as measurement error
 </figcaption>
 </figure>
 <ol class="arabic simple" start="5">
-<li><p>Set a bandwidth limit is needed to limit the distance of investigation away from the lag vector.</p></li>
+<li><p>Set a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bandwidth"><span class="std std-doc">bandwidth</span></a> limit is needed to limit the distance of investigation away from the lag vector.</p></li>
 </ol>
 <ul class="simple">
 <li><p>set bandwidth very large if isotropic to remove its influence and avoid artifacts</p></li>
@@ -830,26 +834,26 @@ Caution when including nugget effect in the variogram model as measurement error
 </section>
 <section id="isotropic-and-anisotropic-experimental-variograms">
 <h2>Isotropic and Anisotropic Experimental Variograms<a class="headerlink" href="#isotropic-and-anisotropic-experimental-variograms" title="Permalink to this heading">#</a></h2>
-<p><strong>Isotropic or Omnidirectional</strong> – azimuth tolerance <span class="math notranslate nohighlight">\(= 90^{o}\)</span>,</p>
+<p><strong>Isotropic or Omnidirectional</strong> – <a class="reference internal" href="GeostatsPy_glossary_a_d.html#azimuth-tolerance"><span class="std std-doc">azimuth tolerance</span></a> <span class="math notranslate nohighlight">\(= 90^{o}\)</span>,</p>
 <ul class="simple">
-<li><p>all pairs lag distance ± lag distance tolerance.</p></li>
+<li><p>all pairs <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a> ± <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance-tolerance"><span class="std std-doc">lag distance tolerance</span></a>.</p></li>
 </ul>
 <p><strong>Anisotropic or Directional</strong> – azimuth Tolerance <span class="math notranslate nohighlight">\(\lt 90^{o}\)</span>.</p>
 <ul class="simple">
 <li><p>only considering pairs in a specified direction, larger azimuth tolerance will approach isotropic.</p></li>
-<li><p>calculate directional, experimental variograms in the major and minor directions to support interpretation and variogram modeling</p></li>
-<li><p>do not extend the azimuth tolerance <span class="math notranslate nohighlight">\(\gt 90^{o}\)</span>, results in a bias as some of the data pairs are counted twice in a lag due to arbitrary orientation.</p></li>
+<li><p>calculate directional, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#experimental-variogram"><span class="std std-doc">experimental variogram</span></a>s in the major and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#minor-direction"><span class="std std-doc">minor direction</span></a>s to support interpretation and variogram modeling</p></li>
+<li><p>do not extend the azimuth tolerance <span class="math notranslate nohighlight">\(\gt 90^{o}\)</span>, results in a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bias"><span class="std std-doc">bias</span></a> as some of the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> pairs are counted twice in a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag"><span class="std std-doc">lag</span></a> due to arbitrary orientation.</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/directional.png" style="display: block; margin: 0 auto; width: 50%;">
   <figcaption style="text-align: center;"> Azimuth tolerance and identified data pairs.
 </figcaption>
 </figure>
-<p>With this information you are ready to calculate experimental variograms.</p>
+<p>With this information you are ready to calculate experimental <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>s.</p>
 </section>
 <section id="calculating-experimental-variograms">
 <h2>Calculating Experimental Variograms<a class="headerlink" href="#calculating-experimental-variograms" title="Permalink to this heading">#</a></h2>
-<p>While the workflow below demonstrates the workflow for calculating experimental variogram, to assist my students with the variogram calculation process, I build an interactive Python <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Variogram_Calculation.ipynb">variogram calculation dashboard</a>,</p>
+<p>While the workflow below demonstrates the workflow for calculating <a class="reference internal" href="GeostatsPy_glossary_e_m.html#experimental-variogram"><span class="std std-doc">experimental variogram</span></a>, to assist my students with the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> calculation process, I build an interactive Python <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Variogram_Calculation.ipynb">variogram calculation dashboard</a>,</p>
 <figure style="text-align: center;">
   <img src="_static/variogram_calculate/interactive_variogram_calculate_temp.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;"> Interactive Python dashboard for calculating experimental variograms. 
@@ -930,7 +934,7 @@ Caution when including nugget effect in the variogram model as measurement error
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<p>Here’s the command to load our comma delimited <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> file in to a Pandas’ <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data_biased.csv&quot;</span><span class="p">)</span> <span class="c1"># load data</span>
@@ -1072,7 +1076,7 @@ Caution when including nugget effect in the variogram model as measurement error
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Let’s look at and compare the summary statistics for sand and shale.</p>
+<p>Let’s look at and compare the summary <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> for sand and shale.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_sand</span><span class="p">[[</span><span class="s1">&#39;Porosity&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                  <span class="c1"># summary table of sand only DataFrame statistics</span>
@@ -1182,7 +1186,7 @@ Caution when including nugget effect in the variogram model as measurement error
 </section>
 <section id="set-limits-for-plotting-colorbars-and-map-specification">
 <h2>Set Limits for Plotting, Colorbars and Map Specification<a class="headerlink" href="#set-limits-for-plotting-colorbars-and-map-specification" title="Permalink to this heading">#</a></h2>
-<p>Limits are applied for data and model visualization.</p>
+<p>Limits are applied for <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> and model visualization.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">1000.0</span>                                     <span class="c1"># spatial limits</span>
@@ -1201,14 +1205,14 @@ Caution when including nugget effect in the variogram model as measurement error
 </section>
 <section id="gaussian-transformation">
 <h2>Gaussian Transformation<a class="headerlink" href="#gaussian-transformation" title="Permalink to this heading">#</a></h2>
-<p>Let’s transform the data grouped overall both facies (sand and shale) and separated by facies to normal score values (Gaussian distributed with a mean of 0.0 and variance of 1.0).</p>
+<p>Let’s transform the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> grouped overall both <a class="reference internal" href="GeostatsPy_glossary_e_m.html#facies"><span class="std std-doc">facies</span></a> (sand and shale) and separated by facies to normal <a class="reference internal" href="GeostatsPy_glossary_n_s.html#score"><span class="std std-doc">score</span></a> values (Gaussian distributed with a mean of 0.0 and <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a> of 1.0).</p>
 <ul class="simple">
-<li><p>This is required for sequential Gaussian simulation (common target for our variogram models)</p></li>
-<li><p>Gaussian transform assists with outliers and provides more interpretable variograms.</p></li>
+<li><p>This is required for <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sequential-gaussian-simulation"><span class="std std-doc">sequential Gaussian simulation</span></a> (common target for our <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram-model"><span class="std std-doc">variogram model</span></a>s)</p></li>
+<li><p>Gaussian transform assists with outliers and provides more interpretable <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>s.</p></li>
 </ul>
-<p>The following command will transform the Porosity and to standard normal.</p>
+<p>The following command will transform the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">Porosity</span></a> and to standard normal.</p>
 <ul class="simple">
-<li><p>Gaussian distributed with a mean of 0.0 and standard deviation and variance of 1.0.</p></li>
+<li><p>Gaussian distributed with a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> of 0.0 and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> and variance of 1.0.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1334,7 +1338,7 @@ Caution when including nugget effect in the variogram model as measurement error
 </section>
 <section id="location-maps">
 <h2>Location Maps<a class="headerlink" href="#location-maps" title="Permalink to this heading">#</a></h2>
-<p>The normal score transform has correctly transformed the porosity over sand and shale facies to standard normal.  Let’s plot the location maps of normal score transforms of porosity and permeability for all facies, sand facies and shale facies.</p>
+<p>The normal score transform has correctly transformed the porosity over sand and shale <a class="reference internal" href="GeostatsPy_glossary_e_m.html#facies"><span class="std std-doc">facies</span></a> to standard normal.  Let’s plot the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#location-map"><span class="std std-doc">location map</span></a>s of normal score transforms of porosity and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> for all facies, sand facies and shale facies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">131</span><span class="p">)</span>                                              <span class="c1"># location map all facies</span>
@@ -1359,7 +1363,7 @@ Caution when including nugget effect in the variogram model as measurement error
 </section>
 <section id="experimental-variogram-calculation">
 <h2>Experimental Variogram Calculation<a class="headerlink" href="#experimental-variogram-calculation" title="Permalink to this heading">#</a></h2>
-<p>Let’s see the parameters for the gamv, irregular data, GeostatsPy’s experimental variogram calculation function.</p>
+<p>Let’s see the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s for the gamv, irregular <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a>, GeostatsPy’s <a class="reference internal" href="GeostatsPy_glossary_e_m.html#experimental-variogram"><span class="std std-doc">experimental variogram</span></a> calculation function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">geostats</span><span class="o">.</span><span class="n">gamv</span>                                                 <span class="c1"># see the input parameters required by the gamv function</span>
@@ -1424,7 +1428,7 @@ Caution when including nugget effect in the variogram model as measurement error
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of variogram calculation with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>This was a basic demonstration of <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> calculation with GeostatsPy. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -1435,20 +1439,20 @@ Caution when including nugget effect in the variogram model as measurement error
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1587,6 +1591,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

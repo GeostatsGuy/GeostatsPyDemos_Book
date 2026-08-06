@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -479,7 +483,7 @@ document.write(`
 <section id="history-matching">
 <h1>History Matching<a class="headerlink" href="#history-matching" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -494,16 +498,16 @@ document.write(`
 © Copyright 2026.</p>
 <section id="forecasting">
 <h2>Forecasting<a class="headerlink" href="#forecasting" title="Permalink to this heading">#</a></h2>
-<p>Forecasting is the application of a forward model, <span class="math notranslate nohighlight">\(g(x)\)</span>, that maps a spatial Earth model, <span class="math notranslate nohighlight">\(x\)</span>, into measurable production or state responses, <span class="math notranslate nohighlight">\(y\)</span>, by solving the governing conservation equations (e.g., mass, momentum, and associated constitutive relations) in porous media.</p>
+<p>Forecasting is the application of a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#forward-model"><span class="std std-doc">forward model</span></a>, <span class="math notranslate nohighlight">\(g(x)\)</span>, that maps a spatial Earth model, <span class="math notranslate nohighlight">\(x\)</span>, into measurable production or state responses, <span class="math notranslate nohighlight">\(y\)</span>, by solving the governing conservation equations (e.g., mass, momentum, and associated constitutive relations) in porous media.</p>
 <p>The forward model can be highly nonlinear and complex. In production forecasting, for example, this may include,</p>
 <ul class="simple">
-<li><p>multiphase flow governed by relative permeability functions, <span class="math notranslate nohighlight">\(k_{rp}(S)\)</span></p></li>
+<li><p>multiphase flow governed by relative <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> functions, <span class="math notranslate nohighlight">\(k_{rp}(S)\)</span></p></li>
 <li><p>compressibility effects in rock and fluids, <span class="math notranslate nohighlight">\(\phi(p)\)</span>, <span class="math notranslate nohighlight">\(\rho(p)\)</span></p></li>
 </ul>
 <p>Despite this complexity, the forward model is typically treated as deterministic,</p>
 <ul class="simple">
 <li><p>no stochasticity in the physics given a fixed input model and boundary conditions
-uncertainty is introduced only through treating the inputs as random variables, e.g., varying the spatial Earth model, <span class="math notranslate nohighlight">\(x\)</span>, model parameters, and boundary conditions</p></li>
+uncertainty is introduced only through treating the inputs as <a class="reference internal" href="GeostatsPy_glossary_n_s.html#random-variable"><span class="std std-doc">random variable</span></a>s, e.g., varying the spatial Earth model, <span class="math notranslate nohighlight">\(x\)</span>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-parameter"><span class="std std-doc">model parameter</span></a>s, and boundary conditions</p></li>
 </ul>
 <p>For a given Earth model, <span class="math notranslate nohighlight">\(x\)</span>, the forward model produces a unique deterministic response, <span class="math notranslate nohighlight">\(y\)</span>, assuming fixed physics, numerical discretization, and boundary and initial conditions.</p>
 <figure style="text-align: center;">
@@ -514,16 +518,16 @@ uncertainty is introduced only through treating the inputs as random variables, 
 </section>
 <section id="inversion-and-history-matching">
 <h2>Inversion and History Matching<a class="headerlink" href="#inversion-and-history-matching" title="Permalink to this heading">#</a></h2>
-<p>Inversion is the general process of estimating unknown model parameters from observed data by working backward from system responses to the underlying spatial or physical model.</p>
+<p><a class="reference internal" href="GeostatsPy_glossary_e_m.html#inversion"><span class="std std-doc">Inversion</span></a> is the general process of estimating unknown <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-parameter"><span class="std std-doc">model parameter</span></a>s from observed data by working backward from system responses to the underlying spatial or physical model.</p>
 <p>In subsurface systems, inversion is fundamentally challenging because the problem is typically,</p>
 <ul class="simple">
-<li><p>underdetermined (many plausible models fit the data)</p></li>
+<li><p>underdetermined (many plausible models fit the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a>)</p></li>
 <li><p>nonlinear</p></li>
 <li><p>spatially high-dimensional</p></li>
 <li><p>uncertain</p></li>
 <li><p>affected by sparse and indirect observations.</p></li>
 </ul>
-<p>History matching is the specific inversion problem of adjusting subsurface models so that simulated dynamic responses reproduce historical production or monitoring data.</p>
+<p><a class="reference internal" href="GeostatsPy_glossary_e_m.html#history-matching"><span class="std std-doc">History matching</span></a> is the specific inversion problem of adjusting subsurface models so that simulated dynamic responses reproduce historical production or monitoring data.</p>
 <figure style="text-align: center;">
   <img src="_static/history/inversion.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;"> The general inversion workflow from model response to model state.
@@ -533,31 +537,31 @@ uncertainty is introduced only through treating the inputs as random variables, 
 <ul class="simple">
 <li><p>agreement with observed dynamic data</p></li>
 <li><p>preservation of geological realism</p></li>
-<li><p>consistency with prior knowledge</p></li>
+<li><p>consistency with <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prior"><span class="std std-doc">prior</span></a> knowledge</p></li>
 <li><p>uncertainty quantification</p></li>
 </ul>
 <p>Because many distinct subsurface models can reproduce the same historical data, history matching is inherently nonunique and should generally produce an ensemble of plausible solutions rather than a single “best” model.</p>
 <p>General approaches to solving history matching problems include,</p>
 <ul class="simple">
-<li><p>iteratively updating model parameters to reduce mismatch with observations</p></li>
-<li><p>propagating uncertainty through ensembles of realizations</p></li>
+<li><p>iteratively updating model <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s to reduce mismatch with observations</p></li>
+<li><p>propagating uncertainty through ensembles of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a></p></li>
 <li><p>reducing model dimensionality</p></li>
 <li><p>incorporating geological constraints and prior information</p></li>
 <li><p>balancing data fit against overfitting and loss of model forecast accuracy</p></li>
 </ul>
-<p>Effective history matching seeks models that both honor observed system behavior and remain geologically and physically plausible for forecasting and decision making.</p>
+<p>Effective history matching seeks models that both honor observed system behavior and remain geologically and physically plausible for forecasting and <a class="reference internal" href="GeostatsPy_glossary_a_d.html#decision-making"><span class="std std-doc">decision making</span></a>.</p>
 </section>
 <section id="ensemble-kalman-filter-enkf">
 <h2>Ensemble Kalman Filter (EnKF)<a class="headerlink" href="#ensemble-kalman-filter-enkf" title="Permalink to this heading">#</a></h2>
-<p>The Ensemble Kalman Filter (EnKF) is a sequential data assimilation method that,</p>
+<p>The <a class="reference internal" href="GeostatsPy_glossary_e_m.html#ensemble-kalman-filter"><span class="std std-doc">Ensemble Kalman Filter</span></a> (EnKF) is a sequential <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> assimilation method that,</p>
 <ul class="simple">
-<li><p>uses an ensemble of realizations to represent uncertainty</p></li>
-<li><p>updates model states or parameters by combining model predictions with noisy observations through covariance-based corrections</p></li>
+<li><p>uses an ensemble of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> to represent uncertainty</p></li>
+<li><p>updates model states or parameters by combining model <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prediction"><span class="std std-doc">prediction</span></a>s with noisy observations through <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a>-based corrections</p></li>
 </ul>
 <p>The method was introduced by Geir Evensen (1994) as a computationally efficient Monte Carlo implementation of the Kalman filter for large nonlinear systems.</p>
-<p>EnKF and related data assimilation methods are widely applied in subsurface modeling to integrate model responses with model parameters, a process also known as inverse modeling. Examples include,</p>
+<p>EnKF and related data assimilation methods are widely applied in subsurface modeling to integrate model responses with <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-parameter"><span class="std std-doc">model parameter</span></a>s, a process also known as inverse modeling. Examples include,</p>
 <ul class="simple">
-<li><p><strong>production history matching</strong> – petroleum reservoir modeling in petroleum geology and petroleum engineering</p></li>
+<li><p><strong>production <a class="reference internal" href="GeostatsPy_glossary_e_m.html#history-matching"><span class="std std-doc">history matching</span></a></strong> – petroleum reservoir modeling in petroleum geology and petroleum engineering</p></li>
 <li><p><strong>model calibration</strong> – groundwater flow and catchment modeling in hydrology</p></li>
 <li><p><strong>inverse analysis (back-analysis)</strong> – structural stability and failure analysis in rock mechanics</p></li>
 </ul>
@@ -565,20 +569,20 @@ uncertainty is introduced only through treating the inputs as random variables, 
 </section>
 <section id="general-ensemble-kalman-filter-enkf-workflow">
 <h2>General Ensemble Kalman Filter (EnKF) Workflow<a class="headerlink" href="#general-ensemble-kalman-filter-enkf-workflow" title="Permalink to this heading">#</a></h2>
-<p>Let’s start by stating that the Ensemble Kalman Filter (EnKF) is a sequential data assimilation method that combines,</p>
+<p>Let’s start by stating that the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#ensemble-kalman-filter"><span class="std std-doc">Ensemble Kalman Filter</span></a> (EnKF) is a sequential <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> assimilation method that combines,</p>
 <ul class="simple">
-<li><p>uncertain model predictions</p></li>
+<li><p>uncertain model <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prediction"><span class="std std-doc">prediction</span></a>s</p></li>
 <li><p>noisy observations</p></li>
 </ul>
-<p>to improve estimates of unknown system states or parameters.</p>
-<p>The EnKF represents uncertainty using an ensemble of realizations of the unknown model parameters and updates this ensemble sequentially in time as new observations become available.</p>
+<p>to improve estimates of unknown system states or <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s.</p>
+<p>The EnKF represents uncertainty using an ensemble of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a>s of the unknown <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-parameter"><span class="std std-doc">model parameter</span></a>s and updates this ensemble sequentially in time as new observations become available.</p>
 <p>Here are the general EnKF steps,</p>
 <ol class="arabic simple">
-<li><p>Define the unknown model parameter(s), also known as the state variables</p></li>
-<li><p>Generate an initial ensemble, consisting of realizations of the unknown model parameters</p></li>
+<li><p>Define the unknown model parameter(s), also known as the state <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variable"><span class="std std-doc">variable</span></a>s</p></li>
+<li><p>Generate an initial ensemble, consisting of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> of the unknown model parameters</p></li>
 <li><p>Forecast the system response by applying the forward (physics) model to each ensemble member</p></li>
 <li><p>Collect observations and compute the misfit between the observations and the forecasted system response</p></li>
-<li><p>Compute ensemble statistics (means and covariances)</p></li>
+<li><p>Compute ensemble <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> (<a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>s and <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a>s)</p></li>
 <li><p>Compute the Kalman gain</p></li>
 <li><p>Update the ensemble using the observations</p></li>
 <li><p>Repeat sequentially through time, returning to Step 3 for the next time step</p></li>
@@ -592,14 +596,14 @@ uncertainty is introduced only through treating the inputs as random variables, 
 </section>
 <section id="step-1-define-the-unknown-state-variables-or-parameters">
 <h2>Step 1. Define the Unknown State Variables or Parameters<a class="headerlink" href="#step-1-define-the-unknown-state-variables-or-parameters" title="Permalink to this heading">#</a></h2>
-<p>EnKF estimates a vector of unknown model parameters,</p>
+<p>EnKF estimates a vector of unknown <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-parameter"><span class="std std-doc">model parameter</span></a>s,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the <strong>state vector</strong> (or model parameter vector).</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the <strong>state vector</strong> (or model <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a> vector).</p>
 <p><strong>Spatial representation of the state</strong></p>
-<p>In many subsurface applications, the state variables are defined over a spatial model grid in 1D, 2D, or 3D. The spatial location of each grid cell is represented by a coordinate vector,</p>
+<p>In many subsurface applications, the state <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variable"><span class="std std-doc">variable</span></a>s are defined over a spatial <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-grid"><span class="std std-doc">model grid</span></a> in 1D, 2D, or 3D. The spatial location of each grid cell is represented by a coordinate vector,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{u}_\alpha
@@ -614,10 +618,10 @@ uncertainty is introduced only through treating the inputs as random variables, 
 <ul class="simple">
 <li><p>while spatial location is implied, for concise notation I omit this location vector below.</p></li>
 </ul>
-<p><strong>Prior uncertainty and ensemble interpretation</strong></p>
-<p>The initial ensemble represents our prior uncertainty about the system state before any data assimilation,</p>
+<p><strong><a class="reference internal" href="GeostatsPy_glossary_n_s.html#prior"><span class="std std-doc">Prior</span></a> uncertainty and ensemble interpretation</strong></p>
+<p>The initial ensemble represents our prior uncertainty about the system state before any <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> assimilation,</p>
 <ul class="simple">
-<li><p>each ensemble member is a realization of the full state,</p></li>
+<li><p>each ensemble member is a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> of the full state,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
@@ -644,17 +648,17 @@ x_n
 <p><strong>Examples of state variables</strong></p>
 <p>Typical model state variables in subsurface and geoscience applications include,</p>
 <ul class="simple">
-<li><p>permeability</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a></p></li>
 <li><p>pressure</p></li>
-<li><p>porosity</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a></p></li>
 <li><p>temperature</p></li>
 <li><p>velocity</p></li>
-<li><p>saturation</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#saturation"><span class="std std-doc">saturation</span></a></p></li>
 </ul>
 </section>
 <section id="step-2-generate-an-initial-ensemble">
 <h2>Step 2. Generate an Initial Ensemble<a class="headerlink" href="#step-2-generate-an-initial-ensemble" title="Permalink to this heading">#</a></h2>
-<p>Uncertainty is represented using an ensemble of realizations for the state variable(s), <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>,</p>
+<p>Uncertainty is represented using an ensemble of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> for the state <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variable"><span class="std std-doc">variable</span></a>(s), <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}^{(1)},
@@ -663,13 +667,13 @@ x_n
 \mathbf{x}^{(N_e)}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(N_e\)</span> is the number of ensemble members, and <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> is the <span class="math notranslate nohighlight">\(\ell\)</span>-th ensemble member, with <span class="math notranslate nohighlight">\(\ell = 1,\ldots,N_e\)</span></p>
-<p>The ensemble is sampled from a prior distribution,</p>
+<p>The ensemble is sampled from a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prior"><span class="std std-doc">prior</span></a> distribution,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}^{(\ell)} \sim f_{\text{prior}}(\mathbf{x})
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(f_{\text{prior}}(\mathbf{x})\)</span> is the prior probability density function</p>
-<p>In this formulation, the state <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> represents a <strong>static unknown parameter</strong> and therefore does <strong>not carry a time index</strong>,</p>
+<p>where <span class="math notranslate nohighlight">\(f_{\text{prior}}(\mathbf{x})\)</span> is the prior <a class="reference internal" href="GeostatsPy_glossary_n_s.html#probability-density-function"><span class="std std-doc">probability density function</span></a></p>
+<p>In this formulation, the state <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> represents a <strong>static unknown <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a></strong> and therefore does <strong>not carry a time index</strong>,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}^{(\ell)} \neq \mathbf{x}_t^{(\ell)}
@@ -682,7 +686,7 @@ x_n
 </section>
 <section id="step-3-forecast-the-system-response">
 <h2>Step 3. Forecast the System Response<a class="headerlink" href="#step-3-forecast-the-system-response" title="Permalink to this heading">#</a></h2>
-<p>Each ensemble member is propagated through a forward model,</p>
+<p>Each ensemble member is propagated through a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#forward-model"><span class="std std-doc">forward model</span></a>,</p>
 <div class="math notranslate nohighlight">
 \[
 \hat{\mathbf{y}}^{(\ell)}
@@ -691,7 +695,7 @@ g\left(
 \mathbf{x}^{(\ell)}
 \right)
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(g(\cdot)\)</span> is the forward (observation) model, <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> is the <span class="math notranslate nohighlight">\(\ell\)</span>-th ensemble realization of the state, and <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}^{(\ell)}\)</span> is the model-predicted observation for ensemble member <span class="math notranslate nohighlight">\(\ell\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(g(\cdot)\)</span> is the forward (observation) model, <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> is the <span class="math notranslate nohighlight">\(\ell\)</span>-th ensemble <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> of the state, and <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}^{(\ell)}\)</span> is the model-predicted observation for ensemble member <span class="math notranslate nohighlight">\(\ell\)</span></p>
 <p>The collection,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -702,7 +706,7 @@ g\left(
 \hat{\mathbf{y}}^{(N_e)}
 \right\}
 \]</div>
-<p>forms the <strong>ensemble of predicted observations</strong>, generated by mapping the ensemble of model parameters <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> into observation space through the forward model <span class="math notranslate nohighlight">\(g(\cdot)\)</span>.</p>
+<p>forms the <strong>ensemble of predicted observations</strong>, generated by mapping the ensemble of <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-parameter"><span class="std std-doc">model parameter</span></a>s <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> into observation space through the forward model <span class="math notranslate nohighlight">\(g(\cdot)\)</span>.</p>
 </section>
 <section id="step-4-collect-observations">
 <h2>Step 4. Collect Observations<a class="headerlink" href="#step-4-collect-observations" title="Permalink to this heading">#</a></h2>
@@ -720,7 +724,7 @@ g(\mathbf{x}_{true,t})
 +
 \boldsymbol{\epsilon}_t
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{x}_{true}\)</span> is the true (unavailable) system state, and <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> is the observation error at time step, <span class="math notranslate nohighlight">\(t\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}_{true}\)</span> is the true (unavailable) system state, and <span class="math notranslate nohighlight">\(\boldsymbol{\epsilon}\)</span> is the observation <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a> at time step, <span class="math notranslate nohighlight">\(t\)</span></p>
 <p>Observation error is often assumed Gaussian distributed,</p>
 <div class="math notranslate nohighlight">
 \[
@@ -728,14 +732,14 @@ g(\mathbf{x}_{true,t})
 \sim
 \mathcal{N}(\mathbf{0},\mathbf{R})
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is the observation error covariance matrix</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is the observation error <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> matrix</p>
 </section>
 <section id="step-5-compute-ensemble-statistics">
 <h2>Step 5. Compute Ensemble Statistics<a class="headerlink" href="#step-5-compute-ensemble-statistics" title="Permalink to this heading">#</a></h2>
-<p>EnKF computes required statistics directly from the ensemble realizations.</p>
+<p>EnKF computes required <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> directly from the ensemble <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a>.</p>
 <section id="ensemble-mean-state-space">
 <h3>Ensemble mean (state space)<a class="headerlink" href="#ensemble-mean-state-space" title="Permalink to this heading">#</a></h3>
-<p>The ensemble mean of the state (unknown parameter) is,</p>
+<p>The ensemble mean of the state (unknown <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>) is,</p>
 <div class="math notranslate nohighlight">
 \[
 \bar{\mathbf{x}}
@@ -744,7 +748,7 @@ g(\mathbf{x}_{true,t})
 \sum_{\ell=1}^{N_e}
 \mathbf{x}^{(\ell)}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> is the state (or parameter) of ensemble member <span class="math notranslate nohighlight">\(\ell\)</span>, <span class="math notranslate nohighlight">\(N_e\)</span> = number of ensemble members, and <span class="math notranslate nohighlight">\(\bar{\mathbf{x}}\)</span> = ensemble mean state</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> is the state (or parameter) of ensemble member <span class="math notranslate nohighlight">\(\ell\)</span>, <span class="math notranslate nohighlight">\(N_e\)</span> = number of ensemble members, and <span class="math notranslate nohighlight">\(\bar{\mathbf{x}}\)</span> = ensemble <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> state</p>
 </section>
 <section id="ensemble-mean-observation-space">
 <h3>Ensemble mean (observation space)<a class="headerlink" href="#ensemble-mean-observation-space" title="Permalink to this heading">#</a></h3>
@@ -761,7 +765,7 @@ g(\mathbf{x}_{true,t})
 </section>
 <section id="cross-covariance-stateobservation">
 <h3>Cross-covariance (state–observation)<a class="headerlink" href="#cross-covariance-stateobservation" title="Permalink to this heading">#</a></h3>
-<p>The cross-covariance between the state ensemble and predicted observation ensemble at time <span class="math notranslate nohighlight">\(t\)</span> is,</p>
+<p>The cross-<a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> between the state ensemble and predicted observation ensemble at time <span class="math notranslate nohighlight">\(t\)</span> is,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{C}_{x\hat{y},t}
@@ -779,12 +783,12 @@ g(\mathbf{x}_{true,t})
 </section>
 <section id="interpretation">
 <h3>Interpretation<a class="headerlink" href="#interpretation" title="Permalink to this heading">#</a></h3>
-<p>The matrix <span class="math notranslate nohighlight">\(\mathbf{C}_{x\hat{y},t}\)</span> measures how variations in the model parameters (<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) are correlated with variations in the predicted observations (<span class="math notranslate nohighlight">\(\hat{\mathbf{y}}_t\)</span>).</p>
+<p>The matrix <span class="math notranslate nohighlight">\(\mathbf{C}_{x\hat{y},t}\)</span> measures how variations in the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-parameter"><span class="std std-doc">model parameter</span></a>s (<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>) are correlated with variations in the predicted observations (<span class="math notranslate nohighlight">\(\hat{\mathbf{y}}_t\)</span>).</p>
 <ul class="simple">
 <li><p>This relationship is computed <strong>at each observation time <span class="math notranslate nohighlight">\(t\)</span></strong></p></li>
 <li><p>It determines how strongly observational information at time <span class="math notranslate nohighlight">\(t\)</span> updates the state in the Kalman gain step</p></li>
 </ul>
-<p>Importantly, the <strong>state ensemble <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> does not carry a time index</strong>, since it represents a static unknown parameter. Only the forward-mapped predictions <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}_t^{(\ell)}\)</span> evolve with time.</p>
+<p>Importantly, the <strong>state ensemble <span class="math notranslate nohighlight">\(\mathbf{x}^{(\ell)}\)</span> does not carry a time index</strong>, since it represents a static unknown parameter. Only the forward-mapped <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prediction"><span class="std std-doc">prediction</span></a>s <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}_t^{(\ell)}\)</span> evolve with time.</p>
 </section>
 </section>
 <section id="step-6-compute-the-kalman-gain">
@@ -801,11 +805,11 @@ g(\mathbf{x}_{true,t})
 \mathbf{R}_t
 \right)^{-1}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{K}_t\)</span> is the Kalman gain matrix at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}_{x\hat{y},t}\)</span> is the cross-covariance between the state ensemble and predicted observations at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}_{\hat{y}\hat{y},t}\)</span> is the covariance of the predicted observations at time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{R}_t\)</span> is the observation error covariance at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{K}_t\)</span> is the Kalman gain matrix at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}_{x\hat{y},t}\)</span> is the cross-<a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> between the state ensemble and predicted observations at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}_{\hat{y}\hat{y},t}\)</span> is the covariance of the predicted observations at time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{R}_t\)</span> is the observation <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a> covariance at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
 </section>
 <section id="step-7-update-the-ensemble">
 <h2>Step 7. Update the Ensemble<a class="headerlink" href="#step-7-update-the-ensemble" title="Permalink to this heading">#</a></h2>
-<p>Each ensemble member is updated using the innovation (the difference between observations and predictions) at time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<p>Each ensemble member is updated using the innovation (the difference between observations and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prediction"><span class="std std-doc">prediction</span></a>s) at time <span class="math notranslate nohighlight">\(t\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{x}_{new}^{(\ell)}
@@ -845,7 +849,7 @@ Quantify how strongly observations should influence updates using covariance str
 Correct each ensemble member using the Kalman gain and the observation misfit.</p>
 <p>This process is repeated sequentially in time as new observations become available, continually refining the estimate of the unknown model parameters.</p>
 </div>
-<p>Note, this workflow assumes that errors are not large and are Gaussian distributed.</p>
+<p>Note, this workflow assumes that <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a>s are not large and are Gaussian distributed.</p>
 <ul class="simple">
 <li><p>very large updates or errors that invalidate the Gaussian assumption may break the math and degrade model performance</p></li>
 </ul>
@@ -859,18 +863,18 @@ Correct each ensemble member using the Kalman gain and the observation misfit.</
 </section>
 <section id="general-enkf-workflow-summary">
 <h2>General EnKF Workflow Summary<a class="headerlink" href="#general-enkf-workflow-summary" title="Permalink to this heading">#</a></h2>
-<p>The salient aspects of Ensemble Kalman Filter (EnKF) includes,</p>
+<p>The salient aspects of <a class="reference internal" href="GeostatsPy_glossary_e_m.html#ensemble-kalman-filter"><span class="std std-doc">Ensemble Kalman Filter</span></a> (EnKF) includes,</p>
 <ul class="simple">
 <li><p>represents uncertainty with ensembles</p></li>
-<li><p>propagates uncertainty through a forward model</p></li>
-<li><p>compares predictions with observations</p></li>
-<li><p>updates realizations using covariance relationships</p></li>
-<li><p>sequentially improves estimates as new data arrive</p></li>
+<li><p>propagates uncertainty through a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#forward-model"><span class="std std-doc">forward model</span></a></p></li>
+<li><p>compares <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prediction"><span class="std std-doc">prediction</span></a>s with observations</p></li>
+<li><p>updates <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> using <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> relationships</p></li>
+<li><p>sequentially improves estimates as new <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> arrive</p></li>
 </ul>
 </section>
 <section id="physics-model">
 <h2>Physics Model<a class="headerlink" href="#physics-model" title="Permalink to this heading">#</a></h2>
-<p>For our demonstration we have a simple, single phase hydrocarbon production problem. For this problem we have a physics-based deterministic model for forward modeling based on conservation of mass and momentum.</p>
+<p>For our demonstration we have a simple, single phase hydrocarbon production problem. For this problem we have a physics-based <a class="reference internal" href="GeostatsPy_glossary_a_d.html#deterministic-model"><span class="std std-doc">deterministic model</span></a> for forward modeling based on conservation of mass and momentum.</p>
 <p>The mathematical foundation for multiphase subsurface flow rests on a set of coupled, nonlinear partial differential equations (PDEs).</p>
 <section id="continuity-equation-conservation-of-mass">
 <h3>Continuity Equation (Conservation of Mass)<a class="headerlink" href="#continuity-equation-conservation-of-mass" title="Permalink to this heading">#</a></h3>
@@ -895,10 +899,10 @@ Correct each ensemble member using the Kalman gain and the observation misfit.</
 <p>where,</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(p_p\)</span> : pressure of phase <span class="math notranslate nohighlight">\(p\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(S_p\)</span> : saturation of phase <span class="math notranslate nohighlight">\(p\)</span> (e.g., oil, gas, water)</p></li>
-<li><p><span class="math notranslate nohighlight">\(\phi\)</span> : porosity of the rock</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_p\)</span> : <a class="reference internal" href="GeostatsPy_glossary_n_s.html#saturation"><span class="std std-doc">saturation</span></a> of phase <span class="math notranslate nohighlight">\(p\)</span> (e.g., oil, gas, water)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\phi\)</span> : <a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a> of the rock</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mathbf{v}_p\)</span> : Darcy velocity</p></li>
-<li><p><span class="math notranslate nohighlight">\(k\)</span> : absolute permeability</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> : absolute <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a></p></li>
 <li><p><span class="math notranslate nohighlight">\(k_{rp}\)</span> : relative permeability</p></li>
 <li><p><span class="math notranslate nohighlight">\(\mu_p\)</span> : fluid viscosity</p></li>
 <li><p><span class="math notranslate nohighlight">\(\rho_p\)</span> : fluid density</p></li>
@@ -910,7 +914,7 @@ Correct each ensemble member using the Kalman gain and the observation misfit.</
 </section>
 <section id="ensemble-kalman-filtering-enkf-for-estimating-permeability-from-pressure-observations">
 <h2>Ensemble Kalman Filtering (EnKF) for Estimating Permeability from Pressure Observations<a class="headerlink" href="#ensemble-kalman-filtering-enkf-for-estimating-permeability-from-pressure-observations" title="Permalink to this heading">#</a></h2>
-<p>In this demonstration, we use the Ensemble Kalman Filter (EnKF) to estimate a single unknown permeability value from noisy pressure observations collected through time.</p>
+<p>In this demonstration, we use the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#ensemble-kalman-filter"><span class="std std-doc">Ensemble Kalman Filter</span></a> (EnKF) to estimate a single unknown <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> value from noisy pressure observations collected through time.</p>
 <figure style="text-align: center;">
   <img src="_static/history/problem.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;"> The simple inversion with a single cell model. Inversion for a single permeability model given constrained production flow rates and observed pressure over time.
@@ -918,11 +922,11 @@ Correct each ensemble member using the Kalman gain and the observation misfit.</
 </figure>
 <p>The workflow includes,</p>
 <ol class="arabic simple">
-<li><p>Define the unknown model parameter</p></li>
-<li><p>Generate an ensemble of permeability realizations</p></li>
+<li><p>Define the unknown <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-parameter"><span class="std std-doc">model parameter</span></a></p></li>
+<li><p>Generate an ensemble of permeability <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a></p></li>
 <li><p>Forecast pressure responses for each ensemble member</p></li>
 <li><p>Generate noisy observations</p></li>
-<li><p>Compute ensemble statistics</p></li>
+<li><p>Compute ensemble <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a></p></li>
 <li><p>Compute the Kalman gain</p></li>
 <li><p>Update the permeability ensemble</p></li>
 <li><p>Repeat sequentially through time</p></li>
@@ -961,13 +965,13 @@ P_t^{obs} = \frac{q_t}{k_{true}} + \epsilon_t
 </section>
 <section id="compute-ensemble-statistics">
 <h3>5. Compute ensemble statistics<a class="headerlink" href="#compute-ensemble-statistics" title="Permalink to this heading">#</a></h3>
-<p>Compute statistics from the ensemble of parameters and predicted pressures,</p>
+<p>Compute <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a>s from the ensemble of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s and predicted pressures,</p>
 <div class="math notranslate nohighlight">
 \[
 \bar{k}, \quad \bar{\hat{P}}_t
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\bar{k}\)</span> is the ensemble mean permeability and <span class="math notranslate nohighlight">\(\bar{\hat{P}}_t\)</span> is the ensemble mean predicted pressure at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
-<p>The cross-covariance is then computed as,</p>
+<p>where <span class="math notranslate nohighlight">\(\bar{k}\)</span> is the ensemble <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> permeability and <span class="math notranslate nohighlight">\(\bar{\hat{P}}_t\)</span> is the ensemble mean predicted pressure at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>The cross-<a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> is then computed as,</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{C}_{k\hat{P},t}
@@ -984,11 +988,11 @@ K_t =
 \frac{\mathbf{C}_{k\hat{P},t}}
 {\sigma^2_{\hat{P}_t} + R_t}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(K_t\)</span> is the Kalman gain at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}_{k\hat{P},t}\)</span> is the covariance between permeability and predicted pressure at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\hat{P}_t}\)</span> is the variance of the predicted pressure ensemble at time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(R_t\)</span> is the observation error variance at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(K_t\)</span> is the Kalman gain at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\mathbf{C}_{k\hat{P},t}\)</span> is the covariance between permeability and predicted pressure at time <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\hat{P}_t}\)</span> is the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a> of the predicted pressure ensemble at time <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(R_t\)</span> is the observation <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a> variance at time <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbf{C}_{k\hat{P},t}\)</span> quantifies how variations in permeability explain variations in predicted pressure</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sigma^2_{\hat{P}_t}\)</span> represents the spread (uncertainty) of the predicted pressure ensemble</p></li>
-<li><p><span class="math notranslate nohighlight">\(R_t\)</span> represents measurement noise in the observed pressure data</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_t\)</span> represents measurement noise in the observed pressure <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a></p></li>
 </ul>
 <p>This ratio determines how strongly the observation at time <span class="math notranslate nohighlight">\(t\)</span> will adjust the permeability ensemble.</p>
 </section>
@@ -1007,12 +1011,12 @@ k^{(\ell)} \leftarrow k^{(\ell)} + K_t \left(P_t^{obs,(\ell)} - \hat{P}_t^{(\ell
 </section>
 <section id="darcys-law-1-cell-form-used-in-this-enkf-example">
 <h2>Darcy’s Law (1-cell form used in this EnKF example)<a class="headerlink" href="#darcys-law-1-cell-form-used-in-this-enkf-example" title="Permalink to this heading">#</a></h2>
-<p>In this simplified 1-cell system, we relate flow, pressure, and permeability using Darcy’s law,</p>
+<p>In this simplified 1-cell system, we relate flow, pressure, and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> using Darcy’s law,</p>
 <div class="math notranslate nohighlight">
 \[
 q_t = k \, A \, \frac{\Delta P_t}{L}
 \]</div>
-<p>Rearranged to express pressure (as used in the EnKF forward model),</p>
+<p>Rearranged to express pressure (as used in the EnKF <a class="reference internal" href="GeostatsPy_glossary_e_m.html#forward-model"><span class="std std-doc">forward model</span></a>),</p>
 <div class="math notranslate nohighlight">
 \[
 P_t = \frac{q_t L}{k A}
@@ -1032,7 +1036,7 @@ P_t = \frac{q_t}{k}
 <li><p><span class="math notranslate nohighlight">\(q_t\)</span> = flow rate at time <span class="math notranslate nohighlight">\(t\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(P_t\)</span> = pressure response at time <span class="math notranslate nohighlight">\(t\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\Delta P_t\)</span> = pressure drop across the cell</p></li>
-<li><p><span class="math notranslate nohighlight">\(k\)</span> = permeability (unknown parameter)</p></li>
+<li><p><span class="math notranslate nohighlight">\(k\)</span> = permeability (unknown <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>)</p></li>
 <li><p><span class="math notranslate nohighlight">\(A\)</span> = cross-sectional area</p></li>
 <li><p><span class="math notranslate nohighlight">\(L\)</span> = length of the cell</p></li>
 <li><p><span class="math notranslate nohighlight">\(\hat{P}_t^{(\ell)}\)</span> = predicted pressure from ensemble member <span class="math notranslate nohighlight">\(\ell\)</span></p></li>
@@ -1057,7 +1061,7 @@ k \rightarrow P_t
 <li><p>A single scalar parameter (<span class="math notranslate nohighlight">\(k\)</span>) is sufficient to explain all observations</p></li>
 <li><p>All uncertainty enters through permeability only (no model structural uncertainty)</p></li>
 <li><p>Each observation time provides independent information about the same static parameter</p></li>
-<li><p>The EnKF update progressively reduces uncertainty in <span class="math notranslate nohighlight">\(k\)</span> as more pressure data are assimilated</p></li>
+<li><p>The EnKF update progressively reduces uncertainty in <span class="math notranslate nohighlight">\(k\)</span> as more pressure <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> are assimilated</p></li>
 </ul>
 <p>This simplified Darcy formulation turns the subsurface flow problem into a clean inverse problem:</p>
 <ul class="simple">
@@ -1082,17 +1086,17 @@ k \rightarrow P_t
 </section>
 <section id="define-functions">
 <h2>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h2>
-<p>These are the fundamental functions required to calculate a multiple point simulation (MPS) realization, including,</p>
+<p>These are the fundamental functions required to calculate a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#multiple-point-simulation"><span class="std std-doc">multiple point simulation</span></a> (MPS) realization, including,</p>
 <ul class="simple">
-<li><p><strong>build_synthetic_pressure_dataset</strong> - build a simple synthetic pressure dataset given input flow rates (<span class="math notranslate nohighlight">\(\frac{m^3}{s}\)</span>), true permeability (<span class="math notranslate nohighlight">\(m^2\)</span>), and permeability error (<span class="math notranslate nohighlight">\(m^4\)</span>), fluid dynamic viscosity (<span class="math notranslate nohighlight">\(\mu\)</span>) (<span class="math notranslate nohighlight">\(Pa \cdot s\)</span>), length of flow path (<span class="math notranslate nohighlight">\(m\)</span>), cross sectional area (<span class="math notranslate nohighlight">\(m^2\)</span>)</p></li>
-<li><p><strong>generate_initial_ensemble</strong> - scan the training image and find data event matches, return the matches and frequencies of each facies at the matches with the option to plot the matches (red dots) over the training image</p></li>
-<li><p><strong>ensemble_mean</strong> - vectorized code for scanning the training image for data event matches, without visualization as a speed up for simulating all previous nodes before the current visualized node</p></li>
+<li><p><strong>build_synthetic_pressure_dataset</strong> - build a simple synthetic pressure dataset given input flow rates (<span class="math notranslate nohighlight">\(\frac{m^3}{s}\)</span>), true <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> (<span class="math notranslate nohighlight">\(m^2\)</span>), and permeability <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a> (<span class="math notranslate nohighlight">\(m^4\)</span>), fluid dynamic viscosity (<span class="math notranslate nohighlight">\(\mu\)</span>) (<span class="math notranslate nohighlight">\(Pa \cdot s\)</span>), length of flow path (<span class="math notranslate nohighlight">\(m\)</span>), cross sectional area (<span class="math notranslate nohighlight">\(m^2\)</span>)</p></li>
+<li><p><strong>generate_initial_ensemble</strong> - scan the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#training-image"><span class="std std-doc">training image</span></a> and find data event matches, return the matches and frequencies of each facies at the matches with the option to plot the matches (red dots) over the training image</p></li>
+<li><p><strong>ensemble_mean</strong> - vectorized code for scanning the training image for <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> event matches, without visualization as a speed up for simulating all previous nodes before the current visualized node</p></li>
 </ul>
 <p>Along with convenience functions,</p>
 <ul class="simple">
-<li><p><strong>ensemble_variance</strong> - add data to simulation model, and include any number of truth values to mimic a partially completed simulation if computational time is too long for a complete simulated realization</p></li>
-<li><p><strong>ensemble_covariance, covariance_PP, covariance_qP</strong> - plot the simulation model with the new simulated realization added</p></li>
-<li><p><strong>compute_kalman_gain</strong> - plot the conditional PDF for facies given the data event and training image as a pie plot</p></li>
+<li><p><strong>ensemble_variance</strong> - add data to simulation model, and include any number of truth values to mimic a partially completed simulation if computational time is too long for a complete simulated <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a></p></li>
+<li><p><strong>ensemble_covariance, covariance_PP, covariance_qP</strong> - plot the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a> model with the new simulated realization added</p></li>
+<li><p><strong>compute_kalman_gain</strong> - plot the conditional PDF for <a class="reference internal" href="GeostatsPy_glossary_e_m.html#facies"><span class="std std-doc">facies</span></a> given the data event and training image as a pie plot</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1161,8 +1165,8 @@ k \rightarrow P_t
 </section>
 <section id="synthetic-enkf-problem">
 <h2>Synthetic EnKF Problem<a class="headerlink" href="#synthetic-enkf-problem" title="Permalink to this heading">#</a></h2>
-<p>The following code constructs a simple synthetic production dataset using a prescribed flow rate and a hidden “true” porosity/permeability field (used to generate observations but unknown to the EnKF workflow).</p>
-<p>To ensure consistency of units, all quantities are expressed in the International System of Units (SI). The table below summarizes variables and typical values used in this demonstration.</p>
+<p>The following code constructs a simple synthetic production dataset using a prescribed flow rate and a hidden “true” porosity/<a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> field (used to generate observations but unknown to the EnKF workflow).</p>
+<p>To ensure consistency of units, all quantities are expressed in the International System of Units (SI). The table below summarizes <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variable"><span class="std std-doc">variable</span></a>s and typical values used in this demonstration.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Quantity</p></th>
@@ -1225,7 +1229,7 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 <p>where all terms are defined in the table above.</p>
 <p>We make the following assumptions,</p>
 <ul class="simple">
-<li><p>porosity is treated as constant (no storage heterogeneity), and storage effects are neglected under steady-state conditions</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a> is treated as constant (no storage <a class="reference internal" href="GeostatsPy_glossary_e_m.html#heterogeneity"><span class="std std-doc">heterogeneity</span></a>), and storage effects are neglected under steady-state conditions</p></li>
 <li><p>flow is controlled by transmissibility rather than compressibility or accumulation</p></li>
 <li><p><span class="math notranslate nohighlight">\(k_{true}\)</span> is the true permeability of the single-cell system, used to generate synthetic observations <span class="math notranslate nohighlight">\(P_{obs}(t)\)</span>, but is unknown to the EnKF and estimated through the assimilation cycle</p></li>
 </ul>
@@ -1274,24 +1278,24 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 </section>
 <section id="assign-prior-model">
 <h2>Assign Prior Model<a class="headerlink" href="#assign-prior-model" title="Permalink to this heading">#</a></h2>
-<p>Generate a prior model as an ensemble of permeability realizations.</p>
-<p>We assume a lognormal prior distribution for permeability, defined such that,</p>
+<p>Generate a prior model as an ensemble of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a>.</p>
+<p>We assume a lognormal <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prior"><span class="std std-doc">prior</span></a> distribution for permeability, defined such that,</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(lnk \sim N(μ,σ^2)\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\mu = ln(1.2 \times 10^{−13})\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\sigma = 0.5\)</span></p></li>
 </ul>
-<p>Each ensemble member represents a plausible realization of the subsurface, including,</p>
+<p>Each ensemble member represents a plausible <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> of the subsurface, including,</p>
 <ul class="simple">
-<li><p>spatially variable permeability fields</p></li>
-<li><p>associated porosity realizations (if modeled jointly or as correlated uncertainty)</p></li>
-<li><p>prior geological uncertainty prior to data assimilation</p></li>
+<li><p>spatially <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variable"><span class="std std-doc">variable</span></a> permeability fields</p></li>
+<li><p>associated <a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a> realizations (if modeled jointly or as correlated uncertainty)</p></li>
+<li><p>prior geological uncertainty prior to <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> assimilation</p></li>
 </ul>
-<p>This ensemble defines the prior uncertainty model before incorporation of historical production data.</p>
+<p>This ensemble defines the prior uncertainty model before incorporation of historical <a class="reference internal" href="GeostatsPy_glossary_n_s.html#production-data"><span class="std std-doc">production data</span></a>.</p>
 <ul class="simple">
 <li><p>it is important to emphasize that this prior represents uncertainty in the Earth model, not randomness in the physics.</p></li>
 </ul>
-<p>Finally, in the Ensemble Kalman Filter (EnKF), the full ensemble is updated simultaneously at each assimilation step, with each member being adjusted based on the data mismatch and ensemble-derived covariances.</p>
+<p>Finally, in the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#ensemble-kalman-filter"><span class="std std-doc">Ensemble Kalman Filter</span></a> (EnKF), the full ensemble is updated simultaneously at each assimilation step, with each member being adjusted based on the data mismatch and ensemble-derived <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ne</span> <span class="o">=</span> <span class="mi">1000</span>                                                     <span class="c1"># set number of samples in ensemble</span>
@@ -1326,8 +1330,8 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 <h2>EnKF Assimilation Cycles Over Time Steps<a class="headerlink" href="#enkf-assimilation-cycles-over-time-steps" title="Permalink to this heading">#</a></h2>
 <p>We have all the required components:</p>
 <ul class="simple">
-<li><p>physically plausible pressure observations, <span class="math notranslate nohighlight">\(P_{obs}(t)\)</span>, generated over time from a hidden true permeability field and a prescribed flow-rate schedule</p></li>
-<li><p>A prior ensemble of permeability realizations initialized at time <span class="math notranslate nohighlight">\(t=0\)</span>, denoted <span class="math notranslate nohighlight">\(k^{(ℓ)}(0)\)</span></p></li>
+<li><p>physically plausible pressure observations, <span class="math notranslate nohighlight">\(P_{obs}(t)\)</span>, generated over time from a hidden true <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> field and a prescribed flow-rate schedule</p></li>
+<li><p>A <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prior"><span class="std std-doc">prior</span></a> ensemble of permeability <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> initialized at time <span class="math notranslate nohighlight">\(t=0\)</span>, denoted <span class="math notranslate nohighlight">\(k^{(ℓ)}(0)\)</span></p></li>
 <li><p>A set of functions defining each step of the EnKF assimilation cycle</p></li>
 </ul>
 <p>Below is the implementation of the assimilation loop over all time steps.</p>
@@ -1374,12 +1378,12 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 </section>
 <section id="visualize-enkf-assimilation-cycles-over-time-steps">
 <h2>Visualize EnKF Assimilation Cycles Over Time Steps<a class="headerlink" href="#visualize-enkf-assimilation-cycles-over-time-steps" title="Permalink to this heading">#</a></h2>
-<p>We now visualize the evolution of the permeability ensemble across all assimilation cycles over time.</p>
+<p>We now visualize the evolution of the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> ensemble across all assimilation cycles over time.</p>
 <p>The visualization includes,</p>
 <ul class="simple">
 <li><p>permeability ensemble evolution over time</p></li>
 <li><p>true (hidden) permeability field (reference model)</p></li>
-<li><p>ensemble mean permeability at each time step</p></li>
+<li><p>ensemble <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> permeability at each time step</p></li>
 </ul>
 <p>This allows direct assessment of,</p>
 <ul class="simple">
@@ -1438,12 +1442,12 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 </section>
 <section id="visualize-permeability-ensemble-distributions-over-assimilation-cycles">
 <h2>Visualize Permeability Ensemble Distributions Over Assimilation Cycles<a class="headerlink" href="#visualize-permeability-ensemble-distributions-over-assimilation-cycles" title="Permalink to this heading">#</a></h2>
-<p>We now select four representative assimilation time steps and visualize histograms of the permeability ensemble at each selected time.</p>
+<p>We now select four representative assimilation time steps and visualize <a class="reference internal" href="GeostatsPy_glossary_e_m.html#histogram"><span class="std std-doc">histogram</span></a>s of the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> ensemble at each selected time.</p>
 <p>This allows comparison of,</p>
 <ul class="simple">
-<li><p>prior distribution shape at early time steps</p></li>
-<li><p>progressive Bayesian updating through assimilation cycles</p></li>
-<li><p>evolution of ensemble spread and skewness over time</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#prior"><span class="std std-doc">prior</span></a> distribution shape at early time steps</p></li>
+<li><p>progressive <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bayesian-updating"><span class="std std-doc">Bayesian updating</span></a> through assimilation cycles</p></li>
+<li><p>evolution of ensemble spread and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#skewness"><span class="std std-doc">skewness</span></a> over time</p></li>
 <li><p>convergence behavior toward the true permeability distribution</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1479,7 +1483,7 @@ P_{obs}(t) = \frac{q(t) \cdot \mu \cdot L}{k_{true} \cdot A}
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This is a basic demonstration of history matching using the Ensemble Kalman Filter (EnKF).</p>
+<p>This is a basic demonstration of <a class="reference internal" href="GeostatsPy_glossary_e_m.html#history-matching"><span class="std std-doc">history matching</span></a> using the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#ensemble-kalman-filter"><span class="std std-doc">Ensemble Kalman Filter</span></a> (EnKF).</p>
 <ul class="simple">
 <li><p>in an effort to provide a maximally accessible illustration of the full workflow, I have intentionally used a highly simplified single-cell model.
 Nevertheless, I believe this provides a clear and useful introduction, with all key steps and calculations explicitly shown.</p></li>
@@ -1495,20 +1499,20 @@ Nevertheless, I believe this provides a clear and useful introduction, with all 
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 90 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 90 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1664,6 +1668,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

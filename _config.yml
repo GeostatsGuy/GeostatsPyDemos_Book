@@ -11,38 +11,72 @@ copyright: "2024"  # Copyright year to be placed in the footer
 # Execution settings
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
+
 execute:
   execute_notebooks: force          # Must be one of ("auto", "force", "cache", "off")
-  cache                     : ""    # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
-  exclude_patterns          : []    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
-  timeout                   : 3000  # The maximum time (in seconds) each notebook cell is allowed to run.
-  run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
-                                    # otherwise the notebook's parent directory will be the cwd.
-  allow_errors              : false # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
-  stderr_output             : show  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
+  cache                     : ""     # A path to the jupyter cache that will be used to store execution artifacts
+  exclude_patterns          : []     # A list of patterns to skip in execution
+  timeout                   : 3000   # Maximum execution time (seconds)
+  run_in_temp               : false  # Execute notebooks in their source directory
+  allow_errors              : false  # Stop if a notebook cell raises an error
+  stderr_output             : show   # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
 
-# Define the name of the latex output file for PDF builds
+
+#######################################################################################
+# LaTeX settings
+
 latex:
   latex_documents:
     targetname: book.tex
 
-# Add a bibtex file so that we can create citations
+
+#######################################################################################
+# Bibliography settings
+
 bibtex_bibfiles:
   - references.bib
 
-# Information about where the book exists on the web
-repository:
-  url: https://github.com/executablebooks/GeostatsPyDemos_Book/  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
 
-# Add GitHub buttons to your book
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+#######################################################################################
+# Repository settings
+
+repository:
+  url: https://github.com/executablebooks/GeostatsPyDemos_Book/
+  path_to_book: docs
+  branch: master
+
+
+#######################################################################################
+# HTML settings
+
 html:
   use_issues_button: true
   use_repository_button: true
 
-# Enable automatic anchor generation for all headings up to level 4 (####)
+  extra_footer: |
+    <div style="
+      margin-top:1em;
+      text-align:center;
+      width:100%;
+      ">
+      <img src="_static/images/backcover.png"
+           alt="Applied Geostatistics in Python back cover"
+           style="
+             display:block;
+             margin-left: 25px;
+             margin-right:auto;
+             width:77.5%;
+             max-width:775px;
+           ">
+    </div>
+
+
+#######################################################################################
+# Sphinx configuration
+# Custom templates and automatic heading anchors
+
+# Custom templates
 sphinx:
   config:
+    # Enable automatic anchor generation for all headings up to level 4 (####)
     myst_heading_anchors: 4
