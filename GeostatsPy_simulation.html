@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -444,7 +448,7 @@ document.write(`
 <section id="simulation">
 <h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -464,16 +468,16 @@ document.write(`
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/3cLqK3lR56Y?si=3WhHX5QOZrrtlgAI">Stochastic Simulation</a>. For your convenience here’s a summary of salient points.</p>
 <section id="estimation-vs-simulation">
 <h2>Estimation vs. Simulation<a class="headerlink" href="#estimation-vs-simulation" title="Permalink to this heading">#</a></h2>
-<p>Let’s start by comparing spatial estimation and simulation,</p>
-<p><strong>Estimation</strong>:</p>
+<p>Let’s start by comparing <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-estimation"><span class="std std-doc">spatial estimation</span></a> and simulation,</p>
+<p><strong><a class="reference internal" href="GeostatsPy_glossary_e_m.html#estimation"><span class="std std-doc">Estimation</span></a></strong>:</p>
 <ul class="simple">
-<li><p>honors local data</p></li>
+<li><p>honors local <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a></p></li>
 <li><p>locally accurate, primary goal of estimation is 1 estimate!</p></li>
-<li><p>too smooth, appropriate for visualizing trends</p></li>
-<li><p>too smooth, inappropriate for flow simulation</p></li>
+<li><p>too smooth, appropriate for visualizing <a class="reference internal" href="GeostatsPy_glossary_t_z.html#trend"><span class="std std-doc">trend</span></a>s</p></li>
+<li><p>too smooth, inappropriate for flow <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a></p></li>
 <li><p>one model, no assessment of global uncertainty</p></li>
 </ul>
-<p>Let’s visualize a population, sample and estimation model. Note the estimation model is too smooth, too much spatial continuity and too little variance.</p>
+<p>Let’s visualize a population, <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> and estimation model. Note the estimation model is too smooth, too much <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a> and too little <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a>.</p>
 <figure style="text-align: center;">
   <img src="_static/simulation/estimation.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Spatial dataset, truth, and an estimation model (left), estimation model and truth histograms (center) and experimental variograms (right).</figcaption>
@@ -481,12 +485,12 @@ document.write(`
 <p><strong>Simulation</strong>:</p>
 <ul class="simple">
 <li><p>honors local data</p></li>
-<li><p>sacrifices local accuracy, reproduces histogram</p></li>
+<li><p>sacrifices <a class="reference internal" href="GeostatsPy_glossary_e_m.html#local-accuracy"><span class="std std-doc">local accuracy</span></a>, reproduces <a class="reference internal" href="GeostatsPy_glossary_e_m.html#histogram"><span class="std std-doc">histogram</span></a></p></li>
 <li><p>honors spatial variability, appropriate for flow simulation</p></li>
-<li><p>alternative realizations, change random number seed</p></li>
-<li><p>many models (realizations), assessment of global uncertainty</p></li>
+<li><p>alternative <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a>, change random number seed</p></li>
+<li><p>many models (<a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a>s), assessment of global uncertainty</p></li>
 </ul>
-<p>Now let’s visualize a population, sample and simulation model. Note the simulated realizations are locally less accurate, but are not too smooth, the spatial continuity and variance are correct.</p>
+<p>Now let’s visualize a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#population"><span class="std std-doc">population</span></a>, sample and simulation model. Note the simulated realizations are locally less accurate, but are not too smooth, the spatial continuity and variance are correct.</p>
 <figure style="text-align: center;">
   <img src="_static/simulation/simulation.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Spatial dataset, truth, and an simulation model (left), simulation model and truth histograms (center) and experimental variograms (right) for two realizations (above and below).</figcaption>
@@ -502,20 +506,20 @@ document.write(`
 <h2>Spatial Simulation<a class="headerlink" href="#spatial-simulation" title="Permalink to this heading">#</a></h2>
 <p>This method is critical for:</p>
 <ol class="arabic simple">
-<li><p>Prediction away from wells, e.g. pre-drill assessments, with uncertainty</p></li>
-<li><p>Spatial uncertainty modeling.</p></li>
-<li><p>Heterogeneity realizations ready for application to the transfer function.</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#prediction"><span class="std std-doc">Prediction</span></a> away from wells, e.g. pre-drill assessments, with uncertainty</p></li>
+<li><p>Spatial <a class="reference internal" href="GeostatsPy_glossary_t_z.html#uncertainty-modeling"><span class="std std-doc">uncertainty modeling</span></a>.</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_e_m.html#heterogeneity"><span class="std std-doc">Heterogeneity</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> ready for application to the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#transfer-function"><span class="std std-doc">transfer function</span></a>.</p></li>
 </ol>
 </section>
 <section id="sequential-gaussian-simulation">
 <h2>Sequential Gaussian Simulation<a class="headerlink" href="#sequential-gaussian-simulation" title="Permalink to this heading">#</a></h2>
-<p>A simulation method to calculate realizations for spatial models based on the following principles,</p>
+<p>A <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a> method to calculate <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> for spatial models based on the following principles,</p>
 <ul class="simple">
-<li><p><strong>Sequential</strong> - adding the previously simulated values to the data to ensure the covariance is correct between the simulated values</p></li>
-<li><p><strong>Gaussian</strong> - transformation to Gaussian space so that the local distributions of uncertainty are known given the kriging mean and kriging variance, and the global distribution is reproduced after back-transformation to the original distribution</p></li>
-<li><p><strong>Simulation</strong> - with Monte Carlo simulation from the local distributions to add in the missing variance and to calculate multiple, equiprobable realizations. The random seed determines the individual Monte Carlo simulations along with the random path for the sequential simulation.</p></li>
+<li><p><strong>Sequential</strong> - adding the previously simulated values to the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> to ensure the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#covariance"><span class="std std-doc">covariance</span></a> is correct between the simulated values</p></li>
+<li><p><strong>Gaussian</strong> - transformation to Gaussian space so that the local distributions of uncertainty are known given the kriging mean and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kriging-variance"><span class="std std-doc">kriging variance</span></a>, and the global distribution is reproduced after back-transformation to the original distribution</p></li>
+<li><p><strong>Simulation</strong> - with <a class="reference internal" href="GeostatsPy_glossary_e_m.html#monte-carlo-simulation"><span class="std std-doc">Monte Carlo simulation</span></a> from the local distributions to add in the missing <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a> and to calculate multiple, equiprobable realizations. The random seed determines the individual Monte Carlo simulations along with the random path for the sequential simulation.</p></li>
 </ul>
-<p>Here are all the steps for sequential Gaussian simulation,</p>
+<p>Here are all the steps for <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sequential-gaussian-simulation"><span class="std std-doc">sequential Gaussian simulation</span></a>,</p>
 <ol class="arabic simple">
 <li><p>Establish grid network and coordinate system, flatten the system including flattening folds and restoring faults</p></li>
 </ol>
@@ -524,7 +528,7 @@ document.write(`
   <figcaption style="text-align: center;">Original data and grid (above) and flattened grid (below).</figcaption>
 </figure>
 <ol class="arabic simple" start="2">
-<li><p>Assign data to the grid, account for scale change from data to model grid cells</p></li>
+<li><p>Assign data to the grid, account for scale change from data to <a class="reference internal" href="GeostatsPy_glossary_e_m.html#model-grid"><span class="std std-doc">model grid</span></a> cells</p></li>
 </ol>
 <figure style="text-align: center;">
   <img src="_static/simulation/sim2.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -538,7 +542,7 @@ document.write(`
   <figcaption style="text-align: center;">Distribution and flattened grid with data assigned to grid cells transformed to Gaussian with a mean of 0.0 and variance of 1.0.</figcaption>
 </figure>
 <ol class="arabic simple" start="4">
-<li><p>Calculate and model the variogram of the Gaussian transformed data</p></li>
+<li><p>Calculate and model the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> of the Gaussian transformed data</p></li>
 </ol>
 <figure style="text-align: center;">
   <img src="_static/simulation/sim4.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -553,14 +557,14 @@ document.write(`
 </figure>
 <ul class="simple">
 <li><p>find nearby data and previously simulated grid nodes</p></li>
-<li><p>construct the conditional distribution by kriging, mean as kriging estimate and variance as kriging variance</p></li>
+<li><p>construct the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#conditional-distribution"><span class="std std-doc">conditional distribution</span></a> by <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kriging"><span class="std std-doc">kriging</span></a>, mean as kriging estimate and variance as kriging variance</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/simulation/sim6.png" style="display: block; margin: 0 auto; width: 80%;">
   <figcaption style="text-align: center;">Flattened grid with data assigned to grid cells transformed to Gaussian with random path over cell without data, and simple kriging to calculate the local distribution of uncertainty at the first location on the random path.</figcaption>
 </figure>
 <ul class="simple">
-<li><p>Monte Carlo simulate a realization from the conditional distribution</p></li>
+<li><p>Monte Carlo simulate a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> from the conditional distribution</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/simulation/sim7.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -578,7 +582,7 @@ document.write(`
 </ol>
 <ul class="simple">
 <li><p>data at the data locations?</p></li>
-<li><p>honor the histogram, <span class="math notranslate nohighlight">\(N\left[0,1\right]\)</span> standard normal with a mean of zero and a variance of one?</p></li>
+<li><p>honor the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#histogram"><span class="std std-doc">histogram</span></a>, <span class="math notranslate nohighlight">\(N\left[0,1\right]\)</span> standard normal with a mean of zero and a variance of one?</p></li>
 <li><p>and honor the variogram?</p></li>
 </ul>
 <ol class="arabic simple" start="7">
@@ -589,14 +593,14 @@ document.write(`
 <ul class="simple">
 <li><p>geological concepts?</p></li>
 <li><p>geophysical data?</p></li>
-<li><p>historical production data?</p></li>
+<li><p>historical <a class="reference internal" href="GeostatsPy_glossary_n_s.html#production-data"><span class="std std-doc">production data</span></a>?</p></li>
 </ul>
 <ol class="arabic simple" start="10">
 <li><p>Calculate multiple realizations by repeating steps 5 through 9</p></li>
 </ol>
 <p>Here are the critical steps of the sequential Gaussian simulation algorithm only,</p>
 <ol class="arabic simple">
-<li><p>Transform the data to Gaussian with a mean of 0.0 and variance of 1.0 (known as standard normal)</p></li>
+<li><p>Transform the data to Gaussian with a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> of 0.0 and variance of 1.0 (known as standard normal)</p></li>
 <li><p>Assign a random path over the model grid, at each grid location sequentially simulation (apply kriging to calculate the local CDF, then Monte Carlo simulate a local realization, and assign the local realization to the data)</p></li>
 <li><p>Back-transform the simulated values to the original data distribution</p></li>
 </ol>
@@ -648,7 +652,7 @@ document.write(`
 </section>
 <section id="declare-functions">
 <h2>Declare Functions<a class="headerlink" href="#declare-functions" title="Permalink to this heading">#</a></h2>
-<p>Here’s a convenience function for plotting variograms.</p>
+<p>Here’s a convenience function for plotting <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_grid</span><span class="p">():</span>
@@ -692,10 +696,10 @@ document.write(`
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<p>Here’s the command to load our comma delimited <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> file in to a Pandas’ <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
 <ul class="simple">
-<li><p>We will also extract a limited sample to reduce data density. This way we can observe more of the heterogeneity from the simulation with the spatial continuity model, rather than mostly data driven heterogeneity.</p></li>
-<li><p>By setting unconditional to True the data are shifted well outside the area of interest and are only used for the target reference distribution</p></li>
+<li><p>We will also extract a limited sample to reduce data density. This way we can observe more of the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#heterogeneity"><span class="std std-doc">heterogeneity</span></a> from the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a> with the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a> model, rather than mostly data driven heterogeneity.</p></li>
+<li><p>By setting unconditional to True the data are shifted well outside the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#area-of-interest"><span class="std std-doc">area of interest</span></a> and are only used for the target reference distribution</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -741,48 +745,48 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>300.0</td>
-      <td>100.0</td>
+      <td>60.0</td>
+      <td>299.0</td>
       <td>0.0</td>
-      <td>0.078503</td>
-      <td>0.539648</td>
-      <td>-0.616839</td>
+      <td>0.111198</td>
+      <td>2.762642</td>
+      <td>1.016188</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>710.0</td>
-      <td>789.0</td>
-      <td>1.0</td>
-      <td>0.102123</td>
-      <td>0.653171</td>
-      <td>-0.425916</td>
+      <td>110.0</td>
+      <td>229.0</td>
+      <td>0.0</td>
+      <td>0.091248</td>
+      <td>1.988193</td>
+      <td>0.687226</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>120.0</td>
-      <td>609.0</td>
-      <td>1.0</td>
-      <td>0.176310</td>
-      <td>197.658397</td>
-      <td>5.286540</td>
+      <td>610.0</td>
+      <td>519.0</td>
+      <td>0.0</td>
+      <td>0.092120</td>
+      <td>2.369140</td>
+      <td>0.862527</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>700.0</td>
-      <td>300.0</td>
-      <td>1.0</td>
-      <td>0.123652</td>
-      <td>11.746334</td>
-      <td>2.463541</td>
+      <td>610.0</td>
+      <td>189.0</td>
+      <td>0.0</td>
+      <td>0.118295</td>
+      <td>6.525972</td>
+      <td>1.875790</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>190.0</td>
-      <td>889.0</td>
+      <td>60.0</td>
+      <td>479.0</td>
       <td>1.0</td>
-      <td>0.151751</td>
-      <td>49.428282</td>
-      <td>3.900523</td>
+      <td>0.122624</td>
+      <td>4.143725</td>
+      <td>1.421595</td>
     </tr>
   </tbody>
 </table>
@@ -791,11 +795,11 @@ document.write(`
 </section>
 <section id="id1">
 <h2>Sequential Gaussian Simulation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p>Let’s jump right to building a variety of models with simulation and visualizing the results.  We will start with a test of 3 realizations.</p>
+<p>Let’s jump right to building a variety of models with <a class="reference internal" href="GeostatsPy_glossary_n_s.html#simulation"><span class="std std-doc">simulation</span></a> and visualizing the results.  We will start with a test of 3 <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a>.</p>
 <ul class="simple">
-<li><p>note, the data to standard Gaussian distribution (Gaussian with a mean of 0 and variance of 1) by normal score transform is performed in the sgsim algorithm.</p></li>
-<li><p>for brevity and visualization we are just “making up” the variogram model. For seuqential Gaussian simulation, variograms are calculated after normal score transform of the data.</p></li>
-<li><p>look at the realizations and check the histogram and variograms.</p></li>
+<li><p>note, the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> to standard <a class="reference internal" href="GeostatsPy_glossary_e_m.html#gaussian-distribution"><span class="std std-doc">Gaussian distribution</span></a> (Gaussian with a mean of 0 and <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a> of 1) by normal <a class="reference internal" href="GeostatsPy_glossary_n_s.html#score"><span class="std std-doc">score</span></a> transform is performed in the sgsim algorithm.</p></li>
+<li><p>for brevity and visualization we are just “making up” the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram-model"><span class="std std-doc">variogram model</span></a>. For seuqential Gaussian simulation, <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>s are calculated after normal score transform of the data.</p></li>
+<li><p>look at the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a>s and check the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#histogram"><span class="std std-doc">histogram</span></a> and variograms.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -840,13 +844,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/114d9266c1d7d5bdfcf6ee310b3f6b5e5671ed66c166f15768ca3c831642300f.png" src="_images/114d9266c1d7d5bdfcf6ee310b3f6b5e5671ed66c166f15768ca3c831642300f.png" />
+<img alt="_images/c6050c83aecc5838ea00c65fecd7efb2d8c692d6942c44c672f5f8b44c53b13f.png" src="_images/c6050c83aecc5838ea00c65fecd7efb2d8c692d6942c44c672f5f8b44c53b13f.png" />
 </div>
 </div>
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of sequential Gaussian simulation to calculate spatial heterogeneity realizations that honor the data, histogram and variogram. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>This was a basic demonstration of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sequential-gaussian-simulation"><span class="std std-doc">sequential Gaussian simulation</span></a> to calculate spatial <a class="reference internal" href="GeostatsPy_glossary_e_m.html#heterogeneity"><span class="std std-doc">heterogeneity</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> that honor the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a>, histogram and <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a>. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -857,20 +861,20 @@ document.write(`
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -991,6 +995,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

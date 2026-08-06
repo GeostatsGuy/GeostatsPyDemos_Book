@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -416,11 +420,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-centrality">Measures of Centrality</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-dispersion">Measures of Dispersion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tukey-outlier-test">Tukey Outlier Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-shape">Measures of Shape</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonparmetric-cumulative-distribution-functions-cdfs">Nonparmetric Cumulative Distribution Functions (CDFs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#included-univariate-statistics">Included Univariate Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
@@ -433,7 +433,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-law-average">Power Law Average</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Measures of Dispersion</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-dispersion">Measures of Dispersion</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-variance">Population Variance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-variance">Sample Variance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-standard-deviation">Population Standard Deviation</a></li>
@@ -445,7 +445,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-probability">Cumulative Probability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tukey-test-for-outliers">Tukey Test for Outliers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Measures of Shape</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-shape">Measures of Shape</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-s-mode-skewness">Pearson’s Mode Skewness</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-skew-3rd-central-moment">Population Skew, 3rd Central Moment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quartile-skew-coefficient">Quartile Skew Coefficient</a></li>
@@ -489,52 +489,45 @@ document.write(`
 <p>This chapter is a tutorial for / demonstration of <strong>Univariate Statistics</strong>.</p>
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/wAcbA2cIqec?si=4Pd5nqNbOUrBqIAO">Univariate Statistics</a>. For your convenience here’s a summary of salient points.</p>
 <p>Here’s a demonstration of calculation of univariate statistics in Python. This demonstration is part of the resources that I include for my courses in Spatial / Subsurface Data Analytics and Geostatistics at the Cockrell School of Engineering and Jackson School of Goesciences at the University of Texas at Austin.</p>
-<p>We will cover the following statistics:</p>
-<section id="measures-of-centrality">
-<h2>Measures of Centrality<a class="headerlink" href="#measures-of-centrality" title="Permalink to this heading">#</a></h2>
+<section id="included-univariate-statistics">
+<h2>Included Univariate Statistics<a class="headerlink" href="#included-univariate-statistics" title="Permalink to this heading">#</a></h2>
+<p>We cover the equations and codes to calculate the following <a class="reference internal" href="GeostatsPy_glossary_t_z.html#univariate"><span class="std std-doc">univariate</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a>:</p>
+<p>Measures of Centrality</p>
 <ul class="simple">
-<li><p>Arithmetic Average / Mean</p></li>
-<li><p>Median</p></li>
-<li><p>Mode (most frequent binned)</p></li>
-<li><p>Geometric Mean</p></li>
-<li><p>Harmonic Mean</p></li>
-<li><p>Power Law Average</p></li>
+<li><p>Arithmetic <a class="reference internal" href="GeostatsPy_glossary_a_d.html#average"><span class="std std-doc">Average</span></a> / Mean</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_e_m.html#median"><span class="std std-doc">Median</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_e_m.html#mode"><span class="std std-doc">Mode</span></a> (most frequent binned)</p></li>
+<li><p>Geometric <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">Mean</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_e_m.html#harmonic-mean"><span class="std std-doc">Harmonic Mean</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#power-law-average"><span class="std std-doc">Power Law Average</span></a></p></li>
 </ul>
-</section>
-<section id="measures-of-dispersion">
-<h2>Measures of Dispersion<a class="headerlink" href="#measures-of-dispersion" title="Permalink to this heading">#</a></h2>
+<p>Measures of Dispersion</p>
 <ul class="simple">
-<li><p>Population Variance</p></li>
-<li><p>Sample Variance</p></li>
-<li><p>Population Standard Deviation</p></li>
-<li><p>Sample Standard Deviation</p></li>
-<li><p>Range</p></li>
-<li><p>Percentile w. Tail Assumptions</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#population"><span class="std std-doc">Population</span></a> Variance</p></li>
+<li><p>Sample <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">Variance</span></a></p></li>
+<li><p>Population <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">Standard Deviation</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">Sample</span></a> Standard Deviation</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">Range</span></a></p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#percentile"><span class="std std-doc">Percentile</span></a> w. Tail Assumptions</p></li>
 <li><p>Interquartile Range</p></li>
 </ul>
-</section>
-<section id="tukey-outlier-test">
-<h2>Tukey Outlier Test<a class="headerlink" href="#tukey-outlier-test" title="Permalink to this heading">#</a></h2>
+<p>Tukey Outlier Test</p>
 <ul class="simple">
 <li><p>Lower Quartile/P25</p></li>
 <li><p>Upper Quartile/P75</p></li>
-<li><p>Interquartile Range</p></li>
+<li><p>Interquartile <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">Range</span></a></p></li>
 <li><p>Lower Fence</p></li>
 <li><p>Upper Fence</p></li>
 <li><p>Calculating Outliers</p></li>
 </ul>
-</section>
-<section id="measures-of-shape">
-<h2>Measures of Shape<a class="headerlink" href="#measures-of-shape" title="Permalink to this heading">#</a></h2>
+<p>Measures of Shape</p>
 <ul class="simple">
 <li><p>Skew</p></li>
-<li><p>Excess Kurtosis</p></li>
-<li><p>Pearson’ Mode Skewness</p></li>
+<li><p>Excess <a class="reference internal" href="GeostatsPy_glossary_e_m.html#kurtosis"><span class="std std-doc">Kurtosis</span></a></p></li>
+<li><p>Pearson’ Mode <a class="reference internal" href="GeostatsPy_glossary_n_s.html#skewness"><span class="std std-doc">Skewness</span></a></p></li>
 <li><p>Quartile Skew Coefficient</p></li>
 </ul>
-</section>
-<section id="nonparmetric-cumulative-distribution-functions-cdfs">
-<h2>Nonparmetric Cumulative Distribution Functions (CDFs)<a class="headerlink" href="#nonparmetric-cumulative-distribution-functions-cdfs" title="Permalink to this heading">#</a></h2>
+<p>Nonparmetric <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cumulative-distribution-function"><span class="std std-doc">Cumulative Distribution Function</span></a>s</p>
 <ul class="simple">
 <li><p>plotting a nonparametric CDF</p></li>
 <li><p>fitting a parametric distribution and plotting</p></li>
@@ -559,7 +552,7 @@ document.write(`
 </section>
 <section id="set-the-working-directory">
 <h2>Set the Working Directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
-<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time). Set this to your working directory, with the above mentioned data file.</p>
+<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time). Set this to your working directory, with the above mentioned <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> file.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;c:/PGE383&quot;)                                        # set the working directory</span>
@@ -570,16 +563,16 @@ document.write(`
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Let’s load the provided multivariate, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/2D_MV_200wells.csv">2D_MV_200wells.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
+<p>Let’s load the provided <a class="reference internal" href="GeostatsPy_glossary_e_m.html#multivariate"><span class="std std-doc">multivariate</span></a>, spatial dataset <a class="reference external" href="https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/2D_MV_200wells.csv">2D_MV_200wells.csv</a> available in my GeoDataSet repo. It is a comma delimited file with:</p>
 <ul class="simple">
 <li><p>X coordinate (m)</p></li>
 <li><p>Y coordinate (m)</p></li>
-<li><p>facies_threshold_0.3 facies (1 - shale, 2 - sand)</p></li>
-<li><p>porosity (%)</p></li>
-<li><p>permeability (<span class="math notranslate nohighlight">\(mD\)</span>)</p></li>
+<li><p>facies_threshold_0.3 <a class="reference internal" href="GeostatsPy_glossary_e_m.html#facies"><span class="std std-doc">facies</span></a> (1 - shale, 2 - sand)</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a> (%)</p></li>
+<li><p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> (<span class="math notranslate nohighlight">\(mD\)</span>)</p></li>
 <li><p>acoustic impedance (<span class="math notranslate nohighlight">\(\frac{kg}{m^3} \cdot \frac{m}{s} \cdot 10^6\)</span>).</p></li>
 </ul>
-<p>We load it with the pandas ‘read_csv’ function into a data frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
+<p>We load it with the pandas ‘read_csv’ function into a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> frame we called ‘df’ and then preview it to make sure it loaded correctly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/2D_MV_200wells.csv&quot;</span><span class="p">)</span> <span class="c1"># read a .csv file in as a DataFrame</span>
@@ -893,8 +886,8 @@ P50_x = F^{-1}_{x}(0.50)
 </div>
 </section>
 </section>
-<section id="id1">
-<h2>Measures of Dispersion<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<section id="measures-of-dispersion">
+<h2>Measures of Dispersion<a class="headerlink" href="#measures-of-dispersion" title="Permalink to this heading">#</a></h2>
 <section id="population-variance">
 <h3>Population Variance<a class="headerlink" href="#population-variance" title="Permalink to this heading">#</a></h3>
 <p>\begin{equation}
@@ -1039,7 +1032,7 @@ p = F_x(x)
 \]</div>
 <p>In the case of nonparametric distribution, this may be approximated by sorting a list and finding the number of values less than the value.</p>
 <ul class="simple">
-<li><p>a more robust method is to fit the CDF and use the parametric CDF expression of nonparametric CDF with interpolation</p></li>
+<li><p>a more robust method is to fit the CDF and use the parametric CDF expression of nonparametric CDF with <a class="reference internal" href="GeostatsPy_glossary_e_m.html#interpolation"><span class="std std-doc">interpolation</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1055,6 +1048,9 @@ p = F_x(x)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cumulative probability of porosity = 0.13 is 0.22.
 </pre></div>
 </div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -1067,7 +1063,7 @@ fence_{lower} = P_x(0.25) - 1.5 \times [P_x(0.75) - P_x(0.25)]
 <p>\begin{equation}
 fence_{upper} = P_x(0.75) + 1.5 \times [P_x(0.75) - P_x(0.25)]
 \end{equation}</p>
-<p>Then we declare samples values above the upper fence or below the lower fence as outliers.</p>
+<p>Then we declare <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s values above the upper fence or below the lower fence as outliers.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p25</span><span class="p">,</span> <span class="n">p75</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">por</span><span class="p">,</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">75</span><span class="p">])</span>
@@ -1082,14 +1078,16 @@ fence_{upper} = P_x(0.75) + 1.5 \times [P_x(0.75) - P_x(0.25)]
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Porosity outliers by Tukey test include [0.06726 0.05    0.06092].
-Porosity outlier indices by Tukey test are [110 152 198].
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Porosity outlier indices by Tukey test are [110 152 198].
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id2">
-<h2>Measures of Shape<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="measures-of-shape">
+<h2>Measures of Shape<a class="headerlink" href="#measures-of-shape" title="Permalink to this heading">#</a></h2>
 <section id="pearson-s-mode-skewness">
 <h3>Pearson’s Mode Skewness<a class="headerlink" href="#pearson-s-mode-skewness" title="Permalink to this heading">#</a></h3>
 <p>\begin{equation}
@@ -1147,11 +1145,63 @@ QS = \frac{(P75_x - P50_x) - (P50_x - P25_x)}{(P75_x - P25_x)}
 </div>
 </div>
 </div>
+<p>Kurtosis</p>
+<div class="math notranslate nohighlight">
+\[
+Kurtosis =
+\frac{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^4}
+{\left(\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2\right)^2}
+\]</div>
+<p>For comparison with the normal distribution:</p>
+<ul class="simple">
+<li><p>mesokurtic distributions have kurtosis approximately equal to 3</p></li>
+<li><p>leptokurtic distributions have kurtosis greater than 3, indicating heavier tails and more extreme values</p></li>
+<li><p>platykurtic distributions have kurtosis less than 3, indicating lighter tails and fewer extreme values</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por_kurt</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">(</span><span class="n">por</span><span class="p">,</span> <span class="n">fisher</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>            <span class="c1"># Pearson kurtosis (normal distribution = 3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kurtosis is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">por_kurt</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kurtosis is 3.05.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Excess Kurtosis</p>
+<div class="math notranslate nohighlight">
+\[
+Kurtosis =
+\frac{\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^4}
+{\left(\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2\right)^2} - 3.0
+\]</div>
+<p>Shifted by 3.0 for a more natural comparison with the normal distribution:</p>
+<ul class="simple">
+<li><p>mesokurtic distributions have kurtosis approximately equal to 0.0</p></li>
+<li><p>leptokurtic distributions have kurtosis greater than 0.0, indicating heavier tails and more extreme values</p></li>
+<li><p>platykurtic distributions have kurtosis less than 0.0, indicating lighter tails and fewer extreme values</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">por_exkurt</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">kurtosis</span><span class="p">(</span><span class="n">por</span><span class="p">)</span>                          <span class="c1"># excess kurtosis (normal distribution = 0)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Excess kurtosis is &#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">por_exkurt</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Excess kurtosis is 0.05.
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="plot-the-nonparametric-cdf">
 <h2>Plot the Nonparametric CDF<a class="headerlink" href="#plot-the-nonparametric-cdf" title="Permalink to this heading">#</a></h2>
-<p>Let’s demonstrate plotting a nonparametric cumulative distribution function (CDF) in Python</p>
+<p>Let’s demonstrate plotting a nonparametric <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cumulative-distribution-function"><span class="std std-doc">cumulative distribution function</span></a> (CDF) in Python</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sort the data:</span>
@@ -1177,9 +1227,9 @@ QS = \frac{(P75_x - P50_x) - (P50_x - P25_x)}{(P75_x - P25_x)}
 </section>
 <section id="fit-a-gaussian-distribution">
 <h2>Fit a Gaussian Distribution<a class="headerlink" href="#fit-a-gaussian-distribution" title="Permalink to this heading">#</a></h2>
-<p>Let’s fit a Gaussian distribution</p>
+<p>Let’s fit a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#gaussian-distribution"><span class="std std-doc">Gaussian distribution</span></a></p>
 <ul class="simple">
-<li><p>we get fancy with Maximuum Likelihood Estimation (MLE) for the Gaussian parametric distribution fit mean and standard deviation</p></li>
+<li><p>we get fancy with Maximuum Likelihood <a class="reference internal" href="GeostatsPy_glossary_e_m.html#estimation"><span class="std std-doc">Estimation</span></a> (MLE) for the Gaussian parametric distribution fit mean and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">standard deviation</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1205,7 +1255,7 @@ QS = \frac{(P75_x - P50_x) - (P50_x - P25_x)}{(P75_x - P25_x)}
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of univariate statistics in Python. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>This was a basic demonstration of <a class="reference internal" href="GeostatsPy_glossary_t_z.html#univariate-statistic"><span class="std std-doc">univariate statistic</span></a>s in Python. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 <p>I hope this was helpful,</p>
@@ -1218,20 +1268,20 @@ QS = \frac{(P75_x - P50_x) - (P50_x - P25_x)}{(P75_x - P25_x)}
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1304,11 +1354,7 @@ QS = \frac{(P75_x - P50_x) - (P50_x - P25_x)}{(P75_x - P25_x)}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-centrality">Measures of Centrality</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-dispersion">Measures of Dispersion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tukey-outlier-test">Tukey Outlier Test</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-shape">Measures of Shape</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonparmetric-cumulative-distribution-functions-cdfs">Nonparmetric Cumulative Distribution Functions (CDFs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#included-univariate-statistics">Included Univariate Statistics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-required-libraries">Load the Required Libraries</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-the-working-directory">Set the Working Directory</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-tabular-data">Loading Tabular Data</a></li>
@@ -1321,7 +1367,7 @@ QS = \frac{(P75_x - P50_x) - (P50_x - P25_x)}{(P75_x - P25_x)}
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-law-average">Power Law Average</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Measures of Dispersion</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-dispersion">Measures of Dispersion</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-variance">Population Variance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-variance">Sample Variance</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-standard-deviation">Population Standard Deviation</a></li>
@@ -1333,7 +1379,7 @@ QS = \frac{(P75_x - P50_x) - (P50_x - P25_x)}{(P75_x - P25_x)}
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-probability">Cumulative Probability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tukey-test-for-outliers">Tukey Test for Outliers</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Measures of Shape</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#measures-of-shape">Measures of Shape</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-s-mode-skewness">Pearson’s Mode Skewness</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#population-skew-3rd-central-moment">Population Skew, 3rd Central Moment</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quartile-skew-coefficient">Quartile Skew Coefficient</a></li>
@@ -1381,6 +1427,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -487,11 +491,11 @@ document.write(`
 <p>Parametric distributions may be relate to an underlying theory, for example,</p>
 <p>Gaussian / Normal Distribution:</p>
 <ul class="simple">
-<li><p>the normal distribution is the limit distribution for the central limit theorem</p></li>
+<li><p>the normal distribution is the limit distribution for the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#central-limit-theorem"><span class="std std-doc">central limit theorem</span></a></p></li>
 </ul>
 <p>Chi-squared Distribution:</p>
 <ul class="simple">
-<li><p>for square of Gaussian distributed random variables</p></li>
+<li><p>for square of Gaussian distributed <a class="reference internal" href="GeostatsPy_glossary_n_s.html#random-variable"><span class="std std-doc">random variable</span></a>s</p></li>
 </ul>
 <p>Weibull (w-ā-bull) distribution:</p>
 <ul class="simple">
@@ -501,14 +505,14 @@ document.write(`
   <img src="_static/parametric/train.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Damage from a steam train boiler explosion.</figcaption>
 </figure>
-<p>If we know how samples should be distributed, then we can use that distribution in confidence intervals and hypothesis testing.</p>
+<p>If we know how <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s should be distributed, then we can use that distribution in <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-interval"><span class="std std-doc">confidence interval</span></a>s and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#hypothesis"><span class="std std-doc">hypothesis</span></a> testing.</p>
 <p>Other important aspects of parametric distributions and examples,</p>
 <ul class="simple">
 <li><p><strong>Known, useful statistical properties</strong> - if Gaussian distributed all marginal and conditionals are Gaussian</p></li>
 <li><p><strong>Commonly occur in nature</strong> - central limit theorem</p></li>
-<li><p><strong>Encompass a range of assumptions</strong> - uniform distribution is the maximum uncertainty distribution</p></li>
+<li><p><strong>Encompass a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a> of assumptions</strong> - <a class="reference internal" href="GeostatsPy_glossary_t_z.html#uniform-distribution"><span class="std std-doc">uniform distribution</span></a> is the maximum uncertainty distribution</p></li>
 </ul>
-<p>Here’s a demonstration of making and general use of parametric distributions in Python. This demonstration is part of the resources that I include for my courses in Spatial / Subsurface Data Analytics at the Cockrell School of Engineering at the University of Texas at Austin.</p>
+<p>Here’s a demonstration of making and general use of parametric distributions in Python. This demonstration is part of the resources that I include for my courses in Spatial / Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">Data Analytics</span></a> at the Cockrell School of Engineering at the University of Texas at Austin.</p>
 <p>We cover the following distributions:</p>
 <ul class="simple">
 <li><p>Uniform</p></li>
@@ -518,9 +522,9 @@ document.write(`
 </ul>
 <p>We will demonstrate:</p>
 <ul class="simple">
-<li><p>distribution parameters</p></li>
+<li><p>distribution <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s</p></li>
 <li><p>forward and inverse operators</p></li>
-<li><p>summary statistics</p></li>
+<li><p>summary <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a></p></li>
 </ul>
 </section>
 <section id="importing-packages">
@@ -582,12 +586,12 @@ document.write(`
 <p>Let’s start with the most simple distribution.</p>
 <ul class="simple">
 <li><p>by default a random number is uniform distributed</p></li>
-<li><p>this ensures that enough random samples (Monte Carlo simulations) will reproduce the distribution</p></li>
+<li><p>this ensures that enough random samples (<a class="reference internal" href="GeostatsPy_glossary_e_m.html#monte-carlo-simulation"><span class="std std-doc">Monte Carlo simulation</span></a>s) will reproduce the distribution</p></li>
 </ul>
 <p>\begin{equation}
 x_{\alpha}^{s} = F^{-1}<em>x(p</em>{\alpha}), \quad X^{s} \sim F_X
 \end{equation}</p>
-<p>The continuous uniform distribution PDF is,</p>
+<p>The continuous <a class="reference internal" href="GeostatsPy_glossary_t_z.html#uniform-distribution"><span class="std std-doc">uniform distribution</span></a> PDF is,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 f_x(x) = 
@@ -606,7 +610,7 @@ F_x(x) =
 1 &amp; \text{if } x \geq b
 \end{cases}
 \end{split}\]</div>
-<p>To demonstrate the parameters I coded an interactive Python dashboard <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Parametric_Distributions.ipynb">Uniform PDF and CDF</a>.</p>
+<p>To demonstrate the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s I coded an interactive Python dashboard <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Parametric_Distributions.ipynb">Uniform PDF and CDF</a>.</p>
 <figure style="text-align: center;">
   <img src="_static/parametric/interactive_uniform.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Interactive uniform parametric distribution Python dashboard.</figcaption>
@@ -617,9 +621,9 @@ F_x(x) =
 </div>
 <p>Where:</p>
 <ul class="simple">
-<li><p>size is the number of samples</p></li>
+<li><p>size is the number of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s</p></li>
 <li><p>loc is the minimum value</p></li>
-<li><p>scale is the range, maximum value minus the minimum value</p></li>
+<li><p>scale is the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a>, maximum value minus the minimum value</p></li>
 <li><p>random_state is the random number seed</p></li>
 </ul>
 <p>We will observe the convergence of the samples to a uniform distribution as the number of samples becomes large.</p>
@@ -848,7 +852,7 @@ P = F_x(x)
 </section>
 <section id="triangular-distribution">
 <h2>Triangular Distribution<a class="headerlink" href="#triangular-distribution" title="Permalink to this heading">#</a></h2>
-<p>The triangular distribution is commonly used when the range and mode is known. It can be be used to specify symmetric and asymmetric distributions.</p>
+<p>The triangular distribution is commonly used when the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a> and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mode"><span class="std std-doc">mode</span></a> is known. It can be be used to specify symmetric and asymmetric distributions.</p>
 <p>The continuous triangular distribution PDF is,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -878,7 +882,7 @@ F_x(x) =
 <p>This time we will make it much more compact!</p>
 <ul class="simple">
 <li><p>we will import the triangular distribution as my_dist and call the same functions as before</p></li>
-<li><p>we need a new parameter, the distribution mode (c parameter)</p></li>
+<li><p>we need a new <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>, the distribution mode (c parameter)</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">triang</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">low</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">mode</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">interval</span><span class="p">)</span>
 </pre></div>
@@ -1008,9 +1012,9 @@ The interval at an alpha level of 0.05 is [0.07 0.31]
 <h2>Gaussian Distribution<a class="headerlink" href="#gaussian-distribution" title="Permalink to this heading">#</a></h2>
 <p>Let’s now use the Gaussian parametric distribution.</p>
 <ul class="simple">
-<li><p>we will need the parameters mean and the variance</p></li>
+<li><p>we will need the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> and the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a></p></li>
 </ul>
-<p>The continuous Gaussian distribution PDF is,</p>
+<p>The continuous <a class="reference internal" href="GeostatsPy_glossary_e_m.html#gaussian-distribution"><span class="std std-doc">Gaussian distribution</span></a> PDF is,</p>
 <div class="math notranslate nohighlight">
 \[
 f_x(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp \left( -\frac{1}{2} \left( \frac{x - \mu}{\sigma} \right)^2 \right)
@@ -1025,13 +1029,13 @@ F_x(x) = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{x - \mu}{\sigma \sqrt{2}
   <img src="_static/parametric/interactive_gaussian.png" style="display: block; margin: 0 auto; width: 100%;">
   <figcaption style="text-align: center;">Interactive Gaussian parametric distribution Python dashboard.</figcaption>
 </figure>
-<p>We will apply the forward and reverse operations and calculate the summary statistics.</p>
+<p>We will apply the forward and reverse operations and calculate the summary <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">loc</span> <span class="o">=</span> <span class="n">mean</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">standard</span> <span class="n">deviation</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Where:</p>
 <ul class="simple">
-<li><p>loc is the mean, arithmetic average</p></li>
+<li><p>loc is the mean, arithmetic <a class="reference internal" href="GeostatsPy_glossary_a_d.html#average"><span class="std std-doc">average</span></a></p></li>
 <li><p>scale is the standard deviation</p></li>
 </ul>
 <div class="cell docutils container">
@@ -1153,7 +1157,7 @@ The interval at an alpha level of 0.05 is [0.15 0.35]
 <h2>Lognormal Distribution<a class="headerlink" href="#lognormal-distribution" title="Permalink to this heading">#</a></h2>
 <p>Now let’s check out the lognormal distribution.</p>
 <ul class="simple">
-<li><p>We need the parameters <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
+<li><p>We need the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>s <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
 </ul>
 <p>The continuous lognormal distribution PDF is,</p>
 <div class="math notranslate nohighlight">
@@ -1175,8 +1179,8 @@ F_x(x) = \frac{1}{2} \left[ 1 + \text{erf} \left( \frac{\ln(x) - \mu}{\sigma \sq
 </div>
 <p>Where:</p>
 <ul class="simple">
-<li><p>loc is the mean, arithmetic average</p></li>
-<li><p>scale is the standard deviation</p></li>
+<li><p>loc is the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>, arithmetic <a class="reference internal" href="GeostatsPy_glossary_a_d.html#average"><span class="std std-doc">average</span></a></p></li>
+<li><p>scale is the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">standard deviation</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1304,20 +1308,20 @@ The interval at alpha level 0.05 is [0.07 0.15]
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1457,6 +1461,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

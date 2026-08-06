@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -447,7 +451,7 @@ document.write(`
 <section id="positive-definite-variogram-models">
 <h1>Positive Definite Variogram Models<a class="headerlink" href="#positive-definite-variogram-models" title="Permalink to this heading">#</a></h1>
 <p>Michael J. Pyrcz, Professor, The University of Texas at Austin</p>
-<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
+<p><a class="reference external" href="https://twitter.com/geostatsguy">Twitter</a> | <a class="reference external" href="https://github.com/GeostatsGuy">GitHub</a> | <a class="reference external" href="http://michaelpyrcz.com">Website</a> | <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en&amp;oi=ao">GoogleScholar</a> | <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistics Book</a> | <a class="reference external" href="https://www.youtube.com/channel/UCLqEr-xV-ceHdXXXrTId5ig">YouTube</a>  | <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostats in Python e-book</a> | <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/">Applied Machine Learning in Python e-book</a> | <a class="reference external" href="https://www.linkedin.com/in/michael-pyrcz-61a648a1">LinkedIn</a></p>
 <p>Chapter of e-book “Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy”.</p>
 <div class="remove-from-content-only admonition">
 <p class="admonition-title">Cite this e-Book as:</p>
@@ -512,24 +516,24 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 </section>
 <section id="nested-variogram-models">
 <h2>Nested Variogram Models<a class="headerlink" href="#nested-variogram-models" title="Permalink to this heading">#</a></h2>
-<p>Spatial continuity can be described with nested spatial continuity models:</p>
+<p><a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">Spatial continuity</span></a> can be described with nested spatial continuity models:</p>
 <div class="math notranslate nohighlight">
 \[
 \Gamma_x(\bf{h}) = \sum_{i=1}^{nst} \gamma_i(\bf{h})
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span> is the nested variogram model resulting from the summation of <span class="math notranslate nohighlight">\(nst\)</span> nested variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span> is the nested <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram-model"><span class="std std-doc">variogram model</span></a> resulting from the summation of <span class="math notranslate nohighlight">\(nst\)</span> nested variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>.</p>
 <ul class="simple">
-<li><p>if each <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span> structure is a positive definite variogram model, then the summation, <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span>, is also positive definite.</p></li>
+<li><p>if each <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span> structure is a positive definite <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> model, then the summation, <span class="math notranslate nohighlight">\(\Gamma_x(\bf{h})\)</span>, is also positive definite.</p></li>
 </ul>
-<p>Each one of these variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>, is based on a geometric anisotropy model parameterized by the orientation and range in the major and minor directions.  In 2D this is simply an azimuth and ranges, <span class="math notranslate nohighlight">\(azi\)</span>, <span class="math notranslate nohighlight">\(a_{maj}\)</span> and <span class="math notranslate nohighlight">\(a_{min}\)</span>. Note, the range in the minor direction (orthogonal to the major direction.</p>
-<p>The geometric anisotropy model assumes that the range in all off-diagonal directions is based on an ellipse with the major and minor axes aligned with and set to the major and minor for the variogram.</p>
+<p>Each one of these variogram structures, <span class="math notranslate nohighlight">\(\gamma_i(\bf{h})\)</span>, is based on a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geometric-anisotropy-model"><span class="std std-doc">geometric anisotropy model</span></a> parameterized by the orientation and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a> in the major and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#minor-direction"><span class="std std-doc">minor direction</span></a>s.  In 2D this is simply an azimuth and ranges, <span class="math notranslate nohighlight">\(azi\)</span>, <span class="math notranslate nohighlight">\(a_{maj}\)</span> and <span class="math notranslate nohighlight">\(a_{min}\)</span>. Note, the range in the minor direction (orthogonal to the major direction.</p>
+<p>The <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geometric-anisotropy"><span class="std std-doc">geometric anisotropy</span></a> model assumes that the range in all off-diagonal directions is based on an ellipse with the major and minor axes aligned with and set to the major and minor for the variogram.</p>
 <p>\begin{equation}
 \bf{h}<em>i = \sqrt{\left(\frac{r</em>{maj}}{a_{maj_i}}\right)^2 + \left(\frac{r_{maj}}{a_{maj_i}}\right)^2}<br />
 \end{equation}</p>
-<p>Therefore, if we know the major direction, range in major and minor directions, we may completely describe each nested component of the complete spatial continuity of the variable of interest, <span class="math notranslate nohighlight">\(i = 1,\dots,nst\)</span>.</p>
+<p>Therefore, if we know the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#major-direction"><span class="std std-doc">major direction</span></a>, range in major and minor directions, we may completely describe each nested component of the complete spatial continuity of the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variable"><span class="std std-doc">variable</span></a> of interest, <span class="math notranslate nohighlight">\(i = 1,\dots,nst\)</span>.</p>
 <p>In this workflow we will observe the common permissible positive definite variogram models in GeostatsPy that we can combine to build our nested variogram models.</p>
 <ul class="simple">
-<li><p>for all we assume a contribution of the sill (single structure) and the sill is 1.0 (standardized feature).</p></li>
+<li><p>for all we assume a contribution of the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sill"><span class="std std-doc">sill</span></a> (single structure) and the sill is 1.0 (standardized <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a>).</p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -590,7 +594,7 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 </section>
 <section id="list-of-lag-distances">
 <h2>List of Lag Distances<a class="headerlink" href="#list-of-lag-distances" title="Permalink to this heading">#</a></h2>
-<p>We define a list of lag distances for our variogram models.</p>
+<p>We define a list of <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a>s for our <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram-model"><span class="std std-doc">variogram model</span></a>s.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>                                    <span class="c1"># lag distance vector</span>
@@ -603,13 +607,13 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 <h2>Nugget Effect Variogram Model<a class="headerlink" href="#nugget-effect-variogram-model" title="Permalink to this heading">#</a></h2>
 <p>No spatial correlation</p>
 <ul class="simple">
-<li><p>Does not have a range, nor directionality, i.e., acts over all distances and directions.</p></li>
+<li><p>Does not have a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a>, nor directionality, i.e., acts over all distances and directions.</p></li>
 </ul>
-<p>Should be a small component of the overall variance</p>
+<p>Should be a small component of the overall <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a></p>
 <ul class="simple">
 <li><p>Very uncommon in siliciclastic sedimentary systems</p></li>
-<li><p>More common for mineral grades in mining</p></li>
-<li><p>May be measurement error</p></li>
+<li><p>More common for mineral <a class="reference internal" href="GeostatsPy_glossary_e_m.html#grade"><span class="std std-doc">grade</span></a>s in mining</p></li>
+<li><p>May be measurement <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a></p></li>
 </ul>
 <p>The equation:</p>
 <div class="math notranslate nohighlight">
@@ -622,7 +626,7 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
   \end{array}
 \right.
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, and <span class="math notranslate nohighlight">\(h\)</span> is the lag distance</p>
+<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, and <span class="math notranslate nohighlight">\(h\)</span> is the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gamma_nugget</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>                                   <span class="c1"># nugget effect</span>
@@ -648,9 +652,9 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 </section>
 <section id="spherical-variogram-model">
 <h2>Spherical Variogram Model<a class="headerlink" href="#spherical-variogram-model" title="Permalink to this heading">#</a></h2>
-<p>A very commonly observed variogram / spatial continuity form in many settings</p>
+<p>A very commonly observed <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> / <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a> form in many settings</p>
 <ul class="simple">
-<li><p>Piecewise, beyond the range is equal to the sill</p></li>
+<li><p>Piecewise, beyond the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a> is equal to the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sill"><span class="std std-doc">sill</span></a></p></li>
 </ul>
 <p>The equation:</p>
 <div class="math notranslate nohighlight">
@@ -663,7 +667,7 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
   \end{array}
 \right.
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span> is the lag distance</p>
+<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{𝐡}\)</span> is the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrange</span> <span class="o">=</span> <span class="mi">80</span>                                                   <span class="c1"># range parameter</span>
@@ -692,16 +696,16 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 </section>
 <section id="exponential-variogram-model">
 <h2>Exponential Variogram Model<a class="headerlink" href="#exponential-variogram-model" title="Permalink to this heading">#</a></h2>
-<p>Also very commonly observed variogram / spatial continuity form</p>
+<p>Also very commonly observed <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> / <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a> form</p>
 <ul class="simple">
-<li><p>Less short-scale continuity than spherical, and reaches sill asymptotically, range is at 95% of the sill</p></li>
+<li><p>Less short-scale continuity than spherical, and reaches <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sill"><span class="std std-doc">sill</span></a> asymptotically, <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a> is at 95% of the sill</p></li>
 </ul>
 <p>The equation:</p>
 <div class="math notranslate nohighlight">
 \[
 \gamma( \bf{h} ) = c_1 \cdot \text{ Exp } \left( \frac{ \bf{h} }{𝑎} \right) = c_1 \cdot \left[ 1.0 − \text{exp} \left(−3 \cdot \left( \frac{ \bf{h} }{𝑎} \right) \right) \right]
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{h}\)</span> is the lag distance.</p>
+<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{h}\)</span> is the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrange</span> <span class="o">=</span> <span class="mi">80</span>                                                   <span class="c1"># range parameter</span>
@@ -730,16 +734,16 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 </section>
 <section id="gaussian-variogram-model">
 <h2>Gaussian Variogram Model<a class="headerlink" href="#gaussian-variogram-model" title="Permalink to this heading">#</a></h2>
-<p>Less commonly observed variogram / spatial continuity form, e.g., for thickness and elevation</p>
+<p>Less commonly observed <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> / <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a> form, e.g., for thickness and elevation</p>
 <ul class="simple">
-<li><p>Much more short-scale continuity than spherical, and reaches sill asymptotically, range is at 95% of the sill</p></li>
+<li><p>Much more short-scale continuity than spherical, and reaches <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sill"><span class="std std-doc">sill</span></a> asymptotically, <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a> is at 95% of the sill</p></li>
 </ul>
 <p>The equation:</p>
 <div class="math notranslate nohighlight">
 \[
 \gamma( \bf{h} ) = c_1 \cdot \text{ Gaus } \left( \frac{ \bf{h} }{𝑎} \right) = c_1 \cdot \left[ 1.0 − \text{exp} \left(−3 \cdot \left( \frac{ \bf{h} }{𝑎} \right)^2 \right) \right]
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{h}\)</span> is the lag distance.</p>
+<p>where <span class="math notranslate nohighlight">\(𝑐_1\)</span> is the contribution, <span class="math notranslate nohighlight">\(𝑎\)</span> is the range and <span class="math notranslate nohighlight">\(\bf{h}\)</span> is the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag-distance"><span class="std std-doc">lag distance</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrange</span> <span class="o">=</span> <span class="mi">80</span>                                                   <span class="c1"># range parameter</span>
@@ -767,7 +771,7 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 </section>
 <section id="with-geometric-distance">
 <h2>With Geometric Distance<a class="headerlink" href="#with-geometric-distance" title="Permalink to this heading">#</a></h2>
-<p>To calculate a specific variogram value in 2D or 3D we convert the lag vector to a geometric distance and then apply the variogram model with unit range, range of 1.0.</p>
+<p>To calculate a specific <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram"><span class="std std-doc">variogram</span></a> value in 2D or 3D we convert the <a class="reference internal" href="GeostatsPy_glossary_e_m.html#lag"><span class="std std-doc">lag</span></a> vector to a geometric distance and then apply the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram-model"><span class="std std-doc">variogram model</span></a> with unit <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a>, range of 1.0.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vrange</span> <span class="o">=</span> <span class="mf">1.0</span>                                                  <span class="c1"># range parameter</span>
@@ -796,7 +800,7 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
 </section>
 <section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">#</a></h2>
-<p>This was a basic demonstration of permissible variogram models to support 3D model construction. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
+<p>This was a basic demonstration of permissible <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variogram-model"><span class="std std-doc">variogram model</span></a>s to support 3D model construction. Much more can be done, I have other demonstrations for modeling workflows with GeostatsPy in the GitHub repository <a class="reference external" href="https://github.com/GeostatsGuy/GeostatsPy_Demos/tree/main">GeostatsPy_Demos</a>.</p>
 <p>I hope this is helpful,</p>
 <p><em>Michael</em></p>
 </section>
@@ -807,20 +811,20 @@ C_x(\bf{h}) = \sigma^2_x - \gamma(\bf{h})
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -944,6 +948,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

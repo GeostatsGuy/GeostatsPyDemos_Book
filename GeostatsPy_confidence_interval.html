@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -473,22 +477,22 @@ document.write(`
 </ul>
 <section id="motivation-for-confidence-intervals">
 <h2>Motivation for Confidence Intervals<a class="headerlink" href="#motivation-for-confidence-intervals" title="Permalink to this heading">#</a></h2>
-<p>The uncertainty in an estimated population parameter from a sample, represented as a range, lower and upper bound, based on a specified probability interval known as the confidence level.</p>
-<p>We communicate confidence intervals like this,</p>
+<p>The uncertainty in an estimated <a class="reference internal" href="GeostatsPy_glossary_n_s.html#population"><span class="std std-doc">population</span></a> parameter from a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>, represented as a range, lower and upper bound, based on a specified probability interval known as the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-level"><span class="std std-doc">confidence level</span></a>.</p>
+<p>We communicate <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-interval"><span class="std std-doc">confidence interval</span></a>s like this,</p>
 <ul class="simple">
-<li><p>there is a 95% probability (or 19 times out of 20) that the true reservoir (population parameter), proportion of sand, is between 26% and 36%</p></li>
+<li><p>there is a 95% probability (or 19 times out of 20) that the true reservoir (population <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a>), proportion of sand, is between 26% and 36%</p></li>
 </ul>
-<p>Here we cover analytical methods for population mean and proportion,</p>
+<p>Here we cover analytical methods for population <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> and proportion,</p>
 <ul class="simple">
-<li><p>for general bootstrap uncertainty models go to the <a class="reference internal" href="GeostatsPy_bootstrap.html"><span class="doc std std-doc">Bootstrap Uncertainty</span></a></p></li>
+<li><p>for general <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bootstrap"><span class="std std-doc">bootstrap</span></a> uncertainty models go to the <a class="reference internal" href="GeostatsPy_bootstrap.html"><span class="doc std std-doc">Bootstrap Uncertainty</span></a></p></li>
 </ul>
 </section>
 <section id="confidence-level-vs-alpha-level">
 <h2>Confidence Level vs. Alpha Level<a class="headerlink" href="#confidence-level-vs-alpha-level" title="Permalink to this heading">#</a></h2>
-<p>To communicate confidence intervals we need to know the follow terms,</p>
+<p>To communicate <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-interval"><span class="std std-doc">confidence interval</span></a>s we need to know the follow terms,</p>
 <ul class="simple">
-<li><p><strong>Confidence Level</strong>, the probability of the population parameter being between the assessed lower and upper confidence bounds.</p></li>
-<li><p><strong>Alpha level (<span class="math notranslate nohighlight">\(\alpha\)</span>)</strong>, <span class="math notranslate nohighlight">\(1.0 – Confidence Level\)</span>, the probability the population parameter is outside the confidence interval. Alpha level is also known as significance level.</p></li>
+<li><p><strong><a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-level"><span class="std std-doc">Confidence Level</span></a></strong>, the probability of the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#population"><span class="std std-doc">population</span></a> parameter being between the assessed lower and upper confidence bounds.</p></li>
+<li><p><strong><a class="reference internal" href="GeostatsPy_glossary_a_d.html#alpha-level"><span class="std std-doc">Alpha level</span></a> (<span class="math notranslate nohighlight">\(\alpha\)</span>)</strong>, <span class="math notranslate nohighlight">\(1.0 – Confidence Level\)</span>, the probability the population <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a> is outside the confidence interval. Alpha level is also known as <a class="reference internal" href="GeostatsPy_glossary_n_s.html#significance-level"><span class="std std-doc">significance level</span></a>.</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/confidence/interval.png" style="display: block; margin: 0 auto; width: 80%;">
@@ -506,15 +510,15 @@ document.write(`
 </section>
 <section id="the-essense-of-confidence-intervals">
 <h2>The Essense of Confidence Intervals<a class="headerlink" href="#the-essense-of-confidence-intervals" title="Permalink to this heading">#</a></h2>
-<p>While our confidence interval above is communicated as,</p>
+<p>While our <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-interval"><span class="std std-doc">confidence interval</span></a> above is communicated as,</p>
 <ul class="simple">
 <li><p>95% probability of true reservoir proportion of sand is between 26% and 36%</p></li>
 </ul>
 <p>We have actually calculated,</p>
 <ul class="simple">
-<li><p>95% of sample sets with the associated confidence intervals include the true population proportion</p></li>
+<li><p>95% of sample sets with the associated confidence intervals include the true <a class="reference internal" href="GeostatsPy_glossary_n_s.html#population"><span class="std std-doc">population</span></a> proportion</p></li>
 </ul>
-<p>Why is this? The confidence level refers to a long-run proportion of confidence intervals, i.e., over many samples of the confidence interval and not a specific confidence interval.</p>
+<p>Why is this? The <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-level"><span class="std std-doc">confidence level</span></a> refers to a long-run proportion of confidence intervals, i.e., over many <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s of the confidence interval and not a specific confidence interval.</p>
 <ul class="simple">
 <li><p>while this is not the same thing, we assume it is and move on, this is the common frequentist approach</p></li>
 </ul>
@@ -522,47 +526,47 @@ document.write(`
   <img src="_static/confidence/actual_interval.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Illustration of the actual product of confidence intervals.</figcaption>
 </figure>
-<p>Note, Bayesian credibility intervals actually represent the probablity of including the true population parameter directly in a single confidence interval.</p>
+<p>Note, Bayesian credibility intervals actually represent the probablity of including the true population <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a> directly in a single confidence interval.</p>
 </section>
 <section id="standard-error">
 <h2>Standard Error<a class="headerlink" href="#standard-error" title="Permalink to this heading">#</a></h2>
 <p>A bit of a tricky definition. Let’s start with the dictionary,</p>
 <ul class="simple">
-<li><p>‘a measure of the statistical accuracy of an estimate, equal to the standard deviation of the theoretical distribution of a large population of such estimates’.  - Oxford Dictionary</p></li>
+<li><p>‘a measure of the statistical accuracy of an estimate, equal to the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> of the theoretical distribution of a large population of such estimates’.  - Oxford Dictionary</p></li>
 </ul>
 <p>Let’s summarize,</p>
 <ul class="simple">
-<li><p>standard error is in standard deviation, a measure of dispersion, i.e., the square root of variance</p></li>
-<li><p>provides the uncertainty in a statistic as an estimate of the true population parameter</p></li>
+<li><p>standard <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a> is in standard deviation, a measure of dispersion, i.e., the square root of <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a></p></li>
+<li><p>provides the uncertainty in a statistic as an estimate of the true <a class="reference internal" href="GeostatsPy_glossary_n_s.html#population"><span class="std std-doc">population</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a></p></li>
 </ul>
-<p>Now let’s show the equations for standard error, standard error in a mean:</p>
+<p>Now let’s show the equations for <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-error"><span class="std std-doc">standard error</span></a>, standard error in a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{s}{\sqrt{n}} \quad \text{or} \quad \frac{s^2}{n}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(s\)</span> is the sample standard deviation, <span class="math notranslate nohighlight">\(s^2\)</span> is the sample variance, and <span class="math notranslate nohighlight">\(n\)</span> is the number of samples. Now, the standard error in a proportion,</p>
+<p>where <span class="math notranslate nohighlight">\(s\)</span> is the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> standard deviation, <span class="math notranslate nohighlight">\(s^2\)</span> is the sample variance, and <span class="math notranslate nohighlight">\(n\)</span> is the number of samples. Now, the standard error in a proportion,</p>
 <div class="math notranslate nohighlight">
 \[
 \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat{p}\)</span> is the sample proportion.</p>
 <ul class="simple">
-<li><p>while we have these analytical forms, recall that we could bootstrap to solve empirically for accuracy for any statistic!</p></li>
-<li><p>note that increasing sample variance or standard deviation increases the standard error and increasing the number of data</p></li>
+<li><p>while we have these analytical forms, recall that we could <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bootstrap"><span class="std std-doc">bootstrap</span></a> to solve empirically for accuracy for any <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a>!</p></li>
+<li><p>note that increasing sample variance or standard deviation increases the standard error and increasing the number of <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a></p></li>
 </ul>
 </section>
 <section id="scores">
 <h2>Scores<a class="headerlink" href="#scores" title="Permalink to this heading">#</a></h2>
-<p>Given the standard error, in standard deviation, we need to know how many standard deviations we need to include for our confidence interval to include a specific confidence level, once again we are assuming as the probability for the truth parameter to be within the interval.</p>
+<p>Given the standard <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a>, in <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">standard deviation</span></a>, we need to know how many standard deviations we need to include for our <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-interval"><span class="std std-doc">confidence interval</span></a> to include a specific confidence level, once again we are assuming as the probability for the truth <a class="reference internal" href="GeostatsPy_glossary_n_s.html#parameter"><span class="std std-doc">parameter</span></a> to be within the interval.</p>
 <ul class="simple">
-<li><p>the score will depend on the type of parameteric distribution, it is literally the lower and upper percentile values from the distribution</p></li>
-<li><p>for a Gaussian distribution, we call this a z-score</p></li>
+<li><p>the score will depend on the type of parameteric distribution, it is literally the lower and upper <a class="reference internal" href="GeostatsPy_glossary_n_s.html#percentile"><span class="std std-doc">percentile</span></a> values from the distribution</p></li>
+<li><p>for a <a class="reference internal" href="GeostatsPy_glossary_e_m.html#gaussian-distribution"><span class="std std-doc">Gaussian distribution</span></a>, we call this a z-<a class="reference internal" href="GeostatsPy_glossary_n_s.html#score"><span class="std std-doc">score</span></a></p></li>
 <li><p>for a Student’s t distribution, we call this a t-score</p></li>
 </ul>
 </section>
 <section id="analytical-confidence-interval">
 <h2>Analytical Confidence Interval<a class="headerlink" href="#analytical-confidence-interval" title="Permalink to this heading">#</a></h2>
-<p>We can now express confidence interval for a proportion with parts labelled as,</p>
+<p>We can now express <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-interval"><span class="std std-doc">confidence interval</span></a> for a proportion with parts labelled as,</p>
 <figure style="text-align: center;">
   <img src="_static/confidence/proportion.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Analytical expression for confidence interval for a proportion with parts labelled.</figcaption>
@@ -576,24 +580,24 @@ document.write(`
 \]</div>
 <p>and we can walk-through the calculation.</p>
 <ol class="arabic simple">
-<li><p>Calculate the sample Statistic, <span class="math notranslate nohighlight">\(\hat{p}\)</span>, note, the confidence interval is centered on the statistics from the sample.</p></li>
+<li><p>Calculate the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> Statistic, <span class="math notranslate nohighlight">\(\hat{p}\)</span>, note, the confidence interval is centered on the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> from the sample.</p></li>
 </ol>
 <ul class="simple">
-<li><p>we are assuming the statistic is unbiased, the best estimate of the centroid of our uncertainty model</p></li>
+<li><p>we are assuming the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a> is unbiased, the best estimate of the centroid of our uncertainty model</p></li>
 </ul>
 <figure style="text-align: center;">
   <img src="_static/confidence/statistic.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Our confidence interval is anchored by the available statistic.</figcaption>
 </figure>
 <ol class="arabic simple" start="2">
-<li><p>Calculate the standard error, <span class="math notranslate nohighlight">\(\sqrt{\frac{\hat{p}(1-\hat{p}}{n}}\)</span>, the dispersion of the uncertainty distribution in standard deviation.</p></li>
+<li><p>Calculate the standard <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a>, <span class="math notranslate nohighlight">\(\sqrt{\frac{\hat{p}(1-\hat{p}}{n}}\)</span>, the dispersion of the uncertainty distribution in <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">standard deviation</span></a>.</p></li>
 </ol>
 <figure style="text-align: center;">
   <img src="_static/confidence/standard_error.png" style="display: block; margin: 0 auto; width: 60%;">
   <figcaption style="text-align: center;">Standard error with the specific parametric distribution anchored on the sample statistic provides the entire uncertainty distribution.</figcaption>
 </figure>
 <ol class="arabic simple" start="3">
-<li><p>Calculate the score, <span class="math notranslate nohighlight">\(z_{\frac{\alpha}{2}}\)</span> based on the confidence level (and alpha level).</p></li>
+<li><p>Calculate the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#score"><span class="std std-doc">score</span></a>, <span class="math notranslate nohighlight">\(z_{\frac{\alpha}{2}}\)</span> based on the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-level"><span class="std std-doc">confidence level</span></a> (and alpha level).</p></li>
 </ol>
 <figure style="text-align: center;">
   <img src="_static/confidence/confidence_interval.png" style="display: block; margin: 0 auto; width: 60%;">
@@ -602,7 +606,7 @@ document.write(`
 </section>
 <section id="small-samples">
 <h2>Small Samples<a class="headerlink" href="#small-samples" title="Permalink to this heading">#</a></h2>
-<p>For small sample sizes our estimate of the proportion, <span class="math notranslate nohighlight">\(p\)</span>, has additional uncertainty. We use the Student’s t distribution, with t-scores, instead of Gaussian distribution, with z-scores, to account for this.</p>
+<p>For small <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> sizes our estimate of the proportion, <span class="math notranslate nohighlight">\(p\)</span>, has additional uncertainty. We use the Student’s t distribution, with t-<a class="reference internal" href="GeostatsPy_glossary_n_s.html#score"><span class="std std-doc">score</span></a>s, instead of <a class="reference internal" href="GeostatsPy_glossary_e_m.html#gaussian-distribution"><span class="std std-doc">Gaussian distribution</span></a>, with z-scores, to account for this.</p>
 <div class="math notranslate nohighlight">
 \[
 p_{C.I.} \rightarrow \hat{p} \pm z_{\frac{\alpha}{2}} \sqrt{\frac{p(1-p)}{n}} \approx \hat{p} \pm t_{\frac{\alpha}{2}} \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}
@@ -612,8 +616,8 @@ p_{C.I.} \rightarrow \hat{p} \pm z_{\frac{\alpha}{2}} \sqrt{\frac{p(1-p)}{n}} \a
 </ul>
 <p>What is a small sample size? There are various rules of thumb. We apply,</p>
 <ul class="simple">
-<li><p>for means, <span class="math notranslate nohighlight">\(n \lt 30\)</span></p></li>
-<li><p>for proportions, <span class="math notranslate nohighlight">\(np \lt 30\)</span> or <span class="math notranslate nohighlight">\(n(1-p) \lt 30\)</span></p></li>
+<li><p>for <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>s, <span class="math notranslate nohighlight">\(n \lt 30\)</span></p></li>
+<li><p>for <a class="reference internal" href="GeostatsPy_glossary_n_s.html#proportions"><span class="std std-doc">proportions</span></a>, <span class="math notranslate nohighlight">\(np \lt 30\)</span> or <span class="math notranslate nohighlight">\(n(1-p) \lt 30\)</span></p></li>
 </ul>
 </section>
 <section id="load-the-required-libraries">
@@ -648,7 +652,7 @@ p_{C.I.} \rightarrow \hat{p} \pm z_{\frac{\alpha}{2}} \sqrt{\frac{p(1-p)}{n}} \a
 </section>
 <section id="set-the-working-directory">
 <h2>Set the working directory<a class="headerlink" href="#set-the-working-directory" title="Permalink to this heading">#</a></h2>
-<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).  Also, in this case make sure to place the required (see below) data file in this directory.  When we are done with this tutorial we will write our new dataset back to this directory.</p>
+<p>I always like to do this so I don’t lose files and to simplify subsequent read and writes (avoid including the full address each time).  Also, in this case make sure to place the required (see below) <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> file in this directory.  When we are done with this tutorial we will write our new dataset back to this directory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#os.chdir(&quot;C:\PGE337&quot;)                                  # set the working directory</span>
@@ -659,7 +663,7 @@ p_{C.I.} \rightarrow \hat{p} \pm z_{\frac{\alpha}{2}} \sqrt{\frac{p(1-p)}{n}} \a
 </section>
 <section id="loading-data">
 <h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
-<p>Let’s load the provided dataset. ‘PorositySamples2Units.csv’ is available at <a class="github reference external" href="https://github.com/GeostatsGuy/GeoDataSets">GeostatsGuy/GeoDataSets</a>. It is a comma delimited file with 20 porosity measures from 2 rock units from the subsurface, porosity (as a fraction). We load it with the pandas ‘read_csv’ function into a data frame we called ‘df’ and then preview it by printing a slice and by utilizing the ‘head’ DataFrame member function (with a nice and clean format, see below).</p>
+<p>Let’s load the provided dataset. ‘PorositySamples2Units.csv’ is available at <a class="github reference external" href="https://github.com/GeostatsGuy/GeoDataSets">GeostatsGuy/GeoDataSets</a>. It is a comma delimited file with 20 <a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a> measures from 2 rock units from the subsurface, porosity (as a fraction). We load it with the pandas ‘read_csv’ function into a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> frame we called ‘df’ and then preview it by printing a slice and by utilizing the ‘head’ <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a> member function (with a nice and clean format, see below).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#df = pd.read_csv(&quot;PorositySample2Units.csv&quot;)                # read a .csv file in as a DataFrame</span>
@@ -805,7 +809,7 @@ p_{C.I.} \rightarrow \hat{p} \pm z_{\frac{\alpha}{2}} \sqrt{\frac{p(1-p)}{n}} \a
 </section>
 <section id="confidence-interval-for-the-mean">
 <h2>Confidence Interval for the Mean<a class="headerlink" href="#confidence-interval-for-the-mean" title="Permalink to this heading">#</a></h2>
-<p>Let’s first demonstrate the calculation of the confidence interval for the sample mean at a 95% confidence level.  This could be interpreted as the interval over which there is a 95% confidence that it contains the true population.  We use the student’s t distribution as we assume we do not know the variance and the sample size is small.</p>
+<p>Let’s first demonstrate the calculation of the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-interval"><span class="std std-doc">confidence interval</span></a> for the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a> at a 95% confidence level.  This could be interpreted as the interval over which there is a 95% confidence that it contains the true <a class="reference internal" href="GeostatsPy_glossary_n_s.html#population"><span class="std std-doc">population</span></a>.  We use the student’s t distribution as we assume we do not know the <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a> and the sample size is small.</p>
 <p>\begin{equation}
 x̅ \pm t_{\frac{\alpha}{2},n-1} \times \frac {s}{\sqrt{n}}
 \end{equation}</p>
@@ -850,7 +854,7 @@ The confidence interval by-hand for the X1 mean is [0.15 0.18]
 </section>
 <section id="let-s-plot-the-result">
 <h2>Let’s Plot the Result<a class="headerlink" href="#let-s-plot-the-result" title="Permalink to this heading">#</a></h2>
-<p>Plot the full distribution and the upper and lower confidence intervals for the uncertainty in the population mean.</p>
+<p>Plot the full distribution and the upper and lower <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-interval"><span class="std std-doc">confidence interval</span></a>s for the uncertainty in the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#population"><span class="std std-doc">population</span></a> <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.26</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
@@ -878,13 +882,13 @@ The confidence interval by-hand for the X1 mean is [0.15 0.18]
 </section>
 <section id="confidence-interval-for-the-proportion">
 <h2>Confidence Interval for the Proportion<a class="headerlink" href="#confidence-interval-for-the-proportion" title="Permalink to this heading">#</a></h2>
-<p>Now I demonstrate the calculation of the confidence interval for a proportion.</p>
+<p>Now I demonstrate the calculation of the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#confidence-interval"><span class="std std-doc">confidence interval</span></a> for a proportion.</p>
 <p>\begin{equation}
 \hat{p} \pm t_{\frac{\alpha}{2},n-1} \times \frac {\hat{p}(1-\hat{p})}{\sqrt{n}}
 \end{equation}</p>
-<p>First we need to make a new categorical feature to demonstrate confidence intervals for proportions.</p>
+<p>First we need to make a new <a class="reference internal" href="GeostatsPy_glossary_a_d.html#categorical-feature"><span class="std std-doc">categorical feature</span></a> to demonstrate confidence intervals for <a class="reference internal" href="GeostatsPy_glossary_n_s.html#proportions"><span class="std std-doc">proportions</span></a>.</p>
 <ul class="simple">
-<li><p>we will assign samples as category ‘high porosity’ when their porosity is greater than 18%</p></li>
+<li><p>we will assign <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s as category ‘high <a class="reference internal" href="GeostatsPy_glossary_n_s.html#porosity"><span class="std std-doc">porosity</span></a>’ when their porosity is greater than 18%</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -958,20 +962,20 @@ The confidence interval for the X1 proportion of high porosity is [0.244 0.456]
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1100,6 +1104,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>

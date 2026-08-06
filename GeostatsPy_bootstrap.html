@@ -173,6 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_concepts.html">Geostatistical Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_subsurface_modeling.html">Subsurface Modeling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_probability.html">Probability Concepts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_coordinate_transformations.html">Coordinate Transformations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_univariate_statistics.html">Univariate Statistics</a></li>
@@ -219,7 +220,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy_datasets.html">Synthetic Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="GeostatsPy.html">GeostatsPy Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_a_d.html">Glossary A-D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_e_m.html">Glossary E-M</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_n_s.html">Glossary N-S</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GeostatsPy_glossary_t_z.html">Glossary T-Z</a></li>
 <li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
@@ -471,35 +475,35 @@ document.write(`
 <p><strong>YouTube Lecture</strong>: check out my lecture on <a class="reference external" href="https://youtu.be/wCgdoImlLY0?si=lpTWz2H7QTdxHBy9">Bootstrap</a>. For your convenience here’s a summary of salient points.</p>
 <section id="bootstrap-method">
 <h2>Bootstrap Method<a class="headerlink" href="#bootstrap-method" title="Permalink to this heading">#</a></h2>
-<p>Bootstrap is a statistical resampling procedure to calculate uncertainty in a calculated statistic from the sample data itself. Some general comments,</p>
+<p><a class="reference internal" href="GeostatsPy_glossary_a_d.html#bootstrap"><span class="std std-doc">Bootstrap</span></a> is a statistical resampling procedure to calculate uncertainty in a calculated statistic from the sample data itself. Some general comments,</p>
 <ul class="simple">
-<li><p><strong>sampling with replacement</strong> - <span class="math notranslate nohighlight">\(n\)</span> (number of data samples) Monte Carlo simulations from the dataset cumulative distribution function, this results in a new realization of the data</p></li>
-<li><p><strong>simulates the data collection process</strong> - the fundamental idea is to simulate the original data collection process. Instead of actually collecting new sample sets (this would be infeasible), we randomly select from the data to get data realizations</p></li>
-<li><p><strong>bootstrap any statistic</strong> - this approach is very flexible as we can calculate realizations of any statistics from the data realizations</p></li>
-<li><p><strong>computationally cheap</strong> - repeat this approach to get realizations of the statistic to build a complete distribution of uncertainty. Use a large number of realizations, <span class="math notranslate nohighlight">\(L\)</span>, for a reliable uncertainty model.</p></li>
-<li><p><strong>calculates the entire distribution of uncertainty</strong> - for any statistic, you calculate any summary statistic for the uncertainty model, e.g., mean, P10 and P90 of the uncertainty in the mean</p></li>
-<li><p><strong>bagging for machine learning</strong> - is the application with bootstrap to obtain data realizations to train predictive model realizations to aggregate predictions over ensembles of prediction models to reduce model variance</p></li>
+<li><p><strong>sampling with replacement</strong> - <span class="math notranslate nohighlight">\(n\)</span> (number of <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> samples) <a class="reference internal" href="GeostatsPy_glossary_e_m.html#monte-carlo-simulation"><span class="std std-doc">Monte Carlo simulation</span></a>s from the dataset <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cumulative-distribution-function"><span class="std std-doc">cumulative distribution function</span></a>, this results in a new realization of the data</p></li>
+<li><p><strong>simulates the data collection process</strong> - the fundamental idea is to simulate the original data collection process. Instead of actually collecting new sample sets (this would be infeasible), we randomly select from the data to get data <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a></p></li>
+<li><p><strong>bootstrap any statistic</strong> - this approach is very flexible as we can calculate <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a>s of any <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> from the data realizations</p></li>
+<li><p><strong>computationally cheap</strong> - repeat this approach to get realizations of the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a> to build a complete distribution of uncertainty. Use a large number of realizations, <span class="math notranslate nohighlight">\(L\)</span>, for a reliable uncertainty model.</p></li>
+<li><p><strong>calculates the entire distribution of uncertainty</strong> - for any statistic, you calculate any summary statistic for the uncertainty model, e.g., <a class="reference internal" href="GeostatsPy_glossary_e_m.html#mean"><span class="std std-doc">mean</span></a>, P10 and P90 of the uncertainty in the mean</p></li>
+<li><p><strong>bagging for machine learning</strong> - is the application with bootstrap to obtain data realizations to train predictive model realizations to aggregate <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prediction"><span class="std std-doc">prediction</span></a>s over ensembles of prediction models to reduce model <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variance"><span class="std std-doc">variance</span></a></p></li>
 </ul>
 <p>What are the limitations of bootstrap?</p>
 <ul class="simple">
-<li><p>biased sample data will likely result in a biased bootstrapped uncertainty model, you must first debias the samples, e.g., declustering</p></li>
-<li><p>you must have a sufficient sample size</p></li>
-<li><p>integrates uncertainty due to sparse samples in space only, does not account for uncertainty due sampling error and sample bias.</p></li>
-<li><p>assumes independence between samples and does not account for the spatial context of the data, i.e., sample data locations, volume of interest nor the spatial continuity. There is a variant of bootstrap called <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Spatial_Bootstrap.ipynb">spatial bootstrap</a>.</p></li>
+<li><p>biased sample data will likely result in a biased bootstrapped uncertainty model, you must first debias the samples, e.g., <a class="reference internal" href="GeostatsPy_glossary_a_d.html#declustering"><span class="std std-doc">declustering</span></a></p></li>
+<li><p>you must have a sufficient <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> size</p></li>
+<li><p>integrates uncertainty due to sparse samples in space only, does not account for uncertainty due sampling <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a> and sample <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bias"><span class="std std-doc">bias</span></a>.</p></li>
+<li><p>assumes <a class="reference internal" href="GeostatsPy_glossary_e_m.html#independence"><span class="std std-doc">independence</span></a> between samples and does not account for the spatial context of the data, i.e., sample data locations, <a class="reference internal" href="GeostatsPy_glossary_t_z.html#volume-of-interest"><span class="std std-doc">volume of interest</span></a> nor the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#spatial-continuity"><span class="std std-doc">spatial continuity</span></a>. There is a variant of bootstrap called <a class="reference external" href="https://github.com/GeostatsGuy/DataScienceInteractivePython/blob/main/Interactive_Spatial_Bootstrap.ipynb">spatial bootstrap</a>.</p></li>
 </ul>
 </section>
 <section id="bootstrap-philosophy">
 <h2>Bootstrap Philosophy<a class="headerlink" href="#bootstrap-philosophy" title="Permalink to this heading">#</a></h2>
-<p>The general bootstrap approach developed by Efron (1979) is an attempt to simulate the sampling process to access the uncertainty due to the limited sample data.</p>
+<p>The general <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bootstrap"><span class="std std-doc">bootstrap</span></a> approach developed by Efron (1979) is an attempt to simulate the sampling process to access the uncertainty due to the limited sample data.</p>
 <ul class="simple">
-<li><p>We could access this by existing over multiple parallel universes, in each we collect <span class="math notranslate nohighlight">\(n\)</span> different datasets. Then we could perform our operations, including calculating sample statistics and building predictive models.</p></li>
-<li><p>The realizations of the sample statistics or model predictions can be pooled, assumed to be equiprobable, and the resulting distribution treated as an uncertainty model.</p></li>
+<li><p>We could access this by existing over multiple parallel universes, in each we collect <span class="math notranslate nohighlight">\(n\)</span> different datasets. Then we could perform our operations, including calculating sample <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> and building predictive models.</p></li>
+<li><p>The <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a> of the sample statistics or model <a class="reference internal" href="GeostatsPy_glossary_n_s.html#prediction"><span class="std std-doc">prediction</span></a>s can be pooled, assumed to be equiprobable, and the resulting distribution treated as an uncertainty model.</p></li>
 </ul>
 <p>What’s the problem with this? We don’t exist over parallel universes.</p>
 <ul class="simple">
-<li><p>Could we just calculate multiple exclusive datasets of <span class="math notranslate nohighlight">\(n\)</span> samples? No. Given the typical cost and value of samples, this would not be a practical workflow.</p></li>
+<li><p>Could we just calculate multiple exclusive datasets of <span class="math notranslate nohighlight">\(n\)</span> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s? No. Given the typical cost and value of samples, this would not be a practical workflow.</p></li>
 </ul>
-<p>Efron suggested that instead we sample from the available data with replacement.</p>
+<p>Efron suggested that instead we sample from the available <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> with replacement.</p>
 <ul class="simple">
 <li><p>Efron is simulating the sampling process from the sample itself!</p></li>
 </ul>
@@ -552,7 +556,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ca687995efc6e42b1b2c65bb10c289e88e97e476b33f9b33bd4f090230e52ab6.png" src="_images/ca687995efc6e42b1b2c65bb10c289e88e97e476b33f9b33bd4f090230e52ab6.png" />
+<img alt="_images/21a00440cacd5d7b54a8cb68404abd60ebe42028467a3802c3cc61f9a1bee080.png" src="_images/21a00440cacd5d7b54a8cb68404abd60ebe42028467a3802c3cc61f9a1bee080.png" />
 </div>
 </div>
 <p>What we actually have is only this, the single sample dataset,</p>
@@ -593,15 +597,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/459a6bc3068cde39ca671731dd5f44dd251fb5aecaabd5dfddf4793050b80aa2.png" src="_images/459a6bc3068cde39ca671731dd5f44dd251fb5aecaabd5dfddf4793050b80aa2.png" />
+<img alt="_images/06ec6ee462e4926c13d9ff011ef2eb9e4690723bbcd48afc5075011d51ee5da5.png" src="_images/06ec6ee462e4926c13d9ff011ef2eb9e4690723bbcd48afc5075011d51ee5da5.png" />
 </div>
 </div>
 </section>
 <section id="bootstrap-steps">
 <h2>Bootstrap Steps<a class="headerlink" href="#bootstrap-steps" title="Permalink to this heading">#</a></h2>
-<p>These are the general steps for bootstrap,</p>
+<p>These are the general steps for <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bootstrap"><span class="std std-doc">bootstrap</span></a>,</p>
 <ol class="arabic simple">
-<li><p>assemble a sample set, must be representative, reasonable to assume independence between samples</p></li>
+<li><p>assemble a sample set, must be representative, reasonable to assume <a class="reference internal" href="GeostatsPy_glossary_e_m.html#independence"><span class="std std-doc">independence</span></a> between samples</p></li>
 </ol>
 <figure style="text-align: center;">
   <img src="_static/bootstrap/bootstrap_data.png" style="display: block; margin: 0 auto; width: 40%;">
@@ -609,10 +613,10 @@ document.write(`
 </figcaption>
 </figure>
 <ol class="arabic simple" start="2">
-<li><p>optional: build a cumulative distribution function (CDF)</p>
+<li><p>optional: build a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#cumulative-distribution-function"><span class="std std-doc">cumulative distribution function</span></a> (CDF)</p>
 <ul class="simple">
-<li><p>may account for declustering weights, tail extrapolation</p></li>
-<li><p>could use analogous data to support</p></li>
+<li><p>may account for <a class="reference internal" href="GeostatsPy_glossary_a_d.html#declustering"><span class="std std-doc">declustering</span></a> weights, tail extrapolation</p></li>
+<li><p>could use analogous <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> to support</p></li>
 </ul>
 </li>
 </ol>
@@ -622,8 +626,8 @@ document.write(`
 </figcaption>
 </figure>
 <ol class="arabic simple" start="3">
-<li><p>For <span class="math notranslate nohighlight">\(i = \alpha, \ldots, n\)</span> data, do the following, draw a random sample with replacement from the sample set or Monte Carlo simulate from the CDF (if available).</p></li>
-<li><p>Calculate a realization of the summary statistic of interest from the <span class="math notranslate nohighlight">\(n\)</span> samples, e.g. <span class="math notranslate nohighlight">\(m^\ell\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\ell}\)</span>.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(i = \alpha, \ldots, n\)</span> data, do the following, draw a random <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a> with replacement from the sample set or Monte Carlo simulate from the CDF (if available).</p></li>
+<li><p>Calculate a <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> of the summary <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a> of interest from the <span class="math notranslate nohighlight">\(n\)</span> samples, e.g. <span class="math notranslate nohighlight">\(m^\ell\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\ell}\)</span>.</p></li>
 </ol>
 <figure style="text-align: center;">
   <img src="_static/bootstrap/bootstrap_1.png" style="display: block; margin: 0 auto; width: 70%;">
@@ -631,7 +635,7 @@ document.write(`
 </figcaption>
 </figure>
 <ol class="arabic simple" start="5">
-<li><p>For <span class="math notranslate nohighlight">\(\ell = 1, \ldots, L\)</span> realizations, repeat steps 3 and 4 to calculate realizations of the sample statistic.</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(\ell = 1, \ldots, L\)</span> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a>, repeat steps 3 and 4 to calculate realizations of the sample statistic.</p></li>
 <li><p>Compile and summarize the <span class="math notranslate nohighlight">\(L\)</span> realizations of the statistic of interest.</p></li>
 </ol>
 <figure style="text-align: center;">
@@ -642,17 +646,17 @@ document.write(`
 </section>
 <section id="bootstrap-comments">
 <h2>Bootstrap Comments<a class="headerlink" href="#bootstrap-comments" title="Permalink to this heading">#</a></h2>
-<p>Here’s some additional comments about the bootstrap approach developed by Efron (1982),</p>
+<p>Here’s some additional comments about the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bootstrap"><span class="std std-doc">bootstrap</span></a> approach developed by Efron (1982),</p>
 <ul class="simple">
-<li><p><strong>Does this work?</strong> - it does sound counter-intuitive, right? Uncertainty in the statistic from the data itself! Prove it to yourself, compare your bootstrap uncertainty in the mean with the solution by standard error,</p></li>
+<li><p><strong>Does this work?</strong> - it does sound counter-intuitive, right? Uncertainty in the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a> from the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> itself! Prove it to yourself, compare your bootstrap uncertainty in the mean with the solution by standard <a class="reference internal" href="GeostatsPy_glossary_e_m.html#error"><span class="std std-doc">error</span></a>,</p></li>
 </ul>
 <div class="math notranslate nohighlight">
 \[
 \sigma^2_\overline{x} = \frac{\sigma^2_s}{n}
 \]</div>
 <ul class="simple">
-<li><p><strong>Extremely versatile</strong> - could calculate uncertainty in any statistic! For example, P13, skew, fourth centered moment, Dykstra Parsons coefficient, etc.</p></li>
-<li><p>Would not be possible access general uncertainty in any statistic without bootstrap, but remember to not stop early. Get the realization of the data and finish calculating the realization of the statistic, e.g., for Dykstra-Parsons coefficient, calculate the realization of the <span class="math notranslate nohighlight">\(k_{50}\)</span> and <span class="math notranslate nohighlight">\(k_{16}\)</span> from the same data realization to get uncertainty in Dystra-Parsons coefficient. Do not calculate the uncertainty in the <span class="math notranslate nohighlight">\(k_{50}\)</span> and <span class="math notranslate nohighlight">\(k_{16}\)</span> separately!</p></li>
+<li><p><strong>Extremely versatile</strong> - could calculate uncertainty in any statistic! For example, P13, skew, fourth centered moment, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dykstra-parsons-coefficient"><span class="std std-doc">Dykstra Parsons coefficient</span></a>, etc.</p></li>
+<li><p>Would not be possible access general uncertainty in any statistic without bootstrap, but remember to not stop early. Get the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a> of the data and finish calculating the realization of the statistic, e.g., for Dykstra-Parsons coefficient, calculate the realization of the <span class="math notranslate nohighlight">\(k_{50}\)</span> and <span class="math notranslate nohighlight">\(k_{16}\)</span> from the same data realization to get uncertainty in Dystra-Parsons coefficient. Do not calculate the uncertainty in the <span class="math notranslate nohighlight">\(k_{50}\)</span> and <span class="math notranslate nohighlight">\(k_{16}\)</span> separately!</p></li>
 <li><p>Advanced forms account for spatial information and sampling strategy, e.g., game theory and Journel’s spatial bootstrap (1993).</p></li>
 </ul>
 <p>This is a very powerful method. Let’s try it out!</p>
@@ -748,7 +752,7 @@ document.write(`
 </section>
 <section id="loading-tabular-data">
 <h2>Loading Tabular Data<a class="headerlink" href="#loading-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>Here’s the command to load our comma delimited data file in to a Pandas’ DataFrame object.</p>
+<p>Here’s the command to load our comma delimited <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> file in to a Pandas’ <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a> object.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;https://raw.githubusercontent.com/GeostatsGuy/GeoDataSets/master/sample_data_biased.csv&#39;</span><span class="p">)</span> <span class="c1"># load our data form my GitHub account</span>
@@ -839,8 +843,8 @@ document.write(`
 </section>
 <section id="summary-statistics-for-tabular-data">
 <h2>Summary Statistics for Tabular Data<a class="headerlink" href="#summary-statistics-for-tabular-data" title="Permalink to this heading">#</a></h2>
-<p>The table includes X and Y coordinates (meters), Facies 1 and 0 (1 is sandstone and 0 interbedded sand and mudstone), Porosity (fraction), and permeability as Perm (mDarcy).</p>
-<p>There are a lot of efficient methods to calculate summary statistics from tabular data in DataFrames. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that features are on the rows and the statistics are on the columns.</p>
+<p>The table includes X and Y coordinates (meters), <a class="reference internal" href="GeostatsPy_glossary_e_m.html#facies"><span class="std std-doc">Facies</span></a> 1 and 0 (1 is sandstone and 0 interbedded sand and mudstone), Porosity (fraction), and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#permeability"><span class="std std-doc">permeability</span></a> as Perm (mDarcy).</p>
+<p>There are a lot of efficient methods to calculate summary <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> from <a class="reference internal" href="GeostatsPy_glossary_t_z.html#tabular-data"><span class="std std-doc">tabular data</span></a> in <a class="reference internal" href="GeostatsPy_glossary_a_d.html#dataframe"><span class="std std-doc">DataFrame</span></a>s. The describe command provides count, mean, minimum, maximum, and quartiles all in a nice data table. We use transpose just to flip the table so that <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a>s are on the rows and the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a>s are on the columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>                                     <span class="c1"># summary statistics</span>
@@ -939,7 +943,7 @@ document.write(`
 </section>
 <section id="visualizing-tabular-data-with-location-maps">
 <h2>Visualizing Tabular Data with Location Maps<a class="headerlink" href="#visualizing-tabular-data-with-location-maps" title="Permalink to this heading">#</a></h2>
-<p>It is natural to set the x and y coordinate and feature ranges manually. e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display. I heard that plasma is known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I recall correctly). We will assume a study area of 0 to 1,000m in x and y and omit any data outside this area.</p>
+<p>It is natural to set the x and y coordinate and <a class="reference internal" href="GeostatsPy_glossary_e_m.html#feature"><span class="std std-doc">feature</span></a> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#range"><span class="std std-doc">range</span></a>s manually. e.g. do you want your color bar to go from 0.05887 to 0.24230 exactly? Also, let’s pick a color map for display. I heard that plasma is known to be friendly to the color blind as the color and intensity vary together (hope I got that right, it was an interesting Twitter conversation started by Matt Hall from Agile if I recall correctly). We will assume a study area of 0 to 1,000m in x and y and omit any <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> outside this area.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xmin</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="n">xmax</span> <span class="o">=</span> <span class="mf">1000.0</span>                                     <span class="c1"># range of x values</span>
@@ -979,17 +983,17 @@ document.write(`
 </section>
 <section id="simple-bootstrap-method-in-python">
 <h2>Simple Bootstrap Method in Python<a class="headerlink" href="#simple-bootstrap-method-in-python" title="Permalink to this heading">#</a></h2>
-<p>If you are new to bootstrap and Python, here’s the most simple code possible for bootstrap.</p>
+<p>If you are new to <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bootstrap"><span class="std std-doc">bootstrap</span></a> and Python, here’s the most simple code possible for bootstrap.</p>
 <ul class="simple">
-<li><p>specify the number of bootstrap realizations, <span class="math notranslate nohighlight">\(L\)</span></p></li>
-<li><p>declare a list to store the bootstrap realizations of the statistic of interest</p></li>
+<li><p>specify the number of bootstrap <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a>, <span class="math notranslate nohighlight">\(L\)</span></p></li>
+<li><p>declare a list to store the bootstrap <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a>s of the statistic of interest</p></li>
 <li><p>loop over L bootstrap realizations</p>
 <ul>
-<li><p>n MCS, random samples with replacement for a new realization of the data</p></li>
-<li><p>calculate the realization of the statistic from the realization of the data</p></li>
+<li><p>n MCS, random <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s with replacement for a new realization of the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a></p></li>
+<li><p>calculate the realization of the <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a> from the realization of the data</p></li>
 </ul>
 </li>
-<li><p>summarize the resulting uncertainty model, histogram, summary statistics etc.</p></li>
+<li><p>summarize the resulting uncertainty model, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#histogram"><span class="std std-doc">histogram</span></a>, summary <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistics"><span class="std std-doc">statistics</span></a> etc.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1006,14 +1010,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/60785f31d69457ff089306effea22b7c28e516ea045d6b4150d7ca229b7f14be.png" src="_images/60785f31d69457ff089306effea22b7c28e516ea045d6b4150d7ca229b7f14be.png" />
+<img alt="_images/92a2cf5ed40f26dc9aa48ff5e3958ae8b7c2bdba51b1db88a911766a4bcf6ecc.png" src="_images/92a2cf5ed40f26dc9aa48ff5e3958ae8b7c2bdba51b1db88a911766a4bcf6ecc.png" />
 </div>
 </div>
 <p>Now we proceed with a more complicated, robust work by first quantifying the spatial bias in the samples and assigned data weights to mitigate this bias.</p>
 </section>
 <section id="declustering">
 <h2>Declustering<a class="headerlink" href="#declustering" title="Permalink to this heading">#</a></h2>
-<p>Let’s calculate some declustering weights. There is a demonstration on declustering here <a class="reference external" href="https://git.io/fhgJl">https://git.io/fhgJl</a> if you need more information.</p>
+<p>Let’s calculate some <a class="reference internal" href="GeostatsPy_glossary_a_d.html#declustering"><span class="std std-doc">declustering</span></a> weights. There is a demonstration on declustering here <a class="reference external" href="https://git.io/fhgJl">https://git.io/fhgJl</a> if you need more information.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wts</span><span class="p">,</span> <span class="n">cell_sizes</span><span class="p">,</span> <span class="n">dmeans</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">declus</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="s1">&#39;X&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">,</span><span class="s1">&#39;Porosity&#39;</span><span class="p">,</span><span class="n">iminmax</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">noff</span><span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">ncell</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">cmin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">cmax</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
@@ -1035,9 +1039,7 @@ document.write(`
    mean of      0.13474387540138408 
    min and max  0.058547873 and 0.228790002
    standard dev 0.03767982164385208 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Declustered mean = 0.121 and declustered standard deviation = 0.032
+Declustered mean = 0.121 and declustered standard deviation = 0.032
 </pre></div>
 </div>
 </div>
@@ -1071,10 +1073,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.12299594162283735 and realization 2 = 0.12401031957093427
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bootstrap means, realization 1 = 0.11913435408304499 and realization 2 = 0.12032611150865052
 </pre></div>
 </div>
-<img alt="_images/e4a94928c4180c31aff0919d71534626b34d2f77ecec8a5c3e85d5245881b9b4.png" src="_images/e4a94928c4180c31aff0919d71534626b34d2f77ecec8a5c3e85d5245881b9b4.png" />
+<img alt="_images/3aeab3d80d909222078f3f5591f5fd710a8e31f0f575bc1b96d17eac93f90564.png" src="_images/3aeab3d80d909222078f3f5591f5fd710a8e31f0f575bc1b96d17eac93f90564.png" />
 </div>
 </div>
 <p>Note that the bootstrap distributions vary quite a bit from the original.</p>
@@ -1082,7 +1084,7 @@ document.write(`
 </section>
 <section id="summarizations-over-bootstrap-realizations">
 <h2>Summarizations Over Bootstrap Realizations<a class="headerlink" href="#summarizations-over-bootstrap-realizations" title="Permalink to this heading">#</a></h2>
-<p>Let’s make a loop to conduct <span class="math notranslate nohighlight">\(L\)</span> resamples and calculate the average and standard deviation for each  (<span class="math notranslate nohighlight">\(m^\ell\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\ell}\)</span>,  for <span class="math notranslate nohighlight">\(\ell = 0,\dots,L-1\)</span>). We then summarization over these <span class="math notranslate nohighlight">\(L\)</span> realizations.</p>
+<p>Let’s make a loop to conduct <span class="math notranslate nohighlight">\(L\)</span> resamples and calculate the <a class="reference internal" href="GeostatsPy_glossary_a_d.html#average"><span class="std std-doc">average</span></a> and <a class="reference internal" href="GeostatsPy_glossary_n_s.html#standard-deviation"><span class="std std-doc">standard deviation</span></a> for each  (<span class="math notranslate nohighlight">\(m^\ell\)</span>, <span class="math notranslate nohighlight">\(\sigma^2_{\ell}\)</span>,  for <span class="math notranslate nohighlight">\(\ell = 0,\dots,L-1\)</span>). We then summarization over these <span class="math notranslate nohighlight">\(L\)</span> <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a>.</p>
 <p>I did not find any built-in, concise functions to accomplish this, i.e. with a single line of code, so we are going to do it by hand.</p>
 <p>To understand this code there are just a couple of Python concepts that you need to add to your Python arsenal.</p>
 <ol class="arabic simple">
@@ -1092,12 +1094,12 @@ document.write(`
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>For Loops - when we are using the command below, we are instructing the computer to loop over all the indented code below the command for <span class="math notranslate nohighlight">\(l = 0,1,2,\ldots,L-1\)</span> times. For each loop the <span class="math notranslate nohighlight">\(l\)</span> variable increments, so we can use this to save each result to a different index in the arrays mean and stdev. Note, Python arrays index starting at 0 and stop at the length - 1 (we are running each bootstrap resampled realization, calculating the average and standard deviation and storing them in the arrays that we already declared).</p></li>
+<li><p>For Loops - when we are using the command below, we are instructing the computer to loop over all the indented code below the command for <span class="math notranslate nohighlight">\(l = 0,1,2,\ldots,L-1\)</span> times. For each loop the <span class="math notranslate nohighlight">\(l\)</span> <a class="reference internal" href="GeostatsPy_glossary_t_z.html#variable"><span class="std std-doc">variable</span></a> increments, so we can use this to save each result to a different index in the arrays mean and stdev. Note, Python arrays index starting at 0 and stop at the length - 1 (we are running each bootstrap resampled <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realization"><span class="std std-doc">realization</span></a>, calculating the average and standard deviation and storing them in the arrays that we already declared).</p></li>
 </ol>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">):</span> 
 </pre></div>
 </div>
-<p>Now, let’s write the code for performing bootstrap and calculate the uncertainty in the mean and standard deviation.</p>
+<p>Now, let’s write the code for performing <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bootstrap"><span class="std std-doc">bootstrap</span></a> and calculate the uncertainty in the mean and standard deviation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mi">1000</span>                                   <span class="c1"># set the number of realizations</span>
@@ -1129,13 +1131,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d294dad20ea450d8b7040ee75825b627d4ac4531ef02d046075f4c3da16ac0bb.png" src="_images/d294dad20ea450d8b7040ee75825b627d4ac4531ef02d046075f4c3da16ac0bb.png" />
+<img alt="_images/405963d6142813660f862cefd86368c5e628e167dda8e9289c35c1dc339e4540.png" src="_images/405963d6142813660f862cefd86368c5e628e167dda8e9289c35c1dc339e4540.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=1000, minmax=(0.11563196844982698, 0.1283276389031142), mean=0.1211953942133045, variance=3.409409662248027e-06, skewness=0.010186839279331644, kurtosis=0.022623871814261065)
+DescribeResult(nobs=1000, minmax=(0.11547516243252597, 0.12688538210380623), mean=0.1213161801437993, variance=3.312122344333995e-06, skewness=0.018276069436232216, kurtosis=0.04999680900928771)
 P10: 0.119, P50: 0.121, P90: 0.124
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=1000, minmax=(0.0261589910286554, 0.03641606104336819), mean=0.031743482671298895, variance=2.6471921276378173e-06, skewness=-0.06388072917312573, kurtosis=-0.1459191323002389)
+DescribeResult(nobs=1000, minmax=(0.02692252250480912, 0.036709311444147), mean=0.03168807334911956, variance=2.4988826016766406e-06, skewness=0.076378131618209, kurtosis=-0.14790750716291745)
 P10: 0.03, P50: 0.032, P90: 0.034
 </pre></div>
 </div>
@@ -1147,16 +1149,16 @@ P10: 0.03, P50: 0.032, P90: 0.034
 </section>
 <section id="bootstrap-in-geostatspy">
 <h2>Bootstrap in GeostatsPy<a class="headerlink" href="#bootstrap-in-geostatspy" title="Permalink to this heading">#</a></h2>
-<p>We have a simple bootstrap function in GeostatsPy</p>
+<p>We have a simple <a class="reference internal" href="GeostatsPy_glossary_a_d.html#bootstrap"><span class="std std-doc">bootstrap</span></a> function in GeostatsPy</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">realizations_array</span> <span class="o">=</span> <span class="n">geostats</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">(</span><span class="n">array</span><span class="p">,</span><span class="n">stat</span><span class="p">,</span><span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span><span class="n">nreal</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>where:</p>
 <ul class="simple">
-<li><p>array - an numpy ndarray of samples</p></li>
-<li><p>stat - statistic function that can be applied to an ndarray, e.g., numpy.average</p></li>
+<li><p>array - an numpy ndarray of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#sample"><span class="std std-doc">sample</span></a>s</p></li>
+<li><p>stat - <a class="reference internal" href="GeostatsPy_glossary_n_s.html#statistic"><span class="std std-doc">statistic</span></a> function that can be applied to an ndarray, e.g., numpy.<a class="reference internal" href="GeostatsPy_glossary_a_d.html#average"><span class="std std-doc">average</span></a></p></li>
 <li><p>weights - an array of weights, if omitted or set to None, then equal weighting is applied</p></li>
-<li><p>nreal - the number of realizations</p></li>
+<li><p>nreal - the number of <a class="reference internal" href="GeostatsPy_glossary_n_s.html#realizations"><span class="std std-doc">realizations</span></a></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1186,13 +1188,13 @@ P10: 0.03, P50: 0.032, P90: 0.034
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3707172c4ba1d46af19ef66b94f2ad3774a43a27d640ee1b342f0c891fdeea0b.png" src="_images/3707172c4ba1d46af19ef66b94f2ad3774a43a27d640ee1b342f0c891fdeea0b.png" />
+<img alt="_images/275a6b22d1d0bf8194fe6c8ae74605daa3b1c3e7d373ca6e8e8b10b2cf04af03.png" src="_images/275a6b22d1d0bf8194fe6c8ae74605daa3b1c3e7d373ca6e8e8b10b2cf04af03.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Summary Statistics for Bootstrap Porosity Mean Realizations:
-DescribeResult(nobs=10000, minmax=(0.11391396939446369, 0.1285829060934256), mean=0.12126730051724222, variance=3.4576870109278116e-06, skewness=0.04425461746833592, kurtosis=-0.03642933011752403)
+DescribeResult(nobs=10000, minmax=(0.11348426393079585, 0.1284548571764706), mean=0.12123081148355015, variance=3.46853870876865e-06, skewness=0.030769201538140938, kurtosis=0.06240445555723184)
 P10: 0.119, P50: 0.121, P90: 0.124
 
 Summary Statistics for Bootstrap Porosity Standard Deviation Realizations:
-DescribeResult(nobs=10000, minmax=(0.025880943558902667, 0.037353142087646986), mean=0.031742776847542134, variance=2.6194978553572713e-06, skewness=-0.024778303725294104, kurtosis=-0.011396412892594743)
+DescribeResult(nobs=10000, minmax=(0.02581982044837635, 0.03793213986817153), mean=0.031776381940013324, variance=2.6308240627460316e-06, skewness=-0.007508909205112853, kurtosis=-0.004554023531159412)
 P10: 0.03, P50: 0.032, P90: 0.034
 </pre></div>
 </div>
@@ -1214,20 +1216,20 @@ P10: 0.03, P50: 0.032, P90: 0.034
   <figcaption style="text-align: center;"> Professor Michael Pyrcz in his office on the 40 acres, campus of The University of Texas at Austin.
 </figcaption>
 </figure>
-<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial data analytics, geostatistics, and machine learning. Michael is also,</p>
+<p>Michael Pyrcz is a professor in the <a class="reference external" href="https://cockrell.utexas.edu/faculty-directory/alphabetical/p">Cockrell School of Engineering</a>, and the <a class="reference external" href="https://www.jsg.utexas.edu/researcher/michael_pyrcz/">Jackson School of Geosciences</a>, at <a class="reference external" href="https://www.utexas.edu/">The University of Texas at Austin</a>, where he researches and teaches subsurface, spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a>, <a class="reference internal" href="GeostatsPy_glossary_e_m.html#geostatistics"><span class="std std-doc">geostatistics</span></a>, and machine learning. Michael is also,</p>
 <ul class="simple">
-<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a core faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
+<li><p>the principal investigator of the <a class="reference external" href="https://fri.cns.utexas.edu/energy-analytics">Energy Analytics</a> freshmen research initiative and a <a class="reference internal" href="GeostatsPy_glossary_a_d.html#core"><span class="std std-doc">core</span></a> faculty in the Machine Learn Laboratory in the College of Natural Sciences, The University of Texas at Austin</p></li>
 <li><p>an associate editor for <a class="reference external" href="https://www.sciencedirect.com/journal/computers-and-geosciences/about/editorial-board">Computers and Geosciences</a>, and a board member for <a class="reference external" href="https://link.springer.com/journal/11004/editorial-board">Mathematical Geosciences</a>, the International Association for Mathematical Geosciences.</p></li>
 </ul>
-<p>Michael has written over 70 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial data analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
-<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://www.michaelpyrcz.com">Website</a>.</p>
+<p>Michael has written over 100 <a class="reference external" href="https://scholar.google.com/citations?user=QVZ20eQAAAAJ&amp;hl=en">peer-reviewed publications</a>, a <a class="reference external" href="https://pypi.org/project/geostatspy/">Python package</a> for spatial <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">data</span></a> analytics, co-authored a textbook on spatial data analytics, <a class="reference external" href="https://www.amazon.com/Geostatistical-Reservoir-Modeling-Michael-Pyrcz/dp/0199731446">Geostatistical Reservoir Modeling</a> and author of two recently released e-books, <a class="reference external" href="https://geostatsguy.github.io/GeostatsPyDemos_Book/intro.html">Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy</a> and <a class="reference external" href="https://geostatsguy.github.io/MachineLearningDemos_Book/intro.html">Applied Machine Learning in Python: a Hands-on Guide with Code</a>.</p>
+<p>All of Michael’s university lectures are available on his <a class="reference external" href="https://www.youtube.com/&#64;GeostatsGuyLectures">YouTube Channel</a> with links to 100s of Python interactive dashboards and well-documented workflows in over 40 repositories on his <a class="reference external" href="https://github.com/GeostatsGuy">GitHub account</a>, to support any interested students and working professionals with evergreen content. To find out more about Michael’s work and shared educational resources visit his <a class="reference external" href="https://https://www.michaelpyrcz.com">Website</a>.</p>
 </section>
 <section id="want-to-work-together">
 <h2>Want to Work Together?<a class="headerlink" href="#want-to-work-together" title="Permalink to this heading">#</a></h2>
-<p>I hope this content is helpful to those that want to learn more about subsurface modeling, data analytics and machine learning. Students and working professionals are welcome to participate.</p>
+<p>I hope this content is helpful to those that want to learn more about subsurface modeling, <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data-analytics"><span class="std std-doc">data analytics</span></a> and machine learning. Students and working professionals are welcome to participate.</p>
 <ul class="simple">
 <li><p>Want to invite me to visit your company for training, mentoring, project review, workflow design and / or consulting? I’d be happy to drop by and work with you!</p></li>
-<li><p>Interested in partnering, supporting my graduate student research or my Subsurface Data Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
+<li><p>Interested in partnering, supporting my graduate student research or my Subsurface <a class="reference internal" href="GeostatsPy_glossary_a_d.html#data"><span class="std std-doc">Data</span></a> Analytics and Machine Learning consortium (co-PI is Professor John Foster)? My research combines data analytics, stochastic modeling and machine learning theory with practice to develop novel methods and workflows to add value. We are solving challenging subsurface problems!</p></li>
 <li><p>I can be reached at <a class="reference external" href="mailto:mpyrcz&#37;&#52;&#48;austin&#46;utexas&#46;edu">mpyrcz<span>&#64;</span>austin<span>&#46;</span>utexas<span>&#46;</span>edu</a>.</p></li>
 </ul>
 <p>I’m always happy to discuss,</p>
@@ -1358,6 +1360,24 @@ By Michael J. Pyrcz
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <div style="
+  margin-top:1em;
+  text-align:center;
+  width:100%;
+  ">
+  <img src="_static/images/backcover.png"
+       alt="Applied Geostatistics in Python back cover"
+       style="
+         display:block;
+         margin-left: 25px;
+         margin-right:auto;
+         width:77.5%;
+         max-width:775px;
+       ">
+</div>
+
+</div>
   </div>
   
 </div>
