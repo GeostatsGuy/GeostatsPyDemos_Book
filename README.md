@@ -6,7 +6,7 @@ Michael J. Pyrcz, Professor, The University of Texas at Austin
 
 e-book "Applied Geostatistics in Python: a Hands-on Guide with GeostatsPy". 
 
-Cite as: Pyrcz, M.J., 2024, Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy, https://geostatsguy.github.io/GeostatsPyDemos_Book
+Cite as: Pyrcz, M. J. (2024). Applied Geostatistics in Python: A Hands-on Guide with GeostatsPy. https://doi.org/10.5281/zenodo.15169133
 
 By Michael J. Pyrcz <br />
 &copy; Copyright 2024.
